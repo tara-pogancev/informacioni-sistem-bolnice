@@ -13,6 +13,7 @@ U folderu *UseCase Diagram* nalazi se PowerDesigner fajlovi pomoću kojih se mo�
 ## Korišćeni alati
 
 ► PowerDesigner 16,5
+
 ► Balsamiq Wireframes
 
 
