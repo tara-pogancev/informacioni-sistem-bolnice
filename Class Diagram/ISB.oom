@@ -2179,7 +2179,7 @@ SOURCE 0 Arial,8,N</a:FontList>
 <o:AssociationSymbol Id="o37">
 <a:CreationDate>1616440427</a:CreationDate>
 <a:ModificationDate>1616440427</a:ModificationDate>
-<a:Rect>((-8291,-3167), (2328,480))</a:Rect>
+<a:Rect>((-8291,-3167), (2328,479))</a:Rect>
 <a:ListOfPoints>((1928,-2767),(1928,-300),(-7891,-300))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>8</a:ArrowStyle>
