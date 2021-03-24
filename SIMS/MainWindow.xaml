@@ -1,0 +1,23 @@
+﻿<Window x:Class="SIMS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS"
+        mc:Ignorable="d"
+        Title="Zdravo klinika" Height="450" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Vertical" >
+            <Label Margin="73,150,0,3">Username</Label>
+            <TextBox x:Name="username" Width="250"  Background="AliceBlue"  Height="25" Padding="2"></TextBox>
+            <Label Margin="73,10,0,3">Password</Label>
+            <PasswordBox x:Name="password" Width="250"  Background="AliceBlue" Height="25"  Padding="2"></PasswordBox>
+
+            <Button Width="80" Height="30" Margin="30" Background="CadetBlue" Click="Button_Click">Login</Button>
+            
+        </StackPanel>
+
+    </Grid>
+</Window>
