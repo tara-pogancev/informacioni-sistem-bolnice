@@ -10,11 +10,17 @@ Projekat iz predmeta Specifikacija i modeliranje softvera i Interakcija čovek r
 
 U folderu *UseCase Diagram* nalazi se PowerDesigner fajlovi pomoću kojih se može otvoriti dijagram slučajeva korišćenja, iz perspektive četiri zasebna korisnika aplikacije: pacijent, lekar, sekretar i upravnik. 
 
+*Branches:*
+► Diagram - sadrži UseCase i Class dijagrame
+► Develop - razvoj aplikacije
+
 ## Korišćeni alati
 
 ► PowerDesigner 16,5
 
 ► Balsamiq Wireframes
+
+► Microsoft Visual Studio 2019
 
 
 ### Autori
