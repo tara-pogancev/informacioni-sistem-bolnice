@@ -8,6 +8,7 @@
         Title="Bolnica Zdravo - Prijava" Height="450" Width="700"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
+    
     <Grid Background="#FF191E29">
 
         <Grid.ColumnDefinitions>
