@@ -5,19 +5,95 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Title="Zdravo klinika" Height="450" Width="400"
+        Title="Bolnica Zdravo - Prijava" Height="450" Width="700"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    <Grid>
-        <StackPanel Orientation="Vertical" >
-            <Label Margin="73,150,0,3">Username</Label>
-            <TextBox x:Name="username" Width="250"  Background="AliceBlue"  Height="25" Padding="2"></TextBox>
-            <Label Margin="73,10,0,3">Password</Label>
-            <PasswordBox x:Name="password" Width="250"  Background="AliceBlue" Height="25"  Padding="2"></PasswordBox>
+    <Grid Background="#FF191E29">
 
-            <Button Width="80" Height="30" Margin="30" Background="CadetBlue" Click="Button_Click">Login</Button>
-            
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+
+                    <RowDefinition Height="300"/>
+
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+
+                    <Image Source ="/logo_glow_tr.png" Height="auto" Width="auto"/>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+
+                    <RowDefinition Height="250"/>
+
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+
+                    <Border BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                        <TextBox VerticalAlignment="Center" Text="Username" x:Name="username" Width="250" Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" Margin="0,0,0,15" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite korisničko ime" VerticalContentAlignment="Center" Padding="5,0,5,0">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+
+                        <PasswordBox Password="placeholder" x:Name="password" Width="250"  Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" VerticalAlignment="Top" Margin="0,0,0,33" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite lozinku" VerticalContentAlignment="Center" Padding="5,0,0,0">
+                           
+                        </PasswordBox>
+
+                        <Button Content="PRIJAVA" Width="250" Height="45" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF148364"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                                    </Border>
+
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+                
+            </Grid>
+        </Grid>
+
 
     </Grid>
 </Window>

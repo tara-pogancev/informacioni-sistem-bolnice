@@ -12,6 +12,11 @@
     <None Remove="Lekar\notification.png" />
     <None Remove="Lekar\profile.png" />
     <None Remove="Lekar\search.png" />
+    <None Remove="logo_glow_tr.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +24,7 @@
     <Resource Include="Lekar\notification.png" />
     <Resource Include="Lekar\profile.png" />
     <Resource Include="Lekar\search.png" />
+    <Resource Include="logo_glow_tr.png" />
   </ItemGroup>
 
 </Project>

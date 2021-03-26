@@ -9,13 +9,13 @@ namespace Model
 {
    public class Termin
    {
-      private DateTime pocetnoVreme;
-      private TimeSpan vremeTrajanja;
-      private TipTermina vrstaTermina;
+         private DateTime pocetnoVreme;
+         private TimeSpan vremeTrajanja;
+         private TipTermina vrstaTermina;
       
-      public Lekar lekar;
-      public Pacijent pacijent;
-      public Prostorija prostorija;
-   
+         public Lekar lekar;
+         public Pacijent pacijent;
+         public Prostorija prostorija;
+
    }
 }

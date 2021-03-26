@@ -7,13 +7,13 @@ using System;
 
 namespace Model
 {
-   public class Prostorija
-   {
-      private Adresa adresa;
-      private int sprat;
-      private int broj;
-      private bool dostupna;
-      private TipProstorije tipProstorije;
+    public class Prostorija
+    {
+        private Adresa adresa;
+        private int sprat;
+        private int broj;
+        private bool dostupna;
+        private TipProstorije tipProstorije;
    
    }
 }

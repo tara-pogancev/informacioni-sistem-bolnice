@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +21,12 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
+        public ObservableCollection<Termin> Termini
+        {
+            get;
+            set;
+        }
+
         public LekarUI()
         {
             InitializeComponent();
@@ -28,8 +36,11 @@ namespace SIMS
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
             }, this.Dispatcher);
 
+            //Tabela termina
+            this.DataContext = this;
+            Termini = new ObservableCollection<Termin>();
 
-        }
+        }        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -55,5 +66,26 @@ namespace SIMS
         {
             //Button: Nalog
         }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            //Button: Zakazi pregled
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            //Button: Zakazi pregled
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            //Button: Zakazi pregled
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            //Button: Zakazi pregled
+        }
+
     }
 }

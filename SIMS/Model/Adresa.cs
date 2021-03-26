@@ -1,7 +1,6 @@
-
 using System;
 
-namespace P1
+namespace Model
 {
    public class Adresa
    {
