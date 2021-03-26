@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Lekar\logo_h_small.png" />
+    <None Remove="Lekar\notification.png" />
+    <None Remove="Lekar\profile.png" />
+    <None Remove="Lekar\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Lekar\logo_h_small.png" />
+    <Resource Include="Lekar\notification.png" />
+    <Resource Include="Lekar\profile.png" />
+    <Resource Include="Lekar\search.png" />
+  </ItemGroup>
+
+</Project>
