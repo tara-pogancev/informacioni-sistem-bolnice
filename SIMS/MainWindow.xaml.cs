@@ -50,7 +50,7 @@ namespace SIMS
             }
             else
             {
-                MessageBox.Show("Pogresna lozinka ili korisnicko ime");
+                MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
             }
 
 
