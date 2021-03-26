@@ -1,19 +1,51 @@
 // File:    Prostorija.cs
 // Author:  paracelsus
-// Created: Monday, March 22, 2021 6:41:35 PM
+// Created: 22 March 2021 18:41:35
 // Purpose: Definition of Class Prostorija
 
 using System;
 
-namespace Model
+namespace P1
 {
    public class Prostorija
    {
       private Adresa adresa;
       private int sprat;
       private int broj;
-      private bool dostupna;
-      private TipProstorije tipProstorije;
-   
-   }
+      private Boolean dostupnost;
+
+        public Prostorija(Adresa adresa, int sprat, int broj, bool dostupnost)
+        {
+            this.adresa = adresa;
+            this.sprat = sprat;
+            this.broj = broj;
+            this.dostupnost = dostupnost;
+        }
+
+        public Adresa Adresa
+        {
+            get { return adresa; }
+            set { adresa = value; }
+        }
+
+        public int Sprat
+        {
+            get { return sprat; }
+            set { sprat = value; }
+        }
+
+        public int Broj
+        {
+            get { return broj; }
+            set { broj = value; }
+        }
+
+        public Boolean Dostupnost
+        {
+            get { return dostupnost; }
+            set { dostupnost = value; }
+        }
+    }
+
+
 }

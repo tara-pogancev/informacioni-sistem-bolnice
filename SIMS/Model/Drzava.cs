@@ -1,11 +1,11 @@
 // File:    Drzava.cs
 // Author:  paracelsus
-// Created: Monday, March 22, 2021 8:19:14 PM
+// Created: 22 March 2021 20:19:14
 // Purpose: Definition of Class Drzava
 
 using System;
 
-namespace Model
+namespace P1
 {
    public class Drzava
    {
@@ -13,7 +13,7 @@ namespace Model
       
       public System.Collections.Generic.List<Grad> grad;
       
-      
+      /// <summary>
       /// Property for collection of Grad
       /// </summary>
       /// <pdGenerated>Default opposite class collection property</pdGenerated>
@@ -86,6 +86,20 @@ namespace Model
             tmpGrad.Clear();
          }
       }
+
+      public Drzava() { }
+
+      public Drzava(String naziv)
+        {
+            this.naziv = naziv;
+            this.grad = new System.Collections.Generic.List<Grad>();
+        }
+
+      public String Naziv
+        {
+            get { return naziv; }
+            set { naziv = value; }
+        }
    
    }
 }

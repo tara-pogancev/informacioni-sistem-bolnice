@@ -1,20 +1,20 @@
-// File:    SekretarStorage.cs
+// File:    PregledStorage.cs
 // Author:  paracelsus
-// Created: Friday, March 26, 2021 4:38:56 PM
-// Purpose: Definition of Class SekretarStorage
+// Created: 22 March 2021 18:47:57
+// Purpose: Definition of Class PregledStorage
 
 using System;
 
-namespace Model
+namespace P1
 {
-   public class SekretarStorage
+   public class PregledStorage
    {
       public bool Create()
       {
          throw new NotImplementedException();
       }
       
-      public Sekretar Read()
+      public Pregled Read()
       {
          throw new NotImplementedException();
       }

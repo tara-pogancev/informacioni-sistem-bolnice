@@ -1,11 +1,11 @@
 // File:    LekarStorage.cs
 // Author:  paracelsus
-// Created: Friday, March 26, 2021 4:38:57 PM
+// Created: 22 March 2021 19:20:21
 // Purpose: Definition of Class LekarStorage
 
 using System;
 
-namespace Model
+namespace P1
 {
    public class LekarStorage
    {
@@ -14,7 +14,7 @@ namespace Model
          throw new NotImplementedException();
       }
       
-      public Lekar Read()
+      public Specijalista Read()
       {
          throw new NotImplementedException();
       }

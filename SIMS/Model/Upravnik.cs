@@ -1,15 +1,16 @@
 // File:    Upravnik.cs
 // Author:  paracelsus
-// Created: Monday, March 22, 2021 6:35:50 PM
+// Created: 22 March 2021 18:35:50
 // Purpose: Definition of Class Upravnik
 
 using System;
 
-namespace Model
+namespace P1
 {
    public class Upravnik : UlogovanKorisnik
    {
-      private int daniGodisnjegOdmora;
+      private Boolean dostupnost;
+      private int brojSlobodnihDana;
    
    }
 }
