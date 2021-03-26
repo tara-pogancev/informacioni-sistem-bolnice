@@ -33,9 +33,12 @@ namespace SIMS
                 this.Close();
                 pacijent.Show();
             }
-            else if (password.Password.SequenceEqual("doktor") && username.Text.SequenceEqual("doktor"))
+            else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar"))
             {
                 //unijeti kod za otvaranje nove stranice 
+                LekarUI lekarUI = new LekarUI();
+                this.Close();
+                lekarUI.Show();
             }
             else if(password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
             {
