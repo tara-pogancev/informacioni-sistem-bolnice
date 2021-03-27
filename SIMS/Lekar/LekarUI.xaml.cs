@@ -37,14 +37,23 @@ namespace SIMS
         {
             InitializeComponent();
 
+            //Tred za prikazivanje sata i datuma
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
             }, this.Dispatcher);
 
-            //Tabela termina
+            //Tabela pregleda
             this.DataContext = this;
-            //Termini = new ObservableCollection<Termin>();
+            Pregledi = new ObservableCollection<Pregled>();
+
+
+            Pregled p1 = new Pregled("07/08/2021", "07/08/2021");
+
+            //Operacija o1 = new Operacija("07/08/2021", "07/08/2021");
+
+            Pregledi.Add(p1);
+            //Operacije.Add(o1);
 
         }
 
@@ -95,5 +104,9 @@ namespace SIMS
             //Button: Zakazi pregled
         }
 
+        private void dataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

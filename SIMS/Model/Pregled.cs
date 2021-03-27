@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Pregled
 
 using System;
+using System.Globalization;
 
 namespace P1
 {
@@ -25,9 +26,20 @@ namespace P1
             this.prostorija = prostorija;
         }
 
+        public Pregled(String pocetnoVreme, String vrijemeZavrsetka)
+        {
+            //TODO: Test konstruktor koji bi trebalo da uzima kljuceve za lekara, pacijenta a kasnije i prostoriju
+            this.pocetnoVreme = Convert.ToDateTime(pocetnoVreme);
+            this.vrijemeZavrsetka = Convert.ToDateTime(vrijemeZavrsetka);
+
+            this.lekar = null;
+            this.pacijent = null;
+            this.prostorija = null;
+        }
+
         public DateTime PocetnoVreme
         {
-            get{return pocetnoVreme;}
+            get {return pocetnoVreme;}
             set { pocetnoVreme = value; }
             
         }
@@ -57,10 +69,37 @@ namespace P1
             set { prostorija = value; }
         }
 
-        public String Ime
+        public String ImePacijenta
         {
-            get { return lekar.Ime; }
+            get { return (pacijent.Ime + " " + pacijent.Prezime); }
         }
+
+        public String KrajnjeVremeString
+        {
+            get { return this.vrijemeZavrsetka.ToString("HH:mm"); }
+        }
+
+        public String PocetnoVremeString
+        {
+            get { return this.pocetnoVreme.ToString("HH:mm"); }
+        }
+
+        public String DatumString
+        {
+            get { return this.pocetnoVreme.ToString("dd/MM/yyyy");  }
+        }
+
+        public String TipTermina
+        {
+            get { return "Pregled";  }
+        }
+
+        public String ImeProstorije
+        {
+            get { return this.prostorija.Naziv; }
+        }
+
+
 
     }
 }

@@ -12,6 +12,10 @@ namespace P1
       public bool Create()
       {
          throw new NotImplementedException();
+
+            
+
+
       }
       
       public Pregled Read()

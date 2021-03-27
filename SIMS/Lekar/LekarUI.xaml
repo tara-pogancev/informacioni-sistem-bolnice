@@ -154,19 +154,20 @@
 
                 <Grid Grid.Row="1" Background="#323D52">
 
-                    <Grid Margin="40,20,40,0" VerticalAlignment="Top" Height="440">
+                    <Grid Margin="40,30,40,0" VerticalAlignment="Top" Height="440">
 
-                        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Termini}" IsReadOnly="True"
-                                  SelectionMode="Single" AutoGenerateColumns="False">
+                        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = Pregledi}" IsReadOnly="True"
+                                  SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGridTermini_SelectionChanged" FontSize="14" FontWeight="Bold"
+                                  DataGrid.CanUserResizeRows="False">
 
                             <DataGrid.Columns>
 
-                                <DataGridTextColumn Header="Termin" Binding="{Binding Termin}"/>
-                                <DataGridTextColumn Header="Pacijent" Binding="{Binding Pacijent}"/>
-                                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}"/>
-                                <DataGridTextColumn Header="Početak" Binding="{Binding Pocetak}"/>
-                                <DataGridTextColumn Header="Kraj" Binding="{Binding Kraj}"/>
-                                <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija}"/>
+                                <DataGridTextColumn Header="Termin" Binding="{Binding TipTermina}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Datum" Binding="{Binding DatumString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Početak" Binding="{Binding PocetnoVremeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Kraj" Binding="{Binding KrajnjeVremeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Prostorija" Binding="{Binding ImeProstorije}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                             </DataGrid.Columns>
 

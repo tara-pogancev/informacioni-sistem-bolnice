@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +25,20 @@ namespace SIMS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //Kreiranje novog pregleda
+
+            //TODO: Odraditi sve provere
+
+            //String s = timePicker.Text + " " + datePicker1.ToString();
+
+            //DateTime vreme = DateTime.ParseExact(s, "hh:mm dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+
+
+
+
 
         }
     }
+
 }

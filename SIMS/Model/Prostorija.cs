@@ -13,13 +13,21 @@ namespace P1
       private int sprat;
       private int broj;
       private Boolean dostupnost;
+      private String naziv;
 
-        public Prostorija(Adresa adresa, int sprat, int broj, bool dostupnost)
+        public Prostorija(String naziv, Adresa adresa, int sprat, int broj, bool dostupnost)
         {
+            this.naziv = naziv;
             this.adresa = adresa;
             this.sprat = sprat;
             this.broj = broj;
             this.dostupnost = dostupnost;
+        }
+
+        public String Naziv
+        {
+            get { return naziv; }
+            set { naziv = value; }
         }
 
         public Adresa Adresa
@@ -45,6 +53,7 @@ namespace P1
             get { return dostupnost; }
             set { dostupnost = value; }
         }
+
     }
 
 

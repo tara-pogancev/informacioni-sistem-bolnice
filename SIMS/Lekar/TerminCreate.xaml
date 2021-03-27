@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="Zakaži pregled" Height="450" Width="600"
+        Title="Zakaži pregled" Height="500" Width="600"
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#FF191E29">
@@ -26,6 +26,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition Height="60"/>
 
             </Grid.RowDefinitions>
@@ -35,6 +36,7 @@
             <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
             <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
             <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
 
         </Grid>
 
@@ -49,12 +51,15 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition Height="60"/>
 
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="5" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
-                
+                <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+
+
+
                 <TextBox HorizontalAlignment="Left" Grid.Row="2" Text="Izaberite doktora..." VerticalAlignment="Center" Width="260" Height="30" Margin="30,0,0,0" SelectionBrush="#FF01C38D" Foreground="White" Background="{x:Null}" VerticalContentAlignment="Center" FontFamily="Candara Light" FontSize="14" Padding="10,0,10,0">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -80,7 +85,10 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <TextBox HorizontalAlignment="Left" Grid.Row="5" Text="Unesite datum..." VerticalAlignment="Center" Width="260" Height="30" Margin="30,0,0,0" SelectionBrush="#FF01C38D" Foreground="White" Background="{x:Null}" VerticalContentAlignment="Center" FontFamily="Candara Light" FontSize="14" Padding="10,0,10,0">
+                <DatePicker Name ="datePicker1" Width="260" Height="30" Margin="30,0,0,0" Grid.Row="5" FontFamily="Candara Light" FontSize="14" BorderBrush="{x:Null}" Foreground="Black" Padding="2,0,2,0" VerticalContentAlignment="Center" FirstDayOfWeek="Monday" Text="Izaberite datum..." HorizontalAlignment="Left"
+                            />
+
+                <TextBox Name="timePicker" HorizontalAlignment="Left" Grid.Row="6" Text="Unesite početno vreme..." VerticalAlignment="Center" Width="260" Height="30" Margin="30,0,0,0" SelectionBrush="#FF01C38D" Foreground="White" Background="{x:Null}" VerticalContentAlignment="Center" FontFamily="Candara Light" FontSize="14" Padding="10,0,10,0" ToolTip="Vreme uneti u formatu: HH:mm">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="8"/>
@@ -88,15 +96,18 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <TextBox HorizontalAlignment="Left" Grid.Row="6" Text="Unesite početno vreme..." VerticalAlignment="Center" Width="260" Height="30" Margin="30,0,0,0" SelectionBrush="#FF01C38D" Foreground="White" Background="{x:Null}" VerticalContentAlignment="Center" FontFamily="Candara Light" FontSize="14" Padding="10,0,10,0">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="8"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
+                <ListBox Grid.Row="7" Margin="30,0,0,0" Foreground="White" Background="{x:Null}" Height="30" Width="260" HorizontalAlignment="Left" Padding="12,0,0,0" FontFamily="Candara Light" FontSize="18" AllowDrop="True" VerticalContentAlignment="Center">
 
-                <Button Grid.Row="7" Grid.RowSpan="2" Content="ZAKAŽI" Width="130" Height="35" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0">
+                    <ListBoxItem>15 minuta</ListBoxItem>
+                    <ListBoxItem>30 minuta</ListBoxItem>
+                    <ListBoxItem>45 minuta</ListBoxItem>
+                    <ListBoxItem>60 minuta</ListBoxItem>
+                    <ListBoxItem>75 minuta</ListBoxItem>
+                    <ListBoxItem>90 minuta</ListBoxItem>
+                
+                </ListBox>
+
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Width="130" Height="35" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -107,6 +118,7 @@
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
+                   
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">

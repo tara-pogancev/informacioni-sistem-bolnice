@@ -9,7 +9,7 @@ namespace P1
 {
     public class Sala : Prostorija
     {
-        public Sala(Adresa adresa, int sprat, int broj, bool dostupnost) : base(adresa, sprat, broj, dostupnost)
+        public Sala(String naziv, Adresa adresa, int sprat, int broj, bool dostupnost) : base(naziv, adresa, sprat, broj, dostupnost)
         {
         }
     }
