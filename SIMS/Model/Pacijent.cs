@@ -24,5 +24,10 @@ namespace Model
         public Pacijent() : base()
         {
         }
+
+        public String ImePacijenta
+        {
+            get { return this.Ime + " " + this.Prezime; }
+        }
     }
 }

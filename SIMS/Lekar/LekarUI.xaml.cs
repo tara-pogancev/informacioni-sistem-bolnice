@@ -1,4 +1,5 @@
 ﻿
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,18 +22,12 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
-        /*public ObservableCollection<Pregled> Pregledi
+        public ObservableCollection<Termin> Termini
         {
             get;
             set;
         }
 
-        public ObservableCollection<Operacija> Operacije
-        {
-            get;
-            set;
-        }
-*/
         public LekarUI()
         {
             InitializeComponent();
@@ -44,17 +39,11 @@ namespace SIMS
             }, this.Dispatcher);
 
             //Tabela pregleda
-           /* this.DataContext = this;
-            Pregledi = new ObservableCollection<Pregled>();
+            this.DataContext = this;
+            Termini = new ObservableCollection<Termin>();
 
 
-            Pregled p1 = new Pregled("07/08/2021", "07/08/2021");
 
-            //Operacija o1 = new Operacija("07/08/2021", "07/08/2021");
-
-            Pregledi.Add(p1);
-            //Operacije.Add(o1);
-*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

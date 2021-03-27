@@ -20,10 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Lekar\logo_h_small.png" />
-    <Resource Include="Lekar\notification.png" />
-    <Resource Include="Lekar\profile.png" />
-    <Resource Include="Lekar\search.png" />
+    <Resource Include="Lekar\src\logo_h_small.png" />
+    <Resource Include="Lekar\src\notification.png" />
+    <Resource Include="Lekar\src\profile.png" />
+    <Resource Include="Lekar\src\search.png" />
     <Resource Include="logo_glow_tr.png" />
   </ItemGroup>
 

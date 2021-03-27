@@ -69,5 +69,20 @@ namespace Model
             }
             
         }
-}
+
+        public String ImePacijenta
+        {
+            get { return this.pacijent.ImePacijenta; }
+        }
+
+        public String ImeLekara
+        {
+            get { return this.lekar.ImeLekara; }
+        }
+
+        public String NazivProstorije
+        {
+            get { return this.prostorija.Naziv; }
+        }
+    }
 }
