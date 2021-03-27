@@ -42,6 +42,33 @@ namespace SIMS
             this.DataContext = this;
             Termini = new ObservableCollection<Termin>();
 
+            TerminStorage terminStorage = new TerminStorage();
+
+            DateTime tempDate = new DateTime(2020, 3, 4, 8, 0, 15);
+            TimeSpan tempSpan = new TimeSpan(0, 30, 0);
+
+            Drzava SrbijaT = new Drzava("Srbija");
+            Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
+            Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
+            UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
+
+            Lekar l = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
+            Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
+
+            Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede, "E221");
+            Termin termin = new Termin(tempDate, tempSpan, TipTermina.pregled, l, p, prostorija);
+
+            TerminStorage storage = new TerminStorage();
+            storage.Create(termin);
+
+            Termini.Add(termin);
+
+
+            //List<Termin> terminiByLekar = terminStorage.ReadByLekar(l);
+
+            // foreach (Termin t in terminiByLekar)
+            //     Termini.Add(t);
+
 
 
         }
@@ -76,21 +103,34 @@ namespace SIMS
             //Button: Zakazi pregled
             TerminCreate terminCreate = new TerminCreate();
             terminCreate.Show();
+
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Zakazi operaciju
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Uredi termin
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Otkaži pregled
+            Termin toDelete = (Termin)dataGridTermini.SelectedItem;
+
+            if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?", 
+                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+
+                //TODO: Otkazi termin
+
+                MessageBox.Show("Termin je uspešno otkazan!");
+            }
+
+
         }
 
         private void dataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
