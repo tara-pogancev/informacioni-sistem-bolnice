@@ -77,7 +77,7 @@ namespace SIMS
         {
                         if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
             {
-                Pacijent pacijent = new Pacijent();
+                PacijentUI pacijent =PacijentUI.getInstance();
                 this.Close();
                 pacijent.Show();
             }

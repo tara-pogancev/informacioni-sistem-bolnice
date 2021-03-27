@@ -14,9 +14,10 @@ namespace Model
       private TimeSpan vremeTrajanja;
       private TipTermina vrstaTermina;
 
-        private Lekar lekar;
-        private Pacijent pacijent;
-        private Prostorija prostorija;
+      private Lekar lekar;
+      private Pacijent pacijent;
+      private Prostorija prostorija;
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,6 +49,8 @@ namespace Model
         public Termin()
         {
         }
+
+        
 
         public String Datum { get => pocetnoVreme.ToString("dd/MM/yyyy"); }
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
