@@ -1,20 +1,20 @@
-// File:    OperacijaStorage.cs
+// File:    TerminStorage.cs
 // Author:  paracelsus
-// Created: 22 March 2021 19:10:47
-// Purpose: Definition of Class OperacijaStorage
+// Created: Monday, March 22, 2021 6:47:57 PM
+// Purpose: Definition of Class TerminStorage
 
 using System;
 
-namespace P1
+namespace Model
 {
-   public class OperacijaStorage
+   public class TerminStorage
    {
       public bool Create()
       {
          throw new NotImplementedException();
       }
       
-      public Operacija Read()
+      public Termin Read()
       {
          throw new NotImplementedException();
       }

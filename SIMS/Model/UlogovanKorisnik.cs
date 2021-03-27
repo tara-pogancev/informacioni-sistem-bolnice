@@ -1,13 +1,13 @@
 // File:    UlogovanKorisnik.cs
 // Author:  paracelsus
-// Created: 22 March 2021 18:37:39
+// Created: Monday, March 22, 2021 6:37:39 PM
 // Purpose: Definition of Class UlogovanKorisnik
 
 using System;
 
-namespace P1
+namespace Model
 {
-    public class UlogovanKorisnik
+   public class UlogovanKorisnik
    {
       private String ime;
       private String prezime;
@@ -16,13 +16,11 @@ namespace P1
       private String lozinka;
       private String email;
       private String telefon;
-      
-      public Adresa adresa;
 
-      public UlogovanKorisnik() { }
+        private Adresa adresa;
 
-      public UlogovanKorisnik(String ime,String prezime,String jmbg,String korisnickoIme,String lozinka,String email,String telefon,Adresa adresa)
-      {
+        public UlogovanKorisnik(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa)
+        {
             this.ime = ime;
             this.prezime = prezime;
             this.jmbg = jmbg;
@@ -31,56 +29,26 @@ namespace P1
             this.email = email;
             this.telefon = telefon;
             this.adresa = adresa;
-      }
+        }
 
-        public String Ime 
+        public UlogovanKorisnik()
+        {
+        }
+
+        public String Ime
         {
             get { return ime; }
-            set { ime = value; } 
+            set { ime = value; }
         }
 
-        public String Prezime
-        {
-            get { return prezime; }
-            set { prezime = value; }
-        }
-        public String JMBG
-        {
-            get { return jmbg; }
-            set { jmbg = value; }
-        }
-        public String KorisnickoIme
-        {
-             get { return korisnickoIme; }
-             set { korisnickoIme = value; }
-         }
-        
+        public string Prezime { get => prezime; set => prezime = value; }
+        public string Jmbg { get => jmbg; set => jmbg = value; }
+        public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
+        public string Lozinka { get => lozinka; set => lozinka = value; }
+        public string Email { get => email; set => email = value; }
+        public string Telefon { get => telefon; set => telefon = value; }
+        public Adresa Adresa { get => adresa; set => adresa = value; }
 
-        public String Lozinka
-        {
-            get { return lozinka; }
-            set { lozinka = value; }
-        }
-        public String Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-        public String Telefon
-        {
-            get { return telefon; }
-            set { telefon = value; }
-        }
-        public Adresa Adresa
-        {
-            get { return adresa; }
-            set { adresa = value; }
-        }
-
-
-
-
-
-
+        public String ImePrezime { get => ime + prezime; }
     }
 }

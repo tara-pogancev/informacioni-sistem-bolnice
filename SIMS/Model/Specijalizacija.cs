@@ -1,11 +1,11 @@
 // File:    Specijalizacija.cs
 // Author:  paracelsus
-// Created: 22 March 2021 18:47:57
+// Created: Monday, March 22, 2021 6:47:57 PM
 // Purpose: Definition of Enum Specijalizacija
 
 using System;
 
-namespace P1
+namespace Model
 {
    public enum Specijalizacija
    {

@@ -1,23 +1,21 @@
-// File:    Drzava.cs
-// Author:  paracelsus
-// Created: 22 March 2021 20:19:14
-// Purpose: Definition of Class Drzava
+
 
 using System;
 
-namespace P1
+namespace Model
 {
    public class Drzava
    {
       private String naziv;
       
       public System.Collections.Generic.List<Grad> grad;
-      
-      /// <summary>
-      /// Property for collection of Grad
-      /// </summary>
-      /// <pdGenerated>Default opposite class collection property</pdGenerated>
-      public System.Collections.Generic.List<Grad> Grad
+
+        public Drzava(string naziv)
+        {
+            this.naziv = naziv;
+        }
+
+        public System.Collections.Generic.List<Grad> Grad
       {
          get
          {
@@ -35,12 +33,10 @@ namespace P1
             }
          }
       }
-      
-      /// <summary>
-      /// Add a new Grad in the collection
-      /// </summary>
-      /// <pdGenerated>Default Add</pdGenerated>
-      public void AddGrad(Grad newGrad)
+
+        public string Naziv { get => naziv; set => naziv = value; }
+
+        public void AddGrad(Grad newGrad)
       {
          if (newGrad == null)
             return;
@@ -53,10 +49,7 @@ namespace P1
          }
       }
       
-      /// <summary>
-      /// Remove an existing Grad from the collection
-      /// </summary>
-      /// <pdGenerated>Default Remove</pdGenerated>
+      
       public void RemoveGrad(Grad oldGrad)
       {
          if (oldGrad == null)
@@ -69,10 +62,7 @@ namespace P1
             }
       }
       
-      /// <summary>
-      /// Remove all instances of Grad from the collection
-      /// </summary>
-      /// <pdGenerated>Default removeAll</pdGenerated>
+      
       public void RemoveAllGrad()
       {
          if (grad != null)
@@ -86,20 +76,6 @@ namespace P1
             tmpGrad.Clear();
          }
       }
-
-      public Drzava() { }
-
-      public Drzava(String naziv)
-        {
-            this.naziv = naziv;
-            this.grad = new System.Collections.Generic.List<Grad>();
-        }
-
-      public String Naziv
-        {
-            get { return naziv; }
-            set { naziv = value; }
-        }
    
    }
 }

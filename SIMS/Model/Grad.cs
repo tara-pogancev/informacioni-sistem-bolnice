@@ -1,24 +1,31 @@
 // File:    Grad.cs
 // Author:  paracelsus
-// Created: 22 March 2021 20:19:13
+// Created: Monday, March 22, 2021 8:19:13 PM
 // Purpose: Definition of Class Grad
 
 using System;
 
-namespace P1
+namespace Model
 {
    public class Grad
    {
       private String naziv;
       private int postanskiBroj;
       
-      private Drzava drzava;
-      
-      /// <summary>
-      /// Property for Drzava
-      /// </summary>
-      /// <pdGenerated>Default opposite class property</pdGenerated>
-      public Drzava Drzava
+      public Drzava drzava;
+
+        public Grad()
+        {
+        }
+
+        public Grad(string naziv, int postanskiBroj, Drzava drzava)
+        {
+            this.naziv = naziv;
+            this.postanskiBroj = postanskiBroj;
+            this.drzava = drzava;
+        }
+
+        public Drzava Drzava
       {
          get
          {
@@ -43,22 +50,7 @@ namespace P1
          }
       }
 
-        public Grad(string naziv, int postanskiBroj, Drzava drzava)
-        {
-            this.naziv = naziv;
-            this.postanskiBroj = postanskiBroj;
-            this.drzava = drzava;
-        }
-
-        public String Naziv 
-        {
-            get { return naziv; }
-            set { naziv = value; }
-        }
-        public int PostanskiBroj
-        {
-            get { return postanskiBroj; }
-            set { postanskiBroj = value; }
-        }
+        public string Naziv { get => naziv; set => naziv = value; }
+        public int PostanskiBroj { get => postanskiBroj; set => postanskiBroj = value; }
     }
 }

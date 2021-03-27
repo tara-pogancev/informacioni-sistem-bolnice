@@ -1,16 +1,24 @@
 // File:    Sekretar.cs
 // Author:  paracelsus
-// Created: 22 March 2021 18:35:51
+// Created: Monday, March 22, 2021 6:35:51 PM
 // Purpose: Definition of Class Sekretar
 
 using System;
 
-namespace P1
+namespace Model
 {
    public class Sekretar : UlogovanKorisnik
    {
-      private Boolean dostupnost;
-      private int brojSlobodnihDana;
+      private int daniGodisnjegOdmora;
+
+        public Sekretar() :base()
+        {
+        }
+
+        public Sekretar(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa,int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        {
+            this.daniGodisnjegOdmora = daniGodisnjegOdmora;
+        }
+    }
    
-   }
 }

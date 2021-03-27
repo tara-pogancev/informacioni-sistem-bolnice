@@ -1,60 +1,37 @@
 // File:    Prostorija.cs
 // Author:  paracelsus
-// Created: 22 March 2021 18:41:35
+// Created: Monday, March 22, 2021 6:41:35 PM
 // Purpose: Definition of Class Prostorija
 
 using System;
 
-namespace P1
+namespace Model
 {
    public class Prostorija
    {
       private Adresa adresa;
       private int sprat;
       private int broj;
-      private Boolean dostupnost;
-      private String naziv;
+      private bool dostupna;
+      private TipProstorije tipProstorije;
 
-        public Prostorija(String naziv, Adresa adresa, int sprat, int broj, bool dostupnost)
+        public Prostorija()
         {
-            this.naziv = naziv;
+        }
+
+        public Prostorija(Adresa adresa, int sprat, int broj, bool dostupna, TipProstorije tipProstorije)
+        {
             this.adresa = adresa;
             this.sprat = sprat;
             this.broj = broj;
-            this.dostupnost = dostupnost;
+            this.dostupna = dostupna;
+            this.tipProstorije = tipProstorije;
         }
 
-        public String Naziv
-        {
-            get { return naziv; }
-            set { naziv = value; }
-        }
-
-        public Adresa Adresa
-        {
-            get { return adresa; }
-            set { adresa = value; }
-        }
-
-        public int Sprat
-        {
-            get { return sprat; }
-            set { sprat = value; }
-        }
-
-        public int Broj
-        {
-            get { return broj; }
-            set { broj = value; }
-        }
-
-        public Boolean Dostupnost
-        {
-            get { return dostupnost; }
-            set { dostupnost = value; }
-        }
-
+        public Adresa Adresa { get => adresa; set => adresa = value; }
+        public int Sprat { get => sprat; set => sprat = value; }
+        public int Broj { get => broj; set => broj = value; }
+        public bool Dostupna { get => dostupna; set => dostupna = value; }
+        public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
     }
-
-
 }

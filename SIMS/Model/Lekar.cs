@@ -1,33 +1,25 @@
 // File:    Lekar.cs
 // Author:  paracelsus
-// Created: 22 March 2021 19:32:13
+// Created: Monday, March 22, 2021 7:32:13 PM
 // Purpose: Definition of Class Lekar
 
 using System;
 
-namespace P1
+namespace Model
 {
    public class Lekar : UlogovanKorisnik
    {
-      private Boolean dostupnost;
-      private int brojSlobodnihDana;
+      private int daniGodisnjegOdmora;
 
-        public Lekar(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa,Boolean dostupnost,int brojSlobodnihDana) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Lekar()
         {
-            this.dostupnost = dostupnost;
-            this.brojSlobodnihDana = brojSlobodnihDana;
         }
 
-        public Boolean Dostupnost
+        public Lekar(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa,int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
         {
-            get { return dostupnost; }
-            set { dostupnost = value; }
+            this.daniGodisnjegOdmora = daniGodisnjegOdmora;
         }
 
-        public int BrojSlobodnihDana
-        {
-            get { return brojSlobodnihDana; }
-            set { brojSlobodnihDana = value;  }
-        }
+        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
     }
 }

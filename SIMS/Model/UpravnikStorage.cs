@@ -1,20 +1,20 @@
-// File:    LekarStorage.cs
+// File:    UpravnikStorage.cs
 // Author:  paracelsus
-// Created: Friday, March 26, 2021 4:38:57 PM
-// Purpose: Definition of Class LekarStorage
+// Created: Thursday, March 25, 2021 4:23:30 PM
+// Purpose: Definition of Class UpravnikStorage
 
 using System;
 
 namespace Model
 {
-   public class LekarStorage
+   public class UpravnikStorage
    {
       public bool Create()
       {
          throw new NotImplementedException();
       }
       
-      public Lekar Read()
+      public Upravnik Read()
       {
          throw new NotImplementedException();
       }
