@@ -1,4 +1,4 @@
-﻿using P1;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,7 +21,7 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
-        public ObservableCollection<Pregled> Pregledi
+        /*public ObservableCollection<Pregled> Pregledi
         {
             get;
             set;
@@ -32,7 +32,7 @@ namespace SIMS
             get;
             set;
         }
-
+*/
         public LekarUI()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace SIMS
             }, this.Dispatcher);
 
             //Tabela pregleda
-            this.DataContext = this;
+           /* this.DataContext = this;
             Pregledi = new ObservableCollection<Pregled>();
 
 
@@ -54,7 +54,7 @@ namespace SIMS
 
             Pregledi.Add(p1);
             //Operacije.Add(o1);
-
+*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
