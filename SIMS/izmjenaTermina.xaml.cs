@@ -26,13 +26,15 @@ namespace SIMS
         public izmjenaTermina(Termin termin)
         {
             InitializeComponent();
+            LekarStorage lk = new LekarStorage();
             doktorSelektovan = false;
             lekari = new List<Lekar>();
+            lekari = lk.Read();
             this.termin = termin;
 
             
             filtrirajTermine();
-            Drzava SrbijaT = new Drzava("Srbija");
+            /*Drzava SrbijaT = new Drzava("Srbija");
             Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
             Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
             UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
@@ -43,7 +45,7 @@ namespace SIMS
             lekari.Add(l);
             lekari.Add(l2);
             lekari.Add(l3);
-
+            lk.Create(lekari);*/
 
             terminiLista.ItemsSource = termini;
             doktori.ItemsSource = lekari;

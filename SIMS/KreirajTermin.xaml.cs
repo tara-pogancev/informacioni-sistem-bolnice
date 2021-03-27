@@ -14,7 +14,6 @@ namespace SIMS
         private List<Lekar> lekari;
         private List<String> dostupniTermini;
         private Termin termin;
-        private List<Termin> sviTermini;
         private Boolean doktorSelektovan;
         public KreirajTermin()
         {
@@ -23,6 +22,8 @@ namespace SIMS
             
             termin = new Termin();
             doktorSelektovan = false;
+            LekarStorage lk = new LekarStorage();
+            lekari = lk.Read();
             doktori.ItemsSource = lekari;
 
             //////////////////////////////////////////
@@ -47,13 +48,7 @@ namespace SIMS
             sviTermini.Add(termin3);
             lekari.Add(l);*/
             //////////////////////////////////////////////////////
-            Drzava SrbijaT = new Drzava("Srbija");
-            Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
-            Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
-            UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
-
-            Lekar l = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
-            lekari.Add(l);
+            
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)

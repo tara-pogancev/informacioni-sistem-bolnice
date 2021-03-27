@@ -3,20 +3,32 @@
 // Created: Monday, March 22, 2021 6:47:57 PM
 // Purpose: Definition of Class TerminStorage
 
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Model
 {
    public class TerminStorage
    {
-      public bool Create()
+      public bool Create(List<Termin> termini)
       {
-         throw new NotImplementedException();
-      }
+            var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
+            using (StreamWriter writer = new StreamWriter("termini.json"))
+            {
+                writer.Write(jsonToWrite);
+            }
+
+
+            return true;
+        }
       
-      public Termin Read()
+      public List<Termin> Read()
       {
-         throw new NotImplementedException();
+            String json = File.ReadAllText("termini.json");
+            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            return termini_all;
       }
       
       public bool Update()
