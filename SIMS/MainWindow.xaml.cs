@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Upravnik;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,13 +70,18 @@ namespace SIMS
         {
             if (e.Key == Key.Return)
             {
-                Login(); 
+                Login();
             }
         }
 
         private void Login()
         {
-                        if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+
+            UpravnikUI upravnik = new UpravnikUI();
+            upravnik.Show();
+
+            /*
+            if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
             {
                 Pacijent pacijent = new Pacijent();
                 this.Close();
@@ -90,7 +96,10 @@ namespace SIMS
             }
             else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
             {
-                //unijeti kod za otvaranje nove stranice
+                
+                UpravnikUI upravnik = new UpravnikUI();
+                this.Close();
+                upravnik.Show();
             }
             else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar"))
             {
@@ -101,7 +110,8 @@ namespace SIMS
                 MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
             }
 
-
+        */
         }
+
     }
 }

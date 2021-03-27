@@ -13,6 +13,10 @@
     <None Remove="Lekar\profile.png" />
     <None Remove="Lekar\search.png" />
     <None Remove="logo_glow_tr.png" />
+    <None Remove="Upravnik\logo_h_small.png" />
+    <None Remove="Upravnik\notification.png" />
+    <None Remove="Upravnik\profile.png" />
+    <None Remove="Upravnik\search.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +29,10 @@
     <Resource Include="Lekar\profile.png" />
     <Resource Include="Lekar\search.png" />
     <Resource Include="logo_glow_tr.png" />
+    <Resource Include="Upravnik\logo_h_small.png" />
+    <Resource Include="Upravnik\notification.png" />
+    <Resource Include="Upravnik\profile.png" />
+    <Resource Include="Upravnik\search.png" />
   </ItemGroup>
 
 </Project>
