@@ -22,6 +22,9 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
+        private TerminStorage storageT = new TerminStorage();
+        private Lekar lekar;
+
         public ObservableCollection<Termin> Termini
         {
             get;
@@ -42,35 +45,9 @@ namespace SIMS
             this.DataContext = this;
             Termini = new ObservableCollection<Termin>();
 
-            TerminStorage terminStorage = new TerminStorage();
+            this.updateTermini();
 
-            DateTime tempDate = new DateTime(2020, 3, 4, 8, 0, 15);
-            TimeSpan tempSpan = new TimeSpan(0, 30, 0);
-
-            Drzava SrbijaT = new Drzava("Srbija");
-            Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
-            Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
-            UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
-
-            Lekar l = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
-            Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
-
-            Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede, "E221");
-            Termin termin = new Termin(tempDate, tempSpan, TipTermina.pregled, l, p, prostorija);
-
-            TerminStorage storage = new TerminStorage();
-            storage.Create(termin);
-
-            Termini.Add(termin);
-
-
-            //List<Termin> terminiByLekar = terminStorage.ReadByLekar(l);
-
-            // foreach (Termin t in terminiByLekar)
-            //     Termini.Add(t);
-
-
-
+            //this.initData();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -96,6 +73,9 @@ namespace SIMS
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             //Button: Nalog
+            MessageBox.Show("Trenutno je aktivno: " + storageT.getTerminStorage().Count + " termina.");
+            this.updateTermini();
+
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
@@ -104,6 +84,7 @@ namespace SIMS
             TerminCreate terminCreate = new TerminCreate();
             terminCreate.Show();
 
+            this.updateTermini();
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
@@ -119,22 +100,61 @@ namespace SIMS
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             //Button: Otkaži pregled
-            Termin toDelete = (Termin)dataGridTermini.SelectedItem;
 
             if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?", 
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-
                 //TODO: Otkazi termin
+                Termin toDelete = (Termin)dataGridTermini.SelectedItem;
 
-                MessageBox.Show("Termin je uspešno otkazan!");
+                bool success = storageT.Delete(toDelete);
+                if (success) 
+                { 
+                    MessageBox.Show("Termin je uspešno otkazan!"); 
+                    updateTermini(); 
+                }
+                
+                else 
+                { 
+                    MessageBox.Show("Greška! Termin nije uspešno otkazan!"); 
+                }
             }
-
-
         }
 
-        private void dataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void updateTermini()
         {
+            //List<Termin> terminiByLekar = storageT.ReadByLekar(this.lekar);
+            //TODO: Staviti da prikazuje samo pojedinog lekara!
+
+            List<Termin> terminiByLekar = storageT.getTerminStorage();
+
+            Termini.Clear();
+            foreach (Termin t in terminiByLekar)
+                Termini.Add(t);
+        }
+
+        private void initData()
+        {
+            //Temp metoda za inicijalizovanje podataka
+            DateTime tempDate = new DateTime(2020, 3, 4, 8, 0, 15);
+            TimeSpan tempSpan = new TimeSpan(0, 30, 0);
+
+            Drzava SrbijaT = new Drzava("Srbija");
+            Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
+            Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
+            UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
+
+            this.lekar = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
+            Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
+
+            Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede, "E221");
+            Termin termin = new Termin(tempDate, tempSpan, TipTermina.pregled, this.lekar, p, prostorija);
+
+            //Stavljanje termina u storage
+
+            //storageT.Create(termin);
+
+            this.updateTermini();
 
         }
     }

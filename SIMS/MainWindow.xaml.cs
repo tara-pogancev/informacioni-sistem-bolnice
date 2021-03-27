@@ -75,7 +75,7 @@ namespace SIMS
 
         private void Login()
         {
-                        if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+            if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
             {
                 //Pacijent pacijent = new Pacijent();
                 this.Close();
