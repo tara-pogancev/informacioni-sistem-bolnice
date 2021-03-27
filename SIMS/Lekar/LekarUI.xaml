@@ -157,7 +157,7 @@
                     <Grid Margin="40,30,40,0" VerticalAlignment="Top" Height="430">
 
                         <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = Termini}" IsReadOnly="True"
-                                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Bold"
+                                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                   DataGrid.CanUserResizeRows="False">
 
                             <DataGrid.Columns>

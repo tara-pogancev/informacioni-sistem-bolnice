@@ -27,4 +27,10 @@
     <Resource Include="logo_glow_tr.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Lekar\OperacijaCreate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>

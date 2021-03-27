@@ -72,17 +72,17 @@ namespace Model
 
         public String ImePacijenta
         {
-            get { return this.pacijent.ImePacijenta; }
+            get { return (this.pacijent.Ime + " " + this.pacijent.Prezime); }
         }
 
         public String ImeLekara
         {
-            get { return this.lekar.ImeLekara; }
+            get { return (this.lekar.Ime + " " + this.lekar.Prezime); }
         }
 
-        public String NazivProstorije
+        public int NazivProstorije
         {
-            get { return this.prostorija.Naziv; }
+            get { return this.prostorija.Broj; }
         }
     }
 }

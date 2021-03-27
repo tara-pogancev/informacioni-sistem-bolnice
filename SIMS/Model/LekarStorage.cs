@@ -3,21 +3,32 @@
 // Created: Friday, March 26, 2021 4:38:57 PM
 // Purpose: Definition of Class LekarStorage
 
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Model
 {
    public class LekarStorage
    {
-      public bool Create()
+      public bool Create(List<Lekar> lekari)
       {
-         throw new NotImplementedException();
-      }
+            var jsonToWrite = JsonConvert.SerializeObject(lekari, Formatting.Indented);
+            using (StreamWriter writer = new StreamWriter("lekari.json"))
+            {
+                writer.Write(jsonToWrite);
+            }
+
+            return true;
+        }
       
-      public Lekar Read()
+      public List<Lekar> Read()
       {
-         throw new NotImplementedException();
-      }
+            String json = File.ReadAllText("lekari.json");
+            List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
+            return lekar_all;
+        }
       
       public bool Update()
       {

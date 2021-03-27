@@ -22,6 +22,7 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
+        public static LekarUI instance = null;
         private TerminStorage storageT = new TerminStorage();
         private Lekar lekar;
 
@@ -30,6 +31,16 @@ namespace SIMS
             get;
             set;
         }
+
+        public static LekarUI getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new LekarUI();
+            }
+            return instance;
+        }
+
 
         public LekarUI()
         {
@@ -72,7 +83,7 @@ namespace SIMS
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            //Button: Nalog
+            //Button: Nalog, DEBUG
             MessageBox.Show("Trenutno je aktivno: " + storageT.getTerminStorage().Count + " termina.");
             this.updateTermini();
 
@@ -83,13 +94,13 @@ namespace SIMS
             //Button: Zakazi pregled
             TerminCreate terminCreate = new TerminCreate();
             terminCreate.Show();
-
-            this.updateTermini();
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi operaciju
+            OperacijaCreate operacijaCreate = new OperacijaCreate();
+            operacijaCreate.Show();
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
@@ -109,9 +120,9 @@ namespace SIMS
 
                 bool success = storageT.Delete(toDelete);
                 if (success) 
-                { 
+                {
+                    updateTermini();
                     MessageBox.Show("Termin je uspešno otkazan!"); 
-                    updateTermini(); 
                 }
                 
                 else 
@@ -147,7 +158,7 @@ namespace SIMS
             this.lekar = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
             Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
 
-            Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede, "E221");
+            Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede);
             Termin termin = new Termin(tempDate, tempSpan, TipTermina.pregled, this.lekar, p, prostorija);
 
             //Stavljanje termina u storage
@@ -157,5 +168,13 @@ namespace SIMS
             this.updateTermini();
 
         }
+
+        public void dodajTermin(Termin termin)
+        {
+            storageT.AddTermin(termin);
+            MessageBox.Show("Termin uspešno zakazan.");
+            this.updateTermini();
+        }
+
     }
 }

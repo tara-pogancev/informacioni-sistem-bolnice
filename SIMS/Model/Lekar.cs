@@ -21,10 +21,5 @@ namespace Model
         }
 
         public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
-
-        public String ImeLekara
-        {
-            get { return this.Ime + " " + this.Prezime;  }
-        }
     }
 }

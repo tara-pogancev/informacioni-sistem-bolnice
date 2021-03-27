@@ -19,12 +19,17 @@ namespace Model
 
         public TerminStorage()
         {
-            terminStorage = this.ReadAll();
+            terminStorage = this.Read();
         }
 
-        public bool Create(Termin termin)
+        public bool Create(List<Termin> termini)
         {
-            terminStorage.Add(termin);
+            var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
+            using (StreamWriter writer = new StreamWriter("termini.json"))
+            {
+                writer.Write(jsonToWrite);
+            }
+
             return true;
         }
 
@@ -42,7 +47,7 @@ namespace Model
             return null;
         }
 
-        public List<Termin> ReadAll()
+        public List<Termin> Read()
         {
             //Metoda koja ucitava sve podatke iz fajla u listu
 
@@ -59,31 +64,18 @@ namespace Model
             return termini_all;
         }
 
-        public bool Write() 
+        public bool Update(Termin termin, Termin terminNew)
         {
-            //Metoda za pisanje u fajl
-
-            var jsonToWrite = JsonConvert.SerializeObject(terminStorage, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("termini.json"))
-            {
-                writer.Write(jsonToWrite);
-            }
-
             return true;
-        }
-
-        public bool Update(Termin termin)
-        {
-            throw new NotImplementedException();
         }
 
         public bool Delete(Termin termin)
         {
             foreach (Termin t in this.terminStorage)
             {
-                if (t.Lekar.Jmbg == termin.Lekar.Jmbg /*&&
+                if (t.Lekar.Jmbg == termin.Lekar.Jmbg &&
                     t.Pacijent.Equals(termin.Pacijent) &&
-                    t.PocetnoVreme.Equals(termin.PocetnoVreme)*/)
+                    t.PocetnoVreme.Equals(termin.PocetnoVreme))
 
                     this.terminStorage.Remove(t);
                     return true;
@@ -121,6 +113,11 @@ namespace Model
         public List<Termin> getTerminStorage()
         {
             return this.terminStorage;
+        }
+
+        public void AddTermin(Termin termin)
+        {
+            this.terminStorage.Add(termin);
         }
 
 

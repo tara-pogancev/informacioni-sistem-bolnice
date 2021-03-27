@@ -14,20 +14,18 @@ namespace Model
       private int broj;
       private bool dostupna;
       private TipProstorije tipProstorije;
-      private String naziv;
 
         public Prostorija()
         {
         }
 
-        public Prostorija(Adresa adresa, int sprat, int broj, bool dostupna, TipProstorije tipProstorije, String naziv)
+        public Prostorija(Adresa adresa, int sprat, int broj, bool dostupna, TipProstorije tipProstorije)
         {
             this.adresa = adresa;
             this.sprat = sprat;
             this.broj = broj;
             this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
-            this.naziv = naziv;
         }
 
         public Adresa Adresa { get => adresa; set => adresa = value; }
@@ -35,6 +33,5 @@ namespace Model
         public int Broj { get => broj; set => broj = value; }
         public bool Dostupna { get => dostupna; set => dostupna = value; }
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
-        public String Naziv { get => naziv; set => naziv = value; }
     }
 }
