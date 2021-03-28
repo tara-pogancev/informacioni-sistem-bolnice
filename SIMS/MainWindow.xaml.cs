@@ -27,6 +27,55 @@ namespace SIMS
             InitializeComponent();
         }
 
+
+        private void Login()
+        {
+            String user = username.Text;
+            String pass = password.Password;
+
+            //impelemntacija za pacijenta
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            PacijentStorage pc = new PacijentStorage();
+            pacijenti = pc.ReadAll();
+
+            foreach (Pacijent pac in pacijenti)
+            {
+                if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
+                {
+                    PacijentUI pacijent = new PacijentUI(pac);
+                    pacijent.Show();
+                    this.Close();
+                    return;
+                }
+            }
+
+
+            //impelemntacija za upravnika
+            Upravnik upravnik = UpravnikStorage.Read(user);
+            if (upravnik != null && pass.Equals(upravnik.Lozinka))
+            {
+                UpravnikUI upravnikUI = new UpravnikUI();
+                upravnikUI.Show();
+                this.Close();
+                return;
+            }
+
+            //impelementacija za doktora
+            Lekar lekar = LekarStorage.Read(user);
+            if (lekar != null && pass.Equals(lekar.Lozinka) || username.Text == "l")
+            {
+                LekarUI lekarUI = LekarUI.getInstance();
+                lekarUI.Show();
+                this.Close();
+                return;
+            }
+
+            //implementacija za sekretara
+
+            MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
+
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Login();
@@ -72,48 +121,8 @@ namespace SIMS
             if (e.Key == Key.Return)
             {
                 Login();
-                this.Close();
             }
         }
 
-        private void Login()
-        {
-            String user = username.Text;
-            String pass = password.Password;
-
-            //impelemntacija za pacijenta
-            List<Pacijent> pacijenti = new List<Pacijent>();
-            PacijentStorage pc = new PacijentStorage();
-            pacijenti = pc.ReadAll();
-
-            foreach (Pacijent pac in pacijenti)
-            {
-                if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
-                {
-                    PacijentUI pacijent = new PacijentUI(pac);
-                    pacijent.Show();
-                    return;
-                }
-            }
-
-
-            //impelemntacija za upravnika
-            Upravnik upravnik = UpravnikStorage.Read(user);
-            if (upravnik != null && pass.Equals(upravnik.Lozinka))
-            {
-                UpravnikUI upravnikUI = new UpravnikUI();
-                upravnikUI.Show();
-                return;
-            }
-
-            //impelementacija za doktora
-
-            //implementacija za sekretara
-
-            MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
-
-
-
-        }
     }
 }

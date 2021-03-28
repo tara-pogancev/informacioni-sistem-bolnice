@@ -17,15 +17,14 @@ namespace SIMS
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class OperacijaCreate : Window
+    public partial class TerminCreate : Window
     {
         private List<Lekar> lekari;
-        //private List<Pacijent> pacijenti;
-        //private List<Prostorija> prostorije;
+        private List<Pacijent> pacijenti;
+        private List<Prostorija> prostorije;
         private List<String> dostupniTermini;
-        Termin termin = new Termin();
 
-        public OperacijaCreate()
+        public TerminCreate()
         {
             InitializeComponent();
 
@@ -33,14 +32,18 @@ namespace SIMS
             lekari = storageL.Read();
 
             PacijentStorage storageP = new PacijentStorage();
-            //pacijenti = storageP.Read();
+            pacijenti = storageP.ReadAll();
 
             ProstorijaStorage storagePr = new ProstorijaStorage();
-            //prostorije = storagePr.Read();
+            prostorije = storagePr.ReadAll();
 
             doktoriCombo.ItemsSource = lekari;
-            //pacijentiCombo.ItemSource = pacijenti;
-            //prostorijeCombo.ItemSource = prostorije;
+            pacijentiCombo.ItemsSource = pacijenti;
+            prostorijeCombo.ItemsSource = prostorije;
+
+
+            List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            trajanjeLista.ItemsSource = trajanjeVrednosti;
 
         }
 
@@ -49,38 +52,31 @@ namespace SIMS
             //Kreiranje novog pregleda
             //TODO: Odraditi sve provere
 
-            //TODO: dodati za izbor prostorije i pacijente
             if (doktoriCombo.SelectedItem == null || datePicker1.SelectedDate == null || terminiLista.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
             else
             {
-                //INIT DATA
-                Drzava SrbijaT = new Drzava("Srbija");
-                Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
-                Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
-                UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
-                Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
-                Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede);
+                Termin termin = new Termin();
 
-                termin.Prostorija = prostorija;
-                termin.Pacijent = p;
+                String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
+                DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
+                termin.PocetnoVreme = vremenskaOdrednica;
 
-                int durationMin = (duration.SelectedIndex + 1) * 15;
-                int durationH = durationMin / 60;
-                durationMin -= durationH * 60;
+                if (trajanjeLista.SelectedIndex == 0)
+                    termin.VremeTrajanja = new TimeSpan(0, 30, 0);
+                else if (trajanjeLista.SelectedIndex == 1)
+                    termin.VremeTrajanja = new TimeSpan(1, 0, 0);
+                else 
+                    termin.VremeTrajanja = new TimeSpan(1, 30, 0);
 
-                TimeSpan terminSpan = new TimeSpan(durationH, durationMin, 0);
-
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
-                String vreme = datePicker1.Text + " " + terminiLista.Text;
-                termin.PocetnoVreme = DateTime.Parse(vreme);
-                termin.VremeTrajanja = terminSpan;
-                termin.VrstaTermina = TipTermina.operacija;
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];  
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];  
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];  
+                termin.VrstaTermina = TipTermina.pregled;   
 
                 LekarUI.getInstance().dodajTermin(termin);
                 this.Close();
             }
-            
         }
 
 
@@ -92,8 +88,7 @@ namespace SIMS
                 List<Termin> doktoroviTermini = new List<Termin>();
                 dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
                 terminiLista.ItemsSource = dostupniTermini;
-                
-                /*foreach (Termin termin in PacijentUI.getInstance().Termini)*/
+                foreach (Termin termin in new TerminStorage().Read())
                 {
                     if (termin.Lekar.Jmbg.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {

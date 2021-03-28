@@ -10,10 +10,10 @@ using System.IO;
 
 namespace Model
 {
-   public class LekarStorage
-   {
-      public bool Create(List<Lekar> lekari)
-      {
+    public class LekarStorage
+    {
+        public bool Create(List<Lekar> lekari)
+        {
             var jsonToWrite = JsonConvert.SerializeObject(lekari, Formatting.Indented);
             using (StreamWriter writer = new StreamWriter("../../../Data/lekari.json"))
             {
@@ -22,23 +22,38 @@ namespace Model
 
             return true;
         }
-      
-      public List<Lekar> Read()
-      {
+
+        public List<Lekar> Read()
+        {
             String json = File.ReadAllText("../../../Data/lekari.json");
             List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
             return lekar_all;
-      }
-      
-      public bool Update()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public bool Delete()
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+        }
+
+        public static Lekar Read(string korisnickoIme)
+        {
+            String json = File.ReadAllText("../../../Data/lekari.json");
+            List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
+            Lekar retVal;
+
+            foreach (Lekar l in lekar_all)
+            {
+                if (l.KorisnickoIme == korisnickoIme)
+                    return l;
+            }
+
+            return null;
+        }
+
+        public bool Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }

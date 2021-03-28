@@ -33,8 +33,8 @@ namespace Model
         public TimeSpan VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
         public TipTermina VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
         public Lekar Lekar { get => lekar; set { lekar = value; OnPropertyChanged("Lekar"); } }
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
-        public Prostorija Prostorija { get => prostorija; set => prostorija = value; }
+        public Pacijent Pacijent { get => pacijent; set { pacijent = value; OnPropertyChanged("Pacijent"); } }
+        public Prostorija Prostorija { get => prostorija; set { prostorija = value; OnPropertyChanged("Prostorija"); } }
 
         public Termin(DateTime pocetnoVreme, TimeSpan vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
         {
@@ -80,12 +80,12 @@ namespace Model
 
         public String ImeLekara
         {
-            get { return (this.lekar.Ime + " " + this.lekar.Prezime); }
+            get { return (this.lekar.ImePrezime); }
         }
 
-        public int NazivProstorije
+        public String NazivProstorije
         {
-            get { return this.prostorija.Broj; }
+            get { return this.prostorija.BrojString; }
         }
     }
 }

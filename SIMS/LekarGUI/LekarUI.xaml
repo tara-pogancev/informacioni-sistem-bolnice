@@ -89,7 +89,7 @@
                     </Button>
 
 
-                    <Button Content="Potrošjna materijala"  Margin="0,192,0,0" 
+                    <Button Content="Potrošnja materijala"  Margin="0,192,0,0" 
                             FontSize="22" Click="Button_Click_3"
                             Height="35" VerticalAlignment="Top" BorderBrush="{x:Null}">
 
@@ -145,7 +145,7 @@
 
                 <Grid Grid.Row="0" Background="#292C3B">
                     <TextBox HorizontalAlignment="Left" Margin="98,0,0,0" Text="Search..." TextWrapping="NoWrap" VerticalAlignment="Center" Width="324" Height="26" FontSize="18" FontFamily="Candara Light" MaxLength="299" AutomationProperties.AcceleratorKey="ctrl+F" Background="{x:Null}" Foreground="#FF7F85A2" BorderBrush="{x:Null}"/>
-                    <Label Content="Lucercia Crescent" HorizontalAlignment="Left" Margin="520,0,0,0" VerticalAlignment="Center" Width="166" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
+                    <Label Content="Lucrecia Crescent" HorizontalAlignment="Left" Margin="520,0,0,0" VerticalAlignment="Center" Width="166" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
 
                     <Image Source="src/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
                     <Image Source="src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>

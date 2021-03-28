@@ -63,13 +63,13 @@
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
 
-                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="pacijentiCombo"  DisplayMemberPath="PacijentImePrezime" 
-                    SelectedValuePath="PacijentImePrezime" 
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="pacijentiCombo"  DisplayMemberPath="ImePrezime" 
+                    SelectedValuePath="ImePrezime" 
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="nazivProstorije" 
-                    SelectedValuePath="nazivProstorije" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="BrojString" 
+                    SelectedValuePath="BrojString" 
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
                 <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker1" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
@@ -77,18 +77,8 @@
                 <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="terminiLista" ItemsSource="{Binding termini}"
                     Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14" />
 
-                <ListBox Grid.Row="7" Name="duration"  Margin="30,0,0,0" Foreground="White" Background="{x:Null}" Height="30" Width="260" HorizontalAlignment="Left" Padding="12,0,0,0" FontFamily="Candara Light" FontSize="18" AllowDrop="True" VerticalContentAlignment="Center">
-
-                    <ListBoxItem>30 minuta</ListBoxItem>
-                    <ListBoxItem>60 minuta</ListBoxItem>
-                    <ListBoxItem>90 minuta</ListBoxItem>
-                    <ListBoxItem>120 minuta</ListBoxItem>
-                    <ListBoxItem>150 minuta</ListBoxItem>
-                    <ListBoxItem>180 minuta</ListBoxItem>
-                    <ListBoxItem>210 minuta</ListBoxItem>
-                    <ListBoxItem>240 minuta</ListBoxItem>
-
-                </ListBox>
+                <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="trajanjeLista" ItemsSource="{Binding trajanje}"
+                    Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14" />
 
                 <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Width="130" Height="35" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0">
 

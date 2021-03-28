@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace Model
@@ -46,6 +47,16 @@ namespace Model
             return true;
         }
 
+        public List<Prostorija> ReadAll()
+        {
+            Dictionary<String, Prostorija> d = readFile();
+            List<Prostorija> prostorije = new List<Prostorija>();
+
+            prostorije = d.Values.ToList();
+
+            return prostorije;
+        }
+
         public static Prostorija Read(int broj)
         {
             Dictionary<String, Prostorija> prostorije = readFile();
@@ -58,7 +69,6 @@ namespace Model
 
             return retVal;
         }
-
 
         public static bool Update(Prostorija prostorija)
         {

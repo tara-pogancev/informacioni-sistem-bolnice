@@ -44,7 +44,7 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "TaraPogancev"
+      "ImePrezime": "Tara Pogancev"
     },
     "Pacijent": {
       "Lbo": "124",
@@ -88,21 +88,22 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "NikolaMarkovic"
+      "ImePrezime": "Nikola Markovic"
     },
     "Prostorija": {
       "Adresa": null,
       "Sprat": 0,
       "Broj": 10,
       "Dostupna": false,
-      "TipProstorije": 0
+      "TipProstorije": 0,
+      "BrojString": "10"
     },
-    "Datum": "28/03/2021",
+    "Datum": "28.03.2021",
     "Vrijeme": "08:00",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Nikola Markovic",
     "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": 10
+    "NazivProstorije": "10"
   },
   {
     "PocetnoVreme": "2021-03-28T08:30:00",
@@ -149,7 +150,7 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "TaraPogancev"
+      "ImePrezime": "Tara Pogancev"
     },
     "Pacijent": {
       "Lbo": "124",
@@ -193,21 +194,22 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "NikolaMarkovic"
+      "ImePrezime": "Nikola Markovic"
     },
     "Prostorija": {
       "Adresa": null,
       "Sprat": 0,
       "Broj": 10,
       "Dostupna": false,
-      "TipProstorije": 0
+      "TipProstorije": 0,
+      "BrojString": "10"
     },
-    "Datum": "28/03/2021",
+    "Datum": "28.03.2021",
     "Vrijeme": "08:30",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Nikola Markovic",
     "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": 10
+    "NazivProstorije": "10"
   },
   {
     "PocetnoVreme": "2021-03-04T09:00:00",
@@ -254,7 +256,7 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "MilanMarkovic"
+      "ImePrezime": "Milan Markovic"
     },
     "Pacijent": {
       "Lbo": "123",
@@ -298,21 +300,22 @@
         "Ulica": "Barakovac",
         "Broj": 1
       },
-      "ImePrezime": "DjordjeKrsmanovic"
+      "ImePrezime": "Djordje Krsmanovic"
     },
     "Prostorija": {
       "Adresa": null,
       "Sprat": 0,
       "Broj": 10,
       "Dostupna": false,
-      "TipProstorije": 0
+      "TipProstorije": 0,
+      "BrojString": "10"
     },
-    "Datum": "04/03/2021",
+    "Datum": "04.03.2021",
     "Vrijeme": "09:00",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Milan Markovic",
-    "NazivProstorije": 10
+    "NazivProstorije": "10"
   },
   {
     "PocetnoVreme": "2021-03-24T08:30:00",
@@ -359,7 +362,7 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "MilanMarkovic"
+      "ImePrezime": "Milan Markovic"
     },
     "Pacijent": {
       "Lbo": "123",
@@ -403,21 +406,22 @@
         "Ulica": "Barakovac",
         "Broj": 1
       },
-      "ImePrezime": "DjordjeKrsmanovic"
+      "ImePrezime": "Djordje Krsmanovic"
     },
     "Prostorija": {
       "Adresa": null,
       "Sprat": 0,
       "Broj": 10,
       "Dostupna": false,
-      "TipProstorije": 0
+      "TipProstorije": 0,
+      "BrojString": "10"
     },
-    "Datum": "24/03/2021",
+    "Datum": "24.03.2021",
     "Vrijeme": "08:30",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Milan Markovic",
-    "NazivProstorije": 10
+    "NazivProstorije": "10"
   },
   {
     "PocetnoVreme": "2021-03-28T11:00:00",
@@ -464,7 +468,7 @@
         "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "TaraPogancev"
+      "ImePrezime": "Tara Pogancev"
     },
     "Pacijent": {
       "Lbo": "123",
@@ -508,20 +512,21 @@
         "Ulica": "Barakovac",
         "Broj": 1
       },
-      "ImePrezime": "DjordjeKrsmanovic"
+      "ImePrezime": "Djordje Krsmanovic"
     },
     "Prostorija": {
       "Adresa": null,
       "Sprat": 0,
       "Broj": 10,
       "Dostupna": false,
-      "TipProstorije": 0
+      "TipProstorije": 0,
+      "BrojString": "10"
     },
-    "Datum": "28/03/2021",
+    "Datum": "28.03.2021",
     "Vrijeme": "11:00",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": 10
+    "NazivProstorije": "10"
   }
 ]

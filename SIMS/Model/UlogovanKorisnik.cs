@@ -49,6 +49,9 @@ namespace Model
         public string Telefon { get => telefon; set => telefon = value; }
         public Adresa Adresa { get => adresa; set => adresa = value; }
 
-        public String ImePrezime { get => ime + prezime; }
+        public String ImePrezime { get => (ime + " " + prezime); }
+
+
+
     }
 }

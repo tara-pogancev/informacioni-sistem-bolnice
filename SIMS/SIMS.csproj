@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Lekar\logo_h_small.png" />
-    <None Remove="Lekar\notification.png" />
-    <None Remove="Lekar\profile.png" />
-    <None Remove="Lekar\search.png" />
+    <None Remove="LekarGUI\logo_h_small.png" />
+    <None Remove="LekarGUI\notification.png" />
+    <None Remove="LekarGUI\profile.png" />
+    <None Remove="LekarGUI\search.png" />
     <None Remove="logo_glow_tr.png" />
     <None Remove="UpravnikGUI\logo_h_small.png" />
     <None Remove="UpravnikGUI\notification.png" />
@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Lekar\src\logo_h_small.png" />
-    <Resource Include="Lekar\src\notification.png" />
-    <Resource Include="Lekar\src\profile.png" />
-    <Resource Include="Lekar\src\search.png" />
+    <Resource Include="LekarGUI\src\logo_h_small.png" />
+    <Resource Include="LekarGUI\src\notification.png" />
+    <Resource Include="LekarGUI\src\profile.png" />
+    <Resource Include="LekarGUI\src\search.png" />
     <Resource Include="logo_glow_tr.png" />
     <Resource Include="UpravnikGUI\logo_h_small.png" />
     <Resource Include="UpravnikGUI\notification.png" />
@@ -36,11 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Lekar\TerminUpdate.xaml">
+    <Page Update="LekarGUI\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Lekar\OperacijaCreate.xaml">
+    <Page Update="LekarGUI\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>

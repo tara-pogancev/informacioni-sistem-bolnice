@@ -24,5 +24,6 @@ namespace Model
         public Pacijent() : base()
         {
         }
+
     }
 }

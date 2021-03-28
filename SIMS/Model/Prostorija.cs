@@ -28,7 +28,6 @@ namespace Model
             this.tipProstorije = tipProstorije;
         }
 
-        
 
         public Prostorija(Grad grad, string ulica, int brojUUlici, int sprat, int brojProstorije, bool dostupna, TipProstorije tipProstorije)
         {
@@ -44,5 +43,7 @@ namespace Model
         public int Broj { get => broj; set => broj = value; }
         public bool Dostupna { get => dostupna; set => dostupna = value; }
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
+
+        public String BrojString { get => broj.ToString(); }
     }
 }

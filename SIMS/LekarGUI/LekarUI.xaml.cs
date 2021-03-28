@@ -23,9 +23,10 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
-        public static LekarUI instance = null;
+        public static LekarUI instance;
         private TerminStorage storageT = new TerminStorage();
-        //private Lekar lekar;
+
+        //private static Lekar lekarUser;
 
         private ObservableCollection<Termin> termini;
         public ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
@@ -35,6 +36,7 @@ namespace SIMS
             if (instance == null)
             {
                 instance = new LekarUI();
+                //lekarUser = lekar;
             }
             return instance;
         }
@@ -80,6 +82,7 @@ namespace SIMS
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             //Button: Nalog, DEBUG
+            MessageBox.Show("Ukupno termina: " + termini.Count());
 
         }
 
@@ -134,6 +137,7 @@ namespace SIMS
         private void LekarUI_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             storageT.Create(termini.ToList());
+            return;
         }
     }
 }

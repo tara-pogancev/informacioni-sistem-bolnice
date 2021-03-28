@@ -15,11 +15,9 @@ namespace Model
             var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
 
             using (StreamWriter writer = new StreamWriter("../../../Data/termini.json"))
-
             {
                 writer.Write(jsonToWrite);
             }
-
 
             return true;
         }
@@ -31,6 +29,21 @@ namespace Model
             for (int i = 0; i < termini_all.Count; i++)
             {
                 if (!termini_all[i].Pacijent.Jmbg.Equals(p.Jmbg))
+                {
+                    termini_all.RemoveAt(i);
+                    i--;
+                }
+            }
+            return termini_all;
+        }
+
+        public List<Termin> Read(Lekar l)
+        {
+            String json = File.ReadAllText("../../../Data/termini.json");
+            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            for (int i = 0; i < termini_all.Count; i++)
+            {
+                if (!termini_all[i].Pacijent.Jmbg.Equals(l.Jmbg))
                 {
                     termini_all.RemoveAt(i);
                     i--;
