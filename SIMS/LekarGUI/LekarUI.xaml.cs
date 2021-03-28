@@ -28,18 +28,24 @@ namespace SIMS
 
         private List<Termin> termini;
 
-        //private static Lekar lekarUser;
+        private static Lekar lekarUser;
 
         private ObservableCollection<Termin> terminiView;
         public ObservableCollection<Termin> TerminiView { get => terminiView; set => terminiView = value; }
 
-        public static LekarUI getInstance()
+        public static LekarUI getInstance(Lekar l)
         {
             if (instance == null)
             {
+                lekarUser = l;
                 instance = new LekarUI();
-                //lekarUser = lekar;
             }
+            return instance;
+        }
+
+
+        public static LekarUI getInstance()
+        {
             return instance;
         }
 
@@ -48,12 +54,13 @@ namespace SIMS
             InitializeComponent();
 
             //Tred za prikazivanje sata i datuma
-            
-            
+
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
             }, this.Dispatcher);
+
+            this.UsernameLabel.Content = lekarUser.ImePrezime;
 
             //Tabela pregleda
             termini = storageT.Read();
@@ -67,7 +74,10 @@ namespace SIMS
         {
             terminiView.Clear();
             foreach (Termin t in termini)
+            {
+                if (t.Lekar.Jmbg == lekarUser.Jmbg)
                 terminiView.Add(t);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -128,17 +138,17 @@ namespace SIMS
         {
             //Button: Otkaži pregled
 
-            if (dataGridTermini.SelectedItem != null) 
+            if (dataGridTermini.SelectedItem != null)
             {
 
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {                    
-                     termini.Remove((Termin)dataGridTermini.SelectedItem);
-                     MessageBox.Show("Termin je uspešno otkazan!");
-                     refreshView();
+                {
+                    termini.Remove((Termin)dataGridTermini.SelectedItem);
+                    MessageBox.Show("Termin je uspešno otkazan!");
+                    refreshView();
                 }
-                
+
             }
         }
 

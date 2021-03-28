@@ -64,7 +64,12 @@ namespace SIMS
             Lekar lekar = LekarStorage.Read(user);
             if (lekar != null && pass.Equals(lekar.Lozinka) || username.Text == "l")
             {
-                LekarUI lekarUI = LekarUI.getInstance();
+
+                //Precica
+                if (username.Text == "l")
+                    lekar = LekarStorage.Read("doktor");
+
+                LekarUI lekarUI = LekarUI.getInstance(lekar);
                 lekarUI.Show();
                 this.Close();
                 return;
