@@ -57,19 +57,11 @@ namespace SIMS
                 MessageBox.Show("Molimo popunite sva polja!");
             else
             {
-                //INIT DATA
-                Drzava SrbijaT = new Drzava("Srbija");
-                Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
-                Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
-                UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
-                Pacijent p = new Pacijent(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, "00777000", false);
-                Prostorija prostorija = new Prostorija(adresaT, 2, 22, true, TipProstorije.zaPreglede);
+                int durationMin = (duration.SelectedIndex + 1) * 15;
+                int durationH = durationMin / 60;
+                durationMin -= durationH * 60;
 
-                //termin.Prostorija = prostorija;
-                //termin.Pacijent = p;
-
-                int durationMin = (duration.SelectedIndex + 1) * 30;
-                TimeSpan terminSpan = new TimeSpan(0, durationMin, 0);
+                TimeSpan terminSpan = new TimeSpan(durationH, durationMin, 0);
 
                 t.Lekar = lekari[doktoriCombo.SelectedIndex];
                 String vreme = datePicker1.Text + " " + terminiLista.Text;
@@ -91,7 +83,8 @@ namespace SIMS
             datePicker1.Text = t.PocetnoVreme.ToString("dd/MM/yyyy");
 
             int minutes = (int)t.VremeTrajanja.TotalMinutes;
-            duration.SelectedIndex = minutes / 30 - 1;
+            //duration.SelectedIndex = (minutes / 30) - 1;
+            duration.SelectedIndex = 6;
 
             int index = 0;
             foreach (Lekar lek in lekari)

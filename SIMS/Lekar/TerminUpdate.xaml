@@ -79,14 +79,23 @@
 
                 <ListBox Grid.Row="7" Name="duration"  Margin="30,0,0,0" Foreground="White" Background="{x:Null}" Height="30" Width="260" HorizontalAlignment="Left" Padding="12,0,0,0" FontFamily="Candara Light" FontSize="18" AllowDrop="True" VerticalContentAlignment="Center">
 
+                    <ListBoxItem>15 minuta</ListBoxItem>
                     <ListBoxItem>30 minuta</ListBoxItem>
+                    <ListBoxItem>45 minuta</ListBoxItem>
                     <ListBoxItem>60 minuta</ListBoxItem>
+                    <ListBoxItem>75 minuta</ListBoxItem>
                     <ListBoxItem>90 minuta</ListBoxItem>
+                    <ListBoxItem>105 minuta</ListBoxItem>
                     <ListBoxItem>120 minuta</ListBoxItem>
+                    <ListBoxItem>135 minuta</ListBoxItem>
                     <ListBoxItem>150 minuta</ListBoxItem>
+                    <ListBoxItem>165 minuta</ListBoxItem>
                     <ListBoxItem>180 minuta</ListBoxItem>
+                    <ListBoxItem>195 minuta</ListBoxItem>
                     <ListBoxItem>210 minuta</ListBoxItem>
+                    <ListBoxItem>225 minuta</ListBoxItem>
                     <ListBoxItem>240 minuta</ListBoxItem>
+
 
                 </ListBox>
 

@@ -65,8 +65,11 @@ namespace SIMS
                 termin.Prostorija = prostorija;
                 termin.Pacijent = p;
 
-                int durationMin = (duration.SelectedIndex + 1) * 30;
-                TimeSpan terminSpan = new TimeSpan(0, durationMin, 0);
+                int durationMin = (duration.SelectedIndex + 1) * 15;
+                int durationH = durationMin / 60;
+                durationMin -= durationH * 60;
+
+                TimeSpan terminSpan = new TimeSpan(durationH, durationMin, 0);
 
                 termin.Lekar = lekari[doktoriCombo.SelectedIndex];
                 String vreme = datePicker1.Text + " " + terminiLista.Text;
