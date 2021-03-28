@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace SIMS.Upravnik
+namespace SIMS.UpravnikGUI
 {
     /// <summary>
     /// Interaction logic for UpravnikUI.xaml

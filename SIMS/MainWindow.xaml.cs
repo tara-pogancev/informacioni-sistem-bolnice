@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.UpravnikGUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,82 +71,48 @@ namespace SIMS
         {
             if (e.Key == Key.Return)
             {
-                Login(); 
+                Login();
+                this.Close();
             }
         }
 
         private void Login()
         {
-            Boolean flag = true;
-            Boolean nasaoKorisnika = false;
-            if (flag)
+            String user = username.Text;
+            String pass = password.Password;
+
+            //impelemntacija za pacijenta
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            PacijentStorage pc = new PacijentStorage();
+            pacijenti = pc.ReadAll();
+
+            foreach (Pacijent pac in pacijenti)
             {
-                String user = username.Text;
-                String pass = password.Password;
-                List<Pacijent> pacijenti = new List<Pacijent>();
-                PacijentStorage pc = new PacijentStorage();
-                pacijenti = pc.ReadAll();
-
-                foreach (Pacijent pac in pacijenti)
+                if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
                 {
-                    if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
-                    {
-                        PacijentUI pacijent = new PacijentUI(pac);
-                        this.Close();
-                        pacijent.Show();
-                        nasaoKorisnika = true;
-                        flag = false;
-                        break;
-                        
-
-                    }
+                    PacijentUI pacijent = new PacijentUI(pac);
+                    pacijent.Show();
+                    return;
                 }
             }
 
-            if (flag) { 
-                //impelemntacija za upravnika
+
+            //impelemntacija za upravnika
+            Upravnik upravnik = UpravnikStorage.Read(user);
+            if (upravnik != null && pass.Equals(upravnik.Lozinka))
+            {
+                UpravnikUI upravnikUI = new UpravnikUI();
+                upravnikUI.Show();
+                return;
             }
 
-            if (flag)
-            {
-                //impelementacija za doktora
-            }
-             if (flag)
-            {
-                //implementacija za sekretara
-            }
-            if (nasaoKorisnika==false)
-            {
-                MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
-            }
+            //impelementacija za doktora
 
-           /* if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
-            {
-                PacijentUI pacijent = new PacijentUI(pac);
-                this.Close();
-                
-                pacijent.Show();
-            }
-            else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
-            {
-                //unijeti kod za otvaranje nove stranice 
-                LekarUI lekarUI = new LekarUI();
-                this.Close();
-                lekarUI.Show();
-            }
-            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
-            {
-                //unijeti kod za otvaranje nove stranice
-            }
-            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar"))
-            {
-                //uniejti kod za otaranje nove stranice
-            }
-            else
-            {
-                
-            }
-*/
+            //implementacija za sekretara
+
+            MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
+
+
 
         }
     }
