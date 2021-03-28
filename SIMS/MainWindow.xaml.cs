@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,10 +76,54 @@ namespace SIMS
 
         private void Login()
         {
-                        if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+            Boolean flag = true;
+            Boolean nasaoKorisnika = false;
+            if (flag)
             {
-                PacijentUI pacijent =PacijentUI.getInstance();
+                String user = username.Text;
+                String pass = password.Password;
+                List<Pacijent> pacijenti = new List<Pacijent>();
+                PacijentStorage pc = new PacijentStorage();
+                pacijenti = pc.ReadAll();
+
+                foreach (Pacijent pac in pacijenti)
+                {
+                    if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
+                    {
+                        PacijentUI pacijent = new PacijentUI(pac);
+                        this.Close();
+                        pacijent.Show();
+                        nasaoKorisnika = true;
+                        flag = false;
+                        break;
+                        
+
+                    }
+                }
+            }
+
+            if (flag) { 
+                //impelemntacija za upravnika
+            }
+
+            if (flag)
+            {
+                //impelementacija za doktora
+            }
+             if (flag)
+            {
+                //implementacija za sekretara
+            }
+            if (nasaoKorisnika==false)
+            {
+                MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
+            }
+
+           /* if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+            {
+                PacijentUI pacijent = new PacijentUI(pac);
                 this.Close();
+                
                 pacijent.Show();
             }
             else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
@@ -98,9 +143,9 @@ namespace SIMS
             }
             else
             {
-                MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
+                
             }
-
+*/
 
         }
     }

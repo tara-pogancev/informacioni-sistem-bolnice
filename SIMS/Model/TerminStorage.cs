@@ -15,7 +15,7 @@ namespace Model
       public bool Create(List<Termin> termini)
       {
             var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("termini.json"))
+            using (StreamWriter writer = new StreamWriter("../../../termini.json"))
             {
                 writer.Write(jsonToWrite);
             }
@@ -24,16 +24,53 @@ namespace Model
             return true;
         }
       
-      public List<Termin> Read()
+      public List<Termin> Read(Pacijent p)
       {
-            String json = File.ReadAllText("termini.json");
+            String json = File.ReadAllText("../../../termini.json");
             List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            for (int i = 0; i < termini_all.Count; i++)
+            {
+                if (!termini_all[i].Pacijent.Jmbg.Equals(p.Jmbg))
+                {
+                    termini_all.RemoveAt(i);
+                    i--;
+                }
+            }
             return termini_all;
       }
       
-      public bool Update()
+      public bool Update(List<Termin> noviTermini,Pacijent p)
       {
-         throw new NotImplementedException();
+            String json = File.ReadAllText("../../../termini.json");
+            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            if (noviTermini.Count == 0)
+            {
+                for (int i = 0; i < termini_all.Count; i++)
+                {
+                    if (termini_all[i].Pacijent.Jmbg.Equals(p.Jmbg))
+                    {
+                        termini_all.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+            }
+            else
+            {
+                
+                for (int i = 0; i < termini_all.Count; i++)
+                {
+                    if (termini_all[i].Pacijent.Jmbg.Equals(noviTermini[0].Pacijent.Jmbg))
+                    {
+                        termini_all.RemoveAt(i);
+                        i--;
+                    }
+                }
+                termini_all.AddRange(noviTermini);
+               
+            }
+            Create(termini_all);
+            return true;
       }
       
       public bool Delete()
