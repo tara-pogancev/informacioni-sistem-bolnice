@@ -82,26 +82,27 @@ namespace SIMS
 
             /*
             if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+            if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent") || username.Text.StartsWith("p"))
             {
-                Pacijent pacijent = new Pacijent();
+                PacijentUI pacijent = PacijentUI.getInstance();
                 this.Close();
                 pacijent.Show();
             }
             else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
             {
                 //unijeti kod za otvaranje nove stranice 
-                LekarUI lekarUI = new LekarUI();
+                LekarUI lekarProzor = LekarUI.getInstance();
                 this.Close();
-                lekarUI.Show();
+                lekarProzor.Show();
             }
-            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
+            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik") || username.Text.StartsWith("u"))
             {
                 
                 UpravnikUI upravnik = new UpravnikUI();
                 this.Close();
                 upravnik.Show();
             }
-            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar"))
+            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar") || username.Text.StartsWith("s"))
             {
                 //uniejti kod za otaranje nove stranice
             }

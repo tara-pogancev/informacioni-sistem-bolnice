@@ -24,15 +24,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Lekar\logo_h_small.png" />
-    <Resource Include="Lekar\notification.png" />
-    <Resource Include="Lekar\profile.png" />
-    <Resource Include="Lekar\search.png" />
+    <Resource Include="Lekar\src\logo_h_small.png" />
+    <Resource Include="Lekar\src\notification.png" />
+    <Resource Include="Lekar\src\profile.png" />
+    <Resource Include="Lekar\src\search.png" />
     <Resource Include="logo_glow_tr.png" />
     <Resource Include="Upravnik\logo_h_small.png" />
     <Resource Include="Upravnik\notification.png" />
     <Resource Include="Upravnik\profile.png" />
     <Resource Include="Upravnik\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Lekar\TerminUpdate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lekar\OperacijaCreate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>
