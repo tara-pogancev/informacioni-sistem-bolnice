@@ -75,6 +75,7 @@ namespace SIMS
                 termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
                 termin.Lekar = lekari[doktoriCombo.SelectedIndex];
 
+                LekarUI.getInstance().refresh();
                 this.Close();
             }
         }

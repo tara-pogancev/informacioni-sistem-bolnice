@@ -1,7 +1,7 @@
 [
   {
     "PocetnoVreme": "2021-03-28T08:00:00",
-    "VremeTrajanja": "00:00:00",
+    "VremeTrajanja": "01:30:00",
     "VrstaTermina": 0,
     "Lekar": {
       "DaniGodisnjegOdmora": 15,
@@ -91,23 +91,38 @@
       "ImePrezime": "Nikola Markovic"
     },
     "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Vojvodjanska",
+        "Broj": 54
+      },
+      "Sprat": 3,
+      "Broj": 85,
+      "Dostupna": true,
       "TipProstorije": 0,
-      "BrojString": "10"
+      "BrojString": "85"
     },
     "Datum": "28.03.2021",
     "Vrijeme": "08:00",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Nikola Markovic",
     "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": "10"
+    "NazivProstorije": "85"
   },
   {
     "PocetnoVreme": "2021-03-28T08:30:00",
-    "VremeTrajanja": "00:00:00",
+    "VremeTrajanja": "01:30:00",
     "VrstaTermina": 0,
     "Lekar": {
       "DaniGodisnjegOdmora": 15,
@@ -151,6 +166,127 @@
         "Broj": 1
       },
       "ImePrezime": "Tara Pogancev"
+    },
+    "Pacijent": {
+      "Lbo": "123",
+      "Gost": false,
+      "Ime": "Djordje",
+      "Prezime": "Krsmanovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "pacijent",
+      "Lozinka": "pacijent",
+      "Email": "djordje1499@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Ulica": "Barakovac",
+        "Broj": 1
+      },
+      "ImePrezime": "Djordje Krsmanovic"
+    },
+    "Prostorija": {
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Vojvodjanska",
+        "Broj": 54
+      },
+      "Sprat": 3,
+      "Broj": 85,
+      "Dostupna": true,
+      "TipProstorije": 0,
+      "BrojString": "85"
+    },
+    "Datum": "28.03.2021",
+    "Vrijeme": "08:30",
+    "GetVrsta": "Pregled",
+    "ImePacijenta": "Djordje Krsmanovic",
+    "ImeLekara": "Tara Pogancev",
+    "NazivProstorije": "85"
+  },
+  {
+    "PocetnoVreme": "2021-03-04T09:00:00",
+    "VremeTrajanja": "01:30:00",
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Ime": "Milan",
+      "Prezime": "Markovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "doktor1",
+      "Lozinka": "doktor",
+      "Email": "tara123@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Ulica": "Vojvode Putnika",
+        "Broj": 1
+      },
+      "ImePrezime": "Milan Markovic"
     },
     "Pacijent": {
       "Lbo": "124",
@@ -197,136 +333,45 @@
       "ImePrezime": "Nikola Markovic"
     },
     "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
-      "TipProstorije": 0,
-      "BrojString": "10"
-    },
-    "Datum": "28.03.2021",
-    "Vrijeme": "08:30",
-    "GetVrsta": "Pregled",
-    "ImePacijenta": "Nikola Markovic",
-    "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": "10"
-  },
-  {
-    "PocetnoVreme": "2021-03-04T09:00:00",
-    "VremeTrajanja": "00:00:00",
-    "VrstaTermina": 0,
-    "Lekar": {
-      "DaniGodisnjegOdmora": 15,
-      "Ime": "Milan",
-      "Prezime": "Markovic",
-      "Jmbg": "1",
-      "KorisnickoIme": "doktor",
-      "Lozinka": "doktor",
-      "Email": "tara123@gmail.com",
-      "Telefon": "0645568131",
       "Adresa": {
         "grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Naziv": "Backa Palanka",
-          "PostanskiBroj": 15000
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
         },
         "Grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Naziv": "Backa Palanka",
-          "PostanskiBroj": 15000
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
         },
-        "Ulica": "Vojvode Putnika",
-        "Broj": 1
+        "Ulica": "Marsala Tita",
+        "Broj": 42
       },
-      "ImePrezime": "Milan Markovic"
-    },
-    "Pacijent": {
-      "Lbo": "123",
-      "Gost": false,
-      "Ime": "Djordje",
-      "Prezime": "Krsmanovic",
-      "Jmbg": "1",
-      "KorisnickoIme": "pacijent",
-      "Lozinka": "pacijent",
-      "Email": "djordje1499@gmail.com",
-      "Telefon": "0645568131",
-      "Adresa": {
-        "grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
-        },
-        "Grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
-        },
-        "Ulica": "Barakovac",
-        "Broj": 1
-      },
-      "ImePrezime": "Djordje Krsmanovic"
-    },
-    "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
-      "TipProstorije": 0,
-      "BrojString": "10"
+      "Sprat": 1,
+      "Broj": 1,
+      "Dostupna": true,
+      "TipProstorije": 2,
+      "BrojString": "1"
     },
     "Datum": "04.03.2021",
     "Vrijeme": "09:00",
     "GetVrsta": "Pregled",
-    "ImePacijenta": "Djordje Krsmanovic",
+    "ImePacijenta": "Nikola Markovic",
     "ImeLekara": "Milan Markovic",
-    "NazivProstorije": "10"
+    "NazivProstorije": "1"
   },
   {
     "PocetnoVreme": "2021-03-24T08:30:00",
-    "VremeTrajanja": "00:00:00",
+    "VremeTrajanja": "01:30:00",
     "VrstaTermina": 0,
     "Lekar": {
       "DaniGodisnjegOdmora": 15,
       "Ime": "Milan",
       "Prezime": "Markovic",
       "Jmbg": "1",
-      "KorisnickoIme": "doktor",
+      "KorisnickoIme": "doktor1",
       "Lozinka": "doktor",
       "Email": "tara123@gmail.com",
       "Telefon": "0645568131",
@@ -365,67 +410,82 @@
       "ImePrezime": "Milan Markovic"
     },
     "Pacijent": {
-      "Lbo": "123",
+      "Lbo": "125",
       "Gost": false,
-      "Ime": "Djordje",
-      "Prezime": "Krsmanovic",
-      "Jmbg": "1",
-      "KorisnickoIme": "pacijent",
-      "Lozinka": "pacijent",
-      "Email": "djordje1499@gmail.com",
+      "Ime": "Nikolina",
+      "Prezime": "Milanovic",
+      "Jmbg": "3",
+      "KorisnickoIme": "pacijent2",
+      "Lozinka": "pacijent2",
+      "Email": "nikolina123@gmail.com",
       "Telefon": "0645568131",
       "Adresa": {
         "grad": {
           "drzava": {
             "grad": [],
             "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
+            "Naziv": "Srbija"
           },
           "Drzava": {
             "grad": [],
             "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
+            "Naziv": "Srbija"
           },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
         },
         "Grad": {
           "drzava": {
             "grad": [],
             "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
+            "Naziv": "Srbija"
           },
           "Drzava": {
             "grad": [],
             "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
+            "Naziv": "Srbija"
           },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
         },
-        "Ulica": "Barakovac",
+        "Ulica": "Vojvode Putnika",
         "Broj": 1
       },
-      "ImePrezime": "Djordje Krsmanovic"
+      "ImePrezime": "Nikolina Milanovic"
     },
     "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
-      "TipProstorije": 0,
-      "BrojString": "10"
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Marsala Tita",
+        "Broj": 42
+      },
+      "Sprat": 1,
+      "Broj": 1,
+      "Dostupna": true,
+      "TipProstorije": 2,
+      "BrojString": "1"
     },
     "Datum": "24.03.2021",
     "Vrijeme": "08:30",
     "GetVrsta": "Pregled",
-    "ImePacijenta": "Djordje Krsmanovic",
+    "ImePacijenta": "Nikolina Milanovic",
     "ImeLekara": "Milan Markovic",
-    "NazivProstorije": "10"
+    "NazivProstorije": "1"
   },
   {
     "PocetnoVreme": "2021-03-28T11:00:00",
-    "VremeTrajanja": "00:00:00",
+    "VremeTrajanja": "01:30:00",
     "VrstaTermina": 0,
     "Lekar": {
       "DaniGodisnjegOdmora": 15,
@@ -515,18 +575,275 @@
       "ImePrezime": "Djordje Krsmanovic"
     },
     "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Vojvodjanska",
+        "Broj": 54
+      },
+      "Sprat": 3,
+      "Broj": 85,
+      "Dostupna": true,
       "TipProstorije": 0,
-      "BrojString": "10"
+      "BrojString": "85"
     },
     "Datum": "28.03.2021",
     "Vrijeme": "11:00",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": "10"
+    "NazivProstorije": "85"
+  },
+  {
+    "PocetnoVreme": "2021-03-15T10:00:00",
+    "VremeTrajanja": "01:00:00",
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Ime": "Milan",
+      "Prezime": "Markovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "doktor1",
+      "Lozinka": "doktor",
+      "Email": "tara123@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Ulica": "Vojvode Putnika",
+        "Broj": 1
+      },
+      "ImePrezime": "Milan Markovic"
+    },
+    "Pacijent": {
+      "Lbo": "124",
+      "Gost": false,
+      "Ime": "Nikola",
+      "Prezime": "Markovic",
+      "Jmbg": "2",
+      "KorisnickoIme": "pacijent1",
+      "Lozinka": "pacijent1",
+      "Email": "nikola123@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Ulica": "Vojvode Putnika",
+        "Broj": 1
+      },
+      "ImePrezime": "Nikola Markovic"
+    },
+    "Prostorija": {
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Marsala Tita",
+        "Broj": 42
+      },
+      "Sprat": 1,
+      "Broj": 1,
+      "Dostupna": true,
+      "TipProstorije": 2,
+      "BrojString": "1"
+    },
+    "Datum": "15.03.2021",
+    "Vrijeme": "10:00",
+    "GetVrsta": "Pregled",
+    "ImePacijenta": "Nikola Markovic",
+    "ImeLekara": "Milan Markovic",
+    "NazivProstorije": "1"
+  },
+  {
+    "PocetnoVreme": "2021-03-15T12:00:00",
+    "VremeTrajanja": "01:30:00",
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Ime": "Milan",
+      "Prezime": "Markovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "doktor1",
+      "Lozinka": "doktor",
+      "Email": "tara123@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Ulica": "Vojvode Putnika",
+        "Broj": 1
+      },
+      "ImePrezime": "Milan Markovic"
+    },
+    "Pacijent": {
+      "Lbo": "123",
+      "Gost": false,
+      "Ime": "Djordje",
+      "Prezime": "Krsmanovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "pacijent",
+      "Lozinka": "pacijent",
+      "Email": "djordje1499@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Ulica": "Barakovac",
+        "Broj": 1
+      },
+      "ImePrezime": "Djordje Krsmanovic"
+    },
+    "Prostorija": {
+      "Adresa": {
+        "grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Grad": {
+          "drzava": null,
+          "Drzava": null,
+          "Naziv": "Glozan",
+          "PostanskiBroj": 0
+        },
+        "Ulica": "Marsala Tita",
+        "Broj": 42
+      },
+      "Sprat": 1,
+      "Broj": 1,
+      "Dostupna": true,
+      "TipProstorije": 2,
+      "BrojString": "1"
+    },
+    "Datum": "15.03.2021",
+    "Vrijeme": "12:00",
+    "GetVrsta": "Pregled",
+    "ImePacijenta": "Djordje Krsmanovic",
+    "ImeLekara": "Milan Markovic",
+    "NazivProstorije": "1"
   }
 ]
