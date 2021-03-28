@@ -1,4 +1,4 @@
-﻿<Window x:Class="SIMS.TerminCreate"
+﻿<Window x:Class="SIMS.OperacijaCreate"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="Zakaži pregled" Height="500" Width="600"
+        Title="Zakaži operaciju" Height="500" Width="600"
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#FF191E29">
@@ -79,12 +79,14 @@
 
                 <ListBox Grid.Row="7" Name="duration"  Margin="30,0,0,0" Foreground="White" Background="{x:Null}" Height="30" Width="260" HorizontalAlignment="Left" Padding="12,0,0,0" FontFamily="Candara Light" FontSize="18" AllowDrop="True" VerticalContentAlignment="Center">
 
-                    <ListBoxItem>15 minuta</ListBoxItem>
                     <ListBoxItem>30 minuta</ListBoxItem>
-                    <ListBoxItem>45 minuta</ListBoxItem>
                     <ListBoxItem>60 minuta</ListBoxItem>
-                    <ListBoxItem>75 minuta</ListBoxItem>
                     <ListBoxItem>90 minuta</ListBoxItem>
+                    <ListBoxItem>120 minuta</ListBoxItem>
+                    <ListBoxItem>150 minuta</ListBoxItem>
+                    <ListBoxItem>180 minuta</ListBoxItem>
+                    <ListBoxItem>210 minuta</ListBoxItem>
+                    <ListBoxItem>240 minuta</ListBoxItem>
 
                 </ListBox>
 
@@ -115,7 +117,7 @@
 
                 <Grid Margin="-200,0,0,0" Grid.RowSpan="2">
 
-                    <Label Content="Zakazivanje pregleda" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                    <Label Content="Zakazivanje operacije" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
 
                 </Grid>
 

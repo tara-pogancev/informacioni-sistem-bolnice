@@ -20,7 +20,6 @@ namespace Model
                 writer.Write(jsonToWrite);
             }
 
-
             return true;
         }
       

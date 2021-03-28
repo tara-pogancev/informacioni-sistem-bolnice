@@ -17,7 +17,7 @@ namespace SIMS
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class TerminCreate : Window
+    public partial class OperacijaCreate : Window
     {
         private List<Lekar> lekari;
         //private List<Pacijent> pacijenti;
@@ -25,7 +25,7 @@ namespace SIMS
         private List<String> dostupniTermini;
         Termin termin = new Termin();
 
-        public TerminCreate()
+        public OperacijaCreate()
         {
             InitializeComponent();
 
@@ -75,7 +75,7 @@ namespace SIMS
                 String vreme = datePicker1.Text + " " + terminiLista.Text;
                 termin.PocetnoVreme = DateTime.Parse(vreme);
                 termin.VremeTrajanja = terminSpan;
-                termin.VrstaTermina = TipTermina.pregled;
+                termin.VrstaTermina = TipTermina.operacija;
 
                 LekarUI.getInstance().dodajTermin(termin);
                 this.Close();

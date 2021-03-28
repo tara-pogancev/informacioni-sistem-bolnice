@@ -76,6 +76,7 @@ namespace SIMS
 
         private void Login()
         {
+
             Boolean flag = true;
             Boolean nasaoKorisnika = false;
             if (flag)
@@ -122,6 +123,8 @@ namespace SIMS
            /* if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
             {
                 PacijentUI pacijent = new PacijentUI(pac);
+
+
                 this.Close();
                 
                 pacijent.Show();
@@ -129,15 +132,15 @@ namespace SIMS
             else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
             {
                 //unijeti kod za otvaranje nove stranice 
-                LekarUI lekarUI = new LekarUI();
+                LekarUI lekarProzor = LekarUI.getInstance();
                 this.Close();
-                lekarUI.Show();
+                lekarProzor.Show();
             }
-            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
+            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik") || username.Text.StartsWith("u"))
             {
                 //unijeti kod za otvaranje nove stranice
             }
-            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar"))
+            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar") || username.Text.StartsWith("s"))
             {
                 //uniejti kod za otaranje nove stranice
             }

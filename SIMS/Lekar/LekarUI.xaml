@@ -25,7 +25,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <Image Source="/Lekar/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"></Image>
+                    <Image Source="src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -146,28 +146,27 @@
                     <TextBox HorizontalAlignment="Left" Margin="98,0,0,0" Text="Search..." TextWrapping="NoWrap" VerticalAlignment="Center" Width="324" Height="26" FontSize="18" FontFamily="Candara Light" MaxLength="299" AutomationProperties.AcceleratorKey="ctrl+F" Background="{x:Null}" Foreground="#FF7F85A2" BorderBrush="{x:Null}"/>
                     <Label Content="Lucercia Crescent" HorizontalAlignment="Left" Margin="520,0,0,0" VerticalAlignment="Center" Width="166" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
 
-                    <Image Source="/Lekar/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
-                    <Image Source="/Lekar/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
-                    <Image Source="/Lekar/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="src/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
 
                 </Grid>
 
                 <Grid Grid.Row="1" Background="#323D52">
 
-                    <Grid Margin="40,30,40,0" VerticalAlignment="Top" Height="440">
+                    <Grid Margin="40,30,40,0" VerticalAlignment="Top" Height="430">
 
-                        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = Pregledi}" IsReadOnly="True"
-                                  SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="dataGridTermini_SelectionChanged" FontSize="14" FontWeight="Bold"
+                        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = Termini}" IsReadOnly="True"
+                                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                   DataGrid.CanUserResizeRows="False">
 
                             <DataGrid.Columns>
 
-                                <DataGridTextColumn Header="Termin" Binding="{Binding TipTermina}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
                                 <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Datum" Binding="{Binding DatumString}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Početak" Binding="{Binding PocetnoVremeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Kraj" Binding="{Binding KrajnjeVremeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Prostorija" Binding="{Binding ImeProstorije}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Početak" Binding="{Binding Vrijeme}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                                <DataGridTextColumn Header="Prostorija" Binding="{Binding NazivProstorije}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                             </DataGrid.Columns>
 
@@ -176,7 +175,7 @@
                     </Grid>
 
 
-                    <Grid Margin="120,0,40,0" Height="80" VerticalAlignment="Bottom">
+                    <Grid Margin="120,0,40,0" Height="75" VerticalAlignment="Bottom">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>

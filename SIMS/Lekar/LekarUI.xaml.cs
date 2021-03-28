@@ -1,4 +1,5 @@
 ﻿
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,18 +22,22 @@ namespace SIMS
     /// </summary>
     public partial class LekarUI : Window
     {
-        /*public ObservableCollection<Pregled> Pregledi
+        public static LekarUI instance = null;
+        private TerminStorage storageT = new TerminStorage();
+        //private Lekar lekar;
+
+        private ObservableCollection<Termin> termini;
+        public ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
+
+        public static LekarUI getInstance()
         {
-            get;
-            set;
+            if (instance == null)
+            {
+                instance = new LekarUI();
+            }
+            return instance;
         }
 
-        public ObservableCollection<Operacija> Operacije
-        {
-            get;
-            set;
-        }
-*/
         public LekarUI()
         {
             InitializeComponent();
@@ -44,17 +49,9 @@ namespace SIMS
             }, this.Dispatcher);
 
             //Tabela pregleda
-           /* this.DataContext = this;
-            Pregledi = new ObservableCollection<Pregled>();
+            this.DataContext = this;
+            termini = new ObservableCollection<Termin>(storageT.Read());
 
-
-            Pregled p1 = new Pregled("07/08/2021", "07/08/2021");
-
-            //Operacija o1 = new Operacija("07/08/2021", "07/08/2021");
-
-            Pregledi.Add(p1);
-            //Operacije.Add(o1);
-*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -79,7 +76,8 @@ namespace SIMS
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            //Button: Nalog
+            //Button: Nalog, DEBUG
+
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
@@ -91,22 +89,44 @@ namespace SIMS
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Zakazi operaciju
+            OperacijaCreate operacijaCreate = new OperacijaCreate();
+            operacijaCreate.Show();
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Uredi termin
+            if (dataGridTermini.SelectedItem != null)
+            {
+                TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
+                terminUpdate.Show();
+            }
+
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
+            //Button: Otkaži pregled
+
+            if (dataGridTermini.SelectedItem != null) 
+            {
+
+                if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
+                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {                    
+                     termini.Remove((Termin)dataGridTermini.SelectedItem);
+                     MessageBox.Show("Termin je uspešno otkazan!");
+                }
+                
+            }
         }
 
-        private void dataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void dodajTermin(Termin termin)
         {
-
+            termini.Add(termin);
+            MessageBox.Show("Termin uspešno zakazan.");
         }
+
     }
 }
