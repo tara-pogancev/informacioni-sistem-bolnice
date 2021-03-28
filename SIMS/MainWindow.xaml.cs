@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model;
+using SIMS.UpravnikGUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,37 +71,47 @@ namespace SIMS
         {
             if (e.Key == Key.Return)
             {
-                Login(); 
+                Login();
+                this.Close();
             }
         }
 
         private void Login()
         {
-            if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent") || username.Text.StartsWith("p"))
+            String user = username.Text;
+            String pass = password.Password;
+
+            //impelemntacija za pacijenta
+            List<Pacijent> pacijenti = new List<Pacijent>();
+            PacijentStorage pc = new PacijentStorage();
+            pacijenti = pc.ReadAll();
+
+            foreach (Pacijent pac in pacijenti)
             {
-                PacijentUI pacijent = PacijentUI.getInstance();
-                this.Close();
-                pacijent.Show();
+                if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
+                {
+                    PacijentUI pacijent = new PacijentUI(pac);
+                    pacijent.Show();
+                    return;
+                }
             }
-            else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
+
+
+            //impelemntacija za upravnika
+            Upravnik upravnik = UpravnikStorage.Read(user);
+            if (upravnik != null && pass.Equals(upravnik.Lozinka))
             {
-                //unijeti kod za otvaranje nove stranice 
-                LekarUI lekarProzor = LekarUI.getInstance();
-                this.Close();
-                lekarProzor.Show();
+                UpravnikUI upravnikUI = new UpravnikUI();
+                upravnikUI.Show();
+                return;
             }
-            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik") || username.Text.StartsWith("u"))
-            {
-                //unijeti kod za otvaranje nove stranice
-            }
-            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar") || username.Text.StartsWith("s"))
-            {
-                //uniejti kod za otaranje nove stranice
-            }
-            else
-            {
-                MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
-            }
+
+            //impelementacija za doktora
+
+            //implementacija za sekretara
+
+            MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
+
 
 
         }

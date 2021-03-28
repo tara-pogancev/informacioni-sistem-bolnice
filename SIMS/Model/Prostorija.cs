@@ -28,6 +28,17 @@ namespace Model
             this.tipProstorije = tipProstorije;
         }
 
+        
+
+        public Prostorija(Grad grad, string ulica, int brojUUlici, int sprat, int brojProstorije, bool dostupna, TipProstorije tipProstorije)
+        {
+            this.adresa = new Adresa(ulica, brojUUlici, grad);
+            this.sprat = sprat;
+            this.broj = brojProstorije;
+            this.dostupna = dostupna;
+            this.tipProstorije = tipProstorije;
+        }
+
         public Adresa Adresa { get => adresa; set => adresa = value; }
         public int Sprat { get => sprat; set => sprat = value; }
         public int Broj { get => broj; set => broj = value; }

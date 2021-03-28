@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Title="PacijentUI" Height="450" Width="800">
+        Title="PacijentUI" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <StackPanel >
             <StackPanel Orientation="Horizontal" Margin="20,20,20,0">

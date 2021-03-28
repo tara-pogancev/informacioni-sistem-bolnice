@@ -15,7 +15,7 @@ namespace Model
       public bool Create(List<Lekar> lekari)
       {
             var jsonToWrite = JsonConvert.SerializeObject(lekari, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("lekari.json"))
+            using (StreamWriter writer = new StreamWriter("../../../Data/lekari.json"))
             {
                 writer.Write(jsonToWrite);
             }
@@ -25,10 +25,10 @@ namespace Model
       
       public List<Lekar> Read()
       {
-            String json = File.ReadAllText("lekari.json");
+            String json = File.ReadAllText("../../../Data/lekari.json");
             List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
             return lekar_all;
-        }
+      }
       
       public bool Update()
       {
