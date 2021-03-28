@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Lekar\TerminUpdate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Lekar\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>

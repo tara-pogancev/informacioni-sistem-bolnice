@@ -25,6 +25,7 @@ namespace SIMS
         private List<String> dostupniTermini;
         Termin termin = new Termin();
 
+
         public TerminCreate()
         {
             InitializeComponent();

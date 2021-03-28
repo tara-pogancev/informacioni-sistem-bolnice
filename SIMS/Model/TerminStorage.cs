@@ -73,9 +73,9 @@ namespace Model
         {
             foreach (Termin t in this.terminStorage)
             {
-                if (t.Lekar.Jmbg == termin.Lekar.Jmbg &&
-                    t.Pacijent.Equals(termin.Pacijent) &&
-                    t.PocetnoVreme.Equals(termin.PocetnoVreme))
+                if (t.Lekar.Jmbg == termin.Lekar.Jmbg  &&
+                    t.Pacijent.Jmbg == termin.Pacijent.Jmbg /*&&
+                    DateTime.Compare(t.PocetnoVreme, termin.PocetnoVreme) == 0*/)
 
                     this.terminStorage.Remove(t);
                     return true;
