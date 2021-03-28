@@ -25,6 +25,8 @@ namespace SIMS.UpravnikGUI
         {
             prostorija = ProstorijaStorage.Read(int.Parse(BrojProstorijeTextBox.Text));
 
+            if (prostorija == null) return;
+
             GradTextBox.Text = prostorija.Adresa.Grad.Naziv;
             UlicaTextBox.Text = prostorija.Adresa.Ulica;
             BrojUUliciTextBox.Text = prostorija.Adresa.Broj.ToString();
