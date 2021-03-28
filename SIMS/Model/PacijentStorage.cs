@@ -14,7 +14,7 @@ namespace Model
    {
       public bool Create()
       {
-            List<Pacijent> pacijenti = new List<Pacijent>();
+            /*List<Pacijent> pacijenti = new List<Pacijent>();
             Drzava Bih = new Drzava("Bosna i Hercegovina");
             Grad Foca = new Grad("Foca", 73300, Bih);
             Adresa adresaDj = new Adresa("Barakovac", 1, Foca);
@@ -32,11 +32,11 @@ namespace Model
             pacijenti.Add(p2);
             pacijenti.Add(p3);
             var jsonToWrite = JsonConvert.SerializeObject(pacijenti, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("../../../pacijenti.json"))
+            using (StreamWriter writer = new StreamWriter("../../../Data/pacijenti.json"))
             {
                 writer.Write(jsonToWrite);
             }
-
+*/
 
             return true;
         }
@@ -48,7 +48,7 @@ namespace Model
 
       public List<Pacijent> ReadAll()
       {
-            String json = File.ReadAllText("../../../pacijenti.json");
+            String json = File.ReadAllText("../../../Data/pacijenti.json");
             List<Pacijent> pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             return pacijenti;
         }
