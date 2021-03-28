@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
+        Closing="LekarUI_Closing"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Title="Bolnica Zdravo - Lekar" Height="650" Width="950">

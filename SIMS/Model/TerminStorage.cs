@@ -18,7 +18,7 @@ namespace Model
         public bool Create(List<Termin> termini)
         {
             var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("termini.json"))
+            using (StreamWriter writer = new StreamWriter("../../../data/termini.json"))
             {
                 writer.Write(jsonToWrite);
             }
@@ -30,7 +30,7 @@ namespace Model
         {
             //Metoda koja ucitava sve podatke iz fajla u listu
 
-            String json = File.ReadAllText("termini.json");
+            String json = File.ReadAllText("../../../data/termini.json");
             List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
 
             return termini_all;

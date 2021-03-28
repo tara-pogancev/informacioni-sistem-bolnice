@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,10 +44,12 @@ namespace SIMS
             InitializeComponent();
 
             //Tred za prikazivanje sata i datuma
+            
+            
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            }, this.Dispatcher);
+            }, this.Dispatcher);  
 
             //Tabela pregleda
             this.DataContext = this;
@@ -128,5 +131,9 @@ namespace SIMS
             MessageBox.Show("Termin uspešno zakazan.");
         }
 
+        private void LekarUI_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            storageT.Create(termini.ToList());
+        }
     }
 }
