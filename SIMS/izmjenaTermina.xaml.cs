@@ -57,7 +57,7 @@ namespace SIMS
         private void filtrirajTermine()
         {
             termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            foreach (Termin ter in pacijentUI.Termini)
+            foreach (Termin ter in new TerminStorage().Read())
             {
                 if (termin.Lekar.Jmbg.Equals(ter.Lekar.Jmbg))
                 {
@@ -71,7 +71,7 @@ namespace SIMS
         {
             Lekar lek = (Lekar)doktori.SelectedItem;
             termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            foreach (Termin ter in pacijentUI.Termini)
+            foreach (Termin ter in new TerminStorage().Read())
             {
                 if (termin.Lekar.Jmbg.Equals(lek.Jmbg))
                 {

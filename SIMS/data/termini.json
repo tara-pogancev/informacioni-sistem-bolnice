@@ -210,111 +210,6 @@
     "NazivProstorije": 10
   },
   {
-    "PocetnoVreme": "2021-03-27T08:00:00",
-    "VremeTrajanja": "00:00:00",
-    "VrstaTermina": 0,
-    "Lekar": {
-      "DaniGodisnjegOdmora": 15,
-      "Ime": "Tara",
-      "Prezime": "Pogancev",
-      "Jmbg": "1234567891021",
-      "KorisnickoIme": "doktor",
-      "Lozinka": "doktor",
-      "Email": "tara123@gmail.com",
-      "Telefon": "0645568131",
-      "Adresa": {
-        "grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Naziv": "Backa Palanka",
-          "PostanskiBroj": 15000
-        },
-        "Grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Srbija"
-          },
-          "Naziv": "Backa Palanka",
-          "PostanskiBroj": 15000
-        },
-        "Ulica": "Vojvode Putnika",
-        "Broj": 1
-      },
-      "ImePrezime": "TaraPogancev"
-    },
-    "Pacijent": {
-      "Lbo": "123",
-      "Gost": false,
-      "Ime": "Djordje",
-      "Prezime": "Krsmanovic",
-      "Jmbg": "1",
-      "KorisnickoIme": "pacijent",
-      "Lozinka": "pacijent",
-      "Email": "djordje1499@gmail.com",
-      "Telefon": "0645568131",
-      "Adresa": {
-        "grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
-        },
-        "Grad": {
-          "drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Drzava": {
-            "grad": [],
-            "Grad": [],
-            "Naziv": "Bosna i Hercegovina"
-          },
-          "Naziv": "Foca",
-          "PostanskiBroj": 73300
-        },
-        "Ulica": "Barakovac",
-        "Broj": 1
-      },
-      "ImePrezime": "DjordjeKrsmanovic"
-    },
-    "Prostorija": {
-      "Adresa": null,
-      "Sprat": 0,
-      "Broj": 10,
-      "Dostupna": false,
-      "TipProstorije": 0
-    },
-    "Datum": "27/03/2021",
-    "Vrijeme": "08:00",
-    "GetVrsta": "Pregled",
-    "ImePacijenta": "Djordje Krsmanovic",
-    "ImeLekara": "Tara Pogancev",
-    "NazivProstorije": 10
-  },
-  {
     "PocetnoVreme": "2021-03-04T09:00:00",
     "VremeTrajanja": "00:00:00",
     "VrstaTermina": 0,
@@ -522,6 +417,111 @@
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Milan Markovic",
+    "NazivProstorije": 10
+  },
+  {
+    "PocetnoVreme": "2021-03-28T11:00:00",
+    "VremeTrajanja": "00:00:00",
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Ime": "Tara",
+      "Prezime": "Pogancev",
+      "Jmbg": "1234567891021",
+      "KorisnickoIme": "doktor",
+      "Lozinka": "doktor",
+      "Email": "tara123@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Srbija"
+          },
+          "Naziv": "Backa Palanka",
+          "PostanskiBroj": 15000
+        },
+        "Ulica": "Vojvode Putnika",
+        "Broj": 1
+      },
+      "ImePrezime": "TaraPogancev"
+    },
+    "Pacijent": {
+      "Lbo": "123",
+      "Gost": false,
+      "Ime": "Djordje",
+      "Prezime": "Krsmanovic",
+      "Jmbg": "1",
+      "KorisnickoIme": "pacijent",
+      "Lozinka": "pacijent",
+      "Email": "djordje1499@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Grad": {
+          "drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Drzava": {
+            "grad": [],
+            "Grad": [],
+            "Naziv": "Bosna i Hercegovina"
+          },
+          "Naziv": "Foca",
+          "PostanskiBroj": 73300
+        },
+        "Ulica": "Barakovac",
+        "Broj": 1
+      },
+      "ImePrezime": "DjordjeKrsmanovic"
+    },
+    "Prostorija": {
+      "Adresa": null,
+      "Sprat": 0,
+      "Broj": 10,
+      "Dostupna": false,
+      "TipProstorije": 0
+    },
+    "Datum": "28/03/2021",
+    "Vrijeme": "11:00",
+    "GetVrsta": "Pregled",
+    "ImePacijenta": "Djordje Krsmanovic",
+    "ImeLekara": "Tara Pogancev",
     "NazivProstorije": 10
   }
 ]
