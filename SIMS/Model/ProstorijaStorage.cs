@@ -8,7 +8,7 @@ namespace Model
 {
     public class ProstorijaStorage
     {
-        private const string path = @"C:\Users\paracelsus\Desktop\SIMSPR\informacioni-sistem-bolnice\SIMS\Data\prostorije.json";
+        private const string path = @".\..\..\..\Data\prostorije.json";
 
         private static Dictionary<String, Prostorija> readFile()
         {
@@ -34,7 +34,12 @@ namespace Model
         {
             Dictionary<String, Prostorija> prostorije = readFile();
 
-            prostorije.Add(prostorija.Broj.ToString(), prostorija);
+            if (prostorije.ContainsKey(prostorija.Broj.ToString()))
+            {
+                return false;
+            }
+
+            prostorije[prostorija.Broj.ToString()] = prostorija;
 
             writeFile(prostorije);
 
@@ -55,11 +60,16 @@ namespace Model
         }
 
 
-        public static bool Update(Prostorija p)
+        public static bool Update(Prostorija prostorija)
         {
             Dictionary<String, Prostorija> prostorije = readFile();
 
-            prostorije[p.Broj.ToString()] = p;
+            if (!prostorije.ContainsKey(prostorija.Broj.ToString()))
+            {
+                return false;
+            }
+
+            prostorije[prostorija.Broj.ToString()] = prostorija;
 
             writeFile(prostorije);
 
@@ -71,11 +81,11 @@ namespace Model
         {
             Dictionary<String, Prostorija> prostorije = readFile();
 
-            prostorije.Remove(broj.ToString());
+            bool retVal = prostorije.Remove(broj.ToString());
 
             writeFile(prostorije);
 
-            return true;
+            return retVal;
         }
 
     }

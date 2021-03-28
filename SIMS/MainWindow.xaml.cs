@@ -80,6 +80,7 @@ namespace SIMS
             UpravnikUI upravnik = new UpravnikUI();
             upravnik.Show();
 
+
             /*
             if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
             if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent") || username.Text.StartsWith("p"))
