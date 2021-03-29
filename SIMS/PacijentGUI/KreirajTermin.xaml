@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Title="KreirajTermin" Height="300" Width="350">
+        Title="KreirajTermin" Height="300" Width="350" Background="#323D52">
     <Grid>
         <StackPanel Orientation="Vertical" Margin="50,50,50,0">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,15" >
@@ -26,8 +26,8 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="50">
-                <Button Margin="0,0,0,0" x:Name="Potvrdi" Click="Potvrdi_Click">Potvrdi</Button>
-                <Button Margin="30,0,0,0" Click="Odbaci_Click">Odbaci</Button>
+                <Button Margin="0,0,0,0" x:Name="Potvrdi" Click="Potvrdi_Click" Background="#FF57D6B4">Potvrdi</Button>
+                <Button Margin="30,0,0,0" Click="Odbaci_Click" Background="#FFE26868">Odbaci</Button>
             </StackPanel>
 
         </StackPanel>

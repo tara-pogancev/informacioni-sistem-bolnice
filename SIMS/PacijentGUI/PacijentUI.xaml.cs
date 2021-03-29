@@ -64,9 +64,14 @@ namespace SIMS
         private void Otkazi_Click(object sender, RoutedEventArgs e)
         {
             Termin termin = (Termin)terminiTabela.SelectedItem;
+            if (termin == null)
+            {
+                MessageBox.Show("Morate da selektujete red iz kolone");
+                return;
+            }
             if (termin.VrstaTermina == TipTermina.operacija)
             {
-                MessageBox.Show("Operacije moze otkazati samo sekretar");
+                MessageBox.Show("Nije Vam dozvoljeno otkazivanje operacija");
             }
             else
             {
@@ -76,10 +81,23 @@ namespace SIMS
 
         private void Izmijeni_Click(object sender, RoutedEventArgs e)
         {
-            izmjenaTermina izm = new izmjenaTermina((Termin)terminiTabela.SelectedItem,this);
-            izm.Show();
-            int k=terminiTabela.SelectedIndex;
-            izm.fillComboBoxes(termini[k]);
+            Termin termin = (Termin)terminiTabela.SelectedItem;
+            if (termin == null)
+            {
+                MessageBox.Show("Morate da selektujete red iz kolone");
+                return;
+            }
+            if (termin.VrstaTermina == TipTermina.operacija)
+            {
+                MessageBox.Show("Nije Vam dozvoljeno da mijenjate operacije");
+            }
+            else
+            {
+                izmjenaTermina izm = new izmjenaTermina(termin, this);
+                izm.Show();
+                int k = terminiTabela.SelectedIndex;
+                izm.fillComboBoxes(termini[k]);
+            }
         }
 
         private void Kreiraj_Click(object sender, RoutedEventArgs e)

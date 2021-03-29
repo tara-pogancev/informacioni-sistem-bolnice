@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Title="PacijentUI" Height="450" Width="800" Closing="Window_Closing">
+        Title="PacijentUI" Height="450" Width="800" Closing="Window_Closing" Background="#323D52">
     <Grid>
         <StackPanel >
-            <StackPanel Orientation="Horizontal" Margin="20,20,20,0">
-                <Button x:Name="Kreiraj" Width="50" Height="25" Margin="10,10,10,0" Click="Kreiraj_Click">Kreiraj</Button>
-                <Button x:Name="Izmijeni" Width="50" Height="25" Margin="10,10,10,0" Click="Izmijeni_Click">Izmijeni</Button>
-                <Button x:Name="Otkazi" Width="50" Height="25" Margin="10,10,10,0" Click="Otkazi_Click">Otkazi</Button>
+            <StackPanel Orientation="Horizontal" Margin="28,20,20,0" >
+                <Button x:Name="Kreiraj" Width="50" Height="25" Margin="10,10,10,0" Click="Kreiraj_Click" Background="#FF57D6B4">Kreiraj</Button>
+                <Button x:Name="Izmijeni" Width="50" Height="25" Margin="10,10,10,0" Click="Izmijeni_Click" Background="#FF57D6B4">Izmijeni</Button>
+                <Button x:Name="Otkazi" Width="50" Height="25" Margin="10,10,10,0" Click="Otkazi_Click" Background="#FFE26868">Otkazi</Button>
             </StackPanel>
             <DataGrid x:Name="terminiTabela" ItemsSource="{Binding termini}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" 
