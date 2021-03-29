@@ -1,0 +1,29 @@
+[
+  {
+    "Ime": "Marko",
+    "Prezime": "Markovic",
+    "Jmbg": "12121977803808",
+    "KorisnickoIme": "marko",
+    "Lozinka": "marko",
+    "Email": "markovic@gmail.com",
+    "Telefon": "060123456",
+    "Adresa": {
+      "grad": {
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
+      },
+      "Grad": {
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
+      },
+      "Ulica": "Marsala Tita",
+      "Broj": 75
+    },
+    "ImePrezime": "MarkoMarkovic",
+    "daniGodisnjegOdmora": 40
+  }
+]

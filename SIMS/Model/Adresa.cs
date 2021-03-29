@@ -34,5 +34,10 @@ namespace Model
 
         public string Ulica { get => ulica; set => ulica = value; }
         public int Broj { get => broj; set => broj = value; }
+
+        public override string ToString()
+        {
+            return ulica + " " + broj;
+        }
     }
 }

@@ -24,5 +24,39 @@ namespace Model
         public Pacijent() : base()
         {
         }
+
+        public String GetGost
+        {
+            get
+            {
+                String ret = "";
+                if (Gost)
+                {
+                    ret = "Da";
+                }
+                else
+                {
+                    ret = "Ne";
+                }
+
+                return ret;
+            }
+
+        }
+
+        public void SetAttributes(Pacijent p)
+        {
+            this.Ime = p.Ime;
+            this.Prezime = p.Prezime;
+            this.Jmbg = p.Jmbg;
+            this.KorisnickoIme = p.KorisnickoIme;
+            this.Lozinka = p.Lozinka;
+            this.Email = p.Email;
+            this.Telefon = p.Telefon;
+            this.Adresa = p.Adresa;
+            this.Lbo = p.Lbo;
+            this.Gost = p.Gost;
+        }
+
     }
 }

@@ -19,6 +19,11 @@ namespace Model
         {
             this.daniGodisnjegOdmora = daniGodisnjegOdmora;
         }
+
+        public Sekretar(Sekretar s) : base(s.Ime, s.Prezime, s.Jmbg, s.KorisnickoIme, s.Lozinka, s.Email, s.Telefon, s.Adresa)
+        {
+            this.daniGodisnjegOdmora = s.daniGodisnjegOdmora;
+        }
     }
    
 }

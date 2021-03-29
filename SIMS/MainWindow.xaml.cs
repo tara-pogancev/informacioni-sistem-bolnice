@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,33 +76,49 @@ namespace SIMS
 
         private void Login()
         {
-                        if (password.Password.SequenceEqual("pacijent") && username.Text.SequenceEqual("pacijent"))
+            Boolean flag = true;
+            Boolean nasaoKorisnika = false;
+            if (flag)
             {
-                Pacijent pacijent = new Pacijent();
-                this.Close();
-                pacijent.Show();
+               
             }
-            else if (password.Password.SequenceEqual("lekar") && username.Text.SequenceEqual("lekar") || username.Text.StartsWith("l"))
+
+            if (flag)
             {
-                //unijeti kod za otvaranje nove stranice 
-                LekarUI lekarUI = new LekarUI();
-                this.Close();
-                lekarUI.Show();
+                //impelemntacija za upravnika
             }
-            else if (password.Password.SequenceEqual("upravnik") && username.Text.SequenceEqual("upravnik"))
+
+            if (flag)
             {
-                //unijeti kod za otvaranje nove stranice
+                //impelementacija za doktora
             }
-            else if (password.Password.SequenceEqual("sekretar") && username.Text.SequenceEqual("sekretar"))
+            if (flag)
             {
-                //uniejti kod za otaranje nove stranice
+                String user = username.Text;
+                String pass = password.Password;
+                List<Model.Sekretar> sekretari = new List<Model.Sekretar>();
+                SekretarStorage ss = new SekretarStorage();
+                sekretari = ss.Read();
+
+                foreach (Model.Sekretar s in sekretari)
+                {
+                    if (s.KorisnickoIme.Equals(user) && s.Lozinka.Equals(pass))
+                    {
+                        Sekretar sek = Sekretar.GetInstance();
+                        this.Close();
+                        sek.Show();
+                        nasaoKorisnika = true;
+                        flag = false;
+                        break;
+
+
+                    }
+                }
             }
-            else
+            if (nasaoKorisnika == false)
             {
                 MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
             }
-
-
-        }
+        }          
     }
 }
