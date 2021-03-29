@@ -1,0 +1,120 @@
+﻿<Window x:Class="SIMS.OperacijaCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Zakaži operaciju" Height="500" Width="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#FF191E29">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+
+                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doktoriCombo"  DisplayMemberPath="ImePrezime"
+                    SelectedValuePath="ImePrezime"
+                     Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
+
+
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="pacijentiCombo"  DisplayMemberPath="ImePrezime" 
+                    SelectedValuePath="ImePrezime" 
+                     Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
+
+
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="BrojString" 
+                    SelectedValuePath="BrojString" 
+                     Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
+
+                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker1" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+
+                <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="terminiLista" ItemsSource="{Binding termini}"
+                    Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14" />
+
+                <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="trajanjeLista" ItemsSource="{Binding trajanje}"
+                    Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14" />
+
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Width="130" Height="35" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF148364"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                            </Border>
+
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Grid Margin="-200,0,0,0" Grid.RowSpan="2">
+
+                    <Label Content="Zakazivanje operacije" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+
+                </Grid>
+
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+
+</Window>

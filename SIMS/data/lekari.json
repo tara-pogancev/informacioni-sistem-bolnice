@@ -1,0 +1,131 @@
+[
+  {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Tara",
+    "Prezime": "Pogancev",
+    "Jmbg": "1234567891021",
+    "KorisnickoIme": "doktor",
+    "Lozinka": "doktor",
+    "Email": "tara123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": {
+      "grad": {
+        "drzava": {
+          "grad": null,
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Ulica": "Vojvode Putnika",
+      "Broj": 1
+    },
+    "ImePrezime": "TaraPogancev"
+  },
+  {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Milan",
+    "Prezime": "Markovic",
+    "Jmbg": "1",
+    "KorisnickoIme": "doktor1",
+    "Lozinka": "doktor",
+    "Email": "tara123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": {
+      "grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Ulica": "Vojvode Putnika",
+      "Broj": 1
+    },
+    "ImePrezime": "MilanMarkovic"
+  },
+  {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Sonja",
+    "Prezime": "Simovic",
+    "Jmbg": "2",
+    "KorisnickoIme": "doktor2",
+    "Lozinka": "doktor",
+    "Email": "tara123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": {
+      "grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Ulica": "Vojvode Putnika",
+      "Broj": 1
+    },
+    "ImePrezime": "SonjaSimovic"
+  }
+]

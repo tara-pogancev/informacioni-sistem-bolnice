@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="LekarGUI\logo_h_small.png" />
+    <None Remove="LekarGUI\notification.png" />
+    <None Remove="LekarGUI\profile.png" />
+    <None Remove="LekarGUI\search.png" />
+    <None Remove="logo_glow_tr.png" />
+    <None Remove="UpravnikGUI\logo_h_small.png" />
+    <None Remove="UpravnikGUI\notification.png" />
+    <None Remove="UpravnikGUI\profile.png" />
+    <None Remove="UpravnikGUI\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="LekarGUI\src\logo_h_small.png" />
+    <Resource Include="LekarGUI\src\notification.png" />
+    <Resource Include="LekarGUI\src\profile.png" />
+    <Resource Include="LekarGUI\src\search.png" />
+    <Resource Include="logo_glow_tr.png" />
+    <Resource Include="UpravnikGUI\logo_h_small.png" />
+    <Resource Include="UpravnikGUI\notification.png" />
+    <Resource Include="UpravnikGUI\profile.png" />
+    <Resource Include="UpravnikGUI\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="LekarGUI\TerminUpdate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LekarGUI\OperacijaCreate.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
+</Project>
