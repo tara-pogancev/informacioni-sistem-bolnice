@@ -63,7 +63,7 @@ namespace SIMS
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
             //Tabela pregleda
-            termini = storageT.Read();
+            termini = storageT.ReadAll();
 
             this.DataContext = this;
             terminiView = new ObservableCollection<Termin>(termini);

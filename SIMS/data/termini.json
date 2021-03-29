@@ -610,7 +610,7 @@
     "NazivProstorije": "1"
   },
   {
-    "PocetnoVreme": "2021-03-14T11:00:00",
+    "PocetnoVreme": "2021-03-14T12:30:00",
     "VremeTrajanja": "01:00:00",
     "VrstaTermina": 0,
     "Lekar": {
@@ -725,7 +725,7 @@
       "BrojString": "85"
     },
     "Datum": "14/03/2021",
-    "Vrijeme": "11:00",
+    "Vrijeme": "12:30",
     "GetVrsta": "Pregled",
     "ImePacijenta": "Djordje Krsmanovic",
     "ImeLekara": "Tara Pogancev",

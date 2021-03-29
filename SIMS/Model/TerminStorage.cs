@@ -91,7 +91,7 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public List<Termin> Read()
+        public List<Termin> ReadAll()
         {
             //Metoda koja ucitava sve podatke iz fajla u listu
             String json = File.ReadAllText("../../../Data/termini.json");
@@ -100,17 +100,7 @@ namespace Model
             return termini_all;
         }
 
-        public bool Update(Termin termin, Termin terminNew)
-        {
-            //TODO
-            return true;
-        }
-
-        public bool Delete(Termin termin)
-        {
-            //TODO
-            return true;
-        }
+       
 
     }
 }      
