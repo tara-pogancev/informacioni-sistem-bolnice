@@ -49,6 +49,7 @@
     "Pacijent": {
       "Lbo": "124",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Nikola",
       "Prezime": "Markovic",
       "Jmbg": "2",
@@ -170,6 +171,7 @@
     "Pacijent": {
       "Lbo": "124",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Nikola",
       "Prezime": "Markovic",
       "Jmbg": "2",
@@ -291,6 +293,7 @@
     "Pacijent": {
       "Lbo": "125",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Nikolina",
       "Prezime": "Milanovic",
       "Jmbg": "3",
@@ -412,6 +415,7 @@
     "Pacijent": {
       "Lbo": "124",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Nikola",
       "Prezime": "Markovic",
       "Jmbg": "2",
@@ -533,6 +537,7 @@
     "Pacijent": {
       "Lbo": "123",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Djordje",
       "Prezime": "Krsmanovic",
       "Jmbg": "1",
@@ -654,6 +659,7 @@
     "Pacijent": {
       "Lbo": "123",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Djordje",
       "Prezime": "Krsmanovic",
       "Jmbg": "1",
@@ -775,6 +781,7 @@
     "Pacijent": {
       "Lbo": "123",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Djordje",
       "Prezime": "Krsmanovic",
       "Jmbg": "1",
@@ -896,6 +903,7 @@
     "Pacijent": {
       "Lbo": "123",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Djordje",
       "Prezime": "Krsmanovic",
       "Jmbg": "1",
@@ -1017,6 +1025,7 @@
     "Pacijent": {
       "Lbo": "123",
       "Gost": false,
+      "GetGost": "Ne",
       "Ime": "Djordje",
       "Prezime": "Krsmanovic",
       "Jmbg": "1",

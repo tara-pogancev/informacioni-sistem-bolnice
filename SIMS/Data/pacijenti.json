@@ -1,31 +1,137 @@
 [
   {
     "Lbo": "123",
-    "Gost": true,
-    "GetGost": "Da",
-    "Ime": "asdddd",
-    "Prezime": "asd",
-    "Jmbg": "123",
-    "KorisnickoIme": "asd",
-    "Lozinka": "ads",
-    "Email": "asd",
-    "Telefon": "a12",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Ime": "Djordje",
+    "Prezime": "Krsmanovic",
+    "Jmbg": "1",
+    "KorisnickoIme": "pacijent",
+    "Lozinka": "pacijent",
+    "Email": "djordje1499@gmail.com",
+    "Telefon": "0645568131",
     "Adresa": {
       "grad": {
-        "drzava": null,
-        "Drzava": null,
-        "Naziv": null,
-        "PostanskiBroj": 0
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Bosna i Hercegovina"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Bosna i Hercegovina"
+        },
+        "Naziv": "Foca",
+        "PostanskiBroj": 73300
       },
       "Grad": {
-        "drzava": null,
-        "Drzava": null,
-        "Naziv": null,
-        "PostanskiBroj": 0
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Bosna i Hercegovina"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Bosna i Hercegovina"
+        },
+        "Naziv": "Foca",
+        "PostanskiBroj": 73300
       },
-      "Ulica": "asd",
-      "Broj": 12
+      "Ulica": "Barakovac",
+      "Broj": 1
     },
-    "ImePrezime": "asddddasd"
+    "ImePrezime": "Djordje Krsmanovic"
+  },
+  {
+    "Lbo": "124",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Ime": "Nikola",
+    "Prezime": "Markovic",
+    "Jmbg": "2",
+    "KorisnickoIme": "pacijent1",
+    "Lozinka": "pacijent1",
+    "Email": "nikola123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": {
+      "grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Ulica": "Vojvode Putnika",
+      "Broj": 1
+    },
+    "ImePrezime": "Nikola Markovic"
+  },
+  {
+    "Lbo": "125",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Ime": "Nikolina",
+    "Prezime": "Milanovic",
+    "Jmbg": "3",
+    "KorisnickoIme": "pacijent2",
+    "Lozinka": "pacijent2",
+    "Email": "nikolina123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": {
+      "grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Grad": {
+        "drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Drzava": {
+          "grad": [],
+          "Grad": [],
+          "Naziv": "Srbija"
+        },
+        "Naziv": "Backa Palanka",
+        "PostanskiBroj": 15000
+      },
+      "Ulica": "Vojvode Putnika",
+      "Broj": 1
+    },
+    "ImePrezime": "Nikolina Milanovic"
   }
 ]

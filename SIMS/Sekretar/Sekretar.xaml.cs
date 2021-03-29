@@ -32,7 +32,7 @@ namespace SIMS
         {
             InitializeComponent();
             PacijentStorage storage = new PacijentStorage();
-            pacijenti = new ObservableCollection<Model.Pacijent>(storage.Read());
+            pacijenti = new ObservableCollection<Model.Pacijent>(storage.ReadAll());
 
             tabelaPacijenata.ItemsSource = pacijenti;
             Closing += new CancelEventHandler(Sekretar_Closing);

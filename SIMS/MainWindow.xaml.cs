@@ -76,6 +76,20 @@ namespace SIMS
             }
 
             //implementacija za sekretara
+            List<Model.Sekretar> sekretari = new List<Model.Sekretar>();
+            SekretarStorage ss = new SekretarStorage();
+            sekretari = ss.Read();
+
+            foreach (Model.Sekretar s in sekretari)
+            {
+                if (s.KorisnickoIme.Equals(user) && s.Lozinka.Equals(pass))
+                {
+                    Sekretar sekretar = Sekretar.GetInstance();
+                    sekretar.Show();
+                    this.Close();
+                    return;
+                }
+            }
 
             MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
 
