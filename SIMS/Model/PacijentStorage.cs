@@ -25,17 +25,21 @@ namespace Model
 
         }
       
-      public Pacijent Read()
-      {
-         throw new NotImplementedException();
-      }
-
       public List<Pacijent> ReadAll()
       {
-            String json = File.ReadAllText("../../../Data/pacijenti.json");
-            List<Pacijent> pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            List<Pacijent> pacijenti;
+            try 
+            { 
+                String json = File.ReadAllText("../../../Data/pacijenti.json");
+                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
+            }
+            catch (Exception e)
+            {
+                pacijenti = new List<Pacijent>();
+            }
+            
             return pacijenti;
-      }
+        }
       
       public bool Update()
       {

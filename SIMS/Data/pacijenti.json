@@ -1,0 +1,31 @@
+[
+  {
+    "Lbo": "123",
+    "Gost": true,
+    "GetGost": "Da",
+    "Ime": "asdddd",
+    "Prezime": "asd",
+    "Jmbg": "123",
+    "KorisnickoIme": "asd",
+    "Lozinka": "ads",
+    "Email": "asd",
+    "Telefon": "a12",
+    "Adresa": {
+      "grad": {
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
+      },
+      "Grad": {
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
+      },
+      "Ulica": "asd",
+      "Broj": 12
+    },
+    "ImePrezime": "asddddasd"
+  }
+]
