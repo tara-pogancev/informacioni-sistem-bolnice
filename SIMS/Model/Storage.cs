@@ -23,7 +23,7 @@ namespace Model
         protected abstract KeyType getKey(Entity entity);
         protected abstract void RemoveReferences(KeyType key);
 
-        private Dictionary<KeyType, Entity> readFile()
+        private Dictionary<KeyType, Entity> ReadFile()
         {
             string path = getPath();
 
@@ -49,7 +49,7 @@ namespace Model
 
         public bool Create(Entity Entity)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             KeyType key = getKey(Entity);
 
@@ -67,12 +67,12 @@ namespace Model
 
         public Dictionary<KeyType, Entity> ReadAll()
         {
-            return readFile();
+            return ReadFile();
         }
 
         public Entity Read(KeyType key)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
             Entity retVal;
 
             if (!entities.TryGetValue(key, out retVal))
@@ -85,7 +85,7 @@ namespace Model
 
         public bool Update(Entity Entity)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             KeyType key = getKey(Entity);
 
@@ -104,7 +104,7 @@ namespace Model
 
         public bool Delete(KeyType key)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             bool retVal = entities.Remove(key);
 
