@@ -26,7 +26,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <Image Source="src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"/>
+                    <Image Source="/src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -147,9 +147,9 @@
                     <TextBox HorizontalAlignment="Left" Margin="98,0,0,0" Text="Search..." TextWrapping="NoWrap" VerticalAlignment="Center" Width="324" Height="26" FontSize="18" FontFamily="Candara Light" MaxLength="299" AutomationProperties.AcceleratorKey="ctrl+F" Background="{x:Null}" Foreground="#FF7F85A2" BorderBrush="{x:Null}"/>
                     <Label Content="Lucrecia Crescent" Name ="UsernameLabel"  HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}" HorizontalContentAlignment="Left" Padding="5,5,5,5" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
 
-                    <Image Source="src/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
-                    <Image Source="src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
-                    <Image Source="src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="/src/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="/src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
 
                 </Grid>
 
