@@ -34,7 +34,7 @@ namespace SIMS.UpravnikGUI
                 (TipProstorije)TipComboBox.SelectedIndex
                 );
 
-            ProstorijaStorage.Create(prostorija);
+            ProstorijaStorage.Instance.Create(prostorija);
         }
     }
 }
