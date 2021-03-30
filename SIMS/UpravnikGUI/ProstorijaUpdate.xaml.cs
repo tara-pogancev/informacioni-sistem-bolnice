@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
 
         private void Ucitaj_Click(object sender, RoutedEventArgs e)
         {
-            prostorija = ProstorijaStorage.Read(int.Parse(BrojProstorijeTextBox.Text));
+            prostorija = ProstorijaStorage.Instance.Read(BrojProstorijeTextBox.Text);
 
             if (prostorija == null) return;
 
@@ -47,12 +47,12 @@ namespace SIMS.UpravnikGUI
                 (TipProstorije)TipComboBox.SelectedIndex
                 );
 
-            ProstorijaStorage.Update(prostorija);
+            ProstorijaStorage.Instance.Update(prostorija);
         }
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
-            ProstorijaStorage.Delete(prostorija.Broj);
+            ProstorijaStorage.Instance.Delete(prostorija.Broj.ToString());
         }
     }
 }

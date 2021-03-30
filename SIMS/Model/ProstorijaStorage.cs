@@ -7,95 +7,20 @@ using System.Text.Json;
 
 namespace Model
 {
-    public class ProstorijaStorage
+    public class ProstorijaStorage : Storage<string, Prostorija, ProstorijaStorage>
     {
-        private const string path = @".\..\..\..\Data\prostorije.json";
-
-        private static Dictionary<String, Prostorija> readFile()
+        protected override string getPath()
         {
-            String json = File.ReadAllText(path);
-            if (json.Equals(""))
-            {
-                return new Dictionary<String, Prostorija>();
-            }
-            else
-            {
-                return JsonSerializer.Deserialize<Dictionary<String, Prostorija>>(json);
-            }
+            return @".\..\..\..\Data\prostorije.json";
+        } 
+        protected override string getKey(Prostorija entity)
+        {
+            return entity.Broj.ToString();
         }
 
-        private static void writeFile(Dictionary<String, Prostorija> prostorije)
+        protected override void removeReferences(string key)
         {
-            string json = JsonSerializer.Serialize(prostorije);
-            File.WriteAllText(path, json);
-        }
-
-
-        public static bool Create(Prostorija prostorija)
-        {
-            Dictionary<String, Prostorija> prostorije = readFile();
-
-            if (prostorije.ContainsKey(prostorija.Broj.ToString()))
-            {
-                return false;
-            }
-
-            prostorije[prostorija.Broj.ToString()] = prostorija;
-
-            writeFile(prostorije);
-
-            return true;
-        }
-
-        public List<Prostorija> ReadAll()
-        {
-            Dictionary<String, Prostorija> d = readFile();
-            List<Prostorija> prostorije = new List<Prostorija>();
-
-            prostorije = d.Values.ToList();
-
-            return prostorije;
-        }
-
-        public static Prostorija Read(int broj)
-        {
-            Dictionary<String, Prostorija> prostorije = readFile();
-            Prostorija retVal;
-
-            if (!prostorije.TryGetValue(broj.ToString(), out retVal))
-            {
-                return null;
-            }
-
-            return retVal;
-        }
-
-        public static bool Update(Prostorija prostorija)
-        {
-            Dictionary<String, Prostorija> prostorije = readFile();
-
-            if (!prostorije.ContainsKey(prostorija.Broj.ToString()))
-            {
-                return false;
-            }
-
-            prostorije[prostorija.Broj.ToString()] = prostorija;
-
-            writeFile(prostorije);
-
-            return true;
-        }
-
-
-        public static bool Delete(int broj)
-        {
-            Dictionary<String, Prostorija> prostorije = readFile();
-
-            bool retVal = prostorije.Remove(broj.ToString());
-
-            writeFile(prostorije);
-
-            return retVal;
+            
         }
 
     }

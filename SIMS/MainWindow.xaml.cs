@@ -51,7 +51,7 @@ namespace SIMS
 
 
             //impelemntacija za upravnika
-            Upravnik upravnik = UpravnikStorage.Read(user);
+            Upravnik upravnik = UpravnikStorage.Instance.Read(user);
             if (upravnik != null && pass.Equals(upravnik.Lozinka))
             {
                 UpravnikUI upravnikUI = new UpravnikUI();

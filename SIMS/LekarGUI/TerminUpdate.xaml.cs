@@ -36,8 +36,7 @@ namespace SIMS
             PacijentStorage storageP = new PacijentStorage();
             pacijenti = storageP.ReadAll();
 
-            ProstorijaStorage storagePr = new ProstorijaStorage();
-            prostorije = storagePr.ReadAll();
+            prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
 
             doktoriCombo.ItemsSource = lekari;
             pacijentiCombo.ItemsSource = pacijenti;
