@@ -14,9 +14,11 @@ U folderu *UseCase Diagram* nalazi se PowerDesigner fajlovi pomoću kojih se mo�
 
 ► Main - sadrži najrskoriju kompletnu verziju projekta
 
+► Develop - razvoj aplikacije
+
 ► Diagram - sadrži UseCase i Class dijagrame
 
-► Develop - razvoj aplikacije
+► Wireframe - sadrži Balsamiq Wireframes projekte
 
 
 
