@@ -21,25 +21,29 @@ namespace Model
 
         protected abstract string getPath();
         protected abstract KeyType getKey(Entity entity);
-        protected abstract void removeReferences(KeyType key);
+        protected abstract void RemoveReferences(KeyType key);
 
         private Dictionary<KeyType, Entity> readFile()
         {
-            string json = File.ReadAllText(getPath());
-            if (json.Equals(""))
+            string path = getPath();
+
+            if (!File.Exists(path))
             {
+                File.Create(path).Close();
                 return new Dictionary<KeyType, Entity>();
             }
-            else
-            {
-                return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
-            }
+
+            string json = File.ReadAllText(path);
+
+            return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
         }
 
-        private void writeFile(Dictionary<KeyType, Entity> entities)
+        private void WriteFile(Dictionary<KeyType, Entity> entities)
         {
+            string path = getPath();
             string json = JsonSerializer.Serialize(entities);
-            File.WriteAllText(getPath(), json);
+
+            File.WriteAllText(path, json);
         }
 
 
@@ -56,7 +60,7 @@ namespace Model
 
             entities[key] = Entity;
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return true;
         }
@@ -73,7 +77,7 @@ namespace Model
 
             if (!entities.TryGetValue(key, out retVal))
             {
-                return default(Entity);
+                return default;
             }
 
             return retVal;
@@ -92,7 +96,7 @@ namespace Model
 
             entities[key] = Entity;
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return true;
         }
@@ -104,9 +108,9 @@ namespace Model
 
             bool retVal = entities.Remove(key);
 
-            removeReferences(key);
+            RemoveReferences(key);
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return retVal;
         }

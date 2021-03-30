@@ -15,7 +15,7 @@ namespace Model
             return dinamickaOprema.id;
         }
 
-        protected override void removeReferences(string key)
+        protected override void RemoveReferences(string key)
         {
 
         }

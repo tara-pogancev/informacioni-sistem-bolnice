@@ -16,7 +16,7 @@ namespace Model
             return statickaOprema.id;
         }
 
-        protected override void removeReferences(string key)
+        protected override void RemoveReferences(string key)
         {
 
         }

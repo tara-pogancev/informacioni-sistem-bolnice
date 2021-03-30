@@ -34,7 +34,13 @@ namespace SIMS.UpravnikGUI
                 (TipProstorije)TipComboBox.SelectedIndex
                 );
 
-            ProstorijaStorage.Instance.Create(prostorija);
+            if (ProstorijaStorage.Instance.Create(prostorija))
+            {
+                this.Close();
+                return;
+            }
+
+            MessageBox.Show("Neuspešno kreiranje. Pokušajte dodeliti drugi broj prostorije.");
         }
     }
 }
