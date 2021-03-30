@@ -25,27 +25,25 @@ namespace Model
 
         private Dictionary<KeyType, Entity> readFile()
         {
-            if (!File.Exists(getPath()))
-            {
-                File.Create(getPath());
-            }
+            string path = getPath();
 
-            string json = File.ReadAllText(getPath());
-
-            if (json.Equals(""))
+            if (!File.Exists(path))
             {
+                File.Create(path).Close();
                 return new Dictionary<KeyType, Entity>();
             }
-            else
-            {
-                return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
-            }
+
+            string json = File.ReadAllText(path);
+
+            return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
         }
 
         private void writeFile(Dictionary<KeyType, Entity> entities)
         {
+            string path = getPath();
             string json = JsonSerializer.Serialize(entities);
-            File.WriteAllText(getPath(), json);
+
+            File.WriteAllText(path, json);
         }
 
 
