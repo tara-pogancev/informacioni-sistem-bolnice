@@ -40,7 +40,7 @@ namespace SIMS.UpravnikGUI
             Prostorija prostorija = new Prostorija(
                 new Grad(GradTextBox.Text, 0, null),
                 UlicaTextBox.Text,
-                int.Parse(BrojUUliciTextBox.Text),
+                BrojUUliciTextBox.Text,
                 int.Parse(SpratTextBox.Text),
                 int.Parse(BrojProstorijeTextBox.Text),
                 DostupnostComboBox.SelectedIndex == 0,

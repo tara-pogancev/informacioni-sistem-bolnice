@@ -6,10 +6,10 @@ namespace Model
    public class Adresa
    {
       private String ulica;
-      private int broj;
+      private string broj;
       public Grad grad;
 
-        public Adresa(string ulica, int broj, Grad grad)
+        public Adresa(string ulica, string broj, Grad grad)
         {
             this.ulica = ulica;
             this.broj = broj;
@@ -33,7 +33,7 @@ namespace Model
       }
 
         public string Ulica { get => ulica; set => ulica = value; }
-        public int Broj { get => broj; set => broj = value; }
+        public string Broj { get => broj; set => broj = value; }
 
         public override string ToString()
         {

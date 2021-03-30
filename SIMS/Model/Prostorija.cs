@@ -32,7 +32,7 @@ namespace Model
         }
 
 
-        public Prostorija(Grad grad, string ulica, int brojUUlici, int sprat, int brojProstorije, bool dostupna, TipProstorije tipProstorije)
+        public Prostorija(Grad grad, string ulica, string brojUUlici, int sprat, int brojProstorije, bool dostupna, TipProstorije tipProstorije)
         {
             this.adresa = new Adresa(ulica, brojUUlici, grad);
             this.sprat = sprat;
