@@ -12,11 +12,21 @@
     <None Remove="LekarGUI\notification.png" />
     <None Remove="LekarGUI\profile.png" />
     <None Remove="LekarGUI\search.png" />
-    <None Remove="logo_glow_tr.png" />
-    <None Remove="UpravnikGUI\logo_h_small.png" />
-    <None Remove="UpravnikGUI\notification.png" />
-    <None Remove="UpravnikGUI\profile.png" />
-    <None Remove="UpravnikGUI\search.png" />
+    <None Remove="logo.ico" />
+    <None Remove="src\logo.ico" />
+    <None Remove="src\logo.png" />
+    <None Remove="src\logo_glow.jpg" />
+    <None Remove="src\logo_glow_tr.png" />
+    <None Remove="src\logo_h.png" />
+    <None Remove="src\logo_h_small.png" />
+    <None Remove="src\logo_title.png" />
+    <None Remove="src\notification.png" />
+    <None Remove="src\profile.png" />
+    <None Remove="src\search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="src\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,15 +34,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="LekarGUI\src\logo_h_small.png" />
-    <Resource Include="LekarGUI\src\notification.png" />
-    <Resource Include="LekarGUI\src\profile.png" />
-    <Resource Include="LekarGUI\src\search.png" />
-    <Resource Include="logo_glow_tr.png" />
-    <Resource Include="UpravnikGUI\logo_h_small.png" />
-    <Resource Include="UpravnikGUI\notification.png" />
-    <Resource Include="UpravnikGUI\profile.png" />
-    <Resource Include="UpravnikGUI\search.png" />
+    <Resource Include="logo.ico" />
+    <Resource Include="src\logo.ico" />
+    <Resource Include="src\logo_glow.jpg" />
+    <Resource Include="src\logo_glow_tr.png" />
+    <Resource Include="src\logo_h.png" />
+    <Resource Include="src\logo_h_small.png" />
+    <Resource Include="src\logo_title.png" />
+    <Resource Include="src\notification.png" />
+    <Resource Include="src\profile.png" />
+    <Resource Include="src\search.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -98,7 +98,10 @@ namespace SIMS
                 List<Termin> doktoroviTermini = new List<Termin>();
                 dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
                 terminiLista.ItemsSource = dostupniTermini;
-                foreach (Termin termin in new TerminStorage().ReadAll())
+                List<Termin> sviTermini = new TerminStorage().ReadAll();
+                List<Termin> terminiI = pacijentUI.ListaTermina;
+                sviTermini.AddRange(terminiI);
+                foreach (Termin termin in sviTermini)
                 {
                     if (termin.Lekar.Jmbg.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {

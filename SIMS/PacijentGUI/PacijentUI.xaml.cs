@@ -119,6 +119,11 @@ namespace SIMS
 
         public ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
 
+        public List<Termin> ListaTermina
+        {
+            get { return termini.ToList(); }
+        }
+
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
     }
 }

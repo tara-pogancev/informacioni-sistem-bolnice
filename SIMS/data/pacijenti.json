@@ -90,48 +90,32 @@
     "ImePrezime": "Nikola Markovic"
   },
   {
-    "Lbo": "125",
+    "Lbo": "45645",
     "Gost": false,
     "GetGost": "Ne",
-    "Ime": "Nikolina",
-    "Prezime": "Milanovic",
-    "Jmbg": "3",
-    "KorisnickoIme": "pacijent2",
-    "Lozinka": "pacijent2",
-    "Email": "nikolina123@gmail.com",
-    "Telefon": "0645568131",
+    "Ime": "Miha",
+    "Prezime": "Mihajlo",
+    "Jmbg": "126456",
+    "KorisnickoIme": "mih2",
+    "Lozinka": "miha",
+    "Email": "e@gmail.com",
+    "Telefon": "0625",
     "Adresa": {
       "grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
       },
       "Grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
+        "drzava": null,
+        "Drzava": null,
+        "Naziv": null,
+        "PostanskiBroj": 0
       },
-      "Ulica": "Vojvode Putnika",
-      "Broj": 1
+      "Ulica": "JA",
+      "Broj": 75
     },
-    "ImePrezime": "Nikolina Milanovic"
+    "ImePrezime": "Miha Mihajlo"
   }
 ]
