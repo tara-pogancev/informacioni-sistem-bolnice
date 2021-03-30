@@ -10,88 +10,19 @@ using System.Text.Json;
 
 namespace Model
 {
-   public class UpravnikStorage
-   {
-        private const string path = @".\..\..\..\Data\upravnici.json";
-
-        private static Dictionary<String, Upravnik> readFile()
+    public class UpravnikStorage : Storage<string, Upravnik, UpravnikStorage>
+    {
+        protected override string getPath()
         {
-            String json = File.ReadAllText(path);
-            if (json.Equals(""))
-            {
-                return new Dictionary<String, Upravnik>();
-            }
-            else
-            {
-                return JsonSerializer.Deserialize<Dictionary<String, Upravnik>>(json);
-            }
+            return @".\..\..\..\Data\upravnici.json";
         }
-
-        private static void writeFile(Dictionary<String, Upravnik> prostorije)
+        protected override string getKey(Upravnik entity)
         {
-            string json = JsonSerializer.Serialize(prostorije);
-            File.WriteAllText(path, json);
+            return entity.Jmbg;
         }
-
-
-        public static bool Create(Upravnik Upravnik)
+        protected override void removeReferences(string key)
         {
-            Dictionary<String, Upravnik> prostorije = readFile();
 
-            if (prostorije.ContainsKey(Upravnik.KorisnickoIme.ToString()))
-            {
-                return false;
-            }
-
-            prostorije[Upravnik.KorisnickoIme] = Upravnik;
-
-            writeFile(prostorije);
-
-            return true;
         }
-
-        public static Upravnik Read(string korisnickoIme)
-        {
-            Dictionary<String, Upravnik> prostorije = readFile();
-            Upravnik retVal;
-
-            if (!prostorije.TryGetValue(korisnickoIme, out retVal))
-            {
-                return null;
-            }
-
-            return retVal;
-        }
-
-
-        public static bool Update(Upravnik Upravnik)
-        {
-            Dictionary<String, Upravnik> prostorije = readFile();
-
-            if (!prostorije.ContainsKey(Upravnik.KorisnickoIme))
-            {
-                return false;
-            }
-
-            prostorije[Upravnik.KorisnickoIme] = Upravnik;
-
-            writeFile(prostorije);
-
-            return true;
-        }
-
-
-        public static bool Delete(string korisnickoIme)
-        {
-            Dictionary<String, Upravnik> prostorije = readFile();
-
-            bool retVal = prostorije.Remove(korisnickoIme);
-
-            writeFile(prostorije);
-
-            return retVal;
-        }
-
-
     }
 }
