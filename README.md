@@ -12,6 +12,8 @@ U folderu *UseCase Diagram* nalazi se PowerDesigner fajlovi pomoću kojih se mo�
 
 *Branches:*
 
+► Main - sadrži najrskoriju kompletnu verziju projekta
+
 ► Diagram - sadrži UseCase i Class dijagrame
 
 ► Develop - razvoj aplikacije
