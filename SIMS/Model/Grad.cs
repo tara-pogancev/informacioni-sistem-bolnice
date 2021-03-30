@@ -7,12 +7,11 @@ using System;
 
 namespace Model
 {
-   public class Grad
-   {
-      private String naziv;
-      private int postanskiBroj;
-      
-      public Drzava drzava;
+    public class Grad
+    {
+        private String naziv;
+        private int postanskiBroj;
+        private Drzava drzava;
 
         public Grad()
         {
@@ -25,32 +24,10 @@ namespace Model
             this.drzava = drzava;
         }
 
-        public Drzava Drzava
-      {
-         get
-         {
-            return drzava;
-         }
-         set
-         {
-            if (this.drzava == null || !this.drzava.Equals(value))
-            {
-               if (this.drzava != null)
-               {
-                  Drzava oldDrzava = this.drzava;
-                  this.drzava = null;
-                  oldDrzava.RemoveGrad(this);
-               }
-               if (value != null)
-               {
-                  this.drzava = value;
-                  this.drzava.AddGrad(this);
-               }
-            }
-         }
-      }
-
         public string Naziv { get => naziv; set => naziv = value; }
         public int PostanskiBroj { get => postanskiBroj; set => postanskiBroj = value; }
+
     }
+
+
 }

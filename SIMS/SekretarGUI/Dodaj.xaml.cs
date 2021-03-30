@@ -23,7 +23,7 @@ namespace SIMS
         {
             string[] ulicaBroj = adresa.Text.Split(" ");
             string ulica = "";
-            int broj = 0;
+            string broj = "";
             for (int i = 0; i < ulicaBroj.Length; ++i)
             {
                 if (i != ulicaBroj.Length - 1 && i != ulicaBroj.Length - 2)
@@ -31,7 +31,7 @@ namespace SIMS
                 else if (i == ulicaBroj.Length - 2)
                     ulica += ulicaBroj[i];
                 else
-                    broj = int.Parse(ulicaBroj[i]);
+                    broj = ulicaBroj[i];
             }
             Model.Pacijent pacijent = new Model.Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Model.Adresa(ulica, broj, new Model.Grad()), lbo.Text, (bool)gost.IsChecked);
             Sekretar.GetInstance().Dodaj_Pacijenta(pacijent);

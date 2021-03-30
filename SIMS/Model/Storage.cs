@@ -25,7 +25,13 @@ namespace Model
 
         private Dictionary<KeyType, Entity> readFile()
         {
+            if (!File.Exists(getPath()))
+            {
+                File.Create(getPath());
+            }
+
             string json = File.ReadAllText(getPath());
+
             if (json.Equals(""))
             {
                 return new Dictionary<KeyType, Entity>();
