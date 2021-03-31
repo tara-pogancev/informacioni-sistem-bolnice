@@ -31,10 +31,10 @@ namespace SIMS
             this.termin = termin;
 
             LekarStorage storageL = new LekarStorage();
-            lekari = storageL.Read();
+            lekari = storageL.ReadList();
 
             PacijentStorage storageP = new PacijentStorage();
-            pacijenti = storageP.ReadAll();
+            pacijenti = storageP.ReadList();
 
             prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
 
@@ -70,9 +70,9 @@ namespace SIMS
                 else
                     termin.VremeTrajanja = new TimeSpan(1, 30, 0);
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
+                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
+                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
 
                 LekarUI.getInstance().refresh();
                 this.Close();
@@ -96,7 +96,7 @@ namespace SIMS
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
+                if (l.Jmbg.Equals(termin.LekarKey))
                 {
                     break;
                 }
@@ -118,7 +118,7 @@ namespace SIMS
             index = 0;
             foreach (Pacijent p in pacijenti)
             {
-                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
+                if (p.Jmbg.Equals(termin.PacijentKey))
                 {
                     break;
                 }
@@ -129,7 +129,7 @@ namespace SIMS
             index = 0;
             foreach (Prostorija pr in prostorije)
             {
-                if (pr.Broj.Equals(termin.Prostorija.Broj))
+                if (pr.Broj.Equals(termin.Prostorija))
                 {
                     break;
                 }
@@ -141,20 +141,24 @@ namespace SIMS
 
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            /*
             if (doktoriCombo.SelectedIndex != -1)
             {
                 Lekar lek = lekari[doktoriCombo.SelectedIndex];
                 termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-                foreach (Termin ter in new TerminStorage().ReadAll())
+                foreach (Termin ter in new TerminStorage().ReadList())
                 {
-                    if (termin.Lekar.Jmbg.Equals(lek.Jmbg))
+                    if (termin.LekarKey.Equals(lek.Jmbg))
                     {
                         if (datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                             termini.Remove(ter.Vrijeme);
                     }
                 }
+            
                 terminiLista.ItemsSource = termini;
+            
             }
+            */
         }
 
     }

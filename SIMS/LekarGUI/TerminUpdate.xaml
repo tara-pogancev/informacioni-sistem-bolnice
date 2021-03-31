@@ -68,7 +68,7 @@
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="BrojString" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="Broj" 
                     SelectedValuePath="BrojString" 
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 

@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,11 +21,11 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             TerminStorage storageT = new TerminStorage();
-            foreach (Termin t in storageT.ReadAll())
+            foreach (Termin t in storageT.ReadList())
             {
                 if (t.Prostorija == key)
                 {
-                    //storageT.Delete(t);
+                    storageT.Delete(t.TerminKey);
                 }
             }
 

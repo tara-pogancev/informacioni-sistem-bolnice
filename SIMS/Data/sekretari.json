@@ -1,29 +1,26 @@
-[
-  {
-    "Ime": "Marko",
-    "Prezime": "Markovic",
-    "Jmbg": "12121977803808",
-    "KorisnickoIme": "marko",
-    "Lozinka": "marko",
-    "Email": "markovic@gmail.com",
-    "Telefon": "060123456",
-    "Adresa": {
-      "grad": {
-        "drzava": null,
-        "Drzava": null,
-        "Naziv": null,
-        "PostanskiBroj": 0
-      },
-      "Grad": {
-        "drzava": null,
-        "Drzava": null,
-        "Naziv": null,
-        "PostanskiBroj": 0
-      },
-      "Ulica": "Marsala Tita",
-      "Broj": 75
-    },
-    "ImePrezime": "MarkoMarkovic",
-    "daniGodisnjegOdmora": 40
+{
+  "sekretar": {
+    "DaniGodisnjegOdmora": 18,
+    "Ime": "Ivan",
+    "Prezime": "Stanic",
+    "Jmbg": "0603850721311",
+    "KorisnickoIme": "sekretar",
+    "Lozinka": "s",
+    "Email": "sekretar@zdravo.com",
+    "Telefon": "0649962541",
+    "Adresa": null,
+    "ImePrezime": "Ivan Stanic"
+  },
+  "mladen22": {
+    "DaniGodisnjegOdmora": 23,
+    "Ime": "Mladen",
+    "Prezime": "Zoric",
+    "Jmbg": "064865071221",
+    "KorisnickoIme": "mladen22",
+    "Lozinka": "s",
+    "Email": "mladen.sekretar@zdravo.com",
+    "Telefon": "0625967781",
+    "Adresa": null,
+    "ImePrezime": "Mladen Zoric"
   }
-]
+}

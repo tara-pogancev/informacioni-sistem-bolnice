@@ -55,6 +55,8 @@ namespace Model
 
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 
+        public String TerminKey { get => LekarKey + PacijentKey + PocetnoVreme.ToString("ddMMyyy");  }
+
         public String GetVrsta
         {
             get {
@@ -89,12 +91,11 @@ namespace Model
                 LekarStorage storageL = new LekarStorage();
                 return (storageL.Read(lekarKey).ImePrezime);
             }
-            get { return (this.lekar.ImePrezime); }
         }
 
         public String NazivProstorije
         {
-            get { return this.prostorija.Broj; }
+            get { return this.prostorijaKey; }
         }
     }
 }

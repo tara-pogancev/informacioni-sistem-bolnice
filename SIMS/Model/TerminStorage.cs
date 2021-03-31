@@ -1,34 +1,24 @@
-
-
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Model
 {
-    public class TerminStorage
+    public class TerminStorage : Storage<string, Termin, TerminStorage>
     {
-        public bool Create(List<Termin> termini)
+        protected override string getPath()
         {
-            var jsonToWrite = JsonConvert.SerializeObject(termini, Formatting.Indented);
-
-            using (StreamWriter writer = new StreamWriter("../../../Data/termini.json"))
-            {
-                writer.Write(jsonToWrite);
-            }
-
-            return true;
+            return @".\..\..\..\Data\termini.json";
         }
 
-        public List<Termin> Read(Pacijent p)
+        public List<Termin> ReadByPatient(Pacijent p)
         {
-            String json = File.ReadAllText("../../../Data/termini.json");
-            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            List<Termin> termini_all = new List<Termin>(this.ReadAll().Values.ToList());
             for (int i = 0; i < termini_all.Count; i++)
             {
-                if (!termini_all[i].Pacijent.Jmbg.Equals(p.Jmbg))
+                if (!termini_all[i].PacijentKey.Equals(p.Jmbg))
                 {
                     termini_all.RemoveAt(i);
                     i--;
@@ -37,13 +27,12 @@ namespace Model
             return termini_all;
         }
 
-        public List<Termin> Read(Lekar l)
+        public List<Termin> ReadByDoctor(Lekar l)
         {
-            String json = File.ReadAllText("../../../Data/termini.json");
-            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
+            List<Termin> termini_all = new List<Termin>(this.ReadAll().Values.ToList());
             for (int i = 0; i < termini_all.Count; i++)
             {
-                if (!termini_all[i].Pacijent.Jmbg.Equals(l.Jmbg))
+                if (!termini_all[i].LekarKey.Equals(l.Jmbg))
                 {
                     termini_all.RemoveAt(i);
                     i--;
@@ -52,55 +41,25 @@ namespace Model
             return termini_all;
         }
 
-        public bool Update(List<Termin> noviTermini, Pacijent p)
+        protected override string getKey(Termin entity)
         {
-            String json = File.ReadAllText("../../../Data/termini.json");
-            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
-            if (noviTermini.Count == 0)
-            {
-                for (int i = 0; i < termini_all.Count; i++)
-                {
-                    if (termini_all[i].Pacijent.Jmbg.Equals(p.Jmbg))
-                    {
-                        termini_all.RemoveAt(i);
-                        i--;
-                    }
-                }
-
-            }
-            else
-            {
-
-                for (int i = 0; i < termini_all.Count; i++)
-                {
-                    if (termini_all[i].Pacijent.Jmbg.Equals(noviTermini[0].Pacijent.Jmbg))
-                    {
-                        termini_all.RemoveAt(i);
-                        i--;
-                    }
-                }
-                termini_all.AddRange(noviTermini);
-
-            }
-            Create(termini_all);
-            return true;
+            return entity.TerminKey;
         }
 
-        public bool Delete()
+        protected override void RemoveReferences(string key)
         {
-            throw new NotImplementedException();
+            //Metoda jos uvek nije neophodna za klasu TerminStorage
+            return;
         }
 
-        public List<Termin> ReadAll()
+        public void UpdateSingle()
         {
-            //Metoda koja ucitava sve podatke iz fajla u listu
-            String json = File.ReadAllText("../../../Data/termini.json");
-            List<Termin> termini_all = JsonConvert.DeserializeObject<List<Termin>>(json);
-
-            return termini_all;
+            //TODO
         }
 
-       
+
+
 
     }
+
 }      

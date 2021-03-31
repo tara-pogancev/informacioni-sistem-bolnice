@@ -32,7 +32,7 @@ namespace SIMS
 
             pacijent = p;
             TerminStorage trm = new TerminStorage();
-            termini = new ObservableCollection<Termin>(trm.Read(pacijent));
+            termini = new ObservableCollection<Termin>(trm.ReadByPatient(p));
 
             /*     Drzava Bih = new Drzava("Bosna i Hercegovina");
                  Grad Foca = new Grad("Foca", 73300, Bih);
@@ -114,7 +114,7 @@ namespace SIMS
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             TerminStorage tr = new TerminStorage();
-            tr.Update(termini.ToList(),pacijent);
+            //tr.Update(termini.ToList(),pacijent);
         }
 
         public ObservableCollection<Termin> Termini { get => termini; set => termini = value; }

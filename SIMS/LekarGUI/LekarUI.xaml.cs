@@ -63,7 +63,7 @@ namespace SIMS
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
             //Tabela pregleda
-            termini = storageT.ReadAll();
+            termini = storageT.ReadList();
 
             this.DataContext = this;
             terminiView = new ObservableCollection<Termin>(termini);
@@ -72,57 +72,58 @@ namespace SIMS
 
         private void refreshView()
         {
+            termini = storageT.ReadByDoctor(lekarUser);
             terminiView.Clear();
+
             foreach (Termin t in termini)
             {
-                if (t.Lekar.Jmbg == lekarUser.Jmbg)
                 terminiView.Add(t);
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Termini(object sender, RoutedEventArgs e)
         {
             //Button: Termini
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Pacijenti(object sender, RoutedEventArgs e)
         {
             //Button: Pacijenti
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Istorija(object sender, RoutedEventArgs e)
         {
             //Button: Istorija pregleda
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Evidencija(object sender, RoutedEventArgs e)
         {
             //Button: Evidentiranje materijala
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_Nalog(object sender, RoutedEventArgs e)
         {
             //Button: Nalog, DEBUG
-            MessageBox.Show("Ukupno termina: " + termini.Count());
+            MessageBox.Show("Ukupno termina: " + storageT.ReadList().Count);
             refreshView();
 
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void Button_Pregled(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi pregled
             TerminCreate terminCreate = new TerminCreate();
             terminCreate.Show();
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        private void Button_Operacija(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi operaciju
             OperacijaCreate operacijaCreate = new OperacijaCreate();
             operacijaCreate.Show();
         }
 
-        private void Button_Click_7(object sender, RoutedEventArgs e)
+        private void Button_Update(object sender, RoutedEventArgs e)
         {
             //Button: Uredi termin
             if (dataGridTermini.SelectedItem != null)
@@ -134,7 +135,7 @@ namespace SIMS
 
         }
 
-        private void Button_Click_8(object sender, RoutedEventArgs e)
+        private void Button_Delete(object sender, RoutedEventArgs e)
         {
             //Button: Otkaži pregled
 
@@ -144,7 +145,8 @@ namespace SIMS
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    termini.Remove((Termin)dataGridTermini.SelectedItem);
+                    Termin toDelete = (Termin)dataGridTermini.SelectedItem;
+                    storageT.Delete(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     refreshView();
                 }
@@ -154,14 +156,13 @@ namespace SIMS
 
         public void dodajTermin(Termin termin)
         {
-            termini.Add(termin);
+            storageT.Create(termin);
             refreshView();
             MessageBox.Show("Termin uspešno zakazan.");
         }
 
         private void LekarUI_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            storageT.Create(termini.ToList());
             return;
         }
 

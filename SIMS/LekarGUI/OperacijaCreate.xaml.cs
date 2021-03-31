@@ -30,10 +30,10 @@ namespace SIMS
             InitializeComponent();
 
             LekarStorage storageL = new LekarStorage();
-            lekari = storageL.Read();
+            lekari = storageL.ReadList();
 
             PacijentStorage storageP = new PacijentStorage();
-            pacijenti = storageP.ReadAll();
+            pacijenti = storageP.ReadList();
 
             prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
 
@@ -67,9 +67,9 @@ namespace SIMS
                 else
                     termin.VremeTrajanja = new TimeSpan(1, 30, 0);
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
+                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
+                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
                 termin.VrstaTermina = TipTermina.operacija;
 
                 LekarUI.getInstance().dodajTermin(termin);
@@ -86,9 +86,10 @@ namespace SIMS
                 List<Termin> doktoroviTermini = new List<Termin>();
                 dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
                 terminiLista.ItemsSource = dostupniTermini;
-                foreach (Termin termin in new TerminStorage().ReadAll())
+                /*
+                foreach (Termin termin in new TerminStorage().ReadList())
                 {
-                    if (termin.Lekar.Jmbg.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
+                    if (termin.LekarKey.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {
                         doktoroviTermini.Add(termin);
                     }
@@ -98,6 +99,7 @@ namespace SIMS
                 {
                     dostupniTermini.Remove(termin.Vrijeme);
                 }
+                */
             }
         }
 

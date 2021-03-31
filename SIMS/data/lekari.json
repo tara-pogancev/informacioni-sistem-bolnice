@@ -1,131 +1,40 @@
-[
-  {
+{
+  "l": {
     "DaniGodisnjegOdmora": 15,
     "Ime": "Tara",
     "Prezime": "Pogancev",
-    "Jmbg": "1234567891021",
-    "KorisnickoIme": "doktor",
-    "Lozinka": "doktor",
-    "Email": "tara123@gmail.com",
-    "Telefon": "0645568131",
-    "Adresa": {
-      "grad": {
-        "drzava": {
-          "grad": null,
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Ulica": "Vojvode Putnika",
-      "Broj": 1
-    },
-    "ImePrezime": "TaraPogancev"
+    "Jmbg": "045210805048",
+    "KorisnickoIme": "l",
+    "Lozinka": "l",
+    "Email": "tarapogancev@gmail.com",
+    "Telefon": "629998425",
+    "Adresa": null,
+    "ImePrezime": "Tara Pogancev"
   },
-  {
+
+  "zack": {
     "DaniGodisnjegOdmora": 15,
-    "Ime": "Milan",
-    "Prezime": "Markovic",
-    "Jmbg": "1",
-    "KorisnickoIme": "doktor1",
-    "Lozinka": "doktor",
-    "Email": "tara123@gmail.com",
-    "Telefon": "0645568131",
-    "Adresa": {
-      "grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Ulica": "Vojvode Putnika",
-      "Broj": 1
-    },
+    "Ime": "Zack",
+    "Prezime": "Fair",
+    "Jmbg": "4848555021548",
+    "KorisnickoIme": "zack",
+    "Lozinka": "l",
+    "Email": "zackfair@zdravo.com",
+    "Telefon": "0698547521",
+    "Adresa": null,
     "ImePrezime": "MilanMarkovic"
   },
-  {
+
+  "cloud": {
     "DaniGodisnjegOdmora": 15,
-    "Ime": "Sonja",
-    "Prezime": "Simovic",
-    "Jmbg": "2",
-    "KorisnickoIme": "doktor2",
-    "Lozinka": "doktor",
-    "Email": "tara123@gmail.com",
-    "Telefon": "0645568131",
-    "Adresa": {
-      "grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Grad": {
-        "drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Drzava": {
-          "grad": [],
-          "Grad": [],
-          "Naziv": "Srbija"
-        },
-        "Naziv": "Backa Palanka",
-        "PostanskiBroj": 15000
-      },
-      "Ulica": "Vojvode Putnika",
-      "Broj": 1
-    },
-    "ImePrezime": "SonjaSimovic"
+    "Ime": "Cloud",
+    "Prezime": "Strife",
+    "Jmbg": "22157484654211",
+    "KorisnickoIme": "cloud",
+    "Lozinka": "l",
+    "Email": "fluffy@clouds.com",
+    "Telefon": "0640005481",
+    "Adresa": null,
+    "ImePrezime": "Cloud Strife"
   }
-]
+}

@@ -10,58 +10,28 @@ using System.IO;
 
 namespace Model
 {
-    public class PacijentStorage
+    public class PacijentStorage : Storage<string, Pacijent, PacijentStorage>
     {
-        public bool Create(List<Pacijent> pacijenti)
+        protected override string getKey(Pacijent entity)
         {
+            return entity.Jmbg;
+        }
 
-            var jsonToWrite = JsonConvert.SerializeObject(pacijenti, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("../../../Data/pacijenti.json"))
+        protected override string getPath()
+        {
+            return @".\..\..\..\Data\pacijenti.json";
+        }
+
+        protected override void RemoveReferences(string key)
+        {
+            TerminStorage storageT = new TerminStorage();
+            foreach (Termin t in storageT.ReadList())
             {
-                writer.Write(jsonToWrite);
+                if (t.PacijentKey == key)
+                {
+                    storageT.Delete(t.TerminKey);
+                }
             }
-
-            return true;
-
         }
-
-        public List<Pacijent> ReadAll()
-        {
-            List<Pacijent> pacijenti;
-            try
-            {
-                String json = File.ReadAllText("../../../Data/pacijenti.json");
-                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
-            }
-            catch (Exception e)
-            {
-                pacijenti = new List<Pacijent>();
-            }
-
-            return pacijenti;
-        }
-
-        public bool Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Pacijent Read(String key)
-        {
-
-            foreach(Pacijent p in this.ReadAll())
-            {
-                if (p.Jmbg == key)
-                    return p;
-            }
-
-            return null;
-        }
-
-   }
+    }
 }

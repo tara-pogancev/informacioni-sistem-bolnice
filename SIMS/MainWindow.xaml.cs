@@ -34,19 +34,13 @@ namespace SIMS
             String pass = password.Password;
 
             //impelemntacija za pacijenta
-            List<Pacijent> pacijenti = new List<Pacijent>();
-            PacijentStorage pc = new PacijentStorage();
-            pacijenti = pc.ReadAll();
-
-            foreach (Pacijent pac in pacijenti)
+            Pacijent pacijent = PacijentStorage.Instance.Read(user);
+            if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
-                if (pac.KorisnickoIme.Equals(user) && pac.Lozinka.Equals(pass))
-                {
-                    PacijentUI pacijent = new PacijentUI(pac);
-                    pacijent.Show();
-                    this.Close();
-                    return;
-                }
+                PacijentUI pacijentUI = new PacijentUI(pacijent);
+                pacijentUI.Show();
+                this.Close();
+                return;
             }
 
 
@@ -61,14 +55,9 @@ namespace SIMS
             }
 
             //impelementacija za doktora
-            Lekar lekar = LekarStorage.Read(user);
-            if (lekar != null && pass.Equals(lekar.Lozinka) || username.Text == "l")
+            Lekar lekar = LekarStorage.Instance.Read(user);
+            if (lekar != null && pass.Equals(lekar.Lozinka))
             {
-
-                //Precica
-                if (username.Text == "l")
-                    lekar = LekarStorage.Read("doktor");
-
                 LekarUI lekarUI = LekarUI.getInstance(lekar);
                 lekarUI.Show();
                 this.Close();
@@ -76,21 +65,15 @@ namespace SIMS
             }
 
             //implementacija za sekretara
-            List<Model.Sekretar> sekretari = new List<Model.Sekretar>();
-            SekretarStorage ss = new SekretarStorage();
-            sekretari = ss.Read();
-
-            foreach (Model.Sekretar s in sekretari)
+            Sekretar sekretar = SekretarStorage.Instance.Read(user);
+            if (sekretar != null && pass.Equals(sekretar.Lozinka))
             {
-                if (s.KorisnickoIme.Equals(user) && s.Lozinka.Equals(pass))
-                {
-                    Sekretar sekretar = Sekretar.GetInstance();
-                    sekretar.Show();
+                    SekretarUI sekretarUI = SekretarUI.getInstance();
+                    sekretarUI.Show();
                     this.Close();
                     return;
-                }
             }
-
+        
             MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
 
         }

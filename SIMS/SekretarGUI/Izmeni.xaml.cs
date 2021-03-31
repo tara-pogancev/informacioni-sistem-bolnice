@@ -47,7 +47,7 @@ namespace SIMS
                     broj = ulicaBroj[i];
             }
             Model.Pacijent p = new Model.Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Model.Adresa(ulica, broj, new Model.Grad()), lbo.Text, (bool)gost.IsChecked);
-            Sekretar.GetInstance().Izmeni_Pacijenta(p);
+            SekretarUI.getInstance().Izmeni_Pacijenta(p);
             this.Close();
         }
 
