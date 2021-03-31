@@ -17,10 +17,10 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Left" 
                   Height="250" Margin="40,50,10,10" VerticalAlignment="Top" Width="550">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Doktor" Binding="{Binding Lekar.ImePrezime}"/>
+                    <DataGridTextColumn Header="Doktor" Binding="{Binding ImeLekara}"/>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
                     <DataGridTextColumn Header="Vrijeme" Binding="{Binding Vrijeme}" />
-                    <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija.Broj}" />
+                    <DataGridTextColumn Header="Prostorija" Binding="{Binding NazivProstorije}" />
                     <DataGridTextColumn Header="Vrsta" Binding="{Binding GetVrsta}" />
 
                 </DataGrid.Columns>

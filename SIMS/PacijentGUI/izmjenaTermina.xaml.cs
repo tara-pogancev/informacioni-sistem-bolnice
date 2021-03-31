@@ -24,6 +24,7 @@ namespace SIMS
         Termin termin;
         Boolean doktorSelektovan;
         PacijentUI pacijentUI;
+
         public izmjenaTermina(Termin termin,PacijentUI ui)
         {
             InitializeComponent();
@@ -33,7 +34,6 @@ namespace SIMS
             lekari = new List<Lekar>(lk.ReadList());
             this.termin = termin;
 
-            
             filtrirajTermine();
             /*Drzava SrbijaT = new Drzava("Srbija");
             Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
@@ -155,10 +155,10 @@ namespace SIMS
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
-            foreach (Termin term in pacijentUI.Termini)
-            {
 
-            }
+            TerminStorage.Instance.Update(termin);
+
+            pacijentUI.refresh();
             this.Close();
         }
 
