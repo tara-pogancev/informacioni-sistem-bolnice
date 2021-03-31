@@ -16,10 +16,10 @@ namespace Model
 
         protected override string getKey(Prostorija entity)
         {
-            return entity.Naziv;
+            return entity.Broj;
         }
 
-        protected override void removeReferences(string key)
+        protected override void RemoveReferences(string key)
         {
             TerminStorage storageT = new TerminStorage();
             foreach (Termin t in storageT.ReadAll())
@@ -30,6 +30,38 @@ namespace Model
                 }
             }
 
+        }
+
+        public bool UpdateKolicineDinamickeOpreme(string keyProstorije, string keyOpreme, int kolicina)
+        {
+            DinamickaOprema dinamickaOprema = DinamickaOpremaStorage.Instance.Read(keyOpreme);
+            Prostorija prostorija = Read(keyProstorije);
+
+            if (dinamickaOprema == null || prostorija == null)
+            {
+                return false;
+            }
+
+            prostorija.SetKolicinaDinamickeOpreme(keyOpreme, kolicina);
+            Update(prostorija);
+
+            return true;
+        }
+
+        public bool UpdateKolicineStatickeOpreme(string keyProstorije, string keyOpreme, int kolicina)
+        {
+            StatickaOprema statickaOprema = StatickaOpremaStorage.Instance.Read(keyOpreme);
+            Prostorija prostorija = Read(keyProstorije);
+
+            if (statickaOprema == null || prostorija == null)
+            {
+                return false;
+            }
+
+            prostorija.SetKolicinaStatickeOpreme(keyOpreme, kolicina);
+            Update(prostorija);
+
+            return true;
         }
 
     }

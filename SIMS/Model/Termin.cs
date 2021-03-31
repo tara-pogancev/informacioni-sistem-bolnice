@@ -89,6 +89,12 @@ namespace Model
                 LekarStorage storageL = new LekarStorage();
                 return (storageL.Read(lekarKey).ImePrezime);
             }
+            get { return (this.lekar.ImePrezime); }
+        }
+
+        public String NazivProstorije
+        {
+            get { return this.prostorija.Broj; }
         }
     }
 }

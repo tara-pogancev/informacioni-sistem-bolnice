@@ -65,7 +65,7 @@ namespace SIMS
             termin.PocetnoVreme = vremenskaOdrednica;
             termin.Pacijent = pacijent;
             Prostorija p = new Prostorija();
-            p.Broj = 10;
+            p.Broj = "10";
             termin.Prostorija = p;
             
             pacijentUI.dodajTermin(termin);

@@ -27,10 +27,6 @@ namespace SIMS.UpravnikGUI
 
             if (prostorija == null) return;
 
-            GradTextBox.Text = prostorija.Adresa.Grad.Naziv;
-            UlicaTextBox.Text = prostorija.Adresa.Ulica;
-            BrojUUliciTextBox.Text = prostorija.Adresa.Broj.ToString();
-            SpratTextBox.Text = prostorija.Sprat.ToString();
             DostupnostComboBox.SelectedIndex = prostorija.Dostupna ? 0 : 1;
             TipComboBox.SelectedIndex = (int)prostorija.TipProstorije;
         }
@@ -38,11 +34,7 @@ namespace SIMS.UpravnikGUI
         private void Sacuvaj_Click(object sender, RoutedEventArgs e)
         {
             Prostorija prostorija = new Prostorija(
-                new Grad(GradTextBox.Text, 0, null),
-                UlicaTextBox.Text,
-                BrojUUliciTextBox.Text,
-                int.Parse(SpratTextBox.Text),
-                int.Parse(BrojProstorijeTextBox.Text),
+                BrojProstorijeTextBox.Text,
                 DostupnostComboBox.SelectedIndex == 0,
                 (TipProstorije)TipComboBox.SelectedIndex
                 );

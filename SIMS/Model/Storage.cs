@@ -21,9 +21,9 @@ namespace Model
 
         protected abstract string getPath();
         protected abstract KeyType getKey(Entity entity);
-        protected abstract void removeReferences(KeyType key);
+        protected abstract void RemoveReferences(KeyType key);
 
-        private Dictionary<KeyType, Entity> readFile()
+        private Dictionary<KeyType, Entity> ReadFile()
         {
             string path = getPath();
 
@@ -38,7 +38,7 @@ namespace Model
             return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
         }
 
-        private void writeFile(Dictionary<KeyType, Entity> entities)
+        private void WriteFile(Dictionary<KeyType, Entity> entities)
         {
             string path = getPath();
             string json = JsonSerializer.Serialize(entities);
@@ -49,7 +49,7 @@ namespace Model
 
         public bool Create(Entity Entity)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             KeyType key = getKey(Entity);
 
@@ -60,24 +60,24 @@ namespace Model
 
             entities[key] = Entity;
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return true;
         }
 
         public Dictionary<KeyType, Entity> ReadAll()
         {
-            return readFile();
+            return ReadFile();
         }
 
         public Entity Read(KeyType key)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
             Entity retVal;
 
             if (!entities.TryGetValue(key, out retVal))
             {
-                return default(Entity);
+                return default;
             }
 
             return retVal;
@@ -85,7 +85,7 @@ namespace Model
 
         public bool Update(Entity Entity)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             KeyType key = getKey(Entity);
 
@@ -96,7 +96,7 @@ namespace Model
 
             entities[key] = Entity;
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return true;
         }
@@ -104,13 +104,13 @@ namespace Model
 
         public bool Delete(KeyType key)
         {
-            Dictionary<KeyType, Entity> entities = readFile();
+            Dictionary<KeyType, Entity> entities = ReadFile();
 
             bool retVal = entities.Remove(key);
 
-            removeReferences(key);
+            RemoveReferences(key);
 
-            writeFile(entities);
+            WriteFile(entities);
 
             return retVal;
         }

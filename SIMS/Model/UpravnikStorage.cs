@@ -20,7 +20,7 @@ namespace Model
         {
             return entity.Jmbg;
         }
-        protected override void removeReferences(string key)
+        protected override void RemoveReferences(string key)
         {
 
         }
