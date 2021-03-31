@@ -104,6 +104,14 @@ namespace SIMS
 
         }
 
+        private void Button_Log_Out(object sender, RoutedEventArgs e)
+        {
+
+            new MainWindow().Show();
+            instance = null;
+            this.Close();
+        }
+
         private void Button_Pregled(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi pregled

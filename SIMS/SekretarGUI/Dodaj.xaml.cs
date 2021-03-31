@@ -34,10 +34,14 @@ namespace SIMS
                 else
                     broj = ulicaBroj[i];
             }
-            Model.Pacijent pacijent = new Model.Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Model.Adresa(ulica, broj, new Model.Grad()), lbo.Text, (bool)gost.IsChecked);
+            int post_broj;
+            int.TryParse(postanski_broj.Text, out post_broj);
 
+            List<string> alerg = new List<string>(alergeni.Text.Split());
+
+            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg);
             PacijentStorage.Instance.Create(pacijent);
-            SekretarUI.getInstance().refresh();
+            SekretarUI.GetInstance().refresh();
 
             this.Close();
         }
