@@ -68,8 +68,8 @@
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="BrojString" 
-                    SelectedValuePath="BrojString" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="Broj" 
+                    SelectedValuePath="Broj" 
                      Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14"/>
 
                 <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker1" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />

@@ -10,50 +10,39 @@ using System.IO;
 
 namespace Model
 {
-    public class LekarStorage
+    public class LekarStorage : Storage<string, Lekar, LekarStorage>
     {
-        public bool Create(List<Lekar> lekari)
+        protected override string getKey(Lekar entity)
         {
-            var jsonToWrite = JsonConvert.SerializeObject(lekari, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("../../../Data/lekari.json"))
+            return entity.Jmbg;
+        }
+
+        protected override string getPath()
+        {
+            return @".\..\..\..\Data\lekari.json";
+        }
+
+        protected override void RemoveReferences(string key)
+        {
+            TerminStorage storageT = new TerminStorage();
+            foreach (Termin t in storageT.ReadList())
             {
-                writer.Write(jsonToWrite);
+                if (t.LekarKey == key)
+                {
+                    storageT.Delete(t.TerminKey);
+                }
             }
-
-            return true;
         }
 
-        public List<Lekar> Read()
+        public Lekar ReadUser(String user)
         {
-            String json = File.ReadAllText("../../../Data/lekari.json");
-            List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
-            return lekar_all;
-        }
-
-        public static Lekar Read(string korisnickoIme)
-        {
-            String json = File.ReadAllText("../../../Data/lekari.json");
-            List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
-            Lekar retVal;
-
-            foreach (Lekar l in lekar_all)
+            foreach(Lekar l in this.ReadList())
             {
-                if (l.KorisnickoIme == korisnickoIme)
+                if (l.KorisnickoIme == user)
                     return l;
             }
 
             return null;
         }
-
-        public bool Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

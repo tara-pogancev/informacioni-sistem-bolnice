@@ -10,46 +10,39 @@ using System.IO;
 
 namespace Model
 {
-   public class PacijentStorage
-   {
-      public bool Create(List<Pacijent> pacijenti)
-      {
-            
-            var jsonToWrite = JsonConvert.SerializeObject(pacijenti, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("../../../Data/pacijenti.json"))
+    public class PacijentStorage : Storage<string, Pacijent, PacijentStorage>
+    {
+        protected override string getKey(Pacijent entity)
+        {
+            return entity.Jmbg;
+        }
+
+        protected override string getPath()
+        {
+            return @".\..\..\..\Data\pacijenti.json";
+        }
+
+        protected override void RemoveReferences(string key)
+        {
+            TerminStorage storageT = new TerminStorage();
+            foreach (Termin t in storageT.ReadList())
             {
-                writer.Write(jsonToWrite);
+                if (t.PacijentKey == key)
+                {
+                    storageT.Delete(t.TerminKey);
+                }
+            }
+        }
+
+        public Pacijent ReadUser(String user)
+        {
+            foreach (Pacijent p in this.ReadList())
+            {
+                if (p.KorisnickoIme == user)
+                    return p;
             }
 
-            return true;
-
+            return null;
         }
-      
-      public List<Pacijent> ReadAll()
-      {
-            List<Pacijent> pacijenti;
-            try 
-            { 
-                String json = File.ReadAllText("../../../Data/pacijenti.json");
-                pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
-            }
-            catch (Exception e)
-            {
-                pacijenti = new List<Pacijent>();
-            }
-            
-            return pacijenti;
-        }
-      
-      public bool Update()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public bool Delete()
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+    }
 }

@@ -24,17 +24,16 @@ namespace SIMS
         Termin termin;
         Boolean doktorSelektovan;
         PacijentUI pacijentUI;
+
         public izmjenaTermina(Termin termin,PacijentUI ui)
         {
             InitializeComponent();
             this.pacijentUI = ui;
             LekarStorage lk = new LekarStorage();
             doktorSelektovan = false;
-            lekari = new List<Lekar>();
-            lekari = lk.Read();
+            lekari = new List<Lekar>(lk.ReadList());
             this.termin = termin;
 
-            
             filtrirajTermine();
             /*Drzava SrbijaT = new Drzava("Srbija");
             Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
@@ -57,9 +56,9 @@ namespace SIMS
         private void filtrirajTermine()
         {
             termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            foreach (Termin ter in new TerminStorage().ReadAll())
+            foreach (Termin ter in new TerminStorage().ReadList())
             {
-                if (termin.Lekar.Jmbg.Equals(ter.Lekar.Jmbg))
+                if (termin.LekarKey.Equals(ter.LekarKey))
                 {
                     if (termin.Datum.Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                         termini.Remove(ter.Vrijeme);
@@ -71,12 +70,12 @@ namespace SIMS
         {
             Lekar lek = (Lekar)doktori.SelectedItem;
             termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            List<Termin> sviTermini = new TerminStorage().ReadAll();
+            List<Termin> sviTermini = new TerminStorage().ReadList();
             List<Termin> terminiI = pacijentUI.ListaTermina;
             sviTermini.AddRange(terminiI);
             foreach (Termin ter in sviTermini)
             {
-                if (termin.Lekar.Jmbg.Equals(lek.Jmbg))
+                if (termin.LekarKey.Equals(lek.Jmbg))
                 {
                     if (datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                         termini.Remove(ter.Vrijeme);
@@ -91,7 +90,7 @@ namespace SIMS
             datePicker1.Text = termin.PocetnoVreme.ToString("dd/MM/yyyy");
             int index = 0;
             foreach (Lekar lek in lekari) {
-                if (lek.Jmbg.Equals(termin.Lekar.Jmbg)) {
+                if (lek.Jmbg.Equals(termin.LekarKey)) {
                     break;
                 }
                 index++;
@@ -152,14 +151,14 @@ namespace SIMS
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
-            termin.Lekar = lekari[doktori.SelectedIndex];
+            termin.LekarKey = lekari[doktori.SelectedIndex].Jmbg;
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
-            foreach (Termin term in pacijentUI.Termini)
-            {
 
-            }
+            TerminStorage.Instance.Update(termin);
+
+            pacijentUI.refresh();
             this.Close();
         }
 

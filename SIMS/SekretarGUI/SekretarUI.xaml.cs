@@ -16,23 +16,23 @@ using System.ComponentModel;
 namespace SIMS
 {
     
-    public partial class Sekretar : Window
+    public partial class SekretarUI : Window
     {
         private ObservableCollection<Model.Pacijent> pacijenti;
-        private static Sekretar instance = null;
+        private static SekretarUI instance = null;
 
-        public static Sekretar GetInstance()
+        public static SekretarUI getInstance()
         {
             if (instance == null)
-                instance = new Sekretar();
+                instance = new SekretarUI();
             return instance;
         }
 
-        private Sekretar()
+        private SekretarUI()
         {
             InitializeComponent();
             PacijentStorage storage = new PacijentStorage();
-            pacijenti = new ObservableCollection<Model.Pacijent>(storage.ReadAll());
+            pacijenti = new ObservableCollection<Model.Pacijent>(storage.ReadList());
 
             tabelaPacijenata.ItemsSource = pacijenti;
             Closing += new CancelEventHandler(Sekretar_Closing);
@@ -40,7 +40,7 @@ namespace SIMS
 
         private void Sekretar_Closing(object sender, CancelEventArgs e)
         {
-            new PacijentStorage().Create(new List<Model.Pacijent>(pacijenti));
+            //new PacijentStorage().Create(new List<Model.Pacijent>(pacijenti));
         }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
@@ -57,27 +57,20 @@ namespace SIMS
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
-            pacijenti.Remove(pacijenti[tabelaPacijenata.SelectedIndex]);
+            Pacijent toDelete = (Model.Pacijent)tabelaPacijenata.SelectedItem;
+            PacijentStorage.Instance.Delete(toDelete.Jmbg);
+            refresh();
         }
 
-        public void Dodaj_Pacijenta(Model.Pacijent p)
+        public void refresh()
         {
-            pacijenti.Add(p);
+            pacijenti.Clear();
+            List<Pacijent> pacijentiAll = PacijentStorage.Instance.ReadList();
+            foreach (Pacijent p in pacijentiAll)
+                pacijenti.Add(p);
+
         }
 
-        public void Izmeni_Pacijenta(Model.Pacijent p)
-        {
-            for(int i = 0; i < pacijenti.Count; ++i)
-            {
-                if (pacijenti[i].Jmbg.Equals(p.Jmbg))
-                {
-                    pacijenti[i].SetAttributes(p);
-                    break;
-                }
-            }
-            tabelaPacijenata.Items.Refresh();
-            
-        }
 
     }
 }

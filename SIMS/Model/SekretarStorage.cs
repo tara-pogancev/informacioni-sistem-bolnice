@@ -10,43 +10,32 @@ using System.IO;
 
 namespace Model
 {
-   public class SekretarStorage
-   {
-        public bool Create(List<Sekretar> sekretari)
+    public class SekretarStorage : Storage<string, Sekretar, SekretarStorage>
+    {
+        protected override string getKey(Sekretar entity)
         {
-            var jsonToWrite = JsonConvert.SerializeObject(sekretari, Formatting.Indented);
-            using (StreamWriter writer = new StreamWriter("../../../Data/sekretari.json"))
-            {
-                writer.Write(jsonToWrite);
-            }
-            return true;
+            return entity.Jmbg;
         }
 
-        public List<Sekretar> Read()
+        protected override string getPath()
         {
-            List<Sekretar> sekretari;
-            try
-            {
-                String json = File.ReadAllText("../../../Data/sekretari.json");
-                sekretari = JsonConvert.DeserializeObject<List<Sekretar>>(json);
-            }
-            catch (Exception e)
-            {
-                sekretari = new List<Sekretar>();
-            }
-
-            return sekretari;
+            return @".\..\..\..\Data\sekretari.json";
         }
 
-        public bool Update()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public bool Delete()
-      {
-         throw new NotImplementedException();
-      }
-   
-   }
+        protected override void RemoveReferences(string key)
+        {
+            
+        }
+
+        public Sekretar ReadUser(String user)
+        {
+            foreach (Sekretar s in this.ReadList())
+            {
+                if (s.KorisnickoIme == user)
+                    return s;
+            }
+
+            return null;
+        }
+    }
 }

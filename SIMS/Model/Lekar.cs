@@ -25,9 +25,12 @@ namespace Model
 
         public List<Termin> getZauzetiTermini()
         {
-            //TODO
-            TerminStorage storage = new TerminStorage();
-            return storage.Read(this);
+            List<Termin> retVal = new List<Termin>();
+
+            retVal = TerminStorage.Instance.ReadByDoctor(this);
+            
+            return retVal;
+
         }
 
     }

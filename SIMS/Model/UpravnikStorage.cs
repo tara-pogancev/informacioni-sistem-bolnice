@@ -24,5 +24,16 @@ namespace Model
         {
 
         }
+
+        public Upravnik ReadUser(String user)
+        {
+            foreach (Upravnik u in this.ReadList())
+            {
+                if (u.KorisnickoIme == user)
+                    return u;
+            }
+
+            return null;
+        }
     }
 }
