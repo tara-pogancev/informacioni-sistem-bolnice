@@ -15,7 +15,7 @@ namespace Model
         } 
         protected override string getKey(Prostorija entity)
         {
-            return entity.Broj.ToString();
+            return entity.Broj;
         }
 
         protected override void RemoveReferences(string key)

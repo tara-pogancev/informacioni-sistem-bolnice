@@ -85,7 +85,7 @@ namespace Model
 
         public String NazivProstorije
         {
-            get { return this.prostorija.BrojString; }
+            get { return this.prostorija.Broj; }
         }
     }
 }

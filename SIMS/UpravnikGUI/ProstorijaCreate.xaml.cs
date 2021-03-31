@@ -25,11 +25,7 @@ namespace SIMS.UpravnikGUI
         private void Kreiraj_Click(object sender, RoutedEventArgs e)
         {
             Prostorija prostorija = new Prostorija(
-                new Grad(GradTextBox.Text, 0, null),
-                UlicaTextBox.Text,
-                BrojUUliciTextBox.Text,
-                int.Parse(SpratTextBox.Text),
-                int.Parse(BrojProstorijeTextBox.Text),
+                BrojProstorijeTextBox.Text,
                 DostupnostComboBox.SelectedIndex == 0,
                 (TipProstorije)TipComboBox.SelectedIndex
                 );
