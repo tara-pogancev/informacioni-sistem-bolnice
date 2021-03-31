@@ -57,27 +57,20 @@ namespace SIMS
 
         private void Obrisi_Click(object sender, RoutedEventArgs e)
         {
-            pacijenti.Remove(pacijenti[tabelaPacijenata.SelectedIndex]);
+            Pacijent toDelete = (Model.Pacijent)tabelaPacijenata.SelectedItem;
+            PacijentStorage.Instance.Delete(toDelete.Jmbg);
+            refresh();
         }
 
-        public void Dodaj_Pacijenta(Model.Pacijent p)
+        public void refresh()
         {
-            pacijenti.Add(p);
+            pacijenti.Clear();
+            List<Pacijent> pacijentiAll = PacijentStorage.Instance.ReadList();
+            foreach (Pacijent p in pacijentiAll)
+                pacijenti.Add(p);
+
         }
 
-        public void Izmeni_Pacijenta(Model.Pacijent p)
-        {
-            for(int i = 0; i < pacijenti.Count; ++i)
-            {
-                if (pacijenti[i].Jmbg.Equals(p.Jmbg))
-                {
-                    pacijenti[i].SetAttributes(p);
-                    break;
-                }
-            }
-            tabelaPacijenata.Items.Refresh();
-            
-        }
 
     }
 }

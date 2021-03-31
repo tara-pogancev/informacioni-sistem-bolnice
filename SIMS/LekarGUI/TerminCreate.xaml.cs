@@ -46,6 +46,17 @@ namespace SIMS
             List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
             trajanjeLista.ItemsSource = trajanjeVrednosti;
 
+            int index = 0;
+            foreach (Lekar l in lekari)
+            {
+                if (l.Jmbg.Equals(LekarUI.getInstance().getUser().Jmbg))
+                {
+                    break;
+                }
+                index++;
+            }
+            doktoriCombo.SelectedIndex = index;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

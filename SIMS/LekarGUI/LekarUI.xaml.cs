@@ -165,5 +165,10 @@ namespace SIMS
             refreshView();
         }
 
+        public Lekar getUser()
+        {
+            return lekarUser;
+        }
+
     }
 }

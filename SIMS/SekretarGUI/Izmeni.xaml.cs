@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Model;
 
 namespace SIMS
 {
@@ -47,7 +48,10 @@ namespace SIMS
                     broj = ulicaBroj[i];
             }
             Model.Pacijent p = new Model.Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Model.Adresa(ulica, broj, new Model.Grad()), lbo.Text, (bool)gost.IsChecked);
-            SekretarUI.getInstance().Izmeni_Pacijenta(p);
+
+            PacijentStorage.Instance.Update(p);
+            SekretarUI.getInstance().refresh();
+
             this.Close();
         }
 
