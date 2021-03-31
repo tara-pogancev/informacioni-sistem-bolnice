@@ -30,11 +30,10 @@ namespace Model
             return lekar_all;
         }
 
-        public static Lekar Read(string korisnickoIme)
+        public Lekar Read(string korisnickoIme)
         {
             String json = File.ReadAllText("../../../Data/lekari.json");
             List<Lekar> lekar_all = JsonConvert.DeserializeObject<List<Lekar>>(json);
-            Lekar retVal;
 
             foreach (Lekar l in lekar_all)
             {

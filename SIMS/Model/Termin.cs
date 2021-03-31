@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Termin
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Model
@@ -14,11 +15,10 @@ namespace Model
       private TimeSpan vremeTrajanja;
       private TipTermina vrstaTermina;
 
-      private Lekar lekar;
-      private Pacijent pacijent;
-      private Prostorija prostorija;
+      private String lekarKey;         //JMBG lekara
+      private String pacijentKey;      //JMBG pacijenta
+      private String prostorijaKey;    //Naziv prostorije
         
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)
@@ -32,27 +32,27 @@ namespace Model
         public DateTime PocetnoVreme { get => pocetnoVreme; set { pocetnoVreme = value; OnPropertyChanged("PocetnoVreme"); OnPropertyChanged("Vrijeme"); OnPropertyChanged("Datum"); } }
         public TimeSpan VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
         public TipTermina VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
-        public Lekar Lekar { get => lekar; set { lekar = value; OnPropertyChanged("Lekar"); } }
-        public Pacijent Pacijent { get => pacijent; set { pacijent = value; OnPropertyChanged("Pacijent"); } }
-        public Prostorija Prostorija { get => prostorija; set { prostorija = value; OnPropertyChanged("Prostorija"); } }
+        public String LekarKey { get => lekarKey; set { lekarKey = value; OnPropertyChanged("LekarKey"); } }
+        public String PacijentKey { get => pacijentKey; set { pacijentKey = value; OnPropertyChanged("PacijentKey"); } }
+        public String Prostorija { get => prostorijaKey; set { prostorijaKey = value; OnPropertyChanged("Prostorija"); } }
 
-        public Termin(DateTime pocetnoVreme, TimeSpan vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
+        public Termin(DateTime pocetnoVreme, TimeSpan vremeTrajanja, TipTermina vrstaTermina, String lekar, String pacijent, String prostorija)
         {
             this.pocetnoVreme = pocetnoVreme;
             this.vremeTrajanja = vremeTrajanja;
             this.vrstaTermina = vrstaTermina;
-            this.lekar = lekar;
-            this.pacijent = pacijent;
-            this.prostorija = prostorija;
+            this.lekarKey = lekar;
+            this.pacijentKey = pacijent;
+            this.prostorijaKey = prostorija;
         }
 
         public Termin()
         {
-        }
-
-        
+            this.vrstaTermina = TipTermina.pregled;
+        }        
 
         public String Datum { get => pocetnoVreme.ToString("dd/MM/yyyy"); }
+
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 
         public String GetVrsta
@@ -75,17 +75,20 @@ namespace Model
 
         public String ImePacijenta
         {
-            get { return (this.pacijent.Ime + " " + this.pacijent.Prezime); }
+            get 
+            {
+                PacijentStorage storageS = new PacijentStorage();            
+                return (storageS.Read(pacijentKey).ImePrezime); 
+            }
         }
 
         public String ImeLekara
         {
-            get { return (this.lekar.ImePrezime); }
-        }
-
-        public String NazivProstorije
-        {
-            get { return this.prostorija.BrojString; }
+            get
+            {
+                LekarStorage storageL = new LekarStorage();
+                return (storageL.Read(lekarKey).ImePrezime);
+            }
         }
     }
 }

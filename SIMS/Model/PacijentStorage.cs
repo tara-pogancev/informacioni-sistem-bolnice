@@ -10,11 +10,11 @@ using System.IO;
 
 namespace Model
 {
-   public class PacijentStorage
-   {
-      public bool Create(List<Pacijent> pacijenti)
-      {
-            
+    public class PacijentStorage
+    {
+        public bool Create(List<Pacijent> pacijenti)
+        {
+
             var jsonToWrite = JsonConvert.SerializeObject(pacijenti, Formatting.Indented);
             using (StreamWriter writer = new StreamWriter("../../../Data/pacijenti.json"))
             {
@@ -24,12 +24,12 @@ namespace Model
             return true;
 
         }
-      
-      public List<Pacijent> ReadAll()
-      {
+
+        public List<Pacijent> ReadAll()
+        {
             List<Pacijent> pacijenti;
-            try 
-            { 
+            try
+            {
                 String json = File.ReadAllText("../../../Data/pacijenti.json");
                 pacijenti = JsonConvert.DeserializeObject<List<Pacijent>>(json);
             }
@@ -37,19 +37,31 @@ namespace Model
             {
                 pacijenti = new List<Pacijent>();
             }
-            
+
             return pacijenti;
         }
-      
-      public bool Update()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public bool Delete()
-      {
-         throw new NotImplementedException();
-      }
-   
+
+        public bool Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pacijent Read(String key)
+        {
+
+            foreach(Pacijent p in this.ReadAll())
+            {
+                if (p.Jmbg == key)
+                    return p;
+            }
+
+            return null;
+        }
+
    }
 }
