@@ -16,13 +16,11 @@ namespace SIMS
         private List<Prostorija> prostorije;
         private List<String> termini;
         Termin termin;
-        String oldKey;
 
         public TerminUpdate(Termin t)
         {
             InitializeComponent();
             this.termin = t;
-            oldKey = t.TerminKey;
 
             LekarStorage storageL = new LekarStorage();
             lekari = storageL.ReadList();
@@ -57,16 +55,15 @@ namespace SIMS
                 termin.PocetnoVreme = vremenskaOdrednica;
 
                 if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = new TimeSpan(0, 30, 0);
+                    termin.VremeTrajanja = 30;
                 else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = new TimeSpan(1, 0, 0);
+                    termin.VremeTrajanja = 60;
                 else
-                    termin.VremeTrajanja = new TimeSpan(1, 30, 0);
+                    termin.VremeTrajanja = 90;
 
                 termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
                 termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
-                termin.TerminKey = oldKey;
 
                 TerminStorage.Instance.Update(termin);
 
@@ -83,11 +80,10 @@ namespace SIMS
             datePicker1.DisplayDate = termin.PocetnoVreme;
             datePicker1.Text = termin.PocetnoVreme.ToString("dd/MM/yyyy");
 
-            int minutes = (int)termin.VremeTrajanja.TotalMinutes;
 
-            if (termin.VremeTrajanja == new TimeSpan(0, 30, 0))
+            if (termin.VremeTrajanja == 30)
                 trajanjeLista.SelectedIndex = 0;
-            else if (termin.VremeTrajanja == new TimeSpan(1, 0, 0))
+            else if (termin.VremeTrajanja == 60)
                 trajanjeLista.SelectedIndex = 1;
             else
                 trajanjeLista.SelectedIndex = 2;

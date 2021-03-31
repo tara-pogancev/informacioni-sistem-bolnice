@@ -64,11 +64,11 @@ namespace SIMS
                 termin.PocetnoVreme = vremenskaOdrednica;
 
                 if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = new TimeSpan(0, 30, 0);
+                    termin.VremeTrajanja = 30;
                 else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = new TimeSpan(1, 0, 0);
+                    termin.VremeTrajanja = 60;
                 else 
-                    termin.VremeTrajanja = new TimeSpan(1, 30, 0);
+                    termin.VremeTrajanja = 90;
 
                 termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;  
                 termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;  
