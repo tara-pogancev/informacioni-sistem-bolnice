@@ -73,9 +73,10 @@ namespace SIMS
                 termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;  
                 termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;  
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;  
-                termin.VrstaTermina = TipTermina.pregled;   
+                termin.VrstaTermina = TipTermina.pregled;
 
-                LekarUI.getInstance().dodajTermin(termin);
+                TerminStorage.Instance.Create(termin);
+                LekarUI.getInstance().refresh();
                 this.Close();
             }
         }
@@ -88,6 +89,8 @@ namespace SIMS
                 Lekar lek = lekari[doktoriCombo.SelectedIndex];
                 List<Termin> doktoroviTermini = new List<Termin>();
                 dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+
+                terminiLista.ItemsSource = dostupniTermini;
 
                 /*
                 foreach (Termin termin in new TerminStorage().ReadList())
@@ -104,7 +107,6 @@ namespace SIMS
                 }
                 */
 
-                terminiLista.ItemsSource = dostupniTermini;
 
             }
         }

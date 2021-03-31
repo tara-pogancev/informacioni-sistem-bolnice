@@ -33,5 +33,16 @@ namespace Model
                 }
             }
         }
+
+        public Pacijent ReadUser(String user)
+        {
+            foreach (Pacijent p in this.ReadList())
+            {
+                if (p.KorisnickoIme == user)
+                    return p;
+            }
+
+            return null;
+        }
     }
 }

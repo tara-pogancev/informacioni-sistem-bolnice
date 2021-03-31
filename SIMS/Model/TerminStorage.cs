@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Text.Json;
 
 namespace Model
 {
@@ -15,30 +15,28 @@ namespace Model
 
         public List<Termin> ReadByPatient(Pacijent p)
         {
-            List<Termin> termini_all = new List<Termin>(this.ReadAll().Values.ToList());
-            for (int i = 0; i < termini_all.Count; i++)
+            List<Termin> retVal = new List<Termin>();
+
+            foreach (Termin t in this.ReadList())
             {
-                if (!termini_all[i].PacijentKey.Equals(p.Jmbg))
-                {
-                    termini_all.RemoveAt(i);
-                    i--;
-                }
+                if (t.PacijentKey == p.Jmbg)
+                    retVal.Add(t);
             }
-            return termini_all;
+
+            return retVal;
         }
 
         public List<Termin> ReadByDoctor(Lekar l)
         {
-            List<Termin> termini_all = new List<Termin>(this.ReadAll().Values.ToList());
-            for (int i = 0; i < termini_all.Count; i++)
+            List<Termin> retVal = new List<Termin>();
+
+            foreach(Termin t in this.ReadList())
             {
-                if (!termini_all[i].LekarKey.Equals(l.Jmbg))
-                {
-                    termini_all.RemoveAt(i);
-                    i--;
-                }
+                if (t.LekarKey == l.Jmbg)
+                    retVal.Add(t);
             }
-            return termini_all;
+
+            return retVal;
         }
 
         protected override string getKey(Termin entity)
@@ -52,12 +50,27 @@ namespace Model
             return;
         }
 
-        public void UpdateSingle()
+        public bool UpdateSingle(Termin termin, String keyOld)
         {
-            //TODO
+            Dictionary<String, Termin> entities = this.ReadAll();
+
+            String key = keyOld;
+
+            if (!entities.ContainsKey(key))
+            {
+                return false;
+            }
+
+            entities[key] = termin;
+
+            string path = this.getPath();
+            string json = System.Text.Json.JsonSerializer.Serialize(entities);
+
+            File.WriteAllText(path, json);
+
+            return true;
+
         }
-
-
 
 
     }

@@ -24,9 +24,6 @@ namespace SIMS
     public partial class LekarUI : Window
     {
         public static LekarUI instance;
-        private TerminStorage storageT = new TerminStorage();
-
-        private List<Termin> termini;
 
         private static Lekar lekarUser;
 
@@ -63,19 +60,17 @@ namespace SIMS
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
             //Tabela pregleda
-            termini = storageT.ReadList();
 
             this.DataContext = this;
-            terminiView = new ObservableCollection<Termin>(termini);
+            terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
             refreshView();
         }
 
         private void refreshView()
         {
-            termini = storageT.ReadByDoctor(lekarUser);
             terminiView.Clear();
-
-            foreach (Termin t in termini)
+            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
+            foreach (Termin t in temp)
             {
                 terminiView.Add(t);
             }
@@ -104,7 +99,7 @@ namespace SIMS
         private void Button_Nalog(object sender, RoutedEventArgs e)
         {
             //Button: Nalog, DEBUG
-            MessageBox.Show("Ukupno termina: " + storageT.ReadList().Count);
+            MessageBox.Show("Ukupno termina: " + TerminStorage.Instance.ReadList().Count);
             refreshView();
 
         }
@@ -130,7 +125,6 @@ namespace SIMS
             {
                 TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
                 terminUpdate.Show();
-                refreshView();
             }
 
         }
@@ -146,7 +140,7 @@ namespace SIMS
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Termin toDelete = (Termin)dataGridTermini.SelectedItem;
-                    storageT.Delete(toDelete.TerminKey);
+                    TerminStorage.Instance.Delete(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     refreshView();
                 }
@@ -156,7 +150,7 @@ namespace SIMS
 
         public void dodajTermin(Termin termin)
         {
-            storageT.Create(termin);
+            TerminStorage.Instance.Create(termin);
             refreshView();
             MessageBox.Show("Termin uspešno zakazan.");
         }

@@ -1,16 +1,8 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SIMS
 {
@@ -24,11 +16,13 @@ namespace SIMS
         private List<Prostorija> prostorije;
         private List<String> termini;
         Termin termin;
+        String oldKey;
 
-        public TerminUpdate(Termin termin)
+        public TerminUpdate(Termin t)
         {
             InitializeComponent();
-            this.termin = termin;
+            this.termin = t;
+            oldKey = t.TerminKey;
 
             LekarStorage storageL = new LekarStorage();
             lekari = storageL.ReadList();
@@ -51,10 +45,9 @@ namespace SIMS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Kreiranje novog pregleda
+            //Izmena pregleda
             //TODO: Odraditi sve provere
 
-            //TODO: dodati za izbor prostorije i pacijente
             if (doktoriCombo.SelectedItem == null || datePicker1.SelectedDate == null || terminiLista.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
             else
@@ -73,6 +66,9 @@ namespace SIMS
                 termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
                 termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
+                termin.TerminKey = oldKey;
+
+                TerminStorage.Instance.Update(termin);
 
                 LekarUI.getInstance().refresh();
                 this.Close();
@@ -89,9 +85,12 @@ namespace SIMS
 
             int minutes = (int)termin.VremeTrajanja.TotalMinutes;
 
-            if (minutes == 30) trajanjeLista.SelectedIndex = 0;
-            else if (minutes == 60) trajanjeLista.SelectedIndex = 1;
-            else trajanjeLista.SelectedIndex = 2;
+            if (termin.VremeTrajanja == new TimeSpan(0, 30, 0))
+                trajanjeLista.SelectedIndex = 0;
+            else if (termin.VremeTrajanja == new TimeSpan(1, 0, 0))
+                trajanjeLista.SelectedIndex = 1;
+            else
+                trajanjeLista.SelectedIndex = 2;
 
             int index = 0;
             foreach (Lekar l in lekari)
@@ -162,5 +161,6 @@ namespace SIMS
         }
 
     }
+
 
 }

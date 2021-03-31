@@ -72,7 +72,8 @@ namespace SIMS
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
                 termin.VrstaTermina = TipTermina.operacija;
 
-                LekarUI.getInstance().dodajTermin(termin);
+                TerminStorage.Instance.Create(termin);
+                LekarUI.getInstance().refresh();
                 this.Close();
             }
             

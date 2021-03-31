@@ -26,5 +26,16 @@ namespace Model
         {
             
         }
+
+        public Sekretar ReadUser(String user)
+        {
+            foreach (Sekretar s in this.ReadList())
+            {
+                if (s.KorisnickoIme == user)
+                    return s;
+            }
+
+            return null;
+        }
     }
 }

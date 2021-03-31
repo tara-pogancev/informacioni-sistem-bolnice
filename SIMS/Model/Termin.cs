@@ -15,9 +15,10 @@ namespace Model
       private TimeSpan vremeTrajanja;
       private TipTermina vrstaTermina;
 
-      private String lekarKey;         //JMBG lekara
-      private String pacijentKey;      //JMBG pacijenta
-      private String prostorijaKey;    //Naziv prostorije
+        private String lekarKey;         //JMBG lekara
+        private String pacijentKey;      //JMBG pacijenta
+        private String prostorijaKey;    //Naziv prostorije
+        private String terminKey;
         
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -44,18 +45,20 @@ namespace Model
             this.lekarKey = lekar;
             this.pacijentKey = pacijent;
             this.prostorijaKey = prostorija;
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
         }
 
         public Termin()
         {
             this.vrstaTermina = TipTermina.pregled;
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
         }        
 
-        public String Datum { get => pocetnoVreme.ToString("dd/MM/yyyy"); }
+        public String Datum { get => PocetnoVreme.ToString("dd/MM/yyyy"); }
 
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 
-        public String TerminKey { get => LekarKey + PacijentKey + PocetnoVreme.ToString("ddMMyyy");  }
+        public String TerminKey { get => terminKey; set => terminKey = value; }
 
         public String GetVrsta
         {
@@ -79,8 +82,8 @@ namespace Model
         {
             get 
             {
-                PacijentStorage storageS = new PacijentStorage();            
-                return (storageS.Read(pacijentKey).ImePrezime); 
+                Pacijent p = PacijentStorage.Instance.Read(pacijentKey);
+                return (p.ImePrezime); 
             }
         }
 
@@ -88,8 +91,8 @@ namespace Model
         {
             get
             {
-                LekarStorage storageL = new LekarStorage();
-                return (storageL.Read(lekarKey).ImePrezime);
+                Lekar l = LekarStorage.Instance.Read(lekarKey);
+                return (l.ImePrezime);
             }
         }
 

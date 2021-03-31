@@ -33,5 +33,16 @@ namespace Model
                 }
             }
         }
+
+        public Lekar ReadUser(String user)
+        {
+            foreach(Lekar l in this.ReadList())
+            {
+                if (l.KorisnickoIme == user)
+                    return l;
+            }
+
+            return null;
+        }
     }
 }

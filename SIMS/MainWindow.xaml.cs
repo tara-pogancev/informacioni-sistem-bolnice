@@ -34,7 +34,7 @@ namespace SIMS
             String pass = password.Password;
 
             //impelemntacija za pacijenta
-            Pacijent pacijent = PacijentStorage.Instance.Read(user);
+            Pacijent pacijent = PacijentStorage.Instance.ReadUser(user);
             if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
                 PacijentUI pacijentUI = new PacijentUI(pacijent);
@@ -45,7 +45,7 @@ namespace SIMS
 
 
             //impelemntacija za upravnika
-            Upravnik upravnik = UpravnikStorage.Instance.Read(user);
+            Upravnik upravnik = UpravnikStorage.Instance.ReadUser(user);
             if (upravnik != null && pass.Equals(upravnik.Lozinka))
             {
                 UpravnikUI upravnikUI = new UpravnikUI();
@@ -55,7 +55,7 @@ namespace SIMS
             }
 
             //impelementacija za doktora
-            Lekar lekar = LekarStorage.Instance.Read(user);
+            Lekar lekar = LekarStorage.Instance.ReadUser(user);
             if (lekar != null && pass.Equals(lekar.Lozinka))
             {
                 LekarUI lekarUI = LekarUI.getInstance(lekar);
@@ -65,7 +65,7 @@ namespace SIMS
             }
 
             //implementacija za sekretara
-            Sekretar sekretar = SekretarStorage.Instance.Read(user);
+            Sekretar sekretar = SekretarStorage.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Lozinka))
             {
                     SekretarUI sekretarUI = SekretarUI.getInstance();
