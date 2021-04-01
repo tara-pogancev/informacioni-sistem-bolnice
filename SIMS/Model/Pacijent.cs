@@ -10,9 +10,6 @@ namespace Model
 {
     public class Pacijent : UlogovanKorisnik
     {
-        public enum Krvne_Grupe {Op, On, Ap, An, Bp, Bn, ABp, ABn};
-        public enum Pol {M, Z};
-
         private String lbo;
         private bool gost;
         private List<string> alergeni;

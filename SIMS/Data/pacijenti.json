@@ -16,9 +16,9 @@
     "Telefon": "0645568131",
     "Adresa": null,
     "ImePrezime": "Djordje Krsmanovic",
-    "Datum_Rodjenja": null,
-    "Krvna_Grupa": "Op",
-    "Pol_Pacijenta": "M",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 0,
+    "Pol_Pacijenta": 0,
     "Hronicne_Bolesti": [
       ""
     ],
@@ -41,9 +41,9 @@
     "Telefon": "0645568131",
     "Adresa": null,
     "ImePrezime": "Nikola Markovic",
-    "Datum_Rodjenja": null,
-    "Krvna_Grupa": "Ap",
-    "Pol_Pacijenta": "M",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 2,
+    "Pol_Pacijenta": 0,
     "Hronicne_Bolesti": [
       ""
     ],
@@ -76,9 +76,9 @@
       "Broj": ""
     },
     "ImePrezime": "Miha Mihajlo",
-    "Datum_Rodjenja": null,
-    "Krvna_Grupa": "Bn",
-    "Pol_Pacijenta": "M",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 5,
+    "Pol_Pacijenta": 0,
     "Hronicne_Bolesti": [
       ""
     ],
@@ -111,9 +111,9 @@
       "Broj": "84b"
     },
     "ImePrezime": "Nina Vlahovic",
-    "Datum_Rodjenja": null,
-    "Krvna_Grupa": "ABp",
-    "Pol_Pacijenta": "Z",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 7,
+    "Pol_Pacijenta": 1,
     "Hronicne_Bolesti": [
       ""
     ],
