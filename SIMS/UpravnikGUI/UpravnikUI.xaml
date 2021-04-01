@@ -25,7 +25,26 @@
                     <Image Source="/src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"></Image>
                 </Grid>
 
-                <Grid Grid.Row="1"/>
+                <Grid Grid.Row="1">
+                    <Button Content="Izloguj se"  Margin="0,27,0,0" VerticalAlignment="Top"
+                            FontSize="22" Click="Button_Log_Out" BorderBrush="{x:Null}">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
+                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#485268"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                </Grid>
 
 
             </Grid>

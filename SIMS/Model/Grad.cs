@@ -26,8 +26,18 @@ namespace Model
 
         public string Naziv { get => naziv; set => naziv = value; }
         public int PostanskiBroj { get => postanskiBroj; set => postanskiBroj = value; }
+        public Drzava Drzava
+        {
+            get
+            {
+                return drzava;
+            }
+            set
+            {
+                this.drzava = value;
+            }
+        }
 
     }
-
 
 }

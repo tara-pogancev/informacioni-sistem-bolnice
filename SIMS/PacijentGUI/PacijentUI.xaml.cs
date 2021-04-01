@@ -114,6 +114,12 @@ namespace SIMS
             kreirajTermin.Show();
         }
 
+        private void Button_Log_Out(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
         public void dodajTermin(Termin termin)
         {
             //termini.Add(termin);

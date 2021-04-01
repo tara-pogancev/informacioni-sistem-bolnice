@@ -15,8 +15,8 @@ namespace SIMS
 {
     public partial class Izmeni : Window
     {
-        Model.Pacijent pacijent;
-        public Izmeni(Model.Pacijent pacijent)
+        Pacijent pacijent;
+        public Izmeni(Pacijent pacijent)
         {
             InitializeComponent();
             this.pacijent = pacijent;
@@ -27,7 +27,22 @@ namespace SIMS
             lozinka.Text = pacijent.Lozinka;
             email.Text = pacijent.Email;
             telefon.Text = pacijent.Telefon;
-            adresa.Text = pacijent.Adresa.ToString();
+            if (pacijent.Adresa == null)
+            {
+                adresa.Text = "";
+                grad.Text = "";
+                postanski_broj.Text = "";
+                drzava.Text = "";
+            }
+            else
+            {
+                adresa.Text = pacijent.Adresa.ToString();
+                grad.Text = pacijent.Adresa.Grad.Naziv;
+                postanski_broj.Text = pacijent.Adresa.Grad.PostanskiBroj.ToString();
+                drzava.Text = pacijent.Adresa.Grad.Drzava.Naziv;
+            }
+            
+            alergeni.Text = pacijent.GetAlergeniString;
             lbo.Text = pacijent.Lbo;
             gost.IsChecked = pacijent.Gost;
 
@@ -47,10 +62,14 @@ namespace SIMS
                 else
                     broj = ulicaBroj[i];
             }
-            Model.Pacijent p = new Model.Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Model.Adresa(ulica, broj, new Model.Grad()), lbo.Text, (bool)gost.IsChecked);
+            int post_broj;
+            int.TryParse(postanski_broj.Text, out post_broj);
 
-            PacijentStorage.Instance.Update(p);
-            SekretarUI.getInstance().refresh();
+            List<string> alerg = new List<string>(alergeni.Text.Split());
+
+            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg);
+            PacijentStorage.Instance.Update(pacijent);
+            SekretarUI.GetInstance().refresh();
 
             this.Close();
         }

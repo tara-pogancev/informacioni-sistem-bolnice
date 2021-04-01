@@ -40,5 +40,12 @@ namespace SIMS.UpravnikGUI
             prostorijaUpdate.Show();
         }
 
+        private void Button_Log_Out(object sender, RoutedEventArgs e)
+        {
+
+            new MainWindow().Show();
+            this.Close();
+        }
+
     }
 }
