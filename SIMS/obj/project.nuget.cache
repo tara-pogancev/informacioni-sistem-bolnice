@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "SnXg8/7FdPGjtCJmCE1QehzpyJF065ioFnCbo80HUvXLewd/4jxC+cWDdCxJw3USp22REE4pqkbarKuMy6MRNg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Tara\\Desktop\\FTN\\Specifikacija i modeliranje softvera\\Informacioni sistem bolnice\\SIMS\\SIMS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tara\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\Tara\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",
+    "C:\\Users\\Tara\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

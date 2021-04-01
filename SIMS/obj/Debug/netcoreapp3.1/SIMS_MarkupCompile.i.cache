@@ -1,0 +1,20 @@
+﻿SIMS
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\Tara\Desktop\FTN\Specifikacija i modeliranje softvera\Informacioni sistem bolnice\SIMS\obj\Debug\netcoreapp3.1\
+SIMS
+none
+false
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+C:\Users\Tara\Desktop\FTN\Specifikacija i modeliranje softvera\Informacioni sistem bolnice\SIMS\App.xaml
+19369145456
+
+48-567933810
+1951384865947
+LekarGUI\Dialogues\OperacijaCreate.xaml;LekarGUI\Dialogues\TerminCreate.xaml;LekarGUI\Dialogues\TerminUpdate.xaml;LekarGUI\LekarUI.xaml;LekarGUI\Pages\LekarEvidencijaPage.xaml;LekarGUI\Pages\LekarIstorijaPage.xaml;LekarGUI\Pages\LekarNalogPage.xaml;LekarGUI\Pages\LekarPacijentiPage.xaml;LekarGUI\Pages\LekarTerminiPage.xaml;MainWindow.xaml;PacijentGUI\izmjenaTermina.xaml;PacijentGUI\KreirajTermin.xaml;PacijentGUI\PacijentUI.xaml;SekretarGUI\Dodaj.xaml;SekretarGUI\Izmeni.xaml;SekretarGUI\SekretarUI.xaml;UpravnikGUI\ProstorijaCreate.xaml;UpravnikGUI\ProstorijaUpdate.xaml;UpravnikGUI\UpravnikUI.xaml;
+
+True
+
