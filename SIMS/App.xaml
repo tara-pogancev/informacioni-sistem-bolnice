@@ -67,7 +67,7 @@
         <!--Button control templates-->
         <ControlTemplate TargetType="Button" x:Key="BasicButton">
             <Grid Width="130" Height="35">
-            <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
+                <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </ControlTemplate>
@@ -85,6 +85,18 @@
                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </ControlTemplate>
+
+        <!--Combo box styles-->
+        <Style TargetType="ComboBox" x:Key="DarkComboBox">
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+        </Style>
 
     </Application.Resources>
 </Application>

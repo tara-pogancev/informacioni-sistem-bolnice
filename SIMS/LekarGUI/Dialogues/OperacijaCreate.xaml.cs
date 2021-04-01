@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SIMS
+namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
@@ -47,7 +48,7 @@ namespace SIMS
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(LekarUI.getInstance().getUser().Jmbg))
+                if (l.Jmbg.Equals(LekarUI.GetInstance().getUser().Jmbg))
                 {
                     break;
                 }
@@ -84,7 +85,7 @@ namespace SIMS
                 termin.VrstaTermina = TipTermina.operacija;
 
                 TerminStorage.Instance.Create(termin);
-                LekarUI.getInstance().refresh();
+                LekarTerminiPage.GetInstance().refresh();
                 this.Close();
             }
             

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SIMS
+namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
@@ -67,7 +67,7 @@ namespace SIMS
 
                 TerminStorage.Instance.Update(termin);
 
-                LekarUI.getInstance().refresh();
+                LekarTerminiPage.GetInstance().refresh();
                 this.Close();
             }
         }

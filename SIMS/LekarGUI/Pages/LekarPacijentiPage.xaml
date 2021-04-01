@@ -1,0 +1,16 @@
+﻿<Page x:Class="SIMS.LekarGUI.LekarPacijentiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.LekarGUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="LekarPacijentiPage">
+
+    <Grid Background="#FF323D52">
+
+        <TextBlock HorizontalAlignment="Center" Height="340" TextWrapping="Wrap" VerticalAlignment="Center" Width="491" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Prologue -"/><LineBreak/><Run/><LineBreak/><Run Text="When the war of the beasts brings about the world's end"/><LineBreak/><Run Text="The goddess descends from the sky"/><LineBreak/><Run Text="Wings of light and dark spread afar"/><LineBreak/><Run Text="She guides us to bliss, her gift everlasting"/><LineBreak/><Run/><LineBreak/><Run Text="- Act I -"/><LineBreak/><Run/><LineBreak/><Run Text="Infinite in mystery is the gift of the Goddess"/><LineBreak/><Run Text="We seek it thus, and take to the sky"/><LineBreak/><Run Text="Ripples form on the water's surface"/><LineBreak/><Run Text="The wandering soul knows no rest."/></TextBlock>
+
+    </Grid>
+</Page>

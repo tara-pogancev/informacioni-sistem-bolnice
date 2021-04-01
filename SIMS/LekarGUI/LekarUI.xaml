@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
-        Closing="LekarUI_Closing"
         WindowStartupLocation="CenterScreen"
         Title="Bolnica Zdravo - Lekar" Height="650" Width="950">
 
@@ -74,48 +73,9 @@
 
                 <Grid Grid.Row="1" Background="#323D52">
 
-                    <Grid Margin="40,30,40,0" VerticalAlignment="Top" Height="430">
-
-                        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = TerminiView}" IsReadOnly="True"
-                                  SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
-                                  DataGrid.CanUserResizeRows="False">
-
-                            <DataGrid.Columns>
-
-                                <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Početak" Binding="{Binding Vrijeme}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                                <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija}" Width="*"  DataGridColumn.CanUserResize="False"/>
-
-                            </DataGrid.Columns>
-
-                        </DataGrid>
-
-                    </Grid>
-
-
-                    <Grid Margin="120,0,40,0" Height="75" VerticalAlignment="Bottom">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button Content="Zakaži pregled" Grid.Column="0" Click="Button_Pregled" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
-
-
-                        <Button Content="Zakaži operaciju"  Grid.Column="1" Click="Button_Operacija" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
-
-                        <Button Content="Uredi termin" Grid.Column="2" Click="Button_Update" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
-
-
-                        <Button Content="Otkaži termin" Grid.Column="3" Click="Button_Delete" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-
-                    </Grid>
-
+                    <!--SELLECTED TAB CONTENT-->
+                    <Frame x:Name="SellectedTab" NavigationUIVisibility="Hidden"/>
+                   
                 </Grid>
 
                 <Grid Grid.Row="2" Background="#FF404C63">

@@ -1,5 +1,6 @@
 ﻿
 using Model;
+using SIMS.LekarGUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ using System.Windows.Threading;
 namespace SIMS
 {
     /// <summary>
-    /// Interaction logic for LekarUI.xaml
+    /// Glavni prozor za lekara
     /// </summary>
     public partial class LekarUI : Window
     {
@@ -27,10 +28,7 @@ namespace SIMS
 
         private static Lekar lekarUser;
 
-        private ObservableCollection<Termin> terminiView;
-        public ObservableCollection<Termin> TerminiView { get => terminiView; set => terminiView = value; }
-
-        public static LekarUI getInstance(Lekar l)
+        public static LekarUI GetInstance(Lekar l)
         {
             if (instance == null)
             {
@@ -40,8 +38,7 @@ namespace SIMS
             return instance;
         }
 
-
-        public static LekarUI getInstance()
+        public static LekarUI GetInstance()
         {
             return instance;
         }
@@ -58,111 +55,39 @@ namespace SIMS
             }, this.Dispatcher);
 
             this.UsernameLabel.Content = lekarUser.ImePrezime;
-
-            //Tabela pregleda
-
-            this.DataContext = this;
-            terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            refreshView();
-        }
-
-        private void refreshView()
-        {
-            terminiView.Clear();
-            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
-            foreach (Termin t in temp)
-            {
-                terminiView.Add(t);
-            }
         }
 
         private void Button_Termini(object sender, RoutedEventArgs e)
         {
             //Button: Termini
+            SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
         }
 
         private void Button_Pacijenti(object sender, RoutedEventArgs e)
         {
             //Button: Pacijenti
+            SellectedTab.Content = LekarPacijentiPage.GetInstance(lekarUser);
         }
 
         private void Button_Istorija(object sender, RoutedEventArgs e)
         {
             //Button: Istorija pregleda
+            SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
         }
 
         private void Button_Evidencija(object sender, RoutedEventArgs e)
         {
             //Button: Evidentiranje materijala
+            SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
         }
 
         private void Button_Nalog(object sender, RoutedEventArgs e)
         {
-            //Button: Nalog, DEBUG
-            MessageBox.Show("Ukupno termina: " + TerminStorage.Instance.ReadList().Count);
-            refreshView();
+            //Button: Nalog, DEBUG po potrebi
+            SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
 
-        }
+            //MessageBox.Show("Ukupno termina: " + TerminStorage.Instance.ReadList().Count);
 
-        private void Button_Pregled(object sender, RoutedEventArgs e)
-        {
-            //Button: Zakazi pregled
-            TerminCreate terminCreate = new TerminCreate();
-            terminCreate.Show();
-        }
-
-        private void Button_Operacija(object sender, RoutedEventArgs e)
-        {
-            //Button: Zakazi operaciju
-            OperacijaCreate operacijaCreate = new OperacijaCreate();
-            operacijaCreate.Show();
-        }
-
-        private void Button_Update(object sender, RoutedEventArgs e)
-        {
-            //Button: Uredi termin
-            if (dataGridTermini.SelectedItem != null)
-            {
-                TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
-                terminUpdate.Show();
-            }
-
-        }
-
-        private void Button_Delete(object sender, RoutedEventArgs e)
-        {
-            //Button: Otkaži pregled
-
-            if (dataGridTermini.SelectedItem != null)
-            {
-
-                if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
-                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    Termin toDelete = (Termin)dataGridTermini.SelectedItem;
-                    TerminStorage.Instance.Delete(toDelete.TerminKey);
-                    MessageBox.Show("Termin je uspešno otkazan!");
-                    refreshView();
-                }
-
-            }
-        }
-
-        public void dodajTermin(Termin termin)
-        {
-            TerminStorage.Instance.Create(termin);
-            refreshView();
-            MessageBox.Show("Termin uspešno zakazan.");
-        }
-
-        private void LekarUI_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            return;
-        }
-
-        public void refresh()
-        {
-            refreshView();
         }
 
         public Lekar getUser()

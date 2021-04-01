@@ -58,7 +58,7 @@ namespace SIMS
             Lekar lekar = LekarStorage.Instance.ReadUser(user);
             if (lekar != null && pass.Equals(lekar.Lozinka))
             {
-                LekarUI lekarUI = LekarUI.getInstance(lekar);
+                LekarUI lekarUI = LekarUI.GetInstance(lekar);
                 lekarUI.Show();
                 this.Close();
                 return;
