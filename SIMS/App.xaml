@@ -4,6 +4,87 @@
              xmlns:local="clr-namespace:SIMS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!--Base button style-->
+        <Style TargetType="Button" x:Key="SideMenuButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
+            <Setter Property="TextBlock.Foreground" Value="LightGray"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF212734"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Green button-->
+        <Style TargetType="Button" x:Key="GreenButton">
+            <Setter Property="Background" Value="#FF57D6B4"/>
+            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF33A486"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Green Bold button-->
+        <Style TargetType="Button" BasedOn="{StaticResource GreenButton}" x:Key="GreenBoldButton">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="135"/>
+        </Style>
+
+        <!--Red button-->
+        <Style TargetType="Button" x:Key="RedButton">
+            <Setter Property="Background" Value="#FFE26868"/>
+            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFCB5252"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--Red Bold button-->
+        <Style TargetType="Button" BasedOn="{StaticResource RedButton}" x:Key="RedBoldButton">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="130"/>
+        </Style>
+
+        <!--Button control templates-->
+        <ControlTemplate TargetType="Button" x:Key="BasicButton">
+            <Grid Width="130" Height="35">
+            <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="BigButton">
+            <Grid>
+                <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="10" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="BlankButton">
+            <Grid>
+                <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>

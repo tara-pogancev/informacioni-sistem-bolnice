@@ -6,11 +6,8 @@
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
         Closing="LekarUI_Closing"
-        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Title="Bolnica Zdravo - Lekar" Height="650" Width="950">
-
-
 
     <Grid ShowGridLines="false">
         <Grid.ColumnDefinitions>
@@ -31,108 +28,30 @@
 
                 <Grid Grid.Row="1">
 
-                    <Button Content="Termini"  Margin="0,27,0,0" VerticalAlignment="Top"
-                            FontSize="22" Click="Button_Termini" BorderBrush="{x:Null}">
+                    <Grid>
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="{x:Null}"/>
-                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
-                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#485268"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="55" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                    </Button>
+                        <Button Content="Termini" Click="Button_Termini" Grid.Row="0" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                    <Button Content="Pacijenti"  Margin="0,82,0,0" 
-                            FontSize="22" Click="Button_Pacijenti"
-                            Height="35" VerticalAlignment="Top" BorderBrush="{x:Null}">
+                        <Button Content="Pacijenti"  Grid.Row="1" Click="Button_Pacijenti" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="{x:Null}"/>
-                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
-                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#485268"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                        <Button Content="Istorija pregleda"  Grid.Row="2" Click="Button_Istorija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                    <Button Content="Istorija pregleda"  Margin="0,137,0,0" 
-                            FontSize="22" Click="Button_Istorija"
-                            Height="35" VerticalAlignment="Top" BorderBrush="{x:Null}">
+                        <Button Content="Potrošnja materijala" Grid.Row="3" Click="Button_Evidencija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="{x:Null}"/>
-                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
-                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#485268"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                        <Button Content="Nalog"  Grid.Row="4" Click="Button_Nalog" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-
-                    <Button Content="Potrošnja materijala"  Margin="0,192,0,0" 
-                            FontSize="22" Click="Button_Evidencija"
-                            Height="35" VerticalAlignment="Top" BorderBrush="{x:Null}">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="{x:Null}"/>
-                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
-                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#485268"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
-
-                    <Button Content="Nalog"  Margin="0,247,0,0" 
-                            FontSize="22" Click="Button_Nalog"
-                            Height="35" VerticalAlignment="Top" BorderBrush="{x:Null}">
-
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="{x:Null}"/>
-                                <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
-                                <Setter Property="TextBlock.Foreground" Value="#ffffff"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#485268"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-
+                    </Grid>
                 </Grid>
-
-
             </Grid>
-
         </Grid>
 
         <Grid Grid.Column="1">
@@ -185,145 +104,17 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Column="0">
+                        <Button Content="Zakaži pregled" Grid.Column="0" Click="Button_Pregled" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
 
-                            <Button Content="Zakaži pregled"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Pregled">
 
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="#FF57D6B4"/>
-                                        <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                                        <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#FF33A486"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
+                        <Button Content="Zakaži operaciju"  Grid.Column="1" Click="Button_Operacija" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="125" Height="35" CornerRadius="20" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
+                        <Button Content="Uredi termin" Grid.Column="2" Click="Button_Update" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
-                                        </Border>
 
-                                    </ControlTemplate>
-                                </Button.Template>
-
-                            </Button>
-
-                        </Grid>
-
-                        <Grid Grid.Column="1">
-
-                            <Button Content="Zakaži operaciju"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Operacija">
-
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="#FF57D6B4"/>
-                                        <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                                        <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#FF33A486"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="125" Height="35" CornerRadius="20" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
-                                        </Border>
-
-                                    </ControlTemplate>
-                                </Button.Template>
-
-                            </Button>
-
-                        </Grid>
-
-                        <Grid Grid.Column="2">
-
-                            <Button Content="Uredi termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Update">
-
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="#FF57D6B4"/>
-                                        <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                                        <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#FF33A486"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="125" Height="35" CornerRadius="20" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
-                                        </Border>
-
-                                    </ControlTemplate>
-                                </Button.Template>
-
-                            </Button>
-
-                        </Grid>
-
-                        <Grid Grid.Column="3">
-
-                            <Button Content="Otkaži termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Delete">
-
-                                <Button.Style>
-                                    <Style TargetType="Button">
-                                        <Setter Property="Background" Value="#FFE26868"/>
-                                        <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                                        <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#FFCB5252"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Button.Style>
-
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Width="125" Height="35" CornerRadius="20" Background="{TemplateBinding Background}">
-                                            <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
-                                        </Border>
-
-                                    </ControlTemplate>
-                                </Button.Template>
-
-                            </Button>
-
-                        </Grid>
+                        <Button Content="Otkaži termin" Grid.Column="3" Click="Button_Delete" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
 
                     </Grid>
-
-
 
                 </Grid>
 

@@ -9,6 +9,16 @@
         Title="Zakaži pregled" Height="500" Width="600"
         WindowStartupLocation="CenterScreen">
 
+    <Window.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Window.Resources>
+
     <Grid Background="#FF191E29">
 
         <Grid.ColumnDefinitions>
@@ -31,12 +41,12 @@
 
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
 
         </Grid>
 
@@ -79,36 +89,15 @@
 
                 <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="trajanjeLista" ItemsSource="{Binding trajanje}"
                     Width="260" Height="30" HorizontalAlignment="Left" FontFamily="Candara" FontSize="14" />
-                
-
-                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Width="130" Height="35" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0">
-
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FF148364"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
 
 
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="8" Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Click="Button_Click"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
 
-                            </Border>
-
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
 
                 <Grid Margin="-200,0,0,0" Grid.RowSpan="2">
 
-                    <Label Content="Zakazivanje pregleda" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                    <Label Content="Zakazivanje pregleda" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
                 </Grid>
 
