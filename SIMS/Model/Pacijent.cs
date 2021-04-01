@@ -10,9 +10,16 @@ namespace Model
 {
     public class Pacijent : UlogovanKorisnik
     {
+        public enum Krvne_Grupe {Op, On, Ap, An, Bp, Bn, ABp, ABn};
+        public enum Pol {M, Z};
+
         private String lbo;
         private bool gost;
         private List<string> alergeni;
+        private DateTime datum_rodjenja;
+        private Krvne_Grupe krvna_grupa;
+        private Pol pol;
+        private List<string> hronicne_bolesti;
 
         public string Lbo { get => lbo; set => lbo = value; }
         public bool Gost { get => gost; set => gost = value; }
@@ -22,6 +29,17 @@ namespace Model
             this.lbo = lbo;
             this.gost = gost;
             this.alergeni = alergeni;
+        }
+
+        public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni, DateTime datum_rodjenja, Krvne_Grupe krvna_grupa, Pol pol, List<string> hronicne_bolesti) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        {
+            this.lbo = lbo;
+            this.gost = gost;
+            this.alergeni = alergeni;
+            this.datum_rodjenja = datum_rodjenja;
+            this.krvna_grupa = krvna_grupa;
+            this.pol = pol;
+            this.hronicne_bolesti = hronicne_bolesti;
         }
 
         public Pacijent() : base()
@@ -81,7 +99,65 @@ namespace Model
                     alergeniString += a + " ";
                 return alergeniString.Trim();
             }
+        }
 
+        public DateTime Datum_Rodjenja
+        {
+            get
+            {
+                return datum_rodjenja;
+            }
+            set
+            {
+                this.datum_rodjenja = value;
+            }
+        }
+
+        public Krvne_Grupe Krvna_Grupa
+        {
+            get
+            {
+                return krvna_grupa;
+            }
+            set
+            {
+                krvna_grupa = value;
+            }
+        }
+
+        public Pol Pol_Pacijenta
+        {
+            get
+            {
+                return pol;
+            }
+            set
+            {
+                pol = value;
+            }
+        }
+
+        public List<string> Hronicne_Bolesti
+        {
+            get
+            {
+                return hronicne_bolesti;
+            }
+            set
+            {
+                hronicne_bolesti = value;
+            }
+        } 
+
+        public string Hronicne_Bolesti_String
+        {
+            get
+            {
+                string hronicne_bolesti_string = "";
+                foreach (string hb in hronicne_bolesti)
+                    hronicne_bolesti_string += hb + " ";
+                return hronicne_bolesti_string.Trim();
+            }
         }
 
     }
