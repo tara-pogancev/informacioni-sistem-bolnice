@@ -13,7 +13,10 @@
     <None Remove="LekarGUI\profile.png" />
     <None Remove="LekarGUI\search.png" />
     <None Remove="logo.ico" />
+    <None Remove="src\close.png" />
     <None Remove="src\exit.png" />
+    <None Remove="src\Illustrations\Lunch_break.png" />
+    <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
     <None Remove="src\logo_glow.jpg" />
@@ -21,13 +24,19 @@
     <None Remove="src\logo_h.png" />
     <None Remove="src\logo_h_small.png" />
     <None Remove="src\logo_title.png" />
+    <None Remove="src\max_window.png" />
+    <None Remove="src\minimize.png" />
     <None Remove="src\notification.png" />
     <None Remove="src\profile.png" />
     <None Remove="src\search.png" />
+    <None Remove="src\small_window.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="src\close.png" />
     <Resource Include="src\exit.png" />
+    <Resource Include="src\Illustrations\Lunch_break.png" />
+    <Resource Include="src\Illustrations\Winners_Monochromatic.png" />
     <Resource Include="src\logo.png" />
   </ItemGroup>
 
@@ -44,9 +53,12 @@
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />
     <Resource Include="src\logo_title.png" />
+    <Resource Include="src\max_window.png" />
+    <Resource Include="src\minimize.png" />
     <Resource Include="src\notification.png" />
     <Resource Include="src\profile.png" />
     <Resource Include="src\search.png" />
+    <Resource Include="src\small_window.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -54,7 +54,12 @@ namespace SIMS
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
             }, this.Dispatcher);
 
+            SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+
             this.UsernameLabel.Content = lekarUser.ImePrezime;
+
+            WindowBarFrame.Content = new WindowBar();
+
         }
 
         private void Button_Termini(object sender, RoutedEventArgs e)
@@ -86,13 +91,81 @@ namespace SIMS
             //Button: Nalog, DEBUG po potrebi
             SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
 
-            //MessageBox.Show("Ukupno termina: " + TerminStorage.Instance.ReadList().Count);
+        }
+
+        private void Button_Dashboard(object sender, MouseButtonEventArgs e)
+        {
+            //Dashboard
+            SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
 
         }
 
-        public Lekar getUser()
+        public Lekar GetUser()
         {
             return lekarUser;
+        }
+
+        public void ChangeTab(int tabNum)
+        {
+
+            //Funkcija pomocu enumeracije menja tab
+            switch (tabNum)
+            {
+
+                case 0:
+                    {
+                        SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+                        break;
+                    }
+                case 1:
+                    {
+                        SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
+                        break;
+                    }
+                case 2:
+                    {
+                        SellectedTab.Content = LekarPacijentiPage.GetInstance(lekarUser);
+                        break;
+                    }
+                case 3:
+                    {
+                        SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
+                        break;
+                    }
+                case 4:
+                    {
+                        SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
+                        break;
+                    }
+                case 5:
+                    {
+                        SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
+                        break;
+                    }
+
+            }
+        }
+
+        public void ChangeWindowMinimize()
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        public void ChangeWindowClose()
+        {
+            this.Close();
+        }
+
+        public void ChangeWindowSize()
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
         }
 
         private void Button_LogOut(object sender, MouseButtonEventArgs e)
@@ -122,5 +195,6 @@ namespace SIMS
 
             }
         }
+
     }
 }
