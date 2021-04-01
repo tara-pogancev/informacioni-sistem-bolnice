@@ -43,5 +43,10 @@ namespace SIMS.LekarGUI
         {
             InitializeComponent();
         }
+
+        public void RemoveInstance()
+        {
+            instance = null;
+        }
     }
 }

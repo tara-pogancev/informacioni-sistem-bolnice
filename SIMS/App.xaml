@@ -5,6 +5,13 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <!--Label style-->
+        <Style TargetType="Label" x:Key="DefaultLabel">
+            <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="TextBlock.Foreground" Value="LightGray"/>
+        </Style>
+        
         <!--Base button style-->
         <Style TargetType="Button" x:Key="SideMenuButton">
             <Setter Property="Background" Value="Transparent"/>
@@ -97,6 +104,6 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         </Style>
-
+        
     </Application.Resources>
 </Application>

@@ -118,5 +118,10 @@ namespace SIMS.LekarGUI
         {
             refreshView();
         }
+
+        public void RemoveInstance()
+        {
+            instance = null;
+        }
     }
 }

@@ -13,6 +13,7 @@
     <None Remove="LekarGUI\profile.png" />
     <None Remove="LekarGUI\search.png" />
     <None Remove="logo.ico" />
+    <None Remove="src\exit.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
     <None Remove="src\logo_glow.jpg" />
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="src\exit.png" />
     <Resource Include="src\logo.png" />
   </ItemGroup>
 

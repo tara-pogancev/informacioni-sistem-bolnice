@@ -21,7 +21,7 @@ namespace SIMS
         private ObservableCollection<Model.Pacijent> pacijenti;
         private static SekretarUI instance = null;
 
-        public static SekretarUI getInstance()
+        public static SekretarUI GetInstance()
         {
             if (instance == null)
                 instance = new SekretarUI();

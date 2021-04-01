@@ -95,5 +95,32 @@ namespace SIMS
             return lekarUser;
         }
 
+        private void Button_LogOut(object sender, MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
+                "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                new MainWindow().Show();
+                this.Close();
+
+                if (LekarEvidencijaPage.GetInstance() != null)
+                    LekarEvidencijaPage.GetInstance().RemoveInstance();
+
+                if (LekarPacijentiPage.GetInstance() != null)
+                    LekarPacijentiPage.GetInstance().RemoveInstance();
+
+                if (LekarIstorijaPage.GetInstance() != null)
+                    LekarIstorijaPage.GetInstance().RemoveInstance();
+
+                if (LekarNalogPage.GetInstance() != null)
+                    LekarNalogPage.GetInstance().RemoveInstance();
+
+                if (LekarTerminiPage.GetInstance() != null)
+                    LekarTerminiPage.GetInstance().RemoveInstance();
+
+                instance = null;
+
+            }
+        }
     }
 }

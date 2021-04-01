@@ -48,6 +48,13 @@
 
                         <Button Content="Nalog"  Grid.Row="4" Click="Button_Nalog" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
+                        <StackPanel Orientation="Horizontal" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,10,10" Cursor="Hand" PreviewMouseDown="Button_LogOut">
+
+                            <Image Source="../src/exit.png" Width="18"/>
+                            <Label Content="ODJAVI SE" Style="{StaticResource DefaultLabel}" FontSize="14"/>
+
+                        </StackPanel>
+
                     </Grid>
                 </Grid>
             </Grid>
