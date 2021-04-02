@@ -19,6 +19,7 @@ namespace SIMS.LekarGUI
     public partial class WindowBar : Page
     {
         // W I P
+        
 
         public WindowBar()
         {
@@ -33,6 +34,22 @@ namespace SIMS.LekarGUI
         private void Button_Size(object sender, RoutedEventArgs e)
         {
             LekarUI.GetInstance().ChangeWindowSize();
+
+            ChangeMinimizeButton();
+
+        }
+
+        public void ChangeMinimizeButton()
+        {
+            if (LekarUI.GetInstance().GetWindowState() == WindowState.Maximized)
+            {
+                SizeImg.Source = new BitmapImage(new Uri(@"/src/small_window.png", UriKind.RelativeOrAbsolute));
+            }
+
+            if (LekarUI.GetInstance().GetWindowState() == WindowState.Normal)
+            {
+                SizeImg.Source = new BitmapImage(new Uri(@"/src/max_window.png", UriKind.RelativeOrAbsolute));
+            }
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)

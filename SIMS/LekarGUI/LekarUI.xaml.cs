@@ -28,6 +28,8 @@ namespace SIMS
 
         private static Lekar lekarUser;
 
+        private WindowBar bar = new WindowBar();
+
         public static LekarUI GetInstance(Lekar l)
         {
             if (instance == null)
@@ -49,6 +51,8 @@ namespace SIMS
 
             //Tred za prikazivanje sata i datuma
 
+            this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
+
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
@@ -58,7 +62,7 @@ namespace SIMS
 
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
-            WindowBarFrame.Content = new WindowBar();
+            WindowBarFrame.Content = bar;
 
         }
 
@@ -168,6 +172,11 @@ namespace SIMS
             }
         }
 
+        public WindowState GetWindowState()
+        {
+            return this.WindowState;
+        }
+
         private void Button_LogOut(object sender, MouseButtonEventArgs e)
         {
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
@@ -196,5 +205,25 @@ namespace SIMS
             }
         }
 
+        private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void MinimizeWindow(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+
+            Application.Current.MainWindow = this;
+            Application.Current.MainWindow.Width = 1050;
+            Application.Current.MainWindow.Height = 625;
+
+            double height = SystemParameters.WorkArea.Height;
+            double width = SystemParameters.WorkArea.Width;
+            this.Top = (height - this.Height) / 2;
+            this.Left = (width - this.Width) / 2;
+
+            bar.ChangeMinimizeButton();
+        }
     }
 }

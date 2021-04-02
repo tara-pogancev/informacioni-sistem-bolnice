@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:SIMS"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="CanResizeWithGrip"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="CanResize"
         MinHeight="630" MinWidth="750"
         Title="Bolnica Zdravo - Lekar" Height="625" Width="1050">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,7 +21,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="0" Name="WindowBarFrame" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="0" Name="WindowBarFrame" NavigationUIVisibility="Hidden" MouseDown="OnDragMoveWindow" MouseDoubleClick="MinimizeWindow"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -96,7 +101,7 @@
                     </Grid>
 
                     <Grid Grid.Row="2" Background="#FF404C63">
-                        <Label Content="16:14 │ 25/03/2021" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC9C9C9" FontSize="12" Margin="0,0,12,0" Name="dateAndTime" VerticalContentAlignment="Center"/>
+                        <Label Content="16:14 │ 25/03/2021" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC9C9C9" FontSize="12" Margin="0,0,10,0" Name="dateAndTime" VerticalContentAlignment="Center"/>
 
                     </Grid>
 
