@@ -1,1 +1,122 @@
-{"4865453131":{"Lbo":"123","Gost":false,"GetGost":"Ne","Alergeni":[""],"GetAlergeniString":"","Ime":"Djordje","Prezime":"Krsmanovic","Jmbg":"4865453131","KorisnickoIme":"pacijent","Lozinka":"p","Email":"djordje1499@gmail.com","Telefon":"0645568131","Adresa":null,"ImePrezime":"Djordje Krsmanovic"},"2484848556":{"Lbo":"124","Gost":false,"GetGost":"Ne","Alergeni":[""],"GetAlergeniString":"","Ime":"Nikola","Prezime":"Markovic","Jmbg":"2484848556","KorisnickoIme":"pacijent1","Lozinka":"p","Email":"nikola123@gmail.com","Telefon":"0645568131","Adresa":null,"ImePrezime":"Nikola Markovic"},"12645323206":{"Lbo":"45645","Gost":false,"GetGost":"Ne","Alergeni":[""],"GetAlergeniString":"","Ime":"Miha","Prezime":"Mihajlo","Jmbg":"12645323206","KorisnickoIme":"mih2","Lozinka":"p","Email":"e@gmail.com","Telefon":"06250","Adresa":{"Grad":{"Naziv":"","PostanskiBroj":0,"Drzava":{"Naziv":""}},"Ulica":"","Broj":""},"ImePrezime":"Miha Mihajlo"},"4484552102":{"Lbo":"445487541","Gost":false,"GetGost":"Ne","Alergeni":["polen"],"GetAlergeniString":"polen","Ime":"Nina","Prezime":"Vlahovic","Jmbg":"4484552102","KorisnickoIme":"nina5","Lozinka":"p","Email":"nina555@gmail.com","Telefon":"0635554871","Adresa":{"Grad":{"Naziv":"Novi Sad","PostanskiBroj":21000,"Drzava":{"Naziv":"Srbija"}},"Ulica":"Futoski put","Broj":"84b"},"ImePrezime":"Nina Vlahovic"}}
+{
+  "4865453131": {
+    "Lbo": "123",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Alergeni": [
+      ""
+    ],
+    "GetAlergeniString": "",
+    "Ime": "Djordje",
+    "Prezime": "Krsmanovic",
+    "Jmbg": "4865453131",
+    "KorisnickoIme": "pacijent",
+    "Lozinka": "p",
+    "Email": "djordje1499@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": null,
+    "ImePrezime": "Djordje Krsmanovic",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 0,
+    "Pol_Pacijenta": 0,
+    "Hronicne_Bolesti": [
+      ""
+    ],
+    "Hronicne_Bolesti_String": ""
+  },
+  "2484848556": {
+    "Lbo": "124",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Alergeni": [
+      ""
+    ],
+    "GetAlergeniString": "",
+    "Ime": "Nikola",
+    "Prezime": "Markovic",
+    "Jmbg": "2484848556",
+    "KorisnickoIme": "pacijent1",
+    "Lozinka": "p",
+    "Email": "nikola123@gmail.com",
+    "Telefon": "0645568131",
+    "Adresa": null,
+    "ImePrezime": "Nikola Markovic",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 2,
+    "Pol_Pacijenta": 0,
+    "Hronicne_Bolesti": [
+      ""
+    ],
+    "Hronicne_Bolesti_String": ""
+  },
+  "12645323206": {
+    "Lbo": "45645",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Alergeni": [
+      ""
+    ],
+    "GetAlergeniString": "",
+    "Ime": "Miha",
+    "Prezime": "Mihajlo",
+    "Jmbg": "12645323206",
+    "KorisnickoIme": "mih2",
+    "Lozinka": "p",
+    "Email": "e@gmail.com",
+    "Telefon": "06250",
+    "Adresa": {
+      "Grad": {
+        "Naziv": "",
+        "PostanskiBroj": 0,
+        "Drzava": {
+          "Naziv": ""
+        }
+      },
+      "Ulica": "",
+      "Broj": ""
+    },
+    "ImePrezime": "Miha Mihajlo",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 5,
+    "Pol_Pacijenta": 0,
+    "Hronicne_Bolesti": [
+      ""
+    ],
+    "Hronicne_Bolesti_String": ""
+  },
+  "4484552102": {
+    "Lbo": "445487541",
+    "Gost": false,
+    "GetGost": "Ne",
+    "Alergeni": [
+      "polen"
+    ],
+    "GetAlergeniString": "polen",
+    "Ime": "Nina",
+    "Prezime": "Vlahovic",
+    "Jmbg": "4484552102",
+    "KorisnickoIme": "nina5",
+    "Lozinka": "p",
+    "Email": "nina555@gmail.com",
+    "Telefon": "0635554871",
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Futoski put",
+      "Broj": "84b"
+    },
+    "ImePrezime": "Nina Vlahovic",
+    "Datum_Rodjenja": "1999-03-05T00:00:00",
+    "Krvna_Grupa": 7,
+    "Pol_Pacijenta": 1,
+    "Hronicne_Bolesti": [
+      ""
+    ],
+    "Hronicne_Bolesti_String": ""
+  }
+}

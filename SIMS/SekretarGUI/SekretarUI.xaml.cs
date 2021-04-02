@@ -52,12 +52,6 @@ namespace SIMS
             pacijenti = new ObservableCollection<Pacijent>(storage.ReadList());
 
             tabelaPacijenata.ItemsSource = pacijenti;
-            Closing += new CancelEventHandler(Sekretar_Closing);
-        }
-
-        private void Sekretar_Closing(object sender, CancelEventArgs e)
-        {
-            //new PacijentStorage().Create(new List<Pacijent>(pacijenti));
         }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
