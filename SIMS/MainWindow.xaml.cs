@@ -68,7 +68,7 @@ namespace SIMS
             Sekretar sekretar = SekretarStorage.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Lozinka))
             {
-                    SekretarUI sekretarUI = SekretarUI.GetInstance();
+                    SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
                     sekretarUI.Show();
                     this.Close();
                     return;
