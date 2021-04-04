@@ -73,6 +73,9 @@
     <Page Update="LekarGUI\Dialogues\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="LekarGUI\Pages\LekarNotificationPage.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>
