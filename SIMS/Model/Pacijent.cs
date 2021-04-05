@@ -157,5 +157,18 @@ namespace Model
             }
         }
 
+        public String DatumString { get => datum_rodjenja.ToString("dd.MM.yyyy."); }
+        public String PolString
+        {
+            get
+
+            {
+                if (pol == Pol.M)
+                    return "Muško";
+                else
+                    return "Žensko";
+            }
+        }
+
     }
 }

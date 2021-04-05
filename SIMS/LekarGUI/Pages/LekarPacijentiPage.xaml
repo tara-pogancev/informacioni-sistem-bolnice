@@ -10,7 +10,42 @@
 
     <Grid Background="#FF323D52">
 
-        <TextBlock HorizontalAlignment="Center" Height="340" TextWrapping="Wrap" VerticalAlignment="Center" Width="491" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Prologue -"/><LineBreak/><Run/><LineBreak/><Run Text="When the war of the beasts brings about the world's end"/><LineBreak/><Run Text="The goddess descends from the sky"/><LineBreak/><Run Text="Wings of light and dark spread afar"/><LineBreak/><Run Text="She guides us to bliss, her gift everlasting"/><LineBreak/><Run/><LineBreak/><Run Text="- Act I -"/><LineBreak/><Run/><LineBreak/><Run Text="Infinite in mystery is the gift of the Goddess"/><LineBreak/><Run Text="We seek it thus, and take to the sky"/><LineBreak/><Run Text="Ripples form on the water's surface"/><LineBreak/><Run Text="The wandering soul knows no rest."/></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+
+        <DataGrid x:Name="dataGridPacijenti" ItemsSource="{Binding Path = PacijentiView}" IsReadOnly="True"
+                SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
+                DataGrid.CanUserResizeRows="False" Grid.Row="0" Margin="40,30,40,0">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                <DataGridTextColumn Header="Pol" Binding="{Binding PolString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                <DataGridTextColumn Header="Datum rodjenja" Binding="{Binding DatumString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                <DataGridTextColumn Header="LBO" Binding="{Binding Lbo}" Width="*"  DataGridColumn.CanUserResize="False"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Grid Margin="40,0,40,0" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="Pregled kartona" Grid.Column="1" Click="Button_Pregled" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+
+            <Button Content="Izdaj recept" Grid.Column="2" Click="Button_Recept" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+         
+        </Grid>
 
     </Grid>
 </Page>

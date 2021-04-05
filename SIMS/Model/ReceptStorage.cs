@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
 
-namespace SIMS.Model
+namespace Model
 {
     public class ReceptStorage : Storage<string, Recept, ReceptStorage>
     {

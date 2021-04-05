@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Model
+namespace Model
 {
     public class AnamnezaStorage : Storage<string, Anamneza, AnamnezaStorage>
     {

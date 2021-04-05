@@ -54,7 +54,7 @@ namespace Model
             this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
         }        
 
-        public String Datum { get => PocetnoVreme.ToString("dd/MM/yyyy"); }
+        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
 
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 

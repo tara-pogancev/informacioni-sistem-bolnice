@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
 
-namespace SIMS.Model
+namespace Model
 {
     public class Anamneza
     {
@@ -70,7 +69,7 @@ namespace SIMS.Model
 
         public String Date
         {
-            get { return datum.ToString("dd/MM/yyyy"); }
+            get { return datum.ToString("dd.MM.yyyy."); }
         }
 
         public String TerminDateType

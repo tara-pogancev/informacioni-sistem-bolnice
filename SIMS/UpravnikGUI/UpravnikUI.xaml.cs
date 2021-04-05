@@ -24,7 +24,7 @@ namespace SIMS.UpravnikGUI
 
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
+                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
             }, this.Dispatcher);
         }
 

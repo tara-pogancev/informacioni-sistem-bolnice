@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
 
-namespace SIMS.Model
+namespace Model
 {
     public class Recept
     {
@@ -37,7 +36,7 @@ namespace SIMS.Model
 
         public String ImePacijenta { get { return PacijentStorage.Instance.Read(pacijentKey).ImePrezime; } }
 
-        public String DateString { get { return datum.ToString("dd/MM/yyyy"); } }
+        public String DateString { get { return datum.ToString("dd.MM.yyyy."); } }
 
         public String NazivLeka { get => this.nazivLeka;  }
         public String Kolicina { get => this.kolicina; }
