@@ -15,6 +15,7 @@
     <None Remove="logo.ico" />
     <None Remove="src\close.png" />
     <None Remove="src\exit.png" />
+    <None Remove="src\home.png" />
     <None Remove="src\Illustrations\Lunch_break.png" />
     <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\logo.ico" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <Resource Include="src\close.png" />
     <Resource Include="src\exit.png" />
+    <Resource Include="src\home.png" />
     <Resource Include="src\Illustrations\Lunch_break.png" />
     <Resource Include="src\Illustrations\Winners_Monochromatic.png" />
     <Resource Include="src\logo.png" />

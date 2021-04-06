@@ -45,23 +45,30 @@
                         <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="55" />
-                                <RowDefinition Height="55" />
-                                <RowDefinition Height="55" />
-                                <RowDefinition Height="55" />
-                                <RowDefinition Height="55" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+
+                            <Rectangle Name="B1" Grid.Row="0" Fill="{x:Null}"/>
+                            <Rectangle Name="B2" Grid.Row="1" Fill="{x:Null}"/>
+                            <Rectangle Name="B3" Grid.Row="2" Fill="{x:Null}"/>
+                            <Rectangle Name="B4" Grid.Row="3" Fill="{x:Null}"/>
+                            <Rectangle Name="B5" Grid.Row="4" Fill="{x:Null}"/>
+
 
                             <Button Content="Termini" Click="Button_Termini" Grid.Row="0" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                            <Button Content="Pacijenti"  Grid.Row="1" Click="Button_Pacijenti" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+                            <Button Content="Pacijenti" Grid.Row="1" Click="Button_Pacijenti" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                            <Button Content="Istorija pregleda"  Grid.Row="2" Click="Button_Istorija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+                            <Button Content="Istorija pregleda" Grid.Row="2" Click="Button_Istorija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
                             <Button Content="Potrošnja materijala" Grid.Row="3" Click="Button_Evidencija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
-                            <Button Content="Nalog"  Grid.Row="4" Click="Button_Nalog" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+                            <Button Content="Nalog" Grid.Row="4" Click="Button_Nalog" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
 
                             <StackPanel Orientation="Horizontal" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,10,10" Cursor="Hand" PreviewMouseDown="Button_LogOut">
 
@@ -84,10 +91,9 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Background="#292C3B">
-                        <TextBox HorizontalAlignment="Left" Margin="98,0,0,0" Text="Search..." TextWrapping="NoWrap" VerticalAlignment="Center" Width="324" Height="26" FontSize="18" FontFamily="Candara Light" MaxLength="299" AutomationProperties.AcceleratorKey="ctrl+F" Background="{x:Null}" Foreground="#FF7F85A2" BorderBrush="{x:Null}"/>
+                        
                         <Label Content="Lucrecia Crescent" Name ="UsernameLabel"  HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}" HorizontalContentAlignment="Left" Padding="5,5,5,5" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
-
-                        <Image Source="/src/search.png" Height="20" Margin="72,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                       
                         <Image Source="/src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
                         <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
 

@@ -1,3 +1,1 @@
-{
-
-}
+{"210331121414":{"getTermin":{"PocetnoVreme":"2021-03-09T11:00:00","VremeTrajanja":60,"VrstaTermina":0,"LekarKey":"045210805048","PacijentKey":"2484848556","Prostorija":"2a","Datum":"09.03.2021.","Vrijeme":"11:00","TerminKey":"210331121414","GetVrsta":"Pregled","ImePacijenta":"Nikola Markovic","ImeLekara":"Tara Pogancev","NazivProstorije":"2a","Evidentiran":false,"IsPast":true},"ImeLekara":"Tara Pogancev","ImePacijenta":"Nikola Markovic","Date":"07.04.2021.","TerminDateType":"Datum operacije: 09.03.2021.","GlavneTegobe":"Jedan","SadasnjaAnamneza":"Dva","OpstePojave":"Tri","RespiratorniSistem":"","KardiovaskularniSistem":"","DigestivniSistem":"","UrogenitalniSistem":"","LokomotorniSistem":"","NervniSistem":"","RanijaOboljenja":"","PorodicniPodaci":"","SocioEpiPodaci":"","AnamnezaKey":"210331121414","Datum":"2021-04-07T00:00:00+02:00"}}

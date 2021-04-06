@@ -96,9 +96,15 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPrazni.SelectedItem != null)
             {
-                //TODO napisi evidenciju
+                AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
+                a.Show();
                 refreshView();
             }
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
         }
     }
 }

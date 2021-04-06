@@ -69,38 +69,38 @@ namespace SIMS
         private void Button_Termini(object sender, RoutedEventArgs e)
         {
             //Button: Termini
-            SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
+            ChangeTab(1);
         }
 
         private void Button_Pacijenti(object sender, RoutedEventArgs e)
         {
             //Button: Pacijenti
-            SellectedTab.Content = LekarPacijentiPage.GetInstance(lekarUser);
+            ChangeTab(2);
         }
 
         private void Button_Istorija(object sender, RoutedEventArgs e)
         {
             //Button: Istorija pregleda
-            SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
+            ChangeTab(3);
         }
 
         private void Button_Evidencija(object sender, RoutedEventArgs e)
         {
             //Button: Evidentiranje materijala
-            SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
+            ChangeTab(4);
         }
 
         private void Button_Nalog(object sender, RoutedEventArgs e)
         {
             //Button: Nalog, DEBUG po potrebi
-            SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
+            ChangeTab(5);
 
         }
 
         private void Button_Dashboard(object sender, MouseButtonEventArgs e)
         {
             //Dashboard
-            SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+            ChangeTab(0);
 
         }
 
@@ -112,38 +112,52 @@ namespace SIMS
         public void ChangeTab(int tabNum)
         {
 
+            SolidColorBrush sellectedTab = new SolidColorBrush(Color.FromRgb(38, 46, 62));
+
             //Funkcija pomocu enumeracije menja tab
             switch (tabNum)
             {
+                              
 
                 case 0:
                     {
                         SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+                        ResetActiveButtons();
                         break;
                     }
                 case 1:
                     {
                         SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                         B1.Fill = sellectedTab;
                         break;
                     }
                 case 2:
                     {
                         SellectedTab.Content = LekarPacijentiPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B2.Fill = sellectedTab;
                         break;
                     }
                 case 3:
                     {
                         SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B3.Fill = sellectedTab;
                         break;
                     }
                 case 4:
                     {
                         SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B4.Fill = sellectedTab;
                         break;
                     }
                 case 5:
                     {
                         SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B5.Fill = sellectedTab;
                         break;
                     }
 
@@ -224,6 +238,19 @@ namespace SIMS
             this.Left = (width - this.Width) / 2;
 
             bar.ChangeMinimizeButton();
+        }
+
+        private void ResetActiveButtons()
+        {
+            //MenuGrid.Row[0].Cells[1].Style.BackColor = new SolidColorBrush(Colors.Green);
+
+            B1.Fill = new SolidColorBrush(Colors.Transparent);
+            B2.Fill = new SolidColorBrush(Colors.Transparent);
+            B3.Fill = new SolidColorBrush(Colors.Transparent);
+            B4.Fill = new SolidColorBrush(Colors.Transparent);
+            B5.Fill = new SolidColorBrush(Colors.Transparent);
+
+
         }
     }
 }

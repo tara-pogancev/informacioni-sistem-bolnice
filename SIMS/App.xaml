@@ -101,6 +101,14 @@
             </Grid>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="BasicButtonLong">
+            <Grid Width="160" Height="35">
+                <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+
         <ControlTemplate TargetType="Button" x:Key="BigButton">
             <Grid>
                 <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="10" Background="{TemplateBinding Background}"/>
