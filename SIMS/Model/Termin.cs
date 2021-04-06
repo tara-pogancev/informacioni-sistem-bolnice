@@ -100,5 +100,26 @@ namespace Model
         {
             get { return this.prostorijaKey; }
         }
+
+        public bool Evidentiran
+        {
+            get
+            {
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                    return false;
+                else return true;
+            }
+        }
+
+        public bool IsPast
+        {
+            get
+            {
+                if (this.PocetnoVreme <= DateTime.Now)
+                    return true;
+                else return false;
+            }
+        }
+
     }
 }

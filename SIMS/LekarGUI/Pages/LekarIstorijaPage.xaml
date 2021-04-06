@@ -10,7 +10,63 @@
 
     <Grid Background="#FF323D52">
 
-        <TextBlock HorizontalAlignment="Center" Height="480" TextWrapping="Wrap" VerticalAlignment="Center" Width="398" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Act II -"/><LineBreak/><Run/><LineBreak/><Run Text="There is no hate, only joy"/><LineBreak/><Run Text="For you are beloved by the goddess"/><LineBreak/><Run Text="Hero of the dawn, Healer of worlds"/><LineBreak/><Run Text="Dreams of the morrow hath the shattered soul"/><LineBreak/><Run Text="Pride is lost"/><LineBreak/><Run Text="Wings stripped away, the end is nigh"/><LineBreak/><Run/><LineBreak/><Run Text="- Act III -"/><LineBreak/><Run/><LineBreak/><Run Text="My friend, do you fly away now?"/><LineBreak/><Run Text="To a world that abhors you and I?"/><LineBreak/><Run Text="All that awaits you is a somber morrow"/><LineBreak/><Run Text="No matter where the winds may blow"/><LineBreak/><Run Text="My friend, your desire"/><LineBreak/><Run Text="Is the bringer of life, the gift of the goddess"/><LineBreak/><Run Text="Even if the morrow is barren of promises"/><LineBreak/><Run Text="Nothing shall forestall my return"/></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+                <RowDefinition Height ="70"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Evidentirani" Style="{StaticResource DefaultLabel}" HorizontalAlignment="Center"/>
+
+            <DataGrid x:Name="dataGridPrazni" ItemsSource="{Binding Path = PrazniView}" IsReadOnly="True"
+                SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
+                DataGrid.CanUserResizeRows="False" Grid.Row="1" Grid.Column="1" Margin="40,10,40,0">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Button Grid.Row="2" Grid.Column="1" Content="Evidentiraj termin" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" 
+                    HorizontalAlignment="Right" Margin="0,0,40,0" Click="Button_Evidenica"/>
+
+            <Label Content="Neevidentirani" Style="{StaticResource DefaultLabel}" HorizontalAlignment="Center" Grid.Column="1"/>
+
+            <DataGrid x:Name="dataGridEvidentirani" ItemsSource="{Binding Path = EvidentiraniView}" IsReadOnly="True"
+                SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
+                DataGrid.CanUserResizeRows="False" Grid.Row="1" Grid.Column="0" Margin="40,10,40,0">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Button Grid.Row="2" Content="Pregledaj anamnezu" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" 
+                    HorizontalAlignment="Right" Margin="0,0,40,0" Click="Button_Anamneza"/>
+
+
+        </Grid>
+        
     </Grid>
 </Page>
