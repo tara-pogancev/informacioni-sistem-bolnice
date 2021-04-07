@@ -40,9 +40,49 @@ namespace SIMS.LekarGUI
 
             pacijentProfile = p;
 
+            Ime_Top.Content = pacijentProfile.ImePrezime;
+            Label_Ime.Content = pacijentProfile.ImePrezime;
+
+            Label_Pol.Content = "Pol: " + pacijentProfile.PolString;
+            Label_Datum.Content = "Datum rođenja: " + pacijentProfile.DatumString;
+            Label_JMBG.Content = "JMBG: " + pacijentProfile.Jmbg;
+            Label_LBO.Content = "LBO: " + pacijentProfile.Lbo;
+
+            Label_Telefon.Content = "Broj telefona: " + pacijentProfile.Telefon;
+            Label_Email.Content = "Email: " + pacijentProfile.Email;
+            Label_Adresa.Content = "Adresa: " + pacijentProfile.Adresa;
+
             
+            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.Krvna_Grupa;
+            Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAlergeniString;
+            Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.Hronicne_Bolesti_String;
+            
+        }
 
+        private void Button_Recept(object sender, RoutedEventArgs e)
+        {
+            LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(pacijentProfile);
+            r.Show();
+        }
 
+        private void Button_Dokumenti(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void Button_Hositalizaijca(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void Button_Pacijenti(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(2);
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
         }
     }
 }
