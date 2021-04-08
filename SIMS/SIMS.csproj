@@ -13,6 +13,7 @@
     <None Remove="LekarGUI\profile.png" />
     <None Remove="LekarGUI\search.png" />
     <None Remove="logo.ico" />
+    <None Remove="src\doctor.png" />
     <None Remove="src\exit.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
@@ -21,12 +22,18 @@
     <None Remove="src\logo_h.png" />
     <None Remove="src\logo_h_small.png" />
     <None Remove="src\logo_title.png" />
+    <None Remove="src\notice.png" />
     <None Remove="src\notification.png" />
+    <None Remove="src\pilulePrave.png" />
     <None Remove="src\profile.png" />
+    <None Remove="src\profile1.png" />
     <None Remove="src\search.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="src\doctor.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\exit.png" />
     <Resource Include="src\logo.png" />
   </ItemGroup>
@@ -39,13 +46,22 @@
   <ItemGroup>
     <Resource Include="logo.ico" />
     <Resource Include="src\logo.ico" />
-    <Resource Include="src\logo_glow.jpg" />
+    <Resource Include="src\logo_glow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\logo_glow_tr.png" />
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />
     <Resource Include="src\logo_title.png" />
+    <Resource Include="src\notice.png" />
     <Resource Include="src\notification.png" />
+    <Resource Include="src\pilulePrave.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\profile.png" />
+    <Resource Include="src\profile1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\search.png" />
   </ItemGroup>
 
