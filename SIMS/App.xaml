@@ -104,6 +104,6 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         </Style>
-        
+
     </Application.Resources>
 </Application>

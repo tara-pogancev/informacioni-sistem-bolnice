@@ -16,7 +16,7 @@ namespace Model
         private DateTime datum_rodjenja;
         private Krvne_Grupe krvna_grupa;
         private Pol pol;
-        private List<string> hronicne_bolesti;
+        private List<string> hronicne_bolesti = new List<string>();
 
         public string Lbo { get => lbo; set => lbo = value; }
         public bool Gost { get => gost; set => gost = value; }
@@ -95,6 +95,17 @@ namespace Model
                 foreach (string a in alergeni)
                     alergeniString += a + " ";
                 return alergeniString.Trim();
+            }
+        }
+
+        public string GetHronicneBolestiString
+        {
+            get
+            {
+                string hronBolestiString = "";
+                foreach (string a in hronicne_bolesti)
+                    hronBolestiString += a + " ";
+                return hronBolestiString.Trim();
             }
         }
 

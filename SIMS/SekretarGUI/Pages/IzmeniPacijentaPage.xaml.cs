@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -8,15 +9,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
 
-namespace SIMS
+namespace SIMS.SekretarGUI
 {
-    public partial class Izmeni : Window
+    /// <summary>
+    /// Interaction logic for IzmeniPacijentaPage.xaml
+    /// </summary>
+    public partial class IzmeniPacijentaPage : Page
     {
         Pacijent pacijent;
-        public Izmeni(Pacijent pacijent)
+        public IzmeniPacijentaPage(Pacijent pacijent)
         {
             InitializeComponent();
             this.pacijent = pacijent;
@@ -41,11 +45,15 @@ namespace SIMS
                 postanski_broj.Text = pacijent.Adresa.Grad.PostanskiBroj.ToString();
                 drzava.Text = pacijent.Adresa.Grad.Drzava.Naziv;
             }
-            
+
             alergeni.Text = pacijent.GetAlergeniString;
             lbo.Text = pacijent.Lbo;
             gost.IsChecked = pacijent.Gost;
 
+            pol.SelectedIndex = (int)pacijent.Pol_Pacijenta;
+            krvna_grupa.SelectedIndex = (int)pacijent.Krvna_Grupa;
+            datum_rodjenja.Text = pacijent.Datum_Rodjenja.ToString("MM.dd.yyyy.");
+            hronicne_bolesti.Text = pacijent.GetHronicneBolestiString;
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
@@ -66,17 +74,20 @@ namespace SIMS
             int.TryParse(postanski_broj.Text, out post_broj);
 
             List<string> alerg = new List<string>(alergeni.Text.Split());
+            List<string> hron_bol = new List<string>(hronicne_bolesti.Text.Split());
 
-            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg);
+            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg, DateTime.Parse(datum_rodjenja.Text), DodajPacijentaPage.GetEnumKrvneGrupe((string)krvna_grupa.SelectionBoxItem), (Pol)pol.SelectionBoxItem, hron_bol);
             PacijentStorage.Instance.Update(pacijent);
-            SekretarUI.GetInstance().refresh();
+            SekretarPacijentiPage.GetInstance().refresh();
 
-            this.Close();
+            //this.Close();
+            this.NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
 
         private void Otkazi_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            this.NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
     }
 }
