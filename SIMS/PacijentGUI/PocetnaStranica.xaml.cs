@@ -19,9 +19,19 @@ namespace SIMS.PacijentGUI
     public partial class PocetnaStranica : Window
     {
         private Pacijent pacijent;
-        public PocetnaStranica(Pacijent p)
+        private static PocetnaStranica instance=null;
+        public static PocetnaStranica getInstance()
         {
-            this.pacijent = p;
+            if (instance == null)
+            {
+                instance = new PocetnaStranica();
+            }
+            return instance;
+        }
+        
+        private PocetnaStranica()
+        {
+            
             InitializeComponent();
         }
 
@@ -38,7 +48,9 @@ namespace SIMS.PacijentGUI
                     Tabovi.Content=new PocetniEkran(pacijent);
                     break;
                 case 1:
-                    Tabovi.Content = new ZakazivanjeTermina(pacijent);
+                    ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
+                    zakazivanje.Pacijent = pacijent;
+                    Tabovi.Content = zakazivanje;
                     break;
                 case 2:
                     Tabovi.Content = new MojiTermini(pacijent);

@@ -23,6 +23,7 @@ namespace SIMS.PacijentGUI
         private List<Lekar> lekari;
         private List<String> dostupniTermini;
         private Termin termin;
+        Boolean doktorSelektovan;
         public zakazivanje(Pacijent p)
         {
             LekarStorage lk = new LekarStorage();
@@ -32,6 +33,7 @@ namespace SIMS.PacijentGUI
             dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             termin = new Termin();
             this.DataContext = this;
+            doktorSelektovan = false;
             InitializeComponent();
         }
 
@@ -52,6 +54,38 @@ namespace SIMS.PacijentGUI
             MessageBox.Show("Termin je uspjesno zakazan");
 
             TerminStorage.Instance.Create(termin);
+        }
+
+        private void ListaDoktora_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            doktorSelektovan = true;
+
+        }
+
+        private void OdabirDatuma_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (doktorSelektovan)
+            {
+                Lekar lek = lekari[ListaDoktora.SelectedIndex];
+                List<Termin> nedostupniTermini = new List<Termin>();
+                dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+                terminiLista.ItemsSource = dostupniTermini;
+                List<Termin> sviTermini = new TerminStorage().ReadList();
+          
+                foreach (Termin termin in sviTermini)
+                {
+                    if ((termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum)) 
+                    || (termin.PacijentKey.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum)))
+                    {
+                        nedostupniTermini.Add(termin);
+                    }
+                }
+
+                foreach (Termin termin in nedostupniTermini)
+                {
+                    dostupniTermini.Remove(termin.Vrijeme);
+                }
+            }
         }
     }
 }

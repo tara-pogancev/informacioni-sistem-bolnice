@@ -35,5 +35,23 @@ namespace SIMS.PacijentGUI
 
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
         public static ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
+
+        
+
+        private void Izmijeni_Click(object sender, RoutedEventArgs e)
+        {
+            IzmjenaPregleda izmjenaPregleda = new IzmjenaPregleda(termini[terminiTabela.SelectedIndex]);
+            PocetnaStranica poc = PocetnaStranica.getInstance();
+            poc.Tabovi.Content = izmjenaPregleda;
+        }
+
+        private void Obrisi_Click(object sender, RoutedEventArgs e)
+        {
+            TerminStorage tr = new TerminStorage();
+            tr.Delete(termini[terminiTabela.SelectedIndex].TerminKey);
+            termini.RemoveAt(terminiTabela.SelectedIndex);
+            
+            
+        }
     }
 }

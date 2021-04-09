@@ -12,12 +12,12 @@
             <StackPanel x:Name="glavni">
                 <Label FontSize="15" Content="Izaberite doktora" Margin="270,10,0,0" Foreground="#01C38D"/>
                 <Border BorderThickness="1" BorderBrush="Black"  Width="250" Height="100" CornerRadius="15">
-                    <ListView Width="250"  Height="100" Foreground="#01C38D" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Lekari}" DisplayMemberPath="ImePrezime" Name="ListaDoktora">
+                    <ListView Width="250"  Height="100" Foreground="#01C38D" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Lekari}" DisplayMemberPath="ImePrezime" Name="ListaDoktora" SelectionChanged="ListaDoktora_SelectionChanged">
                         
                     </ListView>
                 </Border>
 
-                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum" CalendarStyle="{StaticResource styleCalendar}" Width="250" Margin="10,21,10,18" Name="OdabirDatuma" />
+                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum" CalendarStyle="{StaticResource styleCalendar}" Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
 
                 <ComboBox 
                     x:Name="terminiLista" ItemsSource="{Binding DostupniTermini}"

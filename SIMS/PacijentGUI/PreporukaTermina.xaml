@@ -12,31 +12,30 @@
                 <Label HorizontalAlignment="Center" FontSize="18" Foreground="White">Izaberite datum</Label>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <DatePicker Width="150" Margin="70,0,80,0" materialDesign:HintAssist.Hint="Pocetni datum" Foreground="White" FontSize="16"></DatePicker>
-                    <DatePicker Width="150" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White"  FontSize="16"></DatePicker>
+                    <DatePicker Width="150" Margin="70,0,80,0" materialDesign:HintAssist.Hint="Pocetni datum" Foreground="White" FontSize="16" Name="PocetniDatum" SelectedDateChanged="PocetniDatum_SelectedDateChanged"></DatePicker>
+                    <DatePicker Width="150" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White"  FontSize="16" Name="KrajnjiDatum"></DatePicker>
                 </StackPanel>
 
-                <Label FontSize="18" Content="Izaberite doktora" Margin="208,10,0,0" Foreground="White"/>
-                <Border BorderThickness="1" BorderBrush="Black"  Width="350" Height="100" CornerRadius="15" >
-                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0">
-                        <ListViewItem Content="Marko"/>
-                        <ListViewItem Content="Nikola"/>
-                        <ListViewItem Content="Jelena"/>
-                        <ListViewItem Content="Nikola"/>
-                    </ListView>
-                </Border>
                 <Label HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="18" Foreground="White">Prioritet</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
-                    <RadioButton Name="lekarCheckedCB" FontSize="15"
+                    <RadioButton Name="lekarChecked" FontSize="15"
                   Style="{StaticResource MaterialDesignDarkRadioButton }"  Background="Aqua" Width="80"  Margin="10,0,10,20" Foreground="White">
                         Lekar
                     </RadioButton>
-                    <RadioButton Name="datumCheckedCB" FontSize="15"
+                    <RadioButton Name="datumChecked" FontSize="15"
                      Style="{StaticResource MaterialDesignDarkRadioButton}" Background="Aqua" Width="80" Margin="20,0,0,20" Foreground="White" >
                         Datum
 
                     </RadioButton>
                 </StackPanel>
+
+                <Label FontSize="18" Content="Izaberite doktora" Margin="208,10,0,0" Foreground="White"/>
+                <Border BorderThickness="1" BorderBrush="Black"  Width="350" Height="100" CornerRadius="15" >
+                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0" Name="ListaDoktora" ItemsSource="{Binding Lekari}"  DisplayMemberPath="ImePrezime">
+                        
+                    </ListView>
+                </Border>
+                
 
                 <Button Width="150" x:Name="Trazi" Click="Trazi_Click" >Traži</Button>
 

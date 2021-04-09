@@ -38,7 +38,8 @@ namespace SIMS
             Pacijent pacijent = PacijentStorage.Instance.ReadUser(user);
             if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
-                PocetnaStranica pocetnaStranica = new PocetnaStranica(pacijent);
+                PocetnaStranica pocetnaStranica=PocetnaStranica.getInstance();
+                pocetnaStranica.Pacijent = pacijent;
                 pocetnaStranica.Show();
                 this.Close();
                 return;

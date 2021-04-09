@@ -9,7 +9,7 @@
       Title="MojiTermini">
 
     <Grid>
-        <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Termini }" IsReadOnly="True" 
+        <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Termini, Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" >
             <DataGrid.Columns>
@@ -21,14 +21,14 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Width="60" >Izmijeni</Button>
+                            <Button Padding="0" Width="60" Name="Izmijeni" Click="Izmijeni_Click">Izmijeni</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Width="60" Background="Firebrick">Obrisi</Button>
+                            <Button Padding="0" Width="60" Background="Firebrick" Name="Obrisi" Click="Obrisi_Click">Obrisi</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

@@ -21,18 +21,26 @@ namespace SIMS.PacijentGUI
     {
         private static ObservableCollection<Termin> termini;
         private Pacijent pacijent;
-        public PreporuceniTermini(Pacijent p)
+        public PreporuceniTermini()
         {
-            pacijent = p;
-            termini = new ObservableCollection<Termin>(TerminStorage.Instance.ReadByPatient(p));
+            
+            
             InitializeComponent();
             this.DataContext = this;
-            InitializeComponent();
+            pacijent = new Pacijent();
         }
         public static ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
+       
+        public void dodajTermine(List<Termin> terminiPreporuka)
+        {
+            termini = new ObservableCollection<Termin>(terminiPreporuka);
+        }
 
         private void Zatovir_Click(object sender, RoutedEventArgs e)
         {
+            ZakazivanjeTermina zak = ZakazivanjeTermina.getInstance();
+            zak.Zakazivanje1.Children.Clear();
+            zak.Zakazivanje1.Children.Add(new PreporukaTermina(pacijent));
             this.Close();
         }
     }
