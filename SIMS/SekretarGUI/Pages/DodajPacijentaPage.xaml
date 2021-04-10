@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajPacijentaPage"
-    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit">
 
     <Page.Resources>
         <ObjectDataProvider x:Key="PolFromEnum" MethodName="GetValues"
@@ -394,8 +394,8 @@
                     <TextBox x:Name="ime" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="prezime" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="datum_rodjenja" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12.12.1977." TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                    <ComboBox x:Name="pol" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" ItemsSource="{Binding Source={StaticResource PolFromEnum}}" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}"/>
-                    <ComboBox x:Name="krvna_grupa" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}">
+                    <ComboBox x:Name="pol" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" ItemsSource="{Binding Source={StaticResource PolFromEnum}}" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}"/>
+                    <ComboBox x:Name="krvna_grupa" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}">
                         <ComboBoxItem>O+</ComboBoxItem>
                         <ComboBoxItem>O-</ComboBoxItem>
                         <ComboBoxItem>A+</ComboBoxItem>
@@ -415,7 +415,20 @@
                     <TextBox x:Name="postanski_broj" HorizontalAlignment="Left" Grid.Row="14" Margin="30,0,0,0" Text="21000" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="drzava" HorizontalAlignment="Left" Grid.Row="15" Margin="30,0,0,0" Text="Srbija" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="lbo" HorizontalAlignment="Left" Grid.Row="16" Margin="30,0,0,0" Text="123456" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                    <TextBox x:Name="alergeni" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Text="" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <!--<TextBox x:Name="alergeni" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Text="" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <ComboBox x:Name="alerg" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="True" Width="20" />
+                                <TextBlock Text="sa" Width="100" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    </ComboBox>-->
+                    <xceet:CheckComboBox x:Name="alergeni" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" MaxDropDownHeight="100"/>
+
+
                     <TextBox x:Name="hronicne_bolesti" HorizontalAlignment="Left" Grid.Row="18" Margin="30,0,0,0" Text="" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <CheckBox x:Name="gost" HorizontalAlignment="Left" Grid.Row="19" Margin="145,15,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" Content=""/>
 

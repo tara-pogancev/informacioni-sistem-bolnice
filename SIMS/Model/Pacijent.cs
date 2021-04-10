@@ -92,8 +92,10 @@ namespace Model
             get
             {
                 string alergeniString = "";
+                if (alergeni.Contains(""))
+                    return alergeniString;
                 foreach (string a in alergeni)
-                    alergeniString += a + " ";
+                    alergeniString += AlergeniStorage.Instance.Read(a).Naziv + " ";
                 return alergeniString.Trim();
             }
         }
