@@ -59,6 +59,7 @@ namespace SIMS.LekarGUI
             List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
             foreach (Termin t in temp)
             {
+                if (!t.IsPast)
                 terminiView.Add(t);
             }
         }
@@ -124,5 +125,20 @@ namespace SIMS.LekarGUI
             instance = null;
         }
 
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void Event_Karton(object sender, MouseButtonEventArgs e)
+        {
+            if (dataGridTermini.SelectedItem != null)
+            {
+                Termin t = (Termin)dataGridTermini.SelectedItem;
+                Pacijent p = PacijentStorage.Instance.Read(t.PacijentKey);
+
+                LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
+            }
+        }
     }
 }

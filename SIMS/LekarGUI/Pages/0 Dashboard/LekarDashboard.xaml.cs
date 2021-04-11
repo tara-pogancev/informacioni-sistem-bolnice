@@ -44,18 +44,29 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             WelcomeMSG.Content = lekarUser.Ime + ", dobro došli!";
-            this.setAktivanTermin();
+            refresh();
 
         }
 
         public void refresh()
         {
-
+            setAktivanTermin();
         }
 
         public void setAktivanTermin()
         {
             //TODO uraditi varijaciju
+            List<Termin> termini = TerminStorage.Instance.ReadByDoctor(lekarUser);
+
+            foreach (Termin t in termini)
+            {
+                if (t.isCurrent && t.Evidentiran == false)
+                {
+                    AktivniTermin.Content = LDBAktivanTermin.GetInstance(t);
+                    return;
+                }
+            }
+
             AktivniTermin.Content = LDBNemaTermin.GetInstance();
         }
 

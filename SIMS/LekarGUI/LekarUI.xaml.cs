@@ -117,8 +117,6 @@ namespace SIMS
             //Funkcija pomocu enumeracije menja tab
             switch (tabNum)
             {
-                              
-
                 case 0:
                     {
                         SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
@@ -158,6 +156,18 @@ namespace SIMS
                         SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
                         ResetActiveButtons();
                         B5.Fill = sellectedTab;
+                        break;
+                    }
+                case 6:
+                    {
+                        SellectedTab.Content = LekarNotificationPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        break;
+                    }
+                case 7:
+                    {
+                        SellectedTab.Content = new LekarHelpPage();
+                        ResetActiveButtons();
                         break;
                     }
 
@@ -250,7 +260,16 @@ namespace SIMS
             B4.Fill = new SolidColorBrush(Colors.Transparent);
             B5.Fill = new SolidColorBrush(Colors.Transparent);
 
+        }
 
+        private void Button_Notification(object sender, MouseButtonEventArgs e)
+        {
+            this.ChangeTab(6);
+        }
+
+        private void Button_Help(object sender, MouseButtonEventArgs e)
+        {
+            this.ChangeTab(7);
         }
     }
 }

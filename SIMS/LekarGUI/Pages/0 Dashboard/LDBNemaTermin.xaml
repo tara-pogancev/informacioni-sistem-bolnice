@@ -14,7 +14,5 @@
         <Image Source="/src/Illustrations/Lunch_break.png" Margin="-3,-22,3,-54"/>
         <Label Content="Nema aktivnih termina!" FontFamily="Candara" FontSize="24" Foreground="#FF6BD8BB" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,7,0,0"/>
 
-
-
     </Grid>
 </Page>

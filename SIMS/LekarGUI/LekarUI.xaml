@@ -92,9 +92,12 @@
 
                     <Grid Grid.Row="0" Background="#292C3B">
                         
-                        <Label Content="Lucrecia Crescent" Name ="UsernameLabel"  HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}" HorizontalContentAlignment="Left" Padding="5,5,5,5" VerticalContentAlignment="Center" FlowDirection="RightToLeft"/>
-                       
-                        <Image Source="/src/notification.png" Height="20" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                        <Label Content="Lucrecia Crescent" Name ="UsernameLabel"  HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" HorizontalContentAlignment="Left" Padding="5,5,5,5" VerticalContentAlignment="Center" FlowDirection="RightToLeft"
+                               Cursor="Hand" PreviewMouseDown="Button_Nalog" ToolTip="Korisnički nalog"/>
+
+                        <Image Source="/src/notification.png" Height="24" Margin="25,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Notification" ToolTip="Obaveštenja"/>
+                        <Image Source="/src/help.png" Height="24" Margin="80,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Help" ToolTip="Pomoć"/>
+
                         <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
 
                     </Grid>

@@ -74,5 +74,15 @@ namespace SIMS.LekarGUI
                 r.Show();
             }
         }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void Button_Terapija(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
     }
 }

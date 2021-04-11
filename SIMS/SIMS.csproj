@@ -16,7 +16,10 @@
     <None Remove="src\arrow.png" />
     <None Remove="src\close.png" />
     <None Remove="src\exit.png" />
+    <None Remove="src\help.png" />
     <None Remove="src\home.png" />
+    <None Remove="src\Illustrations\Lunch_break.png" />
+    <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
     <None Remove="src\logo_glow.jpg" />
@@ -42,7 +45,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\exit.png" />
+    <Resource Include="src\help.png" />
     <Resource Include="src\home.png" />
+    <Resource Include="src\Illustrations\Lunch_break.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\Illustrations\Winners_Monochromatic.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\logo.png" />
   </ItemGroup>
 
@@ -73,13 +83,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="LekarGUI\Dialogues\TerminUpdate.xaml">
+    <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="LekarGUI\Dialogues\OperacijaCreate.xaml">
+    <Page Update="LekarGUI\Dialogues\Termini CRUD\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
+    <Folder Include="LekarGUI\Dialogues\Materijali i lekovi\" />
+    <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
   </ItemGroup>
 
 </Project>

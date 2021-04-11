@@ -121,5 +121,18 @@ namespace Model
             }
         }
 
+        public bool isCurrent
+        {
+            get
+            {
+                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
+
+                if (this.PocetnoVreme >= DateTime.Now && krajnjeVreme <= DateTime.Now )
+                    return true;
+
+                else return false;
+            }
+        }
+
     }
 }

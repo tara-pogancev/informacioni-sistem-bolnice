@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 
 namespace SIMS.LekarGUI.Pages
 {
@@ -18,9 +19,29 @@ namespace SIMS.LekarGUI.Pages
     /// </summary>
     public partial class LDBAktivanTermin : Page
     {
+        public static LDBAktivanTermin instance;
+        private static Termin aktivanTermin;
+
+        public static LDBAktivanTermin GetInstance(Termin t)
+        {
+            if (instance == null)
+            {
+                instance = new LDBAktivanTermin();
+                aktivanTermin = t;
+            }
+            return instance;
+        }
+
         public LDBAktivanTermin()
         {
             InitializeComponent();
+        }
+
+        private void Evidentiraj_Button(object sender, RoutedEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(3);
+            AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
+            a.Show();
         }
     }
 }

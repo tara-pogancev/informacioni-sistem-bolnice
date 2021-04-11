@@ -14,6 +14,8 @@
             <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
             <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
             <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+
+            <Setter Property="FontSize" Value="14"/>
         </Style> 
         
     </Page.Resources> 
