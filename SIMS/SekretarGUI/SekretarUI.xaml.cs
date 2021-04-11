@@ -61,10 +61,13 @@ namespace SIMS
 
         private void Button_Notification(object sender, RoutedEventArgs e)
         {
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(ButtonCloseMenu);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            if (GridMenu.Width == 320)
+            {
+                ButtonAutomationPeer peer = new ButtonAutomationPeer(ButtonCloseMenu);
+                IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
 
-            invokeProv.Invoke();
+                invokeProv.Invoke();
+            }
             MainFrame.Content = new SekretarObavestenjaPage();
         }
 
