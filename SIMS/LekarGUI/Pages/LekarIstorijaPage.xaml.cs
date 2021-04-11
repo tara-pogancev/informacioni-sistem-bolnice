@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,12 @@ namespace SIMS.LekarGUI
 
         private static Lekar lekarUser;
 
+        private ObservableCollection<Termin> evidentiraniView;
+        public ObservableCollection<Termin> EvidentiraniView { get => evidentiraniView; set => evidentiraniView = value; }
+
+        private ObservableCollection<Termin> prazniView;
+        public ObservableCollection<Termin> PrazniView { get => prazniView; set => prazniView = value; }
+
         public static LekarIstorijaPage GetInstance(Lekar l)
         {
             if (instance == null)
@@ -42,11 +49,63 @@ namespace SIMS.LekarGUI
         public LekarIstorijaPage()
         {
             InitializeComponent();
+
+            //Evidentirani - pregledi sa anamnezom
+            //Prazni - pregledi bez anamneze
+
+            this.DataContext = this;
+            evidentiraniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            prazniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            refreshView();
+        }
+
+        public void refreshView()
+        {
+            prazniView.Clear();
+            evidentiraniView.Clear();
+
+            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
+
+            foreach (Termin t in temp)
+            {
+                if (t.IsPast == true)
+                {
+                    if (t.Evidentiran == true)
+                        evidentiraniView.Add(t);
+                    else
+                        prazniView.Add(t);
+                }
+            }
+
         }
 
         public void RemoveInstance()
         {
             instance = null;
         }
+
+        private void Button_Anamneza(object sender, RoutedEventArgs e)
+        {
+            if (dataGridEvidentirani.SelectedItem != null)
+            {
+                //TODO Procitaj anamnezu
+            }
+        }
+
+        private void Button_Evidenica(object sender, RoutedEventArgs e)
+        {
+            if (dataGridPrazni.SelectedItem != null)
+            {
+                AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
+                a.Show();
+                refreshView();
+            }
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
     }
 }

@@ -87,7 +87,7 @@ namespace SIMS
         public void fillComboBoxes(Termin termin)
         {
             datePicker1.DisplayDate = termin.PocetnoVreme;
-            datePicker1.Text = termin.PocetnoVreme.ToString("dd/MM/yyyy");
+            datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
             int index = 0;
             foreach (Lekar lek in lekari) {
                 if (lek.Jmbg.Equals(termin.LekarKey)) {

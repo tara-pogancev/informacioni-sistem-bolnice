@@ -24,6 +24,9 @@ namespace SIMS.LekarGUI
 
         private static Lekar lekarUser;
 
+        private ObservableCollection<Pacijent> pacijentiView;
+        public ObservableCollection<Pacijent> PacijentiView { get => pacijentiView; set => pacijentiView = value; }
+
         public static LekarPacijentiPage GetInstance(Lekar l)
         {
             if (instance == null)
@@ -42,11 +45,34 @@ namespace SIMS.LekarGUI
         public LekarPacijentiPage()
         {
             InitializeComponent();
+
+            this.DataContext = this;
+            pacijentiView = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
+
         }
 
         public void RemoveInstance()
         {
             instance = null;
+        }
+
+        private void Button_Pregled(object sender, RoutedEventArgs e)
+        {
+            if (dataGridPacijenti.SelectedItem != null)
+            {
+                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
+            }
+        }
+
+        private void Button_Recept(object sender, RoutedEventArgs e)
+        {
+            if (dataGridPacijenti.SelectedItem != null)
+            {
+                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(p);
+                r.Show();
+            }
         }
     }
 }

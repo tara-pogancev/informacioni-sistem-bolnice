@@ -5,8 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.LekarGUI"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="840"
       Title="LekarTerminiPage">
+
+    <Page.Resources>
+
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+
+    </Page.Resources>
 
     <Grid Background="#323D52">
 
@@ -15,10 +25,8 @@
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
-
-        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = TerminiView}" IsReadOnly="True"
-                SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
-                DataGrid.CanUserResizeRows="False" Grid.Row="0" Margin="40,30,40,0">
+        <DataGrid x:Name="dataGridTermini" ItemsSource="{Binding Path = TerminiView}" 
+                    Grid.Row="0" Margin="40,30,40,0">
 
             <DataGrid.Columns>
 

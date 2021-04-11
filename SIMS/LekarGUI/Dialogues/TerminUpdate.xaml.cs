@@ -78,7 +78,7 @@ namespace SIMS.LekarGUI
             terminiLista.ItemsSource = termini;
 
             datePicker1.DisplayDate = termin.PocetnoVreme;
-            datePicker1.Text = termin.PocetnoVreme.ToString("dd/MM/yyyy");
+            datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
 
 
             if (termin.VremeTrajanja == 30)

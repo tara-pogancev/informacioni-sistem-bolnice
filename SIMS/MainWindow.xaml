@@ -52,13 +52,7 @@
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
 
-                        <TextBox VerticalAlignment="Center" Text="Username" x:Name="username" Width="250" Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" Margin="0,0,0,15" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite korisničko ime" VerticalContentAlignment="Center" Padding="5,0,5,0" GotFocus="Username_GotFocus" LostFocus="Username_LostFocus" KeyDown="OnKeyDownHandler">
-                            <TextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="8"/>
-                                </Style>
-                            </TextBox.Resources>
-                        </TextBox>
+                        <TextBox VerticalAlignment="Center" Text="Username" x:Name="username" Width="250" Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" Margin="0,0,0,15" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite korisničko ime" VerticalContentAlignment="Center" Padding="5,0,5,0" GotFocus="Username_GotFocus" LostFocus="Username_LostFocus" KeyDown="OnKeyDownHandler"/>
 
                         <PasswordBox Password="jenova" x:Name="password" Width="250"  Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" VerticalAlignment="Top" Margin="0,0,0,33" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite lozinku" VerticalContentAlignment="Center" Padding="5,0,0,0" GotFocus="Pass_GotFocus" LostFocus="Pass_LostFocus" KeyDown="OnKeyDownHandler"/>
 

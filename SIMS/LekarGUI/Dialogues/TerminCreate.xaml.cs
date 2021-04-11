@@ -50,7 +50,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(LekarUI.GetInstance().getUser().Jmbg))
+                if (l.Jmbg.Equals(LekarUI.GetInstance().GetUser().Jmbg))
                 {
                     break;
                 }
