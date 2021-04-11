@@ -123,5 +123,6 @@ namespace SIMS.LekarGUI
         {
             instance = null;
         }
+
     }
 }

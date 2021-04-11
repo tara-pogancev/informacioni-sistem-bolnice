@@ -106,5 +106,6 @@ namespace SIMS.LekarGUI
         {
             LekarUI.GetInstance().ChangeTab(0);
         }
+
     }
 }
