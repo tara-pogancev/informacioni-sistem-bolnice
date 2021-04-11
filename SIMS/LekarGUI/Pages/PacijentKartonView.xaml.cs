@@ -53,9 +53,9 @@ namespace SIMS.LekarGUI
             Label_Adresa.Content = "Adresa: " + pacijentProfile.Adresa;
 
             
-            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.Krvna_Grupa;
+            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.KrvnaGrupaString;
             Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAlergeniString;
-            Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.Hronicne_Bolesti_String;
+            Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.GetHronicneBolestiString;
             
         }
 
