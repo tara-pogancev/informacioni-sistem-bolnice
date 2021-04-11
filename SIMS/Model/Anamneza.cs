@@ -88,71 +88,85 @@ namespace Model
         public String GlavneTegobe
         {
             get => glavneTegobe;
+            set => glavneTegobe = value;
         }
 
         public String SadasnjaAnamneza
         {
             get => sadasnjaAnamneza;
+            set => sadasnjaAnamneza = value;
         }
 
         public String OpstePojave
         {
             get => opstePojave;
+            set => opstePojave = value;
         }
 
         public String RespiratorniSistem
         {
             get => respiratorniSistem;
+            set => respiratorniSistem = value;
         }
 
         public String KardiovaskularniSistem
         {
             get => kardiovaskularniSistem;
+            set => kardiovaskularniSistem = value;
         }
 
         public String DigestivniSistem
         {
             get => digestivniSistem;
+            set => digestivniSistem = value;
         }
 
         public String UrogenitalniSistem
         {
             get => urogenitalniSistem;
+            set => urogenitalniSistem = value;
         }
 
         public String LokomotorniSistem
         {
             get => lokomotorniSistem;
+            set => lokomotorniSistem = value;
         }
 
         public String NervniSistem
         {
             get => nervniSistem;
+            set => nervniSistem = value;
         }
 
         public String RanijaOboljenja
         {
             get => ranijaOboljenja;
+            set => ranijaOboljenja = value;
         }
 
         public String PorodicniPodaci
         {
             get => porodicniPodaci;
+            set => porodicniPodaci = value;
         }
 
         public String SocioEpiPodaci
         {
             get => socioEpiPodaci;
+            set => socioEpiPodaci = value;
         }
 
         public String AnamnezaKey
         {
             get => terminKey;
+            set => terminKey = value;
         }
 
         public DateTime Datum
         {
             get => datum;
+            set => datum = value;
         }
     }
 }

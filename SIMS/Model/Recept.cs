@@ -16,7 +16,6 @@ namespace Model
 
         public Recept()
         {
-            //this.receptKey = DateTime.Now.ToString("yyMMddhhmmss");
         }
 
         public Recept(String lekarKey, String pacijentKey, String nazivLeka, String kolicina, String dijagnoza)
@@ -38,12 +37,12 @@ namespace Model
 
         public String DateString { get { return datum.ToString("dd.MM.yyyy."); } }
 
-        public String NazivLeka { get => this.nazivLeka;  }
-        public String Kolicina { get => this.kolicina; }
-        public String Dijagnoza { get => this.dijagnoza; }
-        public String ReceptKey { get => this.receptKey; }
-        public String LekarKey { get => this.lekarKey; }
-        public String PacijentKey { get => this.pacijentKey; }
+        public String NazivLeka { get => this.nazivLeka; set => nazivLeka = value; }
+        public String Kolicina { get => this.kolicina; set => kolicina = value; }
+        public String Dijagnoza { get => this.dijagnoza; set => dijagnoza = value; }
+        public String ReceptKey { get => this.receptKey; set => receptKey = value; }
+        public String LekarKey { get => this.lekarKey; set => lekarKey = value; }
+        public String PacijentKey { get => this.pacijentKey; set => pacijentKey = value; }
 
     }
 }
