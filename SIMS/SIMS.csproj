@@ -13,11 +13,8 @@
     <None Remove="LekarGUI\profile.png" />
     <None Remove="LekarGUI\search.png" />
     <None Remove="logo.ico" />
-    <None Remove="src\close.png" />
+    <None Remove="src\arrow.png" />
     <None Remove="src\exit.png" />
-    <None Remove="src\home.png" />
-    <None Remove="src\Illustrations\Lunch_break.png" />
-    <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
     <None Remove="src\logo_glow.jpg" />
@@ -25,24 +22,23 @@
     <None Remove="src\logo_h.png" />
     <None Remove="src\logo_h_small.png" />
     <None Remove="src\logo_title.png" />
-    <None Remove="src\max_window.png" />
-    <None Remove="src\minimize.png" />
+    <None Remove="src\menu.png" />
+    <None Remove="src\moon.png" />
     <None Remove="src\notification.png" />
     <None Remove="src\profile.png" />
     <None Remove="src\search.png" />
-    <None Remove="src\small_window.png" />
+    <None Remove="src\sign-out-option.png" />
+    <None Remove="src\sun.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="src\close.png" />
+    <Resource Include="src\arrow.png" />
     <Resource Include="src\exit.png" />
-    <Resource Include="src\home.png" />
-    <Resource Include="src\Illustrations\Lunch_break.png" />
-    <Resource Include="src\Illustrations\Winners_Monochromatic.png" />
     <Resource Include="src\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
@@ -55,16 +51,13 @@
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />
     <Resource Include="src\logo_title.png" />
-    <Content Include="src\max_window.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="src\minimize.png" />
+    <Resource Include="src\menu.png" />
+    <Resource Include="src\moon.png" />
     <Resource Include="src\notification.png" />
     <Resource Include="src\profile.png" />
     <Resource Include="src\search.png" />
-    <Content Include="src\small_window.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="src\sign-out-option.png" />
+    <Resource Include="src\sun.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,9 +66,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LekarGUI\Dialogues\OperacijaCreate.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="LekarGUI\Pages\LekarNotificationPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
