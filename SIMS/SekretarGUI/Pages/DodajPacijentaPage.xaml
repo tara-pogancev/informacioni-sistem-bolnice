@@ -393,7 +393,7 @@
 
                     <TextBox x:Name="ime" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="prezime" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                    <TextBox x:Name="datum_rodjenja" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12.12.1977." TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <TextBox x:Name="datum_rodjenja" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12/12/1977" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <ComboBox x:Name="pol" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" ItemsSource="{Binding Source={StaticResource PolFromEnum}}" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}"/>
                     <ComboBox x:Name="krvna_grupa" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}">
                         <ComboBoxItem>O+</ComboBoxItem>

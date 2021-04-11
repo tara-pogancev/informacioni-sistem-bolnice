@@ -61,7 +61,7 @@ namespace SIMS
 
         private void Button_Notification(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Content = new SekretarObavestenjaPage();
         }
 
         private void Button_Theme(object sender, RoutedEventArgs e)
@@ -110,6 +110,12 @@ namespace SIMS
                 case "ItemPatients":
                     invokeProv.Invoke();
                     MainFrame.Content = SekretarPacijentiPage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemNotifications":
+                    invokeProv.Invoke();
+                    //MainFrame.Content = SekretarObavestenjaPage.GetInstance();
+                    MainFrame.Content = new SekretarObavestenjaPage();
                     ListViewMenu.SelectedItem = null;
                     break;
                 default:
