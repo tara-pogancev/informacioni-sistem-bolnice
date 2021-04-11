@@ -61,6 +61,10 @@ namespace SIMS
 
         private void Button_Notification(object sender, RoutedEventArgs e)
         {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(ButtonCloseMenu);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+
+            invokeProv.Invoke();
             MainFrame.Content = new SekretarObavestenjaPage();
         }
 
@@ -88,6 +92,8 @@ namespace SIMS
                 SekretarHomePage.GetInstance().RemoveInstance();
             if (SekretarPacijentiPage.GetInstance() != null)
                 SekretarPacijentiPage.GetInstance().RemoveInstance();
+            if (SekretarTerminiPage.GetInstance() != null)
+                SekretarTerminiPage.GetInstance().RemoveInstance();
 
             this.Close();
         }
@@ -112,10 +118,19 @@ namespace SIMS
                     MainFrame.Content = SekretarPacijentiPage.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
-                case "ItemNotifications":
+                case "ItemAppointments":
                     invokeProv.Invoke();
-                    //MainFrame.Content = SekretarObavestenjaPage.GetInstance();
-                    MainFrame.Content = new SekretarObavestenjaPage();
+                    MainFrame.Content = SekretarTerminiPage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemReport":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemAccount":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarHomePage.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
                 default:
