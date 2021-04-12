@@ -33,7 +33,7 @@ namespace SIMS.SekretarGUI
 
         private void Button_Dodaj(object sender, RoutedEventArgs e)
         {
-            Obavestenje obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim());
+            Obavestenje obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), "All");
             ObavestenjaStorage.Instance.Create(obavestenje);
 
             listaTekstova.Insert(0, obavestenje);

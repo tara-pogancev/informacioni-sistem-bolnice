@@ -20,5 +20,19 @@ namespace Model
         {
         
         }
+
+        public List<Obavestenje> ReadByUser(String key)
+        {
+            List<Obavestenje> retVal = this.ReadList();
+
+            foreach (Obavestenje o in this.ReadList())
+            {
+                if (o.Target != "All" || o.Target != (key))
+                    retVal.Remove(o);
+            }
+
+            return retVal;
+
+        }
     }
 }

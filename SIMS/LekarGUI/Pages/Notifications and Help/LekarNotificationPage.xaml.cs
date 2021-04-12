@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,33 +22,32 @@ namespace SIMS.LekarGUI
 
     public partial class LekarNotificationPage : Page
     {
-        public static LekarNotificationPage instance;
+        private Lekar lekarUser;
 
-        private static Lekar lekarUser;
-
-        public static LekarNotificationPage GetInstance(Lekar l)
-        {
-            if (instance == null)
-            {
-                lekarUser = l;
-                instance = new LekarNotificationPage();
-            }
-            return instance;
-        }
-
-        public static LekarNotificationPage GetInstance()
-        {
-            return instance;
-        }
+        private ObservableCollection<Obavestenje> obavestenjeView;
 
         public LekarNotificationPage()
         {
             InitializeComponent();
+
+            lekarUser = LekarUI.GetInstance().GetUser();
+
+            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadByUser(lekarUser.Jmbg);
+            listaObavestenja.Reverse();
+            obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);
+
+            viewerObavestenja.ItemsSource = listaObavestenja;
+
         }
 
-        public void RemoveInstance()
+        private void Button_Odobravanje(object sender, RoutedEventArgs e)
         {
-            instance = null;
+            //TODO
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
         }
     }
 }

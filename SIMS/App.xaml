@@ -108,6 +108,12 @@
             </Grid>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="BasicButtonSlick">
+            <Grid Width="160" Height="28">
+                <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="BigButton">
             <Grid>
@@ -216,5 +222,14 @@
 
         </Style>
 
+        <Style x:Key="DarkTextBlock" TargetType="TextBlock">
+
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+
+        </Style>
+        
+        
     </Application.Resources>
 </Application>

@@ -160,7 +160,7 @@ namespace SIMS
                     }
                 case 6:
                     {
-                        SellectedTab.Content = LekarNotificationPage.GetInstance(lekarUser);
+                        SellectedTab.Content = new LekarNotificationPage();
                         ResetActiveButtons();
                         break;
                     }

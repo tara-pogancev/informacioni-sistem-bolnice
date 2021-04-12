@@ -3,14 +3,68 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.LekarGUI"
+      xmlns:local="clr-namespace:SIMS.LekarGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="840"
       Title="LekarNotificationPage">
 
     <Grid Background="#FF323D52">
 
-        <TextBlock HorizontalAlignment="Center" Height="184" TextWrapping="Wrap" VerticalAlignment="Center" Width="398" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Act V -"/><LineBreak/><Run/><LineBreak/><Run Text="Even if the morrow is barren of promises"/><LineBreak/><Run Text="Nothing shall forestall my return"/><LineBreak/><Run Text="To become the dew that quenches the land"/><LineBreak/><Run Text="To spare the sands, the seas, the skies"/><LineBreak/><Run Text="I offer thee this silent sacrifice"/></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
+
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
+            <Label Content="Obaveštenja" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
+
+        </StackPanel>
+
+        <Button Content="Odobravanje lekova" Click="Button_Odobravanje" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonSlick}"
+                HorizontalAlignment="Right" Margin="0,0,40,0"/>
+
+
+        <Grid Grid.Row="1" Margin="40,10,40,30">
+
+            <Rectangle RadiusX="25" RadiusY="25" Fill="#FF38455D"/>
+
+            
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30,20,30,20">
+                <ItemsControl x:Name="viewerObavestenja">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <!--Notifikacija-->
+                            <Grid Margin="0,0,10,10" Background="#4e6082">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Margin="15,0,30,0">
+
+                                    <Label Content="{Binding AutorUppercase}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="20" Foreground="White" Margin="5,0,0,0"/>
+                                    <Label Content="{Binding VremeString}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White" FlowDirection="RightToLeft" Margin="0,0,5,0"/>
+
+                                    <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
+
+                                </Grid>
+
+                                <TextBlock Grid.Row="1" Text="{Binding Tekst}" TextWrapping="Wrap" Margin="25,15,35,15" Style="{StaticResource DarkTextBlock}"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+
+        </Grid>
+
 
     </Grid>
 </Page>

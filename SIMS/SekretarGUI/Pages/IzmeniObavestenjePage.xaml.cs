@@ -37,7 +37,7 @@ namespace SIMS.SekretarGUI
         {
             listaTekstova.Remove(obavestenje);
             ObavestenjaStorage.Instance.Delete(obavestenje.ID);
-            obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim());
+            obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), "All");
             obavestenje.Tekst = obavestenjeTextBox.Text;
             obavestenje.Vreme = DateTime.Now;
             obavestenje.ID = obavestenje.Autor + obavestenje.Vreme.ToString("yyMMddHHmmss");
