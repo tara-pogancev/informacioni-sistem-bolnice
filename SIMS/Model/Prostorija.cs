@@ -1,4 +1,4 @@
-// File:    Prostorija.cs
+﻿// File:    Prostorija.cs
 // Author:  paracelsus
 // Created: Monday, March 22, 2021 6:41:35 PM
 // Purpose: Definition of Class Prostorija
@@ -13,47 +13,47 @@ namespace Model
         private string broj;
         private bool dostupna;
         private TipProstorije tipProstorije;
-        private Dictionary<string, int> kolicineDinamickihOprema = new Dictionary<string, int>();
-        private Dictionary<string, int> kolicineStatickihOprema = new Dictionary<string, int>();
+        public Dictionary<string, int> kolicineOpreme
+        {
+            get; set;
+        }
+
 
         public Prostorija()
         {
+            kolicineOpreme = new Dictionary<string, int>();
+            this.broj = "";
+            this.dostupna = false;
+            this.tipProstorije = TipProstorije.bolesnicka;
         }
 
         public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije)
         {
+            kolicineOpreme = new Dictionary<string, int>();
             this.broj = broj;
             this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
         }
 
-        public void SetKolicinaDinamickeOpreme(string id, int kolicina)
+        public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije, Dictionary<string, int> kolicineOpreme)
         {
-            kolicineDinamickihOprema[id] = kolicina;
+            kolicineOpreme = new Dictionary<string, int>();
+            this.broj = broj;
+            this.dostupna = dostupna;
+            this.tipProstorije = tipProstorije;
+            this.kolicineOpreme = kolicineOpreme;
         }
 
-        public void SetKolicinaStatickeOpreme(string id, int kolicina)
-        { 
-            kolicineStatickihOprema[id] = kolicina;
-        }
-
-        public int GetKolicinaDinamickeOpreme(string id)
+        public void SetKolicinaOpreme(string id, int kolicina)
         {
-            int retVal;
-
-            if (!kolicineDinamickihOprema.TryGetValue(id, out retVal))
-            {
-                return 0;
-            }
-
-            return retVal;
+            kolicineOpreme[id] = kolicina;
         }
 
-        public int GetKolicinaStatickeOpreme(string id)
+        public int GetKolicinaOpreme(string id)
         {
             int retVal;
 
-            if (!kolicineStatickihOprema.TryGetValue(id, out retVal))
+            if (!kolicineOpreme.TryGetValue(id, out retVal))
             {
                 return 0;
             }
@@ -63,6 +63,23 @@ namespace Model
 
         public string Broj { get => broj; set => broj = value; }
         public bool Dostupna { get => dostupna; set => dostupna = value; }
+
+        public string DostupnaToString
+        {
+            get
+            {
+                return Conversion.DostupnostProstorijeToString(dostupna);
+            }
+        }
+
+        public string TipProstorijeToString
+        {
+            get
+            {
+                return Conversion.TipProstorijeToString(tipProstorije);
+            }
+        }
+
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
     }
 }
