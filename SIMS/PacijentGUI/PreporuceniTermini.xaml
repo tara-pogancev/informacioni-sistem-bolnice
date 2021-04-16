@@ -1,17 +1,21 @@
-﻿<Window x:Class="SIMS.PacijentGUI.PreporuceniTermini"
+﻿<Page x:Class="SIMS.PacijentGUI.PreporuceniTermini"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.PacijentGUI"
         mc:Ignorable="d"
-        Title="PreporuceniTermini" Height="450" Width="550" WindowStartupLocation="CenterScreen">
+        Title="PreporuceniTermini" Height="550" Width="800">
     <Grid>
         <StackPanel>
-            <Label HorizontalAlignment="Center" FontSize="20">Preporuceni termini</Label>
+            <StackPanel Orientation="Horizontal" Margin="30">
+                <Button Width="150" Name="Nazad" Click="Nazad_Click">Nazad</Button>
+                <Label HorizontalAlignment="Center" FontSize="20" Margin="150,0,0,0">Preporuceni termini</Label>
+            </StackPanel>
+            
             <DataGrid x:Name="PreporuceniTerminiTabela" ItemsSource="{Binding Termini }" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
-                  Height="300" Margin="0,20,0,0" VerticalAlignment="Top" Width="450" BorderBrush="Black" HorizontalScrollBarVisibility="Hidden">
+                  Height="300" Margin="100,40,0,0" VerticalAlignment="Top" Width="450" BorderBrush="Black" HorizontalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Doktor" Binding="{Binding ImeLekara}"/>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
@@ -20,14 +24,14 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="0" Width="60" >Zakazi</Button>
+                                <Button Padding="0" Width="60" Name="Zakazi" Click="Zakazi_Click">Zakazi</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button Width="250" Margin="0,20,0,0" Name="Zatovir" Click="Zatovir_Click">Zatvori</Button>
+            
         </StackPanel>
     </Grid>
-</Window>
+</Page>

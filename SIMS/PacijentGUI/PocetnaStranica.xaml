@@ -50,7 +50,7 @@
                                     <materialDesign:PackIcon Kind="BellOutline" Width="40" Height="30"/>
                                 </Button>
                                 <StackPanel x:Name="Traka" Orientation="Horizontal">
-                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5">
+                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5" Name="Iskljucivanje" Click="Iskljucivanje_Click">
                                         <materialDesign:PackIcon Kind="Power"  Width="40" Height="30" />
                                     </Button>
 

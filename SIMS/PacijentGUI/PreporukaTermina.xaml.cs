@@ -19,12 +19,30 @@ namespace SIMS.PacijentGUI
     /// </summary>
     /// 
 
+    class TerminZaPreporuku
+    {
+        private List<String> idLekara;
+        private DateTime vrijeme;
+        public TerminZaPreporuku()
+        {
+
+        }
+        public TerminZaPreporuku(DateTime vrijeme)
+        {
+            this.vrijeme = vrijeme;
+            this.idLekara = new LekarStorage().getAllId();
+        }
+
+        public List<string> IdLekara { get => idLekara; set => idLekara = value; }
+        public DateTime Vrijeme { get => vrijeme; set => vrijeme = value; }
+    }
+
     public partial class PreporukaTermina : UserControl
     {
         Pacijent pacijent;
         List<Termin> termini;
         List<Termin> preporuceniTermini;
-        List<DateTime> terminiZaPreporuku;
+        List<TerminZaPreporuku> terminZaPreporuku;
         List<Lekar> lekari;
         public PreporukaTermina(Pacijent p)
         {
@@ -33,7 +51,8 @@ namespace SIMS.PacijentGUI
             termini = new TerminStorage().ReadList();
             preporuceniTermini = new List<Termin>();
             //ListaDoktora.IsHitTestVisible = false;
-            terminiZaPreporuku = new List<DateTime>();
+            terminZaPreporuku = new List<TerminZaPreporuku>();
+        
             lekari = new LekarStorage().ReadList();
             this.DataContext = this;
         }
@@ -45,32 +64,44 @@ namespace SIMS.PacijentGUI
             TimeSpan ts = new TimeSpan(8, 0, 0);
             TimeSpan ts1 = new TimeSpan(9, 0, 0);
             TimeSpan ts2 = new TimeSpan(10, 0, 0);
-
             while (datum1 <= datum2)
             {
-                terminiZaPreporuku.Add(datum1 + ts);
-                terminiZaPreporuku.Add(datum1 + ts1);
-                terminiZaPreporuku.Add(datum1 + ts2);
+
+   
+                TerminZaPreporuku terminZaPreporuku1 = new TerminZaPreporuku(datum1 + ts);
+                TerminZaPreporuku terminZaPreporuku2 = new TerminZaPreporuku(datum1 + ts1);
+                TerminZaPreporuku terminZaPreporuku3 = new TerminZaPreporuku(datum1 + ts2);
+                terminZaPreporuku.Add(terminZaPreporuku1);
+                terminZaPreporuku.Add(terminZaPreporuku2);
+                terminZaPreporuku.Add(terminZaPreporuku3);
                 datum1 = datum1.AddDays(1);
             }
         }
 
+        private void izbaciZauzeteTermine(Termin termin)
+        {
+            for(int i= 0;i < terminZaPreporuku.Count;i++)
+            {
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.LekarKey.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
+                {
+                    terminZaPreporuku.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
         private void preporukaZaDoktora()
         {
             if (lekarChecked.IsChecked == true)
             {
                 foreach (Termin ter in termini)
                 {
-                    if (terminiZaPreporuku.Contains(ter.PocetnoVreme) || !ter.LekarKey.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
-                    {
-                        terminiZaPreporuku.Remove(ter.PocetnoVreme);
-                    }
+                    izbaciZauzeteTermine(ter);
                 }
             }
-            for (int i = 0; i < terminiZaPreporuku.Count; i++)
+            for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
                 Termin termin = new Termin();
-                termin.PocetnoVreme = terminiZaPreporuku[i];
+                termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
                 termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
@@ -85,34 +116,68 @@ namespace SIMS.PacijentGUI
             }
         }
 
-        private void preporukaZaDatum()
+        private void izbaciZauzeteDoktore(Termin termin)
         {
-            if (datumChecked.IsChecked == true)
+
+            for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
-                foreach (Termin ter in termini)
+                
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme))
                 {
-                    if (terminiZaPreporuku.Contains(ter.PocetnoVreme))
-                    {
-                        terminiZaPreporuku.Remove(ter.PocetnoVreme);
-                    }
+                    terminZaPreporuku[i].IdLekara.Remove(termin.LekarKey);
+                    break;
+                }
+                
+            }
+        }
+        private void izbaciPacijentoveTermine(Termin termin)
+        {
+            for (int i = 0; i < terminZaPreporuku.Count; i++)
+            {
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.PacijentKey.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
+                {
+                    terminZaPreporuku.RemoveAt(i);
+                    i--;
                 }
             }
-            Random rnd = new Random();
-            for (int i = 0; i < terminiZaPreporuku.Count; i++)
+        }
+        private void preporukaZaDatum()
+        {
+            System.Console.WriteLine("Preporuka za datum");
+            if (datumChecked.IsChecked == true)
             {
+                for (int i= 0; i<termini.Count;i++)
+                {
+                    
+                    izbaciZauzeteDoktore(termini[i]);
+                    izbaciPacijentoveTermine(termini[i]);
+                    
+                }
+            }
+            
+            int brojacPreporucenihTermina = 0;
+            for (int i = 0; i < terminZaPreporuku.Count; i++)
+            {
+                if (terminZaPreporuku[i].IdLekara.Count == 0)
+                {
+                    continue;
+                }
+
+                brojacPreporucenihTermina++;
                 Termin termin = new Termin();
-                termin.PocetnoVreme = terminiZaPreporuku[i];
+                termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
-                termin.LekarKey = lekari[rnd.Next(lekari.Count)].Jmbg;
+                termin.LekarKey = terminZaPreporuku[i].IdLekara[i%terminZaPreporuku[i].IdLekara.Count];
                 termin.PacijentKey = PocetnaStranica.getInstance().Pacijent.Jmbg;
                 termin.Prostorija = "1";
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
-                if (i == 4)
-                {
-                    break;
-                }
+                if (brojacPreporucenihTermina == 5)
+                    return;
+
+
+
             }
         }
 
@@ -140,7 +205,7 @@ namespace SIMS.PacijentGUI
             preporuka();
             PreporuceniTermini preporuceni = new PreporuceniTermini();
             preporuceni.dodajTermine(preporuceniTermini);
-            preporuceni.Show();
+            PocetnaStranica.getInstance().Tabovi.Content = preporuceni;
         }
 
         private void PocetniDatum_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

@@ -17,7 +17,7 @@ namespace SIMS.PacijentGUI
     /// <summary>
     /// Interaction logic for PreporuceniTermini.xaml
     /// </summary>
-    public partial class PreporuceniTermini : Window
+    public partial class PreporuceniTermini : Page
     {
         private static ObservableCollection<Termin> termini;
         private Pacijent pacijent;
@@ -27,7 +27,7 @@ namespace SIMS.PacijentGUI
             
             InitializeComponent();
             this.DataContext = this;
-            pacijent = new Pacijent();
+            pacijent = PocetnaStranica.getInstance().Pacijent;
         }
         public static ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
        
@@ -36,12 +36,20 @@ namespace SIMS.PacijentGUI
             termini = new ObservableCollection<Termin>(terminiPreporuka);
         }
 
-        private void Zatovir_Click(object sender, RoutedEventArgs e)
+        private void Nazad_Click(object sender, RoutedEventArgs e)
         {
-            ZakazivanjeTermina zak = ZakazivanjeTermina.getInstance();
-            zak.Zakazivanje1.Children.Clear();
-            zak.Zakazivanje1.Children.Add(new PreporukaTermina(pacijent));
-            this.Close();
+            ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
+            zakazivanje.Zakazivanje1.Children.Clear();
+            zakazivanje.Zakazivanje1.Children.Add(new PreporukaTermina(pacijent));
+            PocetnaStranica.getInstance().Tabovi.Content =zakazivanje;
+            
+        }
+
+        private void Zakazi_Click(object sender, RoutedEventArgs e)
+        {
+            TerminStorage trm = new TerminStorage();
+            trm.Create(termini[PreporuceniTerminiTabela.SelectedIndex]);
+            termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
         }
     }
 }

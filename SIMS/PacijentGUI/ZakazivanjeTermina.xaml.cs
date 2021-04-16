@@ -36,6 +36,7 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
+            Zakazivanje1.Children.Add(new zakazivanje(pacijent));
         }
 
         private void Preporuceni_Click(object sender, RoutedEventArgs e)

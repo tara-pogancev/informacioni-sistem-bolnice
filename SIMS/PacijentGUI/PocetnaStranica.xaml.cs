@@ -61,5 +61,10 @@ namespace SIMS.PacijentGUI
         }
 
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+
+        private void Iskljucivanje_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
