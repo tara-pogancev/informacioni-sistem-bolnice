@@ -52,41 +52,12 @@
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
 
-                        <TextBox VerticalAlignment="Center" Text="Username" x:Name="username" Width="250" Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" Margin="0,0,0,15" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite korisničko ime" VerticalContentAlignment="Center" Padding="5,0,5,0" GotFocus="Username_GotFocus" LostFocus="Username_LostFocus" KeyDown="OnKeyDownHandler">
-                            <TextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius" Value="8"/>
-                                </Style>
-                            </TextBox.Resources>
-                        </TextBox>
+                        <TextBox VerticalAlignment="Center" Text="Username" x:Name="username" Width="250" Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" Margin="0,0,0,15" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite korisničko ime" VerticalContentAlignment="Center" Padding="5,0,5,0" GotFocus="Username_GotFocus" LostFocus="Username_LostFocus" KeyDown="OnKeyDownHandler"/>
 
-                        <PasswordBox Password="jenova" x:Name="password" Width="250"  Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" VerticalAlignment="Top" Margin="0,0,0,33" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite lozinku" VerticalContentAlignment="Center" Padding="5,0,0,0" GotFocus="Pass_GotFocus" LostFocus="Pass_LostFocus" KeyDown="OnKeyDownHandler">
+                        <PasswordBox Password="jenova" x:Name="password" Width="250"  Background="{x:Null}" Height="35" SelectionBrush="#FF01C38D" VerticalAlignment="Top" Margin="0,0,0,33" FontSize="14" FontFamily="Candara" Foreground="White" ToolTip="Unesite lozinku" VerticalContentAlignment="Center" Padding="5,0,0,0" GotFocus="Pass_GotFocus" LostFocus="Pass_LostFocus" KeyDown="OnKeyDownHandler"/>
 
-                        </PasswordBox>
+                        <Button Content="PRIJAVA" Click="Button_Click" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Width="240" Height="45"/>
 
-                        <Button Content="PRIJAVA" Width="250" Height="45" Background="#FF01C38D" Click="Button_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand">
-
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#FF148364"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
-                                        <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
-                                    </Border>
-
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
 
                     </StackPanel>
 

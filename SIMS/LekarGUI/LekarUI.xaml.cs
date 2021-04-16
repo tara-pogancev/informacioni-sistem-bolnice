@@ -1,5 +1,6 @@
 ﻿
 using Model;
+using SIMS.LekarGUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ using System.Windows.Threading;
 namespace SIMS
 {
     /// <summary>
-    /// Interaction logic for LekarUI.xaml
+    /// Glavni prozor za lekara
     /// </summary>
     public partial class LekarUI : Window
     {
@@ -27,10 +28,9 @@ namespace SIMS
 
         private static Lekar lekarUser;
 
-        private ObservableCollection<Termin> terminiView;
-        public ObservableCollection<Termin> TerminiView { get => terminiView; set => terminiView = value; }
+        private WindowBar bar = new WindowBar();
 
-        public static LekarUI getInstance(Lekar l)
+        public static LekarUI GetInstance(Lekar l)
         {
             if (instance == null)
             {
@@ -40,8 +40,7 @@ namespace SIMS
             return instance;
         }
 
-
-        public static LekarUI getInstance()
+        public static LekarUI GetInstance()
         {
             return instance;
         }
@@ -52,118 +51,225 @@ namespace SIMS
 
             //Tred za prikazivanje sata i datuma
 
+            this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
+
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
-                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
+                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
             }, this.Dispatcher);
+
+            SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
 
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
-            //Tabela pregleda
+            WindowBarFrame.Content = bar;
 
-            this.DataContext = this;
-            terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            refreshView();
-        }
-
-        private void refreshView()
-        {
-            terminiView.Clear();
-            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
-            foreach (Termin t in temp)
-            {
-                terminiView.Add(t);
-            }
         }
 
         private void Button_Termini(object sender, RoutedEventArgs e)
         {
             //Button: Termini
+            ChangeTab(1);
         }
 
         private void Button_Pacijenti(object sender, RoutedEventArgs e)
         {
             //Button: Pacijenti
+            ChangeTab(2);
         }
 
         private void Button_Istorija(object sender, RoutedEventArgs e)
         {
             //Button: Istorija pregleda
+            ChangeTab(3);
         }
 
         private void Button_Evidencija(object sender, RoutedEventArgs e)
         {
             //Button: Evidentiranje materijala
+            ChangeTab(4);
         }
 
         private void Button_Nalog(object sender, RoutedEventArgs e)
         {
-            //Button: Nalog, DEBUG
-            MessageBox.Show("Ukupno termina: " + TerminStorage.Instance.ReadList().Count);
-            refreshView();
+            //Button: Nalog, DEBUG po potrebi
+            ChangeTab(5);
 
         }
 
-        private void Button_Pregled(object sender, RoutedEventArgs e)
+        private void Button_Dashboard(object sender, MouseButtonEventArgs e)
         {
-            //Button: Zakazi pregled
-            TerminCreate terminCreate = new TerminCreate();
-            terminCreate.Show();
+            //Dashboard
+            ChangeTab(0);
+
         }
 
-        private void Button_Operacija(object sender, RoutedEventArgs e)
+        public Lekar GetUser()
         {
-            //Button: Zakazi operaciju
-            OperacijaCreate operacijaCreate = new OperacijaCreate();
-            operacijaCreate.Show();
+            return lekarUser;
         }
 
-        private void Button_Update(object sender, RoutedEventArgs e)
+        public void ChangeTab(int tabNum)
         {
-            //Button: Uredi termin
-            if (dataGridTermini.SelectedItem != null)
+
+            SolidColorBrush sellectedTab = new SolidColorBrush(Color.FromRgb(38, 46, 62));
+
+            //Funkcija pomocu enumeracije menja tab
+            switch (tabNum)
             {
-                TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
-                terminUpdate.Show();
-            }
+                case 0:
+                    {
+                        SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        break;
+                    }
+                case 1:
+                    {
+                        SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                         B1.Fill = sellectedTab;
+                        break;
+                    }
+                case 2:
+                    {
+                        SellectedTab.Content = LekarPacijentiPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B2.Fill = sellectedTab;
+                        break;
+                    }
+                case 3:
+                    {
+                        SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B3.Fill = sellectedTab;
+                        break;
+                    }
+                case 4:
+                    {
+                        SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B4.Fill = sellectedTab;
+                        break;
+                    }
+                case 5:
+                    {
+                        SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
+                        ResetActiveButtons();
+                        B5.Fill = sellectedTab;
+                        break;
+                    }
+                case 6:
+                    {
+                        SellectedTab.Content = new LekarNotificationPage();
+                        ResetActiveButtons();
+                        break;
+                    }
+                case 7:
+                    {
+                        SellectedTab.Content = new LekarHelpPage();
+                        ResetActiveButtons();
+                        break;
+                    }
 
+            }
         }
 
-        private void Button_Delete(object sender, RoutedEventArgs e)
+        public void ChangeWindowMinimize()
         {
-            //Button: Otkaži pregled
+            this.WindowState = WindowState.Minimized;
+        }
 
-            if (dataGridTermini.SelectedItem != null)
+        public void ChangeWindowClose()
+        {
+            this.Close();
+        }
+
+        public void ChangeWindowSize()
+        {
+            if (this.WindowState == WindowState.Maximized)
             {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
 
-                if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
-                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    Termin toDelete = (Termin)dataGridTermini.SelectedItem;
-                    TerminStorage.Instance.Delete(toDelete.TerminKey);
-                    MessageBox.Show("Termin je uspešno otkazan!");
-                    refreshView();
-                }
+        public WindowState GetWindowState()
+        {
+            return this.WindowState;
+        }
+
+        private void Button_LogOut(object sender, MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
+                "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                new MainWindow().Show();
+                this.Close();
+
+                if (LekarEvidencijaPage.GetInstance() != null)
+                    LekarEvidencijaPage.GetInstance().RemoveInstance();
+
+                if (LekarPacijentiPage.GetInstance() != null)
+                    LekarPacijentiPage.GetInstance().RemoveInstance();
+
+                if (LekarIstorijaPage.GetInstance() != null)
+                    LekarIstorijaPage.GetInstance().RemoveInstance();
+
+                if (LekarNalogPage.GetInstance() != null)
+                    LekarNalogPage.GetInstance().RemoveInstance();
+
+                if (LekarTerminiPage.GetInstance() != null)
+                    LekarTerminiPage.GetInstance().RemoveInstance();
+
+                instance = null;
 
             }
         }
 
-        public void dodajTermin(Termin termin)
+        private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
         {
-            TerminStorage.Instance.Create(termin);
-            refreshView();
-            MessageBox.Show("Termin uspešno zakazan.");
+            DragMove();
         }
 
-        private void LekarUI_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void MinimizeWindow(object sender, MouseButtonEventArgs e)
         {
-            return;
+            this.WindowState = WindowState.Normal;
+
+            Application.Current.MainWindow = this;
+            Application.Current.MainWindow.Width = 1050;
+            Application.Current.MainWindow.Height = 625;
+
+            double height = SystemParameters.WorkArea.Height;
+            double width = SystemParameters.WorkArea.Width;
+            this.Top = (height - this.Height) / 2;
+            this.Left = (width - this.Width) / 2;
+
+            bar.ChangeMinimizeButton();
         }
 
-        public void refresh()
+        private void ResetActiveButtons()
         {
-            refreshView();
+            //MenuGrid.Row[0].Cells[1].Style.BackColor = new SolidColorBrush(Colors.Green);
+
+            B1.Fill = new SolidColorBrush(Colors.Transparent);
+            B2.Fill = new SolidColorBrush(Colors.Transparent);
+            B3.Fill = new SolidColorBrush(Colors.Transparent);
+            B4.Fill = new SolidColorBrush(Colors.Transparent);
+            B5.Fill = new SolidColorBrush(Colors.Transparent);
+
         }
 
+        private void Button_Notification(object sender, MouseButtonEventArgs e)
+        {
+            this.ChangeTab(6);
+        }
+
+        private void Button_Help(object sender, MouseButtonEventArgs e)
+        {
+            this.ChangeTab(7);
+        }
     }
 }

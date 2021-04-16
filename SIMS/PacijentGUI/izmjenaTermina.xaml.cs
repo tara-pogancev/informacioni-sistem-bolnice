@@ -24,6 +24,7 @@ namespace SIMS
         Termin termin;
         Boolean doktorSelektovan;
         PacijentUI pacijentUI;
+
         public izmjenaTermina(Termin termin,PacijentUI ui)
         {
             InitializeComponent();
@@ -33,7 +34,6 @@ namespace SIMS
             lekari = new List<Lekar>(lk.ReadList());
             this.termin = termin;
 
-            
             filtrirajTermine();
             /*Drzava SrbijaT = new Drzava("Srbija");
             Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
@@ -87,7 +87,7 @@ namespace SIMS
         public void fillComboBoxes(Termin termin)
         {
             datePicker1.DisplayDate = termin.PocetnoVreme;
-            datePicker1.Text = termin.PocetnoVreme.ToString("dd/MM/yyyy");
+            datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
             int index = 0;
             foreach (Lekar lek in lekari) {
                 if (lek.Jmbg.Equals(termin.LekarKey)) {
@@ -155,10 +155,10 @@ namespace SIMS
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
-            foreach (Termin term in pacijentUI.Termini)
-            {
 
-            }
+            TerminStorage.Instance.Update(termin);
+
+            pacijentUI.refresh();
             this.Close();
         }
 

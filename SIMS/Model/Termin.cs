@@ -12,7 +12,7 @@ namespace Model
    public class Termin : INotifyPropertyChanged
    {
       private DateTime pocetnoVreme;
-      private TimeSpan vremeTrajanja;
+      private int vremeTrajanja;    //U minutima
       private TipTermina vrstaTermina;
 
         private String lekarKey;         //JMBG lekara
@@ -31,13 +31,13 @@ namespace Model
         }
 
         public DateTime PocetnoVreme { get => pocetnoVreme; set { pocetnoVreme = value; OnPropertyChanged("PocetnoVreme"); OnPropertyChanged("Vrijeme"); OnPropertyChanged("Datum"); } }
-        public TimeSpan VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
+        public int VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
         public TipTermina VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
         public String LekarKey { get => lekarKey; set { lekarKey = value; OnPropertyChanged("LekarKey"); } }
         public String PacijentKey { get => pacijentKey; set { pacijentKey = value; OnPropertyChanged("PacijentKey"); } }
         public String Prostorija { get => prostorijaKey; set { prostorijaKey = value; OnPropertyChanged("Prostorija"); } }
 
-        public Termin(DateTime pocetnoVreme, TimeSpan vremeTrajanja, TipTermina vrstaTermina, String lekar, String pacijent, String prostorija)
+        public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, String lekar, String pacijent, String prostorija)
         {
             this.pocetnoVreme = pocetnoVreme;
             this.vremeTrajanja = vremeTrajanja;
@@ -54,7 +54,7 @@ namespace Model
             this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
         }        
 
-        public String Datum { get => PocetnoVreme.ToString("dd/MM/yyyy"); }
+        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
 
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 
@@ -100,5 +100,39 @@ namespace Model
         {
             get { return this.prostorijaKey; }
         }
+
+        public bool Evidentiran
+        {
+            get
+            {
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                    return false;
+                else return true;
+            }
+        }
+
+        public bool IsPast
+        {
+            get
+            {
+                if (this.PocetnoVreme <= DateTime.Now)
+                    return true;
+                else return false;
+            }
+        }
+
+        public bool isCurrent
+        {
+            get
+            {
+                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
+
+                if (this.PocetnoVreme >= DateTime.Now && krajnjeVreme <= DateTime.Now )
+                    return true;
+
+                else return false;
+            }
+        }
+
     }
 }

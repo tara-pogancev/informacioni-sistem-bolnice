@@ -17,6 +17,7 @@ namespace SIMS
         private Boolean doktorSelektovan;
         private Pacijent pacijent;
         private PacijentUI pacijentUI;
+
         public KreirajTermin(Pacijent pacijent,PacijentUI ui)
         {
             InitializeComponent();
@@ -26,11 +27,9 @@ namespace SIMS
             
             termin = new Termin();
             doktorSelektovan = false;
-            LekarStorage lk = new LekarStorage();
-            lekari = lk.ReadList();
+            lekari = LekarStorage.Instance.ReadList();
             doktori.ItemsSource = lekari;
             
-
             //////////////////////////////////////////
             /*Drzava Bih = new Drzava("Bosna i Hercegovina");
             Grad Foca = new Grad("Foca", 73300, Bih);
@@ -63,12 +62,12 @@ namespace SIMS
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
+            termin.VremeTrajanja = 30;
             termin.PacijentKey = pacijent.Jmbg;
-            Prostorija p = new Prostorija();
-            p.Broj = "10";
-            termin.Prostorija = p.Broj;
-            
-            pacijentUI.dodajTermin(termin);
+            termin.Prostorija = "1";
+
+            TerminStorage.Instance.Create(termin);
+            pacijentUI.refresh();
             this.Close();
         }
 

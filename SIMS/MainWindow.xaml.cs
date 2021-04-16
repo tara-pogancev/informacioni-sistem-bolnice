@@ -57,7 +57,7 @@ namespace SIMS
             Lekar lekar = LekarStorage.Instance.ReadUser(user);
             if (lekar != null && pass.Equals(lekar.Lozinka))
             {
-                LekarUI lekarUI = LekarUI.getInstance(lekar);
+                LekarUI lekarUI = LekarUI.GetInstance(lekar);
                 lekarUI.Show();
                 this.Close();
                 return;
@@ -67,7 +67,7 @@ namespace SIMS
             Sekretar sekretar = SekretarStorage.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Lozinka))
             {
-                    SekretarUI sekretarUI = SekretarUI.getInstance();
+                    SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
                     sekretarUI.Show();
                     this.Close();
                     return;

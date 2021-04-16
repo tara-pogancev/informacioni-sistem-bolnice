@@ -1,0 +1,40 @@
+﻿{
+  "045210805048": {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Tara",
+    "Prezime": "Pogančev",
+    "Jmbg": "045210805048",
+    "KorisnickoIme": "l",
+    "Lozinka": "l",
+    "Email": "tarapogancev@gmail.com",
+    "Telefon": "629998425",
+    "Adresa": null,
+    "ImePrezime": "Tara Pogancev"
+  },
+
+  "4848555021548": {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Zack",
+    "Prezime": "Fair",
+    "Jmbg": "4848555021548",
+    "KorisnickoIme": "zack",
+    "Lozinka": "l",
+    "Email": "zackfair@zdravo.com",
+    "Telefon": "0698547521",
+    "Adresa": null,
+    "ImePrezime": "MilanMarkovic"
+  },
+
+  "22157484654211": {
+    "DaniGodisnjegOdmora": 15,
+    "Ime": "Cloud",
+    "Prezime": "Strife",
+    "Jmbg": "22157484654211",
+    "KorisnickoIme": "cloud",
+    "Lozinka": "l",
+    "Email": "fluffy@clouds.com",
+    "Telefon": "0640005481",
+    "Adresa": null,
+    "ImePrezime": "Cloud Strife"
+  }
+}

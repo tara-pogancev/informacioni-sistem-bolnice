@@ -18,21 +18,16 @@ namespace SIMS
 
     public partial class PacijentUI : Window
     {
-        private ObservableCollection<Termin> termini;
-
-       
+        private static ObservableCollection<Termin> termini;
+               
         private Pacijent pacijent;
 
-      
-
-       
         public PacijentUI(Pacijent p)
         {
             InitializeComponent();
 
             pacijent = p;
-            TerminStorage trm = new TerminStorage();
-            termini = new ObservableCollection<Termin>(trm.ReadByPatient(p));
+            termini = new ObservableCollection<Termin>(TerminStorage.Instance.ReadByPatient(p));
 
             /*     Drzava Bih = new Drzava("Bosna i Hercegovina");
                  Grad Foca = new Grad("Foca", 73300, Bih);
@@ -61,6 +56,17 @@ namespace SIMS
 
         }
 
+        public void refresh()
+        {
+            //Metoda koja osvezava pregled tabele
+            termini.Clear();
+            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByPatient(pacijent));
+            foreach (Termin t in temp)
+            {
+                termini.Add(t);
+            }
+        }
+
         private void Otkazi_Click(object sender, RoutedEventArgs e)
         {
             Termin termin = (Termin)terminiTabela.SelectedItem;
@@ -75,7 +81,9 @@ namespace SIMS
             }
             else
             {
-                termini.Remove(termin);
+                //termini.Remove(termin);
+                TerminStorage.Instance.Delete(termin.TerminKey);
+                refresh();
             }
         }
 
@@ -106,14 +114,20 @@ namespace SIMS
             kreirajTermin.Show();
         }
 
+        private void Button_Log_Out(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
+
         public void dodajTermin(Termin termin)
         {
-            termini.Add(termin);
+            //termini.Add(termin);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            TerminStorage tr = new TerminStorage();
+            //TerminStorage tr = new TerminStorage();
             //tr.Update(termini.ToList(),pacijent);
         }
 
