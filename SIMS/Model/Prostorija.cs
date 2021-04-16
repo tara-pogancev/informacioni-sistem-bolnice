@@ -44,22 +44,6 @@ namespace Model
             this.kolicineOpreme = kolicineOpreme;
         }
 
-        public void SetKolicinaOpreme(string id, int kolicina)
-        {
-            kolicineOpreme[id] = kolicina;
-        }
-
-        public int GetKolicinaOpreme(string id)
-        {
-            int retVal;
-
-            if (!kolicineOpreme.TryGetValue(id, out retVal))
-            {
-                return 0;
-            }
-
-            return retVal;
-        }
 
         public string Broj { get => broj; set => broj = value; }
         public bool Dostupna { get => dostupna; set => dostupna = value; }

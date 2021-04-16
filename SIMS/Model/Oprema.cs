@@ -33,7 +33,7 @@ namespace Model
                 {
                     return 0;
                 }
-                return ProstorijaStorage.Instance.Read(BrojProstorije).GetKolicinaOpreme(Id);
+                return ProsInvStorage.Instance.Read(BrojProstorije, Id).Kolicina;
             }
         }
 

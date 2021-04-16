@@ -39,14 +39,29 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            Prostorija dst = ProstorijaStorage.Instance.Read(BrojPremestanja.Text);
-            dst.SetKolicinaOpreme(Oprema.Id, dst.GetKolicinaOpreme(Oprema.Id) + int.Parse(Kolicina.Text));
+            ProsInv src = ProsInvStorage.Instance.Read(BrojProstorije, Oprema.Id);
+            ProsInv dst = ProsInvStorage.Instance.Read(BrojPremestanja.Text, Oprema.Id);
 
-            Prostorija src = ProstorijaStorage.Instance.Read(BrojProstorije);
-            src.SetKolicinaOpreme(Oprema.Id, src.GetKolicinaOpreme(Oprema.Id) - int.Parse(Kolicina.Text));
+            int delta;
 
-            ProstorijaStorage.Instance.Update(dst);
-            ProstorijaStorage.Instance.Update(src);
+            try 
+            {
+                delta = int.Parse(Kolicina.Text);
+            } 
+            catch (Exception)
+            {
+                return;
+            }
+            if (src.Kolicina < delta)
+            {
+                return;
+            }
+
+            src.Kolicina -= delta;
+            dst.Kolicina += delta;
+
+            ProsInvStorage.Instance.Update(src);
+            ProsInvStorage.Instance.Update(dst);
 
             ParentPage.Update();
 

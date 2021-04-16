@@ -48,7 +48,7 @@ namespace Model
             };
         }
 
-        public static List<string> getTipoviProstorije()
+        public static List<string> GetTipoviProstorije()
         {
             List<string> tipovi = new List<string>();
             foreach (TipProstorije tip in Enum.GetValues(typeof(TipProstorije)))
@@ -59,7 +59,7 @@ namespace Model
             return tipovi;
         }
 
-        public static List<string> getTipoviOpreme()
+        public static List<string> GetTipoviOpreme()
         {
             List<string> tipovi = new List<string>();
             foreach (TipOpreme tip in Enum.GetValues(typeof(TipOpreme)))
@@ -80,7 +80,7 @@ namespace Model
             return dostupnost.Equals("Dostupna");
         }
 
-        public static List<string> getDostupnostiProstorije()
+        public static List<string> GetDostupnostiProstorije()
         {
             List<string> tipovi = new List<string>();
             tipovi.Add("Dostupna");

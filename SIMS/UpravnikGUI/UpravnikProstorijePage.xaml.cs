@@ -57,5 +57,21 @@ namespace SIMS.UpravnikGUI
             UpravnikWindow.Instance.SetLabel("Prostorija " + SelectedProstorija.Broj);
         }
 
+        private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            ObservableCollection<Prostorija> filtered = new ObservableCollection<Prostorija>();
+
+            foreach (Prostorija prostorija in prostorije)
+            {
+                if (prostorija.Broj.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
+                    prostorija.DostupnaToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
+                    prostorija.TipProstorijeToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    filtered.Add(prostorija);
+                }
+            }
+
+            tabelaProstorije.ItemsSource = filtered;
+        }
     }
 }

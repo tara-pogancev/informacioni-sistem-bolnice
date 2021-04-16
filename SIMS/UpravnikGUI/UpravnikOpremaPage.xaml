@@ -10,7 +10,7 @@
 
     <Grid Background="#323D52">
         <StackPanel>
-            <TextBox Margin="20, 20" />
+            <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" />
             <DataGrid x:Name="tabelaOpreme" Margin="20, 20" ItemsSource="{Binding opreme}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                 <DataGrid.Columns>

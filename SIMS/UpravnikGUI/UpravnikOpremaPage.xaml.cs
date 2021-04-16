@@ -58,5 +58,22 @@ namespace SIMS.UpravnikGUI
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.Id));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.Id);
         }
+
+        private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
+
+            foreach (Oprema oprema in opreme)
+            {
+                if (oprema.Id.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Naziv.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.TipToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    filtered.Add(oprema);
+                }
+            }
+
+            tabelaOpreme.ItemsSource = filtered;
+        }
     }
 }

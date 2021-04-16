@@ -33,10 +33,10 @@ namespace SIMS.UpravnikGUI
 
             BrojText.Text = prostorija.Broj;
 
-            TipCombo.ItemsSource = Conversion.getTipoviProstorije();
+            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
             TipCombo.SelectedItem = prostorija.TipProstorijeToString;
 
-            DostupnostCombo.ItemsSource = Conversion.getDostupnostiProstorije();
+            DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
             DostupnostCombo.SelectedItem = prostorija.DostupnaToString;
 
             BrojText.IsEnabled = false;
@@ -48,8 +48,12 @@ namespace SIMS.UpravnikGUI
             prostorija = new Prostorija();
             InitializeComponent();
 
-            TipCombo.ItemsSource = Conversion.getTipoviProstorije();
-            DostupnostCombo.ItemsSource = Conversion.getDostupnostiProstorije();
+            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
+            DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
+
+            InventarButton.Visibility = Visibility.Hidden; 
+            InventarButton.IsEnabled = false;
+
         }
 
         private void InventarProstorije_Click(object sender, RoutedEventArgs e)

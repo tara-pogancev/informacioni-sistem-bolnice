@@ -27,7 +27,7 @@ namespace SIMS.UpravnikGUI
             isNew = true;
             oprema = new Oprema();
             InitializeComponent();
-            Tip.ItemsSource = Conversion.getTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetTipoviOpreme();
         }
         public UpravnikOpremaDetailPage(string Id)
         {
@@ -38,7 +38,7 @@ namespace SIMS.UpravnikGUI
 
             ID.Text = oprema.Id;
             Naziv.Text = oprema.Naziv;
-            Tip.ItemsSource = Conversion.getTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetTipoviOpreme();
             Tip.SelectedItem = oprema.TipToString;
 
             ID.IsEnabled = false;

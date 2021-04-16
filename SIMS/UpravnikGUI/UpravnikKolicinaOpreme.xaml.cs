@@ -32,13 +32,13 @@ namespace SIMS.UpravnikGUI
 
             ID.Text = Oprema.Id;
             Naziv.Text = Oprema.Naziv;
-            Tip.ItemsSource = Conversion.getTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetTipoviOpreme();
             Tip.SelectedItem = Oprema.TipToString;
 
             ID.IsEnabled = false;
             Naziv.IsEnabled = false;
             Tip.IsEnabled = false;
-            Kolicina.Text = ProstorijaStorage.Instance.Read(BrojProstorije).GetKolicinaOpreme(Oprema.Id).ToString();
+            Kolicina.Text = ProsInvStorage.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
@@ -53,9 +53,21 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            Prostorija prostorija = ProstorijaStorage.Instance.Read(BrojProstorije);
-            prostorija.SetKolicinaOpreme(Oprema.Id, int.Parse(Kolicina.Text));
-            ProstorijaStorage.Instance.Update(prostorija);
+            int amount;
+            try
+            {
+                amount = int.Parse(Kolicina.Text);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            if (amount < 0)
+            {
+                return;
+            }
+            ProsInvStorage.Instance.Update(new ProsInv(BrojProstorije, Oprema.Id, amount));
 
             ParentPage.Update();
 

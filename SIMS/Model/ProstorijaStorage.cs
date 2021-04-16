@@ -30,22 +30,5 @@ namespace Model
             }
 
         }
-
-        public bool UpdateKolicinaOpreme(string keyProstorije, string keyOpreme, int kolicina)
-        {
-            Oprema dinamickaOprema = OpremaStorage.Instance.Read(keyOpreme);
-            Prostorija prostorija = Read(keyProstorije);
-
-            if (dinamickaOprema == null || prostorija == null)
-            {
-                return false;
-            }
-
-            prostorija.SetKolicinaOpreme(keyOpreme, kolicina);
-            Update(prostorija);
-
-            return true;
-        }
-
     }
 }
