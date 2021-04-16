@@ -102,6 +102,17 @@ namespace Model
             return true;
         }
 
+        public void CreateOrUpdate(Entity Entity)
+        {
+            Dictionary<KeyType, Entity> entities = ReadFile();
+
+            KeyType key = getKey(Entity);
+
+            entities[key] = Entity;
+
+            WriteFile(entities);
+        }
+
 
         public bool Delete(KeyType key)
         {
