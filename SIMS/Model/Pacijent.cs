@@ -16,7 +16,7 @@ namespace Model
         private DateTime datum_rodjenja;
         private Krvne_Grupe krvna_grupa;
         private Pol pol;
-        private List<string> hronicne_bolesti;
+        private List<string> hronicne_bolesti = new List<string>();
 
         public string Lbo { get => lbo; set => lbo = value; }
         public bool Gost { get => gost; set => gost = value; }
@@ -75,6 +75,7 @@ namespace Model
             this.Lbo = p.Lbo;
             this.Gost = p.Gost;
         }
+
         public List<string> Alergeni
         {
             get
@@ -92,9 +93,26 @@ namespace Model
             get
             {
                 string alergeniString = "";
+                if (alergeni.Count == 0 || alergeni.Contains(""))
+                    return "Nema";
+
                 foreach (string a in alergeni)
-                    alergeniString += a + " ";
+                    alergeniString += AlergeniStorage.Instance.Read(a).Naziv + " ";
                 return alergeniString.Trim();
+            }
+        }
+
+        public string GetHronicneBolestiString
+        {
+            get
+            {
+                string hronBolestiString = "";
+                if (hronicne_bolesti.Count == 0 || hronicne_bolesti.Contains(""))
+                    return "Nema";
+
+                foreach (string a in hronicne_bolesti)
+                    hronBolestiString += a + " ";
+                return hronBolestiString.Trim();
             }
         }
 
@@ -146,14 +164,42 @@ namespace Model
             }
         } 
 
-        public string Hronicne_Bolesti_String
+        public String DatumString { get => datum_rodjenja.ToString("dd.MM.yyyy."); }
+        
+        public String PolString
+        {
+            get
+
+            {
+                if (pol == Pol.Muški)
+                    return "Muško";
+                else
+                    return "Žensko";
+            }
+        }
+
+        public String KrvnaGrupaString
         {
             get
             {
-                string hronicne_bolesti_string = "";
-                foreach (string hb in hronicne_bolesti)
-                    hronicne_bolesti_string += hb + " ";
-                return hronicne_bolesti_string.Trim();
+                if (krvna_grupa == Krvne_Grupe.ABn)
+                    return "AB-";
+                else if (krvna_grupa == Krvne_Grupe.ABp)
+                    return "AB+";
+                else if (krvna_grupa == Krvne_Grupe.Ap)
+                    return "A+";
+                else if (krvna_grupa == Krvne_Grupe.An)
+                    return "A-";
+                else if (krvna_grupa == Krvne_Grupe.Bp)
+                    return "B+";
+                else if (krvna_grupa == Krvne_Grupe.Bn)
+                    return "B-";
+                else if (krvna_grupa == Krvne_Grupe.Op)
+                    return "O+";
+                else if (krvna_grupa == Krvne_Grupe.On)
+                    return "O-";
+
+                return null;
             }
         }
 

@@ -54,7 +54,7 @@ namespace Model
             this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
         }        
 
-        public String Datum { get => PocetnoVreme.ToString("dd/MM/yyyy"); }
+        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
 
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
 
@@ -100,5 +100,39 @@ namespace Model
         {
             get { return this.prostorijaKey; }
         }
+
+        public bool Evidentiran
+        {
+            get
+            {
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                    return false;
+                else return true;
+            }
+        }
+
+        public bool IsPast
+        {
+            get
+            {
+                if (this.PocetnoVreme <= DateTime.Now)
+                    return true;
+                else return false;
+            }
+        }
+
+        public bool isCurrent
+        {
+            get
+            {
+                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
+
+                if (this.PocetnoVreme >= DateTime.Now && krajnjeVreme <= DateTime.Now )
+                    return true;
+
+                else return false;
+            }
+        }
+
     }
 }

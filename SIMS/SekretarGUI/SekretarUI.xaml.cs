@@ -13,13 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Windows.Threading;
+using SIMS.SekretarGUI;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 
 namespace SIMS
 {
 
     public partial class SekretarUI : Window
     {
-        private ObservableCollection<Pacijent> pacijenti;
         private static SekretarUI instance = null;
         private Sekretar sekretar;
 
@@ -42,66 +44,98 @@ namespace SIMS
             sekretar = s;
             UsernameLabel.Content = sekretar.ImePrezime;
 
-            dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
+            /*dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
             DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            }, Dispatcher);
+            }, Dispatcher);*/
 
-            PacijentStorage storage = new PacijentStorage();
-            pacijenti = new ObservableCollection<Pacijent>(storage.ReadList());
-
-            tabelaPacijenata.ItemsSource = pacijenti;
+            MainFrame.Content = SekretarHomePage.GetInstance();
         }
 
-        private void Dodaj_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Menu(object sender, RoutedEventArgs e)
         {
-            Dodaj dodaj = new Dodaj();
-            dodaj.Show();
+            ButtonCloseMenu.Visibility = Visibility.Visible;
         }
 
-        private void Izmeni_Click(object sender, RoutedEventArgs e)
+        private void Button_Notification(object sender, RoutedEventArgs e)
         {
-            if (tabelaPacijenata.SelectedItem == null)
-            {
-                MessageBox.Show("Morate izabrati pacijenta za izmenu.", "Pacijent nije izabran");
-            }
-            else
-            {
-                Izmeni izmeni = new Izmeni((Pacijent)tabelaPacijenata.SelectedItem);
-                izmeni.Show();
-            }
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(ButtonCloseMenu);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+
+            invokeProv.Invoke();
+            MainFrame.Content = new SekretarObavestenjaPage();
         }
 
-        private void Obrisi_Click(object sender, RoutedEventArgs e)
+        private void Button_Theme(object sender, RoutedEventArgs e)
         {
-            if (tabelaPacijenata.SelectedItem == null)
-            {
-                MessageBox.Show("Morate izabrati pacijenta za brisanje.", "Pacijent nije izabran");
-            }
-            else
-            {
-                Pacijent toDelete = (Pacijent)tabelaPacijenata.SelectedItem;
-                PacijentStorage.Instance.Delete(toDelete.Jmbg);
-                refresh();
-            }
+            ButtonTheme.Content = ButtonTheme.Content == FindResource("MoonImage") ? FindResource("SunImage") : FindResource("MoonImage");
         }
 
-        public void refresh()
+        private void Button_Language(object sender, RoutedEventArgs e)
         {
-            pacijenti.Clear();
-            List<Pacijent> pacijentiAll = PacijentStorage.Instance.ReadList();
-            foreach (Pacijent p in pacijentiAll)
-                pacijenti.Add(p);
+            ButtonLanguage.Content = (ButtonLanguage.Content.Equals("SR")) ? "EN" : "SR";
+        }
 
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Log_Out(object sender, RoutedEventArgs e)
         {
-
             new MainWindow().Show();
             instance = null;
+
+            if (SekretarHomePage.GetInstance() != null)
+                SekretarHomePage.GetInstance().RemoveInstance();
+            if (SekretarPacijentiPage.GetInstance() != null)
+                SekretarPacijentiPage.GetInstance().RemoveInstance();
+            if (SekretarTerminiPage.GetInstance() != null)
+                SekretarTerminiPage.GetInstance().RemoveInstance();
+
             this.Close();
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((ListViewItem)((ListView)sender).SelectedItem is null)
+                return;
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(ButtonCloseMenu);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "ItemHome":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemPatients":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarPacijentiPage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemAppointments":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarTerminiPage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemReport":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemAccount":
+                    invokeProv.Invoke();
+                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 namespace Model
 {
     public enum Pol {
-        M = 0,
-        Z 
+        Muški = 0,
+        Ženski
     }
 }
