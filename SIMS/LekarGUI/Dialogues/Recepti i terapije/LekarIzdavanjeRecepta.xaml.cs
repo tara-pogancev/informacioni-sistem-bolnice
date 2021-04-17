@@ -44,6 +44,9 @@ namespace SIMS.LekarGUI
                 ReceptStorage.Instance.Create(r);
                 this.Close();
                 MessageBox.Show("Uspešno izdat recept!");
+                Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Obavještavamo Vas da je izdat novi recept", pacijent.Jmbg);
+                ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
+                obavestenjaStorage.Create(obavestenje);
             } 
                 
         }

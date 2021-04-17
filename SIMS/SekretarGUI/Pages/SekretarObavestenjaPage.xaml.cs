@@ -24,7 +24,7 @@ namespace SIMS.SekretarGUI
         public SekretarObavestenjaPage()
         {
             InitializeComponent();
-            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadList();
+            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadByUser("");
             listaObavestenja.Reverse();
             listaTekstova = new ObservableCollection<Obavestenje>(listaObavestenja);
             

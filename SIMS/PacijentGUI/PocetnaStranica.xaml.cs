@@ -66,5 +66,10 @@ namespace SIMS.PacijentGUI
         {
             this.Close();
         }
+
+        private void Zvonce_Click(object sender, RoutedEventArgs e)
+        {
+            Tabovi.Content = new Obavjestenja();
+        }
     }
 }
