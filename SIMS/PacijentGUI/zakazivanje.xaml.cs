@@ -26,6 +26,7 @@ namespace SIMS.PacijentGUI
         Boolean doktorSelektovan;
         public zakazivanje(Pacijent p)
         {
+            InitializeComponent();
             LekarStorage lk = new LekarStorage();
             lekari = new List<Lekar>();
             lekari = lk.ReadList();
@@ -34,7 +35,7 @@ namespace SIMS.PacijentGUI
             termin = new Termin();
             this.DataContext = this;
             doktorSelektovan = false;
-            InitializeComponent();
+            
         }
 
         public List<Lekar> Lekari { get => lekari; set => lekari = value; }
@@ -74,8 +75,8 @@ namespace SIMS.PacijentGUI
           
                 foreach (Termin termin in sviTermini)
                 {
-                    if ((termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum)) 
-                    || (termin.PacijentKey.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum)))
+                    if ((termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy")))
+                    || (termin.PacijentKey.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy"))))
                     {
                         nedostupniTermini.Add(termin);
                     }
@@ -85,6 +86,7 @@ namespace SIMS.PacijentGUI
                 {
                     dostupniTermini.Remove(termin.Vrijeme);
                 }
+                
             }
         }
     }

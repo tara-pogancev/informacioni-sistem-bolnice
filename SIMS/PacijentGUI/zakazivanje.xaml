@@ -17,7 +17,7 @@
                     </ListView>
                 </Border>
 
-                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum" CalendarStyle="{StaticResource styleCalendar}" Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
+                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum"  Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
 
                 <ComboBox 
                     x:Name="terminiLista" ItemsSource="{Binding DostupniTermini}"

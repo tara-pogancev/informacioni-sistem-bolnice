@@ -50,6 +50,7 @@ namespace SIMS.PacijentGUI
             TerminStorage trm = new TerminStorage();
             trm.Create(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
+            TerminStorage terminStorage = new TerminStorage();
         }
     }
 }
