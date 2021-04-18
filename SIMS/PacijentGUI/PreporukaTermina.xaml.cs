@@ -216,5 +216,16 @@ namespace SIMS.PacijentGUI
             KrajnjiDatum.BlackoutDates.Add(cdr);
             KrajnjiDatum.BlackoutDates.Add(cdr1);
         }
+
+        private void datumChecked_Checked(object sender, RoutedEventArgs e)
+        {
+            ListaDoktora.IsHitTestVisible = false;
+            ListaDoktora.SelectedIndex = -1;
+        }
+
+        private void lekarChecked_Checked(object sender, RoutedEventArgs e)
+        {
+            ListaDoktora.IsHitTestVisible = true;
+        }
     }
 }

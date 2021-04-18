@@ -15,6 +15,7 @@
     <None Remove="logo.ico" />
     <None Remove="src\arrow.png" />
     <None Remove="src\close.png" />
+    <None Remove="src\doctor.png" />
     <None Remove="src\exit.png" />
     <None Remove="src\help.png" />
     <None Remove="src\home.png" />
@@ -31,9 +32,15 @@
     <None Remove="src\menu.png" />
     <None Remove="src\minimize.png" />
     <None Remove="src\moon.png" />
+    <None Remove="src\notice.png" />
     <None Remove="src\notification.png" />
+    <None Remove="src\pilulePrave.png" />
     <None Remove="src\profile.png" />
+    <None Remove="src\profile1.png" />
+    <None Remove="src\reports.png" />
     <None Remove="src\search.png" />
+    <None Remove="src\secretary.png" />
+    <None Remove="src\sekretar.png" />
     <None Remove="src\sign-out-option.png" />
     <None Remove="src\small_window.png" />
     <None Remove="src\sun.png" />
@@ -43,6 +50,9 @@
     <Resource Include="src\arrow.png" />
     <Resource Include="src\close.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\doctor.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\exit.png" />
     <Resource Include="src\help.png" />
@@ -74,9 +84,24 @@
     <Resource Include="src\menu.png" />
     <Resource Include="src\minimize.png" />
     <Resource Include="src\moon.png" />
+    <Resource Include="src\notice.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\notification.png" />
+    <Resource Include="src\pilulePrave.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\profile.png" />
+    <Resource Include="src\profile1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\reports.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\search.png" />
+    <Resource Include="src\sekretar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\sign-out-option.png" />
     <Resource Include="src\small_window.png" />
     <Resource Include="src\sun.png" />

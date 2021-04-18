@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:SIMS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
+        
             
         <!--Label style-->
         <Style TargetType="Label" x:Key="DefaultLabel">
@@ -232,7 +232,7 @@
         </Style>
         
         
-		</ResourceDictionary>
+		
        
     </Application.Resources>
 </Application>

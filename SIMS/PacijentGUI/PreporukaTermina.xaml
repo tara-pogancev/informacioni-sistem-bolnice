@@ -28,11 +28,11 @@
 
                 <Label HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="18" Foreground="White">Prioritet</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
-                    <RadioButton Name="lekarChecked" FontSize="15"
+                    <RadioButton Name="lekarChecked" FontSize="15" Checked="lekarChecked_Checked"
                   Style="{StaticResource MaterialDesignDarkRadioButton }"  Background="Aqua" Width="80"  Margin="10,0,10,20" Foreground="White">
                         Lekar
                     </RadioButton>
-                    <RadioButton Name="datumChecked" FontSize="15"
+                    <RadioButton Name="datumChecked" FontSize="15" Checked="datumChecked_Checked"
                      Style="{StaticResource MaterialDesignDarkRadioButton}" Background="Aqua" Width="80" Margin="20,0,0,20" Foreground="White" >
                         Datum
 
