@@ -203,5 +203,15 @@ namespace Model
             }
         }
 
+        public bool IsAlergic(Lek lek)
+        {
+            foreach (string a in this.Alergeni)
+            {
+                if (lek.Alergeni.Contains(a))
+                    return true;
+            }
+            return false;
+        }
+
     }
 }

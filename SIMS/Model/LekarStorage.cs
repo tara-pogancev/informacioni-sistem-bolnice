@@ -44,5 +44,19 @@ namespace Model
 
             return null;
         }
+
+        public List<String> getAllId()
+        {
+            List<String> ids = new List<String>();
+            List<Lekar> lekari = this.ReadList();
+            foreach(Lekar l in lekari)
+            {
+                ids.Add(l.Jmbg);
+            }
+            return ids;
+        }
+
+
+        
     }
 }

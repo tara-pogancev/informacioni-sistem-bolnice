@@ -50,7 +50,7 @@ namespace SIMS.LekarGUI
 
             Label_Telefon.Content = "Broj telefona: " + pacijentProfile.Telefon;
             Label_Email.Content = "Email: " + pacijentProfile.Email;
-            Label_Adresa.Content = "Adresa: " + pacijentProfile.Adresa;
+            Label_Adresa.Content = "Adresa: " + pacijentProfile.fullAddress;
 
             
             Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.KrvnaGrupaString;

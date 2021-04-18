@@ -1,0 +1,74 @@
+﻿<Window x:Class="SIMS.UpravnikGUI.UpravnikWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.UpravnikGUI"
+        mc:Ignorable="d"
+        Title="UpravnikWindow" Height="700" Width="1200"
+        MinHeight="700"
+        MinWidth="1200"
+        >
+    <Grid ShowGridLines="false">
+
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="210" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid ShowGridLines="false" Background="#191E29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Image Source="/src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"></Image>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <StackPanel>
+                        <Button Content="Zaposleni" Width="130" Height="35" Background="#323D52"  Click ="Zaposleni_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
+                        <Button Content="Inventar" Width="130" Height="35" Background="#323D52"  Click ="Inventar_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Prostorije" Width="130" Height="35" Background="#323D52"  Click ="Prostorije_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Usluge" Width="130" Height="35" Background="#323D52"  Click ="Usluge_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Nalog" Width="130" Height="35" Background="#323D52"  Click ="Nalog_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Tutorijal" Width="130" Height="35" Background="#323D52"  Click ="Tutorijal_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                    </StackPanel>
+
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#292C3B">
+                    <Label Name="MainLabel"  Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                    <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal">
+                        <Button Content="Odjava"  Margin="10,0,0,0" Width="130" Height="35" Background="#323D52"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Label Content="Blagoje Grgur" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1" Background="#323D52">
+                    <Frame x:Name="Sadrzaj" NavigationUIVisibility="Hidden"/>
+                </Grid>
+                <Grid Grid.Row="2" Background="#FF404C63"/>
+
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</Window>

@@ -25,10 +25,14 @@ namespace Model
         {
             List<Obavestenje> retVal = this.ReadList();
 
-            foreach (Obavestenje o in this.ReadList())
+            for (int i=0;i<retVal.Count;i++)
             {
-                if (o.Target != "All" || o.Target != (key))
-                    retVal.Remove(o);
+                if (!(retVal[i].Target.Equals("All") || retVal[i].Target.Equals(key)))
+                {
+                    retVal.RemoveAt(i);
+                    i--;
+                }
+                    
             }
 
             return retVal;

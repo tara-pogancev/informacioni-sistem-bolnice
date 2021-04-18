@@ -8,7 +8,17 @@
     "Lozinka": "a",
     "Email": "blagoje@grgur.com",
     "Telefon": "064123123",
-    "Adresa": null,
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Sajlovo XXI",
+      "Broj": "45"
+    },
     "ImePrezime": "BlagojeGrgur"
   }
 }

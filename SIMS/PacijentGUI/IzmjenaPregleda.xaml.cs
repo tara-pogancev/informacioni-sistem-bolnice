@@ -9,53 +9,46 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS
+namespace SIMS.PacijentGUI
 {
     /// <summary>
-    /// Interaction logic for izmjenaTermina.xaml
+    /// Interaction logic for IzmjenaPregleda.xaml
     /// </summary>
-    public partial class izmjenaTermina : Window
+    
+    public partial class IzmjenaPregleda : Page
     {
+
         private List<Lekar> lekari;
         private List<String> termini;
         List<String> imena = new List<String>();
         Termin termin;
         Boolean doktorSelektovan;
-        PacijentUI pacijentUI;
-
-        public izmjenaTermina(Termin termin,PacijentUI ui)
+        
+        public IzmjenaPregleda(Termin termin)
         {
             InitializeComponent();
-            this.pacijentUI = ui;
-            LekarStorage lk = new LekarStorage();
+            LekarStorage lekarStorage = new LekarStorage();
+            TerminStorage terminStorage = new TerminStorage();
+            lekari = lekarStorage.ReadList();
             doktorSelektovan = false;
-            lekari = new List<Lekar>(lk.ReadList());
+            termini =  new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             this.termin = termin;
-
             filtrirajTermine();
-            /*Drzava SrbijaT = new Drzava("Srbija");
-            Grad BP = new Grad("Backa Palanka", 15000, SrbijaT);
-            Adresa adresaT = new Adresa("Vojvode Putnika", 1, BP);
-            UlogovanKorisnik TaraP = new UlogovanKorisnik("Tara", "Pogancev", "1234567891021", "doktor", "doktor", "tara123@gmail.com", "0645568131", adresaT);
-
-            Lekar l = new Lekar(TaraP.Ime, TaraP.Prezime, TaraP.Jmbg, TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
-            Lekar l2 = new Lekar("Milan", "Markovic", "1", TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
-            Lekar l3 = new Lekar("Sonja", "Simovic", "2", TaraP.KorisnickoIme, TaraP.Lozinka, TaraP.Email, TaraP.Telefon, TaraP.Adresa, 15);
-            lekari.Add(l);
-            lekari.Add(l2);
-            lekari.Add(l3);
-            lk.Create(lekari);*/
-
             terminiLista.ItemsSource = termini;
             doktori.ItemsSource = lekari;
-
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,termin.PocetnoVreme.AddDays(-3));
+            CalendarDateRange cdr1 = new CalendarDateRange(termin.PocetnoVreme.AddDays(3), DateTime.MaxValue);
+            datePicker1.BlackoutDates.Add(cdr);
+            datePicker1.BlackoutDates.Add(cdr1);
+            fillComboBoxes(termin);
         }
 
         private void filtrirajTermine()
         {
-            termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            
             foreach (Termin ter in new TerminStorage().ReadList())
             {
                 if (termin.LekarKey.Equals(ter.LekarKey))
@@ -71,8 +64,8 @@ namespace SIMS
             Lekar lek = (Lekar)doktori.SelectedItem;
             termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             List<Termin> sviTermini = new TerminStorage().ReadList();
-            List<Termin> terminiI = pacijentUI.ListaTermina;
-            sviTermini.AddRange(terminiI);
+            
+          
             foreach (Termin ter in sviTermini)
             {
                 if (termin.LekarKey.Equals(lek.Jmbg))
@@ -89,8 +82,10 @@ namespace SIMS
             datePicker1.DisplayDate = termin.PocetnoVreme;
             datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
             int index = 0;
-            foreach (Lekar lek in lekari) {
-                if (lek.Jmbg.Equals(termin.LekarKey)) {
+            foreach (Lekar lek in lekari)
+            {
+                if (lek.Jmbg.Equals(termin.LekarKey))
+                {
                     break;
                 }
                 index++;
@@ -100,7 +95,8 @@ namespace SIMS
             foreach (String str in termini)
             {
 
-                if (str.Equals(termin.Vrijeme)) {
+                if (str.Equals(termin.Vrijeme))
+                {
                     break;
                 }
                 index++;
@@ -127,26 +123,10 @@ namespace SIMS
         {
             if (doktorSelektovan)
             {
-                /*Lekar lek = lekari[doktori.SelectedIndex];
-                List<Termin> doktoroviTermini = new List<Termin>();
-                termini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-                terminiLista.ItemsSource = termini;
-                foreach (Termin termin in PacijentUI.getInstance().Termini)
-                {
-                    if (termin.Lekar.Jmbg.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
-                    {
-                        doktoroviTermini.Add(termin);
-                    }
-                }
-
-                foreach (Termin termin in doktoroviTermini)
-                {
-                    termini.Remove(termin.Vrijeme);
-                }
-                */
+              
                 filtrirajTermine1();
             }
-            
+
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
@@ -155,22 +135,23 @@ namespace SIMS
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
-
             TerminStorage.Instance.Update(termin);
-
-            pacijentUI.refresh();
-            this.Close();
+            MojiTermini mj = new MojiTermini(PocetnaStranica.getInstance().Pacijent);
+            PocetnaStranica.getInstance().Tabovi.Content = mj;
+            
         }
 
         private void Odbaci_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MojiTermini mj = new MojiTermini(PocetnaStranica.getInstance().Pacijent);
+            PocetnaStranica.getInstance().Tabovi.Content = mj;
+
         }
-    
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
+            MojiTermini mj = new MojiTermini(PocetnaStranica.getInstance().Pacijent);
+            PocetnaStranica.getInstance().Tabovi.Content = mj;
+        }
     }
 }
-
-
-
-   
- 

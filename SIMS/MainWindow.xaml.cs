@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.PacijentGUI;
 using SIMS.UpravnikGUI;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,9 @@ namespace SIMS
             Pacijent pacijent = PacijentStorage.Instance.ReadUser(user);
             if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
-                PacijentUI pacijentUI = new PacijentUI(pacijent);
-                pacijentUI.Show();
+                PocetnaStranica pocetnaStranica=PocetnaStranica.getInstance();
+                pocetnaStranica.Pacijent = pacijent;
+                pocetnaStranica.Show();
                 this.Close();
                 return;
             }
@@ -48,8 +50,7 @@ namespace SIMS
             Upravnik upravnik = UpravnikStorage.Instance.ReadUser(user);
             if (upravnik != null && pass.Equals(upravnik.Lozinka))
             {
-                UpravnikUI upravnikUI = new UpravnikUI();
-                upravnikUI.Show();
+                UpravnikWindow.Instance.Show();
                 this.Close();
                 return;
             }

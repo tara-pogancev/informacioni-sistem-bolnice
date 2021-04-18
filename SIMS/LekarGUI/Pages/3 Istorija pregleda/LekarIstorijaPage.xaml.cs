@@ -88,7 +88,16 @@ namespace SIMS.LekarGUI
         {
             if (dataGridEvidentirani.SelectedItem != null)
             {
-                //TODO Procitaj anamnezu
+                Termin t = (Termin)dataGridPrazni.SelectedItem;
+
+                if (t.VrstaTermina == TipTermina.pregled)
+                {
+                    //TODO Pregled anamneze
+                }
+                else
+                {
+                    //TODO Pregled operacije
+                }
             }
         }
 
@@ -96,9 +105,18 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPrazni.SelectedItem != null)
             {
-                AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
-                a.Show();
-                refreshView();
+                Termin t = (Termin)dataGridPrazni.SelectedItem;
+
+                if (t.VrstaTermina == TipTermina.pregled)
+                {
+                    AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
+                    a.Show();
+                    refreshView();
+                }
+                else
+                {
+                    //TODO pisanje izvestaja o operaciji
+                }
             }
         }
 

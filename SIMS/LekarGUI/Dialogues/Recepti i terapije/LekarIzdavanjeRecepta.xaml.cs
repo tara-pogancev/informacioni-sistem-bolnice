@@ -30,22 +30,44 @@ namespace SIMS.LekarGUI
             LabelPacijent.Content = "Pacijent: " + pacijent.ImePrezime;
             LabelDatum.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
+            List<Lek> lekovi = new List<Lek>(LekStorage.Instance.ReadList());
+            LekComboBox.ItemsSource = lekovi;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (NazivLekaTxt.Text.Equals("") || KolicinaTxt.Text.Equals("") || DijagnozaTxt.Text.Equals(""))
+            if (LekComboBox.SelectedItem == null || KolicinaTxt.Text.Equals("") || DijagnozaTxt.Text.Equals(""))
                 MessageBox.Show("Greška! Molimo popunite sva polja.");
+            else if (pacijent.IsAlergic((Lek)LekComboBox.SelectedItem))
+            {
+                Lek l = (Lek)LekComboBox.SelectedItem;
+                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Da li ste sigurni da želite da izdate lek " + l.Naziv +"?", "Upozorenje!",
+                    MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    this.PrepisiRecept();
+                }
+
+            }
             else
             {
-                Recept r = new Recept(lekar.Jmbg, pacijent.Jmbg, NazivLekaTxt.Text,
-                    KolicinaTxt.Text, DijagnozaTxt.Text);
-
-                ReceptStorage.Instance.Create(r);
-                this.Close();
-                MessageBox.Show("Uspešno izdat recept!");
+                this.PrepisiRecept();
             } 
                 
+        }
+
+        private void PrepisiRecept()
+        {
+            Lek l = (Lek)LekComboBox.SelectedItem;
+            Recept r = new Recept(lekar.Jmbg, pacijent.Jmbg, l.Naziv,
+                KolicinaTxt.Text, DijagnozaTxt.Text);
+
+            ReceptStorage.Instance.Create(r);
+            this.Close();
+            MessageBox.Show("Uspešno izdat recept!");
+            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.Naziv + ". Pogledajte recept na svom profilu.", pacijent.Jmbg);
+            ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
+            obavestenjaStorage.Create(obavestenje);
         }
     }
 }
