@@ -1,26 +1,46 @@
-{
+﻿{
   "0603850721311": {
     "DaniGodisnjegOdmora": 18,
     "Ime": "Ivan",
-    "Prezime": "Stanic",
+    "Prezime": "Stanić",
     "Jmbg": "0603850721311",
     "KorisnickoIme": "sekretar",
     "Lozinka": "s",
     "Email": "sekretar@zdravo.com",
     "Telefon": "0649962541",
-    "Adresa": null,
-    "ImePrezime": "Ivan Stanic"
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Bolmanska",
+      "Broj": "112"
+    },
+    "ImePrezime": "Ivan Stanić"
   },
   "064865071221": {
     "DaniGodisnjegOdmora": 23,
     "Ime": "Mladen",
-    "Prezime": "Zoric",
+    "Prezime": "Zorić",
     "Jmbg": "064865071221",
     "KorisnickoIme": "mladen22",
     "Lozinka": "s",
     "Email": "mladen.sekretar@zdravo.com",
     "Telefon": "0625967781",
-    "Adresa": null,
-    "ImePrezime": "Mladen Zoric"
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Otona Županića",
+      "Broj": "48"
+    },
+    "ImePrezime": "Mladen Zorić"
   }
 }

@@ -70,7 +70,7 @@
             <Label Content="Sadašnja anamneza: *" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
             <TextBox Name="txt2" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="350" FontSize="14" FontFamily="Candara" ToolTip="Ovo polje je obavezno."/>
 
-            <Label Content="Oošte pojave: *" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Opšte pojave: *" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
             <TextBox Name="txt3" Grid.Column="1" Grid.Row="2" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="350" FontSize="14" FontFamily="Candara" ToolTip="Ovo polje je obavezno."/>
 
             <Label Content="Respiratorni sistem:" HorizontalAlignment="Left" Margin="0,0,10,0" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"/>

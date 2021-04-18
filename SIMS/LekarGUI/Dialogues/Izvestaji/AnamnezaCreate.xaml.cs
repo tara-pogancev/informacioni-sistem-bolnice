@@ -46,7 +46,9 @@ namespace SIMS.LekarGUI
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
                 AnamnezaStorage.Instance.Create(a);
                 this.Close();
-                LekarIstorijaPage.GetInstance().refreshView();
+                //LekarIstorijaPage.GetInstance().refreshView();
+                LekarUI.GetInstance().ChangeTab(3);
+
             }
         }
     }

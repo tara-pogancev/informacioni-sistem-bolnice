@@ -111,26 +111,35 @@ namespace Model
             }
         }
 
+        public DateTime KrajnjeVreme
+        {
+            get
+            {
+                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
+                return krajnjeVreme;
+            }
+        }
+
         public bool IsPast
         {
             get
             {
-                if (this.PocetnoVreme <= DateTime.Now)
+                // Vraca termine koji su se u potpunosti zavrsili
+                if (this.KrajnjeVreme <= DateTime.Now)
                     return true;
                 else return false;
             }
         }
 
-        public bool isCurrent
+        public bool IsCurrent
         {
             get
             {
-                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
-
-                if (this.PocetnoVreme >= DateTime.Now && krajnjeVreme <= DateTime.Now )
+                //Vraca termine koji trenutno traju
+                if (this.PocetnoVreme <= DateTime.Now && this.KrajnjeVreme >= DateTime.Now)
                     return true;
 
-                else return false;
+                return false;
             }
         }
 

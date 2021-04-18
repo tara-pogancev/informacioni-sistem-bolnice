@@ -52,7 +52,7 @@
             <Label Content="Evidentirani" Style="{StaticResource DefaultLabel}" HorizontalAlignment="Center"/>
 
             <DataGrid x:Name="dataGridPrazni" ItemsSource="{Binding Path = PrazniView}" 
-                      Grid.Row="1" Grid.Column="1" Margin="20,10,40,0">
+                      Grid.Row="1" Grid.Column="1" Margin="20,10,40,0" MouseDoubleClick="Button_Evidencija">
 
                 <DataGrid.Columns>
 
@@ -65,12 +65,12 @@
             </DataGrid>
 
             <Button Grid.Row="2" Grid.Column="1" Content="Evidentiraj termin" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}" 
-                    HorizontalAlignment="Center" Click="Button_Evidenica"/>
+                    HorizontalAlignment="Center" Click="Button_Evidencija"/>
 
             <Label Content="Neevidentirani" Style="{StaticResource DefaultLabel}" HorizontalAlignment="Center" Grid.Column="1"/>
 
             <DataGrid x:Name="dataGridEvidentirani" ItemsSource="{Binding Path = EvidentiraniView}"
-                    Grid.Row="1" Grid.Column="0" Margin="40,10,20,0">
+                    Grid.Row="1" Grid.Column="0" Margin="40,10,20,0" MouseDoubleClick="Button_Anamneza">
 
                 <DataGrid.Columns>
 

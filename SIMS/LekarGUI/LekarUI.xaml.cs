@@ -139,7 +139,7 @@ namespace SIMS
                     }
                 case 3:
                     {
-                        SellectedTab.Content = LekarIstorijaPage.GetInstance(lekarUser);
+                        SellectedTab.Content = new LekarIstorijaPage(lekarUser);
                         ResetActiveButtons();
                         B3.Fill = sellectedTab;
                         break;
@@ -215,8 +215,9 @@ namespace SIMS
                 if (LekarPacijentiPage.GetInstance() != null)
                     LekarPacijentiPage.GetInstance().RemoveInstance();
 
-                if (LekarIstorijaPage.GetInstance() != null)
+                /*if (LekarIstorijaPage.GetInstance() != null)
                     LekarIstorijaPage.GetInstance().RemoveInstance();
+                */
 
                 if (LekarNalogPage.GetInstance() != null)
                     LekarNalogPage.GetInstance().RemoveInstance();

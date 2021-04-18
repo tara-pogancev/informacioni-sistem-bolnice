@@ -52,6 +52,15 @@ namespace Model
         public String ImePrezime { get => (ime + " " + prezime); }
 
 
+        public String fullAddress
+        {
+            get
+            {
+                return this.Adresa.Ulica + " " + this.Adresa.Broj + ", " + 
+                    this.Adresa.grad.Naziv + " " + this.Adresa.grad.PostanskiBroj + ", " + this.Adresa.grad.Drzava.Naziv;
+            }
+        }
+
 
     }
 }

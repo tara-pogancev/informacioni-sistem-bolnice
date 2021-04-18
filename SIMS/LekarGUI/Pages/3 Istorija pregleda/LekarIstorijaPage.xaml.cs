@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.LekarGUI.Dialogues.Izvestaji;
 
 namespace SIMS.LekarGUI
 {
@@ -20,8 +21,6 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarIstorijaPage : Page
     {
-        public static LekarIstorijaPage instance;
-
         private static Lekar lekarUser;
 
         private ObservableCollection<Termin> evidentiraniView;
@@ -30,25 +29,11 @@ namespace SIMS.LekarGUI
         private ObservableCollection<Termin> prazniView;
         public ObservableCollection<Termin> PrazniView { get => prazniView; set => prazniView = value; }
 
-        public static LekarIstorijaPage GetInstance(Lekar l)
-        {
-            if (instance == null)
-            {
-                lekarUser = l;
-                instance = new LekarIstorijaPage();
-            }
-            return instance;
-        }
-
-        public static LekarIstorijaPage GetInstance()
-        {
-            return instance;
-        }
-
-
-        public LekarIstorijaPage()
+        public LekarIstorijaPage(Lekar l)
         {
             InitializeComponent();
+
+            lekarUser = l;
 
             //Evidentirani - pregledi sa anamnezom
             //Prazni - pregledi bez anamneze
@@ -79,26 +64,45 @@ namespace SIMS.LekarGUI
 
         }
 
-        public void RemoveInstance()
-        {
-            instance = null;
-        }
-
         private void Button_Anamneza(object sender, RoutedEventArgs e)
         {
             if (dataGridEvidentirani.SelectedItem != null)
             {
-                //TODO Procitaj anamnezu
+                Termin t = (Termin)dataGridEvidentirani.SelectedItem;
+
+                if (t.VrstaTermina == TipTermina.pregled)
+                {
+                    Anamneza anamneza = AnamnezaStorage.Instance.Read(t.TerminKey);
+                    if (anamneza != null)
+                    {
+                        AnamnezaView a = new AnamnezaView(anamneza);
+                        a.Show();
+                    }
+                        
+                }
+                else
+                {
+                    //TODO Pregled operacije
+                }
             }
         }
 
-        private void Button_Evidenica(object sender, RoutedEventArgs e)
+        private void Button_Evidencija(object sender, RoutedEventArgs e)
         {
             if (dataGridPrazni.SelectedItem != null)
             {
-                AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
-                a.Show();
-                refreshView();
+                Termin t = (Termin)dataGridPrazni.SelectedItem;
+
+                if (t.VrstaTermina == TipTermina.pregled)
+                {
+                    AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
+                    a.Show();
+                    refreshView();
+                }
+                else
+                {
+                    //TODO pisanje izvestaja o operaciji
+                }
             }
         }
 

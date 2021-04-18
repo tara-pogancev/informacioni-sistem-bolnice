@@ -1,0 +1,48 @@
+﻿{
+  "l1": {
+    "ID": "l1",
+    "Naziv": "Katopil",
+    "Alergeni": [
+      "a3",
+      "a5"
+    ]
+  },
+  "l2": {
+    "ID": "l2",
+    "Naziv": "Prilenap",
+    "Alergeni": [
+      "a6",
+      "a1"
+    ]
+  },
+  "l3": {
+    "ID": "l3",
+    "Naziv": "Prilenap",
+    "Alergeni": [
+      "a4",
+      "a11"
+    ]
+  },
+  "l4": {
+    "ID": "l4",
+    "Naziv": "Vivace",
+    "Alergeni": [
+    ]
+  },
+  "l5": {
+    "ID": "l5",
+    "Naziv": "Fervex",
+    "Alergeni": [
+      "a2"
+    ]
+  },
+  "l6": {
+    "ID": "l6",
+    "Naziv": "Analgin",
+    "Alergeni": [
+      "a9",
+      "a10"
+    ]
+  }
+
+}

@@ -8,12 +8,22 @@
     "Lozinka": "l",
     "Email": "tarapogancev@gmail.com",
     "Telefon": "629998425",
-    "Adresa": null,
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21400,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Bulevar Despota Stefana",
+      "Broj": "7"
+    },
     "ImePrezime": "Tara Pogancev"
   },
 
   "4848555021548": {
-    "DaniGodisnjegOdmora": 15,
+    "DaniGodisnjegOdmora": 20,
     "Ime": "Zack",
     "Prezime": "Fair",
     "Jmbg": "4848555021548",
@@ -21,12 +31,22 @@
     "Lozinka": "l",
     "Email": "zackfair@zdravo.com",
     "Telefon": "0698547521",
-    "Adresa": null,
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Midgar",
+        "PostanskiBroj": 99888,
+        "Drzava": {
+          "Naziv": "Gaia"
+        }
+      },
+      "Ulica": "Shinra Inc",
+      "Broj": "Floor 75"
+    },
     "ImePrezime": "MilanMarkovic"
   },
 
   "22157484654211": {
-    "DaniGodisnjegOdmora": 15,
+    "DaniGodisnjegOdmora": 18,
     "Ime": "Cloud",
     "Prezime": "Strife",
     "Jmbg": "22157484654211",
@@ -34,7 +54,17 @@
     "Lozinka": "l",
     "Email": "fluffy@clouds.com",
     "Telefon": "0640005481",
-    "Adresa": null,
+    "Adresa": {
+      "Grad": {
+        "Naziv": "Nibelheim",
+        "PostanskiBroj": 33654,
+        "Drzava": {
+          "Naziv": "Gaia"
+        }
+      },
+      "Ulica": "Main Town Square",
+      "Broj": "5"
+    },
     "ImePrezime": "Cloud Strife"
   }
 }

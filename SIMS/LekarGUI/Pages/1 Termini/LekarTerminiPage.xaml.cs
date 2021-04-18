@@ -60,7 +60,7 @@ namespace SIMS.LekarGUI
             foreach (Termin t in temp)
             {
                 if (!t.IsPast)
-                terminiView.Add(t);
+                   terminiView.Add(t);
             }
         }
 

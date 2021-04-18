@@ -36,22 +36,39 @@ namespace Model
             this.glavneTegobe = glavneTegobe;
             this.sadasnjaAnamneza = sadasnjaAnamneza;
             this.opstePojave = opstePojave;
-            this.respiratorniSistem = respiratorniSistem;
-            this.kardiovaskularniSistem = kardiovaskularniSistem;
-            this.digestivniSistem = digestivniSistem;
-            this.urogenitalniSistem = urogenitalniSistem;
-            this.lokomotorniSistem = lokomotorniSistem;
-            this.nervniSistem = nervniSistem;
-            this.ranijaOboljenja = ranijaOboljenja;
-            this.porodicniPodaci = porodicniPodaci;
-            this.socioEpiPodaci = socioEpiPodaci;
 
+            if (respiratorniSistem == "") this.respiratorniSistem = "/";
+                else this.respiratorniSistem = respiratorniSistem;
+
+            if (kardiovaskularniSistem == "") this.kardiovaskularniSistem = "/";
+                else this.kardiovaskularniSistem = kardiovaskularniSistem;
+
+            if (digestivniSistem == "") this.digestivniSistem = "/";
+                else this.digestivniSistem = digestivniSistem;
+
+            if (urogenitalniSistem == "") this.urogenitalniSistem = "/";
+                else this.urogenitalniSistem = urogenitalniSistem;
+
+            if (lokomotorniSistem == "") this.lokomotorniSistem = "/";
+                else this.lokomotorniSistem = lokomotorniSistem;
+
+            if (nervniSistem == "") this.nervniSistem = "/";
+                else this.nervniSistem = nervniSistem;
+
+            if (ranijaOboljenja == "") this.ranijaOboljenja = "/";
+                else this.ranijaOboljenja = ranijaOboljenja;
+
+            if (porodicniPodaci == "") this.porodicniPodaci = "/";
+                else this.porodicniPodaci = porodicniPodaci;
+
+            if (socioEpiPodaci == "") this.socioEpiPodaci = "/";
+                else this.socioEpiPodaci = socioEpiPodaci;
+            
         }
 
         public Termin getTermin
         {
             get
-
             {
                 return TerminStorage.Instance.Read(this.terminKey);
             }

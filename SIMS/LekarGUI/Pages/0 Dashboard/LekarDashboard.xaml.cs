@@ -60,7 +60,7 @@ namespace SIMS.LekarGUI
 
             foreach (Termin t in termini)
             {
-                if (t.isCurrent && t.Evidentiran == false)
+                if (t.IsCurrent && t.Evidentiran == false)
                 {
                     AktivniTermin.Content = LDBAktivanTermin.GetInstance(t);
                     return;

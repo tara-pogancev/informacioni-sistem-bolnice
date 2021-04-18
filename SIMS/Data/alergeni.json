@@ -6,5 +6,45 @@
   "a2": {
     "ID": "a2",
     "Naziv": "Laktoza"
+  },
+  "a3": {
+    "ID": "a3",
+    "Naziv": "Ambrozija"
+  },
+  "a4": {
+    "ID": "a4",
+    "Naziv": "Životinjska dlaka"
+  },
+  "a5": {
+    "ID": "a5",
+    "Naziv": "Prašina"
+  },
+  "a6": {
+    "ID": "a6",
+    "Naziv": "Ibuprofen"
+  },
+  "a7": {
+    "ID": "a7",
+    "Naziv": "Titan-dioksid"
+  },
+  "a8": {
+    "ID": "a8",
+    "Naziv": "Celuloza"
+  },
+  "a9": {
+    "ID": "a9",
+    "Naziv": "Monohidrat"
+  },
+  "a10": {
+    "ID": "a10",
+    "Naziv": "Sicilijum-dioksid"
+  },
+  "a11": {
+    "ID": "a11",
+    "Naziv": "Natrijum-laurilsulfat"
+  },
+  "a12": {
+    "ID": "a12",
+    "Naziv": "Magnezijum-stearat"
   }
 }
