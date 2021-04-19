@@ -10,9 +10,9 @@
 *.pdb
 *.png
 *.CopyComplete
-*.txt
 *.resources
 *.lref
 *.props
 *.targets
 *.user
+*.txt
