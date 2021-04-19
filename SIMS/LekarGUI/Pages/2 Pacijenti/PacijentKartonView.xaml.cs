@@ -84,5 +84,10 @@ namespace SIMS.LekarGUI
         {
             LekarUI.GetInstance().ChangeTab(0);
         }
+
+        private void Button_Terapija(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
     }
 }

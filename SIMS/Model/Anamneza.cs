@@ -66,22 +66,19 @@ namespace Model
             
         }
 
-        public Termin getTermin
+        public Termin getTermin()
         {
-            get
-            {
-                return TerminStorage.Instance.Read(this.terminKey);
-            }
+            return TerminStorage.Instance.Read(this.terminKey);
         }
 
         public String ImeLekara
         {
-            get { return this.getTermin.ImeLekara; }
+            get { return this.getTermin().ImeLekara; }
         }
 
         public String ImePacijenta
         {
-            get { return this.getTermin.ImePacijenta; }
+            get { return this.getTermin().ImePacijenta; }
         }
 
         public String Date
@@ -94,9 +91,9 @@ namespace Model
             get
             {
 
-                if (getTermin.GetVrsta.Equals(TipTermina.pregled))
-                    return "Datum pregleda: " + getTermin.Datum;
-                else return "Datum operacije: " + getTermin.Datum;
+                if (getTermin().GetVrsta.Equals(TipTermina.pregled))
+                    return "Datum pregleda: " + getTermin().Datum;
+                else return "Datum operacije: " + getTermin().Datum;
 
             }
         }

@@ -78,31 +78,46 @@
 
             </Grid>
 
-            <StackPanel Grid.Row="2" Orientation="Vertical" Margin="120,0,0,0" VerticalAlignment="Center">
-
-                <Label Content="Krvna grupa: B+" Name="Label_KrvnaGrupa" HorizontalAlignment="Left" Padding="5,0,5,5" />
-                <Label Content="Alergeni: Polen, Prašina" Name="Label_Alergeni" HorizontalAlignment="Left" Padding="5,0,5,5"/>
-                <Label Content="Hronične bolesti: Nema" Name="Label_HronicneBolesti" HorizontalAlignment="Left" Padding="5,0,5,5"/>
-
-            </StackPanel>
-
-
-            <Grid Grid.Row="3" Margin="140,0,140,20">
-
+            <Grid Grid.Row="2" Margin="70,0,70,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="Izdaj recept" Click="Button_Recept" HorizontalAlignment="Center" VerticalAlignment="Center"
-            Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                <StackPanel Orientation="Vertical" Margin="40,0,0,0" VerticalAlignment="Center">
 
-                <Button Grid.Column="1" Content="Pregled dokumentacije" Click="Button_Dokumenti" HorizontalAlignment="Center" VerticalAlignment="Center"
-            Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"/>
+                    <Label Content="Krvna grupa: B+" Name="Label_KrvnaGrupa" HorizontalAlignment="Left" Padding="5,0,5,5" />
+                    <Label Content="Alergeni: Polen, Prašina" Name="Label_Alergeni" HorizontalAlignment="Left" Padding="5,0,5,5"/>
+                    <Label Content="Hronične bolesti: Nema" Name="Label_HronicneBolesti" HorizontalAlignment="Left" Padding="5,0,5,5"/>
 
-                <Button Grid.Column="2" Content="Hospitalizacija" Click="Button_Hositalizaijca" HorizontalAlignment="Center" VerticalAlignment="Center"
-            Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                </StackPanel>
+
+                <Frame x:Name="HospitalizacijaFrame" Grid.Column="2"/>
+
+            </Grid>
+
+            <Grid Grid.Row="3" Margin="80,0,80,20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Grid.Column="0" Content="Izdavajne recepta" Click="Button_Recept" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"/>
+
+                <Button Grid.Column="1" Content="Pisanje terapije" Click="Button_Terapija" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+
+                <Button Grid.Column="3" Content="Pregled dokumentacije" Click="Button_Dokumenti" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"/>
+
+                <Button Grid.Column="4" Content="Hospitalizacija" Click="Button_Hositalizaijca" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
             </Grid>
 

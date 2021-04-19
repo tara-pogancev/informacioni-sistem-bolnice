@@ -58,7 +58,7 @@ namespace SIMS
                 this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
             }, this.Dispatcher);
 
-            SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+            SellectedTab.Content = new LekarDashboard(lekarUser);
 
             this.UsernameLabel.Content = lekarUser.ImePrezime;
 
@@ -119,7 +119,7 @@ namespace SIMS
             {
                 case 0:
                     {
-                        SellectedTab.Content = LekarDashboard.GetInstance(lekarUser);
+                        SellectedTab.Content = new LekarDashboard(lekarUser);
                         ResetActiveButtons();
                         break;
                     }

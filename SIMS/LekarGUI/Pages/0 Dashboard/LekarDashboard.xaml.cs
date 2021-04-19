@@ -20,27 +20,12 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarDashboard : Page
     {
-        public static LekarDashboard instance;
-
         private static Lekar lekarUser;
 
-        public static LekarDashboard GetInstance(Lekar l)
+        public LekarDashboard(Lekar l)
         {
-            if (instance == null)
-            {
-                lekarUser = l;
-                instance = new LekarDashboard();
-            }
-            return instance;
-        }
+            lekarUser = l;
 
-        public static LekarDashboard GetInstance()
-        {
-            return instance;
-        }
-
-        public LekarDashboard()
-        {
             InitializeComponent();
 
             WelcomeMSG.Content = lekarUser.Ime + ", dobro došli!";
@@ -68,11 +53,6 @@ namespace SIMS.LekarGUI
             }
 
             AktivniTermin.Content = LDBNemaTermin.GetInstance();
-        }
-
-        public void RemoveInstance()
-        {
-            instance = null;
         }
 
         private void Button_Termini(object sender, RoutedEventArgs e)
