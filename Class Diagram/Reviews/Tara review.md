@@ -9,5 +9,3 @@ Takođe mali predlog za prikaz samog dijagrama (ali ne i za funkcionalnost) bio 
 Minoran komentar bio bi na dužinu životnog veka drugog procesa u okviru "PromeniKolicinuOpreme". 
 
 Generalno, mislim da je dijagram odlično urađen, jasan je i čitljiv, kolega je uredno opisao sve procese i slučejeve obrade promene rasporeda inventara.
-
-# ...
