@@ -53,13 +53,14 @@ namespace SIMS.LekarGUI
 
             foreach (Termin t in temp)
             {
-                if (t.IsPast == true)
+                if (t.Evidentiran == true)
+                    evidentiraniView.Add(t);
+
+                else if (t.IsPast == true)
                 {
-                    if (t.Evidentiran == true)
-                        evidentiraniView.Add(t);
-                    else
-                        prazniView.Add(t);
+                    prazniView.Add(t);
                 }
+
             }
 
         }

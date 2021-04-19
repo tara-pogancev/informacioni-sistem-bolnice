@@ -57,9 +57,10 @@ namespace SIMS.LekarGUI
         {
             terminiView.Clear();
             List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
+            
             foreach (Termin t in temp)
             {
-                if (!t.IsPast)
+                if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
             }
         }
