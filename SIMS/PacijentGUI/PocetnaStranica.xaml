@@ -45,7 +45,9 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="1">
-                        <Label Foreground="Wheat" FontSize="30" Margin="35,0,0,0"> Dobrodosli Djordje!</Label>
+                        <Label Foreground="Wheat" FontSize="30" Margin="35,0,0,0"> Dobrodosli</Label>
+                        <Label Foreground="Wheat" FontSize="30" Margin="195,0,0,0" Content="{Binding Pacijent.Ime}"/>
+
 
                     </Grid>
                 </Grid>
