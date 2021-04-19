@@ -52,11 +52,11 @@ namespace SIMS.LekarGUI
             Label_Email.Content = "Email: " + pacijentProfile.Email;
             Label_Adresa.Content = "Adresa: " + pacijentProfile.fullAddress;
 
-            
+
             Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.KrvnaGrupaString;
             Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAlergeniString;
             Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.GetHronicneBolestiString;
-            
+
         }
 
         private void Button_Recept(object sender, RoutedEventArgs e)
@@ -68,6 +68,18 @@ namespace SIMS.LekarGUI
         private void Button_Dokumenti(object sender, RoutedEventArgs e)
         {
             //TODO
+
+            //Trenutno debug za prikaz recepta
+
+            List<Recept> recepti = ReceptStorage.Instance.ReadList();
+            int id = 2;
+
+            if (recepti.Count >= id-1)
+            {
+                PrikazRecepta prikaz = new PrikazRecepta(recepti[id]);
+                prikaz.Show();
+            }
+
         }
 
         private void Button_Hositalizaijca(object sender, RoutedEventArgs e)
