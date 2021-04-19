@@ -33,6 +33,7 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
+            this.DataContext = this;
         }
 
         

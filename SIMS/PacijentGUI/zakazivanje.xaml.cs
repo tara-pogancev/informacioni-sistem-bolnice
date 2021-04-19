@@ -30,7 +30,7 @@ namespace SIMS.PacijentGUI
             LekarStorage lk = new LekarStorage();
             lekari = new List<Lekar>();
             lekari = lk.ReadList();
-            pacijent = p;
+            pacijent = PocetnaStranica.getInstance().Pacijent;
             dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             termin = new Termin();
             this.DataContext = this;
@@ -43,8 +43,22 @@ namespace SIMS.PacijentGUI
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
         public Termin Termin { get => termin; set => termin = value; }
 
+        private bool validiraj()
+        {
+            if (ListaDoktora.SelectedItem == null || OdabirDatuma.SelectedDate == null || terminiLista.SelectedItem == null)
+            {
+                MessageBox.Show("Molimo popunite sva polja!");
+                return false;
+            }
+           
+            return true;
+        }
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
+            if (!validiraj())
+            {
+                return;
+            }
             termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);

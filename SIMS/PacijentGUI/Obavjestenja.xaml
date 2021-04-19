@@ -36,27 +36,47 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="30,20,30,20">
                 <ItemsControl x:Name="viewerObavestenja">
                     <ItemsControl.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:Name="Podaci" >
 
                             <!--Notifikacija-->
                             <Grid Margin="0,0,10,10" Background="#4e6082">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="40"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                               
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="150"/>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <StackPanel Orientation="Vertical">
+                                            <Image Source="{Binding DisplayedImage}" Height="100" Width="110" HorizontalAlignment="Left" Name="Slika" Margin="10,10,0,0"/>
+                                               
+                                            </StackPanel>
+                                        </Grid>
+                                        
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                        <Label Content="{Binding Obavestenje.AutorUppercase}" Name="Autor"  Style="{StaticResource BoldLabel}" FontSize="20" Foreground="White" Margin="30,15,0,0"/>
+                                        <Label Content="{Binding Obavestenje.VremeString}" HorizontalAlignment="Right"  Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White"  Margin="15"/>
+                                    </Grid>
+                                        <Grid Grid.Row="1">
+                                            <TextBlock Grid.Row="1" Text="{Binding Obavestenje.Tekst}" TextWrapping="Wrap" Margin="50,15,35,15" Style="{StaticResource DarkTextBlock}"/>
+                                        </Grid>
+                                    </Grid>
+                             </Grid>
+                                
 
-                                <Grid Margin="15,0,30,0">
 
-                                    <Label Content="{Binding AutorUppercase}" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="20" Foreground="White" Margin="5,0,0,0"/>
-                                    <Label Content="{Binding VremeString}" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White" FlowDirection="RightToLeft" Margin="0,0,5,0"/>
 
-                                    <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
-
-                                </Grid>
-
-                                <TextBlock Grid.Row="1" Text="{Binding Tekst}" TextWrapping="Wrap" Margin="25,15,35,15" Style="{StaticResource DarkTextBlock}"/>
-
-                            </Grid>
+                          
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
