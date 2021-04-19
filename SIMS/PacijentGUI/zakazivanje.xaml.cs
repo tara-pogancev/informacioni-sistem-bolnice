@@ -43,8 +43,22 @@ namespace SIMS.PacijentGUI
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
         public Termin Termin { get => termin; set => termin = value; }
 
+        private bool validiraj()
+        {
+            if (ListaDoktora.SelectedItem == null || OdabirDatuma.SelectedDate == null || terminiLista.SelectedItem == null)
+            {
+                MessageBox.Show("Molimo popunite sva polja!");
+                return false;
+            }
+           
+            return true;
+        }
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
+            if (!validiraj())
+            {
+                return;
+            }
             termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);

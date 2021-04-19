@@ -135,8 +135,27 @@ namespace SIMS.PacijentGUI
 
         }
 
+        private bool validiraj()
+        {
+            if (doktori.SelectedItem == null || datePicker1.SelectedDate == null || terminiLista.SelectedItem == null)
+            {
+                MessageBox.Show("Molimo popunite sva polja!");
+                return false;
+            }
+            if (datePicker1.SelectedDate.Value > termin.PocetnoVreme.AddDays(2) || datePicker1.SelectedDate.Value < termin.PocetnoVreme.AddDays(-3))
+            {
+                MessageBox.Show("Datum je samo moguce pomjeriti 2 dana od inicijalnog termina");
+                return false ;
+            }
+            return true;
+        }
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
+            if (!validiraj())
+            {
+                return;
+            }
+
             termin.LekarKey = lekari[doktori.SelectedIndex].Jmbg;
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);

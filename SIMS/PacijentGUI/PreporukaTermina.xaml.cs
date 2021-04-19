@@ -200,8 +200,38 @@ namespace SIMS.PacijentGUI
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
         public List<Lekar> Lekari { get => lekari; set => lekari = value; }
 
+        private bool validiraj()
+        {
+            if (PocetniDatum.SelectedDate == null || KrajnjiDatum.SelectedDate == null )
+            {
+                MessageBox.Show("Molimo vas da popunite sva polja");
+                return false;
+            }
+            if (PocetniDatum.SelectedDate.Value > KrajnjiDatum.SelectedDate.Value)
+            {
+                MessageBox.Show("Pocetni datum treba da bude manji od krajnjeg datuma");
+                return false;
+            }
+            
+            if (lekarChecked.IsChecked==false && datumChecked.IsChecked == false)
+            {
+                MessageBox.Show("Molimo vas da popunite vas prioritet");
+                return false;
+            }
+            if (lekarChecked.IsChecked==true && ListaDoktora.SelectedItem == null)
+            {
+                MessageBox.Show("Potrebno je da izaberete prioritetnog doktora");
+                return false;
+            }
+            return true;
+            
+        }
         private void Trazi_Click(object sender, RoutedEventArgs e)
         {
+            if (!validiraj())
+            {
+                return;
+            }
             preporuka();
             PreporuceniTermini preporuceni = new PreporuceniTermini();
             preporuceni.dodajTermine(preporuceniTermini);
