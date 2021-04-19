@@ -74,6 +74,25 @@ namespace SIMS.SekretarGUI
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
                 termin.VrstaTermina = TipTermina.pregled;
 
+                List<Termin> listaTermmina = TerminStorage.Instance.ReadList();
+                foreach (Termin t in listaTermmina)
+                {
+                    if (t.PocetnoVreme.Day == termin.PocetnoVreme.Day && t.PocetnoVreme.Month == termin.PocetnoVreme.Month && t.PocetnoVreme.Year == termin.PocetnoVreme.Year && t.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, t.VremeTrajanja, 0)) > termin.PocetnoVreme.TimeOfDay && t.PocetnoVreme.TimeOfDay < termin.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, termin.VremeTrajanja, 0)))
+                    {
+                        if (t.LekarKey.Equals(termin.LekarKey))
+                        {
+                            MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
+                            return;
+                        }
+                        else if (t.NazivProstorije.Equals(termin.NazivProstorije))
+                        {
+                            MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
+                            return;
+                        }
+
+                    }
+                }
+
                 TerminStorage.Instance.Create(termin);
                 SekretarTerminiPage.GetInstance().refresh();
 
