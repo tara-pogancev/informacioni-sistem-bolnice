@@ -102,6 +102,7 @@ namespace SIMS.PacijentGUI
             {
                 Termin termin = new Termin();
                 termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
+                termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
                 termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
@@ -166,6 +167,7 @@ namespace SIMS.PacijentGUI
                 brojacPreporucenihTermina++;
                 Termin termin = new Termin();
                 termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
+                termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
                 termin.LekarKey = terminZaPreporuku[i].IdLekara[i%terminZaPreporuku[i].IdLekara.Count];

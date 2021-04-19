@@ -71,6 +71,7 @@ namespace SIMS.LekarGUI
                 String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
                 DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
                 termin.PocetnoVreme = vremenskaOdrednica;
+                termin.InicijalnoVrijeme = vremenskaOdrednica;
 
                 if (trajanjeLista.SelectedIndex == 0)
                     termin.VremeTrajanja = 30;

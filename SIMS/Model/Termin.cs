@@ -14,6 +14,7 @@ namespace Model
       private DateTime pocetnoVreme;
       private int vremeTrajanja;    //U minutima
       private TipTermina vrstaTermina;
+        private DateTime inicijalnoVrijeme;
 
         private String lekarKey;         //JMBG lekara
         private String pacijentKey;      //JMBG pacijenta
@@ -39,6 +40,7 @@ namespace Model
 
         public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, String lekar, String pacijent, String prostorija)
         {
+            this.inicijalnoVrijeme = pocetnoVreme;
             this.pocetnoVreme = pocetnoVreme;
             this.vremeTrajanja = vremeTrajanja;
             this.vrstaTermina = vrstaTermina;
@@ -143,5 +145,6 @@ namespace Model
             }
         }
 
+        public DateTime InicijalnoVrijeme { get => inicijalnoVrijeme; set => inicijalnoVrijeme = value; }
     }
 }

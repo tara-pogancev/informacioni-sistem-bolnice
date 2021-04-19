@@ -63,6 +63,7 @@ namespace SIMS.PacijentGUI
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
+            termin.InicijalnoVrijeme = vremenskaOdrednica;
             termin.VremeTrajanja = 30;
             termin.PacijentKey = pacijent.Jmbg;
             termin.Prostorija = "1";

@@ -39,8 +39,8 @@ namespace SIMS.PacijentGUI
             mogucíTermini =  new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             this.termin = termin;
             doktori.ItemsSource = lekari;
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,termin.PocetnoVreme.AddDays(-3));
-            CalendarDateRange cdr1 = new CalendarDateRange(termin.PocetnoVreme.AddDays(3), DateTime.MaxValue);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,termin.InicijalnoVrijeme.AddDays(-3));
+            CalendarDateRange cdr1 = new CalendarDateRange(termin.InicijalnoVrijeme.AddDays(3), DateTime.MaxValue);
             datePicker1.BlackoutDates.Add(cdr);
             datePicker1.BlackoutDates.Add(cdr1);
             fillComboBoxes(termin);
@@ -142,7 +142,7 @@ namespace SIMS.PacijentGUI
                 MessageBox.Show("Molimo popunite sva polja!");
                 return false;
             }
-            if (datePicker1.SelectedDate.Value > termin.PocetnoVreme.AddDays(2) || datePicker1.SelectedDate.Value < termin.PocetnoVreme.AddDays(-3))
+            if (datePicker1.SelectedDate.Value > termin.InicijalnoVrijeme.AddDays(2) || datePicker1.SelectedDate.Value < termin.InicijalnoVrijeme.AddDays(-3))
             {
                 MessageBox.Show("Datum je samo moguce pomjeriti 2 dana od inicijalnog termina");
                 return false ;
