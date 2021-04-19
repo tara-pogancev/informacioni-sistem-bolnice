@@ -85,9 +85,17 @@ namespace SIMS.LekarGUI
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
                 termin.VrstaTermina = TipTermina.operacija;
 
-                TerminStorage.Instance.Create(termin);
-                LekarTerminiPage.GetInstance().refresh();
-                this.Close();
+                //PROVERA DOSTUPNOSTI LEKARA
+                if (!lekari[doktoriCombo.SelectedIndex].IsFree(termin))
+                    MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
+
+                else
+                {
+                    TerminStorage.Instance.Create(termin);
+                    LekarTerminiPage.GetInstance().refresh();
+                    this.Close();
+                }
+
             }
             
         }

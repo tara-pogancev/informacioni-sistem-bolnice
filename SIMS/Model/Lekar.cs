@@ -28,9 +28,42 @@ namespace Model
             List<Termin> retVal = new List<Termin>();
 
             retVal = TerminStorage.Instance.ReadByDoctor(this);
-            
+
             return retVal;
 
+        }
+
+        // Salje informacije o novom terminu
+        public Boolean IsFree(Termin terminNew)
+        {
+            foreach (Termin t in TerminStorage.Instance.ReadByDoctor(this))
+            {
+                if (terminNew.KrajnjeVreme > t.PocetnoVreme && terminNew.KrajnjeVreme <= t.KrajnjeVreme)
+                    return false;
+
+                if (terminNew.PocetnoVreme >= t.PocetnoVreme && terminNew.PocetnoVreme < t.KrajnjeVreme)
+                    return false;
+            }
+
+            return true;
+        }
+
+        // Salje izmenjen termin ali njega ignorise prilikom provere
+        public Boolean IsFreeUpdate(Termin terminNew)
+        {
+            foreach (Termin t in TerminStorage.Instance.ReadByDoctor(this))
+            {
+                if (t.TerminKey != terminNew.TerminKey)
+                {
+                    if (terminNew.KrajnjeVreme > t.PocetnoVreme && terminNew.KrajnjeVreme <= t.KrajnjeVreme)
+                        return false;
+
+                    if (terminNew.PocetnoVreme >= t.PocetnoVreme && terminNew.PocetnoVreme < t.KrajnjeVreme)
+                        return false;
+                }
+            }
+
+            return true;
         }
 
     }

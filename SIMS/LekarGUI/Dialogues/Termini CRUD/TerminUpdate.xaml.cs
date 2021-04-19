@@ -65,10 +65,16 @@ namespace SIMS.LekarGUI
                 termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
                 termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
 
-                TerminStorage.Instance.Update(termin);
+                if (!lekari[doktoriCombo.SelectedIndex].IsFreeUpdate(termin))
+                    MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
-                LekarTerminiPage.GetInstance().refresh();
-                this.Close();
+                else
+                {
+                    TerminStorage.Instance.Update(termin);
+                    LekarTerminiPage.GetInstance().refresh();
+                    this.Close();
+                }
+
             }
         }
 
