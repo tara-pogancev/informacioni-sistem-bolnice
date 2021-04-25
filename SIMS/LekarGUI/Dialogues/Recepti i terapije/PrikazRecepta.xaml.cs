@@ -23,8 +23,8 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
 
-            Pacijent pacijent = PacijentStorage.Instance.Read(r.PacijentKey);
-            Lekar lekar = LekarStorage.Instance.Read(r.LekarKey);
+            Pacijent pacijent = r.Pacijent;
+            Lekar lekar = r.Lekar;
 
             LabelDoktor.Content = "Doktor: " + lekar.ImePrezime;
             LabelPacijent.Content = "Pacijent: " + pacijent.ImePrezime;

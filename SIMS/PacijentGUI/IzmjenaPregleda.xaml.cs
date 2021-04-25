@@ -57,9 +57,9 @@ namespace SIMS.PacijentGUI
             
             foreach (Termin ter in sviTermini)
             {
-                bool lekariJednaki = termin.LekarKey.Equals(lekar.Jmbg);
-                bool pacijentiJednaki = termin.PacijentKey.Equals(ter.PacijentKey);
-                if (ter.LekarKey.Equals(lekar.Jmbg) || termin.PacijentKey.Equals(ter.PacijentKey))
+                bool lekariJednaki = termin.Lekar.Jmbg.Equals(lekar.Jmbg);
+                bool pacijentiJednaki = termin.Pacijent.Jmbg.Equals(ter.Pacijent.Jmbg);
+                if (ter.Lekar.Jmbg.Equals(lekar.Jmbg) || termin.Pacijent.Jmbg.Equals(ter.Pacijent.Jmbg))
                 {
                     if (datePicker1.SelectedDate.Value.Date.ToString("dd.MM.yyyy.").Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                         mogucíTermini.Remove(ter.Vrijeme);    
@@ -73,7 +73,7 @@ namespace SIMS.PacijentGUI
             int index = 0;
             foreach (Lekar lek in lekari)
             {
-                if (lek.Jmbg.Equals(termin.LekarKey))
+                if (lek.Jmbg.Equals(termin.Lekar.Jmbg))
                 {
                     break;
                 }
@@ -156,7 +156,7 @@ namespace SIMS.PacijentGUI
                 return;
             }
 
-            termin.LekarKey = lekari[doktori.SelectedIndex].Jmbg;
+            termin.Lekar.Jmbg = lekari[doktori.SelectedIndex].Jmbg;
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;

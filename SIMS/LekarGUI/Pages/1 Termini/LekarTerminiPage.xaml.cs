@@ -136,7 +136,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 Termin t = (Termin)dataGridTermini.SelectedItem;
-                Pacijent p = PacijentStorage.Instance.Read(t.PacijentKey);
+                Pacijent p = PacijentStorage.Instance.Read(t.Pacijent.Jmbg);
 
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }

@@ -27,7 +27,7 @@ namespace Model
 
             foreach (Recept r in this.ReadList())
             {
-                if (r.PacijentKey == p.Jmbg)
+                if (r.Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(r);
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,9 +7,9 @@ namespace Model
 {
     public class Anamneza
     {
-        private String terminKey;
+        private Termin termin;
         private DateTime datum;
-
+        String idAnamneze;
         private String glavneTegobe;
         private String sadasnjaAnamneza;
         private String opstePojave;
@@ -25,17 +26,19 @@ namespace Model
         public Anamneza()
         {
             this.datum = DateTime.Today;
+            
         }
 
-        public Anamneza(String terminKey, String glavneTegobe, String sadasnjaAnamneza, String opstePojave, String respiratorniSistem, String kardiovaskularniSistem,
+        public Anamneza(Termin termin, String glavneTegobe, String sadasnjaAnamneza, String opstePojave, String respiratorniSistem, String kardiovaskularniSistem,
             String digestivniSistem, String urogenitalniSistem, String lokomotorniSistem, String nervniSistem, String ranijaOboljenja, String porodicniPodaci, String socioEpiPodaci)
         {
-            this.terminKey = terminKey;
+            this.termin = termin;
             this.datum = DateTime.Today;
 
             this.glavneTegobe = glavneTegobe;
             this.sadasnjaAnamneza = sadasnjaAnamneza;
             this.opstePojave = opstePojave;
+            this.idAnamneze = termin.TerminKey;
 
             if (respiratorniSistem == "") this.respiratorniSistem = "/";
                 else this.respiratorniSistem = respiratorniSistem;
@@ -68,24 +71,28 @@ namespace Model
 
         public Termin getTermin()
         {
-            return TerminStorage.Instance.Read(this.terminKey);
+            return TerminStorage.Instance.Read(this.termin.TerminKey);
         }
 
+        [JsonIgnore]
         public String ImeLekara
         {
             get { return this.getTermin().ImeLekara; }
         }
 
+        [JsonIgnore]
         public String ImePacijenta
         {
             get { return this.getTermin().ImePacijenta; }
         }
 
+        [JsonIgnore]
         public String Date
         {
             get { return datum.ToString("dd.MM.yyyy."); }
         }
 
+        [JsonIgnore]
         public String TerminDateType
         {
             get
@@ -171,16 +178,14 @@ namespace Model
             set => socioEpiPodaci = value;
         }
 
-        public String AnamnezaKey
-        {
-            get => terminKey;
-            set => terminKey = value;
-        }
+        
 
         public DateTime Datum
         {
             get => datum;
             set => datum = value;
         }
+        public Termin Termin { get => termin; set => termin = value; }
+        public string IdAnamneze { get => idAnamneze; set => idAnamneze = value; }
     }
 }

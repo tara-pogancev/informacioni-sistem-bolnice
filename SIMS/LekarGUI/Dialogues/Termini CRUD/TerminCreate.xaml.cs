@@ -83,9 +83,9 @@ namespace SIMS.LekarGUI
                 else 
                     termin.VremeTrajanja = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;  
-                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;  
-                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;  
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];  
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];  
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];  
                 termin.VrstaTermina = TipTermina.pregled;
 
                 //PROVERA DOSTUPNOSTI LEKARA

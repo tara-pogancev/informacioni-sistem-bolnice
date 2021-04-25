@@ -19,7 +19,7 @@ namespace Model
 
             foreach (Termin t in this.ReadList())
             {
-                if (t.PacijentKey == p.Jmbg)
+                if (t.Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(t);
             }
 
@@ -32,7 +32,7 @@ namespace Model
 
             foreach(Termin t in this.ReadList())
             {
-                if (t.LekarKey == l.Jmbg)
+                if (t.Lekar.Jmbg == l.Jmbg)
                     retVal.Add(t);
             }
 

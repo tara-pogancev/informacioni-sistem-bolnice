@@ -59,15 +59,19 @@ namespace SIMS.PacijentGUI
             {
                 return;
             }
-            termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
+            termin.Lekar = lekari[ListaDoktora.SelectedIndex];
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.PocetnoVreme = vremenskaOdrednica;
             termin.InicijalnoVrijeme = vremenskaOdrednica;
             termin.VremeTrajanja = 30;
-            termin.PacijentKey = pacijent.Jmbg;
-            termin.Prostorija = "1";
+            termin.Pacijent = pacijent;
+            termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
             MessageBox.Show("Termin je uspjesno zakazan");
+            termin.Lekar.Serijalizuj = false;
+            termin.Pacijent.Serijalizuj = false;
+            termin.Prostorija.Serijalizuj = false;
+
 
             TerminStorage.Instance.Create(termin);
         }
@@ -90,8 +94,8 @@ namespace SIMS.PacijentGUI
           
                 foreach (Termin termin in sviTermini)
                 {
-                    if ((termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy")))
-                    || (termin.PacijentKey.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy"))))
+                    if ((termin.Lekar.Jmbg.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy")))
+                    || (termin.Pacijent.Jmbg.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy"))))
                     {
                         nedostupniTermini.Add(termin);
                     }

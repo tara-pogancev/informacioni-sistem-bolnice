@@ -1,1 +1,14 @@
-{"1":{"kolicineOpreme":{},"Broj":"1","Dostupna":true,"DostupnaToString":"Dostupna","TipProstorijeToString":"Prostorija za preglede","TipProstorije":0},"3":{"kolicineOpreme":{},"Broj":"3","Dostupna":true,"DostupnaToString":"Dostupna","TipProstorijeToString":"Operaciona sala","TipProstorije":1},"2":{"kolicineOpreme":{},"Broj":"2","Dostupna":false,"DostupnaToString":"Nedostupna","TipProstorijeToString":"Bolesni\u010Dka soba","TipProstorije":2},"4":{"kolicineOpreme":{},"Broj":"4","Dostupna":true,"DostupnaToString":"Dostupna","TipProstorijeToString":"Prostorija za preglede","TipProstorije":0}}
+{
+  "1": {
+    "kolicineOpreme": {},
+    "TipProstorije": 0,
+    "Broj": "1",
+    "Dostupna": true
+  },
+  "2": {
+    "kolicineOpreme": {},
+    "TipProstorije": 2,
+    "Broj": "2",
+    "Dostupna": true
+  }
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,8 +8,8 @@ namespace Model
     public class Recept
     {
         private String receptKey;
-        private String lekarKey;
-        private String pacijentKey;
+        private Lekar lekar;
+        private Pacijent pacijent;
         private DateTime datum;
         private String nazivLeka;
         private String kolicina;
@@ -18,10 +19,10 @@ namespace Model
         {
         }
 
-        public Recept(String lekarKey, String pacijentKey, String nazivLeka, String kolicina, String dijagnoza)
+        public Recept(Lekar lekar, Pacijent pacijent, String nazivLeka, String kolicina, String dijagnoza)
         {
-            this.lekarKey = lekarKey;
-            this.pacijentKey = pacijentKey;
+            this.lekar = lekar;
+            this.pacijent = pacijent;
             this.nazivLeka = nazivLeka;
             this.kolicina = kolicina;
             this.dijagnoza = dijagnoza;
@@ -30,19 +31,21 @@ namespace Model
             this.datum = DateTime.Today;
 
         }   
+        [JsonIgnore]
+        public String ImeLekara { get { return lekar.ImePrezime; } }
 
-        public String ImeLekara { get { return LekarStorage.Instance.Read(lekarKey).ImePrezime; } }
+        [JsonIgnore]
+        public String ImePacijenta { get { return pacijent.ImePrezime; } }
 
-        public String ImePacijenta { get { return PacijentStorage.Instance.Read(pacijentKey).ImePrezime; } }
-
+        [JsonIgnore]
         public String DateString { get { return datum.ToString("dd.MM.yyyy."); } }
 
         public String NazivLeka { get => this.nazivLeka; set => nazivLeka = value; }
         public String Kolicina { get => this.kolicina; set => kolicina = value; }
         public String Dijagnoza { get => this.dijagnoza; set => dijagnoza = value; }
         public String ReceptKey { get => this.receptKey; set => receptKey = value; }
-        public String LekarKey { get => this.lekarKey; set => lekarKey = value; }
-        public String PacijentKey { get => this.pacijentKey; set => pacijentKey = value; }
+        public Lekar Lekar { get => lekar; set => lekar = value; }
+        public Pacijent Pacijent { get => this.pacijent; set => pacijent = value; }
 
     }
 }

@@ -29,6 +29,7 @@ namespace SIMS.PacijentGUI
         {
             pacijent = p;
             termini = new ObservableCollection<Termin>(TerminStorage.Instance.ReadByPatient(p));
+            dobaviPodatkeOPacijenuILekaru();
             this.DataContext = this;
             InitializeComponent();
         }
@@ -52,6 +53,14 @@ namespace SIMS.PacijentGUI
             termini.RemoveAt(terminiTabela.SelectedIndex);
             
             
+        }
+        private void dobaviPodatkeOPacijenuILekaru()
+        {
+            foreach(Termin termin in termini)
+            {
+                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
         }
     }
 }

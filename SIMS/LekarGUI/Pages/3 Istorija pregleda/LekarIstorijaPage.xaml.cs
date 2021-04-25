@@ -41,6 +41,7 @@ namespace SIMS.LekarGUI
             this.DataContext = this;
             evidentiraniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
             prazniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            dobaviPodatkeOPacijenuILekaru();
             refreshView();
         }
 
@@ -50,7 +51,7 @@ namespace SIMS.LekarGUI
             evidentiraniView.Clear();
 
             List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
-
+            popuniInformacijeODoktoruIPacijentu(temp);
             foreach (Termin t in temp)
             {
                 if (t.Evidentiran == true)
@@ -63,6 +64,15 @@ namespace SIMS.LekarGUI
 
             }
 
+        }
+
+        private void popuniInformacijeODoktoruIPacijentu(List<Termin> temp)
+        {
+            foreach (Termin termin in temp)
+            {
+                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
         }
 
         private void Button_Anamneza(object sender, RoutedEventArgs e)
@@ -110,6 +120,23 @@ namespace SIMS.LekarGUI
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
             LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void dobaviPodatkeOPacijenuILekaru()
+        {
+            foreach (Termin termin in EvidentiraniView)
+            {
+                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
+            
+            
+            foreach (Termin termin in prazniView)
+            {
+               termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+               termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
+            
         }
 
     }

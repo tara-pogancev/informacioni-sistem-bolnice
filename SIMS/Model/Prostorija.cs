@@ -3,6 +3,7 @@
 // Created: Monday, March 22, 2021 6:41:35 PM
 // Purpose: Definition of Class Prostorija
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace Model
         private string broj;
         private bool dostupna;
         private TipProstorije tipProstorije;
+        private bool serijalizuj;
         public Dictionary<string, int> kolicineOpreme
         {
             get; set;
@@ -25,6 +27,7 @@ namespace Model
             this.broj = "";
             this.dostupna = false;
             this.tipProstorije = TipProstorije.bolesnicka;
+            serijalizuj = true;
         }
 
         public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije)
@@ -33,6 +36,7 @@ namespace Model
             this.broj = broj;
             this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
+            serijalizuj = true;
         }
 
         public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije, Dictionary<string, int> kolicineOpreme)
@@ -42,12 +46,13 @@ namespace Model
             this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
             this.kolicineOpreme = kolicineOpreme;
+            serijalizuj = true;
         }
 
 
-        public string Broj { get => broj; set => broj = value; }
-        public bool Dostupna { get => dostupna; set => dostupna = value; }
+        
 
+        [JsonIgnore]
         public string DostupnaToString
         {
             get
@@ -55,7 +60,7 @@ namespace Model
                 return Conversion.DostupnostProstorijeToString(dostupna);
             }
         }
-
+        [JsonIgnore]
         public string TipProstorijeToString
         {
             get
@@ -65,5 +70,25 @@ namespace Model
         }
 
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
+        public string Broj { get => broj; set => broj = value; }
+        public bool Dostupna { get => dostupna; set => dostupna = value; }
+        [JsonIgnore]
+        public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
+
+        public bool ShouldSerializeDostupna()
+        {
+            return serijalizuj;
+        }
+       
+        public bool ShouldSerializeTipProstorije()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializekolicineOpreme()
+        {
+            return serijalizuj;
+        }
+        
     }
 }

@@ -27,7 +27,7 @@ namespace Model
             TerminStorage storageT = new TerminStorage();
             foreach (Termin t in storageT.ReadList())
             {
-                if (t.LekarKey == key)
+                if (t.Lekar.Jmbg == key)
                 {
                     storageT.Delete(t.TerminKey);
                 }

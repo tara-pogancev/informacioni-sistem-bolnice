@@ -23,7 +23,7 @@ namespace Model
             TerminStorage storageT = new TerminStorage();
             foreach (Termin t in storageT.ReadList())
             {
-                if (t.Prostorija == key)
+                if (t.Prostorija.Broj == key)
                 {
                     storageT.Delete(t.TerminKey);
                 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -26,6 +27,7 @@ namespace Model
             Target = target;
         }
 
+        [JsonIgnore]
         public string VremeStringDetailed
         {
             get
@@ -34,10 +36,12 @@ namespace Model
             }
         }
 
+        [JsonIgnore]
         public String AutorUppercase
         {
             get { return Autor.ToUpper(); }
         }
+
 
         public String VremeString
         {

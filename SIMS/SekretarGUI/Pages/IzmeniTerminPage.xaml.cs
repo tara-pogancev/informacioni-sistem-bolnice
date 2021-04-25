@@ -69,9 +69,9 @@ namespace SIMS.SekretarGUI
                 else
                     termin.VremeTrajanja = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
-                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
-                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
 
 
                 List<Termin> listaTermmina = TerminStorage.Instance.ReadList();
@@ -79,7 +79,7 @@ namespace SIMS.SekretarGUI
                 {
                     if (t.PocetnoVreme.Day == termin.PocetnoVreme.Day && t.PocetnoVreme.Month == termin.PocetnoVreme.Month && t.PocetnoVreme.Year == termin.PocetnoVreme.Year && t.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, t.VremeTrajanja, 0)) > termin.PocetnoVreme.TimeOfDay && t.PocetnoVreme.TimeOfDay < termin.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, termin.VremeTrajanja, 0)) && !t.TerminKey.Equals(termin.TerminKey))
                     {
-                        if (t.LekarKey.Equals(termin.LekarKey))
+                        if (t.Lekar.Jmbg.Equals(termin.Lekar.Jmbg))
                         {
                             MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
                             return;
@@ -120,7 +120,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(termin.LekarKey))
+                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
                 {
                     break;
                 }
@@ -142,7 +142,7 @@ namespace SIMS.SekretarGUI
             index = 0;
             foreach (Pacijent p in pacijenti)
             {
-                if (p.Jmbg.Equals(termin.PacijentKey))
+                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
                 {
                     break;
                 }

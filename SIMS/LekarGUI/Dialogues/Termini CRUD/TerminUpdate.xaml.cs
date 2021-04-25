@@ -61,9 +61,9 @@ namespace SIMS.LekarGUI
                 else
                     termin.VremeTrajanja = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
-                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
-                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
 
                 if (!lekari[doktoriCombo.SelectedIndex].IsFreeUpdate(termin))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
@@ -97,7 +97,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(termin.LekarKey))
+                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
                 {
                     break;
                 }
@@ -119,7 +119,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Pacijent p in pacijenti)
             {
-                if (p.Jmbg.Equals(termin.PacijentKey))
+                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
                 {
                     break;
                 }

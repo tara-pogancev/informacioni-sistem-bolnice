@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,16 +34,21 @@ namespace Model
                 File.Create(path).Close();
                 return new Dictionary<KeyType, Entity>();
             }
+            FileInfo fi = new FileInfo(path);
+            if (fi.Length == 0)
+            {
+                return new Dictionary<KeyType, Entity>();
+            }
 
             string json = File.ReadAllText(path);
 
-            return JsonSerializer.Deserialize<Dictionary<KeyType, Entity>>(json);
+            return JsonConvert.DeserializeObject<Dictionary<KeyType, Entity>>(json);
         }
 
         private void WriteFile(Dictionary<KeyType, Entity> entities)
         {
             string path = getPath();
-            string json = JsonSerializer.Serialize(entities);
+            string json = JsonConvert.SerializeObject(entities, Formatting.Indented);
 
             File.WriteAllText(path, json);
         }

@@ -21,7 +21,7 @@ namespace Model
             this.daniGodisnjegOdmora = daniGodisnjegOdmora;
         }
 
-        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+        
 
         public List<Termin> getZauzetiTermini()
         {
@@ -64,6 +64,13 @@ namespace Model
             }
 
             return true;
+        }
+
+        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+
+        public bool ShouldSerializeDaniGodisnjegOdmora()
+        {
+            return serijalizuj;
         }
 
     }

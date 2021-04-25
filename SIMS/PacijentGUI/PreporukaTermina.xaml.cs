@@ -82,7 +82,7 @@ namespace SIMS.PacijentGUI
         {
             for(int i= 0;i < terminZaPreporuku.Count;i++)
             {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.LekarKey.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.Lekar.Jmbg.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
                 {
                     terminZaPreporuku.RemoveAt(i);
                     i--;
@@ -105,9 +105,9 @@ namespace SIMS.PacijentGUI
                 termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
-                termin.LekarKey = lekari[ListaDoktora.SelectedIndex].Jmbg;
-                termin.PacijentKey = PocetnaStranica.getInstance().Pacijent.Jmbg;
-                termin.Prostorija = "1";
+                termin.Lekar = lekari[ListaDoktora.SelectedIndex];
+                termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
+                termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (i == 4)
@@ -125,7 +125,7 @@ namespace SIMS.PacijentGUI
                 
                 if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme))
                 {
-                    terminZaPreporuku[i].IdLekara.Remove(termin.LekarKey);
+                    terminZaPreporuku[i].IdLekara.Remove(termin.Lekar.Jmbg);
                     break;
                 }
                 
@@ -135,7 +135,7 @@ namespace SIMS.PacijentGUI
         {
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.PacijentKey.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.Pacijent.Jmbg.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
                 {
                     terminZaPreporuku.RemoveAt(i);
                     i--;
@@ -170,9 +170,10 @@ namespace SIMS.PacijentGUI
                 termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = TipTermina.pregled;
-                termin.LekarKey = terminZaPreporuku[i].IdLekara[i%terminZaPreporuku[i].IdLekara.Count];
-                termin.PacijentKey = PocetnaStranica.getInstance().Pacijent.Jmbg;
-                termin.Prostorija = "1";
+                String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
+                termin.Lekar = new LekarStorage().Read(idLekara);
+                termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
+                termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (brojacPreporucenihTermina == 5)

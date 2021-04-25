@@ -59,7 +59,7 @@ namespace SIMS.LekarGUI
         private void PrepisiRecept()
         {
             Lek l = (Lek)LekComboBox.SelectedItem;
-            Recept r = new Recept(lekar.Jmbg, pacijent.Jmbg, l.Naziv,
+            Recept r = new Recept(lekar, pacijent, l.Naziv,
                 KolicinaTxt.Text, DijagnozaTxt.Text);
 
             ReceptStorage.Instance.Create(r);

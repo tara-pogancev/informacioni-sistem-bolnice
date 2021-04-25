@@ -3,6 +3,7 @@
 // Created: Monday, March 22, 2021 6:35:53 PM
 // Purpose: Definition of Class Pacijent
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -18,8 +19,7 @@ namespace Model
         private Pol pol;
         private List<string> hronicne_bolesti = new List<string>();
 
-        public string Lbo { get => lbo; set => lbo = value; }
-        public bool Gost { get => gost; set => gost = value; }
+        
 
         public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
         {
@@ -42,7 +42,7 @@ namespace Model
         public Pacijent() : base()
         {
         }
-
+        [JsonIgnore]
         public String GetGost
         {
             get
@@ -76,18 +76,8 @@ namespace Model
             this.Gost = p.Gost;
         }
 
-        public List<string> Alergeni
-        {
-            get
-            {
-                return alergeni;
-            }
-            set
-            {
-                this.alergeni = value;
-            }
-        }
 
+        [JsonIgnore]
         public string GetAlergeniString
         {
             get
@@ -102,56 +92,13 @@ namespace Model
             }
         }
 
-        public string GetHronicneBolestiString
-        {
-            get
-            {
-                string hronBolestiString = "";
-                if (hronicne_bolesti.Count == 0 || hronicne_bolesti.Contains(""))
-                    return "Nema";
 
-                foreach (string a in hronicne_bolesti)
-                    hronBolestiString += a + " ";
-                return hronBolestiString.Trim();
-            }
-        }
 
-        public DateTime Datum_Rodjenja
-        {
-            get
-            {
-                return datum_rodjenja;
-            }
-            set
-            {
-                this.datum_rodjenja = value;
-            }
-        }
 
-        public Krvne_Grupe Krvna_Grupa
-        {
-            get
-            {
-                return krvna_grupa;
-            }
-            set
-            {
-                krvna_grupa = value;
-            }
-        }
 
-        public Pol Pol_Pacijenta
-        {
-            get
-            {
-                return pol;
-            }
-            set
-            {
-                pol = value;
-            }
-        }
 
+
+        [JsonIgnore]
         public List<string> Hronicne_Bolesti
         {
             get
@@ -162,10 +109,10 @@ namespace Model
             {
                 hronicne_bolesti = value;
             }
-        } 
-
+        }
+        [JsonIgnore]
         public String DatumString { get => datum_rodjenja.ToString("dd.MM.yyyy."); }
-        
+        [JsonIgnore]
         public String PolString
         {
             get
@@ -177,7 +124,7 @@ namespace Model
                     return "Žensko";
             }
         }
-
+        [JsonIgnore]
         public String KrvnaGrupaString
         {
             get
@@ -202,7 +149,7 @@ namespace Model
                 return null;
             }
         }
-
+        
         public bool IsAlergic(Lek lek)
         {
             foreach (string a in this.Alergeni)
@@ -213,5 +160,98 @@ namespace Model
             return false;
         }
 
+        public string Lbo { get => lbo; set => lbo = value; }
+        public bool Gost { get => gost; set => gost = value; }
+        public List<string> Alergeni
+        {
+            get
+            {
+                return alergeni;
+            }
+            set
+            {
+                this.alergeni = value;
+            }
+        }
+
+
+        public DateTime Datum_Rodjenja
+        {
+            get
+            {
+                return datum_rodjenja;
+            }
+            set
+            {
+                this.datum_rodjenja = value;
+            }
+        }
+
+        public string GetHronicneBolestiString
+        {
+            get
+            {
+                string hronBolestiString = "";
+                if (hronicne_bolesti.Count == 0 || hronicne_bolesti.Contains(""))
+                    return "Nema";
+
+                foreach (string a in hronicne_bolesti)
+                    hronBolestiString += a + " ";
+                return hronBolestiString.Trim();
+            }
+        }
+
+        public Pol Pol_Pacijenta
+        {
+            get
+            {
+                return pol;
+            }
+            set
+            {
+                pol = value;
+            }
+        }
+
+        public Krvne_Grupe Krvna_Grupa
+        {
+            get
+            {
+                return krvna_grupa;
+            }
+            set
+            {
+                krvna_grupa = value;
+            }
+        }
+
+        public bool ShouldSerializeKrvna_Grupa()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializePol_Pacijenta()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeGetHronicneBolestiString()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeDatum_Rodjenja()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeAlergeni()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeGost()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeLbo()
+        {
+            return serijalizuj;
+        }
     }
 }

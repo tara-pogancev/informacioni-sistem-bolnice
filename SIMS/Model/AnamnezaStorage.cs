@@ -9,7 +9,7 @@ namespace Model
     {
         protected override string getKey(Anamneza entity)
         {
-            return entity.AnamnezaKey;
+            return entity.IdAnamneze;
         }
 
         protected override string getPath()
@@ -28,7 +28,7 @@ namespace Model
 
             foreach (Anamneza a in this.ReadList())
             {
-                if (a.getTermin().PacijentKey == p.Jmbg)
+                if (a.getTermin().Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(a);
             }
 
