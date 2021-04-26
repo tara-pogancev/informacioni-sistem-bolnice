@@ -72,8 +72,34 @@ namespace Model
 
         }
 
-         
+        public int getTerminByDateAndType(DateTime date, TipTermina tip)
+        {
+            List<Termin> retVal = new List<Termin>();
 
+            foreach (Termin t in TerminStorage.Instance.ReadList())
+            {
+                DateTime day = t.PocetnoVreme.Date;
+                if (t.VrstaTermina == tip && day == date)
+                    retVal.Add(t);
+            }
+
+            return retVal.Count;
+        }
+
+        public List<int> getTerminByWeekAndType(TipTermina tip)
+        {
+            List<int> retVal = new List<int>();
+
+            DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
+
+            for (int i = 0; i < 5; i++)
+            {
+                DateTime dayOfWeek = startOfWeek.AddDays(i);
+                retVal.Add(getTerminByDateAndType(dayOfWeek, tip));
+            }
+
+            return retVal;
+        }
 
     }
 

@@ -124,9 +124,104 @@
       "Jmbg": "2484848556"
     },
     "Prostorija": {
-      "Broj": "1"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "1",
+      "Dostupna": false
     },
     "InicijalnoVrijeme": "2021-06-03T11:00:00",
     "TerminKey": "210426075907"
+  },
+  "210426093153": {
+    "PocetnoVreme": "2021-04-27T10:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "2484848556"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-27T10:00:00",
+    "TerminKey": "210426093153"
+  },
+  "210426093203": {
+    "PocetnoVreme": "2021-04-27T15:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-27T15:00:00",
+    "TerminKey": "210426093203"
+  },
+  "210426093211": {
+    "PocetnoVreme": "2021-04-28T09:30:00",
+    "VremeTrajanja": 90,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-28T09:30:00",
+    "TerminKey": "210426093211"
+  },
+  "210426093219": {
+    "PocetnoVreme": "2021-04-29T09:30:00",
+    "VremeTrajanja": 90,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "2484848556"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-29T09:30:00",
+    "TerminKey": "210426093219"
+  },
+  "210426093233": {
+    "PocetnoVreme": "2021-04-29T15:30:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "2484848556"
+    },
+    "Prostorija": {
+      "Broj": "2"
+    },
+    "InicijalnoVrijeme": "2021-04-29T15:30:00",
+    "TerminKey": "210426093233"
   }
 }

@@ -71,7 +71,6 @@
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Syncfusion.SfChart.WPF" Version="19.1.0.57" />
   </ItemGroup>
 
   <ItemGroup>

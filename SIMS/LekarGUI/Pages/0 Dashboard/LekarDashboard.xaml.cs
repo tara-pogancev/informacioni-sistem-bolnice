@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using Model;
 using SIMS.LekarGUI.Pages;
 using System;
 using System.Collections.Generic;
@@ -38,7 +40,8 @@ namespace SIMS.LekarGUI
         public void refresh()
         {
             setAktivanTermin();
-            RefreshGraphs();
+            RefreshGraphs1();
+            RefreshGraphs2();
         }
 
         public void setAktivanTermin()
@@ -68,7 +71,7 @@ namespace SIMS.LekarGUI
             //TODO
         }
 
-        private void RefreshGraphs()
+        private void RefreshGraphs1()
         {
             List<Termin> termini = TerminStorage.Instance.ReadByDoctor(lekarUser);
 
@@ -83,5 +86,35 @@ namespace SIMS.LekarGUI
             GraphEvidentirani.Value = evidentirani;
 
         }
+
+        private void RefreshGraphs2()
+        {
+            SeriesCollection = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Title = "Pregledi",
+                    Values = new ChartValues<int>(TerminStorage.Instance.getTerminByWeekAndType(TipTermina.pregled)),
+                    Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
+        },
+                new LineSeries
+                {
+                    Title = "Operacije",
+                    Values = new ChartValues<int>(TerminStorage.Instance.getTerminByWeekAndType(TipTermina.operacija)),
+                    Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
+                    
+                }
+            };
+
+            Labels = new[] { "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak" };
+
+            DataContext = this;
+
+        }
+
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> YFormatter { get; set; }
+
     }
 }
