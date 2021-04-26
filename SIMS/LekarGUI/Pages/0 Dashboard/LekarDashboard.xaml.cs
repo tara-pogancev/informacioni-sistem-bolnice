@@ -28,6 +28,8 @@ namespace SIMS.LekarGUI
 
             InitializeComponent();
 
+            this.DataContext = this;
+
             WelcomeMSG.Content = lekarUser.Ime + ", dobro došli!";
             refresh();
 
@@ -36,6 +38,7 @@ namespace SIMS.LekarGUI
         public void refresh()
         {
             setAktivanTermin();
+            RefreshGraphs();
         }
 
         public void setAktivanTermin()
@@ -63,6 +66,22 @@ namespace SIMS.LekarGUI
         private void Button_Hitno(object sender, RoutedEventArgs e)
         {
             //TODO
+        }
+
+        private void RefreshGraphs()
+        {
+            List<Termin> termini = TerminStorage.Instance.ReadByDoctor(lekarUser);
+
+            int evidentirani = 0;
+            int ukupno = termini.Count;
+
+            foreach (Termin t in termini)
+                if (t.Evidentiran)
+                    evidentirani++;
+
+            GraphEvidentirani.To = ukupno;
+            GraphEvidentirani.Value = evidentirani;
+
         }
     }
 }

@@ -4,10 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.LekarGUI"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="840"
-      Title="LekarDashboard">
-
+      Title="LekarDashboard">    
+    
     <Grid Background="#FF323D52">
         <Grid Margin="35,30,35,20">
             <Grid.RowDefinitions>
@@ -61,13 +62,15 @@
                 <StackPanel Grid.Column="0" Margin="10,10,10,10">
                     <Label Content="Evidentirani pregledi" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
 
-                    <!--GRID Evidentirani pregledi-->
-                    <Grid>
-                        
-                        
-                        
-                    </Grid>
-
+                    <lvc:Gauge
+                            Uses360Mode="True" Name="GraphEvidentirani"
+                            From="0" To="100" Value="20"
+                            HighFontSize="40" Foreground="White"
+                            InnerRadius="60" GaugeBackground="#FFE26868" FromColor="#FF57D6B4" ToColor="#FF57D6B4"
+                            Width="160" Height="160"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,18,0,0"                       
+                     />
+                    
                 </StackPanel>
 
                 <Rectangle Grid.Column="1" RadiusX="5" RadiusY="5" Fill="#FF38455D" Margin="15,0,0,0"/>
@@ -77,11 +80,7 @@
                     <!--GRID Termini-->
                     <Grid>
 
-
-
                     </Grid>
-
-
 
                 </StackPanel>
 

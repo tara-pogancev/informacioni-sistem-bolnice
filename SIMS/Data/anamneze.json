@@ -14,8 +14,34 @@
     "SocioEpiPodaci": "/",
     "Datum": "2021-04-26T00:00:00+02:00",
     "Termin": {
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
       "TerminKey": "210426070401"
     },
     "IdAnamneze": "210426070401"
+  },
+  "210426075857": {
+    "GlavneTegobe": "..",
+    "SadasnjaAnamneza": "..",
+    "OpstePojave": "..",
+    "RespiratorniSistem": "/",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "/",
+    "UrogenitalniSistem": "/",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "/",
+    "RanijaOboljenja": "/",
+    "PorodicniPodaci": "/",
+    "SocioEpiPodaci": "/",
+    "Datum": "2021-04-26T00:00:00+02:00",
+    "Termin": {
+      "TerminKey": "210426075857"
+    },
+    "IdAnamneze": "210426075857"
   }
 }

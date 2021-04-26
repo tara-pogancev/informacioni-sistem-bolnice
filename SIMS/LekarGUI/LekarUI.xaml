@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="ThreeDBorderWindow"
         ResizeMode="CanResize"
-        MinHeight="630" MinWidth="750"
+        MinHeight="630" MinWidth="850"
         Title="Bolnica Zdravo - Lekar" Height="625" Width="1050">
 
     <WindowChrome.WindowChrome>
