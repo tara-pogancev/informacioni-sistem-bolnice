@@ -1,21 +1,21 @@
 {
-  "210425113337": {
-    "GlavneTegobe": "ad",
-    "SadasnjaAnamneza": "ad",
-    "OpstePojave": "ad",
-    "RespiratorniSistem": "ad",
-    "KardiovaskularniSistem": "da",
-    "DigestivniSistem": "d",
-    "UrogenitalniSistem": "a",
-    "LokomotorniSistem": "da",
-    "NervniSistem": "ad",
-    "RanijaOboljenja": "ad",
+  "210426070401": {
+    "GlavneTegobe": "Somnus nemoris",
+    "SadasnjaAnamneza": "Et liberi niam",
+    "OpstePojave": "Faciunt numquam exsit",
+    "RespiratorniSistem": "/",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "/",
+    "UrogenitalniSistem": "Nexpercii si i i o o o o o o siit",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "/",
+    "RanijaOboljenja": "/",
     "PorodicniPodaci": "/",
     "SocioEpiPodaci": "/",
-    "Datum": "2021-04-25T00:00:00+02:00",
+    "Datum": "2021-04-26T00:00:00+02:00",
     "Termin": {
-      "TerminKey": "210425113337"
+      "TerminKey": "210426070401"
     },
-    "IdAnamneze": "210425113337"
+    "IdAnamneze": "210426070401"
   }
 }

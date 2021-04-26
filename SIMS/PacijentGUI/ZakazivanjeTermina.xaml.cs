@@ -33,8 +33,7 @@ namespace SIMS.PacijentGUI
             return instance;
         }
         private ZakazivanjeTermina()
-        {
-            
+        {            
             InitializeComponent();
             Zakazivanje1.Children.Add(new zakazivanje(pacijent));
         }

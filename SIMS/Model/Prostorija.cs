@@ -50,8 +50,6 @@ namespace Model
         }
 
 
-        
-
         [JsonIgnore]
         public string DostupnaToString
         {
@@ -60,6 +58,7 @@ namespace Model
                 return Conversion.DostupnostProstorijeToString(dostupna);
             }
         }
+
         [JsonIgnore]
         public string TipProstorijeToString
         {

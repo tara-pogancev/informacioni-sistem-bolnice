@@ -1,20 +1,75 @@
 {
-  "210425113337": {
-    "PocetnoVreme": "2021-04-25T08:00:00",
-    "VremeTrajanja": 30,
+  "210426065527": {
+    "PocetnoVreme": "2021-05-02T09:00:00",
+    "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048",
-      "ImePrezime": "Tara Pogančev"
+      "Jmbg": "045210805048"
     },
     "Pacijent": {
-      "Jmbg": "4865453131",
-      "ImePrezime": "Đorđe Krsmanović"
+      "Jmbg": "4484552102"
     },
     "Prostorija": {
-      "Broj": "1"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "1",
+      "Dostupna": false
     },
-    "InicijalnoVrijeme": "2021-04-25T08:00:00",
-    "TerminKey": "210425113337"
+    "InicijalnoVrijeme": "2021-05-02T09:00:00",
+    "TerminKey": "210426065527"
+  },
+  "210426065743": {
+    "PocetnoVreme": "2021-05-01T09:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "2484848556"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-05-01T09:00:00",
+    "TerminKey": "210426065743"
+  },
+  "210426070320": {
+    "PocetnoVreme": "2021-04-05T09:30:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-05T09:30:00",
+    "TerminKey": "210426070320"
+  },
+  "210426070401": {
+    "PocetnoVreme": "2021-04-03T10:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Prostorija": {
+      "Broj": "2"
+    },
+    "InicijalnoVrijeme": "2021-04-03T10:00:00",
+    "TerminKey": "210426070401"
   }
 }
