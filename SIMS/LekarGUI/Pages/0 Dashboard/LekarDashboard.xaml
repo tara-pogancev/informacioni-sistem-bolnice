@@ -33,8 +33,15 @@
                     <TextBlock TextWrapping="Wrap" FontFamily="Candara" Foreground="LightGray" FontSize="18" Grid.Row="1" Margin="0,0,0,44" Grid.RowSpan="2"
                                ><Run Text="Na kontrolnoj tabli možete brzo i jednostavno da vidite aktivan pregled, kao i uvid u buduće zakazane termine pregleda i operacija. Srećan rad želi vam IT Tim"/><Run Language="sr-latn-rs" Text="!"/></TextBlock>
 
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    
                     <Button Content="Uvid u preglede" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"
-                            Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Termini"/>
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Termini"/>
+
+                    <Button Content="Hitan termin" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"
+                             HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Hitno" Margin="20,0,0,0"/>
+
+                    </StackPanel>
 
                 </Grid>
 
@@ -53,14 +60,26 @@
                 <Rectangle Grid.Column="0" RadiusX="5" RadiusY="5" Fill="#FF38455D"/>
                 <StackPanel Grid.Column="0" Margin="10,10,10,10">
                     <Label Content="Evidentirani pregledi" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
-                    
 
+                    <!--GRID Evidentirani pregledi-->
+                    <Grid>
+                        
+                        
+                        
+                    </Grid>
 
                 </StackPanel>
 
                 <Rectangle Grid.Column="1" RadiusX="5" RadiusY="5" Fill="#FF38455D" Margin="15,0,0,0"/>
                 <StackPanel Grid.Column="1" Margin="25,10,10,10">
-                    <Label Content="Evidentirani pregledi" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
+                    <Label Content="Termini" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
+
+                    <!--GRID Termini-->
+                    <Grid>
+
+
+
+                    </Grid>
 
 
 

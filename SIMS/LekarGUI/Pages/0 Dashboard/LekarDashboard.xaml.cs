@@ -59,5 +59,10 @@ namespace SIMS.LekarGUI
         {
             LekarUI.GetInstance().ChangeTab(1);
         }
+
+        private void Button_Hitno(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
     }
 }

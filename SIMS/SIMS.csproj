@@ -119,8 +119,8 @@
 
   <ItemGroup>
     <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
-    <Folder Include="LekarGUI\Dialogues\Materijali i lekovi\" />
     <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
+    <Folder Include="LekarGUI\Dialogues\Materijali i lekovi\" />
   </ItemGroup>
 
 </Project>

@@ -49,5 +49,10 @@ namespace SIMS.LekarGUI
         {
             LekarUI.GetInstance().ChangeTab(0);
         }
+
+        private void Button_Lekovi(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
     }
 }
