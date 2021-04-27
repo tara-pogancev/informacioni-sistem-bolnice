@@ -40,8 +40,34 @@
     "SocioEpiPodaci": "/",
     "Datum": "2021-04-26T00:00:00+02:00",
     "Termin": {
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
       "TerminKey": "210426075857"
     },
     "IdAnamneze": "210426075857"
+  },
+  "210426093203": {
+    "GlavneTegobe": "Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering",
+    "SadasnjaAnamneza": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi",
+    "OpstePojave": "Nor is there anyone ",
+    "RespiratorniSistem": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "/",
+    "UrogenitalniSistem": "Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "/",
+    "RanijaOboljenja": "Nor is there anyone ",
+    "PorodicniPodaci": "/",
+    "SocioEpiPodaci": "/",
+    "Datum": "2021-04-27T00:00:00+02:00",
+    "Termin": {
+      "TerminKey": "210426093203"
+    },
+    "IdAnamneze": "210426093203"
   }
 }

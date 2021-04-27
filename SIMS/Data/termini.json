@@ -219,9 +219,47 @@
       "Jmbg": "2484848556"
     },
     "Prostorija": {
-      "Broj": "2"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
     },
     "InicijalnoVrijeme": "2021-04-29T15:30:00",
     "TerminKey": "210426093233"
+  },
+  "210427094949": {
+    "PocetnoVreme": "2021-04-28T12:00:00",
+    "VremeTrajanja": 90,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "4484552102"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "1",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-04-28T12:00:00",
+    "TerminKey": "210427094949"
+  },
+  "210427095107": {
+    "PocetnoVreme": "2021-04-27T09:30:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131"
+    },
+    "Prostorija": {
+      "Broj": "2"
+    },
+    "InicijalnoVrijeme": "2021-04-27T09:30:00",
+    "TerminKey": "210427095107"
   }
 }

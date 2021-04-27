@@ -72,11 +72,11 @@ namespace Model
 
         }
 
-        public int getTerminByDateAndType(DateTime date, TipTermina tip)
+        public int getAppointmentsCountByDate(DateTime date, TipTermina tip, Lekar l)
         {
             List<Termin> retVal = new List<Termin>();
 
-            foreach (Termin t in TerminStorage.Instance.ReadList())
+            foreach (Termin t in TerminStorage.Instance.ReadByDoctor(l))
             {
                 DateTime day = t.PocetnoVreme.Date;
                 if (t.VrstaTermina == tip && day == date)
@@ -86,21 +86,24 @@ namespace Model
             return retVal.Count;
         }
 
-        public List<int> getTerminByWeekAndType(TipTermina tip)
+        public List<int> GetAppointmentsCountForCurrentWeek(TipTermina tip, Lekar l)
         {
             List<int> retVal = new List<int>();
+            DateTime startOfWeek = GetStartOfWeek();
 
-            DateTime startOfWeek = DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
-
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 DateTime dayOfWeek = startOfWeek.AddDays(i);
-                retVal.Add(getTerminByDateAndType(dayOfWeek, tip));
+                retVal.Add(getAppointmentsCountByDate(dayOfWeek, tip, l));
             }
 
             return retVal;
         }
 
+        private static DateTime GetStartOfWeek()
+        {
+            return DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
+        }
     }
 
 }      

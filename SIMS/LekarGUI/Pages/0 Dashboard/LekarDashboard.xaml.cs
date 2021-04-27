@@ -94,23 +94,25 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(TerminStorage.Instance.getTerminByWeekAndType(TipTermina.pregled)),
+                    Values = new ChartValues<int>(TerminStorage.Instance.GetAppointmentsCountForCurrentWeek(TipTermina.pregled, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
+
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(TerminStorage.Instance.getTerminByWeekAndType(TipTermina.operacija)),
+                    Values = new ChartValues<int>(TerminStorage.Instance.GetAppointmentsCountForCurrentWeek(TipTermina.operacija, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
-                    
+
                 }
             };
 
-            Labels = new[] { "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak" };
+            Labels = new[] { "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota", "Nedelja"};
 
             DataContext = this;
 
         }
+
 
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
