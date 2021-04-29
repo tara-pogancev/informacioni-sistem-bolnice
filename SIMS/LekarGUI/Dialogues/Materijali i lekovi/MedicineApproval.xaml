@@ -1,0 +1,80 @@
+﻿<Window x:Class="SIMS.LekarGUI.Dialogues.Materijali_i_lekovi.MedicineApproval"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
+        mc:Ignorable="d"
+        Title="Odobravanje lekova" Height="500" Width="700">
+
+    <Window.Resources>
+
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="#FF323D52">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Odobravanje lekova" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+
+        <Grid Grid.Row="1" Margin="60,20,60,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="DataGridMedicine" ItemsSource="{Binding Path = MedicineView}" MouseDoubleClick="PreviewSellectedMedicine">
+
+                <DataGrid.Columns>
+
+                    <DataGridCheckBoxColumn Header="Izbor" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Naziv leka" Binding="{Binding Naziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"  DataGridColumn.CanUserResize="False"/>
+
+                    <DataGridTemplateColumn Width="32">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="PreviewSellectedMedicine">
+                                    <Image Source="/src/view.png" Cursor="Hand"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <Grid Grid.Column="1" Height="250" HorizontalAlignment="Right">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Content="Odobri" Click="ApproveSellecetedMedicine" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="1" Content="Odbij" Click="RejectSellecetedMedicine" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="3" Content="Potvrdi" Click="RejectSellecetedMedicine" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BasicButton}"/>
+
+            </Grid>
+
+        </Grid>
+
+        <Label Grid.Row="3" Content="Spisak lekova predstavlja lekove koji još uvek nisu odobreni." Style="{StaticResource DefaultLabel}" 
+               FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Window>

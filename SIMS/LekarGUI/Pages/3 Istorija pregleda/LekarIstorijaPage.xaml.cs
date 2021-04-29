@@ -109,7 +109,7 @@ namespace SIMS.LekarGUI
                 if (t.VrstaTermina == TipTermina.pregled)
                 {
                     AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
-                    a.Show();
+                    a.ShowDialog();
                     refreshView();
                 }
                 else
@@ -131,7 +131,6 @@ namespace SIMS.LekarGUI
                 termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
                 termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
             }
-            
             
             foreach (Termin termin in prazniView)
             {

@@ -7,27 +7,9 @@ namespace Model
 {
     public class Anamneza
     {       
-        //String idAnamneze;
-        /*
-        private String glavneTegobe;
-        private DateTime datum;
-        private String sadasnjaAnamneza;
-        private String opstePojave;
-        private String respiratorniSistem;
-        private String kardiovaskularniSistem;
-        private String digestivniSistem;
-        private String urogenitalniSistem;
-        private String lokomotorniSistem;
-        private String nervniSistem;
-        private String ranijaOboljenja;
-        private String porodicniPodaci;
-        private String socioEpiPodaci;
-        */
-
         public Anamneza()
         {
             Datum = DateTime.Today;
-            
         }
 
         public Anamneza(Termin termin, String glavneTegobe, String sadasnjaAnamneza, String opstePojave, String respiratorniSistem, String kardiovaskularniSistem,
@@ -79,13 +61,13 @@ namespace Model
         [JsonIgnore]
         public String ImeLekara
         {
-            get { return this.getTermin().ImeLekara; }
+            get { return Termin.ImeLekara; }
         }
 
         [JsonIgnore]
         public String ImePacijenta
         {
-            get { return this.getTermin().ImePacijenta; }
+            get { return Termin.ImePacijenta; }
         }
 
         [JsonIgnore]
@@ -134,8 +116,16 @@ namespace Model
 
         public DateTime Datum { get; set; }
 
+        [JsonIgnore]
         public Termin Termin { get; set; }
 
         public String IdAnamneze { get; set; }
+
+        public void InitData()
+        {
+            Termin =  new TerminStorage().Read(IdAnamneze);
+            Termin.Pacijent = new PacijentStorage().Read(Termin.Pacijent.Jmbg);
+            Termin.Lekar = new LekarStorage().Read(Termin.Lekar.Jmbg);
+        }
     }
 }

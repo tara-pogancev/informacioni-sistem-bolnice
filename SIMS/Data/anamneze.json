@@ -13,16 +13,6 @@
     "PorodicniPodaci": "/",
     "SocioEpiPodaci": "/",
     "Datum": "2021-04-26T00:00:00+02:00",
-    "Termin": {
-      "PocetnoVreme": "0001-01-01T00:00:00",
-      "VremeTrajanja": 0,
-      "VrstaTermina": 0,
-      "Lekar": null,
-      "Pacijent": null,
-      "Prostorija": null,
-      "InicijalnoVrijeme": "0001-01-01T00:00:00",
-      "TerminKey": "210426070401"
-    },
     "IdAnamneze": "210426070401"
   },
   "210426075857": {
@@ -39,16 +29,6 @@
     "PorodicniPodaci": "/",
     "SocioEpiPodaci": "/",
     "Datum": "2021-04-26T00:00:00+02:00",
-    "Termin": {
-      "PocetnoVreme": "0001-01-01T00:00:00",
-      "VremeTrajanja": 0,
-      "VrstaTermina": 0,
-      "Lekar": null,
-      "Pacijent": null,
-      "Prostorija": null,
-      "InicijalnoVrijeme": "0001-01-01T00:00:00",
-      "TerminKey": "210426075857"
-    },
     "IdAnamneze": "210426075857"
   },
   "210426093203": {
@@ -65,9 +45,38 @@
     "PorodicniPodaci": "/",
     "SocioEpiPodaci": "/",
     "Datum": "2021-04-27T00:00:00+02:00",
-    "Termin": {
-      "TerminKey": "210426093203"
-    },
     "IdAnamneze": "210426093203"
+  },
+  "210427095107": {
+    "GlavneTegobe": "/",
+    "SadasnjaAnamneza": "/",
+    "OpstePojave": "/",
+    "RespiratorniSistem": "/",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "/",
+    "UrogenitalniSistem": "/",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "/",
+    "RanijaOboljenja": "/",
+    "PorodicniPodaci": "/",
+    "SocioEpiPodaci": "/",
+    "Datum": "2021-04-29T00:00:00+02:00",
+    "IdAnamneze": "210427095107"
+  },
+  "210426093211": {
+    "GlavneTegobe": "Noli manere",
+    "SadasnjaAnamneza": "manere in memoriam",
+    "OpstePojave": "Noli manere manere",
+    "RespiratorniSistem": "/",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "In memoriam",
+    "UrogenitalniSistem": "/",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "/",
+    "RanijaOboljenja": "/",
+    "PorodicniPodaci": "/",
+    "SocioEpiPodaci": "/",
+    "Datum": "2021-04-29T00:00:00+02:00",
+    "IdAnamneze": "210426093211"
   }
 }

@@ -22,8 +22,10 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             InitializeComponent();
 
+            a.InitData();
+
             LabelDoktor.Content = "Doktor: " + a.ImeLekara;
-            LabelDatum.Content = "Datum pregleda: " + a.Datum;
+            LabelDatum.Content = "Datum pregleda: " + a.Date;
 
             LabelPacijent.Content = "Pacijent: " + a.ImePacijenta;
             Termin t = TerminStorage.Instance.Read(a.IdAnamneze);

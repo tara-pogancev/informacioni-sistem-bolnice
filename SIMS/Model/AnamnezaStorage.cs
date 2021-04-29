@@ -28,7 +28,9 @@ namespace Model
 
             foreach (Anamneza a in this.ReadList())
             {
-                if (a.getTermin().Pacijent.Jmbg == p.Jmbg)
+                a.InitData();
+
+                if (a.Termin.Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(a);
             }
 

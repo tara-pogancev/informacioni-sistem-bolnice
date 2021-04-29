@@ -38,7 +38,6 @@ namespace Model
             }
         }
 
-
         public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
         {
             this.inicijalnoVrijeme = pocetnoVreme;

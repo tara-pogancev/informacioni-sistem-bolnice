@@ -1,14 +1,28 @@
 {
-  "210426070516": {
+  "210429091946": {
     "NazivLeka": "Vivace",
-    "Kolicina": "20mg",
-    "Dijagnoza": "Glavobolja",
-    "ReceptKey": "210426070516",
+    "Kolicina": "50 mg",
+    "Dijagnoza": "Temperatura",
+    "ReceptKey": "210429091946",
     "Lekar": {
       "Jmbg": "045210805048"
     },
     "Pacijent": {
-      "Jmbg": "4865453131"
-    }
+      "Jmbg": "4484552102"
+    },
+    "Datum": "2021-04-29T00:00:00+02:00"
+  },
+  "210429093023": {
+    "NazivLeka": "Katopil",
+    "Kolicina": "15 ml",
+    "Dijagnoza": "/",
+    "ReceptKey": "210429093023",
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Datum": "2021-04-29T00:00:00+02:00"
   }
 }

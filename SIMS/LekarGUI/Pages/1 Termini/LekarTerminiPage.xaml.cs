@@ -72,14 +72,14 @@ namespace SIMS.LekarGUI
         {
             //Button: Zakazi pregled
             TerminCreate terminCreate = new TerminCreate();
-            terminCreate.Show();
+            terminCreate.ShowDialog();
         }
 
         private void Button_Operacija(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi operaciju
             OperacijaCreate operacijaCreate = new OperacijaCreate();
-            operacijaCreate.Show();
+            operacijaCreate.ShowDialog();
         }
 
         private void Button_Update(object sender, RoutedEventArgs e)
@@ -88,7 +88,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
-                terminUpdate.Show();
+                terminUpdate.ShowDialog();
             }
 
         }

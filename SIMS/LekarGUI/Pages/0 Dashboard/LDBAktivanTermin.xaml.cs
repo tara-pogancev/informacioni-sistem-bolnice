@@ -44,7 +44,7 @@ namespace SIMS.LekarGUI.Pages
             if (aktivanTermin.VrstaTermina == TipTermina.pregled)
             {
                 AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
-                a.Show();
+                a.ShowDialog();
             }
             else
             {

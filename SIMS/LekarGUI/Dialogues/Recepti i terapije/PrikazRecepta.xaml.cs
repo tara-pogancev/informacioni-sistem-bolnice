@@ -22,6 +22,7 @@ namespace SIMS.LekarGUI
         {
             InitializeComponent();
 
+            r.InitData();
 
             Pacijent pacijent = r.Pacijent;
             Lekar lekar = r.Lekar;

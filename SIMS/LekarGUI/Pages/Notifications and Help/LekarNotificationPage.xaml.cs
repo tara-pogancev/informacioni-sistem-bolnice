@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Materijali_i_lekovi;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,7 +43,8 @@ namespace SIMS.LekarGUI
 
         private void Button_Odobravanje(object sender, RoutedEventArgs e)
         {
-            //TODO
+            MedicineApproval m = new MedicineApproval();
+            m.Show();
         }
 
         private void Button_Home(object sender, MouseButtonEventArgs e)

@@ -44,6 +44,11 @@
     <None Remove="src\sign-out-option.png" />
     <None Remove="src\small_window.png" />
     <None Remove="src\sun.png" />
+    <None Remove="src\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="src\view.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,12 +121,14 @@
     <Page Update="LekarGUI\Dialogues\Termini CRUD\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="LekarGUI\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
     <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
-    <Folder Include="LekarGUI\Dialogues\Materijali i lekovi\" />
   </ItemGroup>
 
 </Project>

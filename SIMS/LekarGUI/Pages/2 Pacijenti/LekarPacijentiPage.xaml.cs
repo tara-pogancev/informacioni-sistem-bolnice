@@ -71,7 +71,7 @@ namespace SIMS.LekarGUI
             {
                 Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
                 LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(p);
-                r.Show();
+                r.ShowDialog();
             }
         }
 

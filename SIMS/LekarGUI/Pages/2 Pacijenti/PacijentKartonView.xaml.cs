@@ -67,8 +67,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Dokumenti(object sender, RoutedEventArgs e)
         {
-            //TODO
-                        
+            LekarUI.GetInstance().SellectedTab.Content = new PacijentDokumentacijaView(pacijentProfile);
         }
 
         private void Button_Hositalizaijca(object sender, RoutedEventArgs e)

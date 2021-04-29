@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:SIMS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
-            
+
         <!--Label style-->
         <Style TargetType="Label" x:Key="DefaultLabel">
             <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
@@ -64,43 +63,43 @@
             </Style.Triggers>
         </Style>
 
-            <!--Green Bold button-->
-            <Style TargetType="Button" BasedOn="{StaticResource GreenButton}" x:Key="GreenBoldButton">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Height" Value="35"/>
-                <Setter Property="Width" Value="135"/>
-            </Style>
+        <!--Green Bold button-->
+        <Style TargetType="Button" BasedOn="{StaticResource GreenButton}" x:Key="GreenBoldButton">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="135"/>
+        </Style>
 
-            <!--Red button-->
-            <Style TargetType="Button" x:Key="RedButton">
-                <Setter Property="Background" Value="#FFE26868"/>
-                <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                <Setter Property="Cursor" Value="Hand"/>
-                <Setter Property="FontSize" Value="14"/>
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="#FFCB5252"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
+        <!--Red button-->
+        <Style TargetType="Button" x:Key="RedButton">
+            <Setter Property="Background" Value="#FFE26868"/>
+            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFCB5252"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
-            <!--Red Bold button-->
-            <Style TargetType="Button" BasedOn="{StaticResource RedButton}" x:Key="RedBoldButton">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="Bold"/>
-                <Setter Property="Height" Value="35"/>
-                <Setter Property="Width" Value="130"/>
-            </Style>
+        <!--Red Bold button-->
+        <Style TargetType="Button" BasedOn="{StaticResource RedButton}" x:Key="RedBoldButton">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="130"/>
+        </Style>
 
-            <!--Button control templates-->
-            <ControlTemplate TargetType="Button" x:Key="BasicButton">
-                <Grid Width="130" Height="35">
-                    <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
-                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
-            </ControlTemplate>
+        <!--Button control templates-->
+        <ControlTemplate TargetType="Button" x:Key="BasicButton">
+            <Grid Width="130" Height="35">
+                <Border  CornerRadius="12" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
 
         <ControlTemplate TargetType="Button" x:Key="BasicButtonLong">
             <Grid Width="160" Height="35">
@@ -130,12 +129,12 @@
             </Grid>
         </ControlTemplate>
 
-            <ControlTemplate TargetType="Button" x:Key="BlankButton">
-                <Grid>
-                    <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}"/>
-                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Grid>
-            </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="BlankButton">
+            <Grid>
+                <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}"/>
+                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
 
 
         <!--Combo box styles-->
@@ -143,10 +142,10 @@
             <Setter Property="FontFamily" Value="Candara"/>
             <Setter Property="FontSize" Value="14"/>
 
-                <Setter Property="SnapsToDevicePixels" Value="true"/>
-                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         </Style>
 
@@ -166,7 +165,7 @@
 
             <!--Podesiti za izmenu boja-->
             <Setter Property="AlternationCount" Value="1"/>
-            
+
             <Setter Property="Background" Value="#3c4253"/>
             <Setter Property="SelectionUnit" Value="FullRow"/>
 
@@ -204,7 +203,7 @@
                     <ControlTemplate TargetType="{x:Type DataGridCell}">
                         <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
-                           
+
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -237,9 +236,56 @@
             <Setter Property="FontSize" Value="14"/>
 
         </Style>
-        
-        
-		
-       
+
+        <!--Tabbed Panel-->
+        <Style x:Key="DarkTabbedPanel" TargetType="TabControl">
+            <Setter Property="BorderBrush" Value="#191e29"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <Style x:Key="DarkTabbedItem" TargetType="TabItem">
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border Name="Border" Margin="0,0,0,0" Background="#FF3A475F"
+                                   BorderBrush="#FF33A486" BorderThickness="1,1,1,0" CornerRadius="5,5,0,0">
+                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              ContentSource="Header" Margin="20,5,20,5"
+                              RecognizesAccessKey="True">
+                                    <ContentPresenter.LayoutTransform>
+                                        <RotateTransform Angle="0" />
+                                    </ContentPresenter.LayoutTransform>
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="#FF57D6B4" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#FF57D6B4"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontWeight" Value="DemiBold"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+
+
+
+        </Style>
+
+        <!--Text Boxes-->
+
+        <!--Date Picker-->
+
     </Application.Resources>
 </Application>
