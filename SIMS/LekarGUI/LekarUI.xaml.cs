@@ -127,7 +127,7 @@ namespace SIMS
                     {
                         SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
                         ResetActiveButtons();
-                         B1.Fill = sellectedTab;
+                        B1.Fill = sellectedTab;
                         break;
                     }
                 case 2:
@@ -272,5 +272,6 @@ namespace SIMS
         {
             this.ChangeTab(7);
         }
+
     }
 }

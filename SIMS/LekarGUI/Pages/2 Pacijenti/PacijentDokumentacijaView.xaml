@@ -56,7 +56,7 @@
 
             <Label Grid.Row="0" Content="Sonja Nedeljković" Name="Label_Ime" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Foreground="#FF57D6B4" FontWeight="DemiBold"/>
 
-            <Rectangle Grid.Row="1" RadiusX="30" RadiusY="30" Fill="#FF3A475F" Margin="70,0,70,0"/>
+            <Rectangle Grid.Row="1" RadiusX="30" RadiusY="30" Fill="#FF3A475F" Margin="70,5,70,0"/>
 
             <TabControl Name="TabbedPanel" Grid.Row="1" Margin="70,0,70,0" >
 
