@@ -1,0 +1,73 @@
+﻿<Window x:Class="SIMS.LekarGUI.Dialogues.Izvestaji.OperacijaIzvestajCreate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izvestaji"
+        mc:Ignorable="d"
+        Title="Izveštaj o operaciji" Height="560" Width="500">
+    <Window.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="#FF323D52">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Izveštaj o operaciji" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
+            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
+            <Label Content="Datum operacije: 13.04.2020." Name="LabelDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
+
+            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+            <Label Content="Datum rođenja: 18.16.1998." Name="LabelBirthDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
+
+            <Label Content="Prostorija: 488B" Name="LabelRoom" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+
+        </StackPanel>
+
+        <Rectangle Grid.Row="2" Width="400" RadiusX="5" RadiusY="5" Fill="#FF3A475F"/>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Naziv operacije:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Napomene:" HorizontalAlignment="Right" Margin="10,10,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top"/>
+
+            <TextBox Name="OperationName" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Unesite kratak deskriptivni naziv operacije"/>
+            
+            <TextBox Name="OperationDescription" Grid.Column="1" Grid.Row="4" Margin="30,10,0,0" Height="auto" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Detaljno opišite top operacije, napomene u obliku izveštaja."/>
+
+            <Border Grid.Row="0" Grid.RowSpan="5" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
+
+        </Grid>
+
+
+        <Button Grid.Row="3" Content="POTVRDI" Click="Button_Accept" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="275,17,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
+
+
+
+    </Grid>
+</Window>
