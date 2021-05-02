@@ -185,6 +185,12 @@ namespace Model
             get => datum;
             set => datum = value;
         }
+
+        [JsonIgnore]
+        public String DatumIVrijeme
+        {
+            get => termin.PocetnoVreme.ToString("dd.MM.yyyy. HH:mm");
+        }
         public Termin Termin { get => termin; set => termin = value; }
         public string IdAnamneze { get => idAnamneze; set => idAnamneze = value; }
     }

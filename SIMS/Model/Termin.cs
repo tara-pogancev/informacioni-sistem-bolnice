@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Model
 {
@@ -131,6 +132,25 @@ namespace Model
             
         }
         [JsonIgnore]
+        public String GetVrstaPregleda
+        {
+            get
+            {
+                String ret = "";
+                if (vrstaTermina == TipTermina.pregled)
+                {
+                    ret = "Pregled opšte prakse";
+                }
+                else
+                {
+                    ret = "Operacija";
+                }
+
+                return ret;
+            }
+
+        }
+        [JsonIgnore]
         public String ImePacijenta
         {
             get 
@@ -196,6 +216,22 @@ namespace Model
             }
         }
 
-        
+        private bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        {
+            if (!Equals(field, newValue))
+            {
+                field = newValue;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                return true;
+            }
+
+            return false;
+        }
+
+        private object anketaLekara;
+
+        public object AnketaLekara { get => anketaLekara; set => SetProperty(ref anketaLekara, value); }
+
+
     }
 }

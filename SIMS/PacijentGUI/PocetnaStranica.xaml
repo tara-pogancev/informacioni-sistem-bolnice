@@ -90,7 +90,7 @@
                             <Image  Source="/src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"/>
                         </Grid>
                         <Grid Grid.Row="1">
-                            <ListView x:Name="ListViewMenu" Margin="0 0" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" ScrollViewer.HorizontalScrollBarVisibility="Hidden"   SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0"  >
+                            <ListView  VirtualizingStackPanel.IsVirtualizing="True" x:Name="ListViewMenu" Margin="0 0" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" ScrollViewer.HorizontalScrollBarVisibility="Hidden"    SelectedIndex="0" PreviewMouseLeftButtonUp="ListViewMenu_PreviewMouseLeftButtonUp">
 
 
                                 <ListViewItem Height="60">

@@ -17,6 +17,7 @@ namespace Model
         private DateTime datum_rodjenja;
         private Krvne_Grupe krvna_grupa;
         private Pol pol;
+        private Lekar IzabraniLekar;
         private List<string> hronicne_bolesti = new List<string>();
 
         
@@ -224,6 +225,8 @@ namespace Model
                 krvna_grupa = value;
             }
         }
+
+        public Lekar IzabraniLekar1 { get => IzabraniLekar; set => IzabraniLekar = value; }
 
         public bool ShouldSerializeKrvna_Grupa()
         {

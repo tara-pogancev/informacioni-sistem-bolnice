@@ -42,6 +42,7 @@ namespace SIMS
                 pocetnaStranica.Pacijent = pacijent;
                 pocetnaStranica.Show();
                 this.Close();
+                pocetnaStranica.pokreniNit();
                 return;
             }
 

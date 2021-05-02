@@ -1,0 +1,134 @@
+﻿<Page x:Class="SIMS.PacijentGUI.KorisnickiProfil"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="KorisnickiProfil">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Image Source="/src/profile1.png" Width="200" Height="150"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                
+                <Border BorderBrush="Black" BorderThickness="2" Margin="30,10,10,10" CornerRadius="15">
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="310"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Label HorizontalAlignment="Center" FontSize="20" Margin="35,5,0,0">Korisnički podaci</Label>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Button Padding="0" Margin="10" Name="Izmijeni" Click="Izmijeni_Click">
+                                    <materialDesign:PackIcon Kind="Edit"  Width="30" Height="20"  />
+                                </Button>
+
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+
+
+                            <StackPanel>
+
+                                <StackPanel Margin="70,20,40,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Ime i prezime:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.ImePrezime}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">JMBG:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Jmbg}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Datum rođenja:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.DatumString}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">E-mail:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Email}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Korisničko ime:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.KorisnickoIme}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Lozinka:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Lozinka}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Broj telefona:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Telefon}"></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label FontSize="14">Adresa:</Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.AdresaKorisnika}"></Label>
+                                    </StackPanel>
+                                </StackPanel>
+
+
+                            </StackPanel>
+
+
+
+                        </Grid>
+
+                    </Grid>
+                </Border>
+
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="15" Margin="15">
+                <StackPanel>
+                    <Label FontSize="18" Margin="0,10,0,10" HorizontalAlignment="Center">Medicinski podaci</Label>
+                    <TextBlock Margin="10" FontSize="15" Foreground="White" Name="LBOText"></TextBlock>
+                    <TextBlock Margin="10" FontSize="15"  Foreground="White" Name="BrojKartonaText"/>
+                    <TextBlock Margin="10" FontSize="15"  Foreground="White" Name="AlergeniText"></TextBlock>
+                    <TextBlock Margin="10" FontSize="15"  Foreground="White" Name="KrvnaGrupaText"/>
+                    <Label Margin="8" FontSize="15"   Foreground="White" FontWeight="Bold">Karton vakcinacije</Label>
+                    <DataGrid Width="350" VerticalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="200" Header="Naziv vakcine" Binding="{Binding ImeLekara}"/>
+                            <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+
+    </Grid>
+</Page>

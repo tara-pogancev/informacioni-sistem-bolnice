@@ -28,5 +28,10 @@ namespace SIMS.PacijentGUI
         }
 
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+
+        private void Profil_Click(object sender, RoutedEventArgs e)
+        {
+            PocetnaStranica.getInstance().Tabovi.Content=new KorisnickiProfil();
+        }
     }
 }

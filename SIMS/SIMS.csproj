@@ -21,6 +21,7 @@
     <None Remove="src\home.png" />
     <None Remove="src\Illustrations\Lunch_break.png" />
     <None Remove="src\Illustrations\Winners_Monochromatic.png" />
+    <None Remove="src\lekarBackGround.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
     <None Remove="src\logo_glow.jpg" />
@@ -32,6 +33,7 @@
     <None Remove="src\menu.png" />
     <None Remove="src\minimize.png" />
     <None Remove="src\moon.png" />
+    <None Remove="src\muskiLjekar.png" />
     <None Remove="src\notice.png" />
     <None Remove="src\notification.png" />
     <None Remove="src\pilulePrave.png" />
@@ -63,6 +65,9 @@
     <Resource Include="src\Illustrations\Winners_Monochromatic.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="src\lekarBackGround.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\logo.png" />
   </ItemGroup>
 
@@ -84,6 +89,9 @@
     <Resource Include="src\menu.png" />
     <Resource Include="src\minimize.png" />
     <Resource Include="src\moon.png" />
+    <Resource Include="src\muskiLjekar.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\notice.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
