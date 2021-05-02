@@ -47,12 +47,100 @@
     "Target": "All",
     "VremeString": "12.04.2021."
   },
-  "Recept210426092811": {
-    "Autor": "Recept",
-    "Vreme": "2021-04-26T09:28:11.1034226+02:00",
-    "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
-    "ID": "Recept210426092811",
+  "0452108050484865453131044021": {
+    "Autor": "045210805048",
+    "Vreme": "2021-04-17T16:40:21.109186+02:00",
+    "Tekst": "Novi recept je izdat",
+    "ID": "0452108050484865453131044021",
     "Target": "4865453131",
-    "VremeString": "09:28"
+    "VremeString": "17.04.2021."
+  },
+  "0452108050482484848556045422": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-04-17T16:54:22.9587995+02:00",
+    "Tekst": "Novi recept je izdat",
+    "ID": "0452108050482484848556045422",
+    "Target": "2484848556",
+    "VremeString": "17.04.2021."
+  },
+  "0452108050484865453131050343": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-17T17:03:43.5443975+02:00",
+    "Tekst": "Obavještavamo Vas da je izdat novi recept",
+    "ID": "0452108050484865453131050343",
+    "Target": "4865453131",
+    "VremeString": "17.04.2021."
+  },
+  "Recept210417171243": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-17T17:12:43.8563196+02:00",
+    "Tekst": "Obavještavamo Vas da je izdat novi recept",
+    "ID": "Recept210417171243",
+    "Target": "4865453131",
+    "VremeString": "17.04.2021."
+  },
+  "Recept210418140848": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-18T14:08:48.1851011+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210418140848",
+    "Target": "12645323206",
+    "VremeString": "18.04.2021."
+  },
+  "Recept210418141050": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-18T14:10:50.4210346+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210418141050",
+    "Target": "4484552102",
+    "VremeString": "18.04.2021."
+  },
+  "Recept210419112714": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-19T11:27:14.3290551+02:00",
+    "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210419112714",
+    "Target": "4484552102",
+    "VremeString": "19.04.2021."
+  },
+  "Recept210419143603": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-19T14:36:03.9756972+02:00",
+    "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210419143603",
+    "Target": "4484552102",
+    "VremeString": "19.04.2021."
+  },
+  "Recept210425110948": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-25T11:09:48.5464677+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210425110948",
+    "Target": "4865453131",
+    "VremeString": "25.04.2021."
+  },
+  "Recept210425111232": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-25T11:12:32.2532048+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210425111232",
+    "Target": "4865453131",
+    "VremeString": "25.04.2021."
+  },
+  "Recept210426182613": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-26T18:26:13.8481043+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210426182613",
+    "Target": "12645323206",
+    "VremeString": "18:26"
+  },
+  "Recept210426190517": {
+    "Autor": "Recept",
+    "Vreme": "2021-04-26T19:05:17.1895214+02:00",
+    "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210426190517",
+    "Target": "4865453131",
+    "VremeString": "19:05"
   }
 }

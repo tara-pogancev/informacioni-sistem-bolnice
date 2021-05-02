@@ -1,119 +1,13 @@
 {
-  "210426072446": {
-    "PocetnoVreme": "2021-04-26T08:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "4848555021548"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "2484848556"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-04-26T08:00:00",
-    "TerminKey": "210426072446",
-    "AnketaLekara": null
-  },
-  "210426072518": {
-    "PocetnoVreme": "2021-04-26T09:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "4848555021548"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "2484848556"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-04-26T09:00:00",
-    "TerminKey": "210426072518",
-    "AnketaLekara": null
-  },
-  "210426072535": {
-    "PocetnoVreme": "2021-04-26T14:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "4848555021548"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "2484848556"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-04-26T14:00:00",
-    "TerminKey": "210426072535",
-    "AnketaLekara": null
-  },
-  "210426072550": {
-    "PocetnoVreme": "2021-04-26T15:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "4848555021548"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "2484848556"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-04-26T15:00:00",
-    "TerminKey": "210426072550",
-    "AnketaLekara": null
-  },
-  "210426072607": {
-    "PocetnoVreme": "2021-04-26T16:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "4848555021548"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "2484848556"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-04-26T16:00:00",
-    "TerminKey": "210426072607",
-    "AnketaLekara": null
-  },
-  "210501035134": {
-    "PocetnoVreme": "2021-05-01T08:00:00",
-    "VremeTrajanja": 30,
+  "210426065527": {
+    "PocetnoVreme": "2021-05-02T09:00:00",
+    "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
       "Jmbg": "045210805048"
     },
     "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "4865453131"
+      "Jmbg": "4484552102"
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -121,68 +15,61 @@
       "Broj": "1",
       "Dostupna": false
     },
-    "InicijalnoVrijeme": "2021-05-01T08:00:00",
-    "TerminKey": "210501035134",
-    "AnketaLekara": null
+    "InicijalnoVrijeme": "2021-05-02T09:00:00",
+    "TerminKey": "210426065527"
   },
-  "210501035335": {
-    "PocetnoVreme": "2021-05-14T08:00:00",
+  "210426065743": {
+    "PocetnoVreme": "2021-05-01T09:00:00",
     "VremeTrajanja": 30,
-    "VrstaTermina": 0,
+    "VrstaTermina": 1,
     "Lekar": {
       "Jmbg": "045210805048"
     },
     "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "4865453131"
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 0,
-      "Broj": "1",
-      "Dostupna": true
-    },
-    "InicijalnoVrijeme": "2021-05-14T08:00:00",
-    "TerminKey": "210501035335",
-    "AnketaLekara": null
-  },
-  "210501043111": {
-    "PocetnoVreme": "2021-05-01T14:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048"
-    },
-    "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "4865453131"
+      "Jmbg": "2484848556"
     },
     "Prostorija": {
       "kolicineOpreme": {},
       "TipProstorije": 2,
-      "Broj": "1",
+      "Broj": "2",
       "Dostupna": false
     },
-    "InicijalnoVrijeme": "2021-05-01T14:00:00",
-    "TerminKey": "210501043111",
-    "AnketaLekara": null
+    "InicijalnoVrijeme": "2021-05-01T09:00:00",
+    "TerminKey": "210426065743"
   },
-  "210501043129": {
-    "PocetnoVreme": "2021-05-01T15:00:00",
-    "VremeTrajanja": 30,
+  "210426070320": {
+    "PocetnoVreme": "2021-04-05T09:30:00",
+    "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
       "Jmbg": "045210805048"
     },
     "Pacijent": {
-      "IzabraniLekar1": null,
-      "Jmbg": "4865453131"
+      "Jmbg": "12645323206"
     },
     "Prostorija": {
-      "Broj": "1"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
     },
-    "InicijalnoVrijeme": "2021-05-01T15:00:00",
-    "TerminKey": "210501043129",
-    "AnketaLekara": null
+    "InicijalnoVrijeme": "2021-04-05T09:30:00",
+    "TerminKey": "210426070320"
+  },
+  "210426070401": {
+    "PocetnoVreme": "2021-04-03T10:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Prostorija": {
+      "Broj": "2"
+    },
+    "InicijalnoVrijeme": "2021-04-03T10:00:00",
+    "TerminKey": "210426070401"
   }
 }

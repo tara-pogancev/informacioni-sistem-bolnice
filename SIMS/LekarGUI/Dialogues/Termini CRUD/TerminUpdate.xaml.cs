@@ -70,6 +70,10 @@ namespace SIMS.LekarGUI
 
                 else
                 {
+                    termin.Lekar.Serijalizuj = false;
+                    termin.Pacijent.Serijalizuj = false;
+                    termin.Prostorija.Serijalizuj = false;
+
                     TerminStorage.Instance.Update(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();

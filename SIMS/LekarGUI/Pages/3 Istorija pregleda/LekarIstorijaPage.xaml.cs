@@ -54,6 +54,8 @@ namespace SIMS.LekarGUI
             popuniInformacijeODoktoruIPacijentu(temp);
             foreach (Termin t in temp)
             {
+                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
+
                 if (t.Evidentiran == true)
                     evidentiraniView.Add(t);
 

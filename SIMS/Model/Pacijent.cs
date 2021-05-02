@@ -20,8 +20,6 @@ namespace Model
         private Lekar IzabraniLekar;
         private List<string> hronicne_bolesti = new List<string>();
 
-        
-
         public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
         {
             this.lbo = lbo;
@@ -88,16 +86,10 @@ namespace Model
                     return "Nema";
 
                 foreach (string a in alergeni)
-                    alergeniString += AlergeniStorage.Instance.Read(a).Naziv + " ";
-                return alergeniString.Trim();
+                    alergeniString += AlergeniStorage.Instance.Read(a).Naziv + ", ";
+                return alergeniString.Remove(alergeniString.Length - 2);
             }
         }
-
-
-
-
-
-
 
         [JsonIgnore]
         public List<string> Hronicne_Bolesti
@@ -111,9 +103,12 @@ namespace Model
                 hronicne_bolesti = value;
             }
         }
+
         [JsonIgnore]
+
         public String DatumString { get => datum_rodjenja.ToString("dd.MM.yyyy."); }
         [JsonIgnore]
+
         public String PolString
         {
             get
@@ -125,6 +120,7 @@ namespace Model
                     return "Žensko";
             }
         }
+
         [JsonIgnore]
         public String KrvnaGrupaString
         {
@@ -175,7 +171,6 @@ namespace Model
             }
         }
 
-
         public DateTime Datum_Rodjenja
         {
             get
@@ -197,8 +192,8 @@ namespace Model
                     return "Nema";
 
                 foreach (string a in hronicne_bolesti)
-                    hronBolestiString += a + " ";
-                return hronBolestiString.Trim();
+                    hronBolestiString += a + ", ";
+                return hronBolestiString.Remove(hronBolestiString.Length - 2);
             }
         }
 

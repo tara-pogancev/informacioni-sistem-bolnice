@@ -62,6 +62,9 @@ namespace SIMS.LekarGUI
             {
                 if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
+
+                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
+                t.Prostorija = new ProstorijaStorage().Read(t.Prostorija.Broj);
             }
         }
 
@@ -102,8 +105,8 @@ namespace SIMS.LekarGUI
                 {
                     Termin toDelete = (Termin)dataGridTermini.SelectedItem;
                     TerminStorage.Instance.Delete(toDelete.TerminKey);
-                    MessageBox.Show("Termin je uspešno otkazan!");
                     refreshView();
+                    MessageBox.Show("Termin je uspešno otkazan!");
                 }
 
             }

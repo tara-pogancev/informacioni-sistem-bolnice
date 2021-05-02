@@ -7,16 +7,15 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace Model
 {
    public class Termin : INotifyPropertyChanged
    {
-      private DateTime pocetnoVreme;
-      private int vremeTrajanja;    //U minutima
-      private TipTermina vrstaTermina;
-      private DateTime inicijalnoVrijeme;
+        private DateTime pocetnoVreme;
+        private int vremeTrajanja;    //U minutima
+        private TipTermina vrstaTermina;
+        private DateTime inicijalnoVrijeme;
         private String terminKey;
         private Lekar lekar;
         private Pacijent pacijent;
@@ -39,7 +38,6 @@ namespace Model
             }
         }
 
-        
 
         public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
         {
@@ -69,6 +67,7 @@ namespace Model
         public Prostorija Prostorija { get => prostorija; set { prostorija = value; OnPropertyChanged("Prostorija"); } }
         public DateTime InicijalnoVrijeme { get => inicijalnoVrijeme; set => inicijalnoVrijeme = value; }
         public String TerminKey { get => terminKey; set => terminKey = value; }
+
         [JsonIgnore]
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
@@ -111,8 +110,7 @@ namespace Model
 
         [JsonIgnore]
         public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
-
-        
+                
         [JsonIgnore]
         public String GetVrsta
         {
@@ -131,48 +129,32 @@ namespace Model
             }
             
         }
-        [JsonIgnore]
-        public String GetVrstaPregleda
-        {
-            get
-            {
-                String ret = "";
-                if (vrstaTermina == TipTermina.pregled)
-                {
-                    ret = "Pregled opšte prakse";
-                }
-                else
-                {
-                    ret = "Operacija";
-                }
 
-                return ret;
-            }
-
-        }
         [JsonIgnore]
         public String ImePacijenta
         {
-            get 
-            {
-                
+            get
+            { 
                 return (pacijent.ImePrezime); 
             }
         }
+
         [JsonIgnore]
         public String ImeLekara
         {
             get
             {
-                
+                //lekar = LekarStorage.Instance.Read(doktor) 
                 return (lekar.ImePrezime);
             }
         }
+
         [JsonIgnore]
         public String NazivProstorije
         {
             get { return prostorija.Broj; }
         }
+
         [JsonIgnore]
         public bool Evidentiran
         {
@@ -183,6 +165,7 @@ namespace Model
                 else return true;
             }
         }
+
         [JsonIgnore]
         public DateTime KrajnjeVreme
         {
@@ -192,6 +175,7 @@ namespace Model
                 return krajnjeVreme;
             }
         }
+
         [JsonIgnore]
         public bool IsPast
         {
@@ -203,6 +187,7 @@ namespace Model
                 else return false;
             }
         }
+
         [JsonIgnore]
         public bool IsCurrent
         {
@@ -215,23 +200,6 @@ namespace Model
                 return false;
             }
         }
-
-        private bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
-        {
-            if (!Equals(field, newValue))
-            {
-                field = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-
-            return false;
-        }
-
-        private object anketaLekara;
-
-        public object AnketaLekara { get => anketaLekara; set => SetProperty(ref anketaLekara, value); }
-
-
+        
     }
 }
