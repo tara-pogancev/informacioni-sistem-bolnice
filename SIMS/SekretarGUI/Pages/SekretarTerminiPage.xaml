@@ -20,7 +20,7 @@
                     <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Početak" Binding="{Binding Vrijeme}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Prostorija" Binding="{Binding Prostorija}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Prostorija" Binding="{Binding NazivProstorije}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
 

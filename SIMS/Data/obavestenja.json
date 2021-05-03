@@ -4,7 +4,9 @@
     "Vreme": "2021-04-12T19:31:44.5125234+02:00",
     "Tekst": "Poštovani, bolnica neće raditi u periodu od 15/03 do 20/03. Hvala Vam na razumevanju!",
     "ID": "Sekretarijat210412193144",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "Sekretarijat210412193203": {
@@ -12,7 +14,9 @@
     "Vreme": "2021-04-12T19:32:03.7804674+02:00",
     "Tekst": "Bolnica \"Zdravo\" želi vam srećne uskršnje praznike!",
     "ID": "Sekretarijat210412193203",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "Sekretarijat210412200320": {
@@ -20,7 +24,9 @@
     "Vreme": "2021-04-12T20:03:20.3928915+02:00",
     "Tekst": "Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje.",
     "ID": "Sekretarijat210412200320",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "Sekretarijat210412200326": {
@@ -28,7 +34,9 @@
     "Vreme": "2021-04-12T20:03:26.5966356+02:00",
     "Tekst": "Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje.",
     "ID": "Sekretarijat210412200326",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "Sekretarijat210412200328": {
@@ -36,7 +44,9 @@
     "Vreme": "2021-04-12T20:03:28.6908025+02:00",
     "Tekst": "Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje.",
     "ID": "Sekretarijat210412200328",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "Sekretarijat210412200332": {
@@ -44,7 +54,9 @@
     "Vreme": "2021-04-12T20:03:32.8317076+02:00",
     "Tekst": "Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. \r\nOvde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje. Ovde mozete uneti vase obavestenje.",
     "ID": "Sekretarijat210412200332",
-    "Target": "All",
+    "Target": [
+      "All"
+    ],
     "VremeString": "12.04.2021."
   },
   "0452108050484865453131044021": {
@@ -52,7 +64,9 @@
     "Vreme": "2021-04-17T16:40:21.109186+02:00",
     "Tekst": "Novi recept je izdat",
     "ID": "0452108050484865453131044021",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "17.04.2021."
   },
   "0452108050482484848556045422": {
@@ -60,7 +74,9 @@
     "Vreme": "2021-04-17T16:54:22.9587995+02:00",
     "Tekst": "Novi recept je izdat",
     "ID": "0452108050482484848556045422",
-    "Target": "2484848556",
+    "Target": [
+      "2484848556"
+    ],
     "VremeString": "17.04.2021."
   },
   "0452108050484865453131050343": {
@@ -68,7 +84,9 @@
     "Vreme": "2021-04-17T17:03:43.5443975+02:00",
     "Tekst": "Obavještavamo Vas da je izdat novi recept",
     "ID": "0452108050484865453131050343",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "17.04.2021."
   },
   "Recept210417171243": {
@@ -76,7 +94,9 @@
     "Vreme": "2021-04-17T17:12:43.8563196+02:00",
     "Tekst": "Obavještavamo Vas da je izdat novi recept",
     "ID": "Recept210417171243",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "17.04.2021."
   },
   "Recept210418140848": {
@@ -84,7 +104,9 @@
     "Vreme": "2021-04-18T14:08:48.1851011+02:00",
     "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
     "ID": "Recept210418140848",
-    "Target": "12645323206",
+    "Target": [
+      "12645323206"
+    ],
     "VremeString": "18.04.2021."
   },
   "Recept210418141050": {
@@ -92,7 +114,9 @@
     "Vreme": "2021-04-18T14:10:50.4210346+02:00",
     "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
     "ID": "Recept210418141050",
-    "Target": "4484552102",
+    "Target": [
+      "4484552102"
+    ],
     "VremeString": "18.04.2021."
   },
   "Recept210419112714": {
@@ -100,7 +124,9 @@
     "Vreme": "2021-04-19T11:27:14.3290551+02:00",
     "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
     "ID": "Recept210419112714",
-    "Target": "4484552102",
+    "Target": [
+      "4484552102"
+    ],
     "VremeString": "19.04.2021."
   },
   "Recept210419143603": {
@@ -108,7 +134,9 @@
     "Vreme": "2021-04-19T14:36:03.9756972+02:00",
     "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
     "ID": "Recept210419143603",
-    "Target": "4484552102",
+    "Target": [
+      "4484552102"
+    ],
     "VremeString": "19.04.2021."
   },
   "Recept210425110948": {
@@ -116,7 +144,9 @@
     "Vreme": "2021-04-25T11:09:48.5464677+02:00",
     "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
     "ID": "Recept210425110948",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "25.04.2021."
   },
   "Recept210425111232": {
@@ -124,7 +154,9 @@
     "Vreme": "2021-04-25T11:12:32.2532048+02:00",
     "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
     "ID": "Recept210425111232",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "25.04.2021."
   },
   "Recept210426182613": {
@@ -132,7 +164,9 @@
     "Vreme": "2021-04-26T18:26:13.8481043+02:00",
     "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
     "ID": "Recept210426182613",
-    "Target": "12645323206",
+    "Target": [
+      "12645323206"
+    ],
     "VremeString": "26.04.2021."
   },
   "Recept210426190517": {
@@ -140,7 +174,9 @@
     "Vreme": "2021-04-26T19:05:17.1895214+02:00",
     "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
     "ID": "Recept210426190517",
-    "Target": "4865453131",
+    "Target": [
+      "4865453131"
+    ],
     "VremeString": "26.04.2021."
   },
   "Recept210429211620": {
@@ -148,31 +184,56 @@
     "Vreme": "2021-04-29T21:16:20.6611628+02:00",
     "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
     "ID": "Recept210429211620",
-    "Target": "2484848556",
-    "VremeString": "21:16"
+    "Target": [
+      "2484848556"
+    ],
+    "VremeString": "29.04.2021."
   },
   "Recept210429211947": {
     "Autor": "Recept",
     "Vreme": "2021-04-29T21:19:47.7282104+02:00",
     "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
     "ID": "Recept210429211947",
-    "Target": "4484552102",
-    "VremeString": "21:19"
+    "Target": [
+      "4484552102"
+    ],
+    "VremeString": "29.04.2021."
   },
   "Recept210429212756": {
     "Autor": "Recept",
     "Vreme": "2021-04-29T21:27:56.8775021+02:00",
     "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
     "ID": "Recept210429212756",
-    "Target": "4484552102",
-    "VremeString": "21:27"
+    "Target": [
+      "4484552102"
+    ],
+    "VremeString": "29.04.2021."
   },
   "Recept210429213024": {
     "Autor": "Recept",
     "Vreme": "2021-04-29T21:30:24.8775396+02:00",
     "Tekst": "Prepisan recept za lek: Katopil. Pogledajte recept na svom profilu.",
     "ID": "Recept210429213024",
-    "Target": "12645323206",
-    "VremeString": "21:30"
+    "Target": [
+      "12645323206"
+    ],
+    "VremeString": "29.04.2021."
+  },
+  "Sekretarijat210503231607": {
+    "Autor": "Sekretarijat",
+    "Vreme": "2021-05-03T23:16:07.1670544+02:00",
+    "Tekst": "Ovde mozete uneti vase obavestenje.",
+    "ID": "Sekretarijat210503231607",
+    "Target": [
+      "0603850721311",
+      "064865071221",
+      "045210805048",
+      "4848555021548",
+      "22157484654211",
+      "045210805048",
+      "4848555021548",
+      "22157484654211"
+    ],
+    "VremeString": "23:16"
   }
 }
