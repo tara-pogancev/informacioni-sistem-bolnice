@@ -42,7 +42,7 @@ namespace SIMS.PacijentGUI
             anketaLekara.Ocjena = BasicRatingBar.Value;
             anketaLekara.Termin.Serijalizuj = false;
             new AnketaLekaraStorage().Create(anketaLekara);
-            NavigationService.GoBack();
+            NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
         }
     }
 }

@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#FF323D52">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">
             <StackPanel x:Name="glavni">
                 <Label FontSize="15" Content="Izaberite doktora" Margin="270,10,0,0" Foreground="#01C38D"/>
@@ -35,7 +35,7 @@
                         MaxDropDownHeight="150"
                         materialDesign:HintAssist.Hint="Raspolozivi termini"
                         Foreground="#01C38D"
-                        Width="250"
+                        Width="250" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
                      />
 
 

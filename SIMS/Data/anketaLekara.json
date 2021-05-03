@@ -8,8 +8,7 @@
       "Pacijent": null,
       "Prostorija": null,
       "InicijalnoVrijeme": "0001-01-01T00:00:00",
-      "TerminKey": "210430103229",
-      "AnketaLekara": null
+      "TerminKey": "210430103229"
     },
     "Ocjena": 5.0,
     "Komentar": ""
@@ -23,18 +22,58 @@
       "Pacijent": null,
       "Prostorija": null,
       "InicijalnoVrijeme": "0001-01-01T00:00:00",
-      "TerminKey": "210501043111",
-      "AnketaLekara": null
+      "TerminKey": "210501043111"
     },
     "Ocjena": 5.0,
     "Komentar": "Sve najbolje"
   },
   "210501043129": {
     "Termin": {
-      "TerminKey": "210501043129",
-      "AnketaLekara": null
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
+      "TerminKey": "210501043129"
     },
     "Ocjena": 5.0,
     "Komentar": "Najstrucniji i najljubazniji lekar na klinici. Sve preporuke!"
+  },
+  "210502082942": {
+    "Termin": {
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
+      "TerminKey": "210502082942"
+    },
+    "Ocjena": 5.0,
+    "Komentar": "Sve je odlicno odradjeno. Zadovoljan sam uslugama bolnice."
+  },
+  "210502094606": {
+    "Termin": {
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
+      "TerminKey": "210502094606"
+    },
+    "Ocjena": 5.0,
+    "Komentar": ""
+  },
+  "210502095932": {
+    "Termin": {
+      "TerminKey": "210502095932"
+    },
+    "Ocjena": 3.0,
+    "Komentar": ""
   }
 }

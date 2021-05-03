@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Background="#FF323D52">
         <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Termini, Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" >

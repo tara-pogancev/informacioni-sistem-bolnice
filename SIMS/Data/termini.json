@@ -4,10 +4,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4484552102"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4484552102",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -23,10 +46,33 @@
     "VremeTrajanja": 30,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -42,10 +88,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -61,15 +130,142 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
-      "Broj": "2"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
     },
     "InicijalnoVrijeme": "2021-04-03T10:00:00",
     "TerminKey": "210426070401"
+  },
+  "210502082942": {
+    "PocetnoVreme": "2021-05-01T08:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
+    },
+    "Pacijent": {
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "1",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-05-01T08:00:00",
+    "TerminKey": "210502082942"
+  },
+  "210502094606": {
+    "PocetnoVreme": "2021-05-01T08:30:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4848555021548",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
+    },
+    "Pacijent": {
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "IzabraniLekar1": null,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "1",
+      "Dostupna": false
+    },
+    "InicijalnoVrijeme": "2021-05-01T08:30:00",
+    "TerminKey": "210502094606"
+  },
+  "210502095932": {
+    "PocetnoVreme": "2021-05-01T10:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "IzabraniLekar1": null,
+      "Jmbg": "4865453131"
+    },
+    "Prostorija": {
+      "Broj": "1"
+    },
+    "InicijalnoVrijeme": "2021-05-01T10:00:00",
+    "TerminKey": "210502095932"
   }
 }

@@ -16,7 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#FF323D52">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">
             <StackPanel Margin="30">
                 <Label HorizontalAlignment="Center" FontSize="18" Foreground="White">Izaberite datum</Label>

@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="#FF323D52">
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="200"/>

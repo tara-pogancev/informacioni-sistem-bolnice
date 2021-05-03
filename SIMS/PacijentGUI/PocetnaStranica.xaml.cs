@@ -150,5 +150,10 @@ namespace SIMS.PacijentGUI
                     break;
             }
         }
+
+        private void Profil_Click(object sender, RoutedEventArgs e)
+        {
+            Tabovi.Content = new KorisnickiProfil();
+        }
     }
 }

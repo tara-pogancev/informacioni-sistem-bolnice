@@ -16,7 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid>
+    <Grid Background="#FF323D52">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="30">
                 <Button Width="150" Name="Nazad" Click="Nazad_Click">Nazad</Button>

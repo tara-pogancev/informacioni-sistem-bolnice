@@ -19,7 +19,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="#FF323D52">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="400"/>
@@ -30,7 +30,7 @@
                 <RowDefinition Height="275"/>
                 <RowDefinition Height="275"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#191E29" Margin="25">
+            <Grid Grid.Row="0" Background="#FF323D52" Margin="25">
                 <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0" x:Name="zakaziTermin">
                     <StackPanel Orientation="Vertical">
                         <Image Source="/src/doctor.png"/>
@@ -53,7 +53,7 @@
                 <RowDefinition Height="275"/>
                 <RowDefinition Height="275"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#191E29" Margin="25">
+            <Grid Grid.Row="0" Background="#FF323D52" Margin="25">
                 <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0">
                     <StackPanel Orientation="Vertical">
 

@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,42 +15,69 @@ using System.Windows.Shapes;
 
 namespace SIMS.PacijentGUI
 {
-    /// <summary>
-    /// Interaction logic for IstorijaPregleda.xaml
-    /// </summary>
+    public class IstorijaPregledaView
+    {
+        private Termin termin;
+        private bool omogucenoOcjenjivanje;
+
+        public IstorijaPregledaView() {
+            termin = new Termin();
+            omogucenoOcjenjivanje = true;
+        }
+        public IstorijaPregledaView(Termin termin)
+        {
+            this.termin = termin;
+            omogucenoOcjenjivanje = new AnketaLekaraStorage().Read(termin.TerminKey) == null ? true : false;
+        }
+
+        public Termin Termin { get => termin; set => termin = value; }
+        public bool OmogucenoOcjenjivanje { get => omogucenoOcjenjivanje; set => omogucenoOcjenjivanje = value; }
+    }
     public partial class IstorijaPregleda : Page
     {
-        private List<Termin> termini;
+        private List<IstorijaPregledaView> terminiZaPrikaz;
+        private List<Termin> zakazaniTermini;
+
+        public List<IstorijaPregledaView> TerminiZaPrikaz { get => terminiZaPrikaz; set => terminiZaPrikaz = value; }
         
 
         public IstorijaPregleda()
         {
             InitializeComponent();
-            termini = new TerminStorage().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
+            zakazaniTermini = new TerminStorage().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
             prikazPoDatumu();
             dobaviLekare();
-
+            terminiZaPrikaz = formirajTermine(zakazaniTermini);
             this.DataContext = this;
         }
-        public List<Termin> Termini { get => termini; set => termini = value; }
-        
+
+        private List<IstorijaPregledaView> formirajTermine(List<Termin> zakazaniTermini)
+        {
+            List<IstorijaPregledaView> terminiZaPrikaz = new List<IstorijaPregledaView>();
+            foreach(Termin termin in zakazaniTermini)
+            {
+                IstorijaPregledaView terminZaPrikaz = new IstorijaPregledaView(termin);
+                terminiZaPrikaz.Add(terminZaPrikaz);
+            }
+            return terminiZaPrikaz;
+        }
 
         private void dobaviLekare()//ucitavanje doktora iz fajla za svaki termin
         {
             LekarStorage lekarStorage = new LekarStorage();
-            for (int i = 0; i < termini.Count; i++)
+            for (int i = 0; i < zakazaniTermini.Count; i++)
             {
-                termini[i].Lekar = lekarStorage.Read(termini[i].Lekar.Jmbg);
+                zakazaniTermini[i].Lekar = lekarStorage.Read(zakazaniTermini[i].Lekar.Jmbg);
             }
         }
 
         private void prikazPoDatumu() // izbacuje sve termine koji jos nisu prosli
         {
-            for (int i = 0; i < termini.Count; i++)
+            for (int i = 0; i < zakazaniTermini.Count; i++)
             {
-                if (termini[i].PocetnoVreme >= DateTime.Now)
+                if (zakazaniTermini[i].PocetnoVreme >= DateTime.Now)
                 {
-                    termini.RemoveAt(i);
+                    zakazaniTermini.RemoveAt(i);
                     i--;
                 }
                 
@@ -61,21 +89,21 @@ namespace SIMS.PacijentGUI
         private void Detalji_Click(object sender, RoutedEventArgs e)
         {
             AnamnezaStorage anamnezaStorage = new AnamnezaStorage();
-            Termin termin = (Termin)terminiTabela.SelectedItem;
+            IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
-            Anamneza anamneza=anamnezaStorage.Read(termin.TerminKey);
+            Anamneza anamneza=anamnezaStorage.Read(selektovaniTermin.Termin.TerminKey);
             if (anamneza == null)
             {
                 anamneza = new Anamneza();
-                anamneza.Termin = termin;
+                anamneza.Termin = selektovaniTermin.Termin;
             }
             PocetnaStranica.getInstance().Tabovi.Content = new DetaljiPregleda(anamneza);
         }
 
         private void Ocijeni_Click(object sender, RoutedEventArgs e)
         {
-            
-            Termin termin = (Termin)terminiTabela.SelectedItem;
+            IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
+            Termin termin = selektovaniTermin.Termin;
             this.NavigationService.Navigate(new OcijeniPregled(termin));
             
         }
