@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {
@@ -24,7 +25,9 @@ namespace SIMS.LekarGUI
         private Pacijent pacijentProfile;
 
         public ObservableCollection<Anamneza> PregledView { get; set; }
+        public ObservableCollection<OperacijaIzvestaj> OperacijaIzvestajView { get; set; }
         public ObservableCollection<Recept> ReceptView { get; set; }
+
 
         public PacijentDokumentacijaView(Pacijent p)
         {
@@ -44,6 +47,7 @@ namespace SIMS.LekarGUI
         {
             PregledView = new ObservableCollection<Anamneza>(AnamnezaStorage.Instance.ReadByPatient(pacijentProfile));
             ReceptView = new ObservableCollection<Recept>(ReceptStorage.Instance.ReadByPatient(pacijentProfile));
+            OperacijaIzvestajView = new ObservableCollection<OperacijaIzvestaj>(OperacijaIzvestajStorage.Instance.ReadByPatient(pacijentProfile));
 
             foreach (Anamneza anamneza in PregledView)
             {
@@ -53,6 +57,11 @@ namespace SIMS.LekarGUI
             foreach (Recept recept in ReceptView)
             {
                 recept.InitData();
+            }
+
+            foreach (OperacijaIzvestaj operacijaIzvestaj in OperacijaIzvestajView)
+            {
+                operacijaIzvestaj.InitData();
             }
 
         }
@@ -80,7 +89,7 @@ namespace SIMS.LekarGUI
             }
             else if (TabbedPanel.SelectedIndex == 1)
             {
-                //TODO
+                ReadOperacija();
             }
             else if (TabbedPanel.SelectedIndex == 2)
             {
@@ -125,6 +134,21 @@ namespace SIMS.LekarGUI
                 AnamnezaView window = new AnamnezaView(sellectedAnamneza);
                 window.Show();
             }
+        }
+
+        private void ReadOperacija()
+        {
+            if (dataGridOperacije.SelectedItem != null)
+            {
+                OperacijaIzvestaj sellectedIzvestaj = (OperacijaIzvestaj)dataGridOperacije.SelectedItem;
+                OperacijaIzvestajView window = new OperacijaIzvestajView(sellectedIzvestaj);
+                window.Show();
+            }
+        }
+
+        private void Button_ViewOperacija(object sender, MouseButtonEventArgs e)
+        {
+            ReadOperacija();
         }
     }
 }

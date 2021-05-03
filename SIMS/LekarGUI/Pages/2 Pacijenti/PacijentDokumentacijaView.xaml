@@ -79,7 +79,18 @@
 
                 <TabItem Header="Operacije">
 
-                    <Label Content="Content2"/>
+                    <DataGrid x:Name="dataGridOperacije" ItemsSource="{Binding Path = OperacijaIzvestajView}"
+                        MouseDoubleClick="Button_ViewOperacija">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Datum" Binding="{Binding DatumOperacijeIspis}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                            <DataGridTextColumn Header="Lekar" Binding="{Binding ImeLekara}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                            <DataGridTextColumn Header="Dijagnoza" Binding="{Binding NazivOperacije}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
 
                 </TabItem>
 
