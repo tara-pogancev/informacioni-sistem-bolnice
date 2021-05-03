@@ -54,7 +54,8 @@ namespace SIMS.LekarGUI
 
         private void Button_Lekovi(object sender, RoutedEventArgs e)
         {
-            //TODO
+            AvailableMedicineView window = new AvailableMedicineView();
+            window.Show();
         }
     }
 }

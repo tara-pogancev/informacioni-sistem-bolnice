@@ -6,10 +6,9 @@ namespace Model
 {
     public class Lek
     {
-        public string ID { get; set; }
 
-        public string Naziv { get; set; }
-
+        public string MedicineID { get; set; }
+        public string MedicineName { get; set; }
         public List<string> Components { get; set; }
 
         public MedicineApprovalStatus ApprovalStatus { get; set; }
@@ -21,8 +20,8 @@ namespace Model
 
         public Lek(string iD, string naziv, List<string> components)
         {
-            ID = iD;
-            Naziv = naziv;
+            MedicineID = iD;
+            MedicineName = naziv;
             Components = components;
             ApprovalStatus = MedicineApprovalStatus.Waiting;
         }

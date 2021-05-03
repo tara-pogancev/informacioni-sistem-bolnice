@@ -1,48 +1,55 @@
 ﻿{
   "l1": {
-    "ID": "l1",
-    "Naziv": "Katopil",
+    "MedicineID": "l1",
+    "MedicineName": "Katopil",
     "Components": [
       "a3",
       "a5"
-    ]
+    ],
+    "ApprovalStatus": 1
+
   },
   "l2": {
-    "ID": "l2",
-    "Naziv": "Prilenap",
+    "MedicineID": "l2",
+    "MedicineName": "Prilenap",
     "Components": [
       "a6",
       "a1"
-    ]
+    ],
+    "ApprovalStatus": 2
   },
   "l3": {
-    "ID": "l3",
-    "Naziv": "Prilenap",
+    "MedicineID": "l3",
+    "MedicineName": "Prilenap",
     "Components": [
       "a4",
       "a11"
-    ]
+    ],
+    "ApprovalStatus": 0
   },
   "l4": {
-    "ID": "l4",
-    "Naziv": "Vivace",
+    "MedicineID": "l4",
+    "MedicineName": "Vivace",
     "Components": [
-    ]
+    ],
+    "ApprovalStatus": 2
   },
   "l5": {
-    "ID": "l5",
-    "Naziv": "Fervex",
+    "MedicineID": "l5",
+    "MedicineName": "Fervex",
     "Components": [
       "a2"
-    ]
+    ],
+    "ApprovalStatus": 0
   },
   "l6": {
-    "ID": "l6",
-    "Naziv": "Analgin",
+    "MedicineID": "l6",
+    "MedicineName": "Analgin",
     "Components": [
       "a9",
       "a10"
-    ]
+    ],
+    "ApprovalStatus": 2
   }
 
 }

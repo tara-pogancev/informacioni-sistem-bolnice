@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI
             LabelPacijent.Content = "Pacijent: " + pacijent.ImePrezime;
             LabelDatum.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Lek> lekovi = new List<Lek>(LekStorage.Instance.ReadList());
+            List<Lek> lekovi = new List<Lek>(LekStorage.Instance.getApprovedMedicine());
             LekComboBox.ItemsSource = lekovi;
 
         }
@@ -42,7 +42,7 @@ namespace SIMS.LekarGUI
             else if (pacijent.IsAlergic((Lek)LekComboBox.SelectedItem))
             {
                 Lek l = (Lek)LekComboBox.SelectedItem;
-                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Da li ste sigurni da želite da izdate lek " + l.Naziv +"?", "Upozorenje!",
+                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     this.PrepisiRecept();
@@ -59,13 +59,13 @@ namespace SIMS.LekarGUI
         private void PrepisiRecept()
         {
             Lek l = (Lek)LekComboBox.SelectedItem;
-            Recept r = new Recept(lekar, pacijent, l.Naziv,
+            Recept r = new Recept(lekar, pacijent, l.MedicineName,
                 KolicinaTxt.Text, DijagnozaTxt.Text);
 
             ReceptStorage.Instance.Create(r);
             this.Close();
             MessageBox.Show("Uspešno izdat recept!");
-            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.Naziv + ". Pogledajte recept na svom profilu.", pacijent.Jmbg);
+            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.MedicineName + ". Pogledajte recept na svom profilu.", pacijent.Jmbg);
             ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
             obavestenjaStorage.Create(obavestenje);
         }

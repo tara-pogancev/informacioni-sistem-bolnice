@@ -57,7 +57,7 @@
 
             <TextBox Name="OperationName" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Unesite kratak deskriptivni naziv operacije"/>
             
-            <TextBox Name="OperationDescription" Grid.Column="1" Grid.Row="4" Margin="30,10,0,0" Height="auto" VerticalContentAlignment="Top" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Detaljno opišite top operacije, napomene u obliku izveštaja."/>
+            <TextBox Name="OperationDescription" Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Margin="30,10,0,0" Height="auto" VerticalContentAlignment="Top" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Detaljno opišite top operacije, napomene u obliku izveštaja."/>
 
             <Border Grid.Row="0" Grid.RowSpan="5" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 

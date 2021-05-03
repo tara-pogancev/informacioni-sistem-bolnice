@@ -59,7 +59,7 @@
             <Label Content="Količina:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
             <Label Content="Dijagnoza:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
 
-            <ComboBox Name="LekComboBox" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite lek" DisplayMemberPath="Naziv"/>
+            <ComboBox Name="LekComboBox" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite lek" DisplayMemberPath="MedicineName"/>
             <TextBox Name="KolicinaTxt" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Unesite količinu"/>
             <TextBox Name="DijagnozaTxt" Grid.Column="1" Grid.Row="2" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Unesite dijagnozu pacijenta"/>
 

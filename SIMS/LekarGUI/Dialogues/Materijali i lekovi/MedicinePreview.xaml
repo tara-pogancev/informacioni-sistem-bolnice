@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
         Title="Pregled leka" Height="300" Width="400">
+
+    <Window.Resources>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="FontFamily" Value="Canbera"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+    </Window.Resources>
     
     <Grid Background="#FF323D52">
 
@@ -21,7 +31,7 @@
 
         <ScrollViewer Grid.Row="1" Margin="40,20,40,10" VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <TextBlock Name="MedicineComponents"/>
+                <TextBlock Name="MedicineComponents" TextWrapping="Wrap"/>
             </StackPanel>
         </ScrollViewer>
 

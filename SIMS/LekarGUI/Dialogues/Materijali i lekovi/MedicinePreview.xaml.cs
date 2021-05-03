@@ -22,7 +22,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             InitializeComponent();
 
-            MedicineNameLabel.Content = medicine.Naziv;
+            MedicineNameLabel.Content = medicine.MedicineName;
 
             MedicineComponents.Inlines.Add(new Run("Sastojci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             MedicineComponents.Inlines.Add("   ");

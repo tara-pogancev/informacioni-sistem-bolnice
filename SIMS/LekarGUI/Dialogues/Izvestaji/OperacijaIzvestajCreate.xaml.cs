@@ -41,6 +41,8 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
             {
                 OperacijaIzvestaj o = new OperacijaIzvestaj(operation, OperationName.Text, OperationDescription.Text);
+                o.Operacija.Lekar.Serijalizuj = false;
+                o.Operacija.Pacijent.Serijalizuj = false;
                 o.Operacija.Serijalizuj = false;
                 OperacijaIzvestajStorage.Instance.Create(o);
 

@@ -64,7 +64,7 @@
             <Label Content="Napomene:" HorizontalAlignment="Right" Margin="10,20,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top"/>
 
             <Label Name="OperationName" Content="Naziv operacije" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="245" FontSize="14" FontFamily="Candara"/>
-            <TextBlock Name="OperationDescription" Text ="Detaljan opis operacije..." Grid.Column="1" Grid.Row="1" Margin="30,20,0,0" Height="auto" Padding="5,0,10,0" Width="auto" FontSize="14" FontFamily="Candara"/>
+            <TextBlock Name="OperationDescription" Text ="Detaljan opis operacije..." Grid.Column="1" Grid.Row="1" Margin="30,20,0,0" Height="auto" Padding="5,0,10,0" Width="auto" FontSize="14" FontFamily="Candara" TextWrapping="Wrap"/>
 
             <Border Grid.Row="0" Grid.RowSpan="5" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 

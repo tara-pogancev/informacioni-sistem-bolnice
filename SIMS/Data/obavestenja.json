@@ -149,7 +149,7 @@
     "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
     "ID": "Recept210429211620",
     "Target": "2484848556",
-    "VremeString": "21:16"
+    "VremeString": "29.04.2021."
   },
   "Recept210429211947": {
     "Autor": "Recept",
@@ -157,7 +157,7 @@
     "Tekst": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
     "ID": "Recept210429211947",
     "Target": "4484552102",
-    "VremeString": "21:19"
+    "VremeString": "29.04.2021."
   },
   "Recept210429212756": {
     "Autor": "Recept",
@@ -165,7 +165,7 @@
     "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
     "ID": "Recept210429212756",
     "Target": "4484552102",
-    "VremeString": "21:27"
+    "VremeString": "29.04.2021."
   },
   "Recept210429213024": {
     "Autor": "Recept",
@@ -173,6 +173,14 @@
     "Tekst": "Prepisan recept za lek: Katopil. Pogledajte recept na svom profilu.",
     "ID": "Recept210429213024",
     "Target": "12645323206",
-    "VremeString": "21:30"
+    "VremeString": "29.04.2021."
+  },
+  "Recept210504001035": {
+    "Autor": "Recept",
+    "Vreme": "2021-05-04T00:10:35.8501005+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210504001035",
+    "Target": "2484848556",
+    "VremeString": "00:10"
   }
 }

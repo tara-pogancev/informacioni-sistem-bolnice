@@ -32,22 +32,15 @@
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="ID Leka" Binding="{Binding ID}" Width="*" DataGridColumn.CanUserResize="False"/>
-                <DataGridTextColumn Header="Naziv leka" Binding="{Binding Naziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
-
-                <DataGridTemplateColumn Width="40">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="PreviewSellectedMedicine">
-                                <Image Source="/src/view.png" Cursor="Hand"/>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="ID Leka" Binding="{Binding MedicineID}" Width="*" DataGridColumn.CanUserResize="False"/>
+                <DataGridTextColumn Header="Naziv leka" Binding="{Binding MedicineName}" Width="2*"  DataGridColumn.CanUserResize="False"/>
 
             </DataGrid.Columns>
 
         </DataGrid>
+
+        <Button Grid.Row="2" Content="Pročitaj" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" 
+                HorizontalAlignment="Right" Margin="0,0,200,0" Click="ReadMedicine"/>
 
         <Button Grid.Row="2" Content="Zatvori" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" 
                 HorizontalAlignment="Right" Margin="0,0,40,0" Click="CloseWindow"/>
