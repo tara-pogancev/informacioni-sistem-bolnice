@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Termin
 
 using Newtonsoft.Json;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -159,7 +160,7 @@ namespace Model
         {
             get
             {
-                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null && OperacijaIzvestajStorage.Instance.Read(this.TerminKey) == null)
                     return false;
                 else return true;
             }

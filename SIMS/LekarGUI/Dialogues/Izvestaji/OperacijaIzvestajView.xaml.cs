@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,23 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// </summary>
     public partial class OperacijaIzvestajView : Window
     {
-        public OperacijaIzvestajView()
+        public OperacijaIzvestajView(OperacijaIzvestaj report)
         {
             InitializeComponent();
+            report.InitData();
+
+            LabelDoctor.Content = "Doktor: " + report.ImeLekara;
+            LabelDate.Content = "Datum operacije: " + report.DatumOperacijeIspis;
+
+            LabelPacijent.Content = "Pacijent: " + report.ImePacijenta;
+            LabelBirthDate.Content = "Datum rođenja: " + report.DatumRodjenjaPacijenta;
+
+            LabelRoom.Content = "Prostorija: " + report.SobaOperacije;
+
+            OperationName.Content = report.NazivOperacije;
+
+            OperationDescription.Text = report.NapomeneOperacije;
+
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)

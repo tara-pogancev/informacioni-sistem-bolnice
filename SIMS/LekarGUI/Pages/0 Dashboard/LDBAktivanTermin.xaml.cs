@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.LekarGUI.Dialogues.Izvestaji;
 
 namespace SIMS.LekarGUI.Pages
 {
@@ -48,7 +49,8 @@ namespace SIMS.LekarGUI.Pages
             }
             else
             {
-                //TODO
+                OperacijaIzvestajCreate o = new OperacijaIzvestajCreate(aktivanTermin);
+                o.ShowDialog();
             }
         }
     }

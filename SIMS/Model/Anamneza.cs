@@ -81,7 +81,6 @@ namespace Model
         {
             get
             {
-
                 if (getTermin().GetVrsta.Equals(TipTermina.pregled))
                     return "Datum pregleda: " + getTermin().Datum;
                 else return "Datum operacije: " + getTermin().Datum;

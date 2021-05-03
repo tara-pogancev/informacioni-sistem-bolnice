@@ -1,0 +1,16 @@
+{
+  "210426093219": {
+    "DatumIzvestaja": "2021-05-03T00:00:00+02:00",
+    "OperacijaKey": "210426093219",
+    "NazivOperacije": "Operacija srca",
+    "NapomeneOperacije": "Bez poteskoca",
+    "ImeLekara": "Tara Pogančev",
+    "ImePacijenta": "Nikola Marković",
+    "DatumRodjenjaPacijenta": "05.03.1999.",
+    "DatumOperacijeIspis": "29.04.2021.",
+    "SobaOperacije": "2",
+    "Operacija": {
+      "TerminKey": "210426093219"
+    }
+  }
+}
