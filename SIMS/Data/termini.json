@@ -257,7 +257,10 @@
       "Jmbg": "4865453131"
     },
     "Prostorija": {
-      "Broj": "2"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
     },
     "InicijalnoVrijeme": "2021-04-27T09:30:00",
     "TerminKey": "210427095107"

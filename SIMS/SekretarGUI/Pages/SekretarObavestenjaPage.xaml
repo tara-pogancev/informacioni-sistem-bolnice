@@ -5,18 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.SekretarGUI" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarObavestenjaPage">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="500" />
+            <RowDefinition Height="470" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="150" />
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0" Margin="0,0,0,10">
             <ItemsControl x:Name="viewerObavestenja">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -44,9 +46,11 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <TextBox x:Name="obavestenjeTextBox" Grid.Row="1" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <xceet:CheckComboBox x:Name="ulogeComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
 
-        <Button Content="DODAJ" Grid.Row="2" Margin="0,0,0,0" FontSize="14" Click="Button_Dodaj">
+        <TextBox x:Name="obavestenjeTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
+
+        <Button Content="DODAJ" Grid.Row="3" Margin="0,0,0,0" FontSize="14" Click="Button_Dodaj">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="#FF57D6B4"/>

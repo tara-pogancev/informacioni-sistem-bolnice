@@ -387,7 +387,7 @@
 
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                    <Border Grid.Row="2" Grid.RowSpan="18" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
                     <TextBox x:Name="ime" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="prezime" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>

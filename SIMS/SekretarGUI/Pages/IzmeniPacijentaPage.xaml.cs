@@ -74,20 +74,21 @@ namespace SIMS.SekretarGUI
             alergeni.DisplayMemberPath = "Naziv";
             alergeni.SelectedMemberPath = "ID";
 
-            List<Alergen> selektovaniAlergeni = new List<Alergen>();
+            //List<Alergen> selektovaniAlergeni = new List<Alergen>();
             foreach (string id in pacijent.Alergeni)
             {
                 foreach (Alergen a in listaAlergena)
                 {
                     if (id.Equals(a.ID))
                     {
-                        selektovaniAlergeni.Add(a);
+                        //selektovaniAlergeni.Add(a);
+                        alergeni.SelectedItems.Add(a);
                         break;
                     }
                 }
             }
            
-            alergeni.SelectedItemsOverride = selektovaniAlergeni;
+            //alergeni.SelectedItemsOverride = selektovaniAlergeni;
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)

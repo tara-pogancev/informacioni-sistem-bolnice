@@ -11,14 +11,14 @@ namespace Model
         public DateTime Vreme { get; set; }
         public string Tekst { get; set; }
         public string ID { get; set; }
-        public string Target { get; set; } 
+        public List<string> Target { get; set; } 
 
         public Obavestenje()
         {
             
         }
 
-        public Obavestenje(string autor, DateTime vreme, string tekst, string target)
+        public Obavestenje(string autor, DateTime vreme, string tekst, List<string> target)
         {
             Autor = autor;
             Vreme = vreme;
@@ -52,6 +52,16 @@ namespace Model
 
                 return Vreme.ToString("dd.MM.yyyy.");
             }
+        }
+
+        public bool ContainsTarget(string key)
+        {
+            foreach (string s in Target)
+            {
+                if (s.Equals(key))
+                    return true;
+            }
+            return false;
         }
 
        
