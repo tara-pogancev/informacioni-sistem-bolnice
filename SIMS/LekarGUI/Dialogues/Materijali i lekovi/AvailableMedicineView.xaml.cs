@@ -54,5 +54,17 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             PreviewSellectedMedicine();
         }
+
+        /*
+         * <DataGridTemplateColumn Width="40">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/src/view.png" Cursor="Hand" MouseDown="PreviewSellectedMedicineGrid" HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+        */
+
+
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
-        Title="Odobravanje lekova" Height="500" Width="700">
+        Title="Odobravanje lekova" Height="500" Width="740">
 
     <Window.Resources>
 
@@ -38,19 +38,15 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridCheckBoxColumn Header="Izbor" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Naziv leka" Binding="{Binding Naziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="Izbor" Binding="{Binding IsMedicineSellected}" x:Name="checkedMedicine"  Width="*"  DataGridColumn.CanUserResize="False">
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}" />
+                        </DataGridCheckBoxColumn.ElementStyle>
+                    </DataGridCheckBoxColumn>
+                    
+                    <DataGridTextColumn Header="Naziv leka" Binding="{Binding MedicineName}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding ApprovalStatus}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
-                    <DataGridTemplateColumn Width="32">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Click="PreviewSellectedMedicine">
-                                    <Image Source="/src/view.png" Cursor="Hand"/>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
 
@@ -61,13 +57,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition Height="60"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Content="Odobri" Click="ApproveSellecetedMedicine" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
-                <Button Grid.Row="1" Content="Odbij" Click="RejectSellecetedMedicine" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                <Button Grid.Row="3" Content="Potvrdi" Click="RejectSellecetedMedicine" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="0" Content="Pročitaj" Click="PreviewSellectedMedicine" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="1" Content="Odobri" Click="ApproveSellecetedMedicine" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="2" Content="Odbij" Click="RejectSellecetedMedicine" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                <Button Grid.Row="4" Content="Potvrdi" Click="AcceptChanges" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BasicButton}"/>
 
             </Grid>
 
