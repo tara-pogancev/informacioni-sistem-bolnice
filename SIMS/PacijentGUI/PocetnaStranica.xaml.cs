@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,8 +39,18 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
             
             
+            
         }
 
+        public void kreirajAnketu()
+        {
+            List<AnketaBolnice> anketeBolnice = new AnketaBolniceStorage().getAnketeByPatient(pacijent);
+            DateTime vrijeme = anketeBolnice[0].DatumKreiranjaAnkete.AddMonths(3);
+            if (vrijeme > DateTime.Now )
+            {
+                Anketa.Visibility = Visibility.Collapsed;
+            }
+        }
         public void pokreniNit()
         {
             Thread provjeraPredstojecihTermina = new Thread(new ThreadStart(notifikacijaZaTermine));
@@ -154,6 +165,16 @@ namespace SIMS.PacijentGUI
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
             Tabovi.Content = new KorisnickiProfil();
+        }
+
+        public void SetInstance()
+        {
+            instance = null;
+        }
+
+        private void Anketa_Click(object sender, RoutedEventArgs e)
+        {
+            Tabovi.Content = new AnketaBolnicePage();
         }
     }
 }

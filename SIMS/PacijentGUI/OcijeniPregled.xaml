@@ -64,7 +64,7 @@
                 <Border x:Name="debugPanel" Background="#4e6082" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Margin="0,0,20,130" >
 
                     <TextBox x:Name="KomentarPregleda"  AcceptsReturn="True" TextWrapping="Wrap"  materialDesign:HintAssist.Hint="Unesite Vaš komentar"  materialDesign:HintAssist.IsFloating="False"
-                    materialDesign:HintAssist.HintOpacity="1" />
+                    materialDesign:HintAssist.HintOpacity="1" materialDesign:HintAssist.Foreground="White" />
                 </Border>
                 <Button Width="150" Margin="250,178,250,60" Name="Posalji" Click="Posalji_Click"> Pošalji anketu</Button>
 

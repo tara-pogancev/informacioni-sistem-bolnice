@@ -7,20 +7,30 @@ namespace SIMS.Model
 {
     public class Anketa
     {
-        
-        protected double ocjena;
+        protected String idAnkete;
         protected String komentar;
+        protected DateTime datumKreiranjaAnkete;
+        protected String idVlasnika;
 
-        public Anketa() { }
+        public string IdAnkete { get => idAnkete; set => idAnkete = value; }
+        
+        public string Komentar { get => komentar; set => komentar = value; }
+        public DateTime DatumKreiranjaAnkete { get => datumKreiranjaAnkete; set => datumKreiranjaAnkete = value; }
+        public string IdVlasnika { get => idVlasnika; set => idVlasnika = value; }
 
-        public Anketa(double ocjena,String komentar)
-        {
-            this.ocjena = ocjena;
-            this.komentar = komentar;
+        public Anketa() {
+            datumKreiranjaAnkete = DateTime.Now;
         }
 
-        public double Ocjena { get => ocjena; set => ocjena = value; }
-        public string Komentar { get => komentar; set => komentar = value; }
-        
+        public Anketa(String komentar,String idVlasnika)
+        {
+           
+            this.komentar = komentar;
+            this.idVlasnika = idVlasnika;
+            datumKreiranjaAnkete = DateTime.Now;
+
+        }
+
+       
     }
 }

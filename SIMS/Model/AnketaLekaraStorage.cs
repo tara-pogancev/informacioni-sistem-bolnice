@@ -9,7 +9,7 @@ namespace SIMS.Model
     {
         protected override string getKey(AnketaLekara entity)
         {
-            return entity.Termin.TerminKey;
+            return entity.IdAnkete;
         }
 
         protected override string getPath()

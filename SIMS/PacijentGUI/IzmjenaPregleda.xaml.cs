@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +26,7 @@ namespace SIMS.PacijentGUI
         private List<String> moguceSatniceTermina;
         Termin odabraniTerminZaIzmjenu;
         Boolean doktorSelektovan;
+        Pacijent pacijent;
         
         
         
@@ -34,7 +36,7 @@ namespace SIMS.PacijentGUI
             
             LekarStorage lekarStorage = new LekarStorage();
             lekari = lekarStorage.ReadList();
-            
+            pacijent = PocetnaStranica.getInstance().Pacijent;
             doktorSelektovan = false;
             moguceSatniceTermina =  new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             this.odabraniTerminZaIzmjenu = termin;
@@ -202,8 +204,22 @@ namespace SIMS.PacijentGUI
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             odabraniTerminZaIzmjenu.PocetnoVreme = vremenskaOdrednica;
             TerminStorage.Instance.Update(odabraniTerminZaIzmjenu);
+            formirajLog();
            
         }
+
+        private void formirajLog()
+        {
+            TerminLog terminLog = new TerminLog(formirajKljucLoga(odabraniTerminZaIzmjenu), odabraniTerminZaIzmjenu.TerminKey, pacijent.Jmbg, DateTime.Now, TipOperacije.Izmjena);
+            new TerminLogStorage().Create(terminLog);
+        }
+
+        public String formirajKljucLoga(Termin termin)
+        {
+            return termin.TerminKey + PocetnaStranica.getInstance().Pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
+        }
+
+    
 
         private void Odbaci_Click(object sender, RoutedEventArgs e)
         {

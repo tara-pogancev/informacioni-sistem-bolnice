@@ -41,6 +41,8 @@ namespace SIMS.PacijentGUI
             anketaLekara.Komentar = KomentarPregleda.Text;
             anketaLekara.Ocjena = BasicRatingBar.Value;
             anketaLekara.Termin.Serijalizuj = false;
+            anketaLekara.IdAnkete = anketaLekara.Termin.TerminKey;
+            anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
             new AnketaLekaraStorage().Create(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
         }

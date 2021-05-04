@@ -17,14 +17,14 @@ namespace SIMS.PacijentGUI
     /// <summary>
     /// Interaction logic for zakazivanje.xaml
     /// </summary>
-    public partial class zakazivanje : UserControl
+    public partial class Zakazivanje : UserControl
     {
         Pacijent pacijent;
         private List<Lekar> lekari;
         private List<String> dostupniTermini;
         private Termin termin;
         Boolean doktorSelektovan;
-        public zakazivanje(Pacijent p)
+        public Zakazivanje(Pacijent p)
         {
             InitializeComponent();
             LekarStorage lk = new LekarStorage();

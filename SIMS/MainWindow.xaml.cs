@@ -38,8 +38,16 @@ namespace SIMS
             Pacijent pacijent = PacijentStorage.Instance.ReadUser(user);
             if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
+                if (pacijent.BanovanKorisnik)
+                {
+                    ObavjestenjeOTerminu o = new ObavjestenjeOTerminu();
+                    o.TekstObavjestenja.Text= "Poštovani Vaš nalog je blokiran.Za više detalja obratite se sekretaru bolnice";
+                    o.Show();
+                    return;
+                }
                 PocetnaStranica pocetnaStranica=PocetnaStranica.getInstance();
                 pocetnaStranica.Pacijent = pacijent;
+                pocetnaStranica.kreirajAnketu();
                 pocetnaStranica.Show();
                 this.Close();
                 pocetnaStranica.pokreniNit();

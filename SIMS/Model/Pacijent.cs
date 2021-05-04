@@ -17,7 +17,7 @@ namespace Model
         private DateTime datum_rodjenja;
         private Krvne_Grupe krvna_grupa;
         private Pol pol;
-        private Lekar IzabraniLekar;
+        private bool banovanKorisnik;
         private List<string> hronicne_bolesti = new List<string>();
 
         public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
@@ -25,6 +25,7 @@ namespace Model
             this.lbo = lbo;
             this.gost = gost;
             this.alergeni = alergeni;
+            this.banovanKorisnik = false;
         }
 
         public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni, DateTime datum_rodjenja, Krvne_Grupe krvna_grupa, Pol pol, List<string> hronicne_bolesti) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
@@ -36,10 +37,12 @@ namespace Model
             this.krvna_grupa = krvna_grupa;
             this.pol = pol;
             this.hronicne_bolesti = hronicne_bolesti;
+            this.banovanKorisnik = false;
         }
 
         public Pacijent() : base()
         {
+            this.banovanKorisnik = false;
         }
         [JsonIgnore]
         public String GetGost
@@ -221,7 +224,7 @@ namespace Model
             }
         }
 
-        public Lekar IzabraniLekar1 { get => IzabraniLekar; set => IzabraniLekar = value; }
+        public bool BanovanKorisnik { get => banovanKorisnik; set => banovanKorisnik = value; }
 
         public bool ShouldSerializeKrvna_Grupa()
         {
