@@ -65,7 +65,7 @@ namespace SIMS.LekarGUI
             ReceptStorage.Instance.Create(r);
             this.Close();
             MessageBox.Show("Uspešno izdat recept!");
-            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.Naziv + ". Pogledajte recept na svom profilu.", new List<string>() { pacijent.Jmbg });
+            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { pacijent.Jmbg });
             ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
             obavestenjaStorage.Create(obavestenje);
         }
