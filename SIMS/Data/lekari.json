@@ -1,6 +1,7 @@
 ﻿{
   "045210805048": {
     "DaniGodisnjegOdmora": 15,
+    "SpecijalizacijaLekara": 2,
     "Ime": "Tara",
     "Prezime": "Pogančev",
     "Jmbg": "045210805048",
@@ -24,6 +25,7 @@
 
   "4848555021548": {
     "DaniGodisnjegOdmora": 20,
+    "SpecijalizacijaLekara": 4,
     "Ime": "Zack",
     "Prezime": "Fair",
     "Jmbg": "4848555021548",
@@ -47,6 +49,7 @@
 
   "22157484654211": {
     "DaniGodisnjegOdmora": 18,
+    "SpecijalizacijaLekara": 0,
     "Ime": "Cloud",
     "Prezime": "Strife",
     "Jmbg": "22157484654211",
