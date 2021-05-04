@@ -273,5 +273,25 @@ namespace SIMS
             this.ChangeTab(7);
         }
 
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+                ChangeTab(7);
+            else if (e.Key == Key.Escape)
+                ChangeTab(0);
+            else if (e.Key == Key.F2)
+                ChangeTab(1);
+            else if (e.Key == Key.F3)
+                ChangeTab(2);
+            else if (e.Key == Key.F4)
+                ChangeTab(3);
+            else if (e.Key == Key.F5)
+                ChangeTab(4);
+            else if (e.Key == Key.F6)
+                ChangeTab(5);
+            else if (e.Key == Key.F7)
+                ChangeTab(6);
+
+        }
     }
 }

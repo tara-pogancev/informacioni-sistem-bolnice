@@ -126,9 +126,4 @@
     </Page>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
-    <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
-  </ItemGroup>
-
 </Project>
