@@ -20,6 +20,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     public partial class MedicineApproval : Window
     {
         public ObservableCollection<Lek> MedicineView { get; set; }
+        public List<Lek> MedicineChanges { get; set; }
 
         public MedicineApproval()
         {
@@ -27,13 +28,19 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Lek>(LekStorage.Instance.getMedicineWaitingForApproval());
+            MedicineView = new ObservableCollection<Lek>();
+            MedicineChanges = new List<Lek>(LekStorage.Instance.getMedicineWaitingForApproval());
+            refresh();
 
         }
 
         private void refresh()
         {
-            //TODO
+            MedicineView.Clear();
+            foreach (Lek medicine in MedicineChanges)
+            {
+                MedicineView.Add(medicine);
+            }
         }
 
         private void ApproveSellecetedMedicine(object sender, RoutedEventArgs e)
@@ -42,6 +49,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             {
                 medicine.ApprovalStatus = MedicineApprovalStatus.Accepted;
             }
+
+            refresh();
         }
 
         private void RejectSellecetedMedicine(object sender, RoutedEventArgs e)
@@ -50,6 +59,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             {
                 medicine.ApprovalStatus = MedicineApprovalStatus.Denied;
             }
+
+            refresh();
         }
 
         private void PreviewSellectedMedicine()
@@ -106,6 +117,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                     selectedItems.Add(currentMedicine);
                 }
             }
+
             return selectedItems;
         }
 

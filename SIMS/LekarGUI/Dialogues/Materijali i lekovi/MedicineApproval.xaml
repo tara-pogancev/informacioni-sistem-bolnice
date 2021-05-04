@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
+        WindowStartupLocation="CenterOwner"
         mc:Ignorable="d"
         Title="Odobravanje lekova" Height="500" Width="740">
 

@@ -17,7 +17,7 @@
 
         <Label Grid.Row="0" Content="Pisanje propratne poruke o izmeni lekova" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="20" Foreground="#FF57D6B4" FontWeight="ExtraLight" Margin="40,0,0,0"/>
 
-        <TextBox Grid.Row="1" Margin="40,10,40,10" ToolTip="Molimo unesite propratnu poruku koja će biti dostavljena upravniku Bolnice. ovo polje je obavezno."/>
+        <TextBox Grid.Row="1" Text="Unesite poruku ovde..." Name="NotificationTextBox" Margin="40,10,40,10" Style="{StaticResource TextBoxDark}" ToolTip="Molimo unesite propratnu poruku koja će biti dostavljena upravniku Bolnice. Ovo polje je obavezno."/>
 
         <StackPanel Orientation="Horizontal" Margin="40,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="2">
 

@@ -277,13 +277,15 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-
-
-
         </Style>
 
         <!--Text Boxes-->
+        <Style x:Key="TextBoxDark" TargetType="TextBox">
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Background" Value="#404a5d"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
 
         <!--Date Picker-->
 

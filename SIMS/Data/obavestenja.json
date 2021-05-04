@@ -234,6 +234,26 @@
       "4848555021548",
       "22157484654211"
     ],
-    "VremeString": "23:16"
+    "VremeString": "03.05.2021."
+  },
+  "Tara Pogančev210504233744": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-04T23:37:44.2058223+02:00",
+    "Tekst": "Lek nije ispravan, molim izmeniti podatke o sastojcima!",
+    "ID": "Tara Pogančev210504233744",
+    "Target": [
+      "1403000710321"
+    ],
+    "VremeString": "23:37"
+  },
+  "Tara Pogančev210504234016": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-04T23:40:16.9322365+02:00",
+    "Tekst": "Greška u nazivu leka!",
+    "ID": "Tara Pogančev210504234016",
+    "Target": [
+      "1403000710321"
+    ],
+    "VremeString": "23:40"
   }
 }
