@@ -38,7 +38,7 @@
 
             <Grid Grid.Column="0">
 
-                <Button Content="Zakazi pregled"  Margin="0,0,0,0" 
+                <Button Content=" Zakazi &#xa;pregled"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Pregled">
 
                     <Button.Style>
@@ -57,7 +57,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="100" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -72,7 +72,7 @@
 
             <Grid Grid.Column="1">
 
-                <Button Content="Zakazi operaciju"  Margin="0,0,0,0" 
+                <Button Content="   Zakazi &#xa; operaciju"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Operacija">
 
                     <Button.Style>
@@ -91,7 +91,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="100" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -106,7 +106,7 @@
 
             <Grid Grid.Column="2">
 
-                <Button Content="Izmeni termin"  Margin="0,0,0,0" 
+                <Button Content=" Izmeni &#xa; termin"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Izmeni">
 
                     <Button.Style>
@@ -125,7 +125,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="100" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -140,7 +140,7 @@
 
             <Grid Grid.Column="3">
 
-                <Button Content="Otkazi termin"  Margin="0,0,0,0" 
+                <Button Content=" Otkazi &#xa; termin"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Obrisi">
 
                     <Button.Style>
@@ -159,12 +159,10 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="100" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
-
                             </Border>
-
                         </ControlTemplate>
                     </Button.Template>
 

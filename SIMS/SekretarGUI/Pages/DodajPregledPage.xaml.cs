@@ -28,12 +28,8 @@ namespace SIMS.SekretarGUI
         {
             InitializeComponent();
 
-            LekarStorage storageL = new LekarStorage();
-            lekari = storageL.ReadList();
-
-            PacijentStorage storageP = new PacijentStorage();
-            pacijenti = storageP.ReadList();
-
+            lekari = LekarStorage.Instance.ReadList();
+            pacijenti = PacijentStorage.Instance.ReadList();
 
             prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
 
