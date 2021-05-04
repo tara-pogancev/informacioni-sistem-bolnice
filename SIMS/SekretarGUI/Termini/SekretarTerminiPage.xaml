@@ -34,6 +34,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
@@ -106,6 +108,74 @@
 
             <Grid Grid.Column="2">
 
+                <Button Content="  Hitan &#xa;pregled"  Margin="0,0,0,0" 
+                            FontSize="14" Click="Button_Hitan_Pregled">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                            </Border>
+
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Column="3">
+
+                <Button Content="   Hitna &#xa;operacija"  Margin="0,0,0,0" 
+                            FontSize="14" Click="Button_Hitna_Operacija">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                            </Border>
+
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Column="4">
+
                 <Button Content=" Izmeni &#xa; termin"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Izmeni">
 
@@ -138,7 +208,7 @@
 
             </Grid>
 
-            <Grid Grid.Column="3">
+            <Grid Grid.Column="5">
 
                 <Button Content=" Otkazi &#xa; termin"  Margin="0,0,0,0" 
                             FontSize="14" Click="Button_Obrisi">

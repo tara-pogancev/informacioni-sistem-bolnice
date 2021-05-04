@@ -101,6 +101,16 @@ namespace SIMS.SekretarGUI
             }
         }
 
+        private void Button_Hitan_Pregled(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new HitanPregledPage());
+        }
+
+        private void Button_Hitna_Operacija(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new HitnaOperacijaPage());
+        }
+
         public void dodajTermin(Termin termin)
         {
             TerminStorage.Instance.Create(termin);
