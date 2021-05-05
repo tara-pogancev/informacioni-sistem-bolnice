@@ -42,7 +42,6 @@ namespace SIMS.LekarGUI
         public OperacijaCreate()
         {
             InitializeComponents();
-
         }
 
         private void InitializeComponents()
@@ -117,7 +116,6 @@ namespace SIMS.LekarGUI
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }
-
             }
             
         }

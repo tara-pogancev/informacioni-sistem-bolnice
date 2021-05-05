@@ -69,7 +69,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void HitnaOperacija(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var window = new HitnaOperacijaCreate(patient);
+            window.ShowDialog();
         }
     }
 }

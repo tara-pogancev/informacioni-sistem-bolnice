@@ -206,8 +206,8 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                new MainWindow().Show();
-                this.Close();
+                for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+                    App.Current.Windows[intCounter].Close();
 
                 if (LekarEvidencijaPage.GetInstance() != null)
                     LekarEvidencijaPage.GetInstance().RemoveInstance();
@@ -226,6 +226,8 @@ namespace SIMS
                     LekarTerminiPage.GetInstance().RemoveInstance();
 
                 instance = null;
+
+                new MainWindow().Show();
 
             }
         }

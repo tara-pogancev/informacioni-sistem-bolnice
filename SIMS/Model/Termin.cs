@@ -195,5 +195,21 @@ namespace Model
             }
         }
 
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get
+            {
+                return ImeLekara + ", " + Vrijeme + " " + Datum;
+            }
+        }
+
+        public void InitData()
+        {
+            Pacijent = new PacijentStorage().Read(Pacijent.Jmbg);
+            Prostorija = new ProstorijaStorage().Read(Prostorija.Broj);
+            Lekar = new LekarStorage().Read(Lekar.Jmbg);
+        }
+
     }
 }
