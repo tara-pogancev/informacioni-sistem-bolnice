@@ -36,6 +36,7 @@ namespace Model
 
         public UlogovanKorisnik()
         {
+            this.serijalizuj = true;
         }
 
 

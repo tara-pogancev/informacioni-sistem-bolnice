@@ -27,16 +27,6 @@ namespace SIMS.SekretarGUI
             InitializeComponent();
 
             listaAlergena = new ObservableCollection<Alergen>(AlergeniStorage.Instance.ReadList());
-            /*listaAlergena.Add(new Alergen("a1", "polen1"));
-            listaAlergena.Add(new Alergen("a2", "laktoza2"));
-            listaAlergena.Add(new Alergen("a3", "polen3"));
-            listaAlergena.Add(new Alergen("a4", "laktoza4"));
-            listaAlergena.Add(new Alergen("a5", "polen5"));
-            listaAlergena.Add(new Alergen("a6", "laktoza6"));
-            listaAlergena.Add(new Alergen("a7", "polen7"));
-            listaAlergena.Add(new Alergen("a8", "laktoza8"));
-            listaAlergena.Add(new Alergen("a9", "polen9"));
-            listaAlergena.Add(new Alergen("a10", "laktoza10"));*/
 
             alergeni.ItemsSource = listaAlergena;
             alergeni.DisplayMemberPath = "Naziv";
@@ -65,14 +55,12 @@ namespace SIMS.SekretarGUI
             {
                 alerg.Add(a.ID);
             }
-            //List<Alergen> alerg = new List<Alergen>((List<Alergen>)alergeni.SelectedItems);
             List<string> hron_bol = new List<string>(hronicne_bolesti.Text.Split());
 
-            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg, DateTime.ParseExact(datum_rodjenja.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)krvna_grupa.SelectionBoxItem), (Pol)pol.SelectionBoxItem, hron_bol);
+            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, (bool)gost.IsChecked, alerg, DateTime.ParseExact(datum_rodjenja.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)krvna_grupa.SelectionBoxItem), (Pol)pol.SelectionBoxItem, hron_bol);
             PacijentStorage.Instance.Create(pacijent);
             SekretarPacijentiPage.GetInstance().refresh();
 
-            //this.Close();
             this.NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
 
