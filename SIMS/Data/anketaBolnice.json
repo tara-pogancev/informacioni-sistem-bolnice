@@ -1,18 +1,5 @@
 {
-  "04/05/2021 21:47:054865453131": {
-    "OdgovoriNaPitanja": {
-      "pitanje1": 5,
-      "pitanje2": 5,
-      "pitanje3": 5,
-      "pitanje4": 5,
-      "pitanje5": 5
-    },
-    "IdAnkete": "04/05/2021 21:47:054865453131",
-    "Komentar": "",
-    "DatumKreiranjaAnkete": "2021-05-04T21:47:05.2077435+02:00",
-    "IdVlasnika": "4865453131"
-  },
-  "04/05/2021 21:51:214865453131": {
+  "05/05/2021 08:58:484865453131": {
     "OdgovoriNaPitanja": {
       "pitanje1": 1,
       "pitanje2": 1,
@@ -20,9 +7,10 @@
       "pitanje4": 1,
       "pitanje5": 1
     },
-    "IdAnkete": "04/05/2021 21:51:214865453131",
-    "Komentar": "",
-    "DatumKreiranjaAnkete": "2021-05-04T21:51:21.7614147+02:00",
+    "TrenutniBrojPregleda": 1,
+    "IdAnkete": "05/05/2021 08:58:484865453131",
+    "Komentar": "Neka sam proklet sto sam dosao u vasu bolnicu",
+    "DatumKreiranjaAnkete": "2021-05-05T08:58:48.3239818+02:00",
     "IdVlasnika": "4865453131"
   }
 }

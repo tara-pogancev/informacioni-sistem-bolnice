@@ -20,7 +20,7 @@ namespace SIMS.PacijentGUI
         public ObavjestenjeOTerminu()
         {
             InitializeComponent();
-            this.Owner = App.Current.MainWindow;
+            
         }
 
         private void Zatvori_Click(object sender, RoutedEventArgs e)

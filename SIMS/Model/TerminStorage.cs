@@ -72,6 +72,20 @@ namespace Model
 
         }
 
+        public List<Termin> getTerminByDate(DateTime datum)
+        {
+            List<Termin> sviTermini = ReadList();
+            for(int i = 0; i < sviTermini.Count; i++)
+            {
+                if (sviTermini[i].PocetnoVreme != datum)
+                {
+                    sviTermini.RemoveAt(i);
+                    i--;
+                }
+            }
+            return sviTermini;
+        }
+
          
 
 

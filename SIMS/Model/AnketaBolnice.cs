@@ -7,6 +7,7 @@ namespace SIMS.Model
     class AnketaBolnice:Anketa
     {
         private Dictionary<string, int> odgovoriNaPitanja;
+        private int trenutniBrojPregleda;
 
         public AnketaBolnice() : base()
         {
@@ -14,5 +15,6 @@ namespace SIMS.Model
         }
 
         public Dictionary<string, int> OdgovoriNaPitanja { get => odgovoriNaPitanja; set => odgovoriNaPitanja = value; }
+        public int TrenutniBrojPregleda { get => trenutniBrojPregleda; set => trenutniBrojPregleda = value; }
     }
 }

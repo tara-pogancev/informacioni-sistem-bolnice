@@ -35,9 +35,10 @@ namespace Model
 
         public UlogovanKorisnik()
         {
-            this.serijalizuj = true;
+            
         }
 
+        
 
 
 
@@ -46,7 +47,6 @@ namespace Model
             get { return ime; }
             set { ime = value; }
         }
-
         public string Prezime { get => prezime; set => prezime = value; }
         public string Jmbg { get => jmbg; set => jmbg = value; }
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }

@@ -30,5 +30,19 @@ namespace Model
             }
 
         }
+
+        public List<Prostorija> UcitajProstorijeZaPreglede()
+        {
+            List<Prostorija> prostorije = ReadList();
+            for (int i = 0; i < prostorije.Count; i++)
+            {
+                if (prostorije[i].TipProstorije != TipProstorije.zaPreglede || prostorije[i].Dostupna==false)
+                {
+                    prostorije.RemoveAt(i);
+                    i--;
+                }
+            }
+            return prostorije;
+        }
     }
 }

@@ -45,12 +45,36 @@ namespace SIMS.PacijentGUI
         public void kreirajAnketu()
         {
             List<AnketaBolnice> anketeBolnice = new AnketaBolniceStorage().getAnketeByPatient(pacijent);
-            DateTime vrijeme = anketeBolnice[0].DatumKreiranjaAnkete.AddMonths(3);
-            if (vrijeme > DateTime.Now )
+            if (anketeBolnice.Count == 0)
             {
-                Anketa.Visibility = Visibility.Collapsed;
+                Anketa.Visibility = Visibility.Visible;
+                return;
             }
+            if (Math.Abs(anketeBolnice[anketeBolnice.Count-1].TrenutniBrojPregleda - brojZavrsenihPRegleda()) > 5)
+            {
+                Anketa.Visibility = Visibility.Visible;
+            }
+            else if (anketeBolnice[0].DatumKreiranjaAnkete.AddMonths(3) < DateTime.Now)
+            {
+                Anketa.Visibility = Visibility.Visible;
+            }
+            
         }
+
+        private int brojZavrsenihPRegleda()
+        {
+            List<Termin> zakazaniTermini = new TerminStorage().ReadByPatient(pacijent);
+            int brojacZavrsenihPregleda = 0;
+            foreach(Termin termin in zakazaniTermini)
+            {
+                if (termin.IsPast)
+                {
+                    brojacZavrsenihPregleda++;
+                }
+            }
+            return brojacZavrsenihPregleda;
+        }
+
         public void pokreniNit()
         {
             Thread provjeraPredstojecihTermina = new Thread(new ThreadStart(notifikacijaZaTermine));

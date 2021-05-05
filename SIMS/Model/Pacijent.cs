@@ -38,11 +38,13 @@ namespace Model
             this.pol = pol;
             this.hronicne_bolesti = hronicne_bolesti;
             this.banovanKorisnik = false;
+            this.Serijalizuj = true;
         }
 
         public Pacijent() : base()
         {
             this.banovanKorisnik = false;
+            this.serijalizuj = true;
         }
         [JsonIgnore]
         public String GetGost
@@ -84,13 +86,14 @@ namespace Model
         {
             get
             {
-                string alergeniString = "";
+                /*string alergeniString = "";
                 if (alergeni.Count == 0 || alergeni.Contains(""))
                     return "Nema";
 
                 foreach (string a in alergeni)
                     alergeniString += AlergeniStorage.Instance.Read(a).Naziv + ", ";
-                return alergeniString.Remove(alergeniString.Length - 2);
+                return alergeniString.Remove(alergeniString.Length - 2); */
+                return "Nema";
             }
         }
 
@@ -149,7 +152,7 @@ namespace Model
                 return null;
             }
         }
-        
+
         public bool IsAlergic(Lek lek)
         {
             foreach (string a in this.Alergeni)
@@ -254,5 +257,7 @@ namespace Model
         {
             return serijalizuj;
         }
+
+        
     }
 }

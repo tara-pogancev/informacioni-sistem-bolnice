@@ -6,8 +6,7 @@
         xmlns:local="clr-namespace:SIMS.PacijentGUI"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
         Title="ObavjestenjeOTerminu" Height="200" Width="300"
-        
-        >
+ >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -26,7 +25,7 @@
             <Label HorizontalAlignment="Center" FontSize="20" FontWeight="SemiBold">
                 Obavještenje
             </Label>
-            <TextBlock Margin="30" FontSize="15" Name="TekstObavjestenja" Text=" Poštovani, danas imate zakazan termin. Za više detalja pogledajte sekciju!"  TextWrapping="Wrap" Foreground="White">
+            <TextBlock Margin="30" FontSize="15" Name="TekstObavjestenja" Text=" Poštovani, danas imate zakazan termin. Za više detalja pogledajte sekciju Moji Termini!"  TextWrapping="Wrap" Foreground="White">
            
             </TextBlock>
             <Button Width="150" Height="30" Name="Zatvori" Click="Zatvori_Click">

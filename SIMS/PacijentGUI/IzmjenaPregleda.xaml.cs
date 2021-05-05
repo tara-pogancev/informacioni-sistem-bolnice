@@ -203,9 +203,11 @@ namespace SIMS.PacijentGUI
             String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             odabraniTerminZaIzmjenu.PocetnoVreme = vremenskaOdrednica;
+            odabraniTerminZaIzmjenu.Lekar.Serijalizuj = false;
+            odabraniTerminZaIzmjenu.Pacijent.Serijalizuj = false;
+            odabraniTerminZaIzmjenu.Prostorija.Serijalizuj = false;
             TerminStorage.Instance.Update(odabraniTerminZaIzmjenu);
             formirajLog();
-           
         }
 
         private void formirajLog()

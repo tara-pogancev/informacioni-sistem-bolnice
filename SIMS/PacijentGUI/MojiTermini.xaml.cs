@@ -76,6 +76,7 @@ namespace SIMS.PacijentGUI
         {
             //MessageBox.Show("Text");
             ObavjestenjeOTerminu o = new ObavjestenjeOTerminu();
+            o.Height = 250;
             o.TekstObavjestenja.Text = "Zbog učestalih izmjena zakazanih termina Vaš nalog je blokiran. Za dodatne informacije obratite se sekretaru bolnice!";
             o.ShowDialog();
            
