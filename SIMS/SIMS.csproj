@@ -114,6 +114,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\uputi.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

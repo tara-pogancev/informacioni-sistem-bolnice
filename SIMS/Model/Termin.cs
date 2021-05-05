@@ -22,12 +22,7 @@ namespace Model
         private Pacijent pacijent;
         private Prostorija prostorija;
         private bool serijalizuj;
-        
-
-     /*   private String lekarKey;         //JMBG lekara
-    private String pacijentKey;      //JMBG pacijenta
-        private String prostorijaKey;    //Naziv prostorije*/
-       
+             
         
         public event PropertyChangedEventHandler PropertyChanged;
 

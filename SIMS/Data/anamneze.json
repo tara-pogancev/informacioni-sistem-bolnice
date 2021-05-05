@@ -94,5 +94,21 @@
     "SocioEpiPodaci": "/",
     "Datum": "2021-05-04T00:00:00+02:00",
     "IdAnamneze": "210426093153"
+  },
+  "210426093233": {
+    "GlavneTegobe": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mattis justo, vel tempor lorem",
+    "SadasnjaAnamneza": "Etiam pulvinar felis vitae pellentesque accumsan.",
+    "OpstePojave": "Etiam pulvinar felis vitae pellentesque accumsan.",
+    "RespiratorniSistem": "/",
+    "KardiovaskularniSistem": "/",
+    "DigestivniSistem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec mattis justo, vel tempor lorem",
+    "UrogenitalniSistem": "/",
+    "LokomotorniSistem": "/",
+    "NervniSistem": "Etiam pulvinar felis vitae pellentesque accumsan.",
+    "RanijaOboljenja": "/",
+    "PorodicniPodaci": "/",
+    "SocioEpiPodaci": "/",
+    "Datum": "2021-05-05T00:00:00+02:00",
+    "IdAnamneze": "210426093233"
   }
 }

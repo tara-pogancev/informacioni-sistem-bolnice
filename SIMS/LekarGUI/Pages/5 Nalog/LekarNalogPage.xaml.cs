@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,6 +49,10 @@ namespace SIMS.LekarGUI
         public void RemoveInstance()
         {
             instance = null;
+        }
+
+        private void Button(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

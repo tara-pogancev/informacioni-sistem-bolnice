@@ -25,7 +25,7 @@ namespace SIMS.LekarGUI
         private List<Pacijent> pacijenti;
         private List<Prostorija> prostorije;
         private List<String> dostupniTermini;
-
+        
         public TerminCreate()
         {
             InitializeComponent();
