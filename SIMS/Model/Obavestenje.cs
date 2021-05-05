@@ -64,6 +64,14 @@ namespace Model
             return false;
         }
 
+        public Boolean isPast()
+        {
+            DateTime currentTime = DateTime.Now;
+            if (currentTime >= Vreme)
+                return true;
+            else return false;
+        }
+
        
     }
 }

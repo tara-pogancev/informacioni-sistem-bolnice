@@ -33,7 +33,7 @@ namespace SIMS.LekarGUI
 
             lekarUser = LekarUI.GetInstance().GetUser();
 
-            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadByUser(lekarUser.Jmbg);
+            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
             listaObavestenja.Reverse();
             obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);
 
