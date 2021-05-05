@@ -2,6 +2,7 @@
 using SIMS.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,7 +20,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     /// </summary>
     public partial class UputCreate : Window
     {
-        public List<Lekar> DoctorList { get; set; }
+        public ObservableCollection<Lekar> DoctorList { get; set; }
         public Specijalizacija SellectedSpecialization { get; set; }
         public List<Specijalizacija> AvailableSpecialization { get; set; }
         public List<String> SpecializationComboBox { get; set; }
@@ -32,16 +33,15 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             InitializeComponent();
 
+            this.DataContext = this;
+
             LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;
             LabelDatum.Content = "Datum: " + DateTime.Today.ToString("dd.MM.yyyy.");
 
-            DoctorList = new List<Lekar>();
+            DoctorList = new ObservableCollection<Lekar>();
             InitSpecialization();
             SpecijalizationComboBox.ItemsSource = SpecializationComboBox;
             DoctorComboBox.ItemsSource = DoctorList;
-            SpecijalizationComboBox.SelectedIndex = 0;
-            SellectedSpecialization = GetSellectedSpecialization();
-            RefreshDoctorList(SellectedSpecialization);
 
         }
 
@@ -71,8 +71,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void RefreshDoctorList(Specijalizacija specialization)
         {
-            DoctorComboBox.SelectedIndex = -1;
-            DoctorList.Clear();
+            //DoctorComboBox.SelectedIndex = 0;
+            DoctorList = new ObservableCollection<Lekar>();
             foreach (Lekar doctor in LekarStorage.Instance.ReadList())
             {
                 if (doctor.SpecijalizacijaLekara.Equals(specialization))
@@ -81,6 +81,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 }
             }
 
+            DoctorComboBox.ItemsSource = DoctorList;
+
         }
 
         private Specijalizacija GetSellectedSpecialization()
@@ -88,6 +90,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             int idx = SpecijalizationComboBox.SelectedIndex;
             return AvailableSpecialization[idx];
         }
+            
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -106,7 +109,11 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 ObavestenjaStorage.Instance.Create(notification);
 
                 MessageBox.Show("Uput uspešno kreiran!");
+            } else
+            {
+                MessageBox.Show("Molimo izaberite doktora!");
             }
+
         }
     }
 }

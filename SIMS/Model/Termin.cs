@@ -23,7 +23,6 @@ namespace Model
         private Prostorija prostorija;
         private bool serijalizuj;
              
-        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)

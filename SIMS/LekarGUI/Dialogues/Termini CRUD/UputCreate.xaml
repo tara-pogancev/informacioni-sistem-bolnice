@@ -54,7 +54,8 @@
             <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
 
             <ComboBox x:Name="SpecijalizationComboBox" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite specijalizaciju pre biranja doktora." SelectionChanged="SpecializationChanged"/>
-            <ComboBox x:Name="DoctorComboBox" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite doktora" DisplayMemberPath="ImePrezime"/>
+            <ComboBox x:Name="DoctorComboBox" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite doktora" 
+                      DisplayMemberPath="ImePrezime" ItemsSource="{Binding DoctorList}" SelectedItem="{Binding DoctorList}"/>
 
             <Border Grid.Row="0" Grid.RowSpan="3" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 

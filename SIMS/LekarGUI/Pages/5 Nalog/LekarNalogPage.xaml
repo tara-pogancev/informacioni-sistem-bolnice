@@ -11,7 +11,7 @@
     <Grid Background="#FF323D52">
 
         <TextBlock HorizontalAlignment="Center" Height="184" TextWrapping="Wrap" VerticalAlignment="Center" Width="398" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Act V -"/><LineBreak/><Run/><LineBreak/><Run Text="Even if the morrow is barren of promises"/><LineBreak/><Run Text="Nothing shall forestall my return"/><LineBreak/><Run Text="To become the dew that quenches the land"/><LineBreak/><Run Text="To spare the sands, the seas, the skies"/><LineBreak/><Run Text="I offer thee this silent sacrifice"/></TextBlock>
-        <Button Content="DEBUG" Style="{StaticResource RedBoldButton}" Template="{StaticResource BasicButton}" Margin="355,412,355,104" Click="Button"/>
+        <Button Content="DEBUG" Style="{StaticResource RedBoldButton}" Template="{StaticResource BasicButton}" Margin="355,343,355,172" Click="Button"/>
 
 
     </Grid>

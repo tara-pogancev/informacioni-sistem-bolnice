@@ -38,9 +38,6 @@ namespace Model
         {
         }
 
-
-
-
         public String Ime
         {
             get { return ime; }
@@ -106,7 +103,6 @@ namespace Model
         {
             return serijalizuj;
         }
-
 
     }
 }

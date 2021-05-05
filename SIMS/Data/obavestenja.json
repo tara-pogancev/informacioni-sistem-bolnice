@@ -244,7 +244,7 @@
     "Target": [
       "1403000710321"
     ],
-    "VremeString": "23:37"
+    "VremeString": "04.05.2021."
   },
   "Tara Pogančev210504234016": {
     "Autor": "Tara Pogančev",
@@ -254,6 +254,56 @@
     "Target": [
       "1403000710321"
     ],
-    "VremeString": "23:40"
+    "VremeString": "04.05.2021."
+  },
+  "Tara Pogančev210505140546": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-05T14:05:46.1592068+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Cloud Strife. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210505140546",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "14:05"
+  },
+  "Tara Pogančev210505140951": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-05T14:09:51.8015073+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Zack Fair. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210505140951",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "14:09"
+  },
+  "Tara Pogančev210505141352": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-05T14:13:52.7058406+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Zack Fair. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210505141352",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "14:13"
+  },
+  "Recept210505141529": {
+    "Autor": "Recept",
+    "Vreme": "2021-05-05T14:15:29.0361764+02:00",
+    "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210505141529",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "14:15"
+  },
+  "Tara Pogančev210505142357": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-05T14:23:57.280314+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Zack Fair. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210505142357",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "14:23"
   }
 }
