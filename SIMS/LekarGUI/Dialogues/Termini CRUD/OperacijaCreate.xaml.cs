@@ -24,9 +24,28 @@ namespace SIMS.LekarGUI
         private List<Pacijent> pacijenti;
         private List<Prostorija> prostorije;
         private List<String> dostupniTermini;
-        Termin termin = new Termin();
+
+        public OperacijaCreate(Pacijent patient)
+        {
+            InitializeComponents();
+
+            foreach(Pacijent currentPatient in pacijenti)
+            {
+                if (patient.Jmbg == currentPatient.Jmbg)
+                {
+                    pacijentiCombo.SelectedItem = currentPatient;
+                    break;
+                }
+            }
+        }
 
         public OperacijaCreate()
+        {
+            InitializeComponents();
+
+        }
+
+        private void InitializeComponents()
         {
             InitializeComponent();
 
@@ -55,7 +74,6 @@ namespace SIMS.LekarGUI
                 index++;
             }
             doktoriCombo.SelectedIndex = index;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

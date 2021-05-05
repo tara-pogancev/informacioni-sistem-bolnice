@@ -24,7 +24,6 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         public ActionsAfterReport(Pacijent patient)
         {
             this.patient = patient;
-
             InitializeComponent();
         }
 
@@ -53,7 +52,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ZakazivajneOperacije(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var window = new OperacijaCreate(patient);
+            window.ShowDialog();
         }
 
         private void PisanjeTerapije(object sender, RoutedEventArgs e)
@@ -63,7 +63,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
         {
-            //TODO
+            var window = new TerminCreate(patient);
+            window.ShowDialog();
         }
 
         private void HitnaOperacija(object sender, RoutedEventArgs e)
