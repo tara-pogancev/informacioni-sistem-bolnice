@@ -114,6 +114,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\uputi.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -124,11 +130,6 @@
     <Page Update="LekarGUI\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
-    <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
   </ItemGroup>
 
 </Project>

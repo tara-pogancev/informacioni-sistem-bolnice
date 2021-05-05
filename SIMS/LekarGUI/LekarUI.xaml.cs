@@ -206,8 +206,8 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                new MainWindow().Show();
-                this.Close();
+                for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+                    App.Current.Windows[intCounter].Close();
 
                 if (LekarEvidencijaPage.GetInstance() != null)
                     LekarEvidencijaPage.GetInstance().RemoveInstance();
@@ -226,6 +226,8 @@ namespace SIMS
                     LekarTerminiPage.GetInstance().RemoveInstance();
 
                 instance = null;
+
+                new MainWindow().Show();
 
             }
         }
@@ -273,5 +275,25 @@ namespace SIMS
             this.ChangeTab(7);
         }
 
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+                ChangeTab(7);
+            else if (e.Key == Key.Escape)
+                ChangeTab(0);
+            else if (e.Key == Key.F2)
+                ChangeTab(1);
+            else if (e.Key == Key.F3)
+                ChangeTab(2);
+            else if (e.Key == Key.F4)
+                ChangeTab(3);
+            else if (e.Key == Key.F5)
+                ChangeTab(4);
+            else if (e.Key == Key.F6)
+                ChangeTab(5);
+            else if (e.Key == Key.F7)
+                ChangeTab(6);
+
+        }
     }
 }

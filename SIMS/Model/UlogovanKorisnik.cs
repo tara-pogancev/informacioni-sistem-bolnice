@@ -39,9 +39,6 @@ namespace Model
             this.serijalizuj = true;
         }
 
-
-
-
         public String Ime
         {
             get { return ime; }
@@ -107,7 +104,6 @@ namespace Model
         {
             return serijalizuj;
         }
-
 
     }
 }

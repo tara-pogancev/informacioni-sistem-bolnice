@@ -5,6 +5,7 @@
     "Dijagnoza": "Temperatura",
     "ReceptKey": "210429091946",
     "Lekar": {
+      "SpecijalizacijaLekara": 0,
       "Jmbg": "045210805048"
     },
     "Pacijent": {
@@ -18,6 +19,7 @@
     "Dijagnoza": "/",
     "ReceptKey": "210429093023",
     "Lekar": {
+      "SpecijalizacijaLekara": 0,
       "Jmbg": "045210805048"
     },
     "Pacijent": {
@@ -31,6 +33,7 @@
     "Dijagnoza": "Bolovi",
     "ReceptKey": "210504121035",
     "Lekar": {
+      "SpecijalizacijaLekara": 0,
       "Jmbg": "045210805048"
     },
     "Pacijent": {

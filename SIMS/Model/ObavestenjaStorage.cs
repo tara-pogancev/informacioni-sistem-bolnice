@@ -38,5 +38,23 @@ namespace Model
             return retVal;
 
         }
+
+        public List<Obavestenje> ReadPastNotificationsByUser(String key)
+        {
+            List<Obavestenje> retVal = this.ReadList();
+
+            for (int i = 0; i < retVal.Count; i++)
+            {
+                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)) || !retVal[i].isPast())
+                {
+                    retVal.RemoveAt(i);
+                    i--;
+                }
+
+            }
+
+            return retVal;
+
+        }
     }
 }

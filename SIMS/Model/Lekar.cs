@@ -73,6 +73,11 @@ namespace Model
             return serijalizuj;
         }
 
+        public bool ShouldSerializeSpecijalizacijaLekara()
+        {
+            return serijalizuj;
+        }
+
         [JsonIgnore]
         public String NameAndSpecialization { get { return ImePrezime + ", " + Specialization; } }
 
@@ -104,7 +109,6 @@ namespace Model
             } 
 
         }
-
 
     }
 }

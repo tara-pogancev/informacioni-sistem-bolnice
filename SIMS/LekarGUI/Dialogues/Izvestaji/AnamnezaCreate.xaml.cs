@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 
 namespace SIMS.LekarGUI
 {
@@ -42,13 +43,17 @@ namespace SIMS.LekarGUI
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
             else
             {
+                Pacijent patient = termin.Pacijent;
+
                 Anamneza a = new Anamneza(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
                 a.Termin.Serijalizuj = false;
                 AnamnezaStorage.Instance.Create(a);
                 this.Close();
-                //LekarIstorijaPage.GetInstance().refreshView();
+
                 LekarUI.GetInstance().ChangeTab(3);
+                var window = new ActionsAfterReport(patient);
+                window.Show();
 
             }
         }

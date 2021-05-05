@@ -22,13 +22,7 @@ namespace Model
         private Pacijent pacijent;
         private Prostorija prostorija;
         private bool serijalizuj;
-        
-
-     /*   private String lekarKey;         //JMBG lekara
-    private String pacijentKey;      //JMBG pacijenta
-        private String prostorijaKey;    //Naziv prostorije*/
-       
-        
+             
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)
@@ -199,6 +193,22 @@ namespace Model
 
                 return false;
             }
+        }
+
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get
+            {
+                return ImeLekara + ", " + Vrijeme + " " + Datum;
+            }
+        }
+
+        public void InitData()
+        {
+            Pacijent = new PacijentStorage().Read(Pacijent.Jmbg);
+            Prostorija = new ProstorijaStorage().Read(Prostorija.Broj);
+            Lekar = new LekarStorage().Read(Lekar.Jmbg);
         }
 
     }

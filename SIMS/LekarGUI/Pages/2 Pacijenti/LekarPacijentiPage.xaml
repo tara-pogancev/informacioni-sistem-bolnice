@@ -30,6 +30,14 @@
             <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Pacijenti" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
+            
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,40,0">
+
+            <TextBox Name="searchBox" Text="Pretraži..." Style="{StaticResource TextBoxTransparent}" Margin="0,0,20,0" GotFocus="ClearSearchText" LostFocus="SearchTextChanged" KeyDown="SearchByEnter"/>
+            <Image Source="../../../src/search.png" Height="20" HorizontalAlignment="Right" Cursor="Hand" MouseDown="SearchByIcon"/>
 
         </StackPanel>
 

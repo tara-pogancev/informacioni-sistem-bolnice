@@ -56,7 +56,44 @@ namespace Model
             return ids;
         }
 
+        public List<Lekar> ReadBySpecialization(Specijalizacija specialization)
+        {
+            List<Lekar> retVal = new List<Lekar>();
 
-        
+            foreach(Lekar l in ReadList())
+            {
+                if (l.SpecijalizacijaLekara == specialization)
+                    retVal.Add(l);
+            }
+
+            return retVal;
+        }
+
+        public List<Specijalizacija> GetAvailableSpecialization()
+        {
+            List<Specijalizacija> retVal = new List<Specijalizacija>();
+
+            foreach (Lekar l in ReadList())
+            {
+                if (!retVal.Contains(l.SpecijalizacijaLekara))
+                    retVal.Add(l.SpecijalizacijaLekara);
+            }
+
+            return retVal;
+        }
+
+        public List<String> GetAvailableSpecializationString()
+        {
+            List<String> retVal = new List<String>();
+
+            foreach (Lekar l in ReadList())
+            {
+                if (!retVal.Contains(l.Specialization))
+                    retVal.Add(l.Specialization);
+            }
+
+            return retVal;
+        }
+
     }
 }
