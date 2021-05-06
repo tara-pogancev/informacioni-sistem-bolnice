@@ -53,7 +53,7 @@
             <Label Content="Specijalizacija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
             <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
 
-            <ComboBox x:Name="SpecijalizationComboBox" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite specijalizaciju pre biranja doktora." SelectionChanged="SpecializationChanged"/>
+            <ComboBox x:Name="SpecijalizationComboBox" DisplayMemberPath="SpecializationName" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite specijalizaciju pre biranja doktora." SelectionChanged="SpecializationChanged"/>
             <ComboBox x:Name="DoctorComboBox" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite doktora" 
                       DisplayMemberPath="ImePrezime" ItemsSource="{Binding DoctorList}" SelectedItem="{Binding DoctorList}"/>
 
@@ -62,7 +62,7 @@
         </Grid>
 
 
-        <Button Grid.Row="3" Content="POTVRDI" Click="Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button Grid.Row="3" Content="POTVRDI" Click="AcceptButton" HorizontalAlignment="Left" VerticalAlignment="Top"
             Margin="275,17,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
 
     </Grid>

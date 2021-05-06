@@ -347,7 +347,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "23:54"
+    "VremeString": "06.05.2021."
   },
   "Tara Pogančev210506235509": {
     "Autor": "Tara Pogančev",
@@ -358,6 +358,16 @@
       "4865453131",
       "4848555021548"
     ],
-    "VremeString": "23:55"
+    "VremeString": "06.05.2021."
+  },
+  "Tara Pogančev210507005557": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-07T00:55:57.5343383+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Zack Fair. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210507005557",
+    "Target": [
+      "12645323206"
+    ],
+    "VremeString": "00:55"
   }
 }

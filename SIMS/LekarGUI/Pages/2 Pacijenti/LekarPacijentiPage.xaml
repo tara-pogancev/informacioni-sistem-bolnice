@@ -65,22 +65,23 @@
 
             </DataGrid>
 
-            <Grid Margin="40,0,40,0" Grid.Row="1">
+            <Grid Margin="100,0" Grid.Row="1">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Content="Pregled kartona" Grid.Column="1" Click="Button_Pregled" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+                <Button Content="Pregled kartona" Grid.Column="0" Click="Button_Pregled" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
 
-                <Button Content="Izdavanje recepta" Grid.Column="2" Click="Button_Recept" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+                <Button Content="Izdavanje recepta" Grid.Column="1" Click="Button_Recept" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
 
-                <Button Content="Pisanje terapije" Grid.Column="3" Click="Button_Terapija" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
-                
+                <Button Content="Pisanje terapije" Grid.Column="2" Click="Button_Terapija" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+
+                <Button Content="Izdavanje uputa" Grid.Column="3" Click="Button_Uput" Template="{StaticResource BasicButton}" Style="{StaticResource GreenButton}"/>
+
             </Grid>
 
         </Grid>
