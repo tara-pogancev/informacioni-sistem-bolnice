@@ -44,13 +44,7 @@ namespace SIMS
             sekretar = s;
             UsernameLabel.Content = sekretar.ImePrezime;
 
-            /*dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            }, Dispatcher);*/
-
-            MainFrame.Content = SekretarHomePage.GetInstance();
+            MainFrame.Content = SekretarHomePage.GetInstance(sekretar);
         }
 
 

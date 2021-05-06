@@ -7,6 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarTerminiPage">
+    <Page.Resources>
+
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+
+    </Page.Resources>
 
     <Grid>
         <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -22,14 +23,19 @@ namespace SIMS.SekretarGUI
 
         public static SekretarHomePage GetInstance()
         {
+            return instance;
+        }
+        public static SekretarHomePage GetInstance(Sekretar sekretar)
+        {
             if (instance == null)
-                instance = new SekretarHomePage();
+                instance = new SekretarHomePage(sekretar);
             return instance;
         }
 
-        private SekretarHomePage()
+        private SekretarHomePage(Sekretar sekretar)
         {
             InitializeComponent();
+            welcomeText.Text = "Dobrodosli,\n" + sekretar.ImePrezime;
         }
 
         public void RemoveInstance()

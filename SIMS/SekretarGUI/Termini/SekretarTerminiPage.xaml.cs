@@ -38,16 +38,17 @@ namespace SIMS.SekretarGUI
 
             this.DataContext = this;
             terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            dobaviPodatkeOPacijentuILekaru(terminiView);
+            //DobaviPodatkeOPacijentuILekaru(terminiView);
             tabelaTermina.ItemsSource = terminiView;
             refreshView();
         }
 
-        private void refreshView()
+        public void refreshView()
         {
             terminiView.Clear();
             ObservableCollection<Termin> temp = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            dobaviPodatkeOPacijentuILekaru(temp);
+            DobaviPodatkeOPacijentuILekaru(temp);
+            SortirajListuTermina(temp);
             foreach (Termin t in temp)
             {
                 terminiView.Add(t);
@@ -56,27 +57,18 @@ namespace SIMS.SekretarGUI
 
         private void Button_Pregled(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
-            /*TerminCreate terminCreate = new TerminCreate();
-            terminCreate.Show();*/
             this.NavigationService.Navigate(new DodajPregledPage());
         }
 
         private void Button_Operacija(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi operaciju
-            /*OperacijaCreate operacijaCreate = new OperacijaCreate();
-            operacijaCreate.Show();*/
             this.NavigationService.Navigate(new DodajOperacijuPage());
         }
 
         private void Button_Izmeni(object sender, RoutedEventArgs e)
         {
-            //Button: Uredi termin
             if (tabelaTermina.SelectedItem != null)
             {
-                /*TerminUpdate terminUpdate = new TerminUpdate((Termin)tabelaTermina.SelectedItem);
-                terminUpdate.Show();*/
                 this.NavigationService.Navigate(new IzmeniTerminPage((Termin)tabelaTermina.SelectedItem));
             }
 
@@ -84,8 +76,6 @@ namespace SIMS.SekretarGUI
 
         private void Button_Obrisi(object sender, RoutedEventArgs e)
         {
-            //Button: Otkaži pregled
-
             if (tabelaTermina.SelectedItem != null)
             {
 
@@ -128,12 +118,34 @@ namespace SIMS.SekretarGUI
             instance = null;
         }
 
-        private void dobaviPodatkeOPacijentuILekaru(ObservableCollection<Termin> termini)
+        private void DobaviPodatkeOPacijentuILekaru(ObservableCollection<Termin> termini)
         {
             foreach (Termin termin in termini)
             {
                 termin.Pacijent = PacijentStorage.Instance.Read(termin.Pacijent.Jmbg);
                 termin.Lekar = LekarStorage.Instance.Read(termin.Lekar.Jmbg);
+            }
+        }
+
+        private void SortirajListuTermina(ObservableCollection<Termin> termini)
+        {
+            for (int i = 0; i < termini.Count; ++i)
+            {
+                for (int j = 0; j < termini.Count; ++j)
+                {
+                    if (termini[i].PocetnoVreme.Date < termini[j].PocetnoVreme.Date)
+                    {
+                        Termin temp = termini[i];
+                        termini[i] = termini[j];
+                        termini[j] = temp;
+                    }
+                    else if (termini[i].PocetnoVreme.Date == termini[j].PocetnoVreme.Date && termini[i].PocetnoVreme.TimeOfDay < termini[j].PocetnoVreme.TimeOfDay)
+                    {
+                        Termin temp = termini[i];
+                        termini[i] = termini[j];
+                        termini[j] = temp;
+                    }
+                }
             }
         }
     }

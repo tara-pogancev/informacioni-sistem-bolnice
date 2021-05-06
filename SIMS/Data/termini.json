@@ -4,10 +4,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "22157484654211"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "22157484654211",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4484552102"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4484552102",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -23,10 +46,33 @@
     "VremeTrajanja": 30,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -42,10 +88,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -61,10 +130,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -80,10 +172,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4484552102"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4484552102",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -99,10 +214,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -118,10 +256,33 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "22157484654211"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "22157484654211",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -137,10 +298,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -156,10 +340,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -175,10 +382,33 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "12645323206"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "12645323206",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -194,10 +424,33 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -213,10 +466,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "2484848556"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "2484848556",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -232,10 +508,33 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4484552102"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4484552102",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -251,10 +550,33 @@
     "VremeTrajanja": 30,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4865453131"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -270,10 +592,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "4848555021548"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4848555021548",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4865453131"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -289,10 +634,33 @@
     "VremeTrajanja": 60,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4865453131"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
@@ -308,10 +676,33 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 1,
     "Lekar": {
-      "Jmbg": "045210805048"
+      "DaniGodisnjegOdmora": 0,
+      "SpecijalizacijaLekara": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "045210805048",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Pacijent": {
-      "Jmbg": "4865453131"
+      "Lbo": null,
+      "Gost": false,
+      "Alergeni": null,
+      "Datum_Rodjenja": "0001-01-01T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "Ime": null,
+      "Prezime": null,
+      "Jmbg": "4865453131",
+      "KorisnickoIme": null,
+      "Lozinka": null,
+      "Email": null,
+      "Telefon": null,
+      "Adresa": null
     },
     "Prostorija": {
       "kolicineOpreme": {},
