@@ -46,7 +46,7 @@
                     </DataGridCheckBoxColumn>
                     
                     <DataGridTextColumn Header="Naziv leka" Binding="{Binding MedicineName}" Width="2*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Status" Binding="{Binding ApprovalStatus}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding ApprovalStatusString}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
 
                 </DataGrid.Columns>

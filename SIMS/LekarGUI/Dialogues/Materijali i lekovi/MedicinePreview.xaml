@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Pregled leka" Height="300" Width="400">
 
     <Window.Resources>
@@ -36,6 +37,9 @@
         </ScrollViewer>
 
         <Button Grid.Row="3" Content="Zatvori" Click="ButtonCloseWindow" HorizontalAlignment="Right" Margin="0,0,20,0" VerticalAlignment="Center"
+            Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"/>
+
+        <Button Grid.Row="3" Content="Izmeni" Click="ButtonEditMedicine" HorizontalAlignment="Right" Margin="0,0,120,0" VerticalAlignment="Center"
             Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"/>
 
     </Grid>

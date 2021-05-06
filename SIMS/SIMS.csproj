@@ -20,6 +20,10 @@
     <None Remove="src\help.png" />
     <None Remove="src\home.png" />
     <None Remove="src\Illustrations\Lunch_break.png" />
+    <None Remove="src\Illustrations\man_reading_a_book.png" />
+    <None Remove="src\Illustrations\man_reading_dark_hair.png" />
+    <None Remove="src\Illustrations\man_reading_light_hair.png" />
+    <None Remove="src\Illustrations\reading_on_a_chair.png" />
     <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\logo.ico" />
     <None Remove="src\logo.png" />
@@ -48,6 +52,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="src\Illustrations\man_reading_a_book.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\Illustrations\man_reading_dark_hair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\Illustrations\reading_on_a_chair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\view.png" />
   </ItemGroup>
 

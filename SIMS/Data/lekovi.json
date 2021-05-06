@@ -30,7 +30,7 @@
     "MedicineID": "l4",
     "MedicineName": "Vivace",
     "Components": [],
-    "ApprovalStatus": 2
+    "ApprovalStatus": 0
   },
   "l5": {
     "MedicineID": "l5",

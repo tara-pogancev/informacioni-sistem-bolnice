@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Title="Pisanje obaveštenja" Height="350" Width="550">
 
     <Grid Background="#FF323D52">

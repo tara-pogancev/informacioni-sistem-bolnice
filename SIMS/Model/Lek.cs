@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +11,6 @@ namespace Model
         public string MedicineID { get; set; }
         public string MedicineName { get; set; }
         public List<string> Components { get; set; }
-
         public MedicineApprovalStatus ApprovalStatus { get; set; }
 
         public Lek()
@@ -36,7 +36,22 @@ namespace Model
                 componentsString += AlergeniStorage.Instance.Read(a).Naziv + ", ";
             return componentsString.Remove(componentsString.Length - 2);
         }
+
+        [JsonIgnore]
+        public String ApprovalStatusString
+        {
+            get
+            {
+                if (ApprovalStatus == MedicineApprovalStatus.Waiting)
+                    return "Na čekanju";
+                else if (ApprovalStatus == MedicineApprovalStatus.Denied)
+                    return "Odbijen";
+                else return "Prihvaćen";
+            }
+        }
     }
+
+   
 
     public enum MedicineApprovalStatus
     {

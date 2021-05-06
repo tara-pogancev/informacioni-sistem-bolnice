@@ -94,14 +94,12 @@ namespace SIMS
         {
             //Button: Nalog, DEBUG po potrebi
             ChangeTab(5);
-
         }
 
         private void Button_Dashboard(object sender, MouseButtonEventArgs e)
         {
             //Dashboard
             ChangeTab(0);
-
         }
 
         public Lekar GetUser()
@@ -202,6 +200,11 @@ namespace SIMS
         }
 
         private void Button_LogOut(object sender, MouseButtonEventArgs e)
+        {
+            LogOut();
+        }
+
+        public void LogOut()
         {
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
