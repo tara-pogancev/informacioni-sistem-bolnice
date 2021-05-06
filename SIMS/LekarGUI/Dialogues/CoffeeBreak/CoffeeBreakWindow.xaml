@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.CoffeeBreak"
         mc:Ignorable="d"
-        Title="CoffeeBreakWindow" Height="450" Width="800">
-    <Grid>
-        
+        WindowStartupLocation="CenterScreen"
+        Title="LOVELESS" Height="850" Width="600">
+
+    <Grid Background="#FFB6AFAC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7.5*"/>
+            <RowDefinition MaxHeight="180"/>
+        </Grid.RowDefinitions>
+
+        <Image Name="PageImage" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Source="../../../src/CoffeeBreak/page0.png"/>
+
+        <Grid Grid.Row="1" MaxWidth="800" Height="50" VerticalAlignment="Center" Margin="80,0,80,20">
+
+            <Image Source="../../../src/CoffeeBreak/arrow_left.png" Cursor="Hand" Name="LeftArrow" HorizontalAlignment="Left" MouseDown="PreviousPage"
+                   MouseEnter="LeftArrowOverlay" MouseLeave="LeftArrowDefault"/>
+
+            <Image Source="../../../src/CoffeeBreak/arrow_right.png" Cursor="Hand" MouseDown="NextPage" Name="RightArrow" HorizontalAlignment="Right"
+                   MouseEnter="RightArrowOverlay" MouseLeave="RightArrowDefault"/>
+
+        </Grid>
+
     </Grid>
+
 </Window>
