@@ -21,7 +21,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     public partial class MedicineEdit : Window
     {
         private Lek medicine;
-        public ObservableCollection<AlergenDTO> ComponentsView { get; set; }
+        public ObservableCollection<AlergenDTO> NewComponentsView { get; set; }
+        public ObservableCollection<AlergenDTO> CurrentComponentsView { get; set; }
 
         public MedicineEdit(Lek medicine)
         {
@@ -29,46 +30,68 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             InitializeComponent();
             DataContext = this;
+            AddButton.Visibility = Visibility.Hidden;
 
             MedicineNameLabel.Content = "Izmena: " + medicine.MedicineName;
 
-            ComponentsView = new ObservableCollection<AlergenDTO>();
-            InitView();
+            NewComponentsView = new ObservableCollection<AlergenDTO>();
+            CurrentComponentsView = new ObservableCollection<AlergenDTO>();
+            RefreshView();
 
         }
 
-        public void InitView()
+        public void RefreshView()
         {
+            NewComponentsView.Clear();
+            CurrentComponentsView.Clear();
+
             AlergenDTO component = new AlergenDTO();
             foreach (AlergenDTO viewItem in component.GetAllAlergenList(medicine))
             {
-                ComponentsView.Add(viewItem);
+                if (viewItem.IsIncludedInMedicine == true)
+                    CurrentComponentsView.Add(viewItem);
+                else NewComponentsView.Add(viewItem);
             }
 
         }
 
         public List<AlergenDTO> GetSelectedComponents()
         {
-            var selectedItems = new List<AlergenDTO>();
+            if (TabbedPanel.SelectedIndex == 0)
+                return GetAddedComponents();
+            else
+                return GetRemovedComponents();
+        }
 
-            foreach (AlergenDTO currentAlergen in DataGridComponents.ItemsSource)
+        private List<AlergenDTO> GetAddedComponents()
+        {
+            List<AlergenDTO> selectedItems = new List<AlergenDTO>();
+
+            foreach (var currentAlergen in DataGridAddNew.SelectedItems)
             {
-                if (((CheckBox)checkedComponent.GetCellContent(currentAlergen)).IsChecked == true)
-                {
-                    selectedItems.Add(currentAlergen);
-                }
+                AlergenDTO data = currentAlergen as AlergenDTO;
+                selectedItems.Add(data);
             }
 
             return selectedItems;
         }
 
+        private List<AlergenDTO> GetRemovedComponents()
+        {
+            List<AlergenDTO> selectedItems = new List<AlergenDTO>();
+
+            foreach (var currentAlergen in DataGridComponents.SelectedItems)
+            {
+                AlergenDTO data = currentAlergen as AlergenDTO;
+                selectedItems.Add(data);
+            }
+
+            return selectedItems;
+        }
+
+
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
-            medicine.Components.Clear();
-
-            foreach (AlergenDTO component in GetSelectedComponents())
-                medicine.Components.Add(component.AlergenID);
-
             LekStorage.Instance.Update(medicine);
 
             this.Close();
@@ -78,6 +101,39 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void RemoveElements(object sender, RoutedEventArgs e)
+        {
+            foreach (AlergenDTO component in GetSelectedComponents())
+                medicine.Components.Remove(component.AlergenID);
+
+            RefreshView();
+        }
+
+        private void AddElements(object sender, RoutedEventArgs e)
+        {
+            foreach (AlergenDTO component in GetSelectedComponents())
+                medicine.Components.Add(component.AlergenID);
+
+            RefreshView();
+        }
+
+        private void TabChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.Source is TabControl)
+            {
+                if (RemoveButton.Visibility == Visibility.Visible)
+                {
+                    RemoveButton.Visibility = Visibility.Hidden;
+                    AddButton.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    AddButton.Visibility = Visibility.Hidden;
+                    RemoveButton.Visibility = Visibility.Visible;
+                }
+            }
         }
     }
 }

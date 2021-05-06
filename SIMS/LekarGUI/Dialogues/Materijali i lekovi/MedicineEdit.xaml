@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Izmena leka" Height="450" Width="550">
+        Title="Izmena leka" Height="490" Width="550">
 
     <Window.Resources>
 
@@ -20,7 +20,12 @@
             <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
             <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
             <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+            <Setter Property="SelectionMode" Value="Extended"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
+
+        <Style TargetType="TabControl" BasedOn="{StaticResource DarkTabbedPanel}"/>
+        <Style TargetType="TabItem" BasedOn="{StaticResource DarkTabbedItem}"/>
 
     </Window.Resources>
 
@@ -28,28 +33,53 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Izmena: Medicine name" Name="MedicineNameLabel" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="20" Margin="20,0,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
-        <DataGrid Grid.Row="1" Margin="20,10,20,10" x:Name="DataGridComponents" ItemsSource="{Binding Path = ComponentsView}">
+        <TabControl Name="TabbedPanel" Grid.Row="1" Margin="20,10,20,10" SelectionChanged="TabChanged">
 
-            <DataGrid.Columns>
+            <TabItem Header="Dodaj sastojke" Name="TabbedView">
 
-                <DataGridCheckBoxColumn Header="Izbor" Binding="{Binding IsIncludedInMedicine}" Width="*" x:Name="checkedComponent" DataGridColumn.CanUserResize="False">
-                    <DataGridCheckBoxColumn.ElementStyle>
-                        <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}"/>
-                    </DataGridCheckBoxColumn.ElementStyle>
-                </DataGridCheckBoxColumn>
+                <DataGrid x:Name="DataGridAddNew" ItemsSource="{Binding Path = NewComponentsView}">
 
-                <DataGridTextColumn Header="ID sastojka" Binding="{Binding AlergenID}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                <DataGridTextColumn Header="Sastojci leka" Binding="{Binding AlergenNaziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGrid.Columns>
 
-            </DataGrid.Columns>
+                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding AlergenID}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding AlergenNaziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
 
-        </DataGrid>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </TabItem>
+
+            <TabItem Header="Pregled trenutnih sastojaka">
+
+                <DataGrid x:Name="DataGridComponents" ItemsSource="{Binding Path = CurrentComponentsView}">
+
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding AlergenID}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding AlergenNaziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                
+            </TabItem>
+
+        </TabControl>
+
+        <Button Grid.Row="3" Content="Dodaj" Click="AddElements" Name="AddButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"
+            Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"/>
+
+        <Button Grid.Row="3" Content="Ukloni" Click="RemoveElements" Name="RemoveButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"
+            Style="{StaticResource RedButton}" Template="{StaticResource BasicButtonNarrow}"/>
+
+        
 
         <Button Grid.Row="3" Content="Odustani" Click="ButtonCloseWindow" HorizontalAlignment="Right" Margin="0,0,120,0" VerticalAlignment="Center"
             Style="{StaticResource RedButton}" Template="{StaticResource BasicButtonNarrow}"/>

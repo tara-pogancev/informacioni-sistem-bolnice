@@ -29,7 +29,13 @@
   "l4": {
     "MedicineID": "l4",
     "MedicineName": "Vivace",
-    "Components": [],
+    "Components": [
+      "a3",
+      "a2",
+      "a6",
+      "a8",
+      "a12"
+    ],
     "ApprovalStatus": 0
   },
   "l5": {

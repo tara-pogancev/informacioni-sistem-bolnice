@@ -409,9 +409,31 @@
       "Jmbg": "2484848556"
     },
     "Prostorija": {
-      "Broj": "2"
+      "kolicineOpreme": {},
+      "TipProstorije": 2,
+      "Broj": "2",
+      "Dostupna": false
     },
     "InicijalnoVrijeme": "2021-08-27T09:30:00",
     "TerminKey": "210506120355"
+  },
+  "210506115506": {
+    "PocetnoVreme": "2021-05-07T08:30:00",
+    "VremeTrajanja": 90,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "Jmbg": "4848555021548"
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131"
+    },
+    "Prostorija": {
+      "kolicineOpreme": {},
+      "TipProstorije": 0,
+      "Broj": "1",
+      "Dostupna": true
+    },
+    "InicijalnoVrijeme": "2021-05-07T08:30:00",
+    "TerminKey": "210506115506"
   }
 }

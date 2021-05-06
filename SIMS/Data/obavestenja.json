@@ -264,7 +264,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "14:05"
+    "VremeString": "05.05.2021."
   },
   "Tara Pogančev210505140951": {
     "Autor": "Tara Pogančev",
@@ -274,7 +274,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "14:09"
+    "VremeString": "05.05.2021."
   },
   "Tara Pogančev210505141352": {
     "Autor": "Tara Pogančev",
@@ -284,7 +284,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "14:13"
+    "VremeString": "05.05.2021."
   },
   "Recept210505141529": {
     "Autor": "Recept",
@@ -294,7 +294,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "14:15"
+    "VremeString": "05.05.2021."
   },
   "Tara Pogančev210505142357": {
     "Autor": "Tara Pogančev",
@@ -304,7 +304,7 @@
     "Target": [
       "4865453131"
     ],
-    "VremeString": "14:23"
+    "VremeString": "05.05.2021."
   },
   "Tara Pogančev210505164941": {
     "Autor": "Tara Pogančev",
@@ -315,7 +315,7 @@
       "4865453131",
       "4848555021548"
     ],
-    "VremeString": "16:49"
+    "VremeString": "05.05.2021."
   },
   "Cloud Strife210505165416": {
     "Autor": "Cloud Strife",
@@ -326,7 +326,7 @@
       "4865453131",
       "045210805048"
     ],
-    "VremeString": "16:54"
+    "VremeString": "05.05.2021."
   },
   "Tara Pogančev210505165622": {
     "Autor": "Tara Pogančev",
@@ -337,6 +337,27 @@
       "4865453131",
       "045210805048"
     ],
-    "VremeString": "16:56"
+    "VremeString": "05.05.2021."
+  },
+  "Tara Pogančev210506235434": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-06T23:54:34.96461+02:00",
+    "Tekst": "Izdat uput za pregled kod lekara Tara Pogančev. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210506235434",
+    "Target": [
+      "4865453131"
+    ],
+    "VremeString": "23:54"
+  },
+  "Tara Pogančev210506235509": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-06T23:55:09.9353538+02:00",
+    "Tekst": "Zakazana hitna operacija [07.05.2021. 08:30, 1] za pacijenta Đorđe Krsmanović, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210506235509",
+    "Target": [
+      "4865453131",
+      "4848555021548"
+    ],
+    "VremeString": "23:55"
   }
 }
