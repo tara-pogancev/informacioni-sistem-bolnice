@@ -336,7 +336,6 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
                     <RowDefinition Height="60"/>
 
                 </Grid.RowDefinitions>
@@ -358,7 +357,6 @@
                 <Label Content="Lbo:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="16" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
                 <Label Content="Alergeni:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="17" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
                 <Label Content="Hronicne bolesti:" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="18" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Gost:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="19" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -384,12 +382,11 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
                         <RowDefinition Height="60"/>
 
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Row="2" Grid.RowSpan="18" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                    <Border Grid.Row="2" Grid.RowSpan="17" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
                     <TextBox x:Name="ime" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="prezime" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
@@ -416,12 +413,9 @@
                     <TextBox x:Name="drzava" HorizontalAlignment="Left" Grid.Row="15" Margin="30,0,0,0" Text="Srbija" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="lbo" HorizontalAlignment="Left" Grid.Row="16" Margin="30,0,0,0" Text="123456" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <xceet:CheckComboBox x:Name="alergeni" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" MaxDropDownHeight="100"/>
-
-
                     <TextBox x:Name="hronicne_bolesti" HorizontalAlignment="Left" Grid.Row="18" Margin="30,0,0,0" Text="" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                    <CheckBox x:Name="gost" HorizontalAlignment="Left" Grid.Row="19" Margin="145,15,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" Content=""/>
 
-                    <StackPanel Grid.Row="20"  Grid.RowSpan="2" Orientation="Horizontal">
+                    <StackPanel Grid.Row="19"  Grid.RowSpan="2" Orientation="Horizontal">
                         <Button Content="OTKAZI" Click="Otkazi_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
                         <Button Content="DODAJ" Click="Potvrdi_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                     </StackPanel>

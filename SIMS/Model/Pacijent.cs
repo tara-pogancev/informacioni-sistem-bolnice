@@ -40,6 +40,18 @@ namespace Model
         public Pacijent() : base()
         {
         }
+
+        public Pacijent(string ime, string prezime, string jmbg) : base(ime, prezime, jmbg, "", "", "", "", new Adresa("", "", new Grad("", 0, new Drzava(""))))
+        {
+            this.lbo = "";
+            this.gost = true;
+            this.alergeni = new List<string>();
+            this.datum_rodjenja = DateTime.MinValue;
+            this.krvna_grupa = Krvne_Grupe.Op;
+            this.pol = Pol.Muški;
+            this.hronicne_bolesti = new List<string>();
+        }
+
         [JsonIgnore]
         public String GetGost
         {

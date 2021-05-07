@@ -41,10 +41,12 @@ namespace SIMS.SekretarGUI
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
-            //Dodaj dodaj = new Dodaj();
-            //dodaj.Show();
-
             this.NavigationService.Navigate(new DodajPacijentaPage());
+        }
+
+        private void Gost_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new DodajGostaPage());
         }
 
         private void Izmeni_Click(object sender, RoutedEventArgs e)
@@ -55,9 +57,6 @@ namespace SIMS.SekretarGUI
             }
             else
             {
-                //Izmeni izmeni = new Izmeni((Pacijent)tabelaPacijenata.SelectedItem);
-                //izmeni.Show();
-
                 this.NavigationService.Navigate(new IzmeniPacijentaPage((Pacijent)tabelaPacijenata.SelectedItem));
             }
         }

@@ -22,7 +22,7 @@
 
             <DataGrid x:Name="tabelaTermina" ItemsSource="{Binding terminiView}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
-                                    DataGrid.CanUserResizeRows="False">
+                                    DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Lekar" Binding="{Binding ImeLekara}" Width="Auto"  DataGridColumn.CanUserResize="False"/>

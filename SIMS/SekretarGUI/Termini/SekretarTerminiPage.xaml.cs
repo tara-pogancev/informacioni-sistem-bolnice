@@ -129,21 +129,15 @@ namespace SIMS.SekretarGUI
 
         private void SortirajListuTermina(ObservableCollection<Termin> termini)
         {
-            for (int i = 0; i < termini.Count; ++i)
+            for (int i = 0; i < termini.Count - 1; ++i)
             {
-                for (int j = 0; j < termini.Count; ++j)
+                for (int j = 0; j < termini.Count - i - 1; ++j)
                 {
-                    if (termini[i].PocetnoVreme.Date < termini[j].PocetnoVreme.Date)
+                    if (termini[j].PocetnoVreme > termini[j+1].PocetnoVreme)
                     {
-                        Termin temp = termini[i];
-                        termini[i] = termini[j];
-                        termini[j] = temp;
-                    }
-                    else if (termini[i].PocetnoVreme.Date == termini[j].PocetnoVreme.Date && termini[i].PocetnoVreme.TimeOfDay < termini[j].PocetnoVreme.TimeOfDay)
-                    {
-                        Termin temp = termini[i];
-                        termini[i] = termini[j];
-                        termini[j] = temp;
+                        Termin temp = termini[j];
+                        termini[j] = termini[j+1];
+                        termini[j+1] = temp;
                     }
                 }
             }

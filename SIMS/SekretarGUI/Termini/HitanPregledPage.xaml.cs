@@ -20,10 +20,10 @@ namespace SIMS.SekretarGUI
     /// </summary>
     public partial class HitanPregledPage : Page
     {
-        private List<String> SpecializationList;
+        private List<string> SpecializationList;
         private List<Specijalizacija> SpecializationEnumList;
-        private List<String> DurationList = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
-        private List<Pacijent> PatientList;
+        private List<string> DurationList = new List<string>() { "30 minuta", "60 minuta", "90 minuta" };
+        private ObservableCollection<Pacijent> PatientList;
 
         private ObservableCollection<Termin> AvailableAppointments;
 
@@ -37,10 +37,10 @@ namespace SIMS.SekretarGUI
             AvailableAppointments = new ObservableCollection<Termin>();
             AvailableComboBox.DataContext = AvailableAppointments;
             SpecializationList = LekarStorage.Instance.GetAvailableSpecializationString();
-            SpecializationList.Remove("Lekar opšte prakse");
+            //SpecializationList.Remove("Lekar opšte prakse");
             SpecializationEnumList = LekarStorage.Instance.GetAvailableSpecialization();
-            SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
-            PatientList = PacijentStorage.Instance.ReadList();
+            //SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
+            PatientList = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
 
             SpecializationComboBox.ItemsSource = SpecializationList;
             DurationComboBox.ItemsSource = DurationList;
@@ -70,17 +70,25 @@ namespace SIMS.SekretarGUI
         {
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                Termin selecetdApp = (Termin)AvailableComboBox.SelectedItem;
-                selecetdApp.InitData();
+                if (AvailableAppointments.Count == 1)
+                {
+                    Termin selectedApp = (Termin)AvailableComboBox.SelectedItem;
+                    //selectedApp.InitData();
 
-                TerminStorage.Instance.Create(selecetdApp);
+                    TerminStorage.Instance.Create(selectedApp);
 
-                SendNotification(selecetdApp);
+                    SendNotification(selectedApp);
 
-                SekretarTerminiPage.GetInstance().refreshView();
+                    SekretarTerminiPage.GetInstance().refreshView();
 
-                this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
-                MessageBox.Show("Hitan pregled uspesno zakazan!");
+                    this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+                    MessageBox.Show("Hitan pregled uspesno zakazan!");
+                }
+                else
+                {
+                    Termin selectedApp = (Termin)AvailableComboBox.SelectedItem;
+                }
+                
             }
         }
 
@@ -89,12 +97,16 @@ namespace SIMS.SekretarGUI
             this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
         }
 
+        private void Button_Guest(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new DodajGostaPage());
+            NavigationService.Navigated += NavigationService_Navigated;
+        }
+
         private void SendNotification(Termin selectedApp)
         {
-            //String author = LekarUI.GetInstance().GetUser().ImePrezime;
-            List<String> target = new List<String>();
+            List<string> target = new List<string>();
             target.Add(((Pacijent)PatientComboBox.SelectedItem).Jmbg);
-            //target.Add(selectedApp.Lekar.Jmbg);
             foreach (Sekretar s in SekretarStorage.Instance.ReadList())
             {
                 target.Add(s.Jmbg);
@@ -127,17 +139,25 @@ namespace SIMS.SekretarGUI
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
                 List<Termin> allAppointments = GetAvailableAppointmentsForAllDoctors();
-                SortAppointments(allAppointments);
-
-                foreach (Termin app in allAppointments)
+                if (allAppointments.Count == 1)
                 {
-                    app.InitData();
-
-                    AvailableAppointments.Add(app);
-                    if (AvailableAppointments.Count >= 5)
-                        break;
+                    zakaziButton.Content = "ZAKAŽI";
+                    allAppointments[0].InitData();
+                    AvailableAppointments.Add(allAppointments[0]);
                 }
+                else
+                {
+                    zakaziButton.Content = "POMERI I\nZAKAŽI";
+                    SortAppointments(allAppointments);
 
+                    foreach (Termin app in allAppointments)
+                    {
+                        app.InitData();
+                        AvailableAppointments.Add(app);
+                        /*if (AvailableAppointments.Count >= 1)
+                            break;*/
+                    }
+                }
             }
 
             AvailableComboBox.ItemsSource = AvailableAppointments;
@@ -146,41 +166,46 @@ namespace SIMS.SekretarGUI
         private List<Termin> GetAvailableAppointmentsForAllDoctors()
         {
             List<Termin> retVal = new List<Termin>();
+            List<Termin> allAppointments = new List<Termin>();
 
             foreach (Lekar doctor in LekarStorage.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
                 List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments();
-                int counterByDoctor = 0;
+                //int counterByDoctor = 0;
 
                 foreach (DateTime appTime in potentialAppointmentTimeList)
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                     Termin appointment = new Termin(appTime, GetSelectedDuration(), TipTermina.pregled, doctor, (Pacijent)PatientComboBox.SelectedItem, ProstorijaStorage.Instance.ReadList()[0]);
+                    allAppointments.Add(appointment);
                     if (doctor.IsFree(appointment))
                     {
-                        counterByDoctor++;
+                        //counterByDoctor++;
                         retVal.Add(appointment);
+                        goto Exit;
                     }
 
-                    if (counterByDoctor >= 5)
-                        break;
+                    /*if (counterByDoctor >= 5)
+                        break;*/
                 }
-
             }
-
-            return retVal;
+        Exit:
+            if (retVal.Count == 0)
+                return allAppointments;
+            else
+                return retVal;
         }
 
         private void SortAppointments(List<Termin> appointments)
         {
-            for (int i = 0; i < appointments.Count; i++)
-                for (int j = 0; j < appointments.Count; j++)
-                    if (appointments[i].PocetnoVreme < appointments[j].PocetnoVreme)
+            for (int i = 0; i < appointments.Count - 1; i++)
+                for (int j = 0; j < appointments.Count - i - 1; j++)
+                    if (appointments[j].PocetnoVreme > appointments[j + 1].PocetnoVreme)
                     {
-                        var temp = appointments[i];
-                        appointments[i] = appointments[j];
-                        appointments[j] = temp;
+                        var temp = appointments[j];
+                        appointments[j] = appointments[j + 1];
+                        appointments[j + 1] = temp;
                     }
         }
 
@@ -188,25 +213,33 @@ namespace SIMS.SekretarGUI
         {
             DateTime currentTime = DateTime.Now;
 
-            List<String> availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            List<String> availableDates = new List<String>();
-            for (int i = 0; i < 10; i++)
+            List<string> availableTimes = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            List<string> availableDates = new List<string>();
+            for (int i = 0; i < 2; i++)
             {
                 DateTime currentDate = DateTime.Today.AddDays(i);
                 availableDates.Add(currentDate.ToString("dd.MM.yyyy."));
             }
 
             List<DateTime> potentialAppointmentTimeList = new List<DateTime>();
-            foreach (String date in availableDates)
-                foreach (String time in availableTimes)
+            foreach (string date in availableDates)
+                foreach (string time in availableTimes)
                 {
-                    String dateAndTime = date + " " + time;
+                    string dateAndTime = date + " " + time;
                     DateTime appointmentTime = DateTime.Parse(dateAndTime);
                     if (appointmentTime >= currentTime)
                         potentialAppointmentTimeList.Add(appointmentTime);
+                    if (potentialAppointmentTimeList.Count > 2)
+                        goto Exit;
                 }
-
+            Exit:
             return potentialAppointmentTimeList;
+        }
+
+        private void NavigationService_Navigated(object sender, NavigationEventArgs e)
+        {
+            PatientList = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
+            PatientComboBox.ItemsSource = PatientList;
         }
     }
 }

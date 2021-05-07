@@ -403,7 +403,7 @@
                         <ComboBoxItem>AB+</ComboBoxItem>
                         <ComboBoxItem>AB-</ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="jmbg" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <TextBox x:Name="jmbg" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
                     <TextBox x:Name="kor_ime" HorizontalAlignment="Left" Grid.Row="8" Margin="30,0,0,0" Text="pera" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="lozinka" HorizontalAlignment="Left" Grid.Row="9" Margin="30,0,0,0" Text="pera" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="email" HorizontalAlignment="Left" Grid.Row="10" Margin="30,0,0,0" Text="petarpetrovic@gmail.com" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>

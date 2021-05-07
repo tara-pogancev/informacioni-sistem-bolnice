@@ -23,7 +23,7 @@
 
             <DataGrid x:Name="tabelaPacijenata" ItemsSource="{Binding pacijenti}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
-                                    DataGrid.CanUserResizeRows="False">
+                                    DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
@@ -33,7 +33,7 @@
                     <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Alergeni" Binding="{Binding GetAlergeniString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Lbo" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Gost" Binding="{Binding GetGost}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Gost}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -43,6 +43,7 @@
         <Grid Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -84,6 +85,40 @@
 
             <Grid Grid.Column="1">
 
+                <Button Content="Dodaj gosta"  Margin="0,0,0,0" 
+                            FontSize="14" Click="Gost_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                            </Border>
+
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+            </Grid>
+
+            <Grid Grid.Column="2">
+
                 <Button Content="Izmeni"  Margin="0,0,0,0" 
                             FontSize="14" Click="Izmeni_Click">
 
@@ -116,7 +151,7 @@
 
             </Grid>
 
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="3">
 
                 <Button Content="Obrisi"  Margin="0,0,0,0" 
                             FontSize="14" Click="Obrisi_Click">

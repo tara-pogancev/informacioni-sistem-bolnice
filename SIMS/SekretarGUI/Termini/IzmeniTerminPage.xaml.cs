@@ -153,7 +153,7 @@ namespace SIMS.SekretarGUI
             index = 0;
             foreach (Prostorija pr in prostorije)
             {
-                if (pr.Broj.Equals(termin.Prostorija))
+                if (pr.Broj.Equals(termin.Prostorija.Broj))
                 {
                     break;
                 }
