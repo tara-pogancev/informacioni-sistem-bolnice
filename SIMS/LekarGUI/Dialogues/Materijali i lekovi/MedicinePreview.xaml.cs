@@ -33,6 +33,15 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             MedicineComponents.Inlines.Add("   ");
             MedicineComponents.Inlines.Add(medicine.getComponentsList());
 
+            MedicineSubstitute.Inlines.Add(new Run("Zamenski lek:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+            MedicineSubstitute.Inlines.Add("   ");
+            MedicineSubstitute.Inlines.Add(GetSubstituteName(medicine));
+
+        }
+
+        private String GetSubstituteName(Lek medicine)
+        {
+            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)

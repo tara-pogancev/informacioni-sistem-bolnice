@@ -24,6 +24,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         public ObservableCollection<AlergenDTO> NewComponentsView { get; set; }
         public ObservableCollection<AlergenDTO> CurrentComponentsView { get; set; }
+        public List<Lek> MedicineSubstitutionList { get; set; }
 
         public MedicineEdit(Lek medicine)
         {
@@ -34,11 +35,19 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             AddButton.Visibility = Visibility.Hidden;
 
             MedicineNameLabel.Content = "Izmena: " + medicine.MedicineName;
+            CurrentSubstitute.Content = "Trenutna zamena: " + GetSubstituteName(medicine);
 
             NewComponentsView = new ObservableCollection<AlergenDTO>();
             CurrentComponentsView = new ObservableCollection<AlergenDTO>();
+            MedicineSubstitutionList = new List<Lek>(LekStorage.Instance.getApprovedMedicine());
+
             RefreshView();
 
+        }
+
+        private static String GetSubstituteName(Lek medicine)
+        {
+            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         public void RefreshView()
@@ -93,6 +102,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
+            SetSubstituteMedicine();
             LekStorage.Instance.Update(medicine);
 
             this.Close();
@@ -112,6 +122,15 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             RefreshView();
         }
 
+        private void SetSubstituteMedicine()
+        {
+            if (SubstitutionMedicine.SelectedItem != null)
+            {
+                Lek SellectedSubstitutionMedicine = (Lek)SubstitutionMedicine.SelectedItem;
+                medicine.IDSubstitution = SellectedSubstitutionMedicine.MedicineID;
+            }
+        }
+
         private void AddElements(object sender, RoutedEventArgs e)
         {
             foreach (AlergenDTO component in GetSelectedComponents())
@@ -124,16 +143,24 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (e.Source is TabControl)
             {
-                if (RemoveButton.Visibility == Visibility.Visible)
+                if (/*RemoveButton.Visibility == Visibility.Visible*/ TabbedPanel.SelectedIndex == 0)
                 {
+                    //Switched to first
                     RemoveButton.Visibility = Visibility.Hidden;
                     AddButton.Visibility = Visibility.Visible;
+                }
+                else if (TabbedPanel.SelectedIndex == 1)
+                {
+                    //Switched to second
+                    AddButton.Visibility = Visibility.Hidden;
+                    RemoveButton.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     AddButton.Visibility = Visibility.Hidden;
-                    RemoveButton.Visibility = Visibility.Visible;
+                    RemoveButton.Visibility = Visibility.Hidden;
                 }
+
             }
         }
     }

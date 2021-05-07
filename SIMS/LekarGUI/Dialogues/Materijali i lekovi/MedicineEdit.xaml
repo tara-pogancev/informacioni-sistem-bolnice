@@ -71,6 +71,20 @@
                 
             </TabItem>
 
+            <TabItem Header="Zamena">
+
+                <Grid Background="#3c4253">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                        <Label Content="Odaberite zamenski lek" Style="{StaticResource DefaultLabel}" HorizontalAlignment="Center"/>
+                        <Label Content="Trenutna zanema: Fervex" Name="CurrentSubstitute" Style="{StaticResource DefaultLabelS}" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                        <ComboBox Name="SubstitutionMedicine" ItemsSource="{Binding MedicineSubstitutionList}" DisplayMemberPath="MedicineName"/>
+
+                    </StackPanel>                    
+                </Grid>
+                
+            </TabItem>
+
         </TabControl>
 
         <Button Grid.Row="3" Content="Dodaj" Click="AddElements" Name="AddButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"
