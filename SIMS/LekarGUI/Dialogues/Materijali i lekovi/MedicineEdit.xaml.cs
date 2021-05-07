@@ -21,6 +21,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     public partial class MedicineEdit : Window
     {
         private Lek medicine;
+
         public ObservableCollection<AlergenDTO> NewComponentsView { get; set; }
         public ObservableCollection<AlergenDTO> CurrentComponentsView { get; set; }
 

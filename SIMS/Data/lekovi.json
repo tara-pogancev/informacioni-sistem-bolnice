@@ -21,8 +21,9 @@
     "MedicineID": "l3",
     "MedicineName": "Prilenap",
     "Components": [
-      "a4",
-      "a11"
+      "a11",
+      "a6",
+      "a10"
     ],
     "ApprovalStatus": 0
   },
@@ -30,11 +31,11 @@
     "MedicineID": "l4",
     "MedicineName": "Vivace",
     "Components": [
-      "a3",
       "a2",
-      "a6",
+      "a3",
+      "a4",
       "a8",
-      "a12"
+      "a9"
     ],
     "ApprovalStatus": 0
   },

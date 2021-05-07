@@ -23,6 +23,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         public MedicinePreview(Lek medicine)
         {
             InitializeComponent();
+            medicine = LekStorage.Instance.Read(medicine.MedicineID);
 
             this.medicine = medicine;
 
