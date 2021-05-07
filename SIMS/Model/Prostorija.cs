@@ -12,9 +12,10 @@ namespace Model
     public class Prostorija
     {
         private string broj;
-        private bool dostupna;
         private TipProstorije tipProstorije;
         private bool serijalizuj;
+        public DateTime? pocetakRenoviranja { get; set; }
+        public DateTime? krajRenoviranja { get; set; }
         public Dictionary<string, int> kolicineOpreme
         {
             get; set;
@@ -25,25 +26,22 @@ namespace Model
         {
             kolicineOpreme = new Dictionary<string, int>();
             this.broj = "";
-            this.dostupna = false;
             this.tipProstorije = TipProstorije.bolesnicka;
             serijalizuj = true;
         }
 
-        public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije)
+        public Prostorija(string broj, TipProstorije tipProstorije)
         {
             kolicineOpreme = new Dictionary<string, int>();
             this.broj = broj;
-            this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
             serijalizuj = true;
         }
 
-        public Prostorija(string broj, bool dostupna, TipProstorije tipProstorije, Dictionary<string, int> kolicineOpreme)
+        public Prostorija(string broj, TipProstorije tipProstorije, Dictionary<string, int> kolicineOpreme)
         {
             kolicineOpreme = new Dictionary<string, int>();
             this.broj = broj;
-            this.dostupna = dostupna;
             this.tipProstorije = tipProstorije;
             this.kolicineOpreme = kolicineOpreme;
             serijalizuj = true;
@@ -55,7 +53,7 @@ namespace Model
         {
             get
             {
-                return Conversion.DostupnostProstorijeToString(dostupna);
+                return Conversion.DostupnostProstorijeToString(Dostupna);
             }
         }
 
@@ -70,7 +68,20 @@ namespace Model
 
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
         public string Broj { get => broj; set => broj = value; }
-        public bool Dostupna { get => dostupna; set => dostupna = value; }
+        public bool Dostupna {
+            get
+            {
+                bool renoviranjeUToku = false;
+                if (pocetakRenoviranja != null && krajRenoviranja != null)
+                {
+                    renoviranjeUToku = pocetakRenoviranja < DateTime.Now && krajRenoviranja > DateTime.Now;
+                }
+                return !renoviranjeUToku;
+            }
+        }
+        
+        
+        
         [JsonIgnore]
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
@@ -78,7 +89,7 @@ namespace Model
         {
             return serijalizuj;
         }
-       
+
         public bool ShouldSerializeTipProstorije()
         {
             return serijalizuj;
@@ -88,6 +99,6 @@ namespace Model
         {
             return serijalizuj;
         }
-        
+
     }
 }

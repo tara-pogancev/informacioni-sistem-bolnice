@@ -1,11 +1,15 @@
 {
   "1": {
+    "pocetakRenoviranja": null,
+    "krajRenoviranja": null,
     "kolicineOpreme": {},
     "TipProstorije": 0,
     "Broj": "1",
     "Dostupna": true
   },
   "2": {
+    "pocetakRenoviranja": "0001-01-01T00:00:00",
+    "krajRenoviranja": "0001-01-01T00:00:00",
     "kolicineOpreme": {},
     "TipProstorije": 2,
     "Broj": "2",

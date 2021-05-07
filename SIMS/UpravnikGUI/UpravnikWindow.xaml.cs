@@ -74,6 +74,19 @@ namespace SIMS.UpravnikGUI
         {
 
         }
+
+        private void Lekovi_Click(object sender, RoutedEventArgs e)
+        {
+            SetContent(new LekoviPage());
+            SetLabel("Lekovi");
+        }
+
+        private void Alergeni_Click(object sender, RoutedEventArgs e)
+        {
+            SetContent(new AlergeniPage());
+            SetLabel("Alergeni");
+        }
+        
     }
 
 }

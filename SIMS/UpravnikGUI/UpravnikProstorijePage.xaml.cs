@@ -60,18 +60,32 @@ namespace SIMS.UpravnikGUI
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
             ObservableCollection<Prostorija> filtered = new ObservableCollection<Prostorija>();
+            var keywords = SearchBox.Text.Split(" ");
 
             foreach (Prostorija prostorija in prostorije)
             {
-                if (prostorija.Broj.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.DostupnaToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.TipProstorijeToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                foreach (string keyword in keywords)
                 {
-                    filtered.Add(prostorija);
+                    if (!prostorija.Broj.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
+                        !prostorija.DostupnaToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
+                        !prostorija.TipProstorijeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        goto NEXT_PROSTORIJA;
+                    }
                 }
+                filtered.Add(prostorija);
+            NEXT_PROSTORIJA:;
             }
 
+
             tabelaProstorije.ItemsSource = filtered;
+        }
+
+        private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)
+        {
+            Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
+            UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Broj));
+            UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Broj);
         }
     }
 }

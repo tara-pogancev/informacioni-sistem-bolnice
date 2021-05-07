@@ -35,6 +35,8 @@
                         <Button Content="Inventar" Width="130" Height="35" Background="#323D52"  Click ="Inventar_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Prostorije" Width="130" Height="35" Background="#323D52"  Click ="Prostorije_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Usluge" Width="130" Height="35" Background="#323D52"  Click ="Usluge_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Lekovi" Width="130" Height="35" Background="#323D52"  Click ="Lekovi_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Alergeni" Width="130" Height="35" Background="#323D52"  Click ="Alergeni_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Nalog" Width="130" Height="35" Background="#323D52"  Click ="Nalog_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Tutorijal" Width="130" Height="35" Background="#323D52"  Click ="Tutorijal_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                     </StackPanel>

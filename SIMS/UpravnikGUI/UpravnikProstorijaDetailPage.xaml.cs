@@ -22,11 +22,9 @@ namespace SIMS.UpravnikGUI
     {
         Prostorija prostorija;
         UpravnikInventarProstorijePage Inventar;
-        bool isNew;
 
         public UpravnikProstorijaDetailPage(string broj) //izmena postojece prostorije
         {
-            isNew = false;
             prostorija = ProstorijaStorage.Instance.Read(broj);
             Inventar = new UpravnikInventarProstorijePage(prostorija, this);
             InitializeComponent();
@@ -39,20 +37,32 @@ namespace SIMS.UpravnikGUI
             DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
             DostupnostCombo.SelectedItem = prostorija.DostupnaToString;
 
+            PocetakRenoviranjaText.Text = prostorija.pocetakRenoviranja.ToString();
+            KrajRenoviranjaText.Text = prostorija.krajRenoviranja.ToString();
+
+
+            DostupnostCombo.IsEnabled = false;
             BrojText.IsEnabled = false;
+            PocetakRenoviranjaText.IsEnabled = false;
+            KrajRenoviranjaText.IsEnabled = false;
+
+
         }
 
         public UpravnikProstorijaDetailPage() //nova prostorija
         {
-            isNew = true;
             prostorija = new Prostorija();
             InitializeComponent();
 
             TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
             DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
 
-            InventarButton.Visibility = Visibility.Hidden; 
+            DostupnostCombo.IsEnabled = false;
+            InventarButton.Visibility = Visibility.Hidden;
             InventarButton.IsEnabled = false;
+
+            PocetakRenoviranjaText.IsEnabled = false;
+            KrajRenoviranjaText.IsEnabled = false;
 
         }
 
@@ -71,25 +81,11 @@ namespace SIMS.UpravnikGUI
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             prostorija.Broj = BrojText.Text;
-            prostorija.Dostupna = Conversion.StringToDostupnostProstorije(DostupnostCombo.Text);
             prostorija.TipProstorije = Conversion.StringToTipProstorije(TipCombo.Text);
 
-            if (isNew)
-            {
-                if (ProstorijaStorage.Instance.Create(prostorija))
-                {
-                    UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
-                    UpravnikWindow.Instance.SetLabel("Prostorije");
-                }
-            }
-            else
-            {
-                if (ProstorijaStorage.Instance.Update(prostorija))
-                {
-                    UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
-                    UpravnikWindow.Instance.SetLabel("Prostorije");
-                }
-            }
+            ProstorijaStorage.Instance.CreateOrUpdate(prostorija);
+            UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
+            UpravnikWindow.Instance.SetLabel("Prostorije");
         }
     }
 }

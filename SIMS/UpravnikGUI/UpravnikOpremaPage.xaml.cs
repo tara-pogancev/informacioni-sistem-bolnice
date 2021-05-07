@@ -63,14 +63,22 @@ namespace SIMS.UpravnikGUI
         {
             ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
 
+            var keywords = SearchBox.Text.Split(" ");
+
             foreach (Oprema oprema in opreme)
             {
-                if (oprema.Id.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                foreach (string keyword in keywords)
                 {
-                    filtered.Add(oprema);
+                    if (!oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
+                    !oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
+                    !oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        goto NEXT_OPREMA;
+                    }
                 }
+                filtered.Add(oprema);
+
+            NEXT_OPREMA:;
             }
 
             tabelaOpreme.ItemsSource = filtered;

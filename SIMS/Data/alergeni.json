@@ -1,7 +1,7 @@
 {
   "a1": {
     "ID": "a1",
-    "Naziv": "Polen"
+    "Naziv": "Polena"
   },
   "a2": {
     "ID": "a2",
@@ -17,7 +17,7 @@
   },
   "a5": {
     "ID": "a5",
-    "Naziv": "Prašina"
+    "Naziv": "Praï¿½ina"
   },
   "a6": {
     "ID": "a6",
@@ -46,5 +46,9 @@
   "a12": {
     "ID": "a12",
     "Naziv": "Magnezijum-stearat"
+  },
+  "123": {
+    "ID": "123",
+    "Naziv": "asfas"
   }
 }

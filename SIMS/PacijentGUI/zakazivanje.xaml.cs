@@ -66,7 +66,7 @@ namespace SIMS.PacijentGUI
             termin.InicijalnoVrijeme = vremenskaOdrednica;
             termin.VremeTrajanja = 30;
             termin.Pacijent = pacijent;
-            termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
+            termin.Prostorija = new Prostorija("1",TipProstorije.zaPreglede);
             MessageBox.Show("Termin je uspjesno zakazan");
             termin.Lekar.Serijalizuj = false;
             termin.Pacijent.Serijalizuj = false;

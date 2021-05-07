@@ -16,15 +16,22 @@
                 <TextBox x:Name="BrojText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
             </Grid>
             <Grid>
-                <Label Content="Dostupnost" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
-                <ComboBox Name="DostupnostCombo"  Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" >
-                    
-                </ComboBox>
-            </Grid>
-            <Grid>
                 <Label Content="Tip" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
                 <ComboBox Name="TipCombo"  Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" />
             </Grid>
+            <Grid>
+                <Label Content="Dostupnost" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <ComboBox Name="DostupnostCombo"  Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" />
+            </Grid>
+            <Grid>
+                <Label x:Name="PocetakRenoviranjaLabel" Content="Početak renoviranja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <TextBox x:Name="PocetakRenoviranjaText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
+            </Grid>
+            <Grid>
+                <Label x:Name="KrajRenoviranjaLabel" Content="Kraj renoviranja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <TextBox x:Name="KrajRenoviranjaText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
+            </Grid>
+
             <Button x:Name="InventarButton" Content="Inventar ove prostorije"  Margin="20,20" Width="200" Height="35" Background="#191E29" Click="InventarProstorije_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
