@@ -12,18 +12,20 @@ namespace Model
         public string MedicineName { get; set; }
         public List<string> Components { get; set; }
         public MedicineApprovalStatus ApprovalStatus { get; set; }
+        public String IDSubstitution { get; set; }
 
         public Lek()
         {
             ApprovalStatus = MedicineApprovalStatus.Waiting;
         }
 
-        public Lek(string iD, string naziv, List<string> components)
+        public Lek(string iD, string naziv, List<string> components, String idSubstitution)
         {
             MedicineID = iD;
             MedicineName = naziv;
             Components = components;
             ApprovalStatus = MedicineApprovalStatus.Waiting;
+            IDSubstitution = idSubstitution;
         }
 
         public String getComponentsList()
@@ -49,9 +51,7 @@ namespace Model
                 else return "Prihvaćen";
             }
         }
-    }
-
-   
+    }     
 
     public enum MedicineApprovalStatus
     {

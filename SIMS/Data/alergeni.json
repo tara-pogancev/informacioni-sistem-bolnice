@@ -37,7 +37,7 @@
   },
   "a10": {
     "ID": "a10",
-    "Naziv": "Sicilijum-dioksid"
+    "Naziv": "Silicijum-dioksid"
   },
   "a11": {
     "ID": "a11",
@@ -46,5 +46,22 @@
   "a12": {
     "ID": "a12",
     "Naziv": "Magnezijum-stearat"
+  },
+  "a13": {
+    "ID": "a13",
+    "Naziv": "Gestoden"
+  },
+  "a14": {
+    "ID": "a14",
+    "Naziv": "Etinilestradiol"
+  },
+  "a15": {
+    "ID": "a15",
+    "Naziv": "Skrob"
+  },
+  "a16": {
+    "ID": "a16",
+    "Naziv": "Povidon 90"
   }
+
 }

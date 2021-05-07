@@ -6,7 +6,8 @@
       "a3",
       "a5"
     ],
-    "ApprovalStatus": 2
+    "ApprovalStatus": 2,
+    "IDSubstitution": "l4"
   },
   "l2": {
     "MedicineID": "l2",
@@ -15,7 +16,8 @@
       "a6",
       "a1"
     ],
-    "ApprovalStatus": 0
+    "ApprovalStatus": 0,
+    "IDSubstitution": "l6"
   },
   "l3": {
     "MedicineID": "l3",
@@ -25,7 +27,8 @@
       "a6",
       "a10"
     ],
-    "ApprovalStatus": 0
+    "ApprovalStatus": 0,
+    "IDSubstitution": "l2"
   },
   "l4": {
     "MedicineID": "l4",
@@ -37,7 +40,8 @@
       "a8",
       "a9"
     ],
-    "ApprovalStatus": 0
+    "ApprovalStatus": 0,
+    "IDSubstitution": "l1"
   },
   "l5": {
     "MedicineID": "l5",
@@ -45,7 +49,8 @@
     "Components": [
       "a2"
     ],
-    "ApprovalStatus": 0
+    "ApprovalStatus": 0,
+    "IDSubstitution": "l3"
   },
   "l6": {
     "MedicineID": "l6",
@@ -54,6 +59,7 @@
       "a9",
       "a10"
     ],
-    "ApprovalStatus": 0
+    "ApprovalStatus": 0,
+    "IDSubstitution": "l2"
   }
 }

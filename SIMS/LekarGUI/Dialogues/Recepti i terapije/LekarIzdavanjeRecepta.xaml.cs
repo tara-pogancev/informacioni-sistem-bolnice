@@ -42,7 +42,7 @@ namespace SIMS.LekarGUI
             else if (pacijent.IsAlergic((Lek)LekComboBox.SelectedItem))
             {
                 Lek l = (Lek)LekComboBox.SelectedItem;
-                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
+                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ". Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     this.PrepisiRecept();
@@ -54,6 +54,11 @@ namespace SIMS.LekarGUI
                 this.PrepisiRecept();
             } 
                 
+        }
+
+        private String GetSubstitutionName(Lek medicine)
+        {
+            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         private void PrepisiRecept()

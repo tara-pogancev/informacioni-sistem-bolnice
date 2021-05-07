@@ -368,6 +368,26 @@
     "Target": [
       "12645323206"
     ],
-    "VremeString": "00:55"
+    "VremeString": "07.05.2021."
+  },
+  "Recept210508002802": {
+    "Autor": "Recept",
+    "Vreme": "2021-05-08T00:28:02.6935583+02:00",
+    "Tekst": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210508002802",
+    "Target": [
+      "12645323206"
+    ],
+    "VremeString": "00:28"
+  },
+  "Recept210508002836": {
+    "Autor": "Recept",
+    "Vreme": "2021-05-08T00:28:36.0599339+02:00",
+    "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210508002836",
+    "Target": [
+      "4484552102"
+    ],
+    "VremeString": "00:28"
   }
 }
