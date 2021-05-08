@@ -36,6 +36,7 @@ namespace Model
 
         public UlogovanKorisnik()
         {
+            this.Serijalizuj = true;
         }
 
         public String Ime
@@ -66,7 +67,7 @@ namespace Model
             }
         }
 
-        [JsonIgnore]
+        
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
         public bool ShouldSerializePrezime()

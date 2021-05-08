@@ -65,7 +65,7 @@ namespace Model
                 return Conversion.TipProstorijeToString(tipProstorije);
             }
         }
-
+        
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
         public string Broj { get => broj; set => broj = value; }
         public bool Dostupna {
@@ -82,7 +82,7 @@ namespace Model
         
         
         
-        [JsonIgnore]
+        
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
         public bool ShouldSerializeDostupna()
@@ -96,6 +96,16 @@ namespace Model
         }
 
         public bool ShouldSerializekolicineOpreme()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializepocetakRenoviranja()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializekrajRenoviranja()
         {
             return serijalizuj;
         }

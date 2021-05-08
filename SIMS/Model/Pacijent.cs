@@ -226,7 +226,7 @@ namespace Model
                 krvna_grupa = value;
             }
         }
-
+        [JsonIgnore]
         public bool BanovanKorisnik { get => banovanKorisnik; set => banovanKorisnik = value; }
 
         public bool ShouldSerializeKrvna_Grupa()

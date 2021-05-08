@@ -22,7 +22,6 @@ namespace SIMS.PacijentGUI
     {
         Pacijent pacijent;
         private List<Lekar> lekari;
-        private ObservableCollection<String> dostupni;
         private  ObservableCollection<String> dostupniTermini;
         private Termin termin;
         Boolean doktorSelektovan;
