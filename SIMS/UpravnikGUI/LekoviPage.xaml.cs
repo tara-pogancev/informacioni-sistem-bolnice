@@ -37,14 +37,8 @@ namespace SIMS.UpravnikGUI
         {
             Lek SelectedLek = tabelaLekovi.SelectedItem as Lek;
             LekStorage.Instance.Delete(SelectedLek.MedicineID);
-            foreach (Lek Lek in lekovi)
-            {
-                if (Lek.MedicineID == SelectedLek.MedicineID)
-                {
-                    lekovi.Remove(Lek);
-                    return;
-                }
-            }
+            lekovi = new ObservableCollection<Lek>(LekStorage.Instance.ReadList());
+            tabelaLekovi.ItemsSource = lekovi;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)

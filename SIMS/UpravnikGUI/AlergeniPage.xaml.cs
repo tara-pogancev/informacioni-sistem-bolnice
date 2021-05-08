@@ -37,14 +37,8 @@ namespace SIMS.UpravnikGUI
         {
             Alergen SelectedAlergen = tabelaAlergeni.SelectedItem as Alergen;
             AlergeniStorage.Instance.Delete(SelectedAlergen.ID);
-            foreach (Alergen alergen in alergeni)
-            {
-                if (alergen.ID == SelectedAlergen.ID)
-                {
-                    alergeni.Remove(alergen);
-                    return;
-                }
-            }
+            alergeni = new ObservableCollection<Alergen>(AlergeniStorage.Instance.ReadList());
+            tabelaAlergeni.ItemsSource = alergeni;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
@@ -52,6 +46,7 @@ namespace SIMS.UpravnikGUI
             Alergen SelectedAlergen = tabelaAlergeni.SelectedItem as Alergen;
             if (SelectedAlergen == null)
             {
+                MessageBox.Show("Izabrati alergen.");
                 return;
             }
             UpravnikWindow.Instance.SetContent(new AlergeniDetailPage(SelectedAlergen.ID));

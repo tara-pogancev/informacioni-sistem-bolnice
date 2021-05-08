@@ -25,6 +25,10 @@ namespace SIMS.Daemon.PremestajOpreme
 
         public void Execute()
         {
+            if (SrcID == DstID)
+            {
+                return;
+            }
 
             ProsInv src = ProsInvStorage.Instance.ReadNoConsistifying(SrcID, OpremaID);
             ProsInv dst = ProsInvStorage.Instance.ReadNoConsistifying(DstID, OpremaID);

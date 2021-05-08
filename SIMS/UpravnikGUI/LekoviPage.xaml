@@ -7,14 +7,46 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Lekovi">
+    <Page.Resources>
 
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+
+    </Page.Resources>
     <Grid Background="#323D52">
         <StackPanel>
-            <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp"/>
+            <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" Height="26" FontFamily="Candara" FontSize="18" Foreground="White" FontWeight="Bold">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="Pretraga..." Foreground="#323D52" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="#323D52" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+
+            </TextBox>
             <DataGrid x:Name="tabelaLekovi" Margin="20, 20"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding MedicineID}"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MedicineID}" Width="70"/>
                     <DataGridTextColumn Header="Naziv" Binding="{Binding MedicineName}"/>
                 </DataGrid.Columns>
             </DataGrid>

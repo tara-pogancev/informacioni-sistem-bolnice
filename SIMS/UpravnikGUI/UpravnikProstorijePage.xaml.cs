@@ -37,14 +37,8 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
             ProstorijaStorage.Instance.Delete(SelectedProstorija.Broj);
-            foreach(Prostorija prostorija in prostorije)
-            {
-                if (prostorija.Broj == SelectedProstorija.Broj)
-                {
-                    prostorije.Remove(prostorija);
-                    return;
-                }
-            }
+            prostorije = new ObservableCollection<Prostorija>(ProstorijaStorage.Instance.ReadList());
+            tabelaProstorije.ItemsSource = prostorije;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
@@ -52,6 +46,7 @@ namespace SIMS.UpravnikGUI
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
             if (SelectedProstorija == null)
             {
+                MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(SelectedProstorija.Broj));
@@ -68,6 +63,7 @@ namespace SIMS.UpravnikGUI
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
             if (SelectedProstorija == null)
             {
+                MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
             UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Broj));

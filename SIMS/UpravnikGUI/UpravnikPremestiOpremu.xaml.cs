@@ -54,6 +54,8 @@ namespace SIMS.UpravnikGUI
             } 
             catch (Exception)
             {
+                MessageBox.Show("Uneti broj kao količinu.");
+                Kolicina.Text = "";
                 return;
             }
 
@@ -68,9 +70,7 @@ namespace SIMS.UpravnikGUI
                 timeOfExecution = (DateTime)DatumPicker.SelectedDate;
             }
 
-
-            PremestajOpremeCommand command = new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, delta);
-            PremestajOpremeQueue.Instance.PushCommand(command);
+            PremestajOpremeQueue.Instance.PushCommand(new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, delta));
 
             ParentPage.Update();
 

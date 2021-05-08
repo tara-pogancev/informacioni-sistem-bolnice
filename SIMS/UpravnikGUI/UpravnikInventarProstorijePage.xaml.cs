@@ -27,11 +27,11 @@ namespace SIMS.UpravnikGUI
             Prostorija = prostorija;
             ParentPage = parent;
             SvaOprema = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
-            InitializeComponent();
             foreach (Oprema op in SvaOprema)
             {
                 op.BrojProstorije = Prostorija.Broj;
             }
+            InitializeComponent();
             tabelaInventara.ItemsSource = SvaOprema;
         }
 
@@ -72,16 +72,28 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
+            foreach (Oprema op in SvaOprema)
+            {
+                op.BrojProstorije = Prostorija.Broj;
+            }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            foreach (Oprema op in SvaOprema)
+            {
+                op.BrojProstorije = Prostorija.Broj;
+            }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            foreach (Oprema op in SvaOprema)
+            {
+                op.BrojProstorije = Prostorija.Broj;
+            }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
     }
