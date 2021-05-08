@@ -79,7 +79,7 @@ namespace SIMS.SekretarGUI
 
                 SendNotification(selectedApp, false);
 
-                SekretarTerminiPage.GetInstance().refreshView();
+                SekretarTerminiPage.GetInstance().RefreshView();
 
                 this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
                 MessageBox.Show("Hitna operacija uspesno zakazana!");

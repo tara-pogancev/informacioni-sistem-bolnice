@@ -1,193 +1,189 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.SekretarGUI
 {
-    /// <summary>
-    /// Interaction logic for IzmeniTerminPage.xaml
-    /// </summary>
     public partial class IzmeniTerminPage : Page
     {
-        private List<Lekar> lekari;
-        private List<Pacijent> pacijenti;
-        private List<Prostorija> prostorije;
-        private List<String> termini;
-        Termin termin;
+        private List<Lekar> _doctors;
+        private List<Pacijent> _patients;
+        private List<Prostorija> _rooms;
+        private List<string> _freeAppointments;
+        private Termin _appointment;
 
-        public IzmeniTerminPage(Termin t)
+        public IzmeniTerminPage(Termin appointment)
         {
             InitializeComponent();
-            this.termin = t;
+            _appointment = appointment;
 
-            LekarStorage storageL = new LekarStorage();
-            lekari = storageL.ReadList();
+            _doctors = LekarStorage.Instance.ReadList();
+            _patients = PacijentStorage.Instance.ReadList();
+            _rooms = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            _freeAppointments = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
-            PacijentStorage storageP = new PacijentStorage();
-            pacijenti = storageP.ReadList();
+            doctorsComboBox.ItemsSource = _doctors;
+            patientsComboBox.ItemsSource = _patients;
+            roomsComboBox.ItemsSource = _rooms;
+            appointmentsComboBox.ItemsSource = _freeAppointments;
 
-            prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            List<string> duration = new List<string>() { "30 minuta", "60 minuta", "90 minuta" };
+            durationComboBox.ItemsSource = duration;
 
-            doktoriCombo.ItemsSource = lekari;
-            pacijentiCombo.ItemsSource = pacijenti;
-            prostorijeCombo.ItemsSource = prostorije;
-
-            this.setValues();
-
-            List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
-            trajanjeLista.ItemsSource = trajanjeVrednosti;
-
+            SetValuesForSelectedAppointment();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddExamination_Click(object sender, RoutedEventArgs e)
         {
-            //Izmena pregleda
-            //TODO: Odraditi sve provere
-
-            if (doktoriCombo.SelectedItem == null || datePicker1.SelectedDate == null || terminiLista.SelectedItem == null)
+            if (doctorsComboBox.SelectedItem == null || datePicker.SelectedDate == null || appointmentsComboBox.SelectedItem == null)
+            {
                 MessageBox.Show("Molimo popunite sva polja!");
-            else
+                return;
+            }
+
+            UpdateAppointmentFromUserInput();
+            if (IsAppointmentValid())
             {
-                String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
-                DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-                termin.PocetnoVreme = vremenskaOdrednica;
+                TerminStorage.Instance.Update(_appointment);
+                SekretarTerminiPage.GetInstance().RefreshView();
 
-                if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = 30;
-                else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = 60;
-                else
-                    termin.VremeTrajanja = 90;
-
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
-
-
-                List<Termin> listaTermmina = TerminStorage.Instance.ReadList();
-                foreach (Termin t in listaTermmina)
-                {
-                    if (t.PocetnoVreme.Day == termin.PocetnoVreme.Day && t.PocetnoVreme.Month == termin.PocetnoVreme.Month && t.PocetnoVreme.Year == termin.PocetnoVreme.Year && t.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, t.VremeTrajanja, 0)) > termin.PocetnoVreme.TimeOfDay && t.PocetnoVreme.TimeOfDay < termin.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, termin.VremeTrajanja, 0)) && !t.TerminKey.Equals(termin.TerminKey))
-                    {
-                        if (t.Lekar.Jmbg.Equals(termin.Lekar.Jmbg))
-                        {
-                            MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
-                            return;
-                        }
-                        else if (t.NazivProstorije.Equals(termin.NazivProstorije))
-                        {
-                            MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
-                            return;
-                        }
-
-                    }
-                }
-
-                TerminStorage.Instance.Update(termin);
-
-                SekretarTerminiPage.GetInstance().refresh();
-
-                this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+                NavigationService.Navigate(SekretarTerminiPage.GetInstance());
             }
         }
 
-        private void setValues()
+        private void UpdateAppointmentFromUserInput()
         {
-            termini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-            terminiLista.ItemsSource = termini;
+            string dateAndTime = datePicker.Text + " " + appointmentsComboBox.Text;
+            DateTime appointmentDateAndTime = DateTime.Parse(dateAndTime);
+            _appointment.PocetnoVreme = appointmentDateAndTime;
+            _appointment.InicijalnoVrijeme = _appointment.PocetnoVreme;
 
-            datePicker1.DisplayDate = termin.PocetnoVreme;
-            datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
-
-
-            if (termin.VremeTrajanja == 30)
-                trajanjeLista.SelectedIndex = 0;
-            else if (termin.VremeTrajanja == 60)
-                trajanjeLista.SelectedIndex = 1;
+            if (durationComboBox.SelectedIndex == 0)
+                _appointment.VremeTrajanja = 30;
+            else if (durationComboBox.SelectedIndex == 1)
+                _appointment.VremeTrajanja = 60;
             else
-                trajanjeLista.SelectedIndex = 2;
+                _appointment.VremeTrajanja = 90;
 
+            _appointment.Prostorija = _rooms[roomsComboBox.SelectedIndex];
+            _appointment.Pacijent = _patients[patientsComboBox.SelectedIndex];
+            _appointment.Lekar = _doctors[doctorsComboBox.SelectedIndex];
+        }
+
+        private bool IsAppointmentValid()
+        {
+            List<Termin> appointments = TerminStorage.Instance.ReadList();
+            foreach (Termin a in appointments)
+            {
+                if (a.KrajnjeVreme > _appointment.PocetnoVreme && a.PocetnoVreme < _appointment.KrajnjeVreme && !a.TerminKey.Equals(_appointment.TerminKey))
+                {
+                    if (a.Lekar.Jmbg.Equals(_appointment.Lekar.Jmbg))
+                    {
+                        MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
+                        return false;
+                    }
+                    else if (a.NazivProstorije.Equals(_appointment.NazivProstorije))
+                    {
+                        MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private void SetValuesForSelectedAppointment()
+        {
+            SetDatePickerValue();
+
+            SetDurateionValue();
+
+            SetDoctorValue();
+
+            SetAppointmentValue();
+
+            SetPatientValue();
+
+            SetRoomValue();
+        }
+
+        private void SetDatePickerValue()
+        {
+            datePicker.DisplayDate = _appointment.PocetnoVreme;
+            datePicker.Text = _appointment.PocetnoVreme.ToString("dd.MM.yyyy.");
+        }
+
+        private void SetDurateionValue()
+        {
+            if (_appointment.VremeTrajanja == 30)
+                durationComboBox.SelectedIndex = 0;
+            else if (_appointment.VremeTrajanja == 60)
+                durationComboBox.SelectedIndex = 1;
+            else
+                durationComboBox.SelectedIndex = 2;
+        }
+
+        private void SetRoomValue()
+        {
             int index = 0;
-            foreach (Lekar l in lekari)
+            foreach (Prostorija r in _rooms)
             {
-                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
+                if (r.Broj.Equals(_appointment.Prostorija.Broj))
                 {
                     break;
                 }
                 index++;
             }
-            doktoriCombo.SelectedIndex = index;
-
-            index = 0;
-            foreach (String str in termini)
-            {
-                if (str.Equals(termin.Vrijeme))
-                {
-                    break;
-                }
-                index++;
-            }
-            terminiLista.SelectedIndex = index;
-
-            index = 0;
-            foreach (Pacijent p in pacijenti)
-            {
-                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
-                {
-                    break;
-                }
-                index++;
-            }
-            pacijentiCombo.SelectedIndex = index;
-
-            index = 0;
-            foreach (Prostorija pr in prostorije)
-            {
-                if (pr.Broj.Equals(termin.Prostorija.Broj))
-                {
-                    break;
-                }
-                index++;
-            }
-            prostorijeCombo.SelectedIndex = index;
-
+            roomsComboBox.SelectedIndex = index;
         }
 
-        private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void SetPatientValue()
         {
-            /*
-            if (doktoriCombo.SelectedIndex != -1)
+            int index = 0;
+            foreach (Pacijent p in _patients)
             {
-                Lekar lek = lekari[doktoriCombo.SelectedIndex];
-                termini = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
-                foreach (Termin ter in new TerminStorage().ReadList())
+                if (p.Jmbg.Equals(_appointment.Pacijent.Jmbg))
                 {
-                    if (termin.LekarKey.Equals(lek.Jmbg))
-                    {
-                        if (datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
-                            termini.Remove(ter.Vrijeme);
-                    }
+                    break;
                 }
-            
-                terminiLista.ItemsSource = termini;
-            
+                index++;
             }
-            */
+            patientsComboBox.SelectedIndex = index;
         }
 
-        private void Button_Odustani(object sender, RoutedEventArgs e)
+        private void SetAppointmentValue()
         {
-            this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+            int index = 0;
+            foreach (String a in _freeAppointments)
+            {
+                if (a.Equals(_appointment.Vrijeme))
+                {
+                    break;
+                }
+                index++;
+            }
+            appointmentsComboBox.SelectedIndex = index;
+        }
+
+        private void SetDoctorValue()
+        {
+            int index = 0;
+            foreach (Lekar d in _doctors)
+            {
+                if (d.Jmbg.Equals(_appointment.Lekar.Jmbg))
+                {
+                    break;
+                }
+                index++;
+            }
+            doctorsComboBox.SelectedIndex = index;
+        }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(SekretarTerminiPage.GetInstance());
         }
     }
 }

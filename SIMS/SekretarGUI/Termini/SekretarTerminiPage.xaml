@@ -20,7 +20,7 @@
     <Grid>
         <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">
 
-            <DataGrid x:Name="tabelaTermina" ItemsSource="{Binding terminiView}" IsReadOnly="True" 
+            <DataGrid x:Name="appointmentsTable" ItemsSource="{Binding terminiView}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
@@ -50,7 +50,7 @@
             <Grid Grid.Column="0">
 
                 <Button Content=" Zakazi &#xa;pregled"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Pregled">
+                            FontSize="14" Click="AddExamination_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -84,7 +84,7 @@
             <Grid Grid.Column="1">
 
                 <Button Content="   Zakazi &#xa; operaciju"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Operacija">
+                            FontSize="14" Click="AddOperation_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -118,7 +118,7 @@
             <Grid Grid.Column="2">
 
                 <Button Content="  Hitan &#xa;pregled"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Hitan_Pregled">
+                            FontSize="14" Click="AddUrgentExamination_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -152,7 +152,7 @@
             <Grid Grid.Column="3">
 
                 <Button Content="   Hitna &#xa;operacija"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Hitna_Operacija">
+                            FontSize="14" Click="AddUrgentOperation_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -186,7 +186,7 @@
             <Grid Grid.Column="4">
 
                 <Button Content=" Izmeni &#xa; termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Izmeni">
+                            FontSize="14" Click="UpdateAppointment_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -220,7 +220,7 @@
             <Grid Grid.Column="5">
 
                 <Button Content=" Otkazi &#xa; termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Button_Obrisi">
+                            FontSize="14" Click="DeleteAppointment_Click">
 
                     <Button.Style>
                         <Style TargetType="Button">

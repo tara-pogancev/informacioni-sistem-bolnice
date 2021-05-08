@@ -1,35 +1,21 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.SekretarGUI
 {
-    /// <summary>
-    /// Interaction logic for SekretarTerminiPage.xaml
-    /// </summary>
     public partial class SekretarTerminiPage : Page
     {
-        public static SekretarTerminiPage instance = null;
+        private static SekretarTerminiPage _instance = null;
 
-        private ObservableCollection<Termin> terminiView;
-        public ObservableCollection<Termin> TerminiView { get => terminiView; set => terminiView = value; }
+        private ObservableCollection<Termin> _appointmentsForView;
 
         public static SekretarTerminiPage GetInstance()
         {
-            if (instance == null)
-                instance = new SekretarTerminiPage();
-            return instance;
+            if (_instance == null)
+                _instance = new SekretarTerminiPage();
+            return _instance;
         }
 
         public SekretarTerminiPage()
@@ -37,107 +23,94 @@ namespace SIMS.SekretarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            //DobaviPodatkeOPacijentuILekaru(terminiView);
-            tabelaTermina.ItemsSource = terminiView;
-            refreshView();
+            _appointmentsForView = new ObservableCollection<Termin>();
+            appointmentsTable.ItemsSource = _appointmentsForView;
+            RefreshView();
         }
 
-        public void refreshView()
+        public void RefreshView()
         {
-            terminiView.Clear();
-            ObservableCollection<Termin> temp = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            DobaviPodatkeOPacijentuILekaru(temp);
-            SortirajListuTermina(temp);
-            foreach (Termin t in temp)
+            _appointmentsForView.Clear();
+            ObservableCollection<Termin> appointments = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            GetPatientAndDoctorData(appointments);
+            SortAppointments(appointments);
+            foreach (Termin appointment in appointments)
             {
-                terminiView.Add(t);
+                _appointmentsForView.Add(appointment);
             }
         }
 
-        private void Button_Pregled(object sender, RoutedEventArgs e)
+        private void AddExamination_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new DodajPregledPage());
         }
 
-        private void Button_Operacija(object sender, RoutedEventArgs e)
+        private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new DodajOperacijuPage());
         }
 
-        private void Button_Izmeni(object sender, RoutedEventArgs e)
+        private void UpdateAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (tabelaTermina.SelectedItem != null)
+            if (appointmentsTable.SelectedItem != null)
             {
-                this.NavigationService.Navigate(new IzmeniTerminPage((Termin)tabelaTermina.SelectedItem));
+                this.NavigationService.Navigate(new IzmeniTerminPage((Termin)appointmentsTable.SelectedItem));
             }
 
         }
 
-        private void Button_Obrisi(object sender, RoutedEventArgs e)
+        private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (tabelaTermina.SelectedItem != null)
+            if (appointmentsTable.SelectedItem != null)
             {
 
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Termin toDelete = (Termin)tabelaTermina.SelectedItem;
+                    Termin toDelete = (Termin)appointmentsTable.SelectedItem;
                     TerminStorage.Instance.Delete(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
-                    refreshView();
+                    RefreshView();
                 }
 
             }
         }
 
-        private void Button_Hitan_Pregled(object sender, RoutedEventArgs e)
+        private void AddUrgentExamination_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new HitanPregledPage());
         }
 
-        private void Button_Hitna_Operacija(object sender, RoutedEventArgs e)
+        private void AddUrgentOperation_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new HitnaOperacijaPage());
         }
 
-        public void dodajTermin(Termin termin)
-        {
-            TerminStorage.Instance.Create(termin);
-            refreshView();
-            MessageBox.Show("Termin uspešno zakazan.");
-        }
-
-        public void refresh()
-        {
-            refreshView();
-        }
-
         public void RemoveInstance()
         {
-            instance = null;
+            _instance = null;
         }
 
-        private void DobaviPodatkeOPacijentuILekaru(ObservableCollection<Termin> termini)
+        private void GetPatientAndDoctorData(ObservableCollection<Termin> appointments)
         {
-            foreach (Termin termin in termini)
+            foreach (Termin appointment in appointments)
             {
-                termin.Pacijent = PacijentStorage.Instance.Read(termin.Pacijent.Jmbg);
-                termin.Lekar = LekarStorage.Instance.Read(termin.Lekar.Jmbg);
+                appointment.Pacijent = PacijentStorage.Instance.Read(appointment.Pacijent.Jmbg);
+                appointment.Lekar = LekarStorage.Instance.Read(appointment.Lekar.Jmbg);
             }
         }
 
-        private void SortirajListuTermina(ObservableCollection<Termin> termini)
+        private void SortAppointments(ObservableCollection<Termin> appointments)
         {
-            for (int i = 0; i < termini.Count - 1; ++i)
+            for (int i = 0; i < appointments.Count - 1; ++i)
             {
-                for (int j = 0; j < termini.Count - i - 1; ++j)
+                for (int j = 0; j < appointments.Count - i - 1; ++j)
                 {
-                    if (termini[j].PocetnoVreme > termini[j+1].PocetnoVreme)
+                    if (appointments[j].PocetnoVreme > appointments[j + 1].PocetnoVreme)
                     {
-                        Termin temp = termini[j];
-                        termini[j] = termini[j+1];
-                        termini[j+1] = temp;
+                        Termin temp = appointments[j];
+                        appointments[j] = appointments[j + 1];
+                        appointments[j + 1] = temp;
                     }
                 }
             }
