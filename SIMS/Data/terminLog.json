@@ -598,5 +598,29 @@
     "DatumPromjene": "2021-05-05T20:18:56.1206287+02:00",
     "TipOperacije": 1,
     "Istekao": true
+  },
+  "2105050825174865453131083013": {
+    "TerminLogKey": "2105050825174865453131083013",
+    "TerminKey": "210505082517",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-05T20:30:13.2377141+02:00",
+    "TipOperacije": 1,
+    "Istekao": false
+  },
+  "2105070115474865453131020039": {
+    "TerminLogKey": "2105070115474865453131020039",
+    "TerminKey": "210507011547",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-07T14:00:39.5581589+02:00",
+    "TipOperacije": 1,
+    "Istekao": false
+  },
+  "210507055354121055423": {
+    "TerminLogKey": "210507055354121055423",
+    "TerminKey": "210507055354",
+    "PacijentKey": "121",
+    "DatumPromjene": "2021-05-07T17:54:23.5629892+02:00",
+    "TipOperacije": 1,
+    "Istekao": false
   }
 }

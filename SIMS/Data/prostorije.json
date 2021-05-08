@@ -10,5 +10,11 @@
     "TipProstorije": 2,
     "Broj": "2",
     "Dostupna": true
+  },
+  "3": {
+    "kolicineOpreme": {},
+    "TipProstorije": 0,
+    "Broj": "3",
+    "Dostupna": true
   }
 }

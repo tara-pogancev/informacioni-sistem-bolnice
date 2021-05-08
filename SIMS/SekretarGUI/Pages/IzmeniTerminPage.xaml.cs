@@ -174,7 +174,7 @@ namespace SIMS.SekretarGUI
                 {
                     if (termin.LekarKey.Equals(lek.Jmbg))
                     {
-                        if (datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
+                        if (OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                             termini.Remove(ter.Vrijeme);
                     }
                 }

@@ -257,6 +257,10 @@ namespace Model
         {
             return serijalizuj;
         }
+        public bool ShouldSerializeBanovanKorisnik()
+        {
+            return serijalizuj;
+        }
 
         
     }

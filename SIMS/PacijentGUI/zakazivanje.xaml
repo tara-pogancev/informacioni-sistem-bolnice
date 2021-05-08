@@ -36,6 +36,7 @@
                         materialDesign:HintAssist.Hint="Raspolozivi termini"
                         Foreground="#01C38D"
                         Width="250" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
+                        SelectionChanged="ComboBox_SelectionChanged"
                      />
 
 

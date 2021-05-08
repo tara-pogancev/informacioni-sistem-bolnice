@@ -10,7 +10,7 @@
     "GetHronicneBolestiString": "Nema",
     "Pol_Pacijenta": 0,
     "Krvna_Grupa": 0,
-    "BanovanKorisnik": true,
+    "BanovanKorisnik": false,
     "Ime": "Đorđe",
     "Prezime": "Krsmanović",
     "Jmbg": "4865453131",
@@ -69,7 +69,7 @@
     "Ime": "Miha",
     "Prezime": "Mihajlo",
     "Jmbg": "12645323206",
-    "KorisnickoIme": "mih2",
+    "KorisnickoIme": "pacijent1",
     "Lozinka": "p",
     "Email": "email.miha@gmail.com",
     "Telefon": "06250",
@@ -124,8 +124,43 @@
     "Ime": "Petar",
     "Prezime": "Petrovic",
     "Jmbg": "12121977802342",
-    "KorisnickoIme": "pera",
-    "Lozinka": "pera",
+    "KorisnickoIme": "pacijent2",
+    "Lozinka": "p",
+    "Email": "petarpetrovic@gmail.com",
+    "Telefon": "061 234567",
+    "Adresa": {
+      "grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Grad": {
+        "Naziv": "Novi Sad",
+        "PostanskiBroj": 21000,
+        "Drzava": {
+          "Naziv": "Srbija"
+        }
+      },
+      "Ulica": "Turnjegevljeva",
+      "Broj": "16"
+    }
+  },
+  "121": {
+    "Lbo": "123456",
+    "Gost": false,
+    "Alergeni": [],
+    "Datum_Rodjenja": "1977-12-12T00:00:00",
+    "GetHronicneBolestiString": "Nema",
+    "Pol_Pacijenta": 0,
+    "Krvna_Grupa": 0,
+    "BanovanKorisnik": false,
+    "Ime": "Petar",
+    "Prezime": "Petrovic",
+    "Jmbg": "121",
+    "KorisnickoIme": "pacijent3",
+    "Lozinka": "p",
     "Email": "petarpetrovic@gmail.com",
     "Telefon": "061 234567",
     "Adresa": {

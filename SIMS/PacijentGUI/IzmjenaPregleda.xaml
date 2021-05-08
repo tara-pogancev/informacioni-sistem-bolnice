@@ -36,13 +36,13 @@
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
                     <Label FontSize="20">Datum</Label>
                    
-                        <DatePicker Width="150" Height="auto" x:Name="datePicker1" FontSize="17" Margin="30,0,0,0"  SelectedDateChanged="datePicker1_SelectedDateChanged"/>
+                        <DatePicker Width="150" Height="auto" x:Name="OdabirDatuma" FontSize="17" Margin="30,0,0,0"  SelectedDateChanged="datePicker1_SelectedDateChanged"/>
                     
                     
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="20">Termin</Label>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" MaxDropDownHeight="150" >
+                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" MaxDropDownHeight="150" SelectionChanged="terminiLista_SelectionChanged" >
 
                     </ComboBox>
                 </StackPanel>

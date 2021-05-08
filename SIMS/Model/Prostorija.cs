@@ -71,7 +71,6 @@ namespace Model
         public TipProstorije TipProstorije { get => tipProstorije; set => tipProstorije = value; }
         public string Broj { get => broj; set => broj = value; }
         public bool Dostupna { get => dostupna; set => dostupna = value; }
-        [JsonIgnore]
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
         public bool ShouldSerializeDostupna()

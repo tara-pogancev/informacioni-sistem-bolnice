@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,8 @@ namespace SIMS.PacijentGUI
     {
         Pacijent pacijent;
         private List<Lekar> lekari;
-        private List<String> dostupniTermini;
+        private ObservableCollection<String> dostupni;
+        private  ObservableCollection<String> dostupniTermini;
         private Termin termin;
         Boolean doktorSelektovan;
         List<Prostorija> slobodneProstorije;
@@ -33,7 +35,7 @@ namespace SIMS.PacijentGUI
             lekari = new List<Lekar>();
             lekari = lk.ReadList();
             pacijent = PocetnaStranica.getInstance().Pacijent;
-            dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            dostupniTermini = new ObservableCollection<string> (new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
             termin = new Termin();
             this.DataContext = this;
             doktorSelektovan = false;
@@ -41,7 +43,7 @@ namespace SIMS.PacijentGUI
         }
 
         public List<Lekar> Lekari { get => lekari; set => lekari = value; }
-        public List<string> DostupniTermini { get => dostupniTermini; set => dostupniTermini = value; }
+        public ObservableCollection<string> DostupniTermini { get => dostupniTermini; set => dostupniTermini = value; }
         public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
         public Termin Termin { get => termin; set => termin = value; }
 
@@ -91,7 +93,7 @@ namespace SIMS.PacijentGUI
             {
                 Lekar lek = lekari[ListaDoktora.SelectedIndex];
                 List<Termin> nedostupniTermini = new List<Termin>();
-                dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+                dostupniTermini = new ObservableCollection<string>( new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
                 
                 List<Termin> sviTermini = new TerminStorage().ReadList();
                 if (slobodneProstorije.Count == 0)
@@ -103,27 +105,12 @@ namespace SIMS.PacijentGUI
                 terminiLista.ItemsSource = dostupniTermini;
                 foreach (Termin termin in sviTermini)
                 {
-                    if ((termin.Lekar.Jmbg.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy")))
-                    || (termin.Pacijent.Jmbg.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy"))))
+                    if ((termin.Lekar.Jmbg.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy").Equals(termin.PocetnoVreme.ToString("dd.MM.yyyy")))
+                    || (termin.Pacijent.Jmbg.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy").Equals(termin.PocetnoVreme.ToString("dd.MM.yyyy"))))
                     {
                         nedostupniTermini.Add(termin);
                     }
-                    if (OdabirDatuma.SelectedDate.Value.Date.ToString("dd.mm.yyyy").Equals(termin.PocetnoVreme.ToString("dd.mm.yyyy"))){
-                        int count = 0;
-                        slobodneProstorije = new ProstorijaStorage().UcitajProstorijeZaPreglede();
-                        foreach (Termin ter in sviTermini)
-                        {
-                            if (ter.PocetnoVreme.Equals(termin.PocetnoVreme))
-                            {
-                                count++;
-                            }
-                        }
-                        if (count >= slobodneProstorije.Count)
-                        {
-                            slobodneProstorije.Remove(termin.Prostorija);
-                            nedostupniTermini.Add(termin);
-                        }
-                    }
+                    
                     
                 }
 
@@ -155,6 +142,39 @@ namespace SIMS.PacijentGUI
                 return false;
             }
             return true;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            slobodneProstorije = new ProstorijaStorage().UcitajProstorijeZaPreglede();
+            DateTime zakazanoVrijeme =DateTime.Parse( OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
+            foreach(Termin termin in new TerminStorage().ReadList())
+            {
+                if (termin.PocetnoVreme.Equals(zakazanoVrijeme))
+                {
+                    izbaciProstoriju(termin.Prostorija.Broj);
+                }
+            }
+            if (slobodneProstorije.Count == 0)
+            {
+                MessageBox.Show("Trenutno ne postoji slobodna ordinacija za ovaj termin. Milimo Vas izaberite neki drugi termin!");
+                dostupniTermini.RemoveAt(terminiLista.SelectedIndex);
+                terminiLista.ItemsSource = dostupniTermini;
+                terminiLista.SelectedIndex = -1;
+            }
+        }
+
+        private void izbaciProstoriju(String brojProstorije)
+        {
+            for (int j = 0; j < slobodneProstorije.Count; j++)
+            {
+                if (slobodneProstorije[j].Broj == brojProstorije)
+                {
+                    slobodneProstorije.RemoveAt(j);
+                    j--;
+                }
+            }
+            
         }
 
 

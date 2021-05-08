@@ -1,6 +1,25 @@
 {
-  "210505072237": {
-    "PocetnoVreme": "2021-05-05T08:30:00",
+  "210508092756": {
+    "PocetnoVreme": "2021-05-08T08:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "1",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-08T08:00:00",
+    "TerminKey": "210508092756"
+  },
+  "210508092817": {
+    "PocetnoVreme": "2021-05-08T08:00:00",
     "VremeTrajanja": 30,
     "VrstaTermina": 0,
     "Lekar": {
@@ -8,80 +27,33 @@
       "Serijalizuj": false
     },
     "Pacijent": {
-      "BanovanKorisnik": false,
-      "Jmbg": "12645323206",
+      "Jmbg": "12121977802342",
       "Serijalizuj": false
     },
     "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
+      "Broj": "3",
+      "Serijalizuj": false
     },
-    "InicijalnoVrijeme": "2021-05-05T08:30:00",
-    "TerminKey": "210505072237"
+    "InicijalnoVrijeme": "2021-05-08T08:00:00",
+    "TerminKey": "210508092817"
   },
-  "210505072927": {
-    "PocetnoVreme": "2021-05-05T08:00:00",
+  "210508092843": {
+    "PocetnoVreme": "2021-05-08T09:00:00",
     "VremeTrajanja": 30,
     "VrstaTermina": 0,
     "Lekar": {
-      "Jmbg": "045210805048",
+      "Jmbg": "22157484654211",
       "Serijalizuj": false
     },
     "Pacijent": {
-      "BanovanKorisnik": false,
-      "Jmbg": "4865453131",
+      "Jmbg": "121",
       "Serijalizuj": false
     },
     "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
       "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-05-05T08:00:00",
-    "TerminKey": "210505072927"
-  },
-  "210505080252": {
-    "PocetnoVreme": "2021-05-05T09:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
       "Serijalizuj": false
     },
-    "Pacijent": {
-      "BanovanKorisnik": false,
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "kolicineOpreme": {},
-      "TipProstorije": 2,
-      "Broj": "1",
-      "Dostupna": false
-    },
-    "InicijalnoVrijeme": "2021-05-05T09:00:00",
-    "TerminKey": "210505080252"
-  },
-  "210505081334": {
-    "PocetnoVreme": "2021-05-09T08:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
-      "BanovanKorisnik": false,
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "1"
-    },
-    "InicijalnoVrijeme": "2021-05-09T08:00:00",
-    "TerminKey": "210505081334"
+    "InicijalnoVrijeme": "2021-05-08T09:00:00",
+    "TerminKey": "210508092843"
   }
 }

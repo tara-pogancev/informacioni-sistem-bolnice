@@ -120,7 +120,7 @@ namespace SIMS.LekarGUI
                 /*
                 foreach (Termin termin in new TerminStorage().ReadList())
                 {
-                    if (termin.LekarKey.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
+                    if (termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {
                         doktoroviTermini.Add(termin);
                     }
