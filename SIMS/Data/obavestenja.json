@@ -389,5 +389,15 @@
       "4484552102"
     ],
     "VremeString": "00:28"
+  },
+  "Recept210508031318": {
+    "Autor": "Recept",
+    "Vreme": "2021-05-08T03:13:18.8132472+02:00",
+    "Tekst": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210508031318",
+    "Target": [
+      "12645323206"
+    ],
+    "VremeString": "03:13"
   }
 }
