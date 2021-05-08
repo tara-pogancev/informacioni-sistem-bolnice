@@ -69,7 +69,7 @@ namespace SIMS
                 invokeProv.Invoke();
             }
 
-            MainFrame.Content = new SekretarObavestenjaPage();
+            MainFrame.Content = new SekretarObavestenjaPage(sekretar);
         }
 
         private void Button_Theme(object sender, RoutedEventArgs e)

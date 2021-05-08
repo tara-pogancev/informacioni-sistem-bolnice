@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Materijali_i_lekovi;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -47,6 +48,16 @@ namespace SIMS.LekarGUI
         public void RemoveInstance()
         {
             instance = null;
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void ButtonMaterialConsumption(object sender, RoutedEventArgs e)
+        {
+            new PotrosnjaMaterijala().Show();
         }
     }
 }

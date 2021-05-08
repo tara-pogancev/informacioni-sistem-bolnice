@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {
@@ -95,7 +96,12 @@ namespace SIMS.LekarGUI
                 }
                 else
                 {
-                    //TODO Pregled operacije
+                    OperacijaIzvestaj report = OperacijaIzvestajStorage.Instance.Read(t.TerminKey);
+                    if (report != null)
+                    {
+                        OperacijaIzvestajView a = new OperacijaIzvestajView(report);
+                        a.Show();
+                    }
                 }
             }
         }
@@ -109,12 +115,14 @@ namespace SIMS.LekarGUI
                 if (t.VrstaTermina == TipTermina.pregled)
                 {
                     AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
-                    a.Show();
+                    a.ShowDialog();
                     refreshView();
                 }
                 else
                 {
-                    //TODO pisanje izvestaja o operaciji
+                    OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Termin)dataGridPrazni.SelectedItem);
+                    o.ShowDialog();
+                    refreshView();
                 }
             }
         }
@@ -131,7 +139,6 @@ namespace SIMS.LekarGUI
                 termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
                 termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
             }
-            
             
             foreach (Termin termin in prazniView)
             {

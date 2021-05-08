@@ -3,93 +3,78 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Model
 {
     public class Anamneza
-    {
-        private Termin termin;
-        private DateTime datum;
-        String idAnamneze;
-        private String glavneTegobe;
-        private String sadasnjaAnamneza;
-        private String opstePojave;
-        private String respiratorniSistem;
-        private String kardiovaskularniSistem;
-        private String digestivniSistem;
-        private String urogenitalniSistem;
-        private String lokomotorniSistem;
-        private String nervniSistem;
-        private String ranijaOboljenja;
-        private String porodicniPodaci;
-        private String socioEpiPodaci;
-
+    {       
         public Anamneza()
         {
-            this.datum = DateTime.Today;
-            
+            Datum = DateTime.Today;
         }
 
         public Anamneza(Termin termin, String glavneTegobe, String sadasnjaAnamneza, String opstePojave, String respiratorniSistem, String kardiovaskularniSistem,
             String digestivniSistem, String urogenitalniSistem, String lokomotorniSistem, String nervniSistem, String ranijaOboljenja, String porodicniPodaci, String socioEpiPodaci)
         {
-            this.termin = termin;
-            this.datum = DateTime.Today;
 
-            this.glavneTegobe = glavneTegobe;
-            this.sadasnjaAnamneza = sadasnjaAnamneza;
-            this.opstePojave = opstePojave;
-            this.idAnamneze = termin.TerminKey;
+            Termin = termin;
+            Datum = DateTime.Today;
 
-            if (respiratorniSistem == "") this.respiratorniSistem = "/";
-                else this.respiratorniSistem = respiratorniSistem;
+            GlavneTegobe = glavneTegobe;
+            SadasnjaAnamneza = sadasnjaAnamneza;
+            OpstePojave = opstePojave;
+            IdAnamneze = termin.TerminKey;
 
-            if (kardiovaskularniSistem == "") this.kardiovaskularniSistem = "/";
-                else this.kardiovaskularniSistem = kardiovaskularniSistem;
+            if (respiratorniSistem == "") RespiratorniSistem = "/";
+                else RespiratorniSistem = respiratorniSistem;
 
-            if (digestivniSistem == "") this.digestivniSistem = "/";
-                else this.digestivniSistem = digestivniSistem;
+            if (kardiovaskularniSistem == "") KardiovaskularniSistem = "/";
+                else KardiovaskularniSistem = kardiovaskularniSistem;
 
-            if (urogenitalniSistem == "") this.urogenitalniSistem = "/";
-                else this.urogenitalniSistem = urogenitalniSistem;
+            if (digestivniSistem == "") DigestivniSistem = "/";
+                else DigestivniSistem = digestivniSistem;
 
-            if (lokomotorniSistem == "") this.lokomotorniSistem = "/";
-                else this.lokomotorniSistem = lokomotorniSistem;
+            if (urogenitalniSistem == "") UrogenitalniSistem = "/";
+                else UrogenitalniSistem = urogenitalniSistem;
 
-            if (nervniSistem == "") this.nervniSistem = "/";
-                else this.nervniSistem = nervniSistem;
+            if (lokomotorniSistem == "") LokomotorniSistem = "/";
+                else LokomotorniSistem = lokomotorniSistem;
 
-            if (ranijaOboljenja == "") this.ranijaOboljenja = "/";
-                else this.ranijaOboljenja = ranijaOboljenja;
+            if (nervniSistem == "") NervniSistem = "/";
+                else NervniSistem = nervniSistem;
 
-            if (porodicniPodaci == "") this.porodicniPodaci = "/";
-                else this.porodicniPodaci = porodicniPodaci;
+            if (ranijaOboljenja == "") RanijaOboljenja = "/";
+                else RanijaOboljenja = ranijaOboljenja;
 
-            if (socioEpiPodaci == "") this.socioEpiPodaci = "/";
-                else this.socioEpiPodaci = socioEpiPodaci;
+            if (porodicniPodaci == "") PorodicniPodaci = "/";
+                else PorodicniPodaci = porodicniPodaci;
+
+            if (socioEpiPodaci == "") SocioEpiPodaci = "/";
+                else SocioEpiPodaci = socioEpiPodaci;
             
         }
 
         public Termin getTermin()
         {
-            return TerminStorage.Instance.Read(this.termin.TerminKey);
+            return TerminStorage.Instance.Read(Termin.TerminKey);
         }
 
         [JsonIgnore]
         public String ImeLekara
         {
-            get { return this.getTermin().ImeLekara; }
+            get { return Termin.ImeLekara; }
         }
 
         [JsonIgnore]
         public String ImePacijenta
         {
-            get { return this.getTermin().ImePacijenta; }
+            get { return Termin.ImePacijenta; }
         }
 
         [JsonIgnore]
         public String Date
         {
-            get { return datum.ToString("dd.MM.yyyy."); }
+            get { return Datum.ToString("dd.MM.yyyy."); }
         }
 
         [JsonIgnore]
@@ -97,7 +82,6 @@ namespace Model
         {
             get
             {
-
                 if (getTermin().GetVrsta.Equals(TipTermina.pregled))
                     return "Datum pregleda: " + getTermin().Datum;
                 else return "Datum operacije: " + getTermin().Datum;
@@ -106,92 +90,42 @@ namespace Model
         }
 
         //TODO get set za sva polja
-        public String GlavneTegobe
-        {
-            get => glavneTegobe;
-            set => glavneTegobe = value;
-        }
+        public String GlavneTegobe { get; set; }
 
-        public String SadasnjaAnamneza
-        {
-            get => sadasnjaAnamneza;
-            set => sadasnjaAnamneza = value;
-        }
+        public String SadasnjaAnamneza { get; set; }
 
-        public String OpstePojave
-        {
-            get => opstePojave;
-            set => opstePojave = value;
-        }
+        public String OpstePojave { get; set; }
 
-        public String RespiratorniSistem
-        {
-            get => respiratorniSistem;
-            set => respiratorniSistem = value;
-        }
+        public String RespiratorniSistem { get; set; }
 
-        public String KardiovaskularniSistem
-        {
-            get => kardiovaskularniSistem;
-            set => kardiovaskularniSistem = value;
-        }
+        public String KardiovaskularniSistem { get; set; }
 
-        public String DigestivniSistem
-        {
-            get => digestivniSistem;
-            set => digestivniSistem = value;
-        }
+        public String DigestivniSistem { get; set; }
 
-        public String UrogenitalniSistem
-        {
-            get => urogenitalniSistem;
-            set => urogenitalniSistem = value;
-        }
+        public String UrogenitalniSistem { get; set; }
 
-        public String LokomotorniSistem
-        {
-            get => lokomotorniSistem;
-            set => lokomotorniSistem = value;
-        }
+        public String LokomotorniSistem { get; set; }
 
-        public String NervniSistem
-        {
-            get => nervniSistem;
-            set => nervniSistem = value;
-        }
+        public String NervniSistem { get; set; }
 
-        public String RanijaOboljenja
-        {
-            get => ranijaOboljenja;
-            set => ranijaOboljenja = value;
-        }
+        public String RanijaOboljenja { get; set; }
 
-        public String PorodicniPodaci
-        {
-            get => porodicniPodaci;
-            set => porodicniPodaci = value;
-        }
+        public String PorodicniPodaci { get; set; }
 
-        public String SocioEpiPodaci
-        {
-            get => socioEpiPodaci;
-            set => socioEpiPodaci = value;
-        }
+        public String SocioEpiPodaci { get; set; }
 
-        
-
-        public DateTime Datum
-        {
-            get => datum;
-            set => datum = value;
-        }
+        public DateTime Datum { get; set; }
 
         [JsonIgnore]
-        public String DatumIVrijeme
+        public Termin Termin { get; set; }
+
+        public String IdAnamneze { get; set; }
+
+        public void InitData()
         {
-            get => termin.PocetnoVreme.ToString("dd.MM.yyyy. HH:mm");
+            Termin =  new TerminStorage().Read(IdAnamneze);
+            Termin.Pacijent = new PacijentStorage().Read(Termin.Pacijent.Jmbg);
+            Termin.Lekar = new LekarStorage().Read(Termin.Lekar.Jmbg);
         }
-        public Termin Termin { get => termin; set => termin = value; }
-        public string IdAnamneze { get => idAnamneze; set => idAnamneze = value; }
     }
 }

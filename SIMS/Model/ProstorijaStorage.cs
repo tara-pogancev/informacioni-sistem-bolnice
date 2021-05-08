@@ -29,6 +29,21 @@ namespace Model
                 }
             }
 
+            foreach (var prosInv in ProsInvStorage.Instance.ReadAll().Values)
+            {
+                if (prosInv.BrojProstorije == key)
+                {
+                    ProsInvStorage.Instance.Delete(prosInv);
+                }
+            }
+
+            foreach (var command in PremestajOpremeCommandStorage.Instance.ReadAll().Values)
+            {
+                if (command.DstID == key || command.SrcID == key)
+                {
+                    PremestajOpremeCommandStorage.Instance.Delete(command);
+                }
+            }
         }
 
         public List<Prostorija> UcitajProstorijeZaPreglede()

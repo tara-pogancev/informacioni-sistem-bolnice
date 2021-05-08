@@ -157,7 +157,7 @@ namespace Model
         {
             foreach (string a in this.Alergeni)
             {
-                if (lek.Alergeni.Contains(a))
+                if (lek.Components.Contains(a))
                     return true;
             }
             return false;

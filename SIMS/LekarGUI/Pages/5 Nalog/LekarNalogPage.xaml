@@ -8,9 +8,56 @@
       d:DesignHeight="550" d:DesignWidth="840"
       Title="LekarNalogPage">
 
-    <Grid Background="#FF323D52">
+    <Grid Background="#FF323D52" Width="840">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Height="184" TextWrapping="Wrap" VerticalAlignment="Center" Width="398" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Act V -"/><LineBreak/><Run/><LineBreak/><Run Text="Even if the morrow is barren of promises"/><LineBreak/><Run Text="Nothing shall forestall my return"/><LineBreak/><Run Text="To become the dew that quenches the land"/><LineBreak/><Run Text="To spare the sands, the seas, the skies"/><LineBreak/><Run Text="I offer thee this silent sacrifice"/></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
+
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
+            <Label Content="Nalog" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="40,0,40,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#3A475F" RadiusX="10" RadiusY="10"/>
+
+            <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Center">
+
+                <Label Content="Tara Pogančev" Style="{StaticResource BoldLabel}" Margin="5"/>
+                <Label Content="Korisničko ime: tarapogancev7" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Mejl adresa: tara.lekar@gmail.com" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Telefon: +3815548521" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Adresa: Puškinova 17, Novi Sad" Style="{StaticResource DefaultLabel}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="40,15" Orientation="Horizontal">
+                <CheckBox Margin="5,3,10,0" Name="RememberMeCheckbox" Checked="RememberMe" Unchecked="DontRememberMe" />
+                <Label Content="Zapamti me prilikom sledeće prijave." Style="{StaticResource DefaultLabelS}" Padding="0"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="2" Margin="50,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="Izmeni podatke" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="ChangeAccount"/>
+                <Button Content="Odjavi se" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="LogOut" Margin="20,0,0,0"/>
+                
+            </StackPanel>
+
+            <Image Grid.RowSpan="3" Source="../../../src/Illustrations/reading_on_a_chair.png" HorizontalAlignment="Right" Margin="0,0,50,0" MaxHeight="500"/>
+
+
+        </Grid>
 
     </Grid>
+
 </Page>

@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.Daemon.PremestajOpreme;
 
 namespace SIMS.UpravnikGUI
 {
@@ -29,6 +30,12 @@ namespace SIMS.UpravnikGUI
             this.BrojProstorije = BrojProstorije;
             this.Oprema = Oprema;
             InitializeComponent();
+
+            if (Oprema.TipOpreme != TipOpreme.statička)
+            {
+                DatumPicker.Visibility = Visibility.Hidden;
+                DatumLabel.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -39,9 +46,6 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            ProsInv src = ProsInvStorage.Instance.Read(BrojProstorije, Oprema.Id);
-            ProsInv dst = ProsInvStorage.Instance.Read(BrojPremestanja.Text, Oprema.Id);
-
             int delta;
 
             try 
@@ -50,18 +54,23 @@ namespace SIMS.UpravnikGUI
             } 
             catch (Exception)
             {
+                MessageBox.Show("Uneti broj kao količinu.");
+                Kolicina.Text = "";
                 return;
             }
-            if (src.Kolicina < delta)
+
+            DateTime timeOfExecution;
+
+            if (DatumPicker.SelectedDate == null)
             {
-                return;
+                timeOfExecution = DateTime.Now;
+            }
+            else
+            {
+                timeOfExecution = (DateTime)DatumPicker.SelectedDate;
             }
 
-            src.Kolicina -= delta;
-            dst.Kolicina += delta;
-
-            ProsInvStorage.Instance.Update(src);
-            ProsInvStorage.Instance.Update(dst);
+            PremestajOpremeQueue.Instance.PushCommand(new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, delta));
 
             ParentPage.Update();
 

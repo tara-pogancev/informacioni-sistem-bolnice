@@ -21,11 +21,19 @@
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Obaveštenja" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
 
+           
+
         </StackPanel>
 
-        <Button Content="Odobravanje lekova" Click="Button_Odobravanje" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonSlick}"
-                HorizontalAlignment="Right" Margin="0,0,40,0"/>
+        <StackPanel Orientation="Horizontal" Margin="0,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right">
 
+            <Button Content="Lekovi" Click="Button_Lekovi" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"
+                HorizontalAlignment="Right"/>
+
+            <Button Content="Odobravanje lekova" Click="Button_Odobravanje" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonSlick}"
+                Margin="20,0,0,0"/>
+
+        </StackPanel>
 
         <Grid Grid.Row="1" Margin="40,10,40,30">
 

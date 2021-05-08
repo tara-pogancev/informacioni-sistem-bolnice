@@ -9,8 +9,15 @@ namespace Model
 {
    public enum Specijalizacija
    {
-      hirurg,
-      internista,
-      dermatolog
+        OpstaPraksa = 0,
+        Hirurg,
+        Internista,
+        Dermatolog, 
+        Kardiolog, 
+        Otorinolaringolog,
+        Stomatolog,
+        Urolog, 
+        Ginekolog, 
+        Neurolog       
    }
 }

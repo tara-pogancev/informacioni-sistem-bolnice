@@ -57,9 +57,38 @@ namespace Model
 
        
 
-         
+        public int getAppointmentsCountByDate(DateTime date, TipTermina tip, Lekar l)
+        {
+            List<Termin> retVal = new List<Termin>();
 
+            foreach (Termin t in TerminStorage.Instance.ReadByDoctor(l))
+            {
+                DateTime day = t.PocetnoVreme.Date;
+                if (t.VrstaTermina == tip && day == date)
+                    retVal.Add(t);
+            }
 
+            return retVal.Count;
+        }
+
+        public List<int> GetAppointmentsCountForCurrentWeek(TipTermina tip, Lekar l)
+        {
+            List<int> retVal = new List<int>();
+            DateTime startOfWeek = GetStartOfWeek();
+
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime dayOfWeek = startOfWeek.AddDays(i);
+                retVal.Add(getAppointmentsCountByDate(dayOfWeek, tip, l));
+            }
+
+            return retVal;
+        }
+
+        private static DateTime GetStartOfWeek()
+        {
+            return DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
+        }
     }
 
 }      

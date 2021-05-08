@@ -1,0 +1,20 @@
+{
+  "210426065743": {
+    "DatumIzvestaja": "2021-05-04T00:00:00+02:00",
+    "OperacijaKey": "210426065743",
+    "NazivOperacije": "Cras turpis lacus, cursus",
+    "NapomeneOperacije": "Donec eu lorem erat. Cras in mollis nisl. Nunc vel tempor elit. Suspendisse a lorem et nisi iaculis tempus. "
+  },
+  "210426093219": {
+    "DatumIzvestaja": "2021-05-04T00:00:00+02:00",
+    "OperacijaKey": "210426093219",
+    "NazivOperacije": "Mauris lacinia mollis lectus",
+    "NapomeneOperacije": "Vivamus vitae rhoncus dolor, sit amet mattis nisl. Maecenas commodo, dui eleifend consequat posuere, arcu risus dictum mi, a ullamcorper lacus massa vel elit. Maecenas a "
+  },
+  "210505045412": {
+    "DatumIzvestaja": "2021-05-06T00:00:00+02:00",
+    "OperacijaKey": "210505045412",
+    "NazivOperacije": "Operacija na otvorenom srcu",
+    "NapomeneOperacije": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur at malesuada odio. Praesent id vulputate arcu. Fusce diam lacus, hendrerit a aliquet ac, ornare condimentum diam. Cras vulputate at enim eget vestibulum. Cras fringilla ante ac condimentum varius. Nullam non justo odio. Praesent maximus orci non porttitor blandit. Mauris ullamcorper diam et urna sodales pretium. Nullam mattis, turpis placerat luctus mollis, nulla est efficitur"
+  }
+}

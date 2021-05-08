@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Materijali_i_lekovi;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,7 +33,7 @@ namespace SIMS.LekarGUI
 
             lekarUser = LekarUI.GetInstance().GetUser();
 
-            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadByUser(lekarUser.Jmbg);
+            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
             listaObavestenja.Reverse();
             obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);
 
@@ -42,12 +43,19 @@ namespace SIMS.LekarGUI
 
         private void Button_Odobravanje(object sender, RoutedEventArgs e)
         {
-            //TODO
+            MedicineApproval m = new MedicineApproval();
+            m.Show();
         }
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
             LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void Button_Lekovi(object sender, RoutedEventArgs e)
+        {
+            AvailableMedicineView window = new AvailableMedicineView();
+            window.Show();
         }
     }
 }

@@ -27,12 +27,30 @@ namespace Model
 
             for (int i=0;i<retVal.Count;i++)
             {
-                if (!(retVal[i].Target.Equals("All") || retVal[i].Target.Equals(key)))
+                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)))
                 {
                     retVal.RemoveAt(i);
                     i--;
                 }
                     
+            }
+
+            return retVal;
+
+        }
+
+        public List<Obavestenje> ReadPastNotificationsByUser(String key)
+        {
+            List<Obavestenje> retVal = this.ReadList();
+
+            for (int i = 0; i < retVal.Count; i++)
+            {
+                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)) || !retVal[i].isPast())
+                {
+                    retVal.RemoveAt(i);
+                    i--;
+                }
+
             }
 
             return retVal;

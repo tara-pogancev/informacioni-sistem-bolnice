@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Termin
 
 using Newtonsoft.Json;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,13 +22,7 @@ namespace Model
         private Pacijent pacijent;
         private Prostorija prostorija;
         private bool serijalizuj;
-        
-
-     /*   private String lekarKey;         //JMBG lekara
-    private String pacijentKey;      //JMBG pacijenta
-        private String prostorijaKey;    //Naziv prostorije*/
-       
-        
+             
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)
@@ -37,7 +32,6 @@ namespace Model
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
-
 
         public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
         {
@@ -160,7 +154,7 @@ namespace Model
         {
             get
             {
-                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null && OperacijaIzvestajStorage.Instance.Read(this.TerminKey) == null)
                     return false;
                 else return true;
             }
@@ -200,6 +194,22 @@ namespace Model
                 return false;
             }
         }
-        
+
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get
+            {
+                return ImeLekara + ", " + Vrijeme + " " + Datum;
+            }
+        }
+
+        public void InitData()
+        {
+            Pacijent = new PacijentStorage().Read(Pacijent.Jmbg);
+            Prostorija = new ProstorijaStorage().Read(Prostorija.Broj);
+            Lekar = new LekarStorage().Read(Lekar.Jmbg);
+        }
+
     }
 }

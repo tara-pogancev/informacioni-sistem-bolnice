@@ -15,11 +15,27 @@
     <None Remove="logo.ico" />
     <None Remove="src\arrow.png" />
     <None Remove="src\close.png" />
+    <None Remove="src\CoffeeBreak\arrow_left.png" />
+    <None Remove="src\CoffeeBreak\arrow_left_overlay.png" />
+    <None Remove="src\CoffeeBreak\arrow_right.png" />
+    <None Remove="src\CoffeeBreak\arrow_right_overlay.png" />
+    <None Remove="src\CoffeeBreak\Page0.png" />
+    <None Remove="src\CoffeeBreak\Page1.png" />
+    <None Remove="src\CoffeeBreak\Page2.png" />
+    <None Remove="src\CoffeeBreak\Page3.png" />
+    <None Remove="src\CoffeeBreak\Page4.png" />
+    <None Remove="src\CoffeeBreak\Page5.png" />
+    <None Remove="src\CoffeeBreak\Page6.png" />
+    <None Remove="src\CoffeeBreak\Page7.png" />
     <None Remove="src\doctor.png" />
     <None Remove="src\exit.png" />
     <None Remove="src\help.png" />
     <None Remove="src\home.png" />
     <None Remove="src\Illustrations\Lunch_break.png" />
+    <None Remove="src\Illustrations\man_reading_a_book.png" />
+    <None Remove="src\Illustrations\man_reading_dark_hair.png" />
+    <None Remove="src\Illustrations\man_reading_light_hair.png" />
+    <None Remove="src\Illustrations\reading_on_a_chair.png" />
     <None Remove="src\Illustrations\Winners_Monochromatic.png" />
     <None Remove="src\lekarBackGround.png" />
     <None Remove="src\logo.ico" />
@@ -46,6 +62,32 @@
     <None Remove="src\sign-out-option.png" />
     <None Remove="src\small_window.png" />
     <None Remove="src\sun.png" />
+    <None Remove="src\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="src\CoffeeBreak\arrow_left.png" />
+    <Resource Include="src\CoffeeBreak\arrow_left_overlay.png" />
+    <Resource Include="src\CoffeeBreak\arrow_right.png" />
+    <Resource Include="src\CoffeeBreak\arrow_right_overlay.png" />
+    <Resource Include="src\CoffeeBreak\Page0.png" />
+    <Resource Include="src\CoffeeBreak\Page1.png" />
+    <Resource Include="src\CoffeeBreak\Page2.png" />
+    <Resource Include="src\CoffeeBreak\Page3.png" />
+    <Resource Include="src\CoffeeBreak\Page4.png" />
+    <Resource Include="src\CoffeeBreak\Page5.png" />
+    <Resource Include="src\CoffeeBreak\Page6.png" />
+    <Resource Include="src\CoffeeBreak\Page7.png" />
+    <Resource Include="src\Illustrations\man_reading_a_book.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\Illustrations\man_reading_dark_hair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\Illustrations\reading_on_a_chair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\view.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +115,7 @@
 
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
@@ -116,6 +159,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\uputi.json">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -123,12 +172,9 @@
     <Page Update="LekarGUI\Dialogues\Termini CRUD\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="LekarGUI\Dialogues\Hospitalizacija\" />
-    <Folder Include="LekarGUI\Dialogues\Materijali i lekovi\" />
-    <Folder Include="LekarGUI\Dialogues\Izmena naloga\" />
+    <Page Update="LekarGUI\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>

@@ -90,7 +90,6 @@ namespace SIMS.LekarGUI
             datePicker1.DisplayDate = termin.PocetnoVreme;
             datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
 
-
             if (termin.VremeTrajanja == 30)
                 trajanjeLista.SelectedIndex = 0;
             else if (termin.VremeTrajanja == 60)
@@ -134,7 +133,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Prostorija pr in prostorije)
             {
-                if (pr.Broj.Equals(termin.Prostorija))
+                if (pr.Broj.Equals(termin.Prostorija.Broj))
                 {
                     break;
                 }

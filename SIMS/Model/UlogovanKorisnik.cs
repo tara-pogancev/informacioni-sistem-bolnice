@@ -18,7 +18,8 @@ namespace Model
       protected String email;
       protected String telefon;
       protected bool serijalizuj;
-      private Adresa adresa;
+
+        private Adresa adresa;
 
         public UlogovanKorisnik(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa)
         {
@@ -35,18 +36,14 @@ namespace Model
 
         public UlogovanKorisnik()
         {
-            
         }
-
-        
-
-
 
         public String Ime
         {
             get { return ime; }
             set { ime = value; }
         }
+
         public string Prezime { get => prezime; set => prezime = value; }
         public string Jmbg { get => jmbg; set => jmbg = value; }
         public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
@@ -70,16 +67,6 @@ namespace Model
         }
 
         [JsonIgnore]
-        public String AdresaKorisnika
-        {
-            get
-            {
-                return this.Adresa.Ulica + " " + this.Adresa.Broj;
-            }
-            
-        }
-
-        
         public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
 
         public bool ShouldSerializePrezime()
@@ -116,7 +103,6 @@ namespace Model
         {
             return serijalizuj;
         }
-
 
     }
 }

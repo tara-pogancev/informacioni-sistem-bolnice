@@ -107,7 +107,7 @@ namespace SIMS.PacijentGUI
                 termin.VrstaTermina = TipTermina.pregled;
                 termin.Lekar = lekari[ListaDoktora.SelectedIndex];
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
+                termin.Prostorija = new Prostorija("1",TipProstorije.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (i == 4)
@@ -173,7 +173,7 @@ namespace SIMS.PacijentGUI
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
                 termin.Lekar = new LekarStorage().Read(idLekara);
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Prostorija("1",true,TipProstorije.zaPreglede);
+                termin.Prostorija = new Prostorija("1",TipProstorije.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (brojacPreporucenihTermina == 5)

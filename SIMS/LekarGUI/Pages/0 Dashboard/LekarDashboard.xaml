@@ -4,10 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.LekarGUI"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="840"
-      Title="LekarDashboard">
-
+      Title="LekarDashboard">    
+    
     <Grid Background="#FF323D52">
         <Grid Margin="35,30,35,20">
             <Grid.RowDefinitions>
@@ -33,8 +34,15 @@
                     <TextBlock TextWrapping="Wrap" FontFamily="Candara" Foreground="LightGray" FontSize="18" Grid.Row="1" Margin="0,0,0,44" Grid.RowSpan="2"
                                ><Run Text="Na kontrolnoj tabli možete brzo i jednostavno da vidite aktivan pregled, kao i uvid u buduće zakazane termine pregleda i operacija. Srećan rad želi vam IT Tim"/><Run Language="sr-latn-rs" Text="!"/></TextBlock>
 
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    
                     <Button Content="Uvid u preglede" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"
-                            Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Termini"/>
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Termini"/>
+
+                    <Button Content="Hitan termin" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"
+                             HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Hitno" Margin="20,0,0,0"/>
+
+                    </StackPanel>
 
                 </Grid>
 
@@ -53,16 +61,37 @@
                 <Rectangle Grid.Column="0" RadiusX="5" RadiusY="5" Fill="#FF38455D"/>
                 <StackPanel Grid.Column="0" Margin="10,10,10,10">
                     <Label Content="Evidentirani pregledi" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
+
+                    <lvc:Gauge
+                            Uses360Mode="True" Name="GraphEvidentirani"
+                            From="0" To="100" Value="20"
+                            HighFontSize="40" Foreground="White"
+                            InnerRadius="60" GaugeBackground="#FFE26868" FromColor="#FF57D6B4" ToColor="#FF57D6B4"
+                            Width="160" Height="160"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,18,0,0"                       
+                     />
                     
-
-
                 </StackPanel>
 
-                <Rectangle Grid.Column="1" RadiusX="5" RadiusY="5" Fill="#FF38455D" Margin="15,0,0,0"/>
+                <Rectangle Grid.Column="1" RadiusX="5" RadiusY="5" Fill="#FF38455D" Margin="5,0,0,0"/>
                 <StackPanel Grid.Column="1" Margin="25,10,10,10">
-                    <Label Content="Evidentirani pregledi" Style="{StaticResource DefaultLabel}" Foreground="LightGray" FontSize="18"/>
+                    <Label Content="Zakazani termini u tekućoj nedelji" Style="{StaticResource DefaultLabel}" FontSize="18"/>
 
+                    <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Height="180" Margin="0,10,0,0">
+                        
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+                        
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisX>
 
+                        <lvc:CartesianChart.ChartLegend>
+                            <lvc:DefaultLegend BulletSize="10" Foreground="LightGray"/>
+                        </lvc:CartesianChart.ChartLegend>
+
+                    </lvc:CartesianChart>
 
                 </StackPanel>
 

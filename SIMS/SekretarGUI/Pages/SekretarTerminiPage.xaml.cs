@@ -38,6 +38,7 @@ namespace SIMS.SekretarGUI
 
             this.DataContext = this;
             terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            dobaviPodatkeOPacijentuILekaru(terminiView);
             tabelaTermina.ItemsSource = terminiView;
             refreshView();
         }
@@ -45,7 +46,8 @@ namespace SIMS.SekretarGUI
         private void refreshView()
         {
             terminiView.Clear();
-            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadList());
+            ObservableCollection<Termin> temp = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            dobaviPodatkeOPacijentuILekaru(temp);
             foreach (Termin t in temp)
             {
                 terminiView.Add(t);
@@ -114,6 +116,15 @@ namespace SIMS.SekretarGUI
         public void RemoveInstance()
         {
             instance = null;
+        }
+
+        private void dobaviPodatkeOPacijentuILekaru(ObservableCollection<Termin> termini)
+        {
+            foreach (Termin termin in termini)
+            {
+                termin.Pacijent = PacijentStorage.Instance.Read(termin.Pacijent.Jmbg);
+                termin.Lekar = LekarStorage.Instance.Read(termin.Lekar.Jmbg);
+            }
         }
     }
 }

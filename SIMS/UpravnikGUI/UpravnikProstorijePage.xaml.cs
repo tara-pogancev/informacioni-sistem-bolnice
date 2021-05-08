@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,14 +37,8 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
             ProstorijaStorage.Instance.Delete(SelectedProstorija.Broj);
-            foreach(Prostorija prostorija in prostorije)
-            {
-                if (prostorija.Broj == SelectedProstorija.Broj)
-                {
-                    prostorije.Remove(prostorija);
-                    return;
-                }
-            }
+            prostorije = new ObservableCollection<Prostorija>(ProstorijaStorage.Instance.ReadList());
+            tabelaProstorije.ItemsSource = prostorije;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
@@ -51,6 +46,7 @@ namespace SIMS.UpravnikGUI
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
             if (SelectedProstorija == null)
             {
+                MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(SelectedProstorija.Broj));
@@ -59,19 +55,19 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Prostorija> filtered = new ObservableCollection<Prostorija>();
+            tabelaProstorije.ItemsSource = ProstorijeFilter.Instance.ApplyFilters(prostorije, SearchBox.Text, false);
+        }
 
-            foreach (Prostorija prostorija in prostorije)
+        private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)
+        {
+            Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
+            if (SelectedProstorija == null)
             {
-                if (prostorija.Broj.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.DostupnaToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.TipProstorijeToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    filtered.Add(prostorija);
-                }
+                MessageBox.Show("Izabrati prostoriju.");
+                return;
             }
-
-            tabelaProstorije.ItemsSource = filtered;
+            UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Broj));
+            UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Broj);
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.Filters;
 
 namespace SIMS.UpravnikGUI
 {
@@ -38,14 +39,8 @@ namespace SIMS.UpravnikGUI
         {
             Oprema SelectedOprema = tabelaOpreme.SelectedItem as Oprema;
             OpremaStorage.Instance.Delete(SelectedOprema.Id);
-            foreach (Oprema oprema in opreme)
-            {
-                if (oprema.Id == SelectedOprema.Id)
-                {
-                    opreme.Remove(oprema);
-                    return;
-                }
-            }
+            opreme = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            tabelaOpreme.ItemsSource = opreme;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
@@ -53,27 +48,18 @@ namespace SIMS.UpravnikGUI
             Oprema SelectedOprema = tabelaOpreme.SelectedItem as Oprema;
             if (SelectedOprema == null)
             {
+                MessageBox.Show("Izabrati opremu.");
                 return;
             }
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.Id));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.Id);
+            opreme = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            tabelaOpreme.ItemsSource = opreme;
         }
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
-
-            foreach (Oprema oprema in opreme)
-            {
-                if (oprema.Id.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    filtered.Add(oprema);
-                }
-            }
-
-            tabelaOpreme.ItemsSource = filtered;
+            tabelaOpreme.ItemsSource = InventarFilter.Instance.ApplyFilters(opreme, SearchBox.Text, false);
         }
     }
 }

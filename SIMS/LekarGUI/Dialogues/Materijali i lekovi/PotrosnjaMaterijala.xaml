@@ -1,0 +1,39 @@
+﻿<Window x:Class="SIMS.LekarGUI.Dialogues.Materijali_i_lekovi.PotrosnjaMaterijala"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Title="Potrošnja materijala" Height="420" Width="400">
+
+    <Grid Background="#FF323D52">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition/>            
+        </Grid.RowDefinitions>
+
+        <Label Content="Potrošnja materijala" Style="{StaticResource DefaultLabel}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+
+        <StackPanel Margin="40,0,0,0" VerticalAlignment="Center" Grid.Row="1">
+            <Label Content="Prostorija: Sala 4a" Style="{StaticResource DefaultLabelS}"/>
+            <Label Content="Naziv materijala: Gaza 25x25" Style="{StaticResource DefaultLabelS}"/>
+        </StackPanel>
+        
+        
+        <Rectangle Grid.Row="2" RadiusX="10" RadiusY="10" Fill="#FF3A475F" Margin="20,0,20,0"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Potrošena količina: " Style="{StaticResource DefaultLabel}" Foreground="White" Margin="0,0,20,0"/>
+            <xctk:IntegerUpDown Name="TherapyFrequency" Width="50"/>
+        </StackPanel>
+
+        <Button Grid.Row="3" Content="Potvrdi" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="AcceptButton"/>
+
+
+    </Grid>
+</Window>

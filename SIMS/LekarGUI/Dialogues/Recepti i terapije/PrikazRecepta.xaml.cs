@@ -18,25 +18,26 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class PrikazRecepta : Window
     {
-        public PrikazRecepta(Recept r)
+        public PrikazRecepta(Recept receipt)
         {
             InitializeComponent();
 
+            receipt.InitData();
 
-            Pacijent pacijent = r.Pacijent;
-            Lekar lekar = r.Lekar;
+            Pacijent patient = receipt.Pacijent;
+            Lekar doctor = receipt.Lekar;
 
-            LabelDoktor.Content = "Doktor: " + lekar.ImePrezime;
-            LabelPacijent.Content = "Pacijent: " + pacijent.ImePrezime;
-            LabelDatum.Content = "Datum: " + r.DateString;
+            LabelDoktor.Content = "Doktor: " + doctor.ImePrezime;
+            LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;
+            LabelDatum.Content = "Datum: " + receipt.DateString;
 
-            NazivLeka.Content = r.NazivLeka;
-            Kolicina.Content = r.Kolicina;
-            Dijagnoza.Content = r.Dijagnoza;
+            NazivLeka.Content = receipt.NazivLeka;
+            Kolicina.Content = receipt.Kolicina;
+            Dijagnoza.Content = receipt.Dijagnoza;
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonCloseWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
