@@ -46,7 +46,7 @@ namespace SIMS.PacijentGUI
             izabraniLekar = termin.Lekar;
             slobodneProstorije = new ProstorijaStorage().UcitajProstorijeZaPreglede();
 
-            doktori.ItemsSource = lekari;
+            Doktori.ItemsSource = lekari;
             BlokirajDatumeNaKalendaru();
             FillComboBoxes(termin);
             this.DataContext = this;
@@ -88,7 +88,7 @@ namespace SIMS.PacijentGUI
 
         private void IzbacivanjeNedostupnihTermina()
         {
-            Lekar lekar = (Lekar)doktori.SelectedItem;
+            Lekar lekar = (Lekar)Doktori.SelectedItem;
             moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
             List<Termin> zakazaniTermini = new TerminStorage().ReadList();
             
@@ -113,7 +113,7 @@ namespace SIMS.PacijentGUI
                 }
                 index++;
             }
-            doktori.SelectedIndex = index;
+            Doktori.SelectedIndex = index;
         }
 
         public void PopuniVrijeme()
@@ -141,20 +141,20 @@ namespace SIMS.PacijentGUI
 
         private void doktori_DropDownOpened(object sender, EventArgs e)
         {
-            doktori.SelectedItem = null;
+            Doktori.SelectedItem = null;
         }
 
-        private void doktori_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Doktori_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (doktori.SelectedItem != null)
+            if (Doktori.SelectedItem != null)
             {
-                izabraniLekar = (Lekar)doktori.SelectedItem;
+                izabraniLekar = (Lekar)Doktori.SelectedItem;
                 IzbacivanjeNedostupnihTermina();
                 terminiLista.SelectedIndex = -1;
             }
         }
 
-        private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void OdabirDatuma_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (doktorSelektovan)
             {
@@ -166,7 +166,7 @@ namespace SIMS.PacijentGUI
 
         bool ValidirajPopunjenostPolja()
         {
-            return (doktori.SelectedItem == null || OdabirDatuma.SelectedDate == null) ||
+            return (Doktori.SelectedItem == null || OdabirDatuma.SelectedDate == null) ||
                    terminiLista.SelectedItem == null;
         }
 
@@ -205,7 +205,7 @@ namespace SIMS.PacijentGUI
 
         private void IzmijeniTermin()
         {
-            odabraniTerminZaIzmjenu.Lekar.Jmbg = lekari[doktori.SelectedIndex].Jmbg;
+            odabraniTerminZaIzmjenu.Lekar.Jmbg = lekari[Doktori.SelectedIndex].Jmbg;
             odabraniTerminZaIzmjenu.PocetnoVreme = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text); ;
             Serijalizuj();
             FormirajLog();
