@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,25 +60,7 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Lek> filtered = new ObservableCollection<Lek>();
-            var keywords = SearchBox.Text.Split(" ");
-
-            foreach (Lek Lek in lekovi)
-            {
-                foreach (string keyword in keywords)
-                {
-                    if (!Lek.MedicineID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                        !Lek.MedicineName.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        goto NEXT_Lek;
-                    }
-                }
-                filtered.Add(Lek);
-            NEXT_Lek:;
-            }
-
-
-            tabelaLekovi.ItemsSource = filtered;
+            tabelaLekovi.ItemsSource = LekoviFilter.Instance.ApplyFilters(lekovi, SearchBox.Text, false);
         }
     }
 }

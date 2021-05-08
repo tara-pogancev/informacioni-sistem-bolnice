@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.Filters;
 
 namespace SIMS.UpravnikGUI
 {
@@ -61,27 +62,7 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
-
-            var keywords = SearchBox.Text.Split(" ");
-
-            foreach (Oprema oprema in opreme)
-            {
-                foreach (string keyword in keywords)
-                {
-                    if (!oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                    !oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                    !oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        goto NEXT_OPREMA;
-                    }
-                }
-                filtered.Add(oprema);
-
-            NEXT_OPREMA:;
-            }
-
-            tabelaOpreme.ItemsSource = filtered;
+            tabelaOpreme.ItemsSource = InventarFilter.Instance.ApplyFilters(opreme, SearchBox.Text, false);
         }
     }
 }

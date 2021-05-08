@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,26 +60,7 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Prostorija> filtered = new ObservableCollection<Prostorija>();
-            var keywords = SearchBox.Text.Split(" ");
-
-            foreach (Prostorija prostorija in prostorije)
-            {
-                foreach (string keyword in keywords)
-                {
-                    if (!prostorija.Broj.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                        !prostorija.DostupnaToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                        !prostorija.TipProstorijeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        goto NEXT_PROSTORIJA;
-                    }
-                }
-                filtered.Add(prostorija);
-            NEXT_PROSTORIJA:;
-            }
-
-
-            tabelaProstorije.ItemsSource = filtered;
+            tabelaProstorije.ItemsSource = ProstorijeFilter.Instance.ApplyFilters(prostorije, SearchBox.Text, false);
         }
 
         private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)

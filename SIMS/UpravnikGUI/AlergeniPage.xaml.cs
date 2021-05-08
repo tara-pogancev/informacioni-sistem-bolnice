@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.Filters;
 
 namespace SIMS.UpravnikGUI
 {
@@ -59,25 +60,7 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Alergen> filtered = new ObservableCollection<Alergen>();
-            var keywords = SearchBox.Text.Split(" ");
-
-            foreach (Alergen alergen in alergeni)
-            {
-                foreach (string keyword in keywords)
-                {
-                    if (!alergen.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) &&
-                        !alergen.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        goto NEXT_ALERGEN;
-                    }
-                }
-                filtered.Add(alergen);
-            NEXT_ALERGEN:;
-            }
-
-
-            tabelaAlergeni.ItemsSource = filtered;
+            tabelaAlergeni.ItemsSource = AlergeniFilter.Instance.ApplyFilters(alergeni, SearchBox.Text, false);
         }
     }
 }

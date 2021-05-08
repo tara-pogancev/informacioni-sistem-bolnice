@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -71,50 +72,17 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaInventara.ItemsSource = Filter();
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            tabelaInventara.ItemsSource = Filter();
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            tabelaInventara.ItemsSource = Filter();
-        }
-
-        private bool FilterTextBox(Oprema oprema, string keyword)
-        {
-            return (oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Kolicina.ToString().Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        private bool FilterCheckBox(Oprema oprema)
-        {
-            return (bool)!CheckBox.IsChecked || oprema.Kolicina != 0;
-        }
-
-        private ObservableCollection<Oprema> Filter()
-        {
-            ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
-            var keywords = SearchBox.Text.Split(" ");
-
-            foreach (Oprema oprema in SvaOprema)
-            {
-                foreach (string keyword in keywords)
-                {
-                    if (!FilterTextBox(oprema, keyword) || !FilterCheckBox(oprema))
-                    {
-                        goto NEXT;
-                    }
-                }
-                filtered.Add(oprema);
-            NEXT:;
-            }
-            return filtered;
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
     }
 }
