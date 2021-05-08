@@ -54,6 +54,9 @@ namespace SIMS.LekarGUI
 
         private void Button_Close(object sender, RoutedEventArgs e)
         {
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+               App.Current.Windows[intCounter].Close();
+
             LekarUI.GetInstance().ChangeWindowClose();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using SIMS.Model;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
             {
+                Pacijent patient = operation.Pacijent;
+
                 OperacijaIzvestaj o = new OperacijaIzvestaj(operation, OperationName.Text, OperationDescription.Text);
                 o.Operacija.Lekar.Serijalizuj = false;
                 o.Operacija.Pacijent.Serijalizuj = false;
@@ -48,6 +51,10 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
                 this.Close();
                 LekarUI.GetInstance().ChangeTab(3);
+                var window = new ActionsAfterReport(patient);
+                window.Show();
+
+
             } else
             {
                 MessageBox.Show("Molimo popunite sva polja!");

@@ -28,6 +28,7 @@ namespace Model
         }
 
         public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+
         public bool ShouldSerializeDaniGodisnjegOdmora()
         {
             return serijalizuj;

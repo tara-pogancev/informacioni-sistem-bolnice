@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -147,6 +148,15 @@ namespace SIMS.LekarGUI
             {
                 if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
                     PacijentiView.Add(patient);
+            }
+        }
+
+        private void Button_Uput(object sender, RoutedEventArgs e)
+        {
+            if (dataGridPacijenti.SelectedItem != null)
+            {
+                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                new UputCreate(p).ShowDialog();
             }
         }
     }

@@ -41,16 +41,14 @@ namespace Model
         public String Kolicina { get; set; }
         public String Dijagnoza { get; set; }
         public String ReceptKey { get; set; }
-
         public Lekar Lekar { get; set; }
-
         public Pacijent Pacijent { get; set; }
-
         public DateTime Datum { get; set; }
 
         public void InitData()
         {
             Lekar = LekarStorage.Instance.Read(Lekar.Jmbg);
+            Pacijent = PacijentStorage.Instance.Read(Pacijent.Jmbg);
         }
 
     }

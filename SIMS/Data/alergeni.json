@@ -1,7 +1,7 @@
 {
   "a1": {
     "ID": "a1",
-    "Naziv": "Polena"
+    "Naziv": "Polen"
   },
   "a2": {
     "ID": "a2",
@@ -13,11 +13,11 @@
   },
   "a4": {
     "ID": "a4",
-    "Naziv": "Zivotinjska dlaka"
+    "Naziv": "Životinjska dlaka"
   },
   "a5": {
     "ID": "a5",
-    "Naziv": "Pra�ina"
+    "Naziv": "Prašina"
   },
   "a6": {
     "ID": "a6",
@@ -37,7 +37,7 @@
   },
   "a10": {
     "ID": "a10",
-    "Naziv": "Sicilijum-dioksid"
+    "Naziv": "Silicijum-dioksid"
   },
   "a11": {
     "ID": "a11",
@@ -47,8 +47,21 @@
     "ID": "a12",
     "Naziv": "Magnezijum-stearat"
   },
-  "123": {
-    "ID": "123",
-    "Naziv": "asfas"
+  "a13": {
+    "ID": "a13",
+    "Naziv": "Gestoden"
+  },
+  "a14": {
+    "ID": "a14",
+    "Naziv": "Etinilestradiol"
+  },
+  "a15": {
+    "ID": "a15",
+    "Naziv": "Skrob"
+  },
+  "a16": {
+    "ID": "a16",
+    "Naziv": "Povidon 90"
   }
+
 }

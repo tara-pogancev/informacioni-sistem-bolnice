@@ -37,5 +37,44 @@
       "Jmbg": "2484848556"
     },
     "Datum": "2021-05-04T00:00:00+02:00"
+  },
+  "210508122801": {
+    "NazivLeka": "Prilenap",
+    "Kolicina": "/",
+    "Dijagnoza": "/",
+    "ReceptKey": "210508122801",
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Datum": "2021-05-08T00:00:00+02:00"
+  },
+  "210508122835": {
+    "NazivLeka": "Fervex",
+    "Kolicina": "/",
+    "Dijagnoza": "/",
+    "ReceptKey": "210508122835",
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "4484552102"
+    },
+    "Datum": "2021-05-08T00:00:00+02:00"
+  },
+  "210508031317": {
+    "NazivLeka": "Fervex",
+    "Kolicina": "85 ml",
+    "Dijagnoza": "Prehlada",
+    "ReceptKey": "210508031317",
+    "Lekar": {
+      "Jmbg": "045210805048"
+    },
+    "Pacijent": {
+      "Jmbg": "12645323206"
+    },
+    "Datum": "2021-05-08T00:00:00+02:00"
   }
 }

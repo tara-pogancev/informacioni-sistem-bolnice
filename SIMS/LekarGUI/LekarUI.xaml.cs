@@ -94,14 +94,12 @@ namespace SIMS
         {
             //Button: Nalog, DEBUG po potrebi
             ChangeTab(5);
-
         }
 
         private void Button_Dashboard(object sender, MouseButtonEventArgs e)
         {
             //Dashboard
             ChangeTab(0);
-
         }
 
         public Lekar GetUser()
@@ -203,11 +201,16 @@ namespace SIMS
 
         private void Button_LogOut(object sender, MouseButtonEventArgs e)
         {
+            LogOut();
+        }
+
+        public void LogOut()
+        {
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                new MainWindow().Show();
-                this.Close();
+                for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+                    App.Current.Windows[intCounter].Close();
 
                 if (LekarEvidencijaPage.GetInstance() != null)
                     LekarEvidencijaPage.GetInstance().RemoveInstance();
@@ -226,6 +229,8 @@ namespace SIMS
                     LekarTerminiPage.GetInstance().RemoveInstance();
 
                 instance = null;
+
+                new MainWindow().Show();
 
             }
         }

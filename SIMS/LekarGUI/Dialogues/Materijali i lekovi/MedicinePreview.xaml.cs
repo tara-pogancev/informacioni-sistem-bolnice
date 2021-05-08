@@ -18,9 +18,14 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicinePreview : Window
     {
+        private Lek medicine;
+
         public MedicinePreview(Lek medicine)
         {
             InitializeComponent();
+            medicine = LekStorage.Instance.Read(medicine.MedicineID);
+
+            this.medicine = medicine;
 
             MedicineNameLabel.Content = medicine.MedicineName;
 
@@ -28,11 +33,26 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             MedicineComponents.Inlines.Add("   ");
             MedicineComponents.Inlines.Add(medicine.getComponentsList());
 
+            MedicineSubstitute.Inlines.Add(new Run("Zamenski lek:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+            MedicineSubstitute.Inlines.Add("   ");
+            MedicineSubstitute.Inlines.Add(GetSubstituteName(medicine));
+
+        }
+
+        private String GetSubstituteName(Lek medicine)
+        {
+            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ButtonEditMedicine(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            new MedicineEdit(medicine).ShowDialog();
         }
     }
 }
