@@ -42,14 +42,14 @@ namespace Model
             this.lekar = lekar;
             this.pacijent = pacijent;
             this.prostorija = prostorija;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
             serijalizuj = true;
         }
 
         public Termin()
         {
             this.vrstaTermina = TipTermina.pregled;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
             serijalizuj = true;
         }
 

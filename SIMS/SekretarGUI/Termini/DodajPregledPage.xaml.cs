@@ -73,7 +73,8 @@ namespace SIMS.SekretarGUI
                 List<Termin> listaTermmina = TerminStorage.Instance.ReadList();
                 foreach (Termin t in listaTermmina)
                 {
-                    if (t.PocetnoVreme.Day == termin.PocetnoVreme.Day && t.PocetnoVreme.Month == termin.PocetnoVreme.Month && t.PocetnoVreme.Year == termin.PocetnoVreme.Year && t.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, t.VremeTrajanja, 0)) > termin.PocetnoVreme.TimeOfDay && t.PocetnoVreme.TimeOfDay < termin.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, termin.VremeTrajanja, 0)))
+                    //if (t.PocetnoVreme.Day == termin.PocetnoVreme.Day && t.PocetnoVreme.Month == termin.PocetnoVreme.Month && t.PocetnoVreme.Year == termin.PocetnoVreme.Year && t.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, t.VremeTrajanja, 0)) > termin.PocetnoVreme.TimeOfDay && t.PocetnoVreme.TimeOfDay < termin.PocetnoVreme.TimeOfDay.Add(new TimeSpan(0, termin.VremeTrajanja, 0)))
+                    if (t.KrajnjeVreme > termin.PocetnoVreme && t.PocetnoVreme < termin.KrajnjeVreme)
                     {
                         if (t.Lekar.Jmbg.Equals(termin.Lekar.Jmbg))
                         {

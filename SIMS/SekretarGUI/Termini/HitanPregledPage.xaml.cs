@@ -70,25 +70,20 @@ namespace SIMS.SekretarGUI
         {
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                if (AvailableAppointments.Count == 1)
+                Termin selectedApp = (Termin)AvailableComboBox.SelectedItem;
+                //selectedApp.InitData();
+                if (AvailableAppointments.Count != 1)
                 {
-                    Termin selectedApp = (Termin)AvailableComboBox.SelectedItem;
-                    //selectedApp.InitData();
-
-                    TerminStorage.Instance.Create(selectedApp);
-
-                    SendNotification(selectedApp);
-
-                    SekretarTerminiPage.GetInstance().refreshView();
-
-                    this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
-                    MessageBox.Show("Hitan pregled uspesno zakazan!");
+                    MovePreviousAppointment(selectedApp);
                 }
-                else
-                {
-                    Termin selectedApp = (Termin)AvailableComboBox.SelectedItem;
-                }
-                
+                TerminStorage.Instance.Create(selectedApp);
+
+                SendNotification(selectedApp, false);
+
+                SekretarTerminiPage.GetInstance().refreshView();
+
+                this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+                MessageBox.Show("Hitan pregled uspesno zakazan!");
             }
         }
 
@@ -103,19 +98,30 @@ namespace SIMS.SekretarGUI
             NavigationService.Navigated += NavigationService_Navigated;
         }
 
-        private void SendNotification(Termin selectedApp)
+        private void SendNotification(Termin selectedApp, bool moved)
         {
-            List<string> target = new List<string>();
-            target.Add(((Pacijent)PatientComboBox.SelectedItem).Jmbg);
+            List<string> target = new List<string>(); ;
+
+            target.Add(selectedApp.Pacijent.Jmbg);
+            target.Add(selectedApp.Lekar.Jmbg);
             foreach (Sekretar s in SekretarStorage.Instance.ReadList())
             {
                 target.Add(s.Jmbg);
             }
-            Obavestenje notification = new Obavestenje("Sekretarijat", DateTime.Now,
+            if (moved)
+            {
+                Obavestenje notification = new Obavestenje("Sekretarijat", DateTime.Now,
+                ("Pomeren/a " + selectedApp.VrstaTermina.ToString() + " [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
+                + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
+                ObavestenjaStorage.Instance.Create(notification);
+            }
+            else
+            {
+                Obavestenje notification = new Obavestenje("Sekretarijat", DateTime.Now,
                 ("Zakazan hitan pregled [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
                 + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
-
-            ObavestenjaStorage.Instance.Create(notification);
+                ObavestenjaStorage.Instance.Create(notification);
+            }
         }
 
         private void DurationChange(object sender, SelectionChangedEventArgs e)
@@ -138,7 +144,8 @@ namespace SIMS.SekretarGUI
 
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                List<Termin> allAppointments = GetAvailableAppointmentsForAllDoctors();
+                Termin appointmentValues = new Termin(DateTime.MinValue, GetSelectedDuration(), TipTermina.pregled, null, (Pacijent)PatientComboBox.SelectedItem, null);
+                List<Termin> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
                 if (allAppointments.Count == 1)
                 {
                     zakaziButton.Content = "ZAKAŽI";
@@ -163,23 +170,23 @@ namespace SIMS.SekretarGUI
             AvailableComboBox.ItemsSource = AvailableAppointments;
         }
 
-        private List<Termin> GetAvailableAppointmentsForAllDoctors()
+        private List<Termin> GetAvailableAppointmentsForAllDoctors(Termin appointmentValues, int numberOfDays)
         {
             List<Termin> retVal = new List<Termin>();
             List<Termin> allAppointments = new List<Termin>();
 
             foreach (Lekar doctor in LekarStorage.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
-                List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments();
+                List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments(numberOfDays);
                 //int counterByDoctor = 0;
 
                 foreach (DateTime appTime in potentialAppointmentTimeList)
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    Termin appointment = new Termin(appTime, GetSelectedDuration(), TipTermina.pregled, doctor, (Pacijent)PatientComboBox.SelectedItem, ProstorijaStorage.Instance.ReadList()[0]);
+                    Termin appointment = new Termin(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, ProstorijaStorage.Instance.ReadList()[0]);
                     allAppointments.Add(appointment);
-                    if (doctor.IsFree(appointment))
+                    if (doctor.IsFree(appointment) && appointment.PocetnoVreme >= appointmentValues.PocetnoVreme)
                     {
                         //counterByDoctor++;
                         retVal.Add(appointment);
@@ -209,13 +216,13 @@ namespace SIMS.SekretarGUI
                     }
         }
 
-        private List<DateTime> GetNearPotentialAppointments()
+        private List<DateTime> GetNearPotentialAppointments(int numberOfDays)
         {
             DateTime currentTime = DateTime.Now;
 
             List<string> availableTimes = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             List<string> availableDates = new List<string>();
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < numberOfDays; i++)
             {
                 DateTime currentDate = DateTime.Today.AddDays(i);
                 availableDates.Add(currentDate.ToString("dd.MM.yyyy."));
@@ -229,7 +236,7 @@ namespace SIMS.SekretarGUI
                     DateTime appointmentTime = DateTime.Parse(dateAndTime);
                     if (appointmentTime >= currentTime)
                         potentialAppointmentTimeList.Add(appointmentTime);
-                    if (potentialAppointmentTimeList.Count > 2)
+                    if (numberOfDays == 2 && potentialAppointmentTimeList.Count > numberOfDays)
                         goto Exit;
                 }
             Exit:
@@ -240,6 +247,36 @@ namespace SIMS.SekretarGUI
         {
             PatientList = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
             PatientComboBox.ItemsSource = PatientList;
+        }
+
+        private void MovePreviousAppointment(Termin selectedApp)
+        {
+            List<Termin> appointmentsForMoving = FindReservedAppointments(selectedApp);
+            foreach (Termin app in appointmentsForMoving)
+            {
+                MoveAppointmentToNearestDate(app);
+            }
+        }
+
+        private void MoveAppointmentToNearestDate(Termin appointment)
+        {
+            List<Termin> appointments = GetAvailableAppointmentsForAllDoctors(appointment, 10);
+            TerminStorage.Instance.Delete(appointment.TerminKey);
+            TerminStorage.Instance.Create(appointments[0]);
+            SendNotification(appointments[0], true);
+        }
+
+        private List<Termin> FindReservedAppointments(Termin selectedApp)
+        {
+            List<Termin> appointmentsForMoving = new List<Termin>();
+            List<Termin> allAppointments = TerminStorage.Instance.ReadList();
+            foreach (Termin app in allAppointments)
+            {
+                if (app.KrajnjeVreme > selectedApp.PocetnoVreme && app.PocetnoVreme < selectedApp.KrajnjeVreme)
+                    appointmentsForMoving.Add(app);
+
+            }
+            return appointmentsForMoving;
         }
     }
 }
