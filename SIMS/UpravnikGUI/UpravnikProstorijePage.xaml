@@ -16,51 +16,53 @@
         </Style>
 
     </Page.Resources>
-    <Grid Background="#323D52">
-        <StackPanel>
-            <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" Height="26" FontFamily="Candara" FontSize="18" Foreground="White" FontWeight="Bold">
-                <TextBox.Style>
-                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                        <Style.Resources>
-                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                <VisualBrush.Visual>
-                                    <Label Content="Pretraga..." Foreground="#323D52" />
-                                </VisualBrush.Visual>
-                            </VisualBrush>
-                        </Style.Resources>
-                        <Style.Triggers>
-                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            <Trigger Property="Text" Value="{x:Null}">
-                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="Background" Value="#323D52" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+        <Grid Background="#323D52">
+            <StackPanel>
+                <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" Height="26" FontFamily="Candara" FontSize="18" Foreground="White" FontWeight="Bold">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Pretraga..." Foreground="#323D52" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="#323D52" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
 
-            </TextBox>
-            <DataGrid x:Name="tabelaProstorije" Margin="20, 20"  IsReadOnly="True" 
+                </TextBox>
+                <DataGrid x:Name="tabelaProstorije" Margin="20, 20"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Broj" Binding="{Binding Broj}" Width="70"/>
-                    <DataGridTextColumn Header="Dostupnost" Binding="{Binding DostupnaToString}" Width="100"/>
-                    <DataGridTextColumn Header="Tip" Binding="{Binding TipProstorijeToString}" Width="250"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Grid>
-                <Button Content="Dodaj" Width="110" Height="30" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="DodajProstorija_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
-                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button Content="Izbriši" Width="110" Height="30" Background="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="IzbrisiProstorija_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
-                    <Button Content="Pregledaj/uredi" Width="170" Height="30" Background="#191E29" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="PregledajUredi_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
-                    <Button Content="Renoviranje" Width="170" Height="30" Background="#191E29" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="ZakaziRenoviranje_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
-                </StackPanel>
-            
-            </Grid>
-            
-        </StackPanel>
-    </Grid>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Broj" Binding="{Binding Broj}" Width="70"/>
+                        <DataGridTextColumn Header="Dostupnost" Binding="{Binding DostupnaToString}" Width="100"/>
+                        <DataGridTextColumn Header="Tip" Binding="{Binding TipProstorijeToString}" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid>
+                    <Button Content="Dodaj" Width="110" Height="30" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="DodajProstorija_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
+                    <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                        <Button Content="Izbriši" Width="110" Height="30" Background="DarkRed" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="IzbrisiProstorija_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
+                        <Button Content="Pregledaj/uredi" Width="170" Height="30" Background="#191E29" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="PregledajUredi_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
+                        <Button Content="Renoviranje" Width="170" Height="30" Background="#191E29" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="ZakaziRenoviranje_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

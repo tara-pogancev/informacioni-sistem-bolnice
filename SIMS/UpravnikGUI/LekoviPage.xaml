@@ -16,7 +16,8 @@
         </Style>
 
     </Page.Resources>
-    <Grid Background="#323D52">
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+        <Grid Background="#323D52">
         <StackPanel>
             <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" Height="26" FontFamily="Candara" FontSize="18" Foreground="White" FontWeight="Bold">
                 <TextBox.Style>
@@ -60,4 +61,5 @@
 
         </StackPanel>
     </Grid>
+        </ScrollViewer>
 </Page>
