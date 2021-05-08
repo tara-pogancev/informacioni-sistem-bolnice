@@ -22,8 +22,13 @@ namespace SIMS.UpravnikGUI
         Prostorija prostorija;
         public RenoviranjePage(string BrojProstorije)
         {
-            prostorija = ProstorijaStorage.Instance.Read(BrojProstorije);
             InitializeComponent();
+            prostorija = ProstorijaStorage.Instance.Read(BrojProstorije);
+            if (prostorija.pocetakRenoviranja != null && prostorija.krajRenoviranja != null)
+            {
+                Pocetak.SelectedDate = prostorija.pocetakRenoviranja;
+                Kraj.SelectedDate = prostorija.krajRenoviranja;
+            }
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)

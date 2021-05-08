@@ -11,11 +11,12 @@
     <Grid Background="#323D52">
         <StackPanel>
             <TextBox x:Name="SearchBox" Margin="20, 20" KeyUp="SearchBox_KeyUp" />
-            <DataGrid x:Name="tabelaInventara" Margin="20, 20" ItemsSource="{Binding SvaOprema}" IsReadOnly="True" 
+            <CheckBox x:Name="CheckBox" Content="Prikazati samo opremu na stanju" Margin="20,0"  FontFamily="Candara Bold" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Foreground="White" Background="{x:Null}" ></CheckBox>
+                <DataGrid x:Name="tabelaInventara" Margin="20, 20" ItemsSource="{Binding SvaOprema}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
                     <DataGridTextColumn Header="Tip" Binding="{Binding TipToString}"/>
                     <DataGridTextColumn Header="Količina" Binding="{Binding Kolicina}" />
                 </DataGrid.Columns>

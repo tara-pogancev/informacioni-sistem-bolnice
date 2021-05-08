@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Model;
+using SIMS.Daemon.PremestajOpreme;
 
 namespace Model
 {
@@ -24,8 +25,14 @@ namespace Model
 
         public ProsInv Read(string brojProstorije, string idInventara)
         {
+            PremestajOpremeQueue.Instance.Consistify();
+            return ReadNoConsistifying(brojProstorije, idInventara);
+        }
+
+        public ProsInv ReadNoConsistifying(string brojProstorije, string idInventara)
+        {
             var ret = Read(brojProstorije + "_" + idInventara);
-            if(ret == null)
+            if (ret == null)
             {
                 ret = new ProsInv(brojProstorije, idInventara, 0);
                 Create(ret);

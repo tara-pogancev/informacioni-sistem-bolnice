@@ -20,19 +20,15 @@ namespace SIMS.UpravnikGUI
     public partial class UpravnikOpremaDetailPage : Page
     {
         Oprema oprema;
-        bool isNew;
 
         public UpravnikOpremaDetailPage()
         {
-            isNew = true;
             oprema = new Oprema();
             InitializeComponent();
             Tip.ItemsSource = Conversion.GetTipoviOpreme();
         }
         public UpravnikOpremaDetailPage(string Id)
         {
-
-            isNew = false;
             oprema = OpremaStorage.Instance.Read(Id);
             InitializeComponent();
 
@@ -56,22 +52,10 @@ namespace SIMS.UpravnikGUI
             oprema.Naziv = Naziv.Text;
             oprema.TipOpreme = Conversion.StringToTipOpreme(Tip.Text);
 
-            if (isNew)
-            {
-                if (OpremaStorage.Instance.Create(oprema))
-                {
-                    UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
-                    UpravnikWindow.Instance.SetLabel("Oprema");
-                }
-            }
-            else
-            {
-                if (OpremaStorage.Instance.Update(oprema))
-                {
-                    UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
-                    UpravnikWindow.Instance.SetLabel("Prostorije");
-                }
-            }
+            OpremaStorage.Instance.CreateOrUpdate(oprema);
+
+            UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
+            UpravnikWindow.Instance.SetLabel("Oprema");
         }
     }
 }

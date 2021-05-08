@@ -1,52 +1,21 @@
 {
-  "l1": {
-    "MedicineID": "l1",
-    "MedicineName": "Katopil",
+  "1": {
+    "MedicineID": "1",
+    "MedicineName": "Paracetamol",
     "Components": [
       "a3",
-      "a5"
-    ],
-    "ApprovalStatus": 2
-  },
-  "l2": {
-    "MedicineID": "l2",
-    "MedicineName": "Prilenap",
-    "Components": [
-      "a6",
-      "a1"
-    ],
-    "ApprovalStatus": 0
-  },
-  "l3": {
-    "MedicineID": "l3",
-    "MedicineName": "Prilenap",
-    "Components": [
-      "a4",
-      "a11"
-    ],
-    "ApprovalStatus": 0
-  },
-  "l4": {
-    "MedicineID": "l4",
-    "MedicineName": "Vivace",
-    "Components": [],
-    "ApprovalStatus": 2
-  },
-  "l5": {
-    "MedicineID": "l5",
-    "MedicineName": "Fervex",
-    "Components": [
-      "a2"
-    ],
-    "ApprovalStatus": 0
-  },
-  "l6": {
-    "MedicineID": "l6",
-    "MedicineName": "Analgin",
-    "Components": [
-      "a9",
       "a10"
     ],
-    "ApprovalStatus": 0
+    "IDSubstitution": "2",
+    "ApprovalStatus": 2
+  },
+  "2": {
+    "MedicineID": "2",
+    "MedicineName": "Brufen",
+    "Components": [
+      "a6"
+    ],
+    "IDSubstitution": "1",
+    "ApprovalStatus": 2
   }
 }

@@ -49,6 +49,7 @@ namespace SIMS.UpravnikGUI
 
             IDText.Text = lek.MedicineID;
             NazivText.Text = lek.MedicineName;
+            ZamenaText.Text = lek.IDSubstitution;
 
             IDText.IsEnabled = false;
 
@@ -83,6 +84,7 @@ namespace SIMS.UpravnikGUI
         {
             lek.MedicineID = IDText.Text;
             lek.MedicineName = NazivText.Text;
+            lek.IDSubstitution = ZamenaText.Text;
 
             lek.Components.Clear();
             foreach(Sastojak sastojak in Sastojci)
@@ -96,6 +98,22 @@ namespace SIMS.UpravnikGUI
             LekStorage.Instance.CreateOrUpdate(lek);
             UpravnikWindow.Instance.SetContent(new LekoviPage());
             UpravnikWindow.Instance.SetLabel("Lekovi");
+        }
+
+        private void IDText_KeyUp(object sender, KeyEventArgs e)
+        {
+            foreach(Lek lek in LekStorage.Instance.ReadAll().Values)
+            {
+                if (lek.IDSubstitution == IDText.Text)
+                {
+                    ZamenaText.Text = lek.MedicineID;
+                    return;
+                }
+                else
+                {
+                    ZamenaText.Text = "";
+                }
+            }
         }
     }
 }

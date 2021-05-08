@@ -25,8 +25,8 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            InitializeComponent();
             SvaOprema = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            InitializeComponent();
             foreach (Oprema op in SvaOprema)
             {
                 op.BrojProstorije = Prostorija.Broj;
@@ -71,20 +71,50 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
+            tabelaInventara.ItemsSource = Filter();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            tabelaInventara.ItemsSource = Filter();
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            tabelaInventara.ItemsSource = Filter();
+        }
+
+        private bool FilterTextBox(Oprema oprema, string keyword)
+        {
+            return (oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Kolicina.ToString().Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        private bool FilterCheckBox(Oprema oprema)
+        {
+            return (bool)!CheckBox.IsChecked || oprema.Kolicina != 0;
+        }
+
+        private ObservableCollection<Oprema> Filter()
+        {
             ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
+            var keywords = SearchBox.Text.Split(" ");
 
             foreach (Oprema oprema in SvaOprema)
             {
-                if (oprema.Id.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Kolicina.ToString().StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
+                foreach (string keyword in keywords)
                 {
-                    filtered.Add(oprema);
+                    if (!FilterTextBox(oprema, keyword) || !FilterCheckBox(oprema))
+                    {
+                        goto NEXT;
+                    }
                 }
+                filtered.Add(oprema);
+            NEXT:;
             }
-
-            tabelaInventara.ItemsSource = filtered;
+            return filtered;
         }
     }
 }

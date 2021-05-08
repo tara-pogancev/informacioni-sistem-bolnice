@@ -84,6 +84,10 @@ namespace SIMS.UpravnikGUI
         private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)
         {
             Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
+            if (SelectedProstorija == null)
+            {
+                return;
+            }
             UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Broj));
             UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Broj);
         }

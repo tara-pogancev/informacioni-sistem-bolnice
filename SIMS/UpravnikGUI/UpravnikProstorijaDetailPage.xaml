@@ -20,7 +20,7 @@
                 <ComboBox Name="TipCombo"  Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" />
             </Grid>
             <Grid>
-                <Label Content="Dostupnost" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <Label x:Name="DostupnostLabel" Content="Dostupnost" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
                 <ComboBox Name="DostupnostCombo"  Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" />
             </Grid>
             <Grid>

@@ -133,6 +133,11 @@ namespace Model
             return retVal;
         }
 
+        public bool Delete(Entity entity)
+        {
+            return Delete(getKey(entity));
+        }
+
         public List<Entity> ReadList()
         {
             return this.ReadFile().Values.ToList();

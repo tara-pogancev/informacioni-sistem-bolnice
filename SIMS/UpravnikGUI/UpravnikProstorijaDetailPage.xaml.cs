@@ -55,13 +55,21 @@ namespace SIMS.UpravnikGUI
             InitializeComponent();
 
             TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
-            DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
 
+            DostupnostLabel.Visibility = Visibility.Hidden;
+            PocetakRenoviranjaLabel.Visibility = Visibility.Hidden;
+            KrajRenoviranjaLabel.Visibility = Visibility.Hidden;
+
+            DostupnostCombo.Visibility = Visibility.Hidden;
             DostupnostCombo.IsEnabled = false;
+
             InventarButton.Visibility = Visibility.Hidden;
             InventarButton.IsEnabled = false;
 
+            PocetakRenoviranjaText.Visibility = Visibility.Hidden;
             PocetakRenoviranjaText.IsEnabled = false;
+
+            KrajRenoviranjaText.Visibility = Visibility.Hidden;
             KrajRenoviranjaText.IsEnabled = false;
 
         }
