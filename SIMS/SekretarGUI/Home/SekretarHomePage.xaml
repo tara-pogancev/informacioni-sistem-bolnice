@@ -9,9 +9,6 @@
       Title="SekretarHomePage">
 
     <Grid Background="#323D52">
-        <TextBlock x:Name="welcomeText" FontSize="35" Foreground="#FF7F85A2" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center">
-            Dobrodosli
-        </TextBlock>
-
+        <TextBlock x:Name="welcomeText" Text="Dobrodosli" FontSize="35" Foreground="#FF7F85A2" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
     </Grid>
 </Page>
