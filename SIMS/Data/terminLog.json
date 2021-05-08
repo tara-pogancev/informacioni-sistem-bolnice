@@ -622,5 +622,21 @@
     "DatumPromjene": "2021-05-07T17:54:23.5629892+02:00",
     "TipOperacije": 1,
     "Istekao": false
+  },
+  "210508092843121090500": {
+    "TerminLogKey": "210508092843121090500",
+    "TerminKey": "210508092843",
+    "PacijentKey": "121",
+    "DatumPromjene": "2021-05-08T21:05:00.5714458+02:00",
+    "TipOperacije": 1,
+    "Istekao": false
+  },
+  "210508092843121090517": {
+    "TerminLogKey": "210508092843121090517",
+    "TerminKey": "210508092843",
+    "PacijentKey": "121",
+    "DatumPromjene": "2021-05-08T21:05:17.0631576+02:00",
+    "TipOperacije": 1,
+    "Istekao": false
   }
 }

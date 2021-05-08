@@ -12,5 +12,19 @@
     "Komentar": "Neka sam proklet sto sam dosao u vasu bolnicu",
     "DatumKreiranjaAnkete": "2021-05-05T08:58:48.3239818+02:00",
     "IdVlasnika": "4865453131"
+  },
+  "08/05/2021 21:05:57121": {
+    "OdgovoriNaPitanja": {
+      "pitanje1": 5,
+      "pitanje2": 5,
+      "pitanje3": 5,
+      "pitanje4": 5,
+      "pitanje5": 5
+    },
+    "TrenutniBrojPregleda": 1,
+    "IdAnkete": "08/05/2021 21:05:57121",
+    "Komentar": "Dobro je sve. Ja sam prezadovoljan",
+    "DatumKreiranjaAnkete": "2021-05-08T21:05:57.5667129+02:00",
+    "IdVlasnika": "121"
   }
 }

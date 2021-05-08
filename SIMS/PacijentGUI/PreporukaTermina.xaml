@@ -47,7 +47,7 @@
                 </Border>
                 
 
-                <Button Width="150" x:Name="Trazi" Click="Trazi_Click" >Traži</Button>
+                <Button Width="150" x:Name="Trazi" Click="Trazi_Click"  Margin="40">Traži</Button>
 
 
 

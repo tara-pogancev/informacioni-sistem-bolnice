@@ -58,6 +58,11 @@ namespace SIMS.PacijentGUI
                 alergeni += ", ";
 
             }
+            if (alergeni.Length == 0)
+            {
+                alergeni = "Nema";
+                return;
+            }
             alergeni=alergeni.Substring(0,alergeni.Length - 2);
         }
 

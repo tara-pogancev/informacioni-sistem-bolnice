@@ -76,6 +76,7 @@ namespace SIMS.PacijentGUI
             termin.Lekar.Serijalizuj = false;
             termin.Pacijent.Serijalizuj = false;
             termin.Prostorija.Serijalizuj = false;
+            
 
 
             TerminStorage.Instance.Create(termin);
@@ -122,27 +123,7 @@ namespace SIMS.PacijentGUI
             }
         }
 
-        private bool postojiSlobodnaProstorijaZaPregled(DateTime vrijemeTermina)
-        {
-            slobodneProstorije = new ProstorijaStorage().UcitajProstorijeZaPreglede();
-            List<Termin> termini = new TerminStorage().getTerminByDate(vrijemeTermina);
-            for(int i = 0; i < slobodneProstorije.Count; i++)
-            {
-                for (int j = 0; j < termini.Count; j++)
-                {
-                    if (slobodneProstorije[i].Broj == termini[j].Prostorija.Broj)
-                    {
-                        slobodneProstorije.RemoveAt(i);
-                        i--;
-                    }
-                }
-            }
-            if (slobodneProstorije.Count == 0)
-            {
-                return false;
-            }
-            return true;
-        }
+        
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

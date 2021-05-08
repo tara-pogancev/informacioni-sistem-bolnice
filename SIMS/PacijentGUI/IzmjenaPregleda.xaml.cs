@@ -252,13 +252,18 @@ namespace SIMS.PacijentGUI
             DateTime zakazanoVrijemeIzmjenjenogTermina = DateTime.Parse(OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
             foreach (Termin termin in new TerminStorage().ReadList())
             {
-                if (termin.PocetnoVreme.Equals(zakazanoVrijemeIzmjenjenogTermina))
+                if (postojiZakazanTermin(termin,zakazanoVrijemeIzmjenjenogTermina))
                 {
                     IzbaciProstoriju(termin.Prostorija.Broj);
                 }
             }
             IspisiUpozorenje();
             
+        }
+
+        private bool postojiZakazanTermin(Termin termin,DateTime zakazanoVrijemeIzmjenjenogTermina)
+        {
+            return (termin.PocetnoVreme.Equals(zakazanoVrijemeIzmjenjenogTermina) && zakazanoVrijemeIzmjenjenogTermina != odabraniTerminZaIzmjenu.PocetnoVreme);
         }
 
        private void IspisiUpozorenje()

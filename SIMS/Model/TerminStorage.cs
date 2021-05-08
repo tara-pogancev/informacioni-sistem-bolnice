@@ -13,30 +13,35 @@ namespace Model
             return @".\..\..\..\Data\termini.json";
         }
 
-        public List<Termin> ReadByPatient(Pacijent p)
+        public List<Termin> ReadByPatient(Pacijent pacijent)
         {
-            List<Termin> retVal = new List<Termin>();
+            List<Termin> termini = new List<Termin>();
 
             foreach (Termin t in this.ReadList())
             {
-                if (t.Pacijent.Jmbg == p.Jmbg)
-                    retVal.Add(t);
+                if (istiJmbg(t.Pacijent,pacijent))
+                    termini.Add(t);
             }
 
-            return retVal;
+            return termini;
         }
 
-        public List<Termin> ReadByDoctor(Lekar l)
+        private bool istiJmbg(UlogovanKorisnik korisnik1,UlogovanKorisnik korisnik2)
         {
-            List<Termin> retVal = new List<Termin>();
+            return korisnik1.Jmbg == korisnik2.Jmbg;
+        }
+
+        public List<Termin> ReadByDoctor(Lekar lekar)
+        {
+            List<Termin> termini = new List<Termin>();
 
             foreach(Termin t in this.ReadList())
             {
-                if (t.Lekar.Jmbg == l.Jmbg)
-                    retVal.Add(t);
+                if (istiJmbg(t.Lekar,lekar))
+                    termini.Add(t);
             }
 
-            return retVal;
+            return termini;
         }
 
         protected override string getKey(Termin entity)
@@ -50,41 +55,7 @@ namespace Model
             return;
         }
 
-        public bool UpdateSingle(Termin termin, String keyOld)
-        {
-            Dictionary<String, Termin> entities = this.ReadAll();
-
-            String key = keyOld;
-
-            if (!entities.ContainsKey(key))
-            {
-                return false;
-            }
-
-            entities[key] = termin;
-
-            string path = this.getPath();
-            string json = System.Text.Json.JsonSerializer.Serialize(entities);
-
-            File.WriteAllText(path, json);
-
-            return true;
-
-        }
-
-        public List<Termin> getTerminByDate(DateTime datum)
-        {
-            List<Termin> sviTermini = ReadList();
-            for(int i = 0; i < sviTermini.Count; i++)
-            {
-                if (sviTermini[i].PocetnoVreme != datum)
-                {
-                    sviTermini.RemoveAt(i);
-                    i--;
-                }
-            }
-            return sviTermini;
-        }
+       
 
          
 
