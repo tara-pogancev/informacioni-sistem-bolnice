@@ -81,11 +81,12 @@ namespace SIMS.PacijentGUI
             o.ShowDialog();
            
             pacijent.BanovanKorisnik = true;
+            pacijent.Serijalizuj = true;
             new PacijentStorage().Update(pacijent);
             new TerminLogStorage().logoviIstekli(pacijent);
             new MainWindow().Show();
             PocetnaStranica.getInstance().Close();
-            //PocetnaStranica.getInstance(). SetInstance();
+            PocetnaStranica.getInstance(). SetInstance();
             
         }
 

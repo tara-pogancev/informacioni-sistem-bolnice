@@ -8,16 +8,16 @@ using System;
 
 namespace Model
 {
-   public class UlogovanKorisnik
-   {
-      protected String ime;
-      protected String prezime;
-      protected String jmbg;
-      protected String korisnickoIme;
-      protected String lozinka;
-      protected String email;
-      protected String telefon;
-      protected bool serijalizuj;
+    public class UlogovanKorisnik
+    {
+        protected String ime;
+        protected String prezime;
+        protected String jmbg;
+        protected String korisnickoIme;
+        protected String lozinka;
+        protected String email;
+        protected String telefon;
+        protected bool serijalizuj;
 
         private Adresa adresa;
 
@@ -36,7 +36,7 @@ namespace Model
 
         public UlogovanKorisnik()
         {
-            this.Serijalizuj = true;
+            this.serijalizuj = true;
         }
 
         public String Ime
@@ -62,8 +62,17 @@ namespace Model
         {
             get
             {
-                return this.Adresa.Ulica + " " + this.Adresa.Broj + ", " + 
+                return this.Adresa.Ulica + " " + this.Adresa.Broj + ", " +
                     this.Adresa.grad.Naziv + " " + this.Adresa.grad.PostanskiBroj + ", " + this.Adresa.grad.Drzava.Naziv;
+            }
+        }
+
+        [JsonIgnore]
+        public String AdresaKorisnika
+        {
+            get
+            {
+                return this.Adresa.Ulica + " " + this.Adresa.Broj;
             }
         }
 

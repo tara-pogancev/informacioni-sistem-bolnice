@@ -605,7 +605,7 @@
     "PacijentKey": "4865453131",
     "DatumPromjene": "2021-05-05T20:30:13.2377141+02:00",
     "TipOperacije": 1,
-    "Istekao": false
+    "Istekao": true
   },
   "2105070115474865453131020039": {
     "TerminLogKey": "2105070115474865453131020039",
@@ -613,7 +613,7 @@
     "PacijentKey": "4865453131",
     "DatumPromjene": "2021-05-07T14:00:39.5581589+02:00",
     "TipOperacije": 1,
-    "Istekao": false
+    "Istekao": true
   },
   "210507055354121055423": {
     "TerminLogKey": "210507055354121055423",
@@ -638,5 +638,229 @@
     "DatumPromjene": "2021-05-08T21:05:17.0631576+02:00",
     "TipOperacije": 1,
     "Istekao": false
+  },
+  "2105091041344865453131105451": {
+    "TerminLogKey": "2105091041344865453131105451",
+    "TerminKey": "210509104134",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T10:54:51.3751089+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105080951584865453131110318": {
+    "TerminLogKey": "2105080951584865453131110318",
+    "TerminKey": "210508095158",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:03:18.4986802+02:00",
+    "TipOperacije": 0,
+    "Istekao": true
+  },
+  "2105080952114865453131110319": {
+    "TerminLogKey": "2105080952114865453131110319",
+    "TerminKey": "210508095211",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:03:19.2578335+02:00",
+    "TipOperacije": 0,
+    "Istekao": true
+  },
+  "2105091041344865453131110453": {
+    "TerminLogKey": "2105091041344865453131110453",
+    "TerminKey": "210509104134",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:04:53.9126149+02:00",
+    "TipOperacije": 0,
+    "Istekao": true
+  },
+  "2105091107154865453131110727": {
+    "TerminLogKey": "2105091107154865453131110727",
+    "TerminKey": "210509110715",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:07:27.7665024+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091107154865453131110732": {
+    "TerminLogKey": "2105091107154865453131110732",
+    "TerminKey": "210509110715",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:07:32.7209591+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091107154865453131110738": {
+    "TerminLogKey": "2105091107154865453131110738",
+    "TerminKey": "210509110715",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:07:38.5149893+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091107154865453131110744": {
+    "TerminLogKey": "2105091107154865453131110744",
+    "TerminKey": "210509110715",
+    "PacijentKey": "4865453131",
+    "DatumPromjene": "2021-05-09T11:07:44.2739195+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091114172484848556111432": {
+    "TerminLogKey": "2105091114172484848556111432",
+    "TerminKey": "210509111417",
+    "PacijentKey": "2484848556",
+    "DatumPromjene": "2021-05-09T11:14:32.1718052+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091114172484848556111434": {
+    "TerminLogKey": "2105091114172484848556111434",
+    "TerminKey": "210509111417",
+    "PacijentKey": "2484848556",
+    "DatumPromjene": "2021-05-09T11:14:34.7179105+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091114172484848556111437": {
+    "TerminLogKey": "2105091114172484848556111437",
+    "TerminKey": "210509111417",
+    "PacijentKey": "2484848556",
+    "DatumPromjene": "2021-05-09T11:14:37.2721755+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091114172484848556111439": {
+    "TerminLogKey": "2105091114172484848556111439",
+    "TerminKey": "210509111417",
+    "PacijentKey": "2484848556",
+    "DatumPromjene": "2021-05-09T11:14:39.5827835+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091114172484848556111441": {
+    "TerminLogKey": "2105091114172484848556111441",
+    "TerminKey": "210509111417",
+    "PacijentKey": "2484848556",
+    "DatumPromjene": "2021-05-09T11:14:41.9849127+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091123351401999131238112351": {
+    "TerminLogKey": "2105091123351401999131238112351",
+    "TerminKey": "210509112335",
+    "PacijentKey": "1401999131238",
+    "DatumPromjene": "2021-05-09T11:23:51.4542094+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091123351401999131238112353": {
+    "TerminLogKey": "2105091123351401999131238112353",
+    "TerminKey": "210509112335",
+    "PacijentKey": "1401999131238",
+    "DatumPromjene": "2021-05-09T11:23:53.8403069+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091123351401999131238112356": {
+    "TerminLogKey": "2105091123351401999131238112356",
+    "TerminKey": "210509112335",
+    "PacijentKey": "1401999131238",
+    "DatumPromjene": "2021-05-09T11:23:56.704819+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091123351401999131238112359": {
+    "TerminLogKey": "2105091123351401999131238112359",
+    "TerminKey": "210509112335",
+    "PacijentKey": "1401999131238",
+    "DatumPromjene": "2021-05-09T11:23:59.3737609+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091123351401999131238112407": {
+    "TerminLogKey": "2105091123351401999131238112407",
+    "TerminKey": "210509112335",
+    "PacijentKey": "1401999131238",
+    "DatumPromjene": "2021-05-09T11:24:07.1403648+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "21050911261312121977802342112628": {
+    "TerminLogKey": "21050911261312121977802342112628",
+    "TerminKey": "210509112613",
+    "PacijentKey": "12121977802342",
+    "DatumPromjene": "2021-05-09T11:26:28.7216155+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "21050911261312121977802342112631": {
+    "TerminLogKey": "21050911261312121977802342112631",
+    "TerminKey": "210509112613",
+    "PacijentKey": "12121977802342",
+    "DatumPromjene": "2021-05-09T11:26:31.5844235+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "21050911261312121977802342112633": {
+    "TerminLogKey": "21050911261312121977802342112633",
+    "TerminKey": "210509112613",
+    "PacijentKey": "12121977802342",
+    "DatumPromjene": "2021-05-09T11:26:33.8526884+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "21050911261312121977802342112636": {
+    "TerminLogKey": "21050911261312121977802342112636",
+    "TerminKey": "210509112613",
+    "PacijentKey": "12121977802342",
+    "DatumPromjene": "2021-05-09T11:26:36.1502782+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "21050911261312121977802342112638": {
+    "TerminLogKey": "21050911261312121977802342112638",
+    "TerminKey": "210509112613",
+    "PacijentKey": "12121977802342",
+    "DatumPromjene": "2021-05-09T11:26:38.507869+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091129081401999131539112928": {
+    "TerminLogKey": "2105091129081401999131539112928",
+    "TerminKey": "210509112908",
+    "PacijentKey": "1401999131539",
+    "DatumPromjene": "2021-05-09T11:29:28.1773188+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091129081401999131539112930": {
+    "TerminLogKey": "2105091129081401999131539112930",
+    "TerminKey": "210509112908",
+    "PacijentKey": "1401999131539",
+    "DatumPromjene": "2021-05-09T11:29:30.7111956+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091129081401999131539112933": {
+    "TerminLogKey": "2105091129081401999131539112933",
+    "TerminKey": "210509112908",
+    "PacijentKey": "1401999131539",
+    "DatumPromjene": "2021-05-09T11:29:33.4295669+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091129081401999131539112936": {
+    "TerminLogKey": "2105091129081401999131539112936",
+    "TerminKey": "210509112908",
+    "PacijentKey": "1401999131539",
+    "DatumPromjene": "2021-05-09T11:29:36.2727169+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
+  },
+  "2105091129081401999131539112939": {
+    "TerminLogKey": "2105091129081401999131539112939",
+    "TerminKey": "210509112908",
+    "PacijentKey": "1401999131539",
+    "DatumPromjene": "2021-05-09T11:29:39.0246992+02:00",
+    "TipOperacije": 1,
+    "Istekao": true
   }
 }

@@ -26,6 +26,7 @@ namespace Model
             this.gost = gost;
             this.alergeni = alergeni;
             this.banovanKorisnik = false;
+            this.serijalizuj = true;
         }
 
         public Pacijent(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, String lbo, Boolean gost, List<string> alergeni, DateTime datum_rodjenja, Krvne_Grupe krvna_grupa, Pol pol, List<string> hronicne_bolesti) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
@@ -226,7 +227,7 @@ namespace Model
                 krvna_grupa = value;
             }
         }
-        [JsonIgnore]
+        
         public bool BanovanKorisnik { get => banovanKorisnik; set => banovanKorisnik = value; }
 
         public bool ShouldSerializeKrvna_Grupa()
