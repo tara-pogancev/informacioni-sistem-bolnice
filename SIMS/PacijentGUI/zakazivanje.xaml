@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="#FF323D52">
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">
+        <!--<materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">-->
             <StackPanel x:Name="glavni">
                 <Label FontSize="15" Content="Izaberite doktora" Margin="270,10,0,0" Foreground="#01C38D"/>
                 <Border BorderThickness="1" BorderBrush="Black"  Width="250" Height="100" CornerRadius="15">
@@ -47,7 +47,7 @@
 
             </StackPanel>
 
-        </materialDesign:TransitioningContent>
+       <!-- </materialDesign:TransitioningContent> -->
             
     </Grid>
 </UserControl>

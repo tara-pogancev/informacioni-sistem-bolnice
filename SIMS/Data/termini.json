@@ -36,5 +36,24 @@
     },
     "InicijalnoVrijeme": "2021-05-08T09:30:00",
     "TerminKey": "210508095211"
+  },
+  "210509104134": {
+    "PocetnoVreme": "2021-05-09T08:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "1",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-09T08:00:00",
+    "TerminKey": "210509104134"
   }
 }

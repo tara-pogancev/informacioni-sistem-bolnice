@@ -75,9 +75,8 @@ namespace SIMS.PacijentGUI
             termin.Lekar.Serijalizuj = false;
             termin.Pacijent.Serijalizuj = false;
             termin.Prostorija.Serijalizuj = false;
-            
-
-
+            ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
+            ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
             TerminStorage.Instance.Create(termin);
         }
 
