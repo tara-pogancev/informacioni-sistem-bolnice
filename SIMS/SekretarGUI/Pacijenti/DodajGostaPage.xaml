@@ -8,9 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajGostaPage">
 
-    <Grid Background="#FF191E29">
-
-
+    <Grid Background="#FF323D52">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition/>
@@ -44,24 +42,19 @@
 
                 <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
-                <TextBox x:Name="ime" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="prezime" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="jmbg" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
 
                 <StackPanel Grid.Row="5"  Grid.RowSpan="2" Orientation="Horizontal" Margin="0, 140, 0, 0">
-                    <Button Content="OTKAZI" Click="Otkazi_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                    <Button Content="DODAJ" Click="Potvrdi_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="OTKAZI" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="DODAJ" Click="AddGuest_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                 </StackPanel>
-
-
 
                 <Grid Margin="-110,-20,0,0" Grid.RowSpan="2">
                     <Label Content="Dodavanje gostujeceg pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="30" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
                 </Grid>
-
             </Grid>
-
         </Grid>
-
     </Grid>
 </Page>

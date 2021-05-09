@@ -2,159 +2,157 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.SekretarGUI
 {
-    /// <summary>
-    /// Interaction logic for SekretarObavestenjaPage.xaml
-    /// </summary>
     public partial class SekretarObavestenjaPage : Page
     {
-        private Sekretar sekretar;
-        private ObservableCollection<Obavestenje> listaTekstova;
-        private ObservableCollection<ObavestenjeUloga> listaUloga;
-        private List<Pacijent> listaPacijenata;
-        private List<Lekar> listaLekara;
-        private List<Sekretar> listaSekretara;
-        private List<Upravnik> listaUpravnika;
+        private Sekretar _secretary;
+        private ObservableCollection<Obavestenje> _notifications;
+        private List<Pacijent> _patients;
+        private List<Lekar> _doctors;
+        private List<Sekretar> _secretaries;
+        private List<Upravnik> _directors;
+        ObservableCollection<ObavestenjeUloga> _rolesOfUsers;
 
-        public SekretarObavestenjaPage(Sekretar sekretar)
+        private const int NumberOfRoleGroups = 5;
+        public SekretarObavestenjaPage(Sekretar secretary)
         {
             InitializeComponent();
-            this.sekretar = sekretar;
-            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadByUser(sekretar.Jmbg);
-            listaObavestenja.Reverse();
-            listaTekstova = new ObservableCollection<Obavestenje>(listaObavestenja);
-            listaPacijenata = PacijentStorage.Instance.ReadList();
-            listaLekara = LekarStorage.Instance.ReadList();
-            listaSekretara = SekretarStorage.Instance.ReadList();
-            listaUpravnika = UpravnikStorage.Instance.ReadList();
+            _secretary = secretary;
 
-            viewerObavestenja.ItemsSource = listaTekstova;
+            List<Obavestenje> notificationsForReversing = ObavestenjaStorage.Instance.ReadByUser(secretary.Jmbg);
+            notificationsForReversing.Reverse();
 
-            listaUloga = new ObservableCollection<ObavestenjeUloga>();
-            listaUloga.Add(new ObavestenjeUloga("Svi", 0));
-            listaUloga.Add(new ObavestenjeUloga("Svi pacijenti", 1));
-            listaUloga.Add(new ObavestenjeUloga("Svi lekari", 2));
-            listaUloga.Add(new ObavestenjeUloga("Svi sekretari", 3));
-            listaUloga.Add(new ObavestenjeUloga("Svi upravnici", 4));
-            int count = 5;
-            foreach (Pacijent p in listaPacijenata)
-            {
-                listaUloga.Add(new ObavestenjeUloga(p.ImePrezime, count, p.Jmbg));
-                count++;
-            }
-            foreach (Lekar l in listaLekara)
-            {
-                listaUloga.Add(new ObavestenjeUloga(l.ImePrezime, count, l.Jmbg));
-                count++;
-            }
-            foreach (Sekretar s in listaSekretara)
-            {
-                listaUloga.Add(new ObavestenjeUloga(s.ImePrezime, count, s.Jmbg));
-                count++;
-            }
-            foreach (Upravnik u in listaUpravnika)
-            {
-                listaUloga.Add(new ObavestenjeUloga(u.ImePrezime, count, u.Jmbg));
-                count++;
-            }
+            _notifications = new ObservableCollection<Obavestenje>(notificationsForReversing);
+            _patients = PacijentStorage.Instance.ReadList();
+            _doctors = LekarStorage.Instance.ReadList();
+            _secretaries = SekretarStorage.Instance.ReadList();
+            _directors = UpravnikStorage.Instance.ReadList();
 
-            ulogeComboBox.ItemsSource = listaUloga;
-            ulogeComboBox.DisplayMemberPath = "Uloga";
-            ulogeComboBox.SelectedMemberPath = "Indeks";
-            ulogeComboBox.SelectedItems.Add(listaUloga[0]);
+            notificationViewer.ItemsSource = _notifications;
+
+            SetRolesForNotificationTargets();
         }
 
-        private void Button_Dodaj(object sender, RoutedEventArgs e)
+        private void SetRolesForNotificationTargets()
         {
-            if (ulogeComboBox.SelectedItems.Count == 0)
+            _rolesOfUsers = new ObservableCollection<ObavestenjeUloga>
+            {
+                new ObavestenjeUloga("Svi", 0),
+                new ObavestenjeUloga("Svi pacijenti", 1),
+                new ObavestenjeUloga("Svi lekari", 2),
+                new ObavestenjeUloga("Svi sekretari", 3),
+                new ObavestenjeUloga("Svi upravnici", 4)
+            };
+            SetRoleForEachUser(_rolesOfUsers);
+
+            rolesComboBox.ItemsSource = _rolesOfUsers;
+            rolesComboBox.DisplayMemberPath = "Uloga";
+            rolesComboBox.SelectedMemberPath = "Indeks";
+            rolesComboBox.SelectedItems.Add(_rolesOfUsers[0]);
+        }
+
+        private void SetRoleForEachUser(ObservableCollection<ObavestenjeUloga> rolesOfUsers)
+        {
+            int userNumber = NumberOfRoleGroups;
+            foreach (Pacijent p in _patients)
+            {
+                rolesOfUsers.Add(new ObavestenjeUloga(p.ImePrezime, userNumber, p.Jmbg));
+                userNumber++;
+            }
+            foreach (Lekar d in _doctors)
+            {
+                rolesOfUsers.Add(new ObavestenjeUloga(d.ImePrezime, userNumber, d.Jmbg));
+                userNumber++;
+            }
+            foreach (Sekretar s in _secretaries)
+            {
+                rolesOfUsers.Add(new ObavestenjeUloga(s.ImePrezime, userNumber, s.Jmbg));
+                userNumber++;
+            }
+            foreach (Upravnik d in _directors)
+            {
+                rolesOfUsers.Add(new ObavestenjeUloga(d.ImePrezime, userNumber, d.Jmbg));
+                userNumber++;
+            }
+        }
+
+        private void AddNotification_Click(object sender, RoutedEventArgs e)
+        {
+            if (rolesComboBox.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Oznacite bar jednu ulogu.", "Nema uloge");
                 return;
             }
-            List<string> targets = new List<string>();
-            foreach (Sekretar s in listaSekretara)
-            {
-                targets.Add(s.Jmbg);
-            }
-            foreach (ObavestenjeUloga ou in ulogeComboBox.SelectedItems)
-            {
-                if (ou.Indeks == 0)
-                {
-                    targets.Add("All");
-                }
-                else if (ou.Indeks == 1)
-                {
-                    foreach (Pacijent p in listaPacijenata)
-                    {
-                        targets.Add(p.Jmbg);
-                    }
-                }
-                else if (ou.Indeks == 2)
-                {
-                    foreach (Lekar l in listaLekara)
-                    {
-                        targets.Add(l.Jmbg);
-                    }
-                }
-                else if (ou.Indeks == 4)
-                {
-                    foreach (Upravnik u in listaUpravnika)
-                    {
-                        targets.Add(u.Jmbg);
-                    }
-                }
-                else
-                {
-                    targets.Add(ou.Key);
-                }
-            }
+            List<string> targets = CreateNotificationTargetsFromUserInput();
 
-            Obavestenje obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), targets);
+
+            Obavestenje obavestenje = new Obavestenje("Sekretarijat", DateTime.Now, notificationTextBox.Text.Trim(), targets);
             ObavestenjaStorage.Instance.Create(obavestenje);
 
-            listaTekstova.Insert(0, obavestenje);
+            _notifications.Insert(0, obavestenje);
+
+            notificationTextBox.Text = "Ovde mozete uneti vase obavestenje.";
+            rolesComboBox.SelectedItems.Clear();
+            rolesComboBox.SelectedItems.Add(_rolesOfUsers[0]);
         }
 
-        private void Button_Obrisi(object sender, RoutedEventArgs e)
+        private List<string> CreateNotificationTargetsFromUserInput()
+        {
+            List<string> targets = new List<string>();
+
+            foreach (Sekretar s in _secretaries)
+                targets.Add(s.Jmbg);
+            foreach (ObavestenjeUloga ou in rolesComboBox.SelectedItems)
+            {
+                if (ou.Indeks == 0)
+                    targets.Add("All");
+                else if (ou.Indeks == 1)
+                    foreach (Pacijent p in _patients)
+                        targets.Add(p.Jmbg);
+                else if (ou.Indeks == 2)
+                    foreach (Lekar l in _doctors)
+                        targets.Add(l.Jmbg);
+                else if (ou.Indeks == 4)
+                    foreach (Upravnik u in _directors)
+                        targets.Add(u.Jmbg);
+                else
+                    targets.Add(ou.Key);
+            }
+            return targets;
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Obavestenje zaBrisanje = null;
-            foreach (Obavestenje o in listaTekstova)
+            Obavestenje toDelete = null;
+            foreach (Obavestenje notification in _notifications)
             {
-                if (o.ID.Equals(button.CommandParameter))
+                if (notification.ID.Equals(button.CommandParameter))
                 {
-                    zaBrisanje = o;
+                    toDelete = notification;
                 }
             }
-            listaTekstova.Remove(zaBrisanje);
-            ObavestenjaStorage.Instance.Delete(zaBrisanje.ID);
+            _notifications.Remove(toDelete);
+            ObavestenjaStorage.Instance.Delete(toDelete.ID);
 
         }
 
-        private void Button_Izmeni(object sender, RoutedEventArgs e)
+        private void Update_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Obavestenje zaIzmenu = null;
-            foreach (Obavestenje o in listaTekstova)
+            Obavestenje toUpdate = null;
+            foreach (Obavestenje notification in _notifications)
             {
-                if (o.ID.Equals(button.CommandParameter))
+                if (notification.ID.Equals(button.CommandParameter))
                 {
-                    zaIzmenu = o;
+                    toUpdate = notification;
                 }
             }
-            this.NavigationService.Navigate(new IzmeniObavestenjePage(listaTekstova, zaIzmenu, sekretar));
+            this.NavigationService.Navigate(new IzmeniObavestenjePage(_notifications, toUpdate, _secretary));
         }
     }
 }

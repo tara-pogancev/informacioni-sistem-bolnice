@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0" Margin="0,0,0,10">
-            <ItemsControl x:Name="viewerObavestenja">
+            <ItemsControl x:Name="notificationViewer">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
@@ -31,10 +31,10 @@
                             <Grid Grid.Row="0" Background="#2a3042">
                                 <TextBlock Text="Sekretarijat" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
                                 <TextBlock Text="{Binding VremeString}" HorizontalAlignment="Right" Margin="0,0,40,0" VerticalAlignment="Center" Foreground="White"/>
-                                <Button Click="Button_Izmeni" Height="15" Width="15" Margin="5,5,20,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
+                                <Button Click="Update_Click" Height="15" Width="15" Margin="5,5,20,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
                                     <materialDesign:PackIcon Kind="Edit" Height="12" Width="12" HorizontalAlignment="Right" Foreground="White"/>
                                 </Button>
-                                <Button Click="Button_Obrisi" Height="15" Width="15" Margin="5,5,5,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
+                                <Button Click="Delete_Click" Height="15" Width="15" Margin="5,5,5,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
                                     <materialDesign:PackIcon Kind="Delete" Height="12" Width="12" HorizontalAlignment="Right" Foreground="White"/>
                                 </Button>
 
@@ -48,33 +48,34 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <xceet:CheckComboBox x:Name="ulogeComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
+        <xceet:CheckComboBox x:Name="rolesComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
 
-        <TextBox x:Name="obavestenjeTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
+        <TextBox x:Name="notificationTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
+        
+        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
+            <Button Content="DODAJ" FontSize="14" Click="AddNotification_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF57D6B4"/>
+                        <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                        <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF33A486"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
 
-        <Button Content="DODAJ" Grid.Row="3" Margin="0,0,0,0" FontSize="14" Click="Button_Dodaj">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background" Value="#FF57D6B4"/>
-                    <Setter Property="TextElement.FontFamily" Value="Candara"/>
-                    <Setter Property="TextBlock.Foreground" Value="#000000"/>
-                    <Setter Property="Cursor" Value="Hand"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FF33A486"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Border>
-
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

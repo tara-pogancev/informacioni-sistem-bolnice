@@ -10,12 +10,12 @@ namespace SIMS
     public partial class SekretarUI : Window
     {
         private static SekretarUI _instance = null;
-        private Sekretar _sekretary;
+        private Sekretar _secretary;
 
-        public static SekretarUI GetInstance(Sekretar s)
+        public static SekretarUI GetInstance(Sekretar secretary)
         {
             if (_instance == null)
-                _instance = new SekretarUI(s);
+                _instance = new SekretarUI(secretary);
             return _instance;
         }
 
@@ -23,10 +23,10 @@ namespace SIMS
         {
             InitializeComponent();
 
-            _sekretary = secretary;
-            UsernameLabel.Content = _sekretary.ImePrezime;
+            _secretary = secretary;
+            UsernameLabel.Content = _secretary.ImePrezime;
 
-            MainFrame.Content = SekretarHomePage.GetInstance(_sekretary);
+            MainFrame.Content = SekretarHomePage.GetInstance(_secretary);
         }
 
 
@@ -45,7 +45,7 @@ namespace SIMS
                 invokeProv.Invoke();
             }
 
-            MainFrame.Content = new SekretarObavestenjaPage(_sekretary);
+            MainFrame.Content = new SekretarObavestenjaPage(_secretary);
         }
 
         private void Theme_Click(object sender, RoutedEventArgs e)

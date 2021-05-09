@@ -3,70 +3,66 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS.SekretarGUI
 {
-    /// <summary>
-    /// Interaction logic for DodajPacijentaPage.xaml
-    /// </summary>
     public partial class DodajPacijentaPage : Page
     {
-        private ObservableCollection<Alergen> listaAlergena;
+        private ObservableCollection<Alergen> _allergens;
         public DodajPacijentaPage()
         {
             InitializeComponent();
 
-            listaAlergena = new ObservableCollection<Alergen>(AlergeniStorage.Instance.ReadList());
+            _allergens = new ObservableCollection<Alergen>(AlergeniStorage.Instance.ReadList());
 
-            alergeni.ItemsSource = listaAlergena;
-            alergeni.DisplayMemberPath = "Naziv";
-            alergeni.SelectedMemberPath = "ID";
+            allergensComboBox.ItemsSource = _allergens;
+            allergensComboBox.DisplayMemberPath = "Naziv";
+            allergensComboBox.SelectedMemberPath = "ID";
         }
 
-        private void Potvrdi_Click(object sender, RoutedEventArgs e)
+        private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            string[] ulicaBroj = adresa.Text.Split(" ");
-            string ulica = "";
-            string broj = "";
-            for (int i = 0; i < ulicaBroj.Length; ++i)
-            {
-                if (i != ulicaBroj.Length - 1 && i != ulicaBroj.Length - 2)
-                    ulica += ulicaBroj[i] + " ";
-                else if (i == ulicaBroj.Length - 2)
-                    ulica += ulicaBroj[i];
-                else
-                    broj = ulicaBroj[i];
-            }
-            int post_broj;
-            int.TryParse(postanski_broj.Text, out post_broj);
-
-            List<string> alerg = new List<string>();
-            foreach(Alergen a in alergeni.SelectedItems)
-            {
-                alerg.Add(a.ID);
-            }
-            List<string> hron_bol = new List<string>(hronicne_bolesti.Text.Split());
-
-            Pacijent pacijent = new Pacijent(ime.Text, prezime.Text, jmbg.Text, kor_ime.Text, lozinka.Text, email.Text, telefon.Text, new Adresa(ulica, broj, new Grad(grad.Text, post_broj, new Drzava(drzava.Text))), lbo.Text, false, alerg, DateTime.ParseExact(datum_rodjenja.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)krvna_grupa.SelectionBoxItem), (Pol)pol.SelectionBoxItem, hron_bol);
+            Pacijent pacijent = CreatePatientFromUserInput();
             PacijentStorage.Instance.Create(pacijent);
-            SekretarPacijentiPage.GetInstance().refresh();
+            SekretarPacijentiPage.GetInstance().RefreshView();
 
-            this.NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
 
-        private void Otkazi_Click(object sender, RoutedEventArgs e)
+        private Pacijent CreatePatientFromUserInput()
         {
-            this.NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            GetStreetAndNumberFromAdress(out string street, out string number);
+            int.TryParse(postalCodeTextBox.Text, out int postalCode);
+
+            List<string> allergens = new List<string>();
+            foreach (Alergen a in allergensComboBox.SelectedItems)
+                allergens.Add(a.ID);
+            List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
+
+            Pacijent patient = new Pacijent(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Adresa(street, number, new Grad(cityTextBox.Text, postalCode, new Drzava(countryTextBox.Text))), lboTextBox.Text, false, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (Pol)sexComboBox.SelectionBoxItem, chronicPains);
+            return patient;
+        }
+
+        private void GetStreetAndNumberFromAdress(out string street, out string number)
+        {
+            string[] adress = adressTextBox.Text.Split(" ");
+            street = "";
+            number = "";
+            for (int i = 0; i < adress.Length; ++i)
+            {
+                if (i != adress.Length - 1)
+                    street += adress[i] + " ";
+                else
+                    number = adress[i];
+            }
+            street = street.Trim();
+        }
+
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
 
         public static Krvne_Grupe GetEnumKrvneGrupe(string s)

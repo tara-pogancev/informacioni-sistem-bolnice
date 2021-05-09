@@ -12,8 +12,8 @@
         Title="Bolnica Zdravo - Sekretar" Height="750" Width="430">
 
     <Window.Resources>
-        <Image x:Key="MoonImage" Source="/src/moon.png" Height="32" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
-        <Image x:Key="SunImage" Source="/src/sun.png" Height="32" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+        <materialDesign:PackIcon x:Key="MoonImage" Kind="MoonAndStars"  Height="32" Width="28" Foreground="#FF7F85A2"/>
+        <materialDesign:PackIcon x:Key="SunImage" Kind="WeatherSunny" Height="32" Width="28" Foreground="#FF7F85A2"/>
 
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -59,10 +59,10 @@
                     <Label Content="Marko Markovic" Name ="UsernameLabel"  HorizontalAlignment="Left" Margin="82,0,0,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
 
                     <Button x:Name="ButtonMenu" Height="30" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" Click="Menu_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}">
-                        <Image Source="/src/menu.png" Height="20" Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                        <materialDesign:PackIcon Kind="Menu" Height="32" Width="28" Foreground="#FF7F85A2"/>
                     </Button>
                     <Button Height="30" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" Click="Notification_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}">
-                        <Image Source="/src/notification.png" Height="32" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                        <materialDesign:PackIcon Kind="NotificationsNone" Height="32" Width="28" Foreground="#FF7F85A2"/>
                     </Button>
 
                 </Grid>
@@ -87,14 +87,14 @@
                             </TransformGroup>
                         </Grid.RenderTransform>
 
-                        <Button x:Name="ButtonLanguage" Content="SR"  Height="30" Margin="0,10,120,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Click="Language_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}" />
+                        <Button x:Name="ButtonLanguage" Content="SR" Foreground="#FF7F85A2" Height="30" Margin="0,10,120,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Click="Language_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}" />
 
                         <Button x:Name="ButtonTheme" Height="30" Margin="0,10,70,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Click="Theme_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}">
                             <DynamicResource ResourceKey="MoonImage" />
                         </Button>
 
                         <Button x:Name="ButtonCloseMenu" Height="30" Margin="0,10,20,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="28" Click="CloseMenu_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}">
-                            <Image Source="/src/arrow.png" Height="32" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                            <materialDesign:PackIcon Kind="ArrowLeft" Height="32" Width="28" Foreground="#FF7F85A2"/>
                         </Button>
 
                         <Image Source="/src/logo.png" Height="80" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 10, 0, 0"/>
@@ -139,7 +139,7 @@
                 </StackPanel>
                 
                 <Button Height="30" Margin="0,0,20,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="28" Click="LogOut_Click" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}">
-                    <Image Source="/src/sign-out-option.png" Height="32" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+                    <materialDesign:PackIcon Kind="SignOutVariant" Height="32" Width="28" Foreground="#FF7F85A2"/>
                 </Button>
             </Grid>
         </Grid>

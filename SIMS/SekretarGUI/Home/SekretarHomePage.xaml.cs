@@ -5,28 +5,28 @@ namespace SIMS.SekretarGUI
 {
     public partial class SekretarHomePage : Page
     {
-        private static SekretarHomePage instance = null;
+        private static SekretarHomePage _instance = null;
 
         public static SekretarHomePage GetInstance()
         {
-            return instance;
+            return _instance;
         }
-        public static SekretarHomePage GetInstance(Sekretar sekretar)
+        public static SekretarHomePage GetInstance(Sekretar secretary)
         {
-            if (instance == null)
-                instance = new SekretarHomePage(sekretar);
-            return instance;
+            if (_instance == null)
+                _instance = new SekretarHomePage(secretary);
+            return _instance;
         }
 
-        private SekretarHomePage(Sekretar sekretar)
+        private SekretarHomePage(Sekretar secretary)
         {
             InitializeComponent();
-            welcomeText.Text = "Dobrodosli,\n" + sekretar.ImePrezime;
+            welcomeText.Text = "Dobrodosli,\n" + secretary.ImePrezime;
         }
 
         public void RemoveInstance()
         {
-            instance = null;
+            _instance = null;
         }
     }
 }
