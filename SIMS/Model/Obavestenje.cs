@@ -23,7 +23,7 @@ namespace Model
             Autor = autor;
             Vreme = vreme;
             Tekst = tekst;
-            ID = autor+vreme.ToString("yyMMddHHmmss");
+            ID = autor+vreme.ToString("yyMMddHHmmssffffff");
             Target = target;
         }
 

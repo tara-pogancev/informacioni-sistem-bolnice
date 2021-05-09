@@ -8,12 +8,19 @@
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarPacijentiPage">
 
+    <Page.Resources>
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">
-
-            <DataGrid x:Name="tabelaPacijenata" ItemsSource="{Binding pacijenti}" IsReadOnly="True" 
+            <DataGrid x:Name="patientsView" ItemsSource="{Binding pacijenti}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
-                                    DataGrid.CanUserResizeRows="False">
+                                    DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
@@ -23,26 +30,22 @@
                     <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Alergeni" Binding="{Binding GetAlergeniString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Lbo" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Gost" Binding="{Binding GetGost}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Gost}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
-
         </Grid>
 
 
         <Grid Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
-
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-
-                <Button Content="Dodaj"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Dodaj_Click">
-
+                <Button Content="Dodaj"  Margin="0,0,0,0" FontSize="14" Click="AddPatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -67,16 +70,37 @@
 
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
-
             </Grid>
 
             <Grid Grid.Column="1">
+                <Button Content="Dodaj gosta"  Margin="0,0,0,0" FontSize="14" Click="AddGuest_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                <Button Content="Izmeni"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Izmeni_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
 
+            <Grid Grid.Column="2">
+                <Button Content="Izmeni"  Margin="0,0,0,0" FontSize="14" Click="UpdatePatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -94,23 +118,15 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
-
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
-
             </Grid>
 
-            <Grid Grid.Column="2">
-
-                <Button Content="Obrisi"  Margin="0,0,0,0" 
-                            FontSize="14" Click="Obrisi_Click">
-
+            <Grid Grid.Column="3">
+                <Button Content="Obrisi"  Margin="0,0,0,0" FontSize="14" Click="DeletePatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FFE26868"/>
@@ -128,18 +144,12 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
-
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
-
             </Grid>
-
         </Grid>
     </Grid>
 </Page>

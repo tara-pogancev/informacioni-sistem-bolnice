@@ -1,0 +1,32 @@
+﻿using Model;
+using System.Windows.Controls;
+
+namespace SIMS.SekretarGUI
+{
+    public partial class SekretarHomePage : Page
+    {
+        private static SekretarHomePage _instance = null;
+
+        public static SekretarHomePage GetInstance()
+        {
+            return _instance;
+        }
+        public static SekretarHomePage GetInstance(Sekretar secretary)
+        {
+            if (_instance == null)
+                _instance = new SekretarHomePage(secretary);
+            return _instance;
+        }
+
+        private SekretarHomePage(Sekretar secretary)
+        {
+            InitializeComponent();
+            welcomeText.Text = "Dobrodosli,\n" + secretary.ImePrezime;
+        }
+
+        public void RemoveInstance()
+        {
+            _instance = null;
+        }
+    }
+}

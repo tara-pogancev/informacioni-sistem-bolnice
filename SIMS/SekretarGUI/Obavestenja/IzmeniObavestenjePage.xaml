@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0" Margin="0,0,0,10">
-            <ItemsControl x:Name="viewerObavestenja">
+            <ItemsControl x:Name="notificationViewer">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="10">
@@ -28,28 +28,30 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="Aqua">
-                                <TextBlock Text="Sekretarijat" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding VremeString}" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                            <Grid Grid.Row="0" Background="#2a3042">
+                                <TextBlock Text="Sekretarijat" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding VremeString}" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+
+                                <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
                             </Grid>
 
-                            <TextBlock Text="{Binding Tekst}" Grid.Row="1" TextWrapping="Wrap" Background="Azure"/>
+                            <TextBlock Text="{Binding Tekst}" Grid.Row="1" TextWrapping="Wrap" Background="#2a3042" Foreground="White"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
 
-        <xceet:CheckComboBox x:Name="ulogeComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
+        <xceet:CheckComboBox x:Name="rolesComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
 
         <TextBox x:Name="obavestenjeTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
 
-        <Grid Grid.Row="3" Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
+        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Otkazi" Grid.Column="0"  Margin="0,0,0,0" FontSize="14" Click="Button_Otkazi">
+            <Button Content="Otkazi" Grid.Column="0"  Margin="0,0,0,0" FontSize="14" Click="Quit_Click">
 
                 <Button.Style>
                     <Style TargetType="Button">
@@ -68,15 +70,13 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" 
-                                                       HorizontalAlignment="Center"/>
-
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
-
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Izmeni" Grid.Column="1" Margin="0,0,0,0" FontSize="14" Click="Button_Izmeni">
+            
+            <Button Content="Izmeni" Grid.Column="1" Margin="0,0,0,0" FontSize="14" Click="Update_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#FF57D6B4"/>
@@ -96,7 +96,6 @@
                         <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
-
                     </ControlTemplate>
                 </Button.Template>
             </Button>

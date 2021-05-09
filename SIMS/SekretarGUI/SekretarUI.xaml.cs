@@ -1,65 +1,41 @@
 ﻿using Model;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Windows.Threading;
 using SIMS.SekretarGUI;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
 namespace SIMS
 {
-
     public partial class SekretarUI : Window
     {
-        private static SekretarUI instance = null;
-        private Sekretar sekretar;
+        private static SekretarUI _instance = null;
+        private Sekretar _secretary;
 
-        public static SekretarUI GetInstance()
+        public static SekretarUI GetInstance(Sekretar secretary)
         {
-            return instance;
+            if (_instance == null)
+                _instance = new SekretarUI(secretary);
+            return _instance;
         }
 
-        public static SekretarUI GetInstance(Sekretar s)
-        {
-            if (instance == null)
-                instance = new SekretarUI(s);
-            return instance;
-        }
-
-        private SekretarUI(Sekretar s)
+        private SekretarUI(Sekretar secretary)
         {
             InitializeComponent();
 
-            sekretar = s;
-            UsernameLabel.Content = sekretar.ImePrezime;
+            _secretary = secretary;
+            UsernameLabel.Content = _secretary.ImePrezime;
 
-            /*dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd/MM/yyyy");
-            }, Dispatcher);*/
-
-            MainFrame.Content = SekretarHomePage.GetInstance();
+            MainFrame.Content = SekretarHomePage.GetInstance(_secretary);
         }
 
 
-        private void Button_Menu(object sender, RoutedEventArgs e)
+        private void Menu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
         }
 
-        private void Button_Notification(object sender, RoutedEventArgs e)
+        private void Notification_Click(object sender, RoutedEventArgs e)
         {
             if (GridMenu.Width == 320)
             {
@@ -69,28 +45,28 @@ namespace SIMS
                 invokeProv.Invoke();
             }
 
-            MainFrame.Content = new SekretarObavestenjaPage(sekretar);
+            MainFrame.Content = new SekretarObavestenjaPage(_secretary);
         }
 
-        private void Button_Theme(object sender, RoutedEventArgs e)
+        private void Theme_Click(object sender, RoutedEventArgs e)
         {
             ButtonTheme.Content = ButtonTheme.Content == FindResource("MoonImage") ? FindResource("SunImage") : FindResource("MoonImage");
         }
 
-        private void Button_Language(object sender, RoutedEventArgs e)
+        private void Language_Click(object sender, RoutedEventArgs e)
         {
             ButtonLanguage.Content = (ButtonLanguage.Content.Equals("SR")) ? "EN" : "SR";
         }
 
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        private void CloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Log_Out(object sender, RoutedEventArgs e)
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();
-            instance = null;
+            _instance = null;
 
             if (SekretarHomePage.GetInstance() != null)
                 SekretarHomePage.GetInstance().RemoveInstance();
@@ -136,8 +112,6 @@ namespace SIMS
                     invokeProv.Invoke();
                     MainFrame.Content = SekretarHomePage.GetInstance();
                     ListViewMenu.SelectedItem = null;
-                    break;
-                default:
                     break;
             }
         }
