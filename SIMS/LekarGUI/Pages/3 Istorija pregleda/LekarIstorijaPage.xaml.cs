@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {
@@ -41,6 +42,7 @@ namespace SIMS.LekarGUI
             this.DataContext = this;
             evidentiraniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
             prazniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            dobaviPodatkeOPacijenuILekaru();
             refreshView();
         }
 
@@ -50,9 +52,11 @@ namespace SIMS.LekarGUI
             evidentiraniView.Clear();
 
             List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
-
+            popuniInformacijeODoktoruIPacijentu(temp);
             foreach (Termin t in temp)
             {
+                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
+
                 if (t.Evidentiran == true)
                     evidentiraniView.Add(t);
 
@@ -63,6 +67,15 @@ namespace SIMS.LekarGUI
 
             }
 
+        }
+
+        private void popuniInformacijeODoktoruIPacijentu(List<Termin> temp)
+        {
+            foreach (Termin termin in temp)
+            {
+                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
         }
 
         private void Button_Anamneza(object sender, RoutedEventArgs e)
@@ -83,7 +96,12 @@ namespace SIMS.LekarGUI
                 }
                 else
                 {
-                    //TODO Pregled operacije
+                    OperacijaIzvestaj report = OperacijaIzvestajStorage.Instance.Read(t.TerminKey);
+                    if (report != null)
+                    {
+                        OperacijaIzvestajView a = new OperacijaIzvestajView(report);
+                        a.Show();
+                    }
                 }
             }
         }
@@ -97,12 +115,14 @@ namespace SIMS.LekarGUI
                 if (t.VrstaTermina == TipTermina.pregled)
                 {
                     AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
-                    a.Show();
+                    a.ShowDialog();
                     refreshView();
                 }
                 else
                 {
-                    //TODO pisanje izvestaja o operaciji
+                    OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Termin)dataGridPrazni.SelectedItem);
+                    o.ShowDialog();
+                    refreshView();
                 }
             }
         }
@@ -110,6 +130,22 @@ namespace SIMS.LekarGUI
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
             LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void dobaviPodatkeOPacijenuILekaru()
+        {
+            foreach (Termin termin in EvidentiraniView)
+            {
+                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
+            
+            foreach (Termin termin in prazniView)
+            {
+               termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
+               termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+            }
+            
         }
 
     }

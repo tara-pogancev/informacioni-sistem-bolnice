@@ -1,1 +1,42 @@
-{"1_1":{"BrojProstorije":"1","IdInventara":"1","Kolicina":20},"1_2":{"BrojProstorije":"1","IdInventara":"2","Kolicina":0},"1_3":{"BrojProstorije":"1","IdInventara":"3","Kolicina":0},"2_1":{"BrojProstorije":"2","IdInventara":"1","Kolicina":26},"2_2":{"BrojProstorije":"2","IdInventara":"2","Kolicina":0},"2_3":{"BrojProstorije":"2","IdInventara":"3","Kolicina":0},"3_1":{"BrojProstorije":"3","IdInventara":"1","Kolicina":0},"3_2":{"BrojProstorije":"3","IdInventara":"2","Kolicina":0},"3_3":{"BrojProstorije":"3","IdInventara":"3","Kolicina":0}}
+{
+  "1_1": {
+    "BrojProstorije": "1",
+    "IdInventara": "1",
+    "Kolicina": 2
+  },
+  "1_2": {
+    "BrojProstorije": "1",
+    "IdInventara": "2",
+    "Kolicina": 0
+  },
+  "1_3": {
+    "BrojProstorije": "1",
+    "IdInventara": "3",
+    "Kolicina": 0
+  },
+  "1_4": {
+    "BrojProstorije": "1",
+    "IdInventara": "4",
+    "Kolicina": 0
+  },
+  "2_1": {
+    "BrojProstorije": "2",
+    "IdInventara": "1",
+    "Kolicina": 3
+  },
+  "2_2": {
+    "BrojProstorije": "2",
+    "IdInventara": "2",
+    "Kolicina": 0
+  },
+  "2_3": {
+    "BrojProstorije": "2",
+    "IdInventara": "3",
+    "Kolicina": 0
+  },
+  "2_4": {
+    "BrojProstorije": "2",
+    "IdInventara": "4",
+    "Kolicina": 0
+  }
+}

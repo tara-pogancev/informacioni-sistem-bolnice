@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,12 +26,12 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            InitializeComponent();
             SvaOprema = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
             foreach (Oprema op in SvaOprema)
             {
                 op.BrojProstorije = Prostorija.Broj;
             }
+            InitializeComponent();
             tabelaInventara.ItemsSource = SvaOprema;
         }
 
@@ -71,20 +72,29 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            ObservableCollection<Oprema> filtered = new ObservableCollection<Oprema>();
-
-            foreach (Oprema oprema in SvaOprema)
+            foreach (Oprema op in SvaOprema)
             {
-                if (oprema.Id.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Kolicina.ToString().StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.StartsWith(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    filtered.Add(oprema);
-                }
+                op.BrojProstorije = Prostorija.Broj;
             }
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
+        }
 
-            tabelaInventara.ItemsSource = filtered;
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (Oprema op in SvaOprema)
+            {
+                op.BrojProstorije = Prostorija.Broj;
+            }
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (Oprema op in SvaOprema)
+            {
+                op.BrojProstorije = Prostorija.Broj;
+            }
+            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
     }
 }

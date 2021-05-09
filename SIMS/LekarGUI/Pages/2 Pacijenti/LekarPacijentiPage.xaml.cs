@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,8 +25,9 @@ namespace SIMS.LekarGUI
 
         private static Lekar lekarUser;
 
-        private ObservableCollection<Pacijent> pacijentiView;
-        public ObservableCollection<Pacijent> PacijentiView { get => pacijentiView; set => pacijentiView = value; }
+        private const String defaultSearchText = "Pretraži...";
+
+        public ObservableCollection<Pacijent> PacijentiView { get; set; }
 
         public static LekarPacijentiPage GetInstance(Lekar l)
         {
@@ -47,7 +49,7 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            pacijentiView = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
+            PacijentiView = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
 
         }
 
@@ -71,7 +73,7 @@ namespace SIMS.LekarGUI
             {
                 Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
                 LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(p);
-                r.Show();
+                r.ShowDialog();
             }
         }
 
@@ -83,6 +85,79 @@ namespace SIMS.LekarGUI
         private void Button_Terapija(object sender, RoutedEventArgs e)
         {
             //TODO
+        }
+
+        private void SearchByIcon(object sender, MouseButtonEventArgs e)
+        {
+            Search();
+        }
+
+        private void SearchByEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Search();
+            }
+        }
+
+        private void ClearSearchText(object sender, RoutedEventArgs e)
+        {
+            searchBox.Text = "";
+        }
+
+        private void Search()
+        {
+            String searchText = searchBox.Text;
+
+            if (searchText == "" || searchText == defaultSearchText)
+            {
+                resetView();
+            } else
+            {
+                filterView(searchText);
+            }
+
+        }
+
+        private void SearchTextChanged(object sender, RoutedEventArgs e)
+        {
+            String searchText = searchBox.Text;
+
+            if (searchText == "")
+            {
+                searchBox.Text = defaultSearchText;
+            }
+        }
+
+        private void resetView()
+        {
+            PacijentiView.Clear();
+
+            foreach(Pacijent patient in PacijentStorage.Instance.ReadList())
+            {
+                PacijentiView.Add(patient);
+            }
+        }
+
+        private void filterView(String filter)
+        {
+            PacijentiView.Clear();
+            filter = filter.ToUpper();
+
+            foreach (Pacijent patient in PacijentStorage.Instance.ReadList())
+            {
+                if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
+                    PacijentiView.Add(patient);
+            }
+        }
+
+        private void Button_Uput(object sender, RoutedEventArgs e)
+        {
+            if (dataGridPacijenti.SelectedItem != null)
+            {
+                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                new UputCreate(p).ShowDialog();
+            }
         }
     }
 }

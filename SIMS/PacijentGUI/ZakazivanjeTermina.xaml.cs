@@ -33,10 +33,9 @@ namespace SIMS.PacijentGUI
             return instance;
         }
         private ZakazivanjeTermina()
-        {
-            
+        {            
             InitializeComponent();
-            Zakazivanje1.Children.Add(new zakazivanje(pacijent));
+            Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
         }
 
         private void Preporuceni_Click(object sender, RoutedEventArgs e)
@@ -48,7 +47,7 @@ namespace SIMS.PacijentGUI
         private void Obicno_Click(object sender, RoutedEventArgs e)
         {
             Zakazivanje1.Children.Clear();
-            Zakazivanje1.Children.Add(new zakazivanje(pacijent));
+            Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
         }
     }
 }

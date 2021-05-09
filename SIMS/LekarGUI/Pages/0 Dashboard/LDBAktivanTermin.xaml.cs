@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
+using SIMS.LekarGUI.Dialogues.Izvestaji;
 
 namespace SIMS.LekarGUI.Pages
 {
@@ -44,11 +45,12 @@ namespace SIMS.LekarGUI.Pages
             if (aktivanTermin.VrstaTermina == TipTermina.pregled)
             {
                 AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
-                a.Show();
+                a.ShowDialog();
             }
             else
             {
-                //TODO
+                OperacijaIzvestajCreate o = new OperacijaIzvestajCreate(aktivanTermin);
+                o.ShowDialog();
             }
         }
     }

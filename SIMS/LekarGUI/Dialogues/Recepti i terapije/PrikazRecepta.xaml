@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
-        Title="Prikaz recepta" Height="480" Width="500"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Title="Prikaz recepta" Height="480" Width="500">
 
     <Window.Resources>
 
@@ -65,7 +65,7 @@
 
         </Grid>
 
-        <Button Grid.Row="3" Content="Zatvori" Click="Button_Click" HorizontalAlignment="Right" Margin="0,0,70,0" VerticalAlignment="Center"
+        <Button Grid.Row="3" Content="Zatvori" Click="ButtonCloseWindow" HorizontalAlignment="Right" Margin="0,0,70,0" VerticalAlignment="Center"
             Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
     </Grid>

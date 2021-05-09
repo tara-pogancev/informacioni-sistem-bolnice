@@ -67,19 +67,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Dokumenti(object sender, RoutedEventArgs e)
         {
-            //TODO
-
-            //Trenutno debug za prikaz recepta
-
-            List<Recept> recepti = ReceptStorage.Instance.ReadList();
-            int id = 2;
-
-            if (recepti.Count >= id-1)
-            {
-                PrikazRecepta prikaz = new PrikazRecepta(recepti[id]);
-                prikaz.Show();
-            }
-
+            LekarUI.GetInstance().SellectedTab.Content = new PacijentDokumentacijaView(pacijentProfile);
         }
 
         private void Button_Hositalizaijca(object sender, RoutedEventArgs e)

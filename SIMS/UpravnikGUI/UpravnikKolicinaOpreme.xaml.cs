@@ -60,11 +60,13 @@ namespace SIMS.UpravnikGUI
             }
             catch (Exception)
             {
+                MessageBox.Show("Uneti broj.");
                 return;
             }
 
             if (amount < 0)
             {
+                MessageBox.Show("Uneti broj veći od 0.");
                 return;
             }
             ProsInvStorage.Instance.Update(new ProsInv(BrojProstorije, Oprema.Id, amount));

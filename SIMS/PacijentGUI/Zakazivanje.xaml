@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="SIMS.PacijentGUI.Zakazivanje"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS.PacijentGUI"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:model="clr-namespace:Model" d:DataContext="{d:DesignInstance Type=model:Termin}" 
+             d:DesignHeight="600" d:DesignWidth="550">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="#FF323D52">
+        <!--<materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">-->
+            <StackPanel x:Name="glavni">
+                <Label FontSize="15" Content="Izaberite doktora" Margin="270,10,0,0" Foreground="#01C38D"/>
+                <Border BorderThickness="1" BorderBrush="Black"  Width="250" Height="100" CornerRadius="15">
+                    <ListView Width="250"  Height="100" Foreground="#01C38D" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Lekari}" DisplayMemberPath="ImePrezime" Name="ListaDoktora" SelectionChanged="ListaDoktora_SelectionChanged">
+                        
+                    </ListView>
+                </Border>
+
+                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum"  Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
+
+                <ComboBox 
+                    x:Name="terminiLista" ItemsSource="{Binding DostupniTermini}"
+                        Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                        MaxDropDownHeight="150"
+                        materialDesign:HintAssist.Hint="Raspolozivi termini"
+                        Foreground="#01C38D"
+                        Width="250" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
+                        SelectionChanged="ComboBox_SelectionChanged"
+                     />
+
+
+                <StackPanel Orientation="Horizontal" Margin="40" Width="400">
+                    <Button Width="250" Background="#01C38D" Margin="78,30,0,0"  Name="Potvrdi" Click="Potvrdi_Click" >Potvrdi</Button>
+                    
+                </StackPanel>
+
+            </StackPanel>
+
+       <!-- </materialDesign:TransitioningContent> -->
+            
+    </Grid>
+</UserControl>

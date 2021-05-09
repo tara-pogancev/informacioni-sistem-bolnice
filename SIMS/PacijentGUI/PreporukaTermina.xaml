@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  
              d:DesignHeight="550" d:DesignWidth="600">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -16,8 +16,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">
+    <Grid Background="#FF323D52">
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:1.0}">
             <StackPanel Margin="30">
                 <Label HorizontalAlignment="Center" FontSize="18" Foreground="White">Izaberite datum</Label>
 
@@ -47,7 +47,7 @@
                 </Border>
                 
 
-                <Button Width="150" x:Name="Trazi" Click="Trazi_Click" >Traži</Button>
+                <Button Width="150" x:Name="Trazi" Click="Trazi_Click"  Margin="40">Traži</Button>
 
 
 

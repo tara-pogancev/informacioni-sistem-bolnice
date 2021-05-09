@@ -62,6 +62,9 @@ namespace SIMS.LekarGUI
             {
                 if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
+
+                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
+                t.Prostorija = new ProstorijaStorage().Read(t.Prostorija.Broj);
             }
         }
 
@@ -69,14 +72,14 @@ namespace SIMS.LekarGUI
         {
             //Button: Zakazi pregled
             TerminCreate terminCreate = new TerminCreate();
-            terminCreate.Show();
+            terminCreate.ShowDialog();
         }
 
         private void Button_Operacija(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi operaciju
             OperacijaCreate operacijaCreate = new OperacijaCreate();
-            operacijaCreate.Show();
+            operacijaCreate.ShowDialog();
         }
 
         private void Button_Update(object sender, RoutedEventArgs e)
@@ -85,7 +88,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
-                terminUpdate.Show();
+                terminUpdate.ShowDialog();
             }
 
         }
@@ -102,8 +105,8 @@ namespace SIMS.LekarGUI
                 {
                     Termin toDelete = (Termin)dataGridTermini.SelectedItem;
                     TerminStorage.Instance.Delete(toDelete.TerminKey);
-                    MessageBox.Show("Termin je uspešno otkazan!");
                     refreshView();
+                    MessageBox.Show("Termin je uspešno otkazan!");
                 }
 
             }
@@ -136,7 +139,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 Termin t = (Termin)dataGridTermini.SelectedItem;
-                Pacijent p = PacijentStorage.Instance.Read(t.PacijentKey);
+                Pacijent p = PacijentStorage.Instance.Read(t.Pacijent.Jmbg);
 
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }

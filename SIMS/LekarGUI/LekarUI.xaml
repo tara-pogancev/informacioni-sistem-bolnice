@@ -8,8 +8,9 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="ThreeDBorderWindow"
         ResizeMode="CanResize"
-        MinHeight="630" MinWidth="750"
-        Title="Bolnica Zdravo - Lekar" Height="625" Width="1050">
+        MinHeight="630" MinWidth="900"
+        Title="Bolnica Zdravo - Lekar" Height="625" Width="1050"
+        KeyDown="WindowKeyListener">
 
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
@@ -97,8 +98,10 @@
 
                         <Image Source="/src/notification.png" Height="24" Margin="25,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Notification" ToolTip="Obaveštenja"/>
                         <Image Source="/src/help.png" Height="24" Margin="80,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Help" ToolTip="Pomoć"/>
+                        <Label Content="Pritisnite [f1] za pomoć" VerticalAlignment="Center" Margin="130,0,0,0" Style="{StaticResource DefaultLabelS}" Foreground="#FF7F85A2"/>
 
-                        <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52"/>
+
+                        <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52" Cursor="Hand" PreviewMouseDown="Button_Nalog"/>
 
                     </Grid>
 

@@ -1,0 +1,28 @@
+﻿<Page x:Class="SIMS.UpravnikGUI.RenoviranjePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.UpravnikGUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RenoviranjePage">
+
+    <Grid Background="#323D52">
+        <StackPanel>
+            <Label  Content="Početak renoviranja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+            <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Pocetak" HorizontalAlignment="Left"/>
+            <Label  Content="Kraj renoviranja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+            <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Kraj" HorizontalAlignment="Left" />
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="Odustani" Content="Odustani"  Margin="20,20" Width="110" Height="35" Background="DarkRed" Click="Odustani_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+            <Button Content="Ok"  Margin="20,20" Width="110" Height="35" Background="Green" Click="Ok_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+            <Button x:Name="Otkaz" Content="Otkaži renoviranje"  Margin="20,20" Width="180" Height="35" Background="DarkRed" Click="Otkaz_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+
+        </StackPanel>
+
+    </Grid>
+    
+
+</Page>

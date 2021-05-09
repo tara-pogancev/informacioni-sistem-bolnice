@@ -11,6 +11,8 @@ namespace Model
    {
       private int daniGodisnjegOdmora;
 
+        
+
         public Sekretar() :base()
         {
         }
@@ -23,6 +25,13 @@ namespace Model
         public Sekretar(Sekretar s) : base(s.Ime, s.Prezime, s.Jmbg, s.KorisnickoIme, s.Lozinka, s.Email, s.Telefon, s.Adresa)
         {
             this.daniGodisnjegOdmora = s.daniGodisnjegOdmora;
+        }
+
+        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+
+        public bool ShouldSerializeDaniGodisnjegOdmora()
+        {
+            return serijalizuj;
         }
     }
    

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,43 +7,49 @@ namespace Model
 {
     public class Recept
     {
-        private String receptKey;
-        private String lekarKey;
-        private String pacijentKey;
-        private DateTime datum;
-        private String nazivLeka;
-        private String kolicina;
-        private String dijagnoza;
-
         public Recept()
         {
+            ReceptKey = DateTime.Now.ToString("yyMMddhhmmss");
         }
 
-        public Recept(String lekarKey, String pacijentKey, String nazivLeka, String kolicina, String dijagnoza)
+        public Recept(Lekar lekar, Pacijent pacijent, String nazivLeka, String kolicina, String dijagnoza)
         {
-            this.lekarKey = lekarKey;
-            this.pacijentKey = pacijentKey;
-            this.nazivLeka = nazivLeka;
-            this.kolicina = kolicina;
-            this.dijagnoza = dijagnoza;
+            Lekar = lekar;
+            Pacijent = pacijent;
+            NazivLeka = nazivLeka;
+            Kolicina = kolicina;
+            Dijagnoza = dijagnoza;
 
-            this.receptKey = DateTime.Now.ToString("yyMMddhhmmss");
-            this.datum = DateTime.Today;
+            ReceptKey = DateTime.Now.ToString("yyMMddhhmmss");
+            Datum = DateTime.Today;
 
         }   
 
-        public String ImeLekara { get { return LekarStorage.Instance.Read(lekarKey).ImePrezime; } }
+        [JsonIgnore]
+        public String ImeLekara { get { return Lekar.ImePrezime; } }
 
-        public String ImePacijenta { get { return PacijentStorage.Instance.Read(pacijentKey).ImePrezime; } }
+        [JsonIgnore]
+        public String ImePacijenta { get { return Pacijent.ImePrezime; } }
 
-        public String DateString { get { return datum.ToString("dd.MM.yyyy."); } }
+        [JsonIgnore]
+        public String DateString { get { return Datum.ToString("dd.MM.yyyy."); } }
 
-        public String NazivLeka { get => this.nazivLeka; set => nazivLeka = value; }
-        public String Kolicina { get => this.kolicina; set => kolicina = value; }
-        public String Dijagnoza { get => this.dijagnoza; set => dijagnoza = value; }
-        public String ReceptKey { get => this.receptKey; set => receptKey = value; }
-        public String LekarKey { get => this.lekarKey; set => lekarKey = value; }
-        public String PacijentKey { get => this.pacijentKey; set => pacijentKey = value; }
+        [JsonIgnore]
+        public String NameAndQuantity { get { return (NazivLeka + " " + Kolicina); } }
+
+        public String NazivLeka { get; set; }
+        public String Kolicina { get; set; }
+        public String Dijagnoza { get; set; }
+        public String ReceptKey { get; set; }
+        public Lekar Lekar { get; set; }
+        public Pacijent Pacijent { get; set; }
+        public DateTime Datum { get; set; }
+
+        public void InitData()
+        {
+            Lekar = LekarStorage.Instance.Read(Lekar.Jmbg);
+            Pacijent = PacijentStorage.Instance.Read(Pacijent.Jmbg);
+        }
 
     }
 }

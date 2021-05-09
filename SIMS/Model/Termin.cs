@@ -3,6 +3,8 @@
 // Created: Monday, March 22, 2021 6:47:56 PM
 // Purpose: Definition of Class Termin
 
+using Newtonsoft.Json;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,16 +13,16 @@ namespace Model
 {
    public class Termin : INotifyPropertyChanged
    {
-      private DateTime pocetnoVreme;
-      private int vremeTrajanja;    //U minutima
-      private TipTermina vrstaTermina;
+        private DateTime pocetnoVreme;
+        private int vremeTrajanja;    //U minutima
+        private TipTermina vrstaTermina;
         private DateTime inicijalnoVrijeme;
-
-        private String lekarKey;         //JMBG lekara
-        private String pacijentKey;      //JMBG pacijenta
-        private String prostorijaKey;    //Naziv prostorije
         private String terminKey;
-        
+        private Lekar lekar;
+        private Pacijent pacijent;
+        private Prostorija prostorija;
+        private bool serijalizuj;
+             
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)
@@ -31,37 +33,79 @@ namespace Model
             }
         }
 
-        public DateTime PocetnoVreme { get => pocetnoVreme; set { pocetnoVreme = value; OnPropertyChanged("PocetnoVreme"); OnPropertyChanged("Vrijeme"); OnPropertyChanged("Datum"); } }
-        public int VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
-        public TipTermina VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
-        public String LekarKey { get => lekarKey; set { lekarKey = value; OnPropertyChanged("LekarKey"); } }
-        public String PacijentKey { get => pacijentKey; set { pacijentKey = value; OnPropertyChanged("PacijentKey"); } }
-        public String Prostorija { get => prostorijaKey; set { prostorijaKey = value; OnPropertyChanged("Prostorija"); } }
-
-        public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, String lekar, String pacijent, String prostorija)
+        public Termin(DateTime pocetnoVreme, int vremeTrajanja, TipTermina vrstaTermina, Lekar lekar, Pacijent pacijent, Prostorija prostorija)
         {
             this.inicijalnoVrijeme = pocetnoVreme;
             this.pocetnoVreme = pocetnoVreme;
             this.vremeTrajanja = vremeTrajanja;
             this.vrstaTermina = vrstaTermina;
-            this.lekarKey = lekar;
-            this.pacijentKey = pacijent;
-            this.prostorijaKey = prostorija;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
+            this.lekar = lekar;
+            this.pacijent = pacijent;
+            this.prostorija = prostorija;
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
+            serijalizuj = true;
         }
 
         public Termin()
         {
             this.vrstaTermina = TipTermina.pregled;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmss");
-        }        
+            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
+            serijalizuj = true;
+        }
 
-        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
-
-        public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
-
+        public DateTime PocetnoVreme { get => pocetnoVreme; set { pocetnoVreme = value; OnPropertyChanged("PocetnoVreme"); OnPropertyChanged("Vrijeme"); OnPropertyChanged("Datum"); } }
+        public int VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
+        public TipTermina VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
+        public Lekar Lekar { get => lekar; set { lekar = value; OnPropertyChanged("Lekar"); } }
+        public Pacijent Pacijent { get => pacijent; set { pacijent = value; OnPropertyChanged("PacijentKey"); } }
+        public Prostorija Prostorija { get => prostorija; set { prostorija = value; OnPropertyChanged("Prostorija"); } }
+        public DateTime InicijalnoVrijeme { get => inicijalnoVrijeme; set => inicijalnoVrijeme = value; }
         public String TerminKey { get => terminKey; set => terminKey = value; }
 
+        [JsonIgnore]
+        public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
+
+        public bool ShouldSerializePocetnoVreme()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeVremeTrajanja()
+        {
+            return serijalizuj;
+        }
+        
+        public bool ShouldSerializeVrstaTermina()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeLekar()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializePacijent()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeProstorija()
+        {
+            return serijalizuj;
+        }
+        public bool ShouldSerializeInicijalnoVrijeme()
+        {
+            return serijalizuj;
+        }
+
+        [JsonIgnore]
+        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
+
+        [JsonIgnore]
+        public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
+                
+        [JsonIgnore]
         public String GetVrsta
         {
             get {
@@ -80,39 +124,43 @@ namespace Model
             
         }
 
+        [JsonIgnore]
         public String ImePacijenta
         {
-            get 
-            {
-                Pacijent p = PacijentStorage.Instance.Read(pacijentKey);
-                return (p.ImePrezime); 
+            get
+            { 
+                return (pacijent.ImePrezime); 
             }
         }
 
+        [JsonIgnore]
         public String ImeLekara
         {
             get
             {
-                Lekar l = LekarStorage.Instance.Read(lekarKey);
-                return (l.ImePrezime);
+                //lekar = LekarStorage.Instance.Read(doktor) 
+                return (lekar.ImePrezime);
             }
         }
 
+        [JsonIgnore]
         public String NazivProstorije
         {
-            get { return this.prostorijaKey; }
+            get { return prostorija.Broj; }
         }
 
+        [JsonIgnore]
         public bool Evidentiran
         {
             get
             {
-                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null)
+                if (AnamnezaStorage.Instance.Read(this.TerminKey) == null && OperacijaIzvestajStorage.Instance.Read(this.TerminKey) == null)
                     return false;
                 else return true;
             }
         }
 
+        [JsonIgnore]
         public DateTime KrajnjeVreme
         {
             get
@@ -122,6 +170,7 @@ namespace Model
             }
         }
 
+        [JsonIgnore]
         public bool IsPast
         {
             get
@@ -133,6 +182,7 @@ namespace Model
             }
         }
 
+        [JsonIgnore]
         public bool IsCurrent
         {
             get
@@ -145,6 +195,21 @@ namespace Model
             }
         }
 
-        public DateTime InicijalnoVrijeme { get => inicijalnoVrijeme; set => inicijalnoVrijeme = value; }
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get
+            {
+                return ImeLekara + ", " + Vrijeme + " " + Datum;
+            }
+        }
+
+        public void InitData()
+        {
+            Pacijent = new PacijentStorage().Read(Pacijent.Jmbg);
+            Prostorija = new ProstorijaStorage().Read(Prostorija.Broj);
+            Lekar = new LekarStorage().Read(Lekar.Jmbg);
+        }
+
     }
 }

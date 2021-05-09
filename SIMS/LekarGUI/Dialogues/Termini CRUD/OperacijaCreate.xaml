@@ -68,7 +68,7 @@
 
                 <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
-                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doktoriCombo"  DisplayMemberPath="ImePrezime" SelectedValuePath="ImePrezime"
+                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doktoriCombo"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="ImePrezime"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
 

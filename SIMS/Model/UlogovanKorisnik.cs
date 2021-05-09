@@ -3,19 +3,21 @@
 // Created: Monday, March 22, 2021 6:37:39 PM
 // Purpose: Definition of Class UlogovanKorisnik
 
+using Newtonsoft.Json;
 using System;
 
 namespace Model
 {
-   public class UlogovanKorisnik
-   {
-      private String ime;
-      private String prezime;
-      private String jmbg;
-      private String korisnickoIme;
-      private String lozinka;
-      private String email;
-      private String telefon;
+    public class UlogovanKorisnik
+    {
+        protected String ime;
+        protected String prezime;
+        protected String jmbg;
+        protected String korisnickoIme;
+        protected String lozinka;
+        protected String email;
+        protected String telefon;
+        protected bool serijalizuj;
 
         private Adresa adresa;
 
@@ -29,10 +31,12 @@ namespace Model
             this.email = email;
             this.telefon = telefon;
             this.adresa = adresa;
+            this.serijalizuj = true;
         }
 
         public UlogovanKorisnik()
         {
+            this.serijalizuj = true;
         }
 
         public String Ime
@@ -49,18 +53,66 @@ namespace Model
         public string Telefon { get => telefon; set => telefon = value; }
         public Adresa Adresa { get => adresa; set => adresa = value; }
 
+
+        [JsonIgnore]
         public String ImePrezime { get => (ime + " " + prezime); }
 
-
+        [JsonIgnore]
         public String fullAddress
         {
             get
             {
-                return this.Adresa.Ulica + " " + this.Adresa.Broj + ", " + 
+                return this.Adresa.Ulica + " " + this.Adresa.Broj + ", " +
                     this.Adresa.grad.Naziv + " " + this.Adresa.grad.PostanskiBroj + ", " + this.Adresa.grad.Drzava.Naziv;
             }
         }
 
+        [JsonIgnore]
+        public String AdresaKorisnika
+        {
+            get
+            {
+                return this.Adresa.Ulica + " " + this.Adresa.Broj;
+            }
+        }
+
+        
+        public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
+
+        public bool ShouldSerializePrezime()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeKorisnickoIme()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeLozinka()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeEmail()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeTelefon()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeAdresa()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeIme()
+        {
+            return serijalizuj;
+        }
 
     }
 }

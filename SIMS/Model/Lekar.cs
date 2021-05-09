@@ -3,6 +3,7 @@
 // Created: Monday, March 22, 2021 7:32:13 PM
 // Purpose: Definition of Class Lekar
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -10,19 +11,20 @@ namespace Model
 {
     public class Lekar : UlogovanKorisnik
     {
-        private int daniGodisnjegOdmora;
+        public int DaniGodisnjegOdmora { get; set; }
+
+        public Specijalizacija SpecijalizacijaLekara { get; set; }
 
         public Lekar()
         {
         }
 
-        public Lekar(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Lekar(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Adresa adresa, Specijalizacija specijalizacija, int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
         {
-            this.daniGodisnjegOdmora = daniGodisnjegOdmora;
+            DaniGodisnjegOdmora = daniGodisnjegOdmora;
+            SpecijalizacijaLekara = specijalizacija;
         }
-
-        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
-
+             
         public List<Termin> getZauzetiTermini()
         {
             List<Termin> retVal = new List<Termin>();
@@ -64,6 +66,48 @@ namespace Model
             }
 
             return true;
+        }
+
+        public bool ShouldSerializeDaniGodisnjegOdmora()
+        {
+            return serijalizuj;
+        }
+
+        public bool ShouldSerializeSpecijalizacijaLekara()
+        {
+            return serijalizuj;
+        }
+
+        [JsonIgnore]
+        public String NameAndSpecialization { get { return ImePrezime + ", " + Specialization; } }
+
+        [JsonIgnore]
+        public String Specialization 
+        { 
+            get 
+            {
+                if (SpecijalizacijaLekara == Specijalizacija.OpstaPraksa)
+                    return "Lekar opšte prakse";
+                else if (SpecijalizacijaLekara == Specijalizacija.Hirurg)
+                    return "Hirurg";
+                else if (SpecijalizacijaLekara == Specijalizacija.Internista)
+                    return "Internista";
+                else if (SpecijalizacijaLekara == Specijalizacija.Dermatolog)
+                    return "Dermatolog";
+                else if (SpecijalizacijaLekara == Specijalizacija.Kardiolog)
+                    return "Kardiolog";
+                else if (SpecijalizacijaLekara == Specijalizacija.Otorinolaringolog)
+                    return "Otorinolaringolog";
+                else if (SpecijalizacijaLekara == Specijalizacija.Stomatolog)
+                    return "Stomatolog";
+                else if (SpecijalizacijaLekara == Specijalizacija.Urolog)
+                    return "Urolog";
+                else if (SpecijalizacijaLekara == Specijalizacija.Ginekolog)
+                    return "Ginekolog";
+                else
+                    return "Neurolog";
+            } 
+
         }
 
     }

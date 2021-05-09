@@ -24,9 +24,27 @@ namespace SIMS.LekarGUI
         private List<Pacijent> pacijenti;
         private List<Prostorija> prostorije;
         private List<String> dostupniTermini;
-        Termin termin = new Termin();
+
+        public OperacijaCreate(Pacijent patient)
+        {
+            InitializeComponents();
+
+            foreach(Pacijent currentPatient in pacijenti)
+            {
+                if (patient.Jmbg == currentPatient.Jmbg)
+                {
+                    pacijentiCombo.SelectedItem = currentPatient;
+                    break;
+                }
+            }
+        }
 
         public OperacijaCreate()
+        {
+            InitializeComponents();
+        }
+
+        private void InitializeComponents()
         {
             InitializeComponent();
 
@@ -55,7 +73,6 @@ namespace SIMS.LekarGUI
                 index++;
             }
             doktoriCombo.SelectedIndex = index;
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,9 +97,9 @@ namespace SIMS.LekarGUI
                 else
                     termin.VremeTrajanja = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
-                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
-                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
                 termin.VrstaTermina = TipTermina.operacija;
 
                 //PROVERA DOSTUPNOSTI LEKARA
@@ -91,11 +108,14 @@ namespace SIMS.LekarGUI
 
                 else
                 {
+                    termin.Lekar.Serijalizuj = false;
+                    termin.Pacijent.Serijalizuj = false;
+                    termin.Prostorija.Serijalizuj = false;
+
                     TerminStorage.Instance.Create(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }
-
             }
             
         }
@@ -111,7 +131,7 @@ namespace SIMS.LekarGUI
                 /*
                 foreach (Termin termin in new TerminStorage().ReadList())
                 {
-                    if (termin.LekarKey.Equals(lek.Jmbg) && datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
+                    if (termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {
                         doktoroviTermini.Add(termin);
                     }

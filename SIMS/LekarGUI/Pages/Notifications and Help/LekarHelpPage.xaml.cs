@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.LekarGUI.Dialogues.CoffeeBreak;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,16 @@ namespace SIMS.LekarGUI
         public LekarHelpPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void CoffeeBreak(object sender, MouseButtonEventArgs e)
+        {
+            new CoffeeBreakWindow().Show();
         }
     }
 }

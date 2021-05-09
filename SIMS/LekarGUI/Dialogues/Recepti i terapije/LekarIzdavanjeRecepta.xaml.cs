@@ -18,56 +18,77 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarIzdavanjeRecepta : Window
     {
-        private Pacijent pacijent;
-        private Lekar lekar = LekarUI.GetInstance().GetUser();
+        private Pacijent patient;
+        private Lekar doctor = LekarUI.GetInstance().GetUser();
 
-        public LekarIzdavanjeRecepta(Pacijent p)
+        public LekarIzdavanjeRecepta(Pacijent patient)
         {
             InitializeComponent();
-            pacijent = p;
+            this.patient = patient;
 
-            LabelDoktor.Content = "Doktor: " + lekar.ImePrezime;
-            LabelPacijent.Content = "Pacijent: " + pacijent.ImePrezime;
-            LabelDatum.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
+            LabelDoctor.Content = "Doktor: " + doctor.ImePrezime;
+            LabelPatient.Content = "Pacijent: " + this.patient.ImePrezime;
+            LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Lek> lekovi = new List<Lek>(LekStorage.Instance.ReadList());
-            LekComboBox.ItemsSource = lekovi;
+            List<Lek> availableMedicine = new List<Lek>(LekStorage.Instance.getApprovedMedicine());
+            MedicineComboBox.ItemsSource = availableMedicine;
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AcceptReceipt(object sender, RoutedEventArgs e)
         {
-            if (LekComboBox.SelectedItem == null || KolicinaTxt.Text.Equals("") || DijagnozaTxt.Text.Equals(""))
+            if (MedicineComboBox.SelectedItem == null || AmountText.Text.Equals("") || DiagnosisText.Text.Equals(""))
                 MessageBox.Show("Greška! Molimo popunite sva polja.");
-            else if (pacijent.IsAlergic((Lek)LekComboBox.SelectedItem))
+
+            else if (patient.IsAlergic(GetSelectedMedicine()))
             {
-                Lek l = (Lek)LekComboBox.SelectedItem;
-                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Da li ste sigurni da želite da izdate lek " + l.Naziv +"?", "Upozorenje!",
+                Lek l = GetSelectedMedicine();
+                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ". Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    this.PrepisiRecept();
+                    this.WriteReceipt();
                 }
-
             }
             else
             {
-                this.PrepisiRecept();
+                this.WriteReceipt();
             } 
                 
         }
 
-        private void PrepisiRecept()
+        private String GetSubstitutionName(Lek medicine)
         {
-            Lek l = (Lek)LekComboBox.SelectedItem;
-            Recept r = new Recept(lekar.Jmbg, pacijent.Jmbg, l.Naziv,
-                KolicinaTxt.Text, DijagnozaTxt.Text);
+            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
+        }
 
-            ReceptStorage.Instance.Create(r);
+        private void WriteReceipt()
+        {
+            CreateReceipt();
+
             this.Close();
             MessageBox.Show("Uspešno izdat recept!");
-            Obavestenje obavestenje = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + l.Naziv + ". Pogledajte recept na svom profilu.", pacijent.Jmbg);
-            ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
-            obavestenjaStorage.Create(obavestenje);
+
+            SendNotification(GetSelectedMedicine());
+        }
+
+        private void CreateReceipt()
+        {
+            Lek medicine = GetSelectedMedicine();
+            Recept receipt = new Recept(doctor, patient, medicine.MedicineName,
+                AmountText.Text, DiagnosisText.Text);
+
+            ReceptStorage.Instance.Create(receipt);
+        }
+
+        private Lek GetSelectedMedicine()
+        {
+            return (Lek)MedicineComboBox.SelectedItem;
+        }
+
+        private void SendNotification(Lek medicine)
+        {
+            Obavestenje notification = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
+            ObavestenjaStorage.Instance.Create(notification);
         }
     }
 }

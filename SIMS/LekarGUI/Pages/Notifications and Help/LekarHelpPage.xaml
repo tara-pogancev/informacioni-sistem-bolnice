@@ -9,8 +9,65 @@
       Title="LekarHelpPage">
 
     <Grid Background="#FF323D52">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" Height="184" TextWrapping="Wrap" VerticalAlignment="Center" Width="398" Foreground="#FF57D6B4" FontFamily="Candara Light" FontSize="20" TextAlignment="Center"><Run Text="- Act V -"/><LineBreak/><Run/><LineBreak/><Run Text="Even if the morrow is barren of promises"/><LineBreak/><Run Text="Nothing shall forestall my return"/><LineBreak/><Run Text="To become the dew that quenches the land"/><LineBreak/><Run Text="To spare the sands, the seas, the skies"/><LineBreak/><Run Text="I offer thee this silent sacrifice"/></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
+
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
+            <Label Content="Pomoć" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#4e6082"/>
+
+            <Label Content="Režim korišćenja aplikacije bez miša" Margin="40,0,0,0" VerticalAlignment="Center"
+                   Style="{StaticResource BoldLabel}"/>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="40,10,250,0" Padding="20" Background="#3A475F">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource DarkTextBlock}" FontSize="16">
+                    Dobrodošli u režim korišćejna aplikacije bez miša. Pomoću tastature možete jednostavno navigirati glavnim tabovima 
+                    aplikacije, kao i njihvoim dugmadima i opcijama. Prečice za pristup funkcionalnostima aplikacije: 
+                    </TextBlock>
+
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource DarkTextBlock}" FontSize="18" Margin="20,10,0,0">
+                        ESC - Dashboard <LineBreak/>
+                        F1 - Pomoć <LineBreak/>
+                        F2 - Termini <LineBreak/>
+                        F3 - Pacijenti <LineBreak/>
+                        F4 - Istorija pregleda <LineBreak/>
+                        F5 - Potrošnja materijala <LineBreak/>
+                        F6 - Nalog <LineBreak/>
+                        F7 - Obaveštenja i upravljanje lekovima <LineBreak/> <LineBreak/>
+                        TAB - Promena aktivnog elementa <LineBreak/>
+                        ENTER - Potvrdi <LineBreak/>
+                        Alt+F4 - Izglazak iz aplikacije
+                    </TextBlock>
+
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource DarkTextBlock}" FontSize="16" Margin="0,10,0,0">
+                        Prilikom korišćenja dijaloga, poništavanje izmena ili gašenje istog postiže se klikom na ESC taster, dok se prihvatanje 
+                        promena realizuje pomoću ENTER tastera.
+                    </TextBlock>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </Grid>
+
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="../../../src/Illustrations/man_reading_dark_hair.png" HorizontalAlignment="Right" Margin="0,25,25,10"
+               Cursor="Pen" MouseDown="CoffeeBreak"/>
+
 
     </Grid>
 </Page>

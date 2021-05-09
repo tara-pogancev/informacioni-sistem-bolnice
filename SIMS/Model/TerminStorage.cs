@@ -13,30 +13,35 @@ namespace Model
             return @".\..\..\..\Data\termini.json";
         }
 
-        public List<Termin> ReadByPatient(Pacijent p)
+        public List<Termin> ReadByPatient(Pacijent pacijent)
         {
-            List<Termin> retVal = new List<Termin>();
+            List<Termin> termini = new List<Termin>();
 
             foreach (Termin t in this.ReadList())
             {
-                if (t.PacijentKey == p.Jmbg)
-                    retVal.Add(t);
+                if (istiJmbg(t.Pacijent,pacijent))
+                    termini.Add(t);
             }
 
-            return retVal;
+            return termini;
         }
 
-        public List<Termin> ReadByDoctor(Lekar l)
+        private bool istiJmbg(UlogovanKorisnik korisnik1,UlogovanKorisnik korisnik2)
         {
-            List<Termin> retVal = new List<Termin>();
+            return korisnik1.Jmbg == korisnik2.Jmbg;
+        }
+
+        public List<Termin> ReadByDoctor(Lekar lekar)
+        {
+            List<Termin> termini = new List<Termin>();
 
             foreach(Termin t in this.ReadList())
             {
-                if (t.LekarKey == l.Jmbg)
-                    retVal.Add(t);
+                if (istiJmbg(t.Lekar,lekar))
+                    termini.Add(t);
             }
 
-            return retVal;
+            return termini;
         }
 
         protected override string getKey(Termin entity)
@@ -50,31 +55,40 @@ namespace Model
             return;
         }
 
-        public bool UpdateSingle(Termin termin, String keyOld)
+       
+
+        public int getAppointmentsCountByDate(DateTime date, TipTermina tip, Lekar l)
         {
-            Dictionary<String, Termin> entities = this.ReadAll();
+            List<Termin> retVal = new List<Termin>();
 
-            String key = keyOld;
-
-            if (!entities.ContainsKey(key))
+            foreach (Termin t in TerminStorage.Instance.ReadByDoctor(l))
             {
-                return false;
+                DateTime day = t.PocetnoVreme.Date;
+                if (t.VrstaTermina == tip && day == date)
+                    retVal.Add(t);
             }
 
-            entities[key] = termin;
-
-            string path = this.getPath();
-            string json = System.Text.Json.JsonSerializer.Serialize(entities);
-
-            File.WriteAllText(path, json);
-
-            return true;
-
+            return retVal.Count;
         }
 
-         
+        public List<int> GetAppointmentsCountForCurrentWeek(TipTermina tip, Lekar l)
+        {
+            List<int> retVal = new List<int>();
+            DateTime startOfWeek = GetStartOfWeek();
 
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime dayOfWeek = startOfWeek.AddDays(i);
+                retVal.Add(getAppointmentsCountByDate(dayOfWeek, tip, l));
+            }
 
+            return retVal;
+        }
+
+        private static DateTime GetStartOfWeek()
+        {
+            return DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
+        }
     }
 
 }      

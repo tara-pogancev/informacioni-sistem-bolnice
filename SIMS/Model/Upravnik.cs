@@ -10,6 +10,7 @@ namespace Model
    public class Upravnik : UlogovanKorisnik
    {
       private int daniGodisnjegOdmora;
+        
 
         public Upravnik()
         {
@@ -21,6 +22,11 @@ namespace Model
         }
 
         public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+
+        public bool ShouldSerializeDaniGodisnjegOdmora()
+        {
+            return serijalizuj;
+        }
     }
 
 }

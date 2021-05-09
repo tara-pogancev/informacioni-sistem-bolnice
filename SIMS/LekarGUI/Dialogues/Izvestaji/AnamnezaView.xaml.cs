@@ -22,12 +22,14 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             InitializeComponent();
 
+            a.InitData();
+
             LabelDoktor.Content = "Doktor: " + a.ImeLekara;
-            LabelDatum.Content = "Datum pregleda: " + a.Datum;
+            LabelDatum.Content = "Datum pregleda: " + a.Date;
 
             LabelPacijent.Content = "Pacijent: " + a.ImePacijenta;
-            Termin t = TerminStorage.Instance.Read(a.AnamnezaKey);
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PacijentStorage.Instance.Read(t.PacijentKey).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            Termin t = TerminStorage.Instance.Read(a.IdAnamneze);
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PacijentStorage.Instance.Read(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
 
             GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             GlavneTegobe.Inlines.Add("   ");

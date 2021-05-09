@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid>
+    <Grid Background="#FF323D52">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
@@ -29,20 +29,20 @@
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical" Margin="64,90,136,10" RenderTransformOrigin="0.471,0.499">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
-                    <Label FontSize="20"  >Doktor:</Label>
-                    <ComboBox FontSize="17" Margin="30,0,0,0" x:Name="doktori" ItemsSource="{Binding lekari}" DisplayMemberPath="ImePrezime" 
-                       SelectedValuePath="ImePrezime" Width="150" MaxDropDownHeight="150" SelectionChanged="doktori_SelectionChanged"></ComboBox>
+                    <Label FontSize="20"  >Lekar:</Label>
+                    <ComboBox FontSize="17" Margin="30,0,0,0" x:Name="Doktori" ItemsSource="{Binding lekari}" DisplayMemberPath="ImePrezime" 
+                       SelectedValuePath="ImePrezime" Width="150" MaxDropDownHeight="150" SelectionChanged="Doktori_SelectionChanged" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
                     <Label FontSize="20">Datum</Label>
                    
-                        <DatePicker Width="150" Height="auto" x:Name="datePicker1" FontSize="17" Margin="30,0,0,0"  SelectedDateChanged="datePicker1_SelectedDateChanged"/>
+                        <DatePicker Width="150" Height="auto" x:Name="OdabirDatuma" FontSize="17" Margin="30,0,0,0"  SelectedDateChanged="OdabirDatuma_SelectedDateChanged"/>
                     
                     
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="20">Termin</Label>
-                    <ComboBox Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" MaxDropDownHeight="150" >
+                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" MaxDropDownHeight="150" SelectionChanged="terminiLista_SelectionChanged" >
 
                     </ComboBox>
                 </StackPanel>

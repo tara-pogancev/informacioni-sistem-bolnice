@@ -61,15 +61,19 @@ namespace SIMS.LekarGUI
                 else
                     termin.VremeTrajanja = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex].Broj;
-                termin.PacijentKey = pacijenti[pacijentiCombo.SelectedIndex].Jmbg;
-                termin.LekarKey = lekari[doktoriCombo.SelectedIndex].Jmbg;
+                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
 
                 if (!lekari[doktoriCombo.SelectedIndex].IsFreeUpdate(termin))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
                 else
                 {
+                    termin.Lekar.Serijalizuj = false;
+                    termin.Pacijent.Serijalizuj = false;
+                    termin.Prostorija.Serijalizuj = false;
+
                     TerminStorage.Instance.Update(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
@@ -86,7 +90,6 @@ namespace SIMS.LekarGUI
             datePicker1.DisplayDate = termin.PocetnoVreme;
             datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
 
-
             if (termin.VremeTrajanja == 30)
                 trajanjeLista.SelectedIndex = 0;
             else if (termin.VremeTrajanja == 60)
@@ -97,7 +100,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (Lekar l in lekari)
             {
-                if (l.Jmbg.Equals(termin.LekarKey))
+                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
                 {
                     break;
                 }
@@ -119,7 +122,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Pacijent p in pacijenti)
             {
-                if (p.Jmbg.Equals(termin.PacijentKey))
+                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
                 {
                     break;
                 }
@@ -130,7 +133,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Prostorija pr in prostorije)
             {
-                if (pr.Broj.Equals(termin.Prostorija))
+                if (pr.Broj.Equals(termin.Prostorija.Broj))
                 {
                     break;
                 }
@@ -151,7 +154,7 @@ namespace SIMS.LekarGUI
                 {
                     if (termin.LekarKey.Equals(lek.Jmbg))
                     {
-                        if (datePicker1.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
+                        if (OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(ter.Datum) && !termin.Vrijeme.Equals(ter.Vrijeme))
                             termini.Remove(ter.Vrijeme);
                     }
                 }

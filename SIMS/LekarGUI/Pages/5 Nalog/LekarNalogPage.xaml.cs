@@ -1,4 +1,5 @@
 ﻿using Model;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,6 +49,37 @@ namespace SIMS.LekarGUI
         public void RemoveInstance()
         {
             instance = null;
+        }
+
+        private void Button(object sender, RoutedEventArgs e)
+        {
+            var window = new ActionsAfterReport(PacijentStorage.Instance.ReadList()[0]);
+            window.Show();
+        }
+
+        private void Button_Home(object sender, MouseButtonEventArgs e)
+        {
+            LekarUI.GetInstance().ChangeTab(0);
+        }
+
+        private void ChangeAccount(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            LekarUI.GetInstance().LogOut();
+        }
+
+        private void DontRememberMe(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void RememberMe(object sender, RoutedEventArgs e)
+        {
+            //TODO
         }
     }
 }
