@@ -361,7 +361,7 @@
     "Target": [
       "12645323206"
     ],
-    "VremeString": "00:28"
+    "VremeString": "08.05.2021."
   },
   "Recept210508002836": {
     "Autor": "Recept",
@@ -371,7 +371,7 @@
     "Target": [
       "4484552102"
     ],
-    "VremeString": "00:28"
+    "VremeString": "08.05.2021."
   },
   "Recept210508031318": {
     "Autor": "Recept",
@@ -381,6 +381,17 @@
     "Target": [
       "12645323206"
     ],
-    "VremeString": "03:13"
+    "VremeString": "08.05.2021."
+  },
+  "Tara Pogančev210510120322095042": {
+    "Autor": "Tara Pogančev",
+    "Vreme": "2021-05-10T12:03:22.0950427+02:00",
+    "Tekst": "Zakazana hitna operacija [10.05.2021. 13:30, 1] za pacijenta Đorđe Krsmanović, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210510120322095042",
+    "Target": [
+      "4865453131",
+      "4848555021548"
+    ],
+    "VremeString": "12:03"
   }
 }

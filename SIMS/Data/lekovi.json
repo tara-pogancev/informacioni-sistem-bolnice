@@ -6,8 +6,9 @@
       "a3",
       "a5"
     ],
+    "IDSubstitution": "l4",
     "ApprovalStatus": 2,
-    "IDSubstitution": "l4"
+    "ApprovalStatusString": "Na čekanju"
   },
   "l2": {
     "MedicineID": "l2",
@@ -16,19 +17,20 @@
       "a6",
       "a1"
     ],
+    "IDSubstitution": "l6",
     "ApprovalStatus": 0,
-    "IDSubstitution": "l6"
+    "ApprovalStatusString": "Prihvaćen"
   },
   "l3": {
     "MedicineID": "l3",
     "MedicineName": "Prilenap",
     "Components": [
-      "a11",
       "a6",
       "a10"
     ],
+    "IDSubstitution": "l5",
     "ApprovalStatus": 0,
-    "IDSubstitution": "l2"
+    "ApprovalStatusString": "Prihvaćen"
   },
   "l4": {
     "MedicineID": "l4",
@@ -40,8 +42,9 @@
       "a8",
       "a9"
     ],
+    "IDSubstitution": "l5",
     "ApprovalStatus": 0,
-    "IDSubstitution": "l5"
+    "ApprovalStatusString": "Prihvaćen"
   },
   "l5": {
     "MedicineID": "l5",
@@ -49,8 +52,9 @@
     "Components": [
       "a2"
     ],
+    "IDSubstitution": "l3",
     "ApprovalStatus": 0,
-    "IDSubstitution": "l3"
+    "ApprovalStatusString": "Prihvaćen"
   },
   "l6": {
     "MedicineID": "l6",
@@ -59,7 +63,8 @@
       "a9",
       "a10"
     ],
+    "IDSubstitution": "l2",
     "ApprovalStatus": 0,
-    "IDSubstitution": "l2"
+    "ApprovalStatusString": "Prihvaćen"
   }
 }

@@ -39,6 +39,19 @@ namespace Model
                 componentsString += AlergeniStorage.Instance.Read(a).Naziv + ", ";
             return componentsString.Remove(componentsString.Length - 2);
         }
+
+        public String ApprovalStatusString
+        {
+            get
+            {
+                if (ApprovalStatus == MedicineApprovalStatus.Accepted)
+                    return "Prihvaćen";
+                else if (ApprovalStatus == MedicineApprovalStatus.Waiting)
+                    return "Na čekanju";
+                else return "Odbijen";
+
+            }
+        }
     }
 
     public enum MedicineApprovalStatus
@@ -47,4 +60,5 @@ namespace Model
         Denied, 
         Waiting
     }
+    
 }

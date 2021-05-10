@@ -55,5 +55,185 @@
     },
     "InicijalnoVrijeme": "2021-05-09T08:00:00",
     "TerminKey": "210509104134"
+  },
+  "210510120205971752": {
+    "PocetnoVreme": "2021-05-11T10:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "12121977802342",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "2",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-11T10:00:00",
+    "TerminKey": "210510120205971752"
+  },
+  "210510120212600947": {
+    "PocetnoVreme": "2021-05-15T10:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "12121977802342",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "3",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-15T10:00:00",
+    "TerminKey": "210510120212600947"
+  },
+  "210510120225769692": {
+    "PocetnoVreme": "2021-05-15T14:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "2",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-15T14:00:00",
+    "TerminKey": "210510120225769692"
+  },
+  "210510120236219201": {
+    "PocetnoVreme": "2021-05-14T09:00:00",
+    "VremeTrajanja": 90,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "121",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "2",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-05-14T09:00:00",
+    "TerminKey": "210510120236219201"
+  },
+  "210510120257384637": {
+    "PocetnoVreme": "2021-04-28T10:00:00",
+    "VremeTrajanja": 60,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "Jmbg": "045210805048",
+      "Serijalizuj": false
+    },
+    "Pacijent": {
+      "Jmbg": "4865453131",
+      "Serijalizuj": false
+    },
+    "Prostorija": {
+      "Broj": "1",
+      "Serijalizuj": false
+    },
+    "InicijalnoVrijeme": "2021-04-28T10:00:00",
+    "TerminKey": "210510120257384637"
+  },
+  "210510120319176415": {
+    "PocetnoVreme": "2021-05-10T13:30:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 1,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 20,
+      "SpecijalizacijaLekara": 4,
+      "Ime": "Zack",
+      "Prezime": "Fair",
+      "Jmbg": "4848555021548",
+      "KorisnickoIme": "zack",
+      "Lozinka": "l",
+      "Email": "zackfair@zdravo.com",
+      "Telefon": "0698547521",
+      "Adresa": {
+        "grad": {
+          "Naziv": "Midgar",
+          "PostanskiBroj": 99888,
+          "Drzava": {
+            "Naziv": "Gaia"
+          }
+        },
+        "Grad": {
+          "Naziv": "Midgar",
+          "PostanskiBroj": 99888,
+          "Drzava": {
+            "Naziv": "Gaia"
+          }
+        },
+        "Ulica": "Shinra Inc",
+        "Broj": "Floor 75"
+      },
+      "Serijalizuj": true
+    },
+    "Pacijent": {
+      "Lbo": "123",
+      "Gost": false,
+      "Alergeni": [
+        "a2",
+        "a7"
+      ],
+      "Datum_Rodjenja": "1999-03-05T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "BanovanKorisnik": false,
+      "Ime": "Đorđe",
+      "Prezime": "Krsmanović",
+      "Jmbg": "4865453131",
+      "KorisnickoIme": "pacijent",
+      "Lozinka": "p",
+      "Email": "djordje1499@gmail.com",
+      "Telefon": "0645568131",
+      "Adresa": {
+        "grad": {
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 21000,
+          "Drzava": {
+            "Naziv": "Srbija"
+          }
+        },
+        "Grad": {
+          "Naziv": "Novi Sad",
+          "PostanskiBroj": 21000,
+          "Drzava": {
+            "Naziv": "Srbija"
+          }
+        },
+        "Ulica": "Hopovska",
+        "Broj": "5a"
+      },
+      "Serijalizuj": true
+    },
+    "Prostorija": {
+      "pocetakRenoviranja": null,
+      "krajRenoviranja": null,
+      "kolicineOpreme": {},
+      "TipProstorije": 0,
+      "Broj": "1",
+      "Dostupna": true,
+      "Serijalizuj": true
+    },
+    "InicijalnoVrijeme": "2021-05-10T13:30:00",
+    "TerminKey": "210510120319176415"
   }
 }
