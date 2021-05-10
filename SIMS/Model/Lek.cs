@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -40,6 +41,7 @@ namespace Model
             return componentsString.Remove(componentsString.Length - 2);
         }
 
+        [JsonIgnore]
         public String ApprovalStatusString
         {
             get

@@ -7,19 +7,17 @@
       "a5"
     ],
     "IDSubstitution": "l4",
-    "ApprovalStatus": 2,
-    "ApprovalStatusString": "Na čekanju"
+    "ApprovalStatus": 2
   },
   "l2": {
     "MedicineID": "l2",
-    "MedicineName": "Prilenap",
+    "MedicineName": "Brufen 200",
     "Components": [
       "a6",
       "a1"
     ],
     "IDSubstitution": "l6",
-    "ApprovalStatus": 0,
-    "ApprovalStatusString": "Prihvaćen"
+    "ApprovalStatus": 0
   },
   "l3": {
     "MedicineID": "l3",
@@ -29,8 +27,7 @@
       "a10"
     ],
     "IDSubstitution": "l5",
-    "ApprovalStatus": 0,
-    "ApprovalStatusString": "Prihvaćen"
+    "ApprovalStatus": 0
   },
   "l4": {
     "MedicineID": "l4",
@@ -43,8 +40,7 @@
       "a9"
     ],
     "IDSubstitution": "l5",
-    "ApprovalStatus": 0,
-    "ApprovalStatusString": "Prihvaćen"
+    "ApprovalStatus": 0
   },
   "l5": {
     "MedicineID": "l5",
@@ -53,8 +49,7 @@
       "a2"
     ],
     "IDSubstitution": "l3",
-    "ApprovalStatus": 0,
-    "ApprovalStatusString": "Prihvaćen"
+    "ApprovalStatus": 0
   },
   "l6": {
     "MedicineID": "l6",
@@ -64,7 +59,6 @@
       "a10"
     ],
     "IDSubstitution": "l2",
-    "ApprovalStatus": 0,
-    "ApprovalStatusString": "Prihvaćen"
+    "ApprovalStatus": 2
   }
 }
