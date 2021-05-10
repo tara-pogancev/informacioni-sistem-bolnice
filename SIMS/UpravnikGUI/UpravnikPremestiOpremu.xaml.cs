@@ -46,11 +46,11 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            int delta;
+            int amountToBeMoved;
 
             try 
             {
-                delta = int.Parse(Kolicina.Text);
+                amountToBeMoved = int.Parse(Kolicina.Text);
             } 
             catch (Exception)
             {
@@ -70,7 +70,7 @@ namespace SIMS.UpravnikGUI
                 timeOfExecution = (DateTime)DatumPicker.SelectedDate;
             }
 
-            PremestajOpremeQueue.Instance.PushCommand(new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, delta));
+            PremestajOpremeQueue.Instance.PushCommand(new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, amountToBeMoved));
 
             ParentPage.Update();
 
