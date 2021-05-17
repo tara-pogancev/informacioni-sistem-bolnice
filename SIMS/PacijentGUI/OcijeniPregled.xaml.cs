@@ -20,20 +20,20 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class OcijeniPregled : Page
     {
-        private AnketaLekara anketaLekara;
+        private DoctorSurvey anketaLekara;
         private String lekar;
-        public OcijeniPregled(Termin termin)
+        public OcijeniPregled(Appointment termin)
         {
             InitializeComponent();
 
-            anketaLekara = new AnketaLekara();
+            anketaLekara = new DoctorSurvey();
             anketaLekara.Termin = termin;
             lekar = termin.Lekar.ImePrezime;
             this.DataContext = this;
             
         }
 
-        public AnketaLekara AnketaLekara { get => anketaLekara; set => anketaLekara = value; }
+        public DoctorSurvey AnketaLekara { get => anketaLekara; set => anketaLekara = value; }
         public string Lekar { get => lekar; set => lekar = value; }
 
         private void Posalji_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace SIMS.PacijentGUI
             anketaLekara.Termin.Serijalizuj = false;
             anketaLekara.IdAnkete = anketaLekara.Termin.TerminKey;
             anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
-            new AnketaLekaraStorage().Create(anketaLekara);
+            new DoctorSurveyRepository().Create(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
         }
     }

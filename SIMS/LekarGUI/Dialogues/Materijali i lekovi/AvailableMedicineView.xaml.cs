@@ -19,7 +19,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class AvailableMedicineView : Window
     {
-        public ObservableCollection<Lek> MedicineView { get; set; }
+        public ObservableCollection<Medication> MedicineView { get; set; }
 
         public AvailableMedicineView()
         {
@@ -27,7 +27,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Lek>(LekStorage.Instance.getApprovedMedicine());
+            MedicineView = new ObservableCollection<Medication>(MedicationRepository.Instance.getApprovedMedicine());
 
         }
         
@@ -40,7 +40,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (DataGridMedicine.SelectedItem != null)
             {
-                MedicinePreview window = new MedicinePreview((Lek)DataGridMedicine.SelectedItem);
+                MedicinePreview window = new MedicinePreview((Medication)DataGridMedicine.SelectedItem);
                 window.Show();
             }
         }

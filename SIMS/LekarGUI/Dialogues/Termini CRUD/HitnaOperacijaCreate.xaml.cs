@@ -20,15 +20,15 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     public partial class HitnaOperacijaCreate : Window
     {
         private List<String> SpecializationList;
-        private List<Specijalizacija> SpecializationEnumList;
+        private List<Specialization> SpecializationEnumList;
         private List<String> DurationList = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
 
-        private ObservableCollection<Termin> AvailableAppointments;
-        private Pacijent patient;
+        private ObservableCollection<Appointment> AvailableAppointments;
+        private Patient patient;
 
         private static int findNearest = 5;
 
-        public HitnaOperacijaCreate(Pacijent patient)
+        public HitnaOperacijaCreate(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
@@ -36,12 +36,12 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             DataContext = this;
             DurationComboBox.SelectedIndex = 0;
 
-            AvailableAppointments = new ObservableCollection<Termin>();
+            AvailableAppointments = new ObservableCollection<Appointment>();
             AvailableComboBox.DataContext = AvailableAppointments;
-            SpecializationList = LekarStorage.Instance.GetAvailableSpecializationString();
+            SpecializationList = DoctorRepository.Instance.GetAvailableSpecializationString();
             SpecializationList.Remove("Lekar opšte prakse");
-            SpecializationEnumList = LekarStorage.Instance.GetAvailableSpecialization();
-            SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
+            SpecializationEnumList = DoctorRepository.Instance.GetAvailableSpecialization();
+            SpecializationEnumList.Remove(Specialization.OpstaPraksa);
 
             SpecializationComboBox.ItemsSource = SpecializationList;
             DurationComboBox.ItemsSource = DurationList;
@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         }
 
-        private Specijalizacija GetSelectedSpecialization()
+        private Specialization GetSelectedSpecialization()
         {
             int idx = SpecializationComboBox.SelectedIndex;
             if (idx == -1)
@@ -71,10 +71,10 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             if (DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                Termin selecetdApp = (Termin)AvailableComboBox.SelectedItem;
+                Appointment selecetdApp = (Appointment)AvailableComboBox.SelectedItem;
                 selecetdApp.InitData();
 
-                TerminStorage.Instance.Create(selecetdApp);
+                AppointmentRepository.Instance.Create(selecetdApp);
 
                 SendNotification(selecetdApp);
 
@@ -83,17 +83,17 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             }
         }
 
-        private void SendNotification(Termin selecetdApp)
+        private void SendNotification(Appointment selecetdApp)
         {
             String author = LekarUI.GetInstance().GetUser().ImePrezime;
             List<String> target = new List<String>();
             target.Add(patient.Jmbg);
             target.Add(selecetdApp.Lekar.Jmbg);
-            Obavestenje notification = new Obavestenje(author, DateTime.Now,
+            Notification notification = new Notification(author, DateTime.Now,
                 ("Zakazana hitna operacija [" + selecetdApp.Datum + " " + selecetdApp.Vrijeme + ", " + selecetdApp.NazivProstorije + "] za pacijenta " 
                 + selecetdApp.ImePacijenta + ", vodeći lekar " + selecetdApp.ImeLekara + "."), target);
 
-            ObavestenjaStorage.Instance.Create(notification);
+            NotificationRepository.Instance.Create(notification);
         }
 
         private void DurationChange(object sender, SelectionChangedEventArgs e)
@@ -112,10 +112,10 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             if (DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                List<Termin> allAppointments = GetAvailableAppointmentsForAllDoctors();
+                List<Appointment> allAppointments = GetAvailableAppointmentsForAllDoctors();
                 SortAppointments(allAppointments);
 
-                foreach (Termin app in allAppointments)
+                foreach (Appointment app in allAppointments)
                 {
                     app.InitData();
 
@@ -129,11 +129,11 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             AvailableComboBox.ItemsSource = AvailableAppointments;
         }
 
-        private List<Termin> GetAvailableAppointmentsForAllDoctors()
+        private List<Appointment> GetAvailableAppointmentsForAllDoctors()
         {
-            List<Termin> retVal = new List<Termin>();
+            List<Appointment> retVal = new List<Appointment>();
 
-            foreach (Lekar doctor in LekarStorage.Instance.ReadBySpecialization(GetSelectedSpecialization()))
+            foreach (Doctor doctor in DoctorRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
                 List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments();
                 int counterByDoctor = 0;
@@ -142,7 +142,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     
-                    Termin appointment = new Termin(appTime, GetSelectedDuration(), TipTermina.operacija, doctor, patient, ProstorijaStorage.Instance.ReadList()[0]);
+                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomRepository.Instance.ReadList()[0]);
                     if (doctor.IsFree(appointment))
                     {
                         counterByDoctor++;
@@ -158,7 +158,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             return retVal;
         }
 
-        private void SortAppointments(List<Termin> appointments)
+        private void SortAppointments(List<Appointment> appointments)
         {
             for (int i = 0; i < appointments.Count; i++)
                 for (int j = 0; j < appointments.Count; j++)

@@ -18,18 +18,18 @@ namespace SIMS.UpravnikGUI
 {
     public partial class UpravnikInventarProstorijePage : Page
     {
-        Prostorija Prostorija;
+        Room Prostorija;
         UpravnikProstorijaDetailPage ParentPage;
-        ObservableCollection<Oprema> SvaOprema;
+        ObservableCollection<Inventory> SvaOprema;
 
-        public UpravnikInventarProstorijePage(Prostorija prostorija, UpravnikProstorijaDetailPage parent)
+        public UpravnikInventarProstorijePage(Room prostorija, UpravnikProstorijaDetailPage parent)
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            SvaOprema = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
-            foreach (Oprema op in SvaOprema)
+            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Broj;
+                op.BrojProstorije = Prostorija.Number;
             }
             InitializeComponent();
             tabelaInventara.ItemsSource = SvaOprema;
@@ -38,61 +38,61 @@ namespace SIMS.UpravnikGUI
 
         private void Premesti_Click(object sender, RoutedEventArgs e)
         {
-            Oprema SelectedOprema = tabelaInventara.SelectedItem as Oprema;
+            Inventory SelectedOprema = tabelaInventara.SelectedItem as Inventory;
             if (SelectedOprema == null)
             {
                 return;
             }
-            UpravnikWindow.Instance.SetContent(new UpravnikPremestiOpremu(this, Prostorija.Broj, SelectedOprema));
-            UpravnikWindow.Instance.SetLabel("Premesti iz prostorije " + Prostorija.Broj + " - " + SelectedOprema.Naziv);
+            UpravnikWindow.Instance.SetContent(new UpravnikPremestiOpremu(this, Prostorija.Number, SelectedOprema));
+            UpravnikWindow.Instance.SetLabel("Premesti iz prostorije " + Prostorija.Number + " - " + SelectedOprema.Naziv);
         }
 
         private void PromeniKolicinu_Click(object sender, RoutedEventArgs e)
         {
-            Oprema SelectedOprema = tabelaInventara.SelectedItem as Oprema;
+            Inventory SelectedOprema = tabelaInventara.SelectedItem as Inventory;
             if (SelectedOprema == null)
             {
                 return;
             }
-            UpravnikWindow.Instance.SetContent(new UpravnikKolicinaOpreme(this, Prostorija.Broj, SelectedOprema));
-            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Broj + " - " + SelectedOprema.Naziv);
+            UpravnikWindow.Instance.SetContent(new UpravnikKolicinaOpreme(this, Prostorija.Number, SelectedOprema));
+            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Number + " - " + SelectedOprema.Naziv);
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             UpravnikWindow.Instance.SetContent(ParentPage);
-            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Broj);
+            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Number);
         }
 
         internal void Update()
         {
-            SvaOprema = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
             tabelaInventara.Items.Refresh();
         }
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            foreach (Oprema op in SvaOprema)
+            foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Broj;
+                op.BrojProstorije = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Oprema op in SvaOprema)
+            foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Broj;
+                op.BrojProstorije = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            foreach (Oprema op in SvaOprema)
+            foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Broj;
+                op.BrojProstorije = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }

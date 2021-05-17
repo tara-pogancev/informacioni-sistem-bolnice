@@ -19,8 +19,8 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class DetaljiPregleda : Page
     {
-        private Anamneza anamneza;
-        public DetaljiPregleda(Anamneza anamneza)
+        private Anamnesis anamneza;
+        public DetaljiPregleda(Anamnesis anamneza)
         {
             InitializeComponent();
 
@@ -98,12 +98,12 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.Termin = new TerminStorage().Read(anamneza.Termin.TerminKey);
-            anamneza.Termin.Lekar = new LekarStorage().Read(anamneza.Termin.Lekar.Jmbg);
+            anamneza.Termin = new AppointmentRepository().Read(anamneza.Termin.TerminKey);
+            anamneza.Termin.Lekar = new DoctorRepository().Read(anamneza.Termin.Lekar.Jmbg);
             anamneza.Termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
         }
 
-        public Anamneza Anamneza { get => anamneza; set => anamneza = value; }
+        public Anamnesis Anamneza { get => anamneza; set => anamneza = value; }
 
         private void Nazad_Click(object sender, RoutedEventArgs e)
         {

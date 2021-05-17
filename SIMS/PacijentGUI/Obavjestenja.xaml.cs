@@ -21,7 +21,7 @@ namespace SIMS.PacijentGUI
 
     public class ObavjestenjeWpf
     {
-        Obavestenje obavestenje;
+        Notification obavestenje;
         string displayedImage;
 
 
@@ -30,7 +30,7 @@ namespace SIMS.PacijentGUI
         {
 
         }
-        public ObavjestenjeWpf(Obavestenje obv,String src)
+        public ObavjestenjeWpf(Notification obv,String src)
         {
             obavestenje = obv;
             displayedImage = src;
@@ -54,26 +54,26 @@ namespace SIMS.PacijentGUI
 
         }
 
-        public Obavestenje Obavestenje { get => obavestenje; set => obavestenje = value; }
+        public Notification Obavestenje { get => obavestenje; set => obavestenje = value; }
     }
     public partial class Obavjestenja : UserControl
     {
-        private List<Obavestenje> obavjestenja;
-        private Pacijent pacijent;
+        private List<Notification> obavjestenja;
+        private Patient pacijent;
 
 
         public Obavjestenja()
         {
             InitializeComponent();
             pacijent = PocetnaStranica.getInstance().Pacijent;
-            obavjestenja = new List<Obavestenje>();
-            ObavestenjaStorage obavestenjaStorage = new ObavestenjaStorage();
+            obavjestenja = new List<Notification>();
+            NotificationRepository obavestenjaStorage = new NotificationRepository();
             obavjestenja = obavestenjaStorage.ReadByUser(pacijent.Jmbg);
             
             obavjestenja.Reverse();
             //obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);
             List<ObavjestenjeWpf> obavjestenjaWpfs = new List<ObavjestenjeWpf>();
-            foreach(Obavestenje obavestenje in obavjestenja)
+            foreach(Notification obavestenje in obavjestenja)
             {
                 obavjestenjaWpfs.Add(new ObavjestenjeWpf(obavestenje,""));
             }

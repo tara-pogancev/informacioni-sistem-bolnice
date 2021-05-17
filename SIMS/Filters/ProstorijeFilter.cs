@@ -5,18 +5,18 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class ProstorijeFilter : TableFilter<Prostorija, ProstorijeFilter>
+    class ProstorijeFilter : TableFilter<Room, ProstorijeFilter>
     {
-        public override bool CheckBoxFilter(Prostorija entity, bool checkboxChecked)
+        public override bool CheckBoxFilter(Room entity, bool checkboxChecked)
         {
             return true;
         }
 
-        public override bool KeywordFilter(Prostorija prostorija, string keyword)
+        public override bool KeywordFilter(Room prostorija, string keyword)
         {
-            return (prostorija.Broj.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.DostupnaToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    prostorija.TipProstorijeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
+            return (prostorija.Number.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    prostorija.AvailableToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    prostorija.TypeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

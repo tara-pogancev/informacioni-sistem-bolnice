@@ -18,14 +18,14 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class PrikazRecepta : Window
     {
-        public PrikazRecepta(Recept receipt)
+        public PrikazRecepta(Receipt receipt)
         {
             InitializeComponent();
 
             receipt.InitData();
 
-            Pacijent patient = receipt.Pacijent;
-            Lekar doctor = receipt.Lekar;
+            Patient patient = receipt.Pacijent;
+            Doctor doctor = receipt.Lekar;
 
             LabelDoktor.Content = "Doktor: " + doctor.ImePrezime;
             LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;

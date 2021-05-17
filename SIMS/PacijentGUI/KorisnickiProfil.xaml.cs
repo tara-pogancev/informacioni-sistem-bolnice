@@ -20,7 +20,7 @@ namespace SIMS.PacijentGUI
     public partial class KorisnickiProfil : Page
     {
 
-        private Pacijent pacijent;
+        private Patient pacijent;
         private String alergeni;
         public KorisnickiProfil()
         {
@@ -47,15 +47,15 @@ namespace SIMS.PacijentGUI
 
         }
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
 
         private void dobaviAlergene()
         {
 
             foreach (String alergen in pacijent.Alergeni)
             {
-                Alergen ucitaniAlergen = new AlergeniStorage().Read(alergen);
-                alergeni += ucitaniAlergen.Naziv;
+                Allergen ucitaniAlergen = new AllergenRepository().Read(alergen);
+                alergeni += ucitaniAlergen.Name;
                 alergeni += ", ";
 
             }

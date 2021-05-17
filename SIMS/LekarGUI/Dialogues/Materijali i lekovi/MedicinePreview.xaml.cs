@@ -18,12 +18,12 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicinePreview : Window
     {
-        private Lek medicine;
+        private Medication medicine;
 
-        public MedicinePreview(Lek medicine)
+        public MedicinePreview(Medication medicine)
         {
             InitializeComponent();
-            medicine = LekStorage.Instance.Read(medicine.MedicineID);
+            medicine = MedicationRepository.Instance.Read(medicine.MedicineID);
 
             this.medicine = medicine;
 
@@ -39,9 +39,9 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         }
 
-        private String GetSubstituteName(Lek medicine)
+        private String GetSubstituteName(Medication medicine)
         {
-            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)

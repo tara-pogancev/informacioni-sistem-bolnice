@@ -19,21 +19,21 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class AnamnezaCreate : Window
     {
-        private Termin termin;
+        private Appointment termin;
 
-        public AnamnezaCreate(Termin t)
+        public AnamnezaCreate(Appointment t)
         {
             InitializeComponent();
 
             termin = t;
 
             LabelDoktor.Content = "Doktor: " + termin.ImeLekara;
-            if (termin.VrstaTermina == TipTermina.pregled)
+            if (termin.VrstaTermina == AppointmentType.pregled)
                 LabelDatum.Content = "Datum pregleda: " + termin.Datum;
             else LabelDatum.Content = "Datum operacije: " + termin.Datum;
 
             LabelPacijent.Content = "Pacijent: " + termin.ImePacijenta;
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PacijentStorage.Instance.Read(termin.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientRepository.Instance.Read(termin.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
 
         }
 
@@ -43,12 +43,12 @@ namespace SIMS.LekarGUI
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
             else
             {
-                Pacijent patient = termin.Pacijent;
+                Patient patient = termin.Pacijent;
 
-                Anamneza a = new Anamneza(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
+                Anamnesis a = new Anamnesis(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
                 a.Termin.Serijalizuj = false;
-                AnamnezaStorage.Instance.Create(a);
+                AnamnesisRepository.Instance.Create(a);
                 this.Close();
 
                 LekarUI.GetInstance().ChangeTab(3);

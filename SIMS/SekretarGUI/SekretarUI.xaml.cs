@@ -10,16 +10,16 @@ namespace SIMS
     public partial class SekretarUI : Window
     {
         private static SekretarUI _instance = null;
-        private Sekretar _secretary;
+        private Secretary _secretary;
 
-        public static SekretarUI GetInstance(Sekretar secretary)
+        public static SekretarUI GetInstance(Secretary secretary)
         {
             if (_instance == null)
                 _instance = new SekretarUI(secretary);
             return _instance;
         }
 
-        private SekretarUI(Sekretar secretary)
+        private SekretarUI(Secretary secretary)
         {
             InitializeComponent();
 

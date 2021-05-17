@@ -21,22 +21,22 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class MojiTermini : Page
     {
-        Pacijent pacijent;
-        private static ObservableCollection<Termin> termini;
+        Patient pacijent;
+        private static ObservableCollection<Appointment> termini;
 
         
 
-        public MojiTermini(Pacijent p)
+        public MojiTermini(Patient p)
         {
             pacijent = p;
-            termini = new ObservableCollection<Termin>(TerminStorage.Instance.ReadByPatient(p));
+            termini = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadByPatient(p));
             dobaviPodatkeOPacijenuILekaru();
             this.DataContext = this;
             InitializeComponent();
         }
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
-        public static ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
+        public static ObservableCollection<Appointment> Termini { get => termini; set => termini = value; }
 
         
 
@@ -54,8 +54,8 @@ namespace SIMS.PacijentGUI
         private bool provjeriValidnost()
         {
             int brojLogova = 0;
-            List<TerminLog> terminLogs = new TerminLogStorage().ReadByPatient(pacijent);
-            foreach(TerminLog terminLog in terminLogs)
+            List<AppointmentLog> terminLogs = new AppointmentLogRepository().ReadByPatient(pacijent);
+            foreach(AppointmentLog terminLog in terminLogs)
             {
                 if (terminLog.DatumPromjene < DateTime.Now.AddDays(-10))
                 {
@@ -82,8 +82,8 @@ namespace SIMS.PacijentGUI
            
             pacijent.BanovanKorisnik = true;
             pacijent.Serijalizuj = true;
-            new PacijentStorage().Update(pacijent);
-            new TerminLogStorage().logoviIstekli(pacijent);
+            new PatientRepository().Update(pacijent);
+            new AppointmentLogRepository().logoviIstekli(pacijent);
             new MainWindow().Show();
             PocetnaStranica.getInstance().Close();
             PocetnaStranica.getInstance(). SetInstance();
@@ -96,24 +96,24 @@ namespace SIMS.PacijentGUI
             {
                 return;
             }
-            TerminStorage tr = new TerminStorage();
-            Termin termin = termini[terminiTabela.SelectedIndex];
+            AppointmentRepository tr = new AppointmentRepository();
+            Appointment termin = termini[terminiTabela.SelectedIndex];
             tr.Delete(termin.TerminKey);
             termini.RemoveAt(terminiTabela.SelectedIndex);
-            TerminLog terminLog= new TerminLog(formirajKljucLog(termin), termin.TerminKey, pacijent.Jmbg, DateTime.Now, TipOperacije.Brisanje);
-            new TerminLogStorage().Create(terminLog);
+            AppointmentLog terminLog= new AppointmentLog(formirajKljucLog(termin), termin.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Brisanje);
+            new AppointmentLogRepository().Create(terminLog);
         }
 
-        public String formirajKljucLog(Termin termin)
+        public String formirajKljucLog(Appointment termin)
         {
             return termin.TerminKey + PocetnaStranica.getInstance().Pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
         }
         private void dobaviPodatkeOPacijenuILekaru()
         {
-            foreach(Termin termin in termini)
+            foreach(Appointment termin in termini)
             {
-                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
             }
         }
     }

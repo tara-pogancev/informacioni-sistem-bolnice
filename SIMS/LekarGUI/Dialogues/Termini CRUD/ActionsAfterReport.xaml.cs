@@ -19,9 +19,9 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     /// </summary>
     public partial class ActionsAfterReport : Window
     {
-        private Pacijent patient;
+        private Patient patient;
 
-        public ActionsAfterReport(Pacijent patient)
+        public ActionsAfterReport(Patient patient)
         {
             this.patient = patient;
             InitializeComponent();

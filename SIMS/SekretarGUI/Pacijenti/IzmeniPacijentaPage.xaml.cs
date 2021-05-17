@@ -10,22 +10,22 @@ namespace SIMS.SekretarGUI
 {
     public partial class IzmeniPacijentaPage : Page
     {
-        private ObservableCollection<Alergen> _allergens;
-        public IzmeniPacijentaPage(Pacijent patient)
+        private ObservableCollection<Allergen> _allergens;
+        public IzmeniPacijentaPage(Patient patient)
         {
             InitializeComponent();
 
             FillFieldsWithOldPatientValues(patient);
         }
 
-        private void FillFieldsWithOldPatientValues(Pacijent patient)
+        private void FillFieldsWithOldPatientValues(Patient patient)
         {
             FillTextBoxAndComboBoxFields(patient);
             FillAdressFields(patient);
             FillAllergenFields(patient);
         }
 
-        private void FillTextBoxAndComboBoxFields(Pacijent patient)
+        private void FillTextBoxAndComboBoxFields(Patient patient)
         {
             nameTextBox.Text = patient.Ime;
             lastNameTextBox.Text = patient.Prezime;
@@ -44,9 +44,9 @@ namespace SIMS.SekretarGUI
             chronicPainsTextBox.Text = patient.GetHronicneBolestiString;
         }
 
-        private void FillAllergenFields(Pacijent patient)
+        private void FillAllergenFields(Patient patient)
         {
-            _allergens = new ObservableCollection<Alergen>(AlergeniStorage.Instance.ReadList());
+            _allergens = new ObservableCollection<Allergen>(AllergenRepository.Instance.ReadList());
 
             allergensComboBox.ItemsSource = _allergens;
             allergensComboBox.DisplayMemberPath = "Naziv";
@@ -54,7 +54,7 @@ namespace SIMS.SekretarGUI
 
             foreach (string id in patient.Alergeni)
             {
-                foreach (Alergen a in _allergens)
+                foreach (Allergen a in _allergens)
                 {
                     if (id.Equals(a.ID))
                     {
@@ -65,7 +65,7 @@ namespace SIMS.SekretarGUI
             }
         }
 
-        private void FillAdressFields(Pacijent patient)
+        private void FillAdressFields(Patient patient)
         {
             if (patient.Adresa == null)
             {
@@ -77,34 +77,34 @@ namespace SIMS.SekretarGUI
             else
             {
                 adressTextBox.Text = patient.Adresa.ToString();
-                cityTextBox.Text = patient.Adresa.Grad.Naziv;
-                postalCodeTextBox.Text = patient.Adresa.Grad.PostanskiBroj.ToString();
-                countryTextBox.Text = patient.Adresa.Grad.Drzava.Naziv;
+                cityTextBox.Text = patient.Adresa.City.Name;
+                postalCodeTextBox.Text = patient.Adresa.City.PostalCode.ToString();
+                countryTextBox.Text = patient.Adresa.City.Country.Name;
             }
         }
 
         private void UpdatePatient_Click(object sender, RoutedEventArgs e)
         {
-            Pacijent pacijent = UpdatePatientFromUserInput();
-            PacijentStorage.Instance.Update(pacijent);
+            Patient pacijent = UpdatePatientFromUserInput();
+            PatientRepository.Instance.Update(pacijent);
             SekretarPacijentiPage.GetInstance().RefreshView();
 
             NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
         }
 
-        private Pacijent UpdatePatientFromUserInput()
+        private Patient UpdatePatientFromUserInput()
         {
             GetStreetAndNumberFromAdress(out string street, out string number);
             int.TryParse(postalCodeTextBox.Text, out int post_broj);
 
             List<string> allergens = new List<string>();
-            foreach (Alergen a in allergensComboBox.SelectedItems)
+            foreach (Allergen a in allergensComboBox.SelectedItems)
             {
                 allergens.Add(a.ID);
             }
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 
-            Pacijent pacijent = new Pacijent(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Adresa(street, number, new Grad(cityTextBox.Text, post_broj, new Drzava(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), DodajPacijentaPage.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (Pol)sexComboBox.SelectionBoxItem, chronicPains);
+            Patient pacijent = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, post_broj, new Country(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), DodajPacijentaPage.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
             return pacijent;
         }
 

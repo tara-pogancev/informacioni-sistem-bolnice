@@ -17,26 +17,26 @@ namespace SIMS.PacijentGUI
 {
     public class IstorijaPregledaView
     {
-        private Termin termin;
+        private Appointment termin;
         private bool omogucenoOcjenjivanje;
 
         public IstorijaPregledaView() {
-            termin = new Termin();
+            termin = new Appointment();
             omogucenoOcjenjivanje = true;
         }
-        public IstorijaPregledaView(Termin termin)
+        public IstorijaPregledaView(Appointment termin)
         {
             this.termin = termin;
-            omogucenoOcjenjivanje = new AnketaLekaraStorage().Read(termin.TerminKey) == null ? true : false;
+            omogucenoOcjenjivanje = new DoctorSurveyRepository().Read(termin.TerminKey) == null ? true : false;
         }
 
-        public Termin Termin { get => termin; set => termin = value; }
+        public Appointment Termin { get => termin; set => termin = value; }
         public bool OmogucenoOcjenjivanje { get => omogucenoOcjenjivanje; set => omogucenoOcjenjivanje = value; }
     }
     public partial class IstorijaPregleda : Page
     {
         private List<IstorijaPregledaView> terminiZaPrikaz;
-        private List<Termin> zakazaniTermini;
+        private List<Appointment> zakazaniTermini;
 
         public List<IstorijaPregledaView> TerminiZaPrikaz { get => terminiZaPrikaz; set => terminiZaPrikaz = value; }
         
@@ -44,17 +44,17 @@ namespace SIMS.PacijentGUI
         public IstorijaPregleda()
         {
             InitializeComponent();
-            zakazaniTermini = new TerminStorage().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
+            zakazaniTermini = new AppointmentRepository().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
             prikazPoDatumu();
             dobaviLekare();
             terminiZaPrikaz = formirajTermine(zakazaniTermini);
             this.DataContext = this;
         }
 
-        private List<IstorijaPregledaView> formirajTermine(List<Termin> zakazaniTermini)
+        private List<IstorijaPregledaView> formirajTermine(List<Appointment> zakazaniTermini)
         {
             List<IstorijaPregledaView> terminiZaPrikaz = new List<IstorijaPregledaView>();
-            foreach(Termin termin in zakazaniTermini)
+            foreach(Appointment termin in zakazaniTermini)
             {
                 IstorijaPregledaView terminZaPrikaz = new IstorijaPregledaView(termin);
                 terminiZaPrikaz.Add(terminZaPrikaz);
@@ -64,7 +64,7 @@ namespace SIMS.PacijentGUI
 
         private void dobaviLekare()//ucitavanje doktora iz fajla za svaki termin
         {
-            LekarStorage lekarStorage = new LekarStorage();
+            DoctorRepository lekarStorage = new DoctorRepository();
             for (int i = 0; i < zakazaniTermini.Count; i++)
             {
                 zakazaniTermini[i].Lekar = lekarStorage.Read(zakazaniTermini[i].Lekar.Jmbg);
@@ -88,13 +88,13 @@ namespace SIMS.PacijentGUI
 
         private void Detalji_Click(object sender, RoutedEventArgs e)
         {
-            AnamnezaStorage anamnezaStorage = new AnamnezaStorage();
+            AnamnesisRepository anamnezaStorage = new AnamnesisRepository();
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
-            Anamneza anamneza=anamnezaStorage.Read(selektovaniTermin.Termin.TerminKey);
+            Anamnesis anamneza=anamnezaStorage.Read(selektovaniTermin.Termin.TerminKey);
             if (anamneza == null)
             {
-                anamneza = new Anamneza();
+                anamneza = new Anamnesis();
                 anamneza.Termin = selektovaniTermin.Termin;
             }
             PocetnaStranica.getInstance().Tabovi.Content = new DetaljiPregleda(anamneza);
@@ -103,7 +103,7 @@ namespace SIMS.PacijentGUI
         private void Ocijeni_Click(object sender, RoutedEventArgs e)
         {
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
-            Termin termin = selektovaniTermin.Termin;
+            Appointment termin = selektovaniTermin.Termin;
             this.NavigationService.Navigate(new OcijeniPregled(termin));
             
         }

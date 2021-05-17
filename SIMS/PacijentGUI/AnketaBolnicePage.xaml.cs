@@ -27,7 +27,7 @@ namespace SIMS.PacijentGUI
 
         private void Posalji_Click(object sender, RoutedEventArgs e)
         {
-            AnketaBolnice anketaBolnice = new AnketaBolnice();
+            HospitalSurvey anketaBolnice = new HospitalSurvey();
             anketaBolnice.IdVlasnika = PocetnaStranica.getInstance().Pacijent.Jmbg;
             anketaBolnice.IdAnkete = anketaBolnice.DatumKreiranjaAnkete + anketaBolnice.IdVlasnika;
             anketaBolnice.Komentar = KomentarPregleda.Text;
@@ -37,7 +37,7 @@ namespace SIMS.PacijentGUI
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje4", Pitanje4.Value);
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje5", Pitanje5.Value);
             anketaBolnice.TrenutniBrojPregleda = brojZavrsenihPRegleda();
-            new AnketaBolniceStorage().Create(anketaBolnice);
+            new HospitalSurveyRepository().Create(anketaBolnice);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
             PocetnaStranica.getInstance().Tabovi.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
 
@@ -46,9 +46,9 @@ namespace SIMS.PacijentGUI
 
         private int brojZavrsenihPRegleda()
         {
-            List<Termin> zakazaniTermini = new TerminStorage().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
             int brojacZavrsenihPregleda = 0;
-            foreach (Termin termin in zakazaniTermini)
+            foreach (Appointment termin in zakazaniTermini)
             {
                 if (termin.IsPast)
                 {

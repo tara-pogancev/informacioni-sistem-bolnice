@@ -22,9 +22,9 @@ namespace SIMS.LekarGUI
     {
         public static LekarEvidencijaPage instance;
 
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
-        public static LekarEvidencijaPage GetInstance(Lekar l)
+        public static LekarEvidencijaPage GetInstance(Doctor l)
         {
             if (instance == null)
             {

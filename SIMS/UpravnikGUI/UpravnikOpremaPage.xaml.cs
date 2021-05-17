@@ -21,11 +21,11 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikOpremaPage : Page
     {
-        private ObservableCollection<Oprema> opreme;
+        private ObservableCollection<Inventory> opreme;
         public UpravnikOpremaPage()
         {
             InitializeComponent();
-            opreme = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
             tabelaOpreme.ItemsSource = opreme;
         }
 
@@ -37,15 +37,15 @@ namespace SIMS.UpravnikGUI
 
         private void Izbrisi_Click(object sender, RoutedEventArgs e)
         {
-            Oprema SelectedOprema = tabelaOpreme.SelectedItem as Oprema;
-            OpremaStorage.Instance.Delete(SelectedOprema.Id);
-            opreme = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            Inventory SelectedOprema = tabelaOpreme.SelectedItem as Inventory;
+            InventoryRepository.Instance.Delete(SelectedOprema.Id);
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
             tabelaOpreme.ItemsSource = opreme;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
         {
-            Oprema SelectedOprema = tabelaOpreme.SelectedItem as Oprema;
+            Inventory SelectedOprema = tabelaOpreme.SelectedItem as Inventory;
             if (SelectedOprema == null)
             {
                 MessageBox.Show("Izabrati opremu.");
@@ -53,7 +53,7 @@ namespace SIMS.UpravnikGUI
             }
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.Id));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.Id);
-            opreme = new ObservableCollection<Oprema>(OpremaStorage.Instance.ReadList());
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
             tabelaOpreme.ItemsSource = opreme;
         }
 

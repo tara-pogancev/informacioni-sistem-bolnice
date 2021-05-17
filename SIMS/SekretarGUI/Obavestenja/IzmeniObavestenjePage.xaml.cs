@@ -10,16 +10,16 @@ namespace SIMS.SekretarGUI
 {
     public partial class IzmeniObavestenjePage : Page
     {
-        private Sekretar _secretary;
-        private ObservableCollection<Obavestenje> _notifications;
-        private Obavestenje _notification;
-        private List<Pacijent> _patients;
-        private List<Lekar> _doctors;
-        private List<Sekretar> _secretaries;
-        private List<Upravnik> _directors;
+        private Secretary _secretary;
+        private ObservableCollection<Notification> _notifications;
+        private Notification _notification;
+        private List<Patient> _patients;
+        private List<Doctor> _doctors;
+        private List<Secretary> _secretaries;
+        private List<Manager> _directors;
 
         private const int NumberOfRoleGroups = 5;
-        public IzmeniObavestenjePage(ObservableCollection<Obavestenje> notifications, Obavestenje notification, Sekretar secretary)
+        public IzmeniObavestenjePage(ObservableCollection<Notification> notifications, Notification notification, Secretary secretary)
         {
             InitializeComponent();
 
@@ -27,10 +27,10 @@ namespace SIMS.SekretarGUI
             _notifications = notifications;
             _notification = notification;
 
-            _patients = PacijentStorage.Instance.ReadList();
-            _doctors = LekarStorage.Instance.ReadList();
-            _secretaries = SekretarStorage.Instance.ReadList();
-            _directors = UpravnikStorage.Instance.ReadList();
+            _patients = PatientRepository.Instance.ReadList();
+            _doctors = DoctorRepository.Instance.ReadList();
+            _secretaries = SecretaryRepository.Instance.ReadList();
+            _directors = ManagerRepository.Instance.ReadList();
 
             SetRolesForNotificationTargets();
 
@@ -40,20 +40,20 @@ namespace SIMS.SekretarGUI
 
         private void SetRolesForNotificationTargets()
         {
-            ObservableCollection<ObavestenjeUloga> rolesOfUsers = new ObservableCollection<ObavestenjeUloga>
+            ObservableCollection<NotificationRole> rolesOfUsers = new ObservableCollection<NotificationRole>
             {
-                new ObavestenjeUloga("Svi", 0),
-                new ObavestenjeUloga("Svi pacijenti", 1),
-                new ObavestenjeUloga("Svi lekari", 2),
-                new ObavestenjeUloga("Svi sekretari", 3),
-                new ObavestenjeUloga("Svi upravnici", 4)
+                new NotificationRole("Svi", 0),
+                new NotificationRole("Svi pacijenti", 1),
+                new NotificationRole("Svi lekari", 2),
+                new NotificationRole("Svi sekretari", 3),
+                new NotificationRole("Svi upravnici", 4)
             };
             SetRoleForEachUser(rolesOfUsers);
 
             UpdateRolesForEachUser(rolesOfUsers);
         }
 
-        private void UpdateRolesForEachUser(ObservableCollection<ObavestenjeUloga> rolesOfUsers)
+        private void UpdateRolesForEachUser(ObservableCollection<NotificationRole> rolesOfUsers)
         {
             rolesComboBox.ItemsSource = rolesOfUsers;
             rolesComboBox.DisplayMemberPath = "Uloga";
@@ -65,7 +65,7 @@ namespace SIMS.SekretarGUI
                     rolesComboBox.SelectedItems.Add(rolesOfUsers[0]);
                     break;
                 }
-                foreach (ObavestenjeUloga role in rolesOfUsers)
+                foreach (NotificationRole role in rolesOfUsers)
                 {
                     if (role.Indeks >= NumberOfRoleGroups && role.Key.Equals(key))
                     {
@@ -75,27 +75,27 @@ namespace SIMS.SekretarGUI
             }
         }
 
-        private void SetRoleForEachUser(ObservableCollection<ObavestenjeUloga> rolesOfUsers)
+        private void SetRoleForEachUser(ObservableCollection<NotificationRole> rolesOfUsers)
         {
             int userNumber = NumberOfRoleGroups;
-            foreach (Pacijent p in _patients)
+            foreach (Patient p in _patients)
             {
-                rolesOfUsers.Add(new ObavestenjeUloga(p.ImePrezime, userNumber, p.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(p.ImePrezime, userNumber, p.Jmbg));
                 userNumber++;
             }
-            foreach (Lekar d in _doctors)
+            foreach (Doctor d in _doctors)
             {
-                rolesOfUsers.Add(new ObavestenjeUloga(d.ImePrezime, userNumber, d.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(d.ImePrezime, userNumber, d.Jmbg));
                 userNumber++;
             }
-            foreach (Sekretar s in _secretaries)
+            foreach (Secretary s in _secretaries)
             {
-                rolesOfUsers.Add(new ObavestenjeUloga(s.ImePrezime, userNumber, s.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(s.ImePrezime, userNumber, s.Jmbg));
                 userNumber++;
             }
-            foreach (Upravnik d in _directors)
+            foreach (Manager d in _directors)
             {
-                rolesOfUsers.Add(new ObavestenjeUloga(d.ImePrezime, userNumber, d.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(d.ImePrezime, userNumber, d.Jmbg));
                 userNumber++;
             }
         }
@@ -110,10 +110,10 @@ namespace SIMS.SekretarGUI
             List<string> targets = UpdateNotificationTargets();
             
             _notifications.Remove(_notification);
-            ObavestenjaStorage.Instance.Delete(_notification.ID);
+            NotificationRepository.Instance.Delete(_notification.ID);
 
-            _notification = new Obavestenje("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), targets);
-            ObavestenjaStorage.Instance.Create(_notification);
+            _notification = new Notification("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), targets);
+            NotificationRepository.Instance.Create(_notification);
 
             NavigationService.Navigate(new SekretarObavestenjaPage(_secretary));
         }
@@ -121,21 +121,21 @@ namespace SIMS.SekretarGUI
         private List<string> UpdateNotificationTargets()
         {
             List<string> targets = new List<string>();
-            foreach (Sekretar s in _secretaries)
+            foreach (Secretary s in _secretaries)
                 targets.Add(s.Jmbg);
 
-            foreach (ObavestenjeUloga notificationRole in rolesComboBox.SelectedItems)
+            foreach (NotificationRole notificationRole in rolesComboBox.SelectedItems)
             {
                 if (notificationRole.Indeks == 0)
                     targets.Add("All");
                 else if (notificationRole.Indeks == 1)
-                    foreach (Pacijent p in _patients)
+                    foreach (Patient p in _patients)
                         targets.Add(p.Jmbg);
                 else if (notificationRole.Indeks == 2)
-                    foreach (Lekar l in _doctors)
+                    foreach (Doctor l in _doctors)
                         targets.Add(l.Jmbg);
                 else if (notificationRole.Indeks == 4)
-                    foreach (Upravnik u in _directors)
+                    foreach (Manager u in _directors)
                         targets.Add(u.Jmbg);
                 else
                     targets.Add(notificationRole.Key);

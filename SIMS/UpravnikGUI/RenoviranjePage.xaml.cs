@@ -19,15 +19,15 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class RenoviranjePage : Page
     {
-        Prostorija prostorija;
+        Room prostorija;
         public RenoviranjePage(string BrojProstorije)
         {
             InitializeComponent();
-            prostorija = ProstorijaStorage.Instance.Read(BrojProstorije);
-            if (prostorija.pocetakRenoviranja != null && prostorija.krajRenoviranja != null)
+            prostorija = RoomRepository.Instance.Read(BrojProstorije);
+            if (prostorija.RenovationStart != null && prostorija.RenovationEnd != null)
             {
-                Pocetak.SelectedDate = prostorija.pocetakRenoviranja;
-                Kraj.SelectedDate = prostorija.krajRenoviranja;
+                Pocetak.SelectedDate = prostorija.RenovationStart;
+                Kraj.SelectedDate = prostorija.RenovationEnd;
             }
         }
 
@@ -35,9 +35,9 @@ namespace SIMS.UpravnikGUI
         {
             if (Pocetak.SelectedDate != null && Kraj.SelectedDate != null)
             {
-                prostorija.pocetakRenoviranja = Pocetak.SelectedDate;
-                prostorija.krajRenoviranja = Kraj.SelectedDate;
-                ProstorijaStorage.Instance.Update(prostorija);
+                prostorija.RenovationStart = Pocetak.SelectedDate;
+                prostorija.RenovationEnd = Kraj.SelectedDate;
+                RoomRepository.Instance.Update(prostorija);
             }
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
@@ -51,9 +51,9 @@ namespace SIMS.UpravnikGUI
 
         private void Otkaz_Click(object sender, RoutedEventArgs e)
         {
-            prostorija.pocetakRenoviranja = null;
-            prostorija.krajRenoviranja = null;
-            ProstorijaStorage.Instance.Update(prostorija);
+            prostorija.RenovationStart = null;
+            prostorija.RenovationEnd = null;
+            RoomRepository.Instance.Update(prostorija);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }

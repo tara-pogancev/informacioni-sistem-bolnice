@@ -30,7 +30,7 @@ namespace SIMS.PacijentGUI
         public TerminZaPreporuku(DateTime vrijeme)
         {
             this.vrijeme = vrijeme;
-            this.idLekara = new LekarStorage().getAllId();
+            this.idLekara = new DoctorRepository().getAllId();
         }
 
         public List<string> IdLekara { get => idLekara; set => idLekara = value; }
@@ -39,21 +39,21 @@ namespace SIMS.PacijentGUI
 
     public partial class PreporukaTermina : UserControl
     {
-        Pacijent pacijent;
-        List<Termin> termini;
-        List<Termin> preporuceniTermini;
+        Patient pacijent;
+        List<Appointment> termini;
+        List<Appointment> preporuceniTermini;
         List<TerminZaPreporuku> terminZaPreporuku;
-        List<Lekar> lekari;
-        public PreporukaTermina(Pacijent p)
+        List<Doctor> lekari;
+        public PreporukaTermina(Patient p)
         {
             InitializeComponent();
             pacijent = p;
-            termini = new TerminStorage().ReadList();
-            preporuceniTermini = new List<Termin>();
+            termini = new AppointmentRepository().ReadList();
+            preporuceniTermini = new List<Appointment>();
             //ListaDoktora.IsHitTestVisible = false;
             terminZaPreporuku = new List<TerminZaPreporuku>();
         
-            lekari = new LekarStorage().ReadList();
+            lekari = new DoctorRepository().ReadList();
             this.DataContext = this;
         }
 
@@ -78,7 +78,7 @@ namespace SIMS.PacijentGUI
             }
         }
 
-        private void izbaciZauzeteTermine(Termin termin)
+        private void izbaciZauzeteTermine(Appointment termin)
         {
             for(int i= 0;i < terminZaPreporuku.Count;i++)
             {
@@ -93,21 +93,21 @@ namespace SIMS.PacijentGUI
         {
             if (lekarChecked.IsChecked == true)
             {
-                foreach (Termin ter in termini)
+                foreach (Appointment ter in termini)
                 {
                     izbaciZauzeteTermine(ter);
                 }
             }
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
-                Termin termin = new Termin();
+                Appointment termin = new Appointment();
                 termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
                 termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
-                termin.VrstaTermina = TipTermina.pregled;
+                termin.VrstaTermina = AppointmentType.pregled;
                 termin.Lekar = lekari[ListaDoktora.SelectedIndex];
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Prostorija("1",TipProstorije.zaPreglede);
+                termin.Prostorija = new Room("1",RoomType.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (i == 4)
@@ -117,7 +117,7 @@ namespace SIMS.PacijentGUI
             }
         }
 
-        private void izbaciZauzeteDoktore(Termin termin)
+        private void izbaciZauzeteDoktore(Appointment termin)
         {
 
             for (int i = 0; i < terminZaPreporuku.Count; i++)
@@ -131,7 +131,7 @@ namespace SIMS.PacijentGUI
                 
             }
         }
-        private void izbaciPacijentoveTermine(Termin termin)
+        private void izbaciPacijentoveTermine(Appointment termin)
         {
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
@@ -165,15 +165,15 @@ namespace SIMS.PacijentGUI
                 }
 
                 brojacPreporucenihTermina++;
-                Termin termin = new Termin();
+                Appointment termin = new Appointment();
                 termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
                 termin.InicijalnoVrijeme = termin.PocetnoVreme;
                 termin.VremeTrajanja = 30;
-                termin.VrstaTermina = TipTermina.pregled;
+                termin.VrstaTermina = AppointmentType.pregled;
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Lekar = new LekarStorage().Read(idLekara);
+                termin.Lekar = new DoctorRepository().Read(idLekara);
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Prostorija("1",TipProstorije.zaPreglede);
+                termin.Prostorija = new Room("1",RoomType.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (brojacPreporucenihTermina == 5)
@@ -200,8 +200,8 @@ namespace SIMS.PacijentGUI
 
             
         }
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
-        public List<Lekar> Lekari { get => lekari; set => lekari = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
+        public List<Doctor> Lekari { get => lekari; set => lekari = value; }
 
         private bool validiraj()
         {

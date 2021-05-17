@@ -19,11 +19,11 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class PacijentKartonView : Page
     {
-        private Pacijent pacijentProfile;
+        private Patient pacijentProfile;
 
         public static PacijentKartonView instance;
 
-        public static PacijentKartonView GetInstance(Pacijent p)
+        public static PacijentKartonView GetInstance(Patient p)
         {
             instance = new PacijentKartonView(p);
             return instance;
@@ -34,7 +34,7 @@ namespace SIMS.LekarGUI
             return instance;
         }
 
-        public PacijentKartonView(Pacijent p)
+        public PacijentKartonView(Patient p)
         {
             InitializeComponent();
 

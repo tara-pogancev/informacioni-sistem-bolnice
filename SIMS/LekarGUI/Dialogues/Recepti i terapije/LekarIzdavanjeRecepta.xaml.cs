@@ -18,10 +18,10 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarIzdavanjeRecepta : Window
     {
-        private Pacijent patient;
-        private Lekar doctor = LekarUI.GetInstance().GetUser();
+        private Patient patient;
+        private Doctor doctor = LekarUI.GetInstance().GetUser();
 
-        public LekarIzdavanjeRecepta(Pacijent patient)
+        public LekarIzdavanjeRecepta(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI
             LabelPatient.Content = "Pacijent: " + this.patient.ImePrezime;
             LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Lek> availableMedicine = new List<Lek>(LekStorage.Instance.getApprovedMedicine());
+            List<Medication> availableMedicine = new List<Medication>(MedicationRepository.Instance.getApprovedMedicine());
             MedicineComboBox.ItemsSource = availableMedicine;
 
         }
@@ -42,7 +42,7 @@ namespace SIMS.LekarGUI
 
             else if (patient.IsAlergic(GetSelectedMedicine()))
             {
-                Lek l = GetSelectedMedicine();
+                Medication l = GetSelectedMedicine();
                 if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ". Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -56,9 +56,9 @@ namespace SIMS.LekarGUI
                 
         }
 
-        private String GetSubstitutionName(Lek medicine)
+        private String GetSubstitutionName(Medication medicine)
         {
-            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         private void WriteReceipt()
@@ -73,22 +73,22 @@ namespace SIMS.LekarGUI
 
         private void CreateReceipt()
         {
-            Lek medicine = GetSelectedMedicine();
-            Recept receipt = new Recept(doctor, patient, medicine.MedicineName,
+            Medication medicine = GetSelectedMedicine();
+            Receipt receipt = new Receipt(doctor, patient, medicine.MedicineName,
                 AmountText.Text, DiagnosisText.Text);
 
-            ReceptStorage.Instance.Create(receipt);
+            ReceiptRepository.Instance.Create(receipt);
         }
 
-        private Lek GetSelectedMedicine()
+        private Medication GetSelectedMedicine()
         {
-            return (Lek)MedicineComboBox.SelectedItem;
+            return (Medication)MedicineComboBox.SelectedItem;
         }
 
-        private void SendNotification(Lek medicine)
+        private void SendNotification(Medication medicine)
         {
-            Obavestenje notification = new Obavestenje("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
-            ObavestenjaStorage.Instance.Create(notification);
+            Notification notification = new Notification("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
+            NotificationRepository.Instance.Create(notification);
         }
     }
 }

@@ -11,24 +11,24 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class TerminUpdate : Window
     {
-        private List<Lekar> lekari;
-        private List<Pacijent> pacijenti;
-        private List<Prostorija> prostorije;
+        private List<Doctor> lekari;
+        private List<Patient> pacijenti;
+        private List<Room> prostorije;
         private List<String> termini;
-        Termin termin;
+        Appointment termin;
 
-        public TerminUpdate(Termin t)
+        public TerminUpdate(Appointment t)
         {
             InitializeComponent();
             this.termin = t;
 
-            LekarStorage storageL = new LekarStorage();
+            DoctorRepository storageL = new DoctorRepository();
             lekari = storageL.ReadList();
 
-            PacijentStorage storageP = new PacijentStorage();
+            PatientRepository storageP = new PatientRepository();
             pacijenti = storageP.ReadList();
 
-            prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
 
             doktoriCombo.ItemsSource = lekari;
             pacijentiCombo.ItemsSource = pacijenti;
@@ -72,9 +72,9 @@ namespace SIMS.LekarGUI
                 {
                     termin.Lekar.Serijalizuj = false;
                     termin.Pacijent.Serijalizuj = false;
-                    termin.Prostorija.Serijalizuj = false;
+                    termin.Prostorija.Serialize = false;
 
-                    TerminStorage.Instance.Update(termin);
+                    AppointmentRepository.Instance.Update(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }
@@ -98,7 +98,7 @@ namespace SIMS.LekarGUI
                 trajanjeLista.SelectedIndex = 2;
 
             int index = 0;
-            foreach (Lekar l in lekari)
+            foreach (Doctor l in lekari)
             {
                 if (l.Jmbg.Equals(termin.Lekar.Jmbg))
                 {
@@ -120,7 +120,7 @@ namespace SIMS.LekarGUI
             terminiLista.SelectedIndex = index;
 
             index = 0;
-            foreach (Pacijent p in pacijenti)
+            foreach (Patient p in pacijenti)
             {
                 if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
                 {
@@ -131,9 +131,9 @@ namespace SIMS.LekarGUI
             pacijentiCombo.SelectedIndex = index;
 
             index = 0;
-            foreach (Prostorija pr in prostorije)
+            foreach (Room pr in prostorije)
             {
-                if (pr.Broj.Equals(termin.Prostorija.Broj))
+                if (pr.Number.Equals(termin.Prostorija.Number))
                 {
                     break;
                 }

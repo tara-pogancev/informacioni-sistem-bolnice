@@ -19,17 +19,17 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikOpremaDetailPage : Page
     {
-        Oprema oprema;
+        Inventory oprema;
 
         public UpravnikOpremaDetailPage()
         {
-            oprema = new Oprema();
+            oprema = new Inventory();
             InitializeComponent();
             Tip.ItemsSource = Conversion.GetTipoviOpreme();
         }
         public UpravnikOpremaDetailPage(string Id)
         {
-            oprema = OpremaStorage.Instance.Read(Id);
+            oprema = InventoryRepository.Instance.Read(Id);
             InitializeComponent();
 
             ID.Text = oprema.Id;
@@ -52,7 +52,7 @@ namespace SIMS.UpravnikGUI
             oprema.Naziv = Naziv.Text;
             oprema.TipOpreme = Conversion.StringToTipOpreme(Tip.Text);
 
-            OpremaStorage.Instance.CreateOrUpdate(oprema);
+            InventoryRepository.Instance.CreateOrUpdate(oprema);
 
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
             UpravnikWindow.Instance.SetLabel("Oprema");

@@ -22,16 +22,16 @@ namespace SIMS.UpravnikGUI
     {
         class Sastojak
         {
-            public Alergen Alergen { get; set; }
+            public Allergen Alergen { get; set; }
             public bool IsChecked { get; set; }
 
-            public Sastojak(Alergen alergen)
+            public Sastojak(Allergen alergen)
             {
                 Alergen = alergen;
                 IsChecked = false;
             }
 
-            public Sastojak(Alergen alergen, bool isChecked)
+            public Sastojak(Allergen alergen, bool isChecked)
             {
                 Alergen = alergen;
                 IsChecked = isChecked;
@@ -39,12 +39,12 @@ namespace SIMS.UpravnikGUI
             }
         }
 
-        Lek lek;
+        Medication lek;
         ObservableCollection<Sastojak> Sastojci = new ObservableCollection<Sastojak>();
 
         public LekoviDetailPage(string ID) //izmena postojece prostorije
         {
-            lek = LekStorage.Instance.Read(ID);
+            lek = MedicationRepository.Instance.Read(ID);
             InitializeComponent();
 
             IDText.Text = lek.MedicineID;
@@ -53,7 +53,7 @@ namespace SIMS.UpravnikGUI
 
             IDText.IsEnabled = false;
 
-            foreach (Alergen alergen in AlergeniStorage.Instance.ReadAll().Values)
+            foreach (Allergen alergen in AllergenRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen, lek.Components.Contains(alergen.ID)));
             }
@@ -63,10 +63,10 @@ namespace SIMS.UpravnikGUI
 
         public LekoviDetailPage() //nov lek
         {
-            lek = new Lek();
+            lek = new Medication();
             InitializeComponent();
 
-            foreach (Alergen alergen in AlergeniStorage.Instance.ReadAll().Values)
+            foreach (Allergen alergen in AllergenRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen));
             }
@@ -95,14 +95,14 @@ namespace SIMS.UpravnikGUI
                 }
             }
 
-            LekStorage.Instance.CreateOrUpdate(lek);
+            MedicationRepository.Instance.CreateOrUpdate(lek);
             UpravnikWindow.Instance.SetContent(new LekoviPage());
             UpravnikWindow.Instance.SetLabel("Lekovi");
         }
 
         private void IDText_KeyUp(object sender, KeyEventArgs e)
         {
-            foreach(Lek lek in LekStorage.Instance.ReadAll().Values)
+            foreach(Medication lek in MedicationRepository.Instance.ReadAll().Values)
             {
                 if (lek.IDSubstitution == IDText.Text)
                 {

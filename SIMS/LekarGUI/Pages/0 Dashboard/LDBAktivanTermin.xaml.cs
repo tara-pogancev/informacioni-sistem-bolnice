@@ -21,9 +21,9 @@ namespace SIMS.LekarGUI.Pages
     public partial class LDBAktivanTermin : Page
     {
         public static LDBAktivanTermin instance;
-        private static Termin aktivanTermin;
+        private static Appointment aktivanTermin;
 
-        public static LDBAktivanTermin GetInstance(Termin t)
+        public static LDBAktivanTermin GetInstance(Appointment t)
         {
             if (instance == null)
             {
@@ -42,7 +42,7 @@ namespace SIMS.LekarGUI.Pages
         {
             LekarUI.GetInstance().ChangeTab(3);
 
-            if (aktivanTermin.VrstaTermina == TipTermina.pregled)
+            if (aktivanTermin.VrstaTermina == AppointmentType.pregled)
             {
                 AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
                 a.ShowDialog();

@@ -19,8 +19,8 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class PreporuceniTermini : Page
     {
-        private static ObservableCollection<Termin> termini;
-        private Pacijent pacijent;
+        private static ObservableCollection<Appointment> termini;
+        private Patient pacijent;
         public PreporuceniTermini()
         {
             
@@ -29,11 +29,11 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
             pacijent = PocetnaStranica.getInstance().Pacijent;
         }
-        public static ObservableCollection<Termin> Termini { get => termini; set => termini = value; }
+        public static ObservableCollection<Appointment> Termini { get => termini; set => termini = value; }
        
-        public void dodajTermine(List<Termin> terminiPreporuka)
+        public void dodajTermine(List<Appointment> terminiPreporuka)
         {
-            termini = new ObservableCollection<Termin>(terminiPreporuka);
+            termini = new ObservableCollection<Appointment>(terminiPreporuka);
         }
 
         private void Nazad_Click(object sender, RoutedEventArgs e)
@@ -47,10 +47,10 @@ namespace SIMS.PacijentGUI
 
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
-            TerminStorage trm = new TerminStorage();
+            AppointmentRepository trm = new AppointmentRepository();
             trm.Create(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
-            TerminStorage terminStorage = new TerminStorage();
+            AppointmentRepository terminStorage = new AppointmentRepository();
         }
     }
 }

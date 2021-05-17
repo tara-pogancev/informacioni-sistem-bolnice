@@ -8,7 +8,7 @@ namespace SIMS.SekretarGUI
 {
     public partial class SekretarPacijentiPage : Page
     {
-        private ObservableCollection<Pacijent> _patients;
+        private ObservableCollection<Patient> _patients;
         private static SekretarPacijentiPage _instance = null;
 
         public static SekretarPacijentiPage GetInstance()
@@ -21,7 +21,7 @@ namespace SIMS.SekretarGUI
         {
             InitializeComponent();
 
-            _patients = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
+            _patients = new ObservableCollection<Patient>(PatientRepository.Instance.ReadList());
             patientsView.ItemsSource = _patients;
         }
 
@@ -43,7 +43,7 @@ namespace SIMS.SekretarGUI
             }
             else
             {
-                NavigationService.Navigate(new IzmeniPacijentaPage((Pacijent)patientsView.SelectedItem));
+                NavigationService.Navigate(new IzmeniPacijentaPage((Patient)patientsView.SelectedItem));
             }
         }
 
@@ -55,8 +55,8 @@ namespace SIMS.SekretarGUI
             }
             else
             {
-                Pacijent toDelete = (Pacijent)patientsView.SelectedItem;
-                PacijentStorage.Instance.Delete(toDelete.Jmbg);
+                Patient toDelete = (Patient)patientsView.SelectedItem;
+                PatientRepository.Instance.Delete(toDelete.Jmbg);
                 RefreshView();
             }
         }
@@ -64,8 +64,8 @@ namespace SIMS.SekretarGUI
         public void RefreshView()
         {
             _patients.Clear();
-            List<Pacijent> pacijentiAll = PacijentStorage.Instance.ReadList();
-            foreach (Pacijent p in pacijentiAll)
+            List<Patient> pacijentiAll = PatientRepository.Instance.ReadList();
+            foreach (Patient p in pacijentiAll)
                 _patients.Add(p);
 
         }

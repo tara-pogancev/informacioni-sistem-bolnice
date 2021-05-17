@@ -24,9 +24,9 @@ namespace SIMS.LekarGUI
     {
         public static LekarNalogPage instance;
 
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
-        public static LekarNalogPage GetInstance(Lekar l)
+        public static LekarNalogPage GetInstance(Doctor l)
         {
             if (instance == null)
             {
@@ -53,7 +53,7 @@ namespace SIMS.LekarGUI
 
         private void Button(object sender, RoutedEventArgs e)
         {
-            var window = new ActionsAfterReport(PacijentStorage.Instance.ReadList()[0]);
+            var window = new ActionsAfterReport(PatientRepository.Instance.ReadList()[0]);
             window.Show();
         }
 

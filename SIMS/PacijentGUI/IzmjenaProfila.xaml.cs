@@ -19,7 +19,7 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class IzmjenaProfila : Page
     {
-        private Pacijent pacijent;
+        private Patient pacijent;
         private String alergeni;
         public IzmjenaProfila()
         {
@@ -45,7 +45,7 @@ namespace SIMS.PacijentGUI
         }
         
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
         
 
         private void dobaviAlergene()
@@ -53,8 +53,8 @@ namespace SIMS.PacijentGUI
             
             foreach(String alergen in pacijent.Alergeni)
             {
-                Alergen ucitaniAlergen = new AlergeniStorage().Read(alergen);
-                alergeni += ucitaniAlergen.Naziv;
+                Allergen ucitaniAlergen = new AllergenRepository().Read(alergen);
+                alergeni += ucitaniAlergen.Name;
                 alergeni += ", ";
 
             }
@@ -77,9 +77,9 @@ namespace SIMS.PacijentGUI
             pacijent.KorisnickoIme = KorisnickoImeBox.Text;
             pacijent.Lozinka = LozinkaBox.Text;
             pacijent.Telefon = BrojTelefonaBox.Text;
-            pacijent.Adresa.Ulica= AdresaBox.Text.Split(" ")[0];
-            pacijent.Adresa.Broj = AdresaBox.Text.Split(" ")[1];
-            new PacijentStorage().Update(pacijent);
+            pacijent.Adresa.Street= AdresaBox.Text.Split(" ")[0];
+            pacijent.Adresa.Number = AdresaBox.Text.Split(" ")[1];
+            new PatientRepository().Update(pacijent);
             NavigationService.GoBack();
 
         }

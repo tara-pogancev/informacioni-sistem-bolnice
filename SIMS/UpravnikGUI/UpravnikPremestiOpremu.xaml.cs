@@ -23,15 +23,15 @@ namespace SIMS.UpravnikGUI
 
         UpravnikInventarProstorijePage ParentPage;
         string BrojProstorije;
-        Oprema Oprema;
-        public UpravnikPremestiOpremu(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Oprema Oprema)
+        Inventory Oprema;
+        public UpravnikPremestiOpremu(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Inventory Oprema)
         {
             this.ParentPage = ParentPage;
             this.BrojProstorije = BrojProstorije;
             this.Oprema = Oprema;
             InitializeComponent();
 
-            if (Oprema.TipOpreme != TipOpreme.statička)
+            if (Oprema.TipOpreme != InventoryType.statička)
             {
                 DatumPicker.Visibility = Visibility.Hidden;
                 DatumLabel.Visibility = Visibility.Hidden;
@@ -70,7 +70,7 @@ namespace SIMS.UpravnikGUI
                 timeOfExecution = (DateTime)DatumPicker.SelectedDate;
             }
 
-            PremestajOpremeQueue.Instance.PushCommand(new PremestajOpremeCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, amountToBeMoved));
+            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, amountToBeMoved));
 
             ParentPage.Update();
 

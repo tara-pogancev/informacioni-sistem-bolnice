@@ -20,9 +20,9 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// </summary>
     public partial class OperacijaIzvestajCreate : Window
     {
-        private Termin operation;
+        private Appointment operation;
 
-        public OperacijaIzvestajCreate(Termin operationPar)
+        public OperacijaIzvestajCreate(Appointment operationPar)
         {
             InitializeComponent();
             operation = operationPar;
@@ -41,13 +41,13 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
             {
-                Pacijent patient = operation.Pacijent;
+                Patient patient = operation.Pacijent;
 
-                OperacijaIzvestaj o = new OperacijaIzvestaj(operation, OperationName.Text, OperationDescription.Text);
+                SurgeryReport o = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
                 o.Operacija.Lekar.Serijalizuj = false;
                 o.Operacija.Pacijent.Serijalizuj = false;
                 o.Operacija.Serijalizuj = false;
-                OperacijaIzvestajStorage.Instance.Create(o);
+                SurgeryReportRepository.Instance.Create(o);
 
                 this.Close();
                 LekarUI.GetInstance().ChangeTab(3);

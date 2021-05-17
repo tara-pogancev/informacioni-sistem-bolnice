@@ -21,9 +21,9 @@ namespace SIMS.UpravnikGUI
     {
         UpravnikInventarProstorijePage ParentPage;
         string BrojProstorije;
-        Oprema Oprema;
+        Inventory Oprema;
 
-        public UpravnikKolicinaOpreme(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Oprema Oprema)
+        public UpravnikKolicinaOpreme(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Inventory Oprema)
         {
             this.ParentPage = ParentPage;
             this.BrojProstorije = BrojProstorije;
@@ -38,7 +38,7 @@ namespace SIMS.UpravnikGUI
             ID.IsEnabled = false;
             Naziv.IsEnabled = false;
             Tip.IsEnabled = false;
-            Kolicina.Text = ProsInvStorage.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
+            Kolicina.Text = RoomInventoryRepository.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace SIMS.UpravnikGUI
                 MessageBox.Show("Uneti broj veći od 0.");
                 return;
             }
-            ProsInvStorage.Instance.Update(new ProsInv(BrojProstorije, Oprema.Id, amount));
+            RoomInventoryRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.Id, amount));
 
             ParentPage.Update();
 

@@ -26,11 +26,11 @@ namespace SIMS
     {
         public static LekarUI instance;
 
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
         private WindowBar bar = new WindowBar();
 
-        public static LekarUI GetInstance(Lekar l)
+        public static LekarUI GetInstance(Doctor l)
         {
             if (instance == null)
             {
@@ -102,7 +102,7 @@ namespace SIMS
             ChangeTab(0);
         }
 
-        public Lekar GetUser()
+        public Doctor GetUser()
         {
             return lekarUser;
         }

@@ -19,21 +19,21 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class AlergeniDetailPage : Page
     {
-        Alergen alergen;
+        Allergen alergen;
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            alergen = AlergeniStorage.Instance.Read(ID);
+            alergen = AllergenRepository.Instance.Read(ID);
             InitializeComponent();
 
-            NazivText.Text = alergen.Naziv;
+            NazivText.Text = alergen.Name;
             IDText.Text = alergen.ID;
             IDText.IsEnabled = false;
         }
 
         public AlergeniDetailPage() //nov alergen
         {
-            alergen = new Alergen();
+            alergen = new Allergen();
             InitializeComponent();
         }
 
@@ -46,10 +46,10 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            alergen.Naziv = NazivText.Text;
+            alergen.Name = NazivText.Text;
             alergen.ID = IDText.Text;
 
-            AlergeniStorage.Instance.CreateOrUpdate(alergen);
+            AllergenRepository.Instance.CreateOrUpdate(alergen);
             UpravnikWindow.Instance.SetContent(new AlergeniPage());
             UpravnikWindow.Instance.SetLabel("Alergeni");
         }

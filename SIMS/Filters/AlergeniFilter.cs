@@ -5,17 +5,17 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class AlergeniFilter : TableFilter<Alergen, AlergeniFilter>
+    class AlergeniFilter : TableFilter<Allergen, AlergeniFilter>
     {
-        public override bool CheckBoxFilter(Alergen alergen, bool checkboxChecked)
+        public override bool CheckBoxFilter(Allergen alergen, bool checkboxChecked)
         {
             return true;
         }
 
-        public override bool KeywordFilter(Alergen alergen, string keyword)
+        public override bool KeywordFilter(Allergen alergen, string keyword)
         {
             return (alergen.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    alergen.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
+                    alergen.Name.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

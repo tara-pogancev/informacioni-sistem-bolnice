@@ -8,18 +8,18 @@ namespace SIMS.SekretarGUI
 {
     public partial class DodajOperacijuPage : Page
     {
-        private List<Lekar> _doctors;
-        private List<Pacijent> _patients;
-        private List<Prostorija> _rooms;
+        private List<Doctor> _doctors;
+        private List<Patient> _patients;
+        private List<Room> _rooms;
 
         public DodajOperacijuPage()
         {
             InitializeComponent();
 
-            _doctors = LekarStorage.Instance.ReadList();
-            _patients = PacijentStorage.Instance.ReadList();
+            _doctors = DoctorRepository.Instance.ReadList();
+            _patients = PatientRepository.Instance.ReadList();
 
-            _rooms = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
 
             doctorsComboBox.ItemsSource = _doctors;
             patientsComboBox.ItemsSource = _patients;
@@ -37,19 +37,19 @@ namespace SIMS.SekretarGUI
                 return;
             }
 
-            Termin appointment = CreateAppointmentFromUserInput();
+            Appointment appointment = CreateAppointmentFromUserInput();
             if (IsAppointmentValid(appointment))
             {
-                TerminStorage.Instance.Create(appointment);
+                AppointmentRepository.Instance.Create(appointment);
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 NavigationService.Navigate(SekretarTerminiPage.GetInstance());
             }
         }
 
-        private Termin CreateAppointmentFromUserInput()
+        private Appointment CreateAppointmentFromUserInput()
         {
-            Termin appointment = new Termin();
+            Appointment appointment = new Appointment();
             string dateAndTime = datePicker.Text + " " + appointmentsComboBox.Text;
             DateTime appointmentDateAndTime = DateTime.Parse(dateAndTime);
             appointment.PocetnoVreme = appointmentDateAndTime;
@@ -65,15 +65,15 @@ namespace SIMS.SekretarGUI
             appointment.Prostorija = _rooms[roomsComboBox.SelectedIndex];
             appointment.Pacijent = _patients[patientsComboBox.SelectedIndex];
             appointment.Lekar = _doctors[doctorsComboBox.SelectedIndex];
-            appointment.VrstaTermina = TipTermina.operacija;
+            appointment.VrstaTermina = AppointmentType.operacija;
 
             return appointment;
         }
 
-        private bool IsAppointmentValid(Termin appointment)
+        private bool IsAppointmentValid(Appointment appointment)
         {
-            List<Termin> appointments = TerminStorage.Instance.ReadList();
-            foreach (Termin a in appointments)
+            List<Appointment> appointments = AppointmentRepository.Instance.ReadList();
+            foreach (Appointment a in appointments)
             {
                 if (a.KrajnjeVreme > appointment.PocetnoVreme && a.PocetnoVreme < appointment.KrajnjeVreme)
                 {

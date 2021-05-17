@@ -20,16 +20,16 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class OperacijaCreate : Window
     {
-        private List<Lekar> lekari;
-        private List<Pacijent> pacijenti;
-        private List<Prostorija> prostorije;
+        private List<Doctor> lekari;
+        private List<Patient> pacijenti;
+        private List<Room> prostorije;
         private List<String> dostupniTermini;
 
-        public OperacijaCreate(Pacijent patient)
+        public OperacijaCreate(Patient patient)
         {
             InitializeComponents();
 
-            foreach(Pacijent currentPatient in pacijenti)
+            foreach(Patient currentPatient in pacijenti)
             {
                 if (patient.Jmbg == currentPatient.Jmbg)
                 {
@@ -48,13 +48,13 @@ namespace SIMS.LekarGUI
         {
             InitializeComponent();
 
-            LekarStorage storageL = new LekarStorage();
+            DoctorRepository storageL = new DoctorRepository();
             lekari = storageL.ReadList();
 
-            PacijentStorage storageP = new PacijentStorage();
+            PatientRepository storageP = new PatientRepository();
             pacijenti = storageP.ReadList();
 
-            prostorije = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
 
             doktoriCombo.ItemsSource = lekari;
             pacijentiCombo.ItemsSource = pacijenti;
@@ -64,7 +64,7 @@ namespace SIMS.LekarGUI
             trajanjeLista.ItemsSource = trajanjeVrednosti;
 
             int index = 0;
-            foreach (Lekar l in lekari)
+            foreach (Doctor l in lekari)
             {
                 if (l.Jmbg.Equals(LekarUI.GetInstance().GetUser().Jmbg))
                 {
@@ -83,7 +83,7 @@ namespace SIMS.LekarGUI
                 MessageBox.Show("Molimo popunite sva polja!");
             else
             {
-                Termin termin = new Termin();
+                Appointment termin = new Appointment();
 
                 String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
                 DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
@@ -100,7 +100,7 @@ namespace SIMS.LekarGUI
                 termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
                 termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
                 termin.Lekar = lekari[doktoriCombo.SelectedIndex];
-                termin.VrstaTermina = TipTermina.operacija;
+                termin.VrstaTermina = AppointmentType.operacija;
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!lekari[doktoriCombo.SelectedIndex].IsFree(termin))
@@ -110,9 +110,9 @@ namespace SIMS.LekarGUI
                 {
                     termin.Lekar.Serijalizuj = false;
                     termin.Pacijent.Serijalizuj = false;
-                    termin.Prostorija.Serijalizuj = false;
+                    termin.Prostorija.Serialize = false;
 
-                    TerminStorage.Instance.Create(termin);
+                    AppointmentRepository.Instance.Create(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }
@@ -124,8 +124,8 @@ namespace SIMS.LekarGUI
         {
             if (doktoriCombo.SelectedItem != null)
             {
-                Lekar lek = lekari[doktoriCombo.SelectedIndex];
-                List<Termin> doktoroviTermini = new List<Termin>();
+                Doctor lek = lekari[doktoriCombo.SelectedIndex];
+                List<Appointment> doktoroviTermini = new List<Appointment>();
                 dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
                 terminiLista.ItemsSource = dostupniTermini;
                 /*

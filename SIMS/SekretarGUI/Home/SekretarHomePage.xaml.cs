@@ -11,14 +11,14 @@ namespace SIMS.SekretarGUI
         {
             return _instance;
         }
-        public static SekretarHomePage GetInstance(Sekretar secretary)
+        public static SekretarHomePage GetInstance(Secretary secretary)
         {
             if (_instance == null)
                 _instance = new SekretarHomePage(secretary);
             return _instance;
         }
 
-        private SekretarHomePage(Sekretar secretary)
+        private SekretarHomePage(Secretary secretary)
         {
             InitializeComponent();
             welcomeText.Text = "Dobrodosli,\n" + secretary.ImePrezime;

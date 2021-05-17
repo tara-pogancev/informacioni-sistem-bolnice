@@ -22,14 +22,14 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class PacijentDokumentacijaView : Page
     {
-        private Pacijent pacijentProfile;
+        private Patient pacijentProfile;
 
-        public ObservableCollection<Anamneza> PregledView { get; set; }
-        public ObservableCollection<OperacijaIzvestaj> OperacijaIzvestajView { get; set; }
-        public ObservableCollection<Recept> ReceptView { get; set; }
+        public ObservableCollection<Anamnesis> PregledView { get; set; }
+        public ObservableCollection<SurgeryReport> OperacijaIzvestajView { get; set; }
+        public ObservableCollection<Receipt> ReceptView { get; set; }
 
 
-        public PacijentDokumentacijaView(Pacijent p)
+        public PacijentDokumentacijaView(Patient p)
         {
             InitializeComponent();
 
@@ -45,21 +45,21 @@ namespace SIMS.LekarGUI
 
         private void initializeData()
         {
-            PregledView = new ObservableCollection<Anamneza>(AnamnezaStorage.Instance.ReadByPatient(pacijentProfile));
-            ReceptView = new ObservableCollection<Recept>(ReceptStorage.Instance.ReadByPatient(pacijentProfile));
-            OperacijaIzvestajView = new ObservableCollection<OperacijaIzvestaj>(OperacijaIzvestajStorage.Instance.ReadByPatient(pacijentProfile));
+            PregledView = new ObservableCollection<Anamnesis>(AnamnesisRepository.Instance.ReadByPatient(pacijentProfile));
+            ReceptView = new ObservableCollection<Receipt>(ReceiptRepository.Instance.ReadByPatient(pacijentProfile));
+            OperacijaIzvestajView = new ObservableCollection<SurgeryReport>(SurgeryReportRepository.Instance.ReadByPatient(pacijentProfile));
 
-            foreach (Anamneza anamneza in PregledView)
+            foreach (Anamnesis anamneza in PregledView)
             {
                 anamneza.InitData();
             }
 
-            foreach (Recept recept in ReceptView)
+            foreach (Receipt recept in ReceptView)
             {
                 recept.InitData();
             }
 
-            foreach (OperacijaIzvestaj operacijaIzvestaj in OperacijaIzvestajView)
+            foreach (SurgeryReport operacijaIzvestaj in OperacijaIzvestajView)
             {
                 operacijaIzvestaj.InitData();
             }
@@ -120,7 +120,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridRecepti.SelectedItem != null)
             {
-                Recept sellectedRecept = (Recept)dataGridRecepti.SelectedItem;
+                Receipt sellectedRecept = (Receipt)dataGridRecepti.SelectedItem;
                 PrikazRecepta window = new PrikazRecepta(sellectedRecept);
                 window.Show();
             }
@@ -130,7 +130,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPregledi.SelectedItem != null)
             {
-                Anamneza sellectedAnamneza = (Anamneza)dataGridPregledi.SelectedItem;
+                Anamnesis sellectedAnamneza = (Anamnesis)dataGridPregledi.SelectedItem;
                 AnamnezaView window = new AnamnezaView(sellectedAnamneza);
                 window.Show();
             }
@@ -140,7 +140,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridOperacije.SelectedItem != null)
             {
-                OperacijaIzvestaj sellectedIzvestaj = (OperacijaIzvestaj)dataGridOperacije.SelectedItem;
+                SurgeryReport sellectedIzvestaj = (SurgeryReport)dataGridOperacije.SelectedItem;
                 OperacijaIzvestajView window = new OperacijaIzvestajView(sellectedIzvestaj);
                 window.Show();
             }

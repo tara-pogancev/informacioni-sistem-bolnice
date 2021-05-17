@@ -19,8 +19,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicineApproval : Window
     {
-        public ObservableCollection<Lek> MedicineView { get; set; }
-        public List<Lek> MedicineChanges { get; set; }
+        public ObservableCollection<Medication> MedicineView { get; set; }
+        public List<Medication> MedicineChanges { get; set; }
 
         public MedicineApproval()
         {
@@ -28,8 +28,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Lek>();
-            MedicineChanges = new List<Lek>(LekStorage.Instance.getMedicineWaitingForApproval());
+            MedicineView = new ObservableCollection<Medication>();
+            MedicineChanges = new List<Medication>(MedicationRepository.Instance.getMedicineWaitingForApproval());
             refresh();
 
         }
@@ -37,7 +37,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void refresh()
         {
             MedicineView.Clear();
-            foreach (Lek medicine in MedicineChanges)
+            foreach (Medication medicine in MedicineChanges)
             {
                 MedicineView.Add(medicine);
             }
@@ -45,7 +45,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void ApproveSellecetedMedicine(object sender, RoutedEventArgs e)
         {
-            foreach (Lek medicine in getSellectedItems())
+            foreach (Medication medicine in getSellectedItems())
             {
                 medicine.ApprovalStatus = MedicineApprovalStatus.Accepted;
             }
@@ -55,7 +55,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void RejectSellecetedMedicine(object sender, RoutedEventArgs e)
         {
-            foreach (Lek medicine in getSellectedItems())
+            foreach (Medication medicine in getSellectedItems())
             {
                 medicine.ApprovalStatus = MedicineApprovalStatus.Denied;
             }
@@ -67,16 +67,16 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (DataGridMedicine.SelectedItem != null)
             {
-                MedicinePreview window = new MedicinePreview((Lek)DataGridMedicine.SelectedItem);
+                MedicinePreview window = new MedicinePreview((Medication)DataGridMedicine.SelectedItem);
                 window.Show();
             }
         }
 
         private void AcceptChanges(object sender, RoutedEventArgs e)
         {
-            foreach (Lek medicine in MedicineView)
+            foreach (Medication medicine in MedicineView)
             {
-                LekStorage.Instance.Update(medicine);
+                MedicationRepository.Instance.Update(medicine);
             }
 
             if (CheckIfMedicineRejected())
@@ -106,11 +106,11 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             PreviewSellectedMedicine();
         }
 
-        private List<Lek> getSellectedItems()
+        private List<Medication> getSellectedItems()
         {
-            var selectedItems = new List<Lek>();
+            var selectedItems = new List<Medication>();
 
-            foreach (Lek currentMedicine in DataGridMedicine.ItemsSource)
+            foreach (Medication currentMedicine in DataGridMedicine.ItemsSource)
             {
                 if (((CheckBox)checkedMedicine.GetCellContent(currentMedicine)).IsChecked == true)
                 {
@@ -123,7 +123,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private Boolean CheckIfMedicineRejected()
         {
-            foreach (Lek medicine in MedicineView)
+            foreach (Medication medicine in MedicineView)
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Denied)
                     return true;

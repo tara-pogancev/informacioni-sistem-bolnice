@@ -9,7 +9,7 @@ namespace SIMS.SekretarGUI
     {
         private static SekretarTerminiPage _instance = null;
 
-        private ObservableCollection<Termin> _appointmentsForView;
+        private ObservableCollection<Appointment> _appointmentsForView;
 
         public static SekretarTerminiPage GetInstance()
         {
@@ -23,7 +23,7 @@ namespace SIMS.SekretarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            _appointmentsForView = new ObservableCollection<Termin>();
+            _appointmentsForView = new ObservableCollection<Appointment>();
             appointmentsTable.ItemsSource = _appointmentsForView;
             RefreshView();
         }
@@ -31,10 +31,10 @@ namespace SIMS.SekretarGUI
         public void RefreshView()
         {
             _appointmentsForView.Clear();
-            ObservableCollection<Termin> appointments = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
             GetPatientAndDoctorData(appointments);
             SortAppointments(appointments);
-            foreach (Termin appointment in appointments)
+            foreach (Appointment appointment in appointments)
             {
                 _appointmentsForView.Add(appointment);
             }
@@ -54,7 +54,7 @@ namespace SIMS.SekretarGUI
         {
             if (appointmentsTable.SelectedItem != null)
             {
-                this.NavigationService.Navigate(new IzmeniTerminPage((Termin)appointmentsTable.SelectedItem));
+                this.NavigationService.Navigate(new IzmeniTerminPage((Appointment)appointmentsTable.SelectedItem));
             }
 
         }
@@ -67,8 +67,8 @@ namespace SIMS.SekretarGUI
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Termin toDelete = (Termin)appointmentsTable.SelectedItem;
-                    TerminStorage.Instance.Delete(toDelete.TerminKey);
+                    Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
+                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
                 }
@@ -91,16 +91,16 @@ namespace SIMS.SekretarGUI
             _instance = null;
         }
 
-        private void GetPatientAndDoctorData(ObservableCollection<Termin> appointments)
+        private void GetPatientAndDoctorData(ObservableCollection<Appointment> appointments)
         {
-            foreach (Termin appointment in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                appointment.Pacijent = PacijentStorage.Instance.Read(appointment.Pacijent.Jmbg);
-                appointment.Lekar = LekarStorage.Instance.Read(appointment.Lekar.Jmbg);
+                appointment.Pacijent = PatientRepository.Instance.Read(appointment.Pacijent.Jmbg);
+                appointment.Lekar = DoctorRepository.Instance.Read(appointment.Lekar.Jmbg);
             }
         }
 
-        private void SortAppointments(ObservableCollection<Termin> appointments)
+        private void SortAppointments(ObservableCollection<Appointment> appointments)
         {
             for (int i = 0; i < appointments.Count - 1; ++i)
             {
@@ -108,7 +108,7 @@ namespace SIMS.SekretarGUI
                 {
                     if (appointments[j].PocetnoVreme > appointments[j + 1].PocetnoVreme)
                     {
-                        Termin temp = appointments[j];
+                        Appointment temp = appointments[j];
                         appointments[j] = appointments[j + 1];
                         appointments[j + 1] = temp;
                     }

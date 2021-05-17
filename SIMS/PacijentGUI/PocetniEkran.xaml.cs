@@ -20,14 +20,14 @@ namespace SIMS.PacijentGUI
     
     public partial class PocetniEkran : Page
     {
-        private Pacijent pacijent;
-        public PocetniEkran(Pacijent p)
+        private Patient pacijent;
+        public PocetniEkran(Patient p)
         {
             this.pacijent = p;
             InitializeComponent();
         }
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
 
         private void Profil_Click(object sender, RoutedEventArgs e)
         {

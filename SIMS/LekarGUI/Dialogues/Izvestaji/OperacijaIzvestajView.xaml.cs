@@ -18,7 +18,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// </summary>
     public partial class OperacijaIzvestajView : Window
     {
-        public OperacijaIzvestajView(OperacijaIzvestaj report)
+        public OperacijaIzvestajView(SurgeryReport report)
         {
             InitializeComponent();
             report.InitData();

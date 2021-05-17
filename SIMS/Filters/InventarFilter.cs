@@ -5,14 +5,14 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class InventarFilter : TableFilter<Oprema, InventarFilter>
+    class InventarFilter : TableFilter<Inventory, InventarFilter>
     {
-        public override bool CheckBoxFilter(Oprema oprema, bool checkboxChecked)
+        public override bool CheckBoxFilter(Inventory oprema, bool checkboxChecked)
         {
             return true;
         }
 
-        public override bool KeywordFilter(Oprema oprema, string keyword)
+        public override bool KeywordFilter(Inventory oprema, string keyword)
         {
             return (oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
                     oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||

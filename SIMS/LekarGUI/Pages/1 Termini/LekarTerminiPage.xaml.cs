@@ -22,12 +22,12 @@ namespace SIMS.LekarGUI
     {
         public static LekarTerminiPage instance;
 
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
-        private ObservableCollection<Termin> terminiView;
-        public ObservableCollection<Termin> TerminiView { get => terminiView; set => terminiView = value; }
+        private ObservableCollection<Appointment> terminiView;
+        public ObservableCollection<Appointment> TerminiView { get => terminiView; set => terminiView = value; }
 
-        public static LekarTerminiPage GetInstance(Lekar l)
+        public static LekarTerminiPage GetInstance(Doctor l)
         {
             if (instance == null)
             {
@@ -49,22 +49,22 @@ namespace SIMS.LekarGUI
             //Tabela pregleda
 
             this.DataContext = this;
-            terminiView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            terminiView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
             refreshView();
         }
 
         private void refreshView()
         {
             terminiView.Clear();
-            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
+            List<Appointment> temp = new List<Appointment>(AppointmentRepository.Instance.ReadByDoctor(lekarUser));
             
-            foreach (Termin t in temp)
+            foreach (Appointment t in temp)
             {
                 if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
 
-                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
-                t.Prostorija = new ProstorijaStorage().Read(t.Prostorija.Broj);
+                t.Pacijent = new PatientRepository().Read(t.Pacijent.Jmbg);
+                t.Prostorija = new RoomRepository().Read(t.Prostorija.Number);
             }
         }
 
@@ -87,7 +87,7 @@ namespace SIMS.LekarGUI
             //Button: Uredi termin
             if (dataGridTermini.SelectedItem != null)
             {
-                TerminUpdate terminUpdate = new TerminUpdate((Termin)dataGridTermini.SelectedItem);
+                TerminUpdate terminUpdate = new TerminUpdate((Appointment)dataGridTermini.SelectedItem);
                 terminUpdate.ShowDialog();
             }
 
@@ -103,8 +103,8 @@ namespace SIMS.LekarGUI
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Termin toDelete = (Termin)dataGridTermini.SelectedItem;
-                    TerminStorage.Instance.Delete(toDelete.TerminKey);
+                    Appointment toDelete = (Appointment)dataGridTermini.SelectedItem;
+                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
                     refreshView();
                     MessageBox.Show("Termin je uspešno otkazan!");
                 }
@@ -112,9 +112,9 @@ namespace SIMS.LekarGUI
             }
         }
 
-        public void dodajTermin(Termin termin)
+        public void dodajTermin(Appointment termin)
         {
-            TerminStorage.Instance.Create(termin);
+            AppointmentRepository.Instance.Create(termin);
             refreshView();
             MessageBox.Show("Termin uspešno zakazan.");
         }
@@ -138,8 +138,8 @@ namespace SIMS.LekarGUI
         {
             if (dataGridTermini.SelectedItem != null)
             {
-                Termin t = (Termin)dataGridTermini.SelectedItem;
-                Pacijent p = PacijentStorage.Instance.Read(t.Pacijent.Jmbg);
+                Appointment t = (Appointment)dataGridTermini.SelectedItem;
+                Patient p = PatientRepository.Instance.Read(t.Pacijent.Jmbg);
 
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }

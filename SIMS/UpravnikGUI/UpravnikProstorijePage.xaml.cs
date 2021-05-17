@@ -18,12 +18,12 @@ namespace SIMS.UpravnikGUI
 {
     public partial class UpravnikProstorijePage : Page
     {
-        private ObservableCollection<Prostorija> prostorije;
+        private ObservableCollection<Room> prostorije;
 
         public UpravnikProstorijePage()
         {
             InitializeComponent();
-            prostorije = new ObservableCollection<Prostorija>(ProstorijaStorage.Instance.ReadList());
+            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadList());
             tabelaProstorije.ItemsSource = prostorije;
         }
 
@@ -35,22 +35,22 @@ namespace SIMS.UpravnikGUI
 
         private void IzbrisiProstorija_Click(object sender, RoutedEventArgs e)
         {
-            Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
-            ProstorijaStorage.Instance.Delete(SelectedProstorija.Broj);
-            prostorije = new ObservableCollection<Prostorija>(ProstorijaStorage.Instance.ReadList());
+            Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
+            RoomRepository.Instance.Delete(SelectedProstorija.Number);
+            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadList());
             tabelaProstorije.ItemsSource = prostorije;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
         {
-            Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
+            Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
             if (SelectedProstorija == null)
             {
                 MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
-            UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(SelectedProstorija.Broj));
-            UpravnikWindow.Instance.SetLabel("Prostorija " + SelectedProstorija.Broj);
+            UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(SelectedProstorija.Number));
+            UpravnikWindow.Instance.SetLabel("Prostorija " + SelectedProstorija.Number);
         }
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
@@ -60,14 +60,14 @@ namespace SIMS.UpravnikGUI
 
         private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)
         {
-            Prostorija SelectedProstorija = tabelaProstorije.SelectedItem as Prostorija;
+            Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
             if (SelectedProstorija == null)
             {
                 MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
-            UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Broj));
-            UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Broj);
+            UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Number));
+            UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Number);
         }
     }
 }

@@ -20,25 +20,25 @@ namespace SIMS.UpravnikGUI
     public partial class UpravnikProstorijaDetailPage : Page
 
     {
-        Prostorija prostorija;
+        Room prostorija;
         UpravnikInventarProstorijePage Inventar;
 
         public UpravnikProstorijaDetailPage(string broj) //izmena postojece prostorije
         {
-            prostorija = ProstorijaStorage.Instance.Read(broj);
+            prostorija = RoomRepository.Instance.Read(broj);
             Inventar = new UpravnikInventarProstorijePage(prostorija, this);
             InitializeComponent();
 
-            BrojText.Text = prostorija.Broj;
+            BrojText.Text = prostorija.Number;
 
             TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
-            TipCombo.SelectedItem = prostorija.TipProstorijeToString;
+            TipCombo.SelectedItem = prostorija.TypeToString;
 
             DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
-            DostupnostCombo.SelectedItem = prostorija.DostupnaToString;
+            DostupnostCombo.SelectedItem = prostorija.AvailableToString;
 
-            PocetakRenoviranjaText.Text = prostorija.pocetakRenoviranja.ToString();
-            KrajRenoviranjaText.Text = prostorija.krajRenoviranja.ToString();
+            PocetakRenoviranjaText.Text = prostorija.RenovationStart.ToString();
+            KrajRenoviranjaText.Text = prostorija.RenovationEnd.ToString();
 
 
             DostupnostCombo.IsEnabled = false;
@@ -51,7 +51,7 @@ namespace SIMS.UpravnikGUI
 
         public UpravnikProstorijaDetailPage() //nova prostorija
         {
-            prostorija = new Prostorija();
+            prostorija = new Room();
             InitializeComponent();
 
             TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
@@ -77,7 +77,7 @@ namespace SIMS.UpravnikGUI
         private void InventarProstorije_Click(object sender, RoutedEventArgs e)
         {
             UpravnikWindow.Instance.SetContent(Inventar);
-            UpravnikWindow.Instance.SetLabel("Inventar prostorije " + prostorija.Broj);
+            UpravnikWindow.Instance.SetLabel("Inventar prostorije " + prostorija.Number);
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -88,10 +88,10 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            prostorija.Broj = BrojText.Text;
-            prostorija.TipProstorije = Conversion.StringToTipProstorije(TipCombo.Text);
+            prostorija.Number = BrojText.Text;
+            prostorija.RoomType = Conversion.StringToTipProstorije(TipCombo.Text);
 
-            ProstorijaStorage.Instance.CreateOrUpdate(prostorija);
+            RoomRepository.Instance.CreateOrUpdate(prostorija);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }

@@ -8,38 +8,38 @@ namespace SIMS.DTO
     public class SpecializationDTO
     {
         public String SpecializationName { get; set; }
-        public Specijalizacija Specialization { get; set; }
+        public Specialization Specialization { get; set; }
 
         public SpecializationDTO()
         {
 
         }
 
-        public SpecializationDTO(Specijalizacija specialization)
+        public SpecializationDTO(Specialization specialization)
         {
             Specialization = specialization;
             SpecializationName = GetSpecializationName(specialization);
         }
 
-        public String GetSpecializationName(Specijalizacija specialization)
+        public String GetSpecializationName(Specialization specialization)
         {
-            if (specialization == Specijalizacija.OpstaPraksa)
+            if (specialization == Specialization.OpstaPraksa)
                 return "Lekar opšte prakse";
-            else if (specialization == Specijalizacija.Hirurg)
+            else if (specialization == Specialization.Hirurg)
                 return "Hirurg";
-            else if (specialization == Specijalizacija.Internista)
+            else if (specialization == Specialization.Internista)
                 return "Internista";
-            else if (specialization == Specijalizacija.Dermatolog)
+            else if (specialization == Specialization.Dermatolog)
                 return "Dermatolog";
-            else if (specialization == Specijalizacija.Kardiolog)
+            else if (specialization == Specialization.Kardiolog)
                 return "Kardiolog";
-            else if (specialization == Specijalizacija.Otorinolaringolog)
+            else if (specialization == Specialization.Otorinolaringolog)
                 return "Otorinolaringolog";
-            else if (specialization == Specijalizacija.Stomatolog)
+            else if (specialization == Specialization.Stomatolog)
                 return "Stomatolog";
-            else if (specialization == Specijalizacija.Urolog)
+            else if (specialization == Specialization.Urolog)
                 return "Urolog";
-            else if (specialization == Specijalizacija.Ginekolog)
+            else if (specialization == Specialization.Ginekolog)
                 return "Ginekolog";
             else
                 return "Neurolog";

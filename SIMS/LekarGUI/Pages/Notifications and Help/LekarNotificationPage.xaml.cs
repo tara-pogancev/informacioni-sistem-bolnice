@@ -23,9 +23,9 @@ namespace SIMS.LekarGUI
 
     public partial class LekarNotificationPage : Page
     {
-        private Lekar lekarUser;
+        private Doctor lekarUser;
 
-        private ObservableCollection<Obavestenje> obavestenjeView;
+        private ObservableCollection<Notification> obavestenjeView;
 
         public LekarNotificationPage()
         {
@@ -33,9 +33,9 @@ namespace SIMS.LekarGUI
 
             lekarUser = LekarUI.GetInstance().GetUser();
 
-            List<Obavestenje> listaObavestenja = ObavestenjaStorage.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
+            List<Notification> listaObavestenja = NotificationRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
             listaObavestenja.Reverse();
-            obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);
+            obavestenjeView = new ObservableCollection<Notification>(listaObavestenja);
 
             viewerObavestenja.ItemsSource = listaObavestenja;
 

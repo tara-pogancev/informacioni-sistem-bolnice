@@ -22,15 +22,15 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarIstorijaPage : Page
     {
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
-        private ObservableCollection<Termin> evidentiraniView;
-        public ObservableCollection<Termin> EvidentiraniView { get => evidentiraniView; set => evidentiraniView = value; }
+        private ObservableCollection<Appointment> evidentiraniView;
+        public ObservableCollection<Appointment> EvidentiraniView { get => evidentiraniView; set => evidentiraniView = value; }
 
-        private ObservableCollection<Termin> prazniView;
-        public ObservableCollection<Termin> PrazniView { get => prazniView; set => prazniView = value; }
+        private ObservableCollection<Appointment> prazniView;
+        public ObservableCollection<Appointment> PrazniView { get => prazniView; set => prazniView = value; }
 
-        public LekarIstorijaPage(Lekar l)
+        public LekarIstorijaPage(Doctor l)
         {
             InitializeComponent();
 
@@ -40,8 +40,8 @@ namespace SIMS.LekarGUI
             //Prazni - pregledi bez anamneze
 
             this.DataContext = this;
-            evidentiraniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
-            prazniView = new ObservableCollection<Termin>(TerminStorage.Instance.ReadList());
+            evidentiraniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
+            prazniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
             dobaviPodatkeOPacijenuILekaru();
             refreshView();
         }
@@ -51,11 +51,11 @@ namespace SIMS.LekarGUI
             prazniView.Clear();
             evidentiraniView.Clear();
 
-            List<Termin> temp = new List<Termin>(TerminStorage.Instance.ReadByDoctor(lekarUser));
+            List<Appointment> temp = new List<Appointment>(AppointmentRepository.Instance.ReadByDoctor(lekarUser));
             popuniInformacijeODoktoruIPacijentu(temp);
-            foreach (Termin t in temp)
+            foreach (Appointment t in temp)
             {
-                t.Pacijent = new PacijentStorage().Read(t.Pacijent.Jmbg);
+                t.Pacijent = new PatientRepository().Read(t.Pacijent.Jmbg);
 
                 if (t.Evidentiran == true)
                     evidentiraniView.Add(t);
@@ -69,12 +69,12 @@ namespace SIMS.LekarGUI
 
         }
 
-        private void popuniInformacijeODoktoruIPacijentu(List<Termin> temp)
+        private void popuniInformacijeODoktoruIPacijentu(List<Appointment> temp)
         {
-            foreach (Termin termin in temp)
+            foreach (Appointment termin in temp)
             {
-                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
             }
         }
 
@@ -82,11 +82,11 @@ namespace SIMS.LekarGUI
         {
             if (dataGridEvidentirani.SelectedItem != null)
             {
-                Termin t = (Termin)dataGridEvidentirani.SelectedItem;
+                Appointment t = (Appointment)dataGridEvidentirani.SelectedItem;
 
-                if (t.VrstaTermina == TipTermina.pregled)
+                if (t.VrstaTermina == AppointmentType.pregled)
                 {
-                    Anamneza anamneza = AnamnezaStorage.Instance.Read(t.TerminKey);
+                    Anamnesis anamneza = AnamnesisRepository.Instance.Read(t.TerminKey);
                     if (anamneza != null)
                     {
                         AnamnezaView a = new AnamnezaView(anamneza);
@@ -96,7 +96,7 @@ namespace SIMS.LekarGUI
                 }
                 else
                 {
-                    OperacijaIzvestaj report = OperacijaIzvestajStorage.Instance.Read(t.TerminKey);
+                    SurgeryReport report = SurgeryReportRepository.Instance.Read(t.TerminKey);
                     if (report != null)
                     {
                         OperacijaIzvestajView a = new OperacijaIzvestajView(report);
@@ -110,17 +110,17 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPrazni.SelectedItem != null)
             {
-                Termin t = (Termin)dataGridPrazni.SelectedItem;
+                Appointment t = (Appointment)dataGridPrazni.SelectedItem;
 
-                if (t.VrstaTermina == TipTermina.pregled)
+                if (t.VrstaTermina == AppointmentType.pregled)
                 {
-                    AnamnezaCreate a = new AnamnezaCreate((Termin)dataGridPrazni.SelectedItem);
+                    AnamnezaCreate a = new AnamnezaCreate((Appointment)dataGridPrazni.SelectedItem);
                     a.ShowDialog();
                     refreshView();
                 }
                 else
                 {
-                    OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Termin)dataGridPrazni.SelectedItem);
+                    OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Appointment)dataGridPrazni.SelectedItem);
                     o.ShowDialog();
                     refreshView();
                 }
@@ -134,16 +134,16 @@ namespace SIMS.LekarGUI
 
         private void dobaviPodatkeOPacijenuILekaru()
         {
-            foreach (Termin termin in EvidentiraniView)
+            foreach (Appointment termin in EvidentiraniView)
             {
-                termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
             }
             
-            foreach (Termin termin in prazniView)
+            foreach (Appointment termin in prazniView)
             {
-               termin.Pacijent = new PacijentStorage().Read(termin.Pacijent.Jmbg);
-               termin.Lekar = new LekarStorage().Read(termin.Lekar.Jmbg);
+               termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
+               termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
             }
             
         }

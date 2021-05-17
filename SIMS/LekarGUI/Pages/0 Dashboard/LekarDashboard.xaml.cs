@@ -22,9 +22,9 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class LekarDashboard : Page
     {
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
-        public LekarDashboard(Lekar l)
+        public LekarDashboard(Doctor l)
         {
             lekarUser = l;
 
@@ -47,9 +47,9 @@ namespace SIMS.LekarGUI
         public void setAktivanTermin()
         {
             //TODO uraditi varijaciju
-            List<Termin> termini = TerminStorage.Instance.ReadByDoctor(lekarUser);
+            List<Appointment> termini = AppointmentRepository.Instance.ReadByDoctor(lekarUser);
 
-            foreach (Termin t in termini)
+            foreach (Appointment t in termini)
             {
                 if (t.IsCurrent && t.Evidentiran == false)
                 {
@@ -73,12 +73,12 @@ namespace SIMS.LekarGUI
 
         private void RefreshGraphs1()
         {
-            List<Termin> termini = TerminStorage.Instance.ReadByDoctor(lekarUser);
+            List<Appointment> termini = AppointmentRepository.Instance.ReadByDoctor(lekarUser);
 
             int evidentirani = 0;
             int ukupno = termini.Count;
 
-            foreach (Termin t in termini)
+            foreach (Appointment t in termini)
                 if (t.Evidentiran)
                     evidentirani++;
 
@@ -94,14 +94,14 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(TerminStorage.Instance.GetAppointmentsCountForCurrentWeek(TipTermina.pregled, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.pregled, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
 
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(TerminStorage.Instance.GetAppointmentsCountForCurrentWeek(TipTermina.operacija, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.operacija, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
 
                 }

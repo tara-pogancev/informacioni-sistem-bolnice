@@ -8,20 +8,20 @@ namespace SIMS.SekretarGUI
 {
     public partial class IzmeniTerminPage : Page
     {
-        private List<Lekar> _doctors;
-        private List<Pacijent> _patients;
-        private List<Prostorija> _rooms;
+        private List<Doctor> _doctors;
+        private List<Patient> _patients;
+        private List<Room> _rooms;
         private List<string> _freeAppointments;
-        private Termin _appointment;
+        private Appointment _appointment;
 
-        public IzmeniTerminPage(Termin appointment)
+        public IzmeniTerminPage(Appointment appointment)
         {
             InitializeComponent();
             _appointment = appointment;
 
-            _doctors = LekarStorage.Instance.ReadList();
-            _patients = PacijentStorage.Instance.ReadList();
-            _rooms = new List<Prostorija>(ProstorijaStorage.Instance.ReadAll().Values);
+            _doctors = DoctorRepository.Instance.ReadList();
+            _patients = PatientRepository.Instance.ReadList();
+            _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
             _freeAppointments = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
             doctorsComboBox.ItemsSource = _doctors;
@@ -46,7 +46,7 @@ namespace SIMS.SekretarGUI
             UpdateAppointmentFromUserInput();
             if (IsAppointmentValid())
             {
-                TerminStorage.Instance.Update(_appointment);
+                AppointmentRepository.Instance.Update(_appointment);
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 NavigationService.Navigate(SekretarTerminiPage.GetInstance());
@@ -74,8 +74,8 @@ namespace SIMS.SekretarGUI
 
         private bool IsAppointmentValid()
         {
-            List<Termin> appointments = TerminStorage.Instance.ReadList();
-            foreach (Termin a in appointments)
+            List<Appointment> appointments = AppointmentRepository.Instance.ReadList();
+            foreach (Appointment a in appointments)
             {
                 if (a.KrajnjeVreme > _appointment.PocetnoVreme && a.PocetnoVreme < _appointment.KrajnjeVreme && !a.TerminKey.Equals(_appointment.TerminKey))
                 {
@@ -128,9 +128,9 @@ namespace SIMS.SekretarGUI
         private void SetRoomValue()
         {
             int index = 0;
-            foreach (Prostorija r in _rooms)
+            foreach (Room r in _rooms)
             {
-                if (r.Broj.Equals(_appointment.Prostorija.Broj))
+                if (r.Number.Equals(_appointment.Prostorija.Number))
                 {
                     break;
                 }
@@ -142,7 +142,7 @@ namespace SIMS.SekretarGUI
         private void SetPatientValue()
         {
             int index = 0;
-            foreach (Pacijent p in _patients)
+            foreach (Patient p in _patients)
             {
                 if (p.Jmbg.Equals(_appointment.Pacijent.Jmbg))
                 {
@@ -170,7 +170,7 @@ namespace SIMS.SekretarGUI
         private void SetDoctorValue()
         {
             int index = 0;
-            foreach (Lekar d in _doctors)
+            foreach (Doctor d in _doctors)
             {
                 if (d.Jmbg.Equals(_appointment.Lekar.Jmbg))
                 {

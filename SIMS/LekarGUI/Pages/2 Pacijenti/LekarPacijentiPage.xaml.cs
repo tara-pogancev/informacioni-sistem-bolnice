@@ -23,13 +23,13 @@ namespace SIMS.LekarGUI
     {
         public static LekarPacijentiPage instance;
 
-        private static Lekar lekarUser;
+        private static Doctor lekarUser;
 
         private const String defaultSearchText = "Pretraži...";
 
-        public ObservableCollection<Pacijent> PacijentiView { get; set; }
+        public ObservableCollection<Patient> PacijentiView { get; set; }
 
-        public static LekarPacijentiPage GetInstance(Lekar l)
+        public static LekarPacijentiPage GetInstance(Doctor l)
         {
             if (instance == null)
             {
@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            PacijentiView = new ObservableCollection<Pacijent>(PacijentStorage.Instance.ReadList());
+            PacijentiView = new ObservableCollection<Patient>(PatientRepository.Instance.ReadList());
 
         }
 
@@ -62,7 +62,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPacijenti.SelectedItem != null)
             {
-                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                Patient p = (Patient)dataGridPacijenti.SelectedItem;
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }
         }
@@ -71,7 +71,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPacijenti.SelectedItem != null)
             {
-                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                Patient p = (Patient)dataGridPacijenti.SelectedItem;
                 LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(p);
                 r.ShowDialog();
             }
@@ -133,7 +133,7 @@ namespace SIMS.LekarGUI
         {
             PacijentiView.Clear();
 
-            foreach(Pacijent patient in PacijentStorage.Instance.ReadList())
+            foreach(Patient patient in PatientRepository.Instance.ReadList())
             {
                 PacijentiView.Add(patient);
             }
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI
             PacijentiView.Clear();
             filter = filter.ToUpper();
 
-            foreach (Pacijent patient in PacijentStorage.Instance.ReadList())
+            foreach (Patient patient in PatientRepository.Instance.ReadList())
             {
                 if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
                     PacijentiView.Add(patient);
@@ -155,7 +155,7 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPacijenti.SelectedItem != null)
             {
-                Pacijent p = (Pacijent)dataGridPacijenti.SelectedItem;
+                Patient p = (Patient)dataGridPacijenti.SelectedItem;
                 new UputCreate(p).ShowDialog();
             }
         }

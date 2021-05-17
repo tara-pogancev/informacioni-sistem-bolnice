@@ -20,7 +20,7 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class PocetnaStranica : Window
     {
-        private Pacijent pacijent;
+        private Patient pacijent;
         private static PocetnaStranica instance=null;
         public static PocetnaStranica getInstance()
         {
@@ -44,7 +44,7 @@ namespace SIMS.PacijentGUI
 
         public void kreirajAnketu()
         {
-            List<AnketaBolnice> anketeBolnice = new AnketaBolniceStorage().getAnketeByPatient(pacijent);
+            List<HospitalSurvey> anketeBolnice = new HospitalSurveyRepository().getAnketeByPatient(pacijent);
             if (anketeBolnice.Count == 0)
             {
                 Anketa.Visibility = Visibility.Visible;
@@ -63,9 +63,9 @@ namespace SIMS.PacijentGUI
 
         private int brojZavrsenihPRegleda()
         {
-            List<Termin> zakazaniTermini = new TerminStorage().ReadByPatient(pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(pacijent);
             int brojacZavrsenihPregleda = 0;
-            foreach(Termin termin in zakazaniTermini)
+            foreach(Appointment termin in zakazaniTermini)
             {
                 if (termin.IsPast)
                 {
@@ -99,8 +99,8 @@ namespace SIMS.PacijentGUI
 
         private bool postojeTermini()
         {
-            List<Termin> zakazaniTermini = new TerminStorage().ReadByPatient(pacijent);
-            foreach(Termin termin in zakazaniTermini)
+            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(pacijent);
+            foreach(Appointment termin in zakazaniTermini)
             {
                 if (DateTime.Now <= termin.PocetnoVreme && DateTime.Now.AddMinutes(60)>=termin.PocetnoVreme)
                 {
@@ -141,7 +141,7 @@ namespace SIMS.PacijentGUI
             }
         }
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
 
         private void Iskljucivanje_Click(object sender, RoutedEventArgs e)
         {

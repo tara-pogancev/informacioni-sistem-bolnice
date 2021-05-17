@@ -20,13 +20,13 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicineEdit : Window
     {
-        private Lek medicine;
+        private Medication medicine;
 
         public ObservableCollection<AlergenDTO> NewComponentsView { get; set; }
         public ObservableCollection<AlergenDTO> CurrentComponentsView { get; set; }
-        public List<Lek> MedicineSubstitutionList { get; set; }
+        public List<Medication> MedicineSubstitutionList { get; set; }
 
-        public MedicineEdit(Lek medicine)
+        public MedicineEdit(Medication medicine)
         {
             this.medicine = medicine;
 
@@ -39,15 +39,15 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             NewComponentsView = new ObservableCollection<AlergenDTO>();
             CurrentComponentsView = new ObservableCollection<AlergenDTO>();
-            MedicineSubstitutionList = new List<Lek>(LekStorage.Instance.getApprovedMedicine());
+            MedicineSubstitutionList = new List<Medication>(MedicationRepository.Instance.getApprovedMedicine());
 
             RefreshView();
 
         }
 
-        private static String GetSubstituteName(Lek medicine)
+        private static String GetSubstituteName(Medication medicine)
         {
-            return LekStorage.Instance.Read(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.Read(medicine.IDSubstitution).MedicineName;
         }
 
         public void RefreshView()
@@ -103,7 +103,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
             SetSubstituteMedicine();
-            LekStorage.Instance.Update(medicine);
+            MedicationRepository.Instance.Update(medicine);
 
             this.Close();
             MessageBox.Show("Lek uspešno izmenjen!");
@@ -126,7 +126,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (SubstitutionMedicine.SelectedItem != null)
             {
-                Lek SellectedSubstitutionMedicine = (Lek)SubstitutionMedicine.SelectedItem;
+                Medication SellectedSubstitutionMedicine = (Medication)SubstitutionMedicine.SelectedItem;
                 medicine.IDSubstitution = SellectedSubstitutionMedicine.MedicineID;
             }
         }

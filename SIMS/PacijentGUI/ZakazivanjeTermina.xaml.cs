@@ -19,10 +19,10 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class ZakazivanjeTermina : Page
     {
-        private Pacijent pacijent;
+        private Patient pacijent;
         private static ZakazivanjeTermina instance = null;
 
-        public Pacijent Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => pacijent; set => pacijent = value; }
 
         public static ZakazivanjeTermina getInstance()
         {

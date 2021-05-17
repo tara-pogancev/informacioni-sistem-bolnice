@@ -18,12 +18,12 @@ namespace SIMS.UpravnikGUI
 {
     public partial class LekoviPage : Page
     {
-        private ObservableCollection<Lek> lekovi;
+        private ObservableCollection<Medication> lekovi;
 
         public LekoviPage()
         {
             InitializeComponent();
-            lekovi = new ObservableCollection<Lek>(LekStorage.Instance.ReadList());
+            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadList());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
@@ -35,15 +35,15 @@ namespace SIMS.UpravnikGUI
 
         private void IzbrisiLek_Click(object sender, RoutedEventArgs e)
         {
-            Lek SelectedLek = tabelaLekovi.SelectedItem as Lek;
-            LekStorage.Instance.Delete(SelectedLek.MedicineID);
-            lekovi = new ObservableCollection<Lek>(LekStorage.Instance.ReadList());
+            Medication SelectedLek = tabelaLekovi.SelectedItem as Medication;
+            MedicationRepository.Instance.Delete(SelectedLek.MedicineID);
+            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadList());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
         {
-            Lek SelectedLek = tabelaLekovi.SelectedItem as Lek;
+            Medication SelectedLek = tabelaLekovi.SelectedItem as Medication;
             if (SelectedLek == null)
             {
                 return;

@@ -21,13 +21,13 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     /// </summary>
     public partial class UputCreate : Window
     {
-        public ObservableCollection<Lekar> DoctorList { get; set; }
-        public Specijalizacija SellectedSpecialization { get; set; }
+        public ObservableCollection<Doctor> DoctorList { get; set; }
+        public Specialization SellectedSpecialization { get; set; }
         public List<SpecializationDTO> AvailableSpecialization { get; set; }
 
-        private Pacijent patient;
+        private Patient patient;
 
-        public UputCreate(Pacijent patient)
+        public UputCreate(Patient patient)
         {
             this.patient = patient;
 
@@ -38,7 +38,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;
             LabelDatum.Content = "Datum: " + DateTime.Today.ToString("dd.MM.yyyy.");
 
-            DoctorList = new ObservableCollection<Lekar>();
+            DoctorList = new ObservableCollection<Doctor>();
             InitSpecialization();
             SpecijalizationComboBox.ItemsSource = AvailableSpecialization;
             DoctorComboBox.ItemsSource = DoctorList;
@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             AvailableSpecialization = new List<SpecializationDTO>();
 
-            foreach (Lekar doctor in LekarStorage.Instance.ReadList())
+            foreach (Doctor doctor in DoctorRepository.Instance.ReadList())
             {
                 SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.SpecijalizacijaLekara);
 
@@ -64,10 +64,10 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             RefreshDoctorList(SellectedSpecialization);
         }
 
-        private void RefreshDoctorList(Specijalizacija specialization)
+        private void RefreshDoctorList(Specialization specialization)
         {
-            DoctorList = new ObservableCollection<Lekar>();
-            foreach (Lekar doctor in LekarStorage.Instance.ReadList())
+            DoctorList = new ObservableCollection<Doctor>();
+            foreach (Doctor doctor in DoctorRepository.Instance.ReadList())
             {
                 if (doctor.SpecijalizacijaLekara.Equals(specialization))
                 {
@@ -78,7 +78,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             DoctorComboBox.ItemsSource = DoctorList;
         }
 
-        private Specijalizacija GetSellectedSpecialization()
+        private Specialization GetSellectedSpecialization()
         {
             int idx = SpecijalizationComboBox.SelectedIndex;
             return AvailableSpecialization[idx].Specialization;
@@ -91,7 +91,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 CreateRefferal();
                 this.Close();
 
-                SendNotifications((Lekar)DoctorComboBox.SelectedItem);
+                SendNotifications((Doctor)DoctorComboBox.SelectedItem);
 
                 MessageBox.Show("Uput uspešno kreiran!");
             }
@@ -104,19 +104,19 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void CreateRefferal()
         {
-            Lekar doctor = (Lekar)DoctorComboBox.SelectedItem;
-            Uput refferal = new Uput(doctor, patient);
-            UputStorage.Instance.Create(refferal);
+            Doctor doctor = (Doctor)DoctorComboBox.SelectedItem;
+            Referral refferal = new Referral(doctor, patient);
+            ReferralRepository.Instance.Create(refferal);
         }
 
-        private void SendNotifications(Lekar doctor)
+        private void SendNotifications(Doctor doctor)
         {
             String author = LekarUI.GetInstance().GetUser().ImePrezime;
             List<String> target = new List<string>();
             target.Add(this.patient.Jmbg);
 
-            Obavestenje notification = new Obavestenje(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.ImePrezime + ". Pogledajte ga na svom profilu."), target);
-            ObavestenjaStorage.Instance.Create(notification);
+            Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.ImePrezime + ". Pogledajte ga na svom profilu."), target);
+            NotificationRepository.Instance.Create(notification);
         }
     }
 }
