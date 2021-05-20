@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SIMS.Model
 {
-    class HospitalSurveyRepository : Repository<string, HospitalSurvey, HospitalSurveyRepository>
+    class HospitalSurveyRepository : GenericFileRepository<string, HospitalSurvey, HospitalSurveyRepository>
     {
         protected override string getKey(HospitalSurvey entity)
         {
@@ -25,7 +25,7 @@ namespace SIMS.Model
 
         public List<HospitalSurvey> getAnketeByPatient(Patient pacijent)
         {
-            List<HospitalSurvey> anketeBolnice = ReadList();
+            List<HospitalSurvey> anketeBolnice = ReadEntities();
             for(int i = 0; i < anketeBolnice.Count; i++)
             {
                 if (anketeBolnice[i].IdVlasnika != pacijent.Jmbg)

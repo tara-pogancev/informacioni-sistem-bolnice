@@ -37,7 +37,7 @@ namespace SIMS.PacijentGUI
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje4", Pitanje4.Value);
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje5", Pitanje5.Value);
             anketaBolnice.TrenutniBrojPregleda = brojZavrsenihPRegleda();
-            new HospitalSurveyRepository().Create(anketaBolnice);
+            new HospitalSurveyRepository().CreateEntity(anketaBolnice);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
             PocetnaStranica.getInstance().Tabovi.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
 

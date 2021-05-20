@@ -16,8 +16,8 @@ namespace SIMS.SekretarGUI
         {
             InitializeComponent();
 
-            _doctors = DoctorRepository.Instance.ReadList();
-            _patients = PatientRepository.Instance.ReadList();
+            _doctors = DoctorRepository.Instance.ReadEntities();
+            _patients = PatientRepository.Instance.ReadEntities();
 
             _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
 
@@ -40,7 +40,7 @@ namespace SIMS.SekretarGUI
             Appointment appointment = CreateAppointmentFromUserInput();
             if (IsAppointmentValid(appointment))
             {
-                AppointmentRepository.Instance.Create(appointment);
+                AppointmentRepository.Instance.CreateEntity(appointment);
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 NavigationService.Navigate(SekretarTerminiPage.GetInstance());
@@ -72,7 +72,7 @@ namespace SIMS.SekretarGUI
 
         private bool IsAppointmentValid(Appointment appointment)
         {
-            List<Appointment> appointments = AppointmentRepository.Instance.ReadList();
+            List<Appointment> appointments = AppointmentRepository.Instance.ReadEntities();
             foreach (Appointment a in appointments)
             {
                 if (a.KrajnjeVreme > appointment.PocetnoVreme && a.PocetnoVreme < appointment.KrajnjeVreme)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class InventoryRepository : Repository<string, Inventory, InventoryRepository>
+    public class InventoryRepository : GenericFileRepository<string, Inventory, InventoryRepository>
     {
         protected override string getPath()
         {
@@ -21,7 +21,7 @@ namespace Model
             {
                 if (prosInv.IdInventara == key)
                 {
-                    RoomInventoryRepository.Instance.Delete(prosInv);
+                    RoomInventoryRepository.Instance.DeleteEntity(prosInv);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace Model
             {
                 if (command.OpremaID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.Delete(command);
+                    InventoryMovingCommandStorage.Instance.DeleteEntity(command);
                 }
             }
         }

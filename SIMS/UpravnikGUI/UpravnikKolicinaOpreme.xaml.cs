@@ -69,7 +69,7 @@ namespace SIMS.UpravnikGUI
                 MessageBox.Show("Uneti broj veći od 0.");
                 return;
             }
-            RoomInventoryRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.Id, amount));
+            RoomInventoryRepository.Instance.UpdateEntity(new RoomInventory(BrojProstorije, Oprema.Id, amount));
 
             ParentPage.Update();
 

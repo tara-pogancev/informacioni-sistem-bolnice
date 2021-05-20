@@ -25,7 +25,7 @@ namespace SIMS.UpravnikGUI
         public UpravnikOpremaPage()
         {
             InitializeComponent();
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadEntities());
             tabelaOpreme.ItemsSource = opreme;
         }
 
@@ -38,8 +38,8 @@ namespace SIMS.UpravnikGUI
         private void Izbrisi_Click(object sender, RoutedEventArgs e)
         {
             Inventory SelectedOprema = tabelaOpreme.SelectedItem as Inventory;
-            InventoryRepository.Instance.Delete(SelectedOprema.Id);
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            InventoryRepository.Instance.DeleteEntity(SelectedOprema.Id);
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadEntities());
             tabelaOpreme.ItemsSource = opreme;
         }
 
@@ -53,7 +53,7 @@ namespace SIMS.UpravnikGUI
             }
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.Id));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.Id);
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadEntities());
             tabelaOpreme.ItemsSource = opreme;
         }
 

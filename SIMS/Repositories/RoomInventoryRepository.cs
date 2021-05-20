@@ -6,7 +6,7 @@ using SIMS.Daemon.PremestajOpreme;
 
 namespace Model
 {
-    class RoomInventoryRepository : Repository<string, RoomInventory, RoomInventoryRepository>
+    class RoomInventoryRepository : GenericFileRepository<string, RoomInventory, RoomInventoryRepository>
     {
         protected override string getKey(RoomInventory entity)
         {
@@ -31,11 +31,11 @@ namespace Model
 
         public RoomInventory ReadNoConsistifying(string brojProstorije, string idInventara)
         {
-            var ret = Read(brojProstorije + "_" + idInventara);
+            var ret = ReadEntity(brojProstorije + "_" + idInventara);
             if (ret == null)
             {
                 ret = new RoomInventory(brojProstorije, idInventara, 0);
-                Create(ret);
+                CreateEntity(ret);
             }
             return ret;
         }

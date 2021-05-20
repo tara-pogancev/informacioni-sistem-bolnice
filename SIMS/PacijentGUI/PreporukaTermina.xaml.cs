@@ -48,12 +48,12 @@ namespace SIMS.PacijentGUI
         {
             InitializeComponent();
             pacijent = p;
-            termini = new AppointmentRepository().ReadList();
+            termini = new AppointmentRepository().ReadEntities();
             preporuceniTermini = new List<Appointment>();
             //ListaDoktora.IsHitTestVisible = false;
             terminZaPreporuku = new List<TerminZaPreporuku>();
         
-            lekari = new DoctorRepository().ReadList();
+            lekari = new DoctorRepository().ReadEntities();
             this.DataContext = this;
         }
 
@@ -171,7 +171,7 @@ namespace SIMS.PacijentGUI
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = AppointmentType.pregled;
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Lekar = new DoctorRepository().Read(idLekara);
+                termin.Lekar = new DoctorRepository().ReadEntity(idLekara);
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
                 termin.Prostorija = new Room("1",RoomType.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");

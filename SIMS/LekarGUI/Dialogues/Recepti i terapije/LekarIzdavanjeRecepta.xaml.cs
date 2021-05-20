@@ -58,7 +58,7 @@ namespace SIMS.LekarGUI
 
         private String GetSubstitutionName(Medication medicine)
         {
-            return MedicationRepository.Instance.Read(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.ReadEntity(medicine.IDSubstitution).MedicineName;
         }
 
         private void WriteReceipt()
@@ -77,7 +77,7 @@ namespace SIMS.LekarGUI
             Receipt receipt = new Receipt(doctor, patient, medicine.MedicineName,
                 AmountText.Text, DiagnosisText.Text);
 
-            ReceiptRepository.Instance.Create(receipt);
+            ReceiptRepository.Instance.CreateEntity(receipt);
         }
 
         private Medication GetSelectedMedicine()
@@ -88,7 +88,7 @@ namespace SIMS.LekarGUI
         private void SendNotification(Medication medicine)
         {
             Notification notification = new Notification("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
-            NotificationRepository.Instance.Create(notification);
+            NotificationRepository.Instance.CreateEntity(notification);
         }
     }
 }

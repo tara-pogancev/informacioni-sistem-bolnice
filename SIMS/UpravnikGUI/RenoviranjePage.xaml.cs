@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public RenoviranjePage(string BrojProstorije)
         {
             InitializeComponent();
-            prostorija = RoomRepository.Instance.Read(BrojProstorije);
+            prostorija = RoomRepository.Instance.ReadEntity(BrojProstorije);
             if (prostorija.RenovationStart != null && prostorija.RenovationEnd != null)
             {
                 Pocetak.SelectedDate = prostorija.RenovationStart;
@@ -37,7 +37,7 @@ namespace SIMS.UpravnikGUI
             {
                 prostorija.RenovationStart = Pocetak.SelectedDate;
                 prostorija.RenovationEnd = Kraj.SelectedDate;
-                RoomRepository.Instance.Update(prostorija);
+                RoomRepository.Instance.UpdateEntity(prostorija);
             }
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
@@ -53,7 +53,7 @@ namespace SIMS.UpravnikGUI
         {
             prostorija.RenovationStart = null;
             prostorija.RenovationEnd = null;
-            RoomRepository.Instance.Update(prostorija);
+            RoomRepository.Instance.UpdateEntity(prostorija);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }

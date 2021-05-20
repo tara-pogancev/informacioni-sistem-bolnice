@@ -40,8 +40,8 @@ namespace SIMS.LekarGUI
             //Prazni - pregledi bez anamneze
 
             this.DataContext = this;
-            evidentiraniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
-            prazniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
+            evidentiraniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadEntities());
+            prazniView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadEntities());
             dobaviPodatkeOPacijenuILekaru();
             refreshView();
         }
@@ -55,7 +55,7 @@ namespace SIMS.LekarGUI
             popuniInformacijeODoktoruIPacijentu(temp);
             foreach (Appointment t in temp)
             {
-                t.Pacijent = new PatientRepository().Read(t.Pacijent.Jmbg);
+                t.Pacijent = new PatientRepository().ReadEntity(t.Pacijent.Jmbg);
 
                 if (t.Evidentiran == true)
                     evidentiraniView.Add(t);
@@ -73,8 +73,8 @@ namespace SIMS.LekarGUI
         {
             foreach (Appointment termin in temp)
             {
-                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().ReadEntity(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().ReadEntity(termin.Lekar.Jmbg);
             }
         }
 
@@ -86,7 +86,7 @@ namespace SIMS.LekarGUI
 
                 if (t.VrstaTermina == AppointmentType.pregled)
                 {
-                    Anamnesis anamneza = AnamnesisRepository.Instance.Read(t.TerminKey);
+                    Anamnesis anamneza = AnamnesisRepository.Instance.ReadEntity(t.TerminKey);
                     if (anamneza != null)
                     {
                         AnamnezaView a = new AnamnezaView(anamneza);
@@ -96,7 +96,7 @@ namespace SIMS.LekarGUI
                 }
                 else
                 {
-                    SurgeryReport report = SurgeryReportRepository.Instance.Read(t.TerminKey);
+                    SurgeryReport report = SurgeryReportRepository.Instance.ReadEntity(t.TerminKey);
                     if (report != null)
                     {
                         OperacijaIzvestajView a = new OperacijaIzvestajView(report);
@@ -136,14 +136,14 @@ namespace SIMS.LekarGUI
         {
             foreach (Appointment termin in EvidentiraniView)
             {
-                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().ReadEntity(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().ReadEntity(termin.Lekar.Jmbg);
             }
             
             foreach (Appointment termin in prazniView)
             {
-               termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
-               termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
+               termin.Pacijent = new PatientRepository().ReadEntity(termin.Pacijent.Jmbg);
+               termin.Lekar = new DoctorRepository().ReadEntity(termin.Lekar.Jmbg);
             }
             
         }

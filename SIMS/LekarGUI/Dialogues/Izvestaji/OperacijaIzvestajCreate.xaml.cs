@@ -47,7 +47,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
                 o.Operacija.Lekar.Serijalizuj = false;
                 o.Operacija.Pacijent.Serijalizuj = false;
                 o.Operacija.Serijalizuj = false;
-                SurgeryReportRepository.Instance.Create(o);
+                SurgeryReportRepository.Instance.CreateEntity(o);
 
                 this.Close();
                 LekarUI.GetInstance().ChangeTab(3);

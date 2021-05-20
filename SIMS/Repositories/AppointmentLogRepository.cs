@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SIMS.Model
 {
-    class AppointmentLogRepository : Repository<string, AppointmentLog, AppointmentLogRepository>
+    class AppointmentLogRepository : GenericFileRepository<string, AppointmentLog, AppointmentLogRepository>
     {
         protected override string getKey(AppointmentLog entity)
         {
@@ -24,7 +24,7 @@ namespace SIMS.Model
 
         public List<AppointmentLog> ReadByPatient(Patient pacijent)
         {
-            List<AppointmentLog> terminLogs = ReadList();
+            List<AppointmentLog> terminLogs = ReadEntities();
             for(int i = 0; i < terminLogs.Count; i++)
             {
                 if (terminLogs[i].PacijentKey != pacijent.Jmbg || terminLogs[i].Istekao==true)
@@ -42,7 +42,7 @@ namespace SIMS.Model
             foreach(AppointmentLog terminLog in terminLogs)
             {
                 terminLog.Istekao = true;
-                Update(terminLog);
+                UpdateEntity(terminLog);
             }
         }
     }

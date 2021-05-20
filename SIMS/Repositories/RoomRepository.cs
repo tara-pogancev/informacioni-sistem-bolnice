@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Model
 {
-    public class RoomRepository : Repository<string, Room, RoomRepository>
+    public class RoomRepository : GenericFileRepository<string, Room, RoomRepository>
     {
         protected override string getPath()
         {
@@ -21,11 +21,11 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadList())
+            foreach (Appointment t in storageT.ReadEntities())
             {
                 if (t.Prostorija.Number == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.DeleteEntity(t.TerminKey);
                 }
             }
 
@@ -33,7 +33,7 @@ namespace Model
             {
                 if (prosInv.BrojProstorije == key)
                 {
-                    RoomInventoryRepository.Instance.Delete(prosInv);
+                    RoomInventoryRepository.Instance.DeleteEntity(prosInv);
                 }
             }
 
@@ -41,14 +41,14 @@ namespace Model
             {
                 if (command.DstID == key || command.SrcID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.Delete(command);
+                    InventoryMovingCommandStorage.Instance.DeleteEntity(command);
                 }
             }
         }
 
         public List<Room> UcitajProstorijeZaPreglede()
         {
-            List<Room> prostorije = ReadList();
+            List<Room> prostorije = ReadEntities();
             for (int i = 0; i < prostorije.Count; i++)
             {
                 if (prostorije[i].RoomType != RoomType.zaPreglede || prostorije[i].Available==false)

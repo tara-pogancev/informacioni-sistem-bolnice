@@ -30,8 +30,8 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Doctor = DoctorRepository.Instance.Read(Doctor.Jmbg);
-            Patient = PatientRepository.Instance.Read(Patient.Jmbg);
+            Doctor = DoctorRepository.Instance.ReadEntity(Doctor.Jmbg);
+            Patient = PatientRepository.Instance.ReadEntity(Patient.Jmbg);
         }
 
         public Boolean IsRefferalValid()

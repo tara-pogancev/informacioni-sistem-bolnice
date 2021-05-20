@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public AlergeniPage()
         {
             InitializeComponent();
-            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.ReadList());
+            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.ReadEntities());
             tabelaAlergeni.ItemsSource = alergeni;
         }
 
@@ -36,8 +36,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiAlergen_Click(object sender, RoutedEventArgs e)
         {
             Allergen SelectedAlergen = tabelaAlergeni.SelectedItem as Allergen;
-            AllergenRepository.Instance.Delete(SelectedAlergen.ID);
-            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.ReadList());
+            AllergenRepository.Instance.DeleteEntity(SelectedAlergen.ID);
+            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.ReadEntities());
             tabelaAlergeni.ItemsSource = alergeni;
         }
 

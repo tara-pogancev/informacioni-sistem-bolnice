@@ -38,7 +38,7 @@ namespace SIMS.PacijentGUI
             InitializeComponent();
             
            
-            lekari = new DoctorRepository().ReadList();
+            lekari = new DoctorRepository().ReadEntities();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             doktorSelektovan = false;
             moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
@@ -90,7 +90,7 @@ namespace SIMS.PacijentGUI
         {
             Doctor lekar = (Doctor)Doktori.SelectedItem;
             moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
-            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadList();
+            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadEntities();
             
             foreach (Appointment termin in zakazaniTermini)
             {
@@ -215,12 +215,12 @@ namespace SIMS.PacijentGUI
             odabraniTerminZaIzmjenu.Lekar.Serijalizuj = false;
             odabraniTerminZaIzmjenu.Pacijent.Serijalizuj = false;
             odabraniTerminZaIzmjenu.Prostorija.Serialize = false;
-            AppointmentRepository.Instance.Update(odabraniTerminZaIzmjenu);
+            AppointmentRepository.Instance.UpdateEntity(odabraniTerminZaIzmjenu);
         }
         private void FormirajLog()
         {
             AppointmentLog terminLog = new AppointmentLog(FormirajKljucLoga(odabraniTerminZaIzmjenu), odabraniTerminZaIzmjenu.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Izmjena);
-            new AppointmentLogRepository().Create(terminLog);
+            new AppointmentLogRepository().CreateEntity(terminLog);
         }
 
         public String FormirajKljucLoga(Appointment termin)
@@ -250,7 +250,7 @@ namespace SIMS.PacijentGUI
         {
             slobodneProstorije = new RoomRepository().UcitajProstorijeZaPreglede();
             DateTime zakazanoVrijemeIzmjenjenogTermina = DateTime.Parse(OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
-            foreach (Appointment termin in new AppointmentRepository().ReadList())
+            foreach (Appointment termin in new AppointmentRepository().ReadEntities())
             {
                 if (postojiZakazanTermin(termin,zakazanoVrijemeIzmjenjenogTermina))
                 {
@@ -277,6 +277,10 @@ namespace SIMS.PacijentGUI
 
         private void UkloniNedostupniTermin()
         {
+            if (terminiLista.SelectedIndex<0)
+            {
+                return;
+            }
             moguceSatniceTermina.RemoveAt(terminiLista.SelectedIndex);
             terminiLista.ItemsSource = moguceSatniceTermina;
             terminiLista.SelectedIndex = -1;

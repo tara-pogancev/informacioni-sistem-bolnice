@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public LekoviPage()
         {
             InitializeComponent();
-            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadList());
+            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadEntities());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
@@ -36,8 +36,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiLek_Click(object sender, RoutedEventArgs e)
         {
             Medication SelectedLek = tabelaLekovi.SelectedItem as Medication;
-            MedicationRepository.Instance.Delete(SelectedLek.MedicineID);
-            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadList());
+            MedicationRepository.Instance.DeleteEntity(SelectedLek.MedicineID);
+            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.ReadEntities());
             tabelaLekovi.ItemsSource = lekovi;
         }
 

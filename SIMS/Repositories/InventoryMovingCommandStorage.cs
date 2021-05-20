@@ -7,7 +7,7 @@ using SIMS.Daemon.PremestajOpreme;
 
 namespace Model
 {
-    class InventoryMovingCommandStorage : Repository<string, InventoryMovingCommand, InventoryMovingCommandStorage>
+    class InventoryMovingCommandStorage : GenericFileRepository<string, InventoryMovingCommand, InventoryMovingCommandStorage>
     {
         protected override string getKey(InventoryMovingCommand entity)
         {

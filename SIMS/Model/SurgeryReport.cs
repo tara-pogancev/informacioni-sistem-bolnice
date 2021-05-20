@@ -31,9 +31,9 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Operacija = new AppointmentRepository().Read(OperacijaKey);
-            Operacija.Pacijent = new PatientRepository().Read(Operacija.Pacijent.Jmbg);
-            Operacija.Lekar = new DoctorRepository().Read(Operacija.Lekar.Jmbg);
+            Operacija = new AppointmentRepository().ReadEntity(OperacijaKey);
+            Operacija.Pacijent = new PatientRepository().ReadEntity(Operacija.Pacijent.Jmbg);
+            Operacija.Lekar = new DoctorRepository().ReadEntity(Operacija.Lekar.Jmbg);
 
         }
 

@@ -5,7 +5,7 @@ using Model;
 
 namespace SIMS.Model
 {
-    public class ReferralRepository : Repository<string, Referral, ReferralRepository>
+    public class ReferralRepository : GenericFileRepository<string, Referral, ReferralRepository>
     {
         protected override string getKey(Referral entity)
         {

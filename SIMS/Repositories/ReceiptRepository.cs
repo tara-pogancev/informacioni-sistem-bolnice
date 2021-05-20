@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class ReceiptRepository : Repository<string, Receipt, ReceiptRepository>
+    public class ReceiptRepository : GenericFileRepository<string, Receipt, ReceiptRepository>
     {
         protected override string getKey(Receipt entity)
         {
@@ -25,7 +25,7 @@ namespace Model
         {
             List<Receipt> retVal = new List<Receipt>();
 
-            foreach (Receipt r in this.ReadList())
+            foreach (Receipt r in this.ReadEntities())
             {
                 if (r.Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(r);

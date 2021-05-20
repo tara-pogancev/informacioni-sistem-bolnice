@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    public class NotificationRepository : Repository<string, Notification, NotificationRepository>
+    public class NotificationRepository : GenericFileRepository<string, Notification, NotificationRepository>
     {
         protected override string getKey(Notification entity)
         {
@@ -23,7 +23,7 @@ namespace Model
 
         public List<Notification> ReadByUser(String key)
         {
-            List<Notification> retVal = this.ReadList();
+            List<Notification> retVal = this.ReadEntities();
 
             for (int i=0;i<retVal.Count;i++)
             {
@@ -41,7 +41,7 @@ namespace Model
 
         public List<Notification> ReadPastNotificationsByUser(String key)
         {
-            List<Notification> retVal = this.ReadList();
+            List<Notification> retVal = this.ReadEntities();
 
             for (int i = 0; i < retVal.Count; i++)
             {

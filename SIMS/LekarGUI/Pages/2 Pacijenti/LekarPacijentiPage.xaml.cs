@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            PacijentiView = new ObservableCollection<Patient>(PatientRepository.Instance.ReadList());
+            PacijentiView = new ObservableCollection<Patient>(PatientRepository.Instance.ReadEntities());
 
         }
 
@@ -133,7 +133,7 @@ namespace SIMS.LekarGUI
         {
             PacijentiView.Clear();
 
-            foreach(Patient patient in PatientRepository.Instance.ReadList())
+            foreach(Patient patient in PatientRepository.Instance.ReadEntities())
             {
                 PacijentiView.Add(patient);
             }
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI
             PacijentiView.Clear();
             filter = filter.ToUpper();
 
-            foreach (Patient patient in PatientRepository.Instance.ReadList())
+            foreach (Patient patient in PatientRepository.Instance.ReadEntities())
             {
                 if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
                     PacijentiView.Add(patient);

@@ -8,8 +8,8 @@ using System.Text.Json;
 
 namespace Model
 {
-    public abstract class Repository<KeyType, Entity, StorageType>
-        where StorageType : Repository<KeyType, Entity, StorageType>, new()
+    public abstract class GenericFileRepository<KeyType, Entity, StorageType>
+        where StorageType : GenericFileRepository<KeyType, Entity, StorageType>, new()
     {
 
         private static StorageType _instance = new StorageType();
@@ -54,7 +54,7 @@ namespace Model
         }
 
 
-        public bool Create(Entity Entity)
+        public bool CreateEntity(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -77,7 +77,7 @@ namespace Model
             return ReadFile();
         }
 
-        public Entity Read(KeyType key)
+        public Entity ReadEntity(KeyType key)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
             Entity retVal;
@@ -90,7 +90,7 @@ namespace Model
             return retVal;
         }
 
-        public bool Update(Entity Entity)
+        public bool UpdateEntity(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -108,7 +108,7 @@ namespace Model
             return true;
         }
 
-        public void CreateOrUpdate(Entity Entity)
+        public void CreateOrUpdateEntity(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -120,7 +120,7 @@ namespace Model
         }
 
 
-        public bool Delete(KeyType key)
+        public bool DeleteEntity(KeyType key)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -133,12 +133,12 @@ namespace Model
             return retVal;
         }
 
-        public bool Delete(Entity entity)
+        public bool DeleteEntity(Entity entity)
         {
-            return Delete(getKey(entity));
+            return DeleteEntity(getKey(entity));
         }
 
-        public List<Entity> ReadList()
+        public List<Entity> ReadEntities()
         {
             return this.ReadFile().Values.ToList();
         }

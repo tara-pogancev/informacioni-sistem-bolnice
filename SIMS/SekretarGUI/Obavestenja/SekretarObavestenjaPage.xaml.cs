@@ -27,10 +27,10 @@ namespace SIMS.SekretarGUI
             notificationsForReversing.Reverse();
 
             _notifications = new ObservableCollection<Notification>(notificationsForReversing);
-            _patients = PatientRepository.Instance.ReadList();
-            _doctors = DoctorRepository.Instance.ReadList();
-            _secretaries = SecretaryRepository.Instance.ReadList();
-            _directors = ManagerRepository.Instance.ReadList();
+            _patients = PatientRepository.Instance.ReadEntities();
+            _doctors = DoctorRepository.Instance.ReadEntities();
+            _secretaries = SecretaryRepository.Instance.ReadEntities();
+            _directors = ManagerRepository.Instance.ReadEntities();
 
             notificationViewer.ItemsSource = _notifications;
 
@@ -91,7 +91,7 @@ namespace SIMS.SekretarGUI
 
 
             Notification obavestenje = new Notification("Sekretarijat", DateTime.Now, notificationTextBox.Text.Trim(), targets);
-            NotificationRepository.Instance.Create(obavestenje);
+            NotificationRepository.Instance.CreateEntity(obavestenje);
 
             _notifications.Insert(0, obavestenje);
 
@@ -137,7 +137,7 @@ namespace SIMS.SekretarGUI
                 }
             }
             _notifications.Remove(toDelete);
-            NotificationRepository.Instance.Delete(toDelete.ID);
+            NotificationRepository.Instance.DeleteEntity(toDelete.ID);
 
         }
 

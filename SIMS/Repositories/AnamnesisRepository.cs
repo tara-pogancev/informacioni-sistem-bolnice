@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    public class AnamnesisRepository : Repository<string, Anamnesis, AnamnesisRepository>
+    public class AnamnesisRepository : GenericFileRepository<string, Anamnesis, AnamnesisRepository>
     {
         protected override string getKey(Anamnesis entity)
         {
@@ -26,7 +26,7 @@ namespace Model
         {
             List<Anamnesis> retVal = new List<Anamnesis>();
 
-            foreach (Anamnesis a in this.ReadList())
+            foreach (Anamnesis a in this.ReadEntities())
             {
                 a.InitData();
 

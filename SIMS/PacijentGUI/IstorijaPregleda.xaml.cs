@@ -27,7 +27,7 @@ namespace SIMS.PacijentGUI
         public IstorijaPregledaView(Appointment termin)
         {
             this.termin = termin;
-            omogucenoOcjenjivanje = new DoctorSurveyRepository().Read(termin.TerminKey) == null ? true : false;
+            omogucenoOcjenjivanje = new DoctorSurveyRepository().ReadEntity(termin.TerminKey) == null ? true : false;
         }
 
         public Appointment Termin { get => termin; set => termin = value; }
@@ -67,7 +67,7 @@ namespace SIMS.PacijentGUI
             DoctorRepository lekarStorage = new DoctorRepository();
             for (int i = 0; i < zakazaniTermini.Count; i++)
             {
-                zakazaniTermini[i].Lekar = lekarStorage.Read(zakazaniTermini[i].Lekar.Jmbg);
+                zakazaniTermini[i].Lekar = lekarStorage.ReadEntity(zakazaniTermini[i].Lekar.Jmbg);
             }
         }
 
@@ -91,7 +91,7 @@ namespace SIMS.PacijentGUI
             AnamnesisRepository anamnezaStorage = new AnamnesisRepository();
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
-            Anamnesis anamneza=anamnezaStorage.Read(selektovaniTermin.Termin.TerminKey);
+            Anamnesis anamneza=anamnezaStorage.ReadEntity(selektovaniTermin.Termin.TerminKey);
             if (anamneza == null)
             {
                 anamneza = new Anamnesis();

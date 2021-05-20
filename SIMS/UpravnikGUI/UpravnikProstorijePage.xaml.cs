@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public UpravnikProstorijePage()
         {
             InitializeComponent();
-            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadList());
+            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadEntities());
             tabelaProstorije.ItemsSource = prostorije;
         }
 
@@ -36,8 +36,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiProstorija_Click(object sender, RoutedEventArgs e)
         {
             Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
-            RoomRepository.Instance.Delete(SelectedProstorija.Number);
-            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadList());
+            RoomRepository.Instance.DeleteEntity(SelectedProstorija.Number);
+            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.ReadEntities());
             tabelaProstorije.ItemsSource = prostorije;
         }
 

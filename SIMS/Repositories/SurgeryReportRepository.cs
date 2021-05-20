@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SIMS.Model
 {
-    public class SurgeryReportRepository : Repository<string, SurgeryReport, SurgeryReportRepository>
+    public class SurgeryReportRepository : GenericFileRepository<string, SurgeryReport, SurgeryReportRepository>
     {
         protected override string getKey(SurgeryReport entity)
         {
@@ -26,7 +26,7 @@ namespace SIMS.Model
         {
             List<SurgeryReport> retVal = new List<SurgeryReport>();
 
-            foreach (SurgeryReport a in this.ReadList())
+            foreach (SurgeryReport a in this.ReadEntities())
             {
                 a.InitData();
 

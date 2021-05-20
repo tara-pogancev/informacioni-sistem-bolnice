@@ -1,5 +1,6 @@
 ﻿using Model;
 using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,7 +24,9 @@ namespace SIMS.PacijentGUI
         public MojiTermini(Patient p)
         {
             pacijent = p;
-            termini = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadByPatient(p));
+            IAppointmentRepository appointmentRepository = new IAppointmentFileRepository();
+           
+            termini = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
             dobaviPodatkeOPacijenuILekaru();
             this.DataContext = this;
             InitializeComponent();
@@ -77,7 +80,7 @@ namespace SIMS.PacijentGUI
            
             pacijent.BanovanKorisnik = true;
             pacijent.Serijalizuj = true;
-            new PatientRepository().Update(pacijent);
+            new PatientRepository().UpdateEntity(pacijent);
             new AppointmentLogRepository().logoviIstekli(pacijent);
             new MainWindow().Show();
             PocetnaStranica.getInstance().Close();
@@ -93,10 +96,10 @@ namespace SIMS.PacijentGUI
             }
             AppointmentRepository tr = new AppointmentRepository();
             Appointment termin = termini[terminiTabela.SelectedIndex];
-            tr.Delete(termin.TerminKey);
+            tr.DeleteEntity(termin.TerminKey);
             termini.RemoveAt(terminiTabela.SelectedIndex);
             AppointmentLog terminLog= new AppointmentLog(formirajKljucLog(termin), termin.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Brisanje);
-            new AppointmentLogRepository().Create(terminLog);
+            new AppointmentLogRepository().CreateEntity(terminLog);
         }
 
         public String formirajKljucLog(Appointment termin)
@@ -107,8 +110,8 @@ namespace SIMS.PacijentGUI
         {
             foreach(Appointment termin in termini)
             {
-                termin.Pacijent = new PatientRepository().Read(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorRepository().Read(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientRepository().ReadEntity(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorRepository().ReadEntity(termin.Lekar.Jmbg);
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class AllergenRepository : Repository<string, Allergen, AllergenRepository>
+    class AllergenRepository : GenericFileRepository<string, Allergen, AllergenRepository>
     {
         protected override string getKey(Allergen entity)
         {

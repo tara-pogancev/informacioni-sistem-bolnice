@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    class MedicationRepository : Repository<string, Medication, MedicationRepository>
+    class MedicationRepository : GenericFileRepository<string, Medication, MedicationRepository>
     {
         protected override string getKey(Medication entity)
         {
@@ -25,7 +25,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadList())
+            foreach (Medication medicine in ReadEntities())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Accepted)
                     retVal.Add(medicine);
@@ -38,7 +38,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadList())
+            foreach (Medication medicine in ReadEntities())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Waiting)
                     retVal.Add(medicine);
@@ -51,7 +51,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadList())
+            foreach (Medication medicine in ReadEntities())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Denied)
                     retVal.Add(medicine);

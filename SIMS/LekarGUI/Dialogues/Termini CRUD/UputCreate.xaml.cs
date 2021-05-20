@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             AvailableSpecialization = new List<SpecializationDTO>();
 
-            foreach (Doctor doctor in DoctorRepository.Instance.ReadList())
+            foreach (Doctor doctor in DoctorRepository.Instance.ReadEntities())
             {
                 SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.SpecijalizacijaLekara);
 
@@ -67,7 +67,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         private void RefreshDoctorList(Specialization specialization)
         {
             DoctorList = new ObservableCollection<Doctor>();
-            foreach (Doctor doctor in DoctorRepository.Instance.ReadList())
+            foreach (Doctor doctor in DoctorRepository.Instance.ReadEntities())
             {
                 if (doctor.SpecijalizacijaLekara.Equals(specialization))
                 {
@@ -106,7 +106,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             Doctor doctor = (Doctor)DoctorComboBox.SelectedItem;
             Referral refferal = new Referral(doctor, patient);
-            ReferralRepository.Instance.Create(refferal);
+            ReferralRepository.Instance.CreateEntity(refferal);
         }
 
         private void SendNotifications(Doctor doctor)
@@ -116,7 +116,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             target.Add(this.patient.Jmbg);
 
             Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.ImePrezime + ". Pogledajte ga na svom profilu."), target);
-            NotificationRepository.Instance.Create(notification);
+            NotificationRepository.Instance.CreateEntity(notification);
         }
     }
 }

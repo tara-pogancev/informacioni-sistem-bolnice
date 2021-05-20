@@ -26,7 +26,7 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadEntities());
             foreach (Inventory op in SvaOprema)
             {
                 op.BrojProstorije = Prostorija.Number;
@@ -66,7 +66,7 @@ namespace SIMS.UpravnikGUI
 
         internal void Update()
         {
-            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadList());
+            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.ReadEntities());
             tabelaInventara.Items.Refresh();
         }
 

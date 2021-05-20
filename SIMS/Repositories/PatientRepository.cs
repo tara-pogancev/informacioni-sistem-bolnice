@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Model
 {
-    public class PatientRepository : Repository<string, Patient, PatientRepository>
+    public class PatientRepository : GenericFileRepository<string, Patient, PatientRepository>
     {
         protected override string getKey(Patient entity)
         {
@@ -25,18 +25,18 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadList())
+            foreach (Appointment t in storageT.ReadEntities())
             {
                 if (t.Pacijent.Jmbg == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.DeleteEntity(t.TerminKey);
                 }
             }
         }
 
         public Patient ReadUser(String user)
         {
-            foreach (Patient p in this.ReadList())
+            foreach (Patient p in this.ReadEntities())
             {
                 if (p.KorisnickoIme == user)
                     return p;

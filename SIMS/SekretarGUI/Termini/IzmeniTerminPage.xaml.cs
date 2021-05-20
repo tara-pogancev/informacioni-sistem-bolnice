@@ -19,8 +19,8 @@ namespace SIMS.SekretarGUI
             InitializeComponent();
             _appointment = appointment;
 
-            _doctors = DoctorRepository.Instance.ReadList();
-            _patients = PatientRepository.Instance.ReadList();
+            _doctors = DoctorRepository.Instance.ReadEntities();
+            _patients = PatientRepository.Instance.ReadEntities();
             _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
             _freeAppointments = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
@@ -46,7 +46,7 @@ namespace SIMS.SekretarGUI
             UpdateAppointmentFromUserInput();
             if (IsAppointmentValid())
             {
-                AppointmentRepository.Instance.Update(_appointment);
+                AppointmentRepository.Instance.UpdateEntity(_appointment);
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 NavigationService.Navigate(SekretarTerminiPage.GetInstance());
@@ -74,7 +74,7 @@ namespace SIMS.SekretarGUI
 
         private bool IsAppointmentValid()
         {
-            List<Appointment> appointments = AppointmentRepository.Instance.ReadList();
+            List<Appointment> appointments = AppointmentRepository.Instance.ReadEntities();
             foreach (Appointment a in appointments)
             {
                 if (a.KrajnjeVreme > _appointment.PocetnoVreme && a.PocetnoVreme < _appointment.KrajnjeVreme && !a.TerminKey.Equals(_appointment.TerminKey))

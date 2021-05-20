@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Model
 {
-    public class DoctorRepository : Repository<string, Doctor, DoctorRepository>
+    public class DoctorRepository : GenericFileRepository<string, Doctor, DoctorRepository>
     {
         protected override string getKey(Doctor entity)
         {
@@ -25,18 +25,18 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadList())
+            foreach (Appointment t in storageT.ReadEntities())
             {
                 if (t.Lekar.Jmbg == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.DeleteEntity(t.TerminKey);
                 }
             }
         }
 
         public Doctor ReadUser(String user)
         {
-            foreach(Doctor l in this.ReadList())
+            foreach(Doctor l in this.ReadEntities())
             {
                 if (l.KorisnickoIme == user)
                     return l;
@@ -48,7 +48,7 @@ namespace Model
         public List<String> getAllId()
         {
             List<String> ids = new List<String>();
-            List<Doctor> lekari = this.ReadList();
+            List<Doctor> lekari = this.ReadEntities();
             foreach(Doctor l in lekari)
             {
                 ids.Add(l.Jmbg);
@@ -60,7 +60,7 @@ namespace Model
         {
             List<Doctor> retVal = new List<Doctor>();
 
-            foreach(Doctor l in ReadList())
+            foreach(Doctor l in ReadEntities())
             {
                 if (l.SpecijalizacijaLekara == specialization)
                     retVal.Add(l);
@@ -73,7 +73,7 @@ namespace Model
         {
             List<Specialization> retVal = new List<Specialization>();
 
-            foreach (Doctor l in ReadList())
+            foreach (Doctor l in ReadEntities())
             {
                 if (!retVal.Contains(l.SpecijalizacijaLekara))
                     retVal.Add(l.SpecijalizacijaLekara);
@@ -86,7 +86,7 @@ namespace Model
         {
             List<String> retVal = new List<String>();
 
-            foreach (Doctor l in ReadList())
+            foreach (Doctor l in ReadEntities())
             {
                 if (!retVal.Contains(l.Specialization))
                     retVal.Add(l.Specialization);

@@ -76,7 +76,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             foreach (Medication medicine in MedicineView)
             {
-                MedicationRepository.Instance.Update(medicine);
+                MedicationRepository.Instance.UpdateEntity(medicine);
             }
 
             if (CheckIfMedicineRejected())

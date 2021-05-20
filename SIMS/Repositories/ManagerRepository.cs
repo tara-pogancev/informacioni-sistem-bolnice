@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace Model
 {
-    public class ManagerRepository : Repository<string, Manager, ManagerRepository>
+    public class ManagerRepository : GenericFileRepository<string, Manager, ManagerRepository>
     {
         protected override string getPath()
         {
@@ -27,7 +27,7 @@ namespace Model
 
         public Manager ReadUser(String user)
         {
-            foreach (Manager u in this.ReadList())
+            foreach (Manager u in this.ReadEntities())
             {
                 if (u.KorisnickoIme == user)
                     return u;

@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Model
 {
-    public class AppointmentRepository : Repository<string, Appointment, AppointmentRepository>
+    public class AppointmentRepository : GenericFileRepository<string, Appointment, AppointmentRepository>
     {
         protected override string getPath()
         {
@@ -17,7 +17,7 @@ namespace Model
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach (Appointment t in this.ReadList())
+            foreach (Appointment t in this.ReadEntities())
             {
                 if (istiJmbg(t.Pacijent,pacijent))
                     termini.Add(t);
@@ -35,7 +35,7 @@ namespace Model
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach(Appointment t in this.ReadList())
+            foreach(Appointment t in this.ReadEntities())
             {
                 if (istiJmbg(t.Lekar,lekar))
                     termini.Add(t);
@@ -57,7 +57,7 @@ namespace Model
 
        
 
-        public int getAppointmentsCountByDate(DateTime date, AppointmentType tip, Doctor l)
+        private int getAppointmentsCountByDate(DateTime date, AppointmentType tip, Doctor l)
         {
             List<Appointment> retVal = new List<Appointment>();
 

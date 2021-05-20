@@ -49,10 +49,10 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             DoctorRepository storageL = new DoctorRepository();
-            lekari = storageL.ReadList();
+            lekari = storageL.ReadEntities();
 
             PatientRepository storageP = new PatientRepository();
-            pacijenti = storageP.ReadList();
+            pacijenti = storageP.ReadEntities();
 
 
             prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
@@ -115,7 +115,7 @@ namespace SIMS.LekarGUI
                     termin.Pacijent.Serijalizuj = false;
                     termin.Prostorija.Serialize = false;
 
-                    AppointmentRepository.Instance.Create(termin);
+                    AppointmentRepository.Instance.CreateEntity(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }
@@ -135,7 +135,7 @@ namespace SIMS.LekarGUI
                 terminiLista.ItemsSource = dostupniTermini;
 
                 /*
-                foreach (Termin termin in new TerminStorage().ReadList())
+                foreach (Termin termin in new TerminStorage().ReadEntities())
                 {
                     if (termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
                     {

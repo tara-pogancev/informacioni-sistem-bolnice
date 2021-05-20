@@ -53,6 +53,10 @@ namespace Model
         public string Telefon { get => telefon; set => telefon = value; }
         public Address Adresa { get => adresa; set => adresa = value; }
 
+        public bool EqualJmbg(String Jmbg)
+        {
+            return this.Jmbg == Jmbg;
+        }
 
         [JsonIgnore]
         public String ImePrezime { get => (ime + " " + prezime); }

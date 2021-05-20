@@ -23,7 +23,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         public MedicinePreview(Medication medicine)
         {
             InitializeComponent();
-            medicine = MedicationRepository.Instance.Read(medicine.MedicineID);
+            medicine = MedicationRepository.Instance.ReadEntity(medicine.MedicineID);
 
             this.medicine = medicine;
 
@@ -41,7 +41,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private String GetSubstituteName(Medication medicine)
         {
-            return MedicationRepository.Instance.Read(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.ReadEntity(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)

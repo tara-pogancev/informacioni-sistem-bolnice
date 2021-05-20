@@ -105,7 +105,7 @@ namespace Model
                     return "Nema";
 
                 foreach (string a in alergeni)
-                    alergeniString += AlergeniStorage.Instance.Read(a).Naziv + ", ";
+                    alergeniString += AlergeniStorage.Instance.ReadEntity(a).Naziv + ", ";
                 return alergeniString.Remove(alergeniString.Length - 2); */
                 return "Nema";
             }

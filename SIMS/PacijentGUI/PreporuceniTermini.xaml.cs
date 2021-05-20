@@ -48,7 +48,7 @@ namespace SIMS.PacijentGUI
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
             AppointmentRepository trm = new AppointmentRepository();
-            trm.Create(termini[PreporuceniTerminiTabela.SelectedIndex]);
+            trm.CreateEntity(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
             AppointmentRepository terminStorage = new AppointmentRepository();
         }

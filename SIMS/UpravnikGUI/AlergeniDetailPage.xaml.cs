@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            alergen = AllergenRepository.Instance.Read(ID);
+            alergen = AllergenRepository.Instance.ReadEntity(ID);
             InitializeComponent();
 
             NazivText.Text = alergen.Name;
@@ -49,7 +49,7 @@ namespace SIMS.UpravnikGUI
             alergen.Name = NazivText.Text;
             alergen.ID = IDText.Text;
 
-            AllergenRepository.Instance.CreateOrUpdate(alergen);
+            AllergenRepository.Instance.CreateOrUpdateEntity(alergen);
             UpravnikWindow.Instance.SetContent(new AlergeniPage());
             UpravnikWindow.Instance.SetLabel("Alergeni");
         }

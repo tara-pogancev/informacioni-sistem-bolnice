@@ -31,7 +31,7 @@ namespace SIMS.SekretarGUI
         public void RefreshView()
         {
             _appointmentsForView.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadList());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadEntities());
             GetPatientAndDoctorData(appointments);
             SortAppointments(appointments);
             foreach (Appointment appointment in appointments)
@@ -68,7 +68,7 @@ namespace SIMS.SekretarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
-                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
+                    AppointmentRepository.Instance.DeleteEntity(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
                 }
@@ -95,8 +95,8 @@ namespace SIMS.SekretarGUI
         {
             foreach (Appointment appointment in appointments)
             {
-                appointment.Pacijent = PatientRepository.Instance.Read(appointment.Pacijent.Jmbg);
-                appointment.Lekar = DoctorRepository.Instance.Read(appointment.Lekar.Jmbg);
+                appointment.Pacijent = PatientRepository.Instance.ReadEntity(appointment.Pacijent.Jmbg);
+                appointment.Lekar = DoctorRepository.Instance.ReadEntity(appointment.Lekar.Jmbg);
             }
         }
 

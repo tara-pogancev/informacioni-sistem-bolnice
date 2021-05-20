@@ -5,7 +5,7 @@ using Model;
 
 namespace SIMS.Model
 {
-    class DoctorSurveyRepository : Repository<string, DoctorSurvey, DoctorSurveyRepository>
+    class DoctorSurveyRepository : GenericFileRepository<string, DoctorSurvey, DoctorSurveyRepository>
     {
         protected override string getKey(DoctorSurvey entity)
         {

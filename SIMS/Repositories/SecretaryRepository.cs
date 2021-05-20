@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Model
 {
-    public class SecretaryRepository : Repository<string, Secretary, SecretaryRepository>
+    public class SecretaryRepository : GenericFileRepository<string, Secretary, SecretaryRepository>
     {
         protected override string getKey(Secretary entity)
         {
@@ -29,7 +29,7 @@ namespace Model
 
         public Secretary ReadUser(String user)
         {
-            foreach (Secretary s in this.ReadList())
+            foreach (Secretary s in this.ReadEntities())
             {
                 if (s.KorisnickoIme == user)
                     return s;

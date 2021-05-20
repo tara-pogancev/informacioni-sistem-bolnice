@@ -98,8 +98,8 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.Termin = new AppointmentRepository().Read(anamneza.Termin.TerminKey);
-            anamneza.Termin.Lekar = new DoctorRepository().Read(anamneza.Termin.Lekar.Jmbg);
+            anamneza.Termin = new AppointmentRepository().ReadEntity(anamneza.Termin.TerminKey);
+            anamneza.Termin.Lekar = new DoctorRepository().ReadEntity(anamneza.Termin.Lekar.Jmbg);
             anamneza.Termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
         }
 
