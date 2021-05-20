@@ -10,7 +10,7 @@
     "GetHronicneBolestiString": "Nema",
     "Pol_Pacijenta": 0,
     "Krvna_Grupa": 0,
-    "BanovanKorisnik": false,
+    "BanovanKorisnik": true,
     "Ime": "Đorđe",
     "Prezime": "Krsmanović",
     "Jmbg": "4865453131",
@@ -19,22 +19,9 @@
     "Email": "djordje1499@gmail.com",
     "Telefon": "0645568131",
     "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Hopovska",
-      "Broj": "5a"
+      "City": null,
+      "Street": null,
+      "Number": null
     },
     "Serijalizuj": true
   },
@@ -57,22 +44,9 @@
     "Email": "email.miha@gmail.com",
     "Telefon": "06250",
     "Adresa": {
-      "grad": {
-        "Naziv": "Beograd",
-        "PostanskiBroj": 101801,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Beograd",
-        "PostanskiBroj": 101801,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Milentija Popovića",
-      "Broj": "45"
+      "City": null,
+      "Street": null,
+      "Number": null
     },
     "Serijalizuj": true
   },
@@ -95,22 +69,9 @@
     "Email": "petarpetrovic@gmail.com",
     "Telefon": "061 234567",
     "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Turnjegevljeva",
-      "Broj": "16"
+      "City": null,
+      "Street": null,
+      "Number": null
     },
     "Serijalizuj": true
   },
@@ -131,22 +92,9 @@
     "Email": "petarpetrovic@gmail.com",
     "Telefon": "061 234567",
     "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Turnjegevljeva",
-      "Broj": "16"
+      "City": null,
+      "Street": null,
+      "Number": null
     },
     "Serijalizuj": true
   }

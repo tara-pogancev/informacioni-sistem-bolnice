@@ -117,13 +117,19 @@
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="16.9.31024.71" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="19.1.0.63" />
+    <PackageReference Include="Syncfusion.SfSchedule.WPF" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDark.WPF" Version="19.1.0.63" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="logo.ico" />
     <Resource Include="src\logo.ico" />
-    <Resource Include="src\logo_glow.jpg" />
+    <Resource Include="src\logo_glow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\logo_glow_tr.png" />
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />

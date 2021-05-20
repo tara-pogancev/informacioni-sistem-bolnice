@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Pacijent
 
 using Newtonsoft.Json;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 

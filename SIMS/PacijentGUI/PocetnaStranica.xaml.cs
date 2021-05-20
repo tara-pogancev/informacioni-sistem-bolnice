@@ -130,6 +130,9 @@ namespace SIMS.PacijentGUI
                 case 2:
                     Tabovi.Content = new MojiTermini(pacijent);
                     break;
+                case 3:
+                    Tabovi.Content = new TerapijaPacijentaView();
+                    break;
                 case 4:
                     Tabovi.Content = new IzborLjekara();
                     break;
@@ -174,6 +177,9 @@ namespace SIMS.PacijentGUI
                     break;
                 case 2:
                     Tabovi.Content = new MojiTermini(pacijent);
+                    break;
+                case 3:
+                    Tabovi.Content = new TerapijaPacijentaView();
                     break;
                 case 4:
                     Tabovi.Content = new IzborLjekara();
