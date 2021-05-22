@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
 using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
@@ -47,8 +47,8 @@ namespace SIMS.LekarGUI
         private void initializeData()
         {
             PregledView = new ObservableCollection<Anamnesis>(AnamnesisFileRepository.Instance.ReadByPatient(pacijentProfile));
-            ReceptView = new ObservableCollection<Receipt>(ReceiptRepository.Instance.ReadByPatient(pacijentProfile));
-            OperacijaIzvestajView = new ObservableCollection<SurgeryReport>(SurgeryReportRepository.Instance.ReadByPatient(pacijentProfile));
+            ReceptView = new ObservableCollection<Receipt>(ReceiptFileRepository.Instance.ReadByPatient(pacijentProfile));
+            OperacijaIzvestajView = new ObservableCollection<SurgeryReport>(SurgeryReportFileRepository.Instance.ReadByPatient(pacijentProfile));
 
             foreach (Anamnesis anamneza in PregledView)
             {

@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -100,7 +100,7 @@ namespace SIMS.LekarGUI
                 }
                 else
                 {
-                    SurgeryReport report = SurgeryReportRepository.Instance.FindById(t.TerminKey);
+                    SurgeryReport report = SurgeryReportFileRepository.Instance.FindById(t.TerminKey);
                     if (report != null)
                     {
                         OperacijaIzvestajView a = new OperacijaIzvestajView(report);

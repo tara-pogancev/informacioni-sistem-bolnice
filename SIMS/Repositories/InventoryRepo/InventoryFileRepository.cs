@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class InventoryFileRepository : GenericFileRepository<string, Inventory, InventoryFileRepository>,IInventoryRepository
     {
@@ -17,11 +17,11 @@ namespace SIMS.Repositories.PatientRepo
 
         protected override void RemoveReferences(string key)
         {
-            foreach (var prosInv in RoomInventoryRepository.Instance.ReadAll().Values)
+            foreach (var prosInv in RoomInventoryFileRepository.Instance.ReadAll().Values)
             {
                 if (prosInv.IdInventara == key)
                 {
-                    RoomInventoryRepository.Instance.Delete(prosInv);
+                    RoomInventoryFileRepository.Instance.Delete(prosInv);
                 }
             }
 

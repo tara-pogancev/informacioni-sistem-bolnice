@@ -1,11 +1,12 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
+using SIMS.Repositories.SurgeryReportRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SIMS.Model
 {
-    public class SurgeryReportRepository : GenericFileRepository<string, SurgeryReport, SurgeryReportRepository>
+    public class SurgeryReportFileRepository : GenericFileRepository<string, SurgeryReport, SurgeryReportFileRepository>,ISurgeryReportRepository
     {
         protected override string getKey(SurgeryReport entity)
         {

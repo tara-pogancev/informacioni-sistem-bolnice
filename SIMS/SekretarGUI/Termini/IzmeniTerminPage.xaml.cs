@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -23,7 +23,7 @@ namespace SIMS.SekretarGUI
 
             _doctors = DoctorFileRepository.Instance.GetAll();
             _patients = PatientFileRepository.Instance.GetAll();
-            _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
+            _rooms = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
             _freeAppointments = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
             doctorsComboBox.ItemsSource = _doctors;

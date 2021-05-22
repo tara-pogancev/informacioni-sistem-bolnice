@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
@@ -46,7 +46,7 @@ namespace SIMS.PacijentGUI
             moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
             odabraniTerminZaIzmjenu = termin;
             izabraniLekar = termin.Lekar;
-            slobodneProstorije = new RoomRepository().UcitajProstorijeZaPreglede();
+            slobodneProstorije = new RoomFileRepository().UcitajProstorijeZaPreglede();
 
             Doktori.ItemsSource = lekari;
             BlokirajDatumeNaKalendaru();
@@ -250,7 +250,7 @@ namespace SIMS.PacijentGUI
 
         private void terminiLista_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            slobodneProstorije = new RoomRepository().UcitajProstorijeZaPreglede();
+            slobodneProstorije = new RoomFileRepository().UcitajProstorijeZaPreglede();
             DateTime zakazanoVrijemeIzmjenjenogTermina = DateTime.Parse(OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
             foreach (Appointment termin in new AppointmentFileRepository().GetAll())
             {

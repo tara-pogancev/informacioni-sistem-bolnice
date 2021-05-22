@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class Inventory
     {
@@ -33,7 +33,7 @@ namespace SIMS.Repositories.PatientRepo
                 {
                     return 0;
                 }
-                return RoomInventoryRepository.Instance.Read(BrojProstorije, Id).Kolicina;
+                return RoomInventoryFileRepository.Instance.Read(BrojProstorije, Id).Kolicina;
             }
         }
 

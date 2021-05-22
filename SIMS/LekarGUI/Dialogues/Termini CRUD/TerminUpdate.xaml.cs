@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI
             PatientFileRepository storageP = new PatientFileRepository();
             pacijenti = storageP.GetAll();
 
-            prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
+            prostorije = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
 
             doktoriCombo.ItemsSource = lekari;
             pacijentiCombo.ItemsSource = pacijenti;

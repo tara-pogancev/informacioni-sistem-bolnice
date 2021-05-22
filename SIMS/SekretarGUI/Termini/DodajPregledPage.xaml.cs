@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -21,7 +21,7 @@ namespace SIMS.SekretarGUI
             _doctors = DoctorFileRepository.Instance.GetAll();
             _patients = PatientFileRepository.Instance.GetAll();
 
-            _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
+            _rooms = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
 
             doctorsComboBox.ItemsSource = _doctors;
             patientsComboBox.ItemsSource = _patients;

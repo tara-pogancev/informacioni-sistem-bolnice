@@ -1,4 +1,4 @@
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

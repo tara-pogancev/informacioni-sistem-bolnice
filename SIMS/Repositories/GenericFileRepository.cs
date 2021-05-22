@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public abstract class GenericFileRepository<KeyType, Entity, StorageType>
         where StorageType : GenericFileRepository<KeyType, Entity, StorageType>, new()

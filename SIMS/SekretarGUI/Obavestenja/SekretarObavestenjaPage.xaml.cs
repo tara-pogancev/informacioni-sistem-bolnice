@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace SIMS.SekretarGUI
             _notifications = new ObservableCollection<Notification>(notificationsForReversing);
             _patients = PatientFileRepository.Instance.GetAll();
             _doctors = DoctorFileRepository.Instance.GetAll();
-            _secretaries = SecretaryRepository.Instance.GetAll();
+            _secretaries = SecretaryFileRepository.Instance.GetAll();
             _directors = ManagerFileRepository.Instance.GetAll();
 
             notificationViewer.ItemsSource = _notifications;

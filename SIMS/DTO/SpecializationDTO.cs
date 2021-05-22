@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.DTO
 {

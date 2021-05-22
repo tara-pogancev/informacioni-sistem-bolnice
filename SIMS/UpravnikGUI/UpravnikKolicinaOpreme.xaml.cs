@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.UpravnikGUI
 {
@@ -38,7 +38,7 @@ namespace SIMS.UpravnikGUI
             ID.IsEnabled = false;
             Naziv.IsEnabled = false;
             Tip.IsEnabled = false;
-            Kolicina.Text = RoomInventoryRepository.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
+            Kolicina.Text = RoomInventoryFileRepository.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace SIMS.UpravnikGUI
                 MessageBox.Show("Uneti broj veći od 0.");
                 return;
             }
-            RoomInventoryRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.Id, amount));
+            RoomInventoryFileRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.Id, amount));
 
             ParentPage.Update();
 

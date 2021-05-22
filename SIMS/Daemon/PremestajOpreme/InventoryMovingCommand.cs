@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -30,8 +30,8 @@ namespace SIMS.Daemon.PremestajOpreme
                 return;
             }
 
-            RoomInventory src = RoomInventoryRepository.Instance.ReadNoConsistifying(SrcID, OpremaID);
-            RoomInventory dst = RoomInventoryRepository.Instance.ReadNoConsistifying(DstID, OpremaID);
+            RoomInventory src = RoomInventoryFileRepository.Instance.ReadNoConsistifying(SrcID, OpremaID);
+            RoomInventory dst = RoomInventoryFileRepository.Instance.ReadNoConsistifying(DstID, OpremaID);
 
             if (src.Kolicina < Delta)
             {
@@ -42,8 +42,8 @@ namespace SIMS.Daemon.PremestajOpreme
             src.Kolicina -= Delta;
             dst.Kolicina += Delta;
 
-            RoomInventoryRepository.Instance.Update(src);
-            RoomInventoryRepository.Instance.Update(dst);
+            RoomInventoryFileRepository.Instance.Update(src);
+            RoomInventoryFileRepository.Instance.Update(dst);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using System.Windows.Controls;
 
 namespace SIMS.SekretarGUI

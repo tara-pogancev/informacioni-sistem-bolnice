@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.LekarGUI
 {
@@ -77,7 +77,7 @@ namespace SIMS.LekarGUI
             Receipt receipt = new Receipt(doctor, patient, medicine.MedicineName,
                 AmountText.Text, DiagnosisText.Text);
 
-            ReceiptRepository.Instance.Save(receipt);
+            ReceiptFileRepository.Instance.Save(receipt);
         }
 
         private Medication GetSelectedMedicine()

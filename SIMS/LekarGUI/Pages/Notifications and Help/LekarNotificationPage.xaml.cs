@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Materijali_i_lekovi;
 using System;
 using System.Collections.Generic;

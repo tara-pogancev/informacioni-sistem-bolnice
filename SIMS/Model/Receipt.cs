@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class Receipt
     {

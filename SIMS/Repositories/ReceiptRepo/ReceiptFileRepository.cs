@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SIMS.Repositories.SecretaryRepo;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
-    public class ReceiptRepository : GenericFileRepository<string, Receipt, ReceiptRepository>
+    public class ReceiptFileRepository : GenericFileRepository<string, Receipt, ReceiptFileRepository>,IReceiptRepository
     {
         protected override string getKey(Receipt entity)
         {

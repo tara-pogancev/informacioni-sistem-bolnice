@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
@@ -65,7 +65,7 @@ namespace SIMS.LekarGUI
                    terminiView.Add(t);
 
                 t.Pacijent = new PatientFileRepository().FindById(t.Pacijent.Jmbg);
-                t.Prostorija = new RoomRepository().FindById(t.Prostorija.Number);
+                t.Prostorija = new RoomFileRepository().FindById(t.Prostorija.Number);
             }
         }
 

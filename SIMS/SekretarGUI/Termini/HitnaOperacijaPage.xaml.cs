@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -105,7 +105,7 @@ namespace SIMS.SekretarGUI
 
             target.Add(selectedApp.Pacijent.Jmbg);
             target.Add(selectedApp.Lekar.Jmbg);
-            foreach (Secretary s in SecretaryRepository.Instance.GetAll())
+            foreach (Secretary s in SecretaryFileRepository.Instance.GetAll())
             {
                 target.Add(s.Jmbg);
             }
@@ -185,7 +185,7 @@ namespace SIMS.SekretarGUI
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    Appointment appointment = new Appointment(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, RoomRepository.Instance.GetAll()[0]);
+                    Appointment appointment = new Appointment(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, RoomFileRepository.Instance.GetAll()[0]);
                     allAppointments.Add(appointment);
                     if (doctor.IsFree(appointment) && appointment.PocetnoVreme >= appointmentValues.PocetnoVreme)
                     {

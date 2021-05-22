@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public UpravnikProstorijePage()
         {
             InitializeComponent();
-            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.GetAll());
+            prostorije = new ObservableCollection<Room>(RoomFileRepository.Instance.GetAll());
             tabelaProstorije.ItemsSource = prostorije;
         }
 
@@ -36,8 +36,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiProstorija_Click(object sender, RoutedEventArgs e)
         {
             Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
-            RoomRepository.Instance.Delete(SelectedProstorija.Number);
-            prostorije = new ObservableCollection<Room>(RoomRepository.Instance.GetAll());
+            RoomFileRepository.Instance.Delete(SelectedProstorija.Number);
+            prostorije = new ObservableCollection<Room>(RoomFileRepository.Instance.GetAll());
             tabelaProstorije.ItemsSource = prostorije;
         }
 

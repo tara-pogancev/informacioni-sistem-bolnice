@@ -2,7 +2,7 @@
 
 using System;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
    public class Country
    {

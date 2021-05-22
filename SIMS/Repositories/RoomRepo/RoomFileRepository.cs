@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
-    public class RoomRepository : GenericFileRepository<string, Room, RoomRepository>
+    public class RoomFileRepository : GenericFileRepository<string, Room, RoomFileRepository>,IRoomRepository
     {
         protected override string getPath()
         {
@@ -30,11 +30,11 @@ namespace SIMS.Repositories.PatientRepo
                 }
             }
 
-            foreach (var prosInv in RoomInventoryRepository.Instance.ReadAll().Values)
+            foreach (var prosInv in RoomInventoryFileRepository.Instance.ReadAll().Values)
             {
                 if (prosInv.BrojProstorije == key)
                 {
-                    RoomInventoryRepository.Instance.Delete(prosInv);
+                    RoomInventoryFileRepository.Instance.Delete(prosInv);
                 }
             }
 

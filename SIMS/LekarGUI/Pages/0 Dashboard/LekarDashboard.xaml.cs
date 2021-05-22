@@ -1,6 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Pages;
 using SIMS.Repositories.AppointmentRepo;
 using System;

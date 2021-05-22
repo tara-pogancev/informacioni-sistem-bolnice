@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
+using SIMS.Repositories.ReferralRepo;
 
 namespace SIMS.Model
 {
-    public class ReferralRepository : GenericFileRepository<string, Referral, ReferralRepository>
+    public class ReferralRepository : GenericFileRepository<string, Referral, ReferralRepository>,IReferralRepository
     {
         protected override string getKey(Referral entity)
         {

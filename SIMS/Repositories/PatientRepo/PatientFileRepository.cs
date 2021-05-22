@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class PatientFileRepository : GenericFileRepository<string, Patient, PatientFileRepository>,IPatientRepository
     {

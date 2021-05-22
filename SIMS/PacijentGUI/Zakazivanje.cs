@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -32,7 +32,7 @@ namespace SIMS.PacijentGUI
         {
             InitializeComponent();
             DoctorFileRepository lk = new DoctorFileRepository();
-            slobodneProstorije= new RoomRepository().UcitajProstorijeZaPreglede();
+            slobodneProstorije= new RoomFileRepository().UcitajProstorijeZaPreglede();
             lekari = new List<Doctor>();
             lekari = lk.GetAll();
             pacijent = PocetnaStranica.getInstance().Pacijent;
@@ -127,7 +127,7 @@ namespace SIMS.PacijentGUI
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            slobodneProstorije = new RoomRepository().UcitajProstorijeZaPreglede();
+            slobodneProstorije = new RoomFileRepository().UcitajProstorijeZaPreglede();
             if (OdabirDatuma.SelectedDate == null)
             {
                 MessageBox.Show("Potrebno je da prvo izaberete datum");

@@ -8,9 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
-    public class SecretaryRepository : GenericFileRepository<string, Secretary, SecretaryRepository>
+    public class SecretaryFileRepository : GenericFileRepository<string, Secretary, SecretaryFileRepository>,ISecretaryRepository
     {
         protected override string getKey(Secretary entity)
         {

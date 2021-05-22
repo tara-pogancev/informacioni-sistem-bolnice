@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using SIMS.Model;
 using System;
@@ -47,7 +47,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
                 o.Operacija.Lekar.Serijalizuj = false;
                 o.Operacija.Pacijent.Serijalizuj = false;
                 o.Operacija.Serijalizuj = false;
-                SurgeryReportRepository.Instance.Save(o);
+                SurgeryReportFileRepository.Instance.Save(o);
 
                 this.Close();
                 LekarUI.GetInstance().ChangeTab(3);

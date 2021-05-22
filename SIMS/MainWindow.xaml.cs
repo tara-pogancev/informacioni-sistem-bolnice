@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.PacijentGUI;
 using SIMS.Repositories.DoctorRepo;
 using SIMS.UpravnikGUI;
@@ -76,7 +76,7 @@ namespace SIMS
             }
 
             //implementacija za sekretara
-            Secretary sekretar = SecretaryRepository.Instance.ReadUser(user);
+            Secretary sekretar = SecretaryFileRepository.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Lozinka))
             {
                     SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);

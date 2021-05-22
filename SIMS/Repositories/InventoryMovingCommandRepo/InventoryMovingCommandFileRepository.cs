@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.Daemon;
 using SIMS.Daemon.PremestajOpreme;
 using SIMS.Repositories.InventoryMovingCommandRepo;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     class InventoryMovingCommandFileRepository : GenericFileRepository<string, InventoryMovingCommand, InventoryMovingCommandFileRepository>,IInventoryMovingCommandRepository
     {

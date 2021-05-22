@@ -10,7 +10,7 @@ using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class Doctor : LoggedUser
     {
@@ -120,23 +120,23 @@ namespace SIMS.Repositories.PatientRepo
         { 
             get 
             {
-                if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.OpstaPraksa)
+                if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.OpstaPraksa)
                     return "Lekar opšte prakse";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Hirurg)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Hirurg)
                     return "Hirurg";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Internista)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Internista)
                     return "Internista";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Dermatolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Dermatolog)
                     return "Dermatolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Kardiolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Kardiolog)
                     return "Kardiolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Otorinolaringolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Otorinolaringolog)
                     return "Otorinolaringolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Stomatolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Stomatolog)
                     return "Stomatolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Urolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Urolog)
                     return "Urolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Ginekolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Ginekolog)
                     return "Ginekolog";
                 else
                     return "Neurolog";

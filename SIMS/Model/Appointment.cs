@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
    public class Appointment : INotifyPropertyChanged
    {
@@ -156,7 +156,7 @@ namespace SIMS.Repositories.PatientRepo
         {
             get
             {
-                if (AnamnesisFileRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportRepository.Instance.FindById(this.TerminKey) == null)
+                if (AnamnesisFileRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportFileRepository.Instance.FindById(this.TerminKey) == null)
                     return false;
                 else return true;
             }
@@ -209,7 +209,7 @@ namespace SIMS.Repositories.PatientRepo
         public void InitData()
         {
             Pacijent = new PatientFileRepository().FindById(Pacijent.Jmbg);
-            Prostorija = new RoomRepository().FindById(Prostorija.Number);
+            Prostorija = new RoomFileRepository().FindById(Prostorija.Number);
             Lekar = new DoctorFileRepository().FindById(Lekar.Jmbg);
         }
 

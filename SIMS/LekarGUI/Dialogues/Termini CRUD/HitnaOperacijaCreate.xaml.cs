@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     
-                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomRepository.Instance.GetAll()[0]);
+                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomFileRepository.Instance.GetAll()[0]);
                     if (doctor.IsFree(appointment))
                     {
                         counterByDoctor++;

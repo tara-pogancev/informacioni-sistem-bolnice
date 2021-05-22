@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;

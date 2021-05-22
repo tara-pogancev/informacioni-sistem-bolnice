@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
     public class ManagerFileRepository : GenericFileRepository<string, Manager, ManagerFileRepository>,IManagerRepository
     {

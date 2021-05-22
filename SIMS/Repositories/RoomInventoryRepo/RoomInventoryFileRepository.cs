@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.Daemon.PremestajOpreme;
 
-namespace SIMS.Repositories.PatientRepo
+namespace SIMS.Repositories.SecretaryRepo
 {
-    class RoomInventoryRepository : GenericFileRepository<string, RoomInventory, RoomInventoryRepository>
+    class RoomInventoryFileRepository : GenericFileRepository<string, RoomInventory, RoomInventoryFileRepository>,IRoomInventoryRepository
     {
         protected override string getKey(RoomInventory entity)
         {

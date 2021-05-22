@@ -1,4 +1,4 @@
-﻿using SIMS.Repositories.PatientRepo;
+﻿using SIMS.Repositories.SecretaryRepo;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
