@@ -8,7 +8,7 @@ using SIMS.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class Patient : LoggedUser
     {

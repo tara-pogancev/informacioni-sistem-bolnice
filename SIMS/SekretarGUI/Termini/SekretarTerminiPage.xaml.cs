@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +33,7 @@ namespace SIMS.SekretarGUI
         public void RefreshView()
         {
             _appointmentsForView.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentRepository.Instance.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
             GetPatientAndDoctorData(appointments);
             SortAppointments(appointments);
             foreach (Appointment appointment in appointments)
@@ -68,7 +70,7 @@ namespace SIMS.SekretarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
-                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
+                    AppointmentFileRepository.Instance.Delete(toDelete.TerminKey);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
                 }
@@ -95,8 +97,8 @@ namespace SIMS.SekretarGUI
         {
             foreach (Appointment appointment in appointments)
             {
-                appointment.Pacijent = PatientRepository.Instance.FindById(appointment.Pacijent.Jmbg);
-                appointment.Lekar = DoctorRepository.Instance.FindById(appointment.Lekar.Jmbg);
+                appointment.Pacijent = PatientFileRepository.Instance.FindById(appointment.Pacijent.Jmbg);
+                appointment.Lekar = DoctorFileRepository.Instance.FindById(appointment.Lekar.Jmbg);
             }
         }
 

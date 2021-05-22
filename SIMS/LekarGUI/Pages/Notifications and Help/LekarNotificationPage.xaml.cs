@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Materijali_i_lekovi;
 using System;
 using System.Collections.Generic;
@@ -33,7 +33,7 @@ namespace SIMS.LekarGUI
 
             lekarUser = LekarUI.GetInstance().GetUser();
 
-            List<Notification> listaObavestenja = NotificationRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
+            List<Notification> listaObavestenja = NotificationFileRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
             listaObavestenja.Reverse();
             obavestenjeView = new ObservableCollection<Notification>(listaObavestenja);
 

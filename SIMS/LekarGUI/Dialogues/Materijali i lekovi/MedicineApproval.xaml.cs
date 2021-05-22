@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,7 +29,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             DataContext = this;
 
             MedicineView = new ObservableCollection<Medication>();
-            MedicineChanges = new List<Medication>(MedicationRepository.Instance.getMedicineWaitingForApproval());
+            MedicineChanges = new List<Medication>(MedicationFileRepository.Instance.getMedicineWaitingForApproval());
             refresh();
 
         }
@@ -76,7 +76,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             foreach (Medication medicine in MedicineView)
             {
-                MedicationRepository.Instance.Update(medicine);
+                MedicationFileRepository.Instance.Update(medicine);
             }
 
             if (CheckIfMedicineRejected())

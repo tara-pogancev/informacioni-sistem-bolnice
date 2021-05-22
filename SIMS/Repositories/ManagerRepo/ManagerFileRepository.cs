@@ -3,14 +3,15 @@
 // Created: Thursday, March 25, 2021 4:23:30 PM
 // Purpose: Definition of Class UpravnikStorage
 
+using SIMS.Repositories.ManagerRepo;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
-    public class ManagerRepository : GenericFileRepository<string, Manager, ManagerRepository>
+    public class ManagerFileRepository : GenericFileRepository<string, Manager, ManagerFileRepository>,IManagerRepository
     {
         protected override string getPath()
         {

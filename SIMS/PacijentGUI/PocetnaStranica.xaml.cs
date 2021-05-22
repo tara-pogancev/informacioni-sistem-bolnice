@@ -1,5 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,7 +45,7 @@ namespace SIMS.PacijentGUI
 
         public void kreirajAnketu()
         {
-            List<HospitalSurvey> anketeBolnice = new HospitalSurveyRepository().getAnketeByPatient(pacijent);
+            List<HospitalSurvey> anketeBolnice = new HospitalSurveyFileRepository().GetPatientSurveys(pacijent);
             if (anketeBolnice.Count == 0)
             {
                 Anketa.Visibility = Visibility.Visible;
@@ -63,7 +64,7 @@ namespace SIMS.PacijentGUI
 
         private int brojZavrsenihPRegleda()
         {
-            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(pacijent);
             int brojacZavrsenihPregleda = 0;
             foreach(Appointment termin in zakazaniTermini)
             {
@@ -99,7 +100,7 @@ namespace SIMS.PacijentGUI
 
         private bool postojeTermini()
         {
-            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(pacijent);
             foreach(Appointment termin in zakazaniTermini)
             {
                 if (DateTime.Now <= termin.PocetnoVreme && DateTime.Now.AddMinutes(60)>=termin.PocetnoVreme)

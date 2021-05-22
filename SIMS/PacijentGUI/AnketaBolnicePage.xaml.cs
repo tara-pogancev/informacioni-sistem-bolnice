@@ -1,5 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -37,7 +38,7 @@ namespace SIMS.PacijentGUI
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje4", Pitanje4.Value);
             anketaBolnice.OdgovoriNaPitanja.Add("pitanje5", Pitanje5.Value);
             anketaBolnice.TrenutniBrojPregleda = brojZavrsenihPRegleda();
-            new HospitalSurveyRepository().Save(anketaBolnice);
+            new HospitalSurveyFileRepository().Save(anketaBolnice);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
             PocetnaStranica.getInstance().Tabovi.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
 
@@ -46,7 +47,7 @@ namespace SIMS.PacijentGUI
 
         private int brojZavrsenihPRegleda()
         {
-            List<Appointment> zakazaniTermini = new AppointmentRepository().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(PocetnaStranica.getInstance().Pacijent);
             int brojacZavrsenihPregleda = 0;
             foreach (Appointment termin in zakazaniTermini)
             {

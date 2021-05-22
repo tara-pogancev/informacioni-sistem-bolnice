@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class ReceiptRepository : GenericFileRepository<string, Receipt, ReceiptRepository>
     {

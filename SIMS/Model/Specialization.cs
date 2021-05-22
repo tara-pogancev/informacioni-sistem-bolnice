@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
    public enum Specialization
    {

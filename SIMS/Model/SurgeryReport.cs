@@ -1,8 +1,10 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 
 namespace SIMS.Model
 {
@@ -31,9 +33,9 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Operacija = new AppointmentRepository().FindById(OperacijaKey);
-            Operacija.Pacijent = new PatientRepository().FindById(Operacija.Pacijent.Jmbg);
-            Operacija.Lekar = new DoctorRepository().FindById(Operacija.Lekar.Jmbg);
+            Operacija = new AppointmentFileRepository().FindById(OperacijaKey);
+            Operacija.Pacijent = new PatientFileRepository().FindById(Operacija.Pacijent.Jmbg);
+            Operacija.Lekar = new DoctorFileRepository().FindById(Operacija.Lekar.Jmbg);
 
         }
 

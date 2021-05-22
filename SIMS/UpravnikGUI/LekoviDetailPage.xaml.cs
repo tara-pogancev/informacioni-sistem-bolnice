@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,7 +45,7 @@ namespace SIMS.UpravnikGUI
 
         public LekoviDetailPage(string ID) //izmena postojece prostorije
         {
-            lek = MedicationRepository.Instance.FindById(ID);
+            lek = MedicationFileRepository.Instance.FindById(ID);
             InitializeComponent();
 
             IDText.Text = lek.MedicineID;
@@ -53,7 +54,7 @@ namespace SIMS.UpravnikGUI
 
             IDText.IsEnabled = false;
 
-            foreach (Allergen alergen in AllergenRepository.Instance.ReadAll().Values)
+            foreach (Allergen alergen in AllergenFileRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen, lek.Components.Contains(alergen.ID)));
             }
@@ -66,7 +67,7 @@ namespace SIMS.UpravnikGUI
             lek = new Medication();
             InitializeComponent();
 
-            foreach (Allergen alergen in AllergenRepository.Instance.ReadAll().Values)
+            foreach (Allergen alergen in AllergenFileRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen));
             }
@@ -95,14 +96,14 @@ namespace SIMS.UpravnikGUI
                 }
             }
 
-            MedicationRepository.Instance.CreateOrUpdate(lek);
+            MedicationFileRepository.Instance.CreateOrUpdate(lek);
             UpravnikWindow.Instance.SetContent(new LekoviPage());
             UpravnikWindow.Instance.SetLabel("Lekovi");
         }
 
         private void IDText_KeyUp(object sender, KeyEventArgs e)
         {
-            foreach(Medication lek in MedicationRepository.Instance.ReadAll().Values)
+            foreach(Medication lek in MedicationFileRepository.Instance.ReadAll().Values)
             {
                 if (lek.IDSubstitution == IDText.Text)
                 {

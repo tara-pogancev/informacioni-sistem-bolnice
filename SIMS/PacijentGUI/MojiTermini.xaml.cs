@@ -1,6 +1,7 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,7 +25,7 @@ namespace SIMS.PacijentGUI
         public MojiTermini(Patient p)
         {
             pacijent = p;
-            IAppointmentRepository appointmentRepository = new IAppointmentFileRepository();
+            IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
            
             termini = new ObservableCollection<Appointment>(appointmentRepository.GetAll());
             dobaviPodatkeOPacijenuILekaru();
@@ -52,7 +53,7 @@ namespace SIMS.PacijentGUI
         private bool provjeriValidnost()
         {
             int brojLogova = 0;
-            List<AppointmentLog> terminLogs = new AppointmentLogRepository().ReadByPatient(pacijent);
+            List<AppointmentLog> terminLogs = new AppointmentLogFileRepository().ReadByPatient(pacijent);
             foreach(AppointmentLog terminLog in terminLogs)
             {
                 if (terminLog.DatumPromjene < DateTime.Now.AddDays(-10))
@@ -80,8 +81,8 @@ namespace SIMS.PacijentGUI
            
             pacijent.BanovanKorisnik = true;
             pacijent.Serijalizuj = true;
-            new PatientRepository().Update(pacijent);
-            new AppointmentLogRepository().logoviIstekli(pacijent);
+            new PatientFileRepository().Update(pacijent);
+            new AppointmentLogFileRepository().MakeLogExpired(pacijent);
             new MainWindow().Show();
             PocetnaStranica.getInstance().Close();
             PocetnaStranica.getInstance(). SetInstance();
@@ -94,12 +95,12 @@ namespace SIMS.PacijentGUI
             {
                 return;
             }
-            AppointmentRepository tr = new AppointmentRepository();
+            AppointmentFileRepository tr = new AppointmentFileRepository();
             Appointment termin = termini[terminiTabela.SelectedIndex];
             tr.Delete(termin.TerminKey);
             termini.RemoveAt(terminiTabela.SelectedIndex);
             AppointmentLog terminLog= new AppointmentLog(formirajKljucLog(termin), termin.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Brisanje);
-            new AppointmentLogRepository().Save(terminLog);
+            new AppointmentLogFileRepository().Save(terminLog);
         }
 
         public String formirajKljucLog(Appointment termin)
@@ -110,8 +111,8 @@ namespace SIMS.PacijentGUI
         {
             foreach(Appointment termin in termini)
             {
-                termin.Pacijent = new PatientRepository().FindById(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorRepository().FindById(termin.Lekar.Jmbg);
+                termin.Pacijent = new PatientFileRepository().FindById(termin.Pacijent.Jmbg);
+                termin.Lekar = new DoctorFileRepository().FindById(termin.Lekar.Jmbg);
             }
         }
     }

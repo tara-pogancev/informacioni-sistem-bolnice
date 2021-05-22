@@ -1,7 +1,7 @@
 
 using System;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
    public class Address
    {

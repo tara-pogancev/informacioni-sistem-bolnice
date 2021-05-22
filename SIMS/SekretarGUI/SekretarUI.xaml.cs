@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.SekretarGUI;

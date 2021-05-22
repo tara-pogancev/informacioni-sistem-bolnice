@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,7 +27,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Medication>(MedicationRepository.Instance.getApprovedMedicine());
+            MedicineView = new ObservableCollection<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
 
         }
         

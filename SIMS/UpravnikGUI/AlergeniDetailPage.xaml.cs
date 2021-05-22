@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,7 +24,7 @@ namespace SIMS.UpravnikGUI
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            alergen = AllergenRepository.Instance.FindById(ID);
+            alergen = AllergenFileRepository.Instance.FindById(ID);
             InitializeComponent();
 
             NazivText.Text = alergen.Name;
@@ -49,7 +50,7 @@ namespace SIMS.UpravnikGUI
             alergen.Name = NazivText.Text;
             alergen.ID = IDText.Text;
 
-            AllergenRepository.Instance.CreateOrUpdate(alergen);
+            AllergenFileRepository.Instance.CreateOrUpdate(alergen);
             UpravnikWindow.Instance.SetContent(new AlergeniPage());
             UpravnikWindow.Instance.SetLabel("Alergeni");
         }

@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,7 +32,7 @@ namespace SIMS.PacijentGUI
         public TerminZaPreporuku(DateTime vrijeme)
         {
             this.vrijeme = vrijeme;
-            this.idLekara = new DoctorRepository().getAllId();
+            this.idLekara = new DoctorFileRepository().getAllId();
         }
 
         public List<string> IdLekara { get => idLekara; set => idLekara = value; }
@@ -48,12 +50,12 @@ namespace SIMS.PacijentGUI
         {
             InitializeComponent();
             pacijent = p;
-            termini = new AppointmentRepository().GetAll();
+            termini = new AppointmentFileRepository().GetAll();
             preporuceniTermini = new List<Appointment>();
             //ListaDoktora.IsHitTestVisible = false;
             terminZaPreporuku = new List<TerminZaPreporuku>();
         
-            lekari = new DoctorRepository().GetAll();
+            lekari = new DoctorFileRepository().GetAll();
             this.DataContext = this;
         }
 
@@ -171,7 +173,7 @@ namespace SIMS.PacijentGUI
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = AppointmentType.pregled;
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Lekar = new DoctorRepository().FindById(idLekara);
+                termin.Lekar = new DoctorFileRepository().FindById(idLekara);
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
                 termin.Prostorija = new Room("1",RoomType.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");

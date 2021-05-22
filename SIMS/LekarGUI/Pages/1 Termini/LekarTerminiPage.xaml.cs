@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,21 +50,21 @@ namespace SIMS.LekarGUI
             //Tabela pregleda
 
             this.DataContext = this;
-            terminiView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.GetAll());
+            terminiView = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
             refreshView();
         }
 
         private void refreshView()
         {
             terminiView.Clear();
-            List<Appointment> temp = new List<Appointment>(AppointmentRepository.Instance.ReadByDoctor(lekarUser));
+            List<Appointment> temp = new List<Appointment>(AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser));
             
             foreach (Appointment t in temp)
             {
                 if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
 
-                t.Pacijent = new PatientRepository().FindById(t.Pacijent.Jmbg);
+                t.Pacijent = new PatientFileRepository().FindById(t.Pacijent.Jmbg);
                 t.Prostorija = new RoomRepository().FindById(t.Prostorija.Number);
             }
         }
@@ -104,7 +105,7 @@ namespace SIMS.LekarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)dataGridTermini.SelectedItem;
-                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
+                    AppointmentFileRepository.Instance.Delete(toDelete.TerminKey);
                     refreshView();
                     MessageBox.Show("Termin je uspešno otkazan!");
                 }
@@ -114,7 +115,7 @@ namespace SIMS.LekarGUI
 
         public void dodajTermin(Appointment termin)
         {
-            AppointmentRepository.Instance.Save(termin);
+            AppointmentFileRepository.Instance.Save(termin);
             refreshView();
             MessageBox.Show("Termin uspešno zakazan.");
         }
@@ -139,7 +140,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 Appointment t = (Appointment)dataGridTermini.SelectedItem;
-                Patient p = PatientRepository.Instance.FindById(t.Pacijent.Jmbg);
+                Patient p = PatientFileRepository.Instance.FindById(t.Pacijent.Jmbg);
 
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }

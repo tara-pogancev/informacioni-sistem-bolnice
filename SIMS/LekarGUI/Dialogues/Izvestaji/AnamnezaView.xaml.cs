@@ -9,7 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {
@@ -28,8 +29,8 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             LabelDatum.Content = "Datum pregleda: " + a.Date;
 
             LabelPacijent.Content = "Pacijent: " + a.ImePacijenta;
-            Appointment t = AppointmentRepository.Instance.FindById(a.IdAnamneze);
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientRepository.Instance.FindById(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            Appointment t = AppointmentFileRepository.Instance.FindById(a.IdAnamneze);
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
 
             GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             GlavneTegobe.Inlines.Add("   ");

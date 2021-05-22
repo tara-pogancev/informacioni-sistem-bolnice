@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -98,8 +100,8 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.Termin = new AppointmentRepository().FindById(anamneza.Termin.TerminKey);
-            anamneza.Termin.Lekar = new DoctorRepository().FindById(anamneza.Termin.Lekar.Jmbg);
+            anamneza.Termin = new AppointmentFileRepository().FindById(anamneza.Termin.TerminKey);
+            anamneza.Termin.Lekar = new DoctorFileRepository().FindById(anamneza.Termin.Lekar.Jmbg);
             anamneza.Termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
         }
 

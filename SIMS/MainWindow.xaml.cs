@@ -1,5 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.PacijentGUI;
+using SIMS.Repositories.DoctorRepo;
 using SIMS.UpravnikGUI;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace SIMS
             String pass = password.Password;
 
             //impelemntacija za pacijenta
-            Patient pacijent = PatientRepository.Instance.ReadUser(user);
+            Patient pacijent = PatientFileRepository.Instance.ReadUser(user);
             if (pacijent != null && pass.Equals(pacijent.Lozinka))
             {
                 if (pacijent.BanovanKorisnik)
@@ -56,7 +57,7 @@ namespace SIMS
 
 
             //impelemntacija za upravnika
-            Manager upravnik = ManagerRepository.Instance.ReadUser(user);
+            Manager upravnik = ManagerFileRepository.Instance.ReadUser(user);
             if (upravnik != null && pass.Equals(upravnik.Lozinka))
             {
                 UpravnikWindow.Instance.Show();
@@ -65,7 +66,7 @@ namespace SIMS
             }
 
             //impelementacija za doktora
-            Doctor lekar = DoctorRepository.Instance.ReadUser(user);
+            Doctor lekar = DoctorFileRepository.Instance.ReadUser(user);
             if (lekar != null && pass.Equals(lekar.Lozinka))
             {
                 LekarUI lekarUI = LekarUI.GetInstance(lekar);

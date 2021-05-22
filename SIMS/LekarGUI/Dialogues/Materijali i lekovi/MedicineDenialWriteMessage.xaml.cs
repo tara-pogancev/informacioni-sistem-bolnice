@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -39,7 +39,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             List<String> notificationTarget = getUpravnikKeys();
 
             Notification notification = new Notification(notificationAuthor, DateTime.Now, notificationText, notificationTarget);
-            NotificationRepository.Instance.Save(notification);
+            NotificationFileRepository.Instance.Save(notification);
 
             this.Close();
             MessageBox.Show("Poruka uspešno poslata!");
@@ -50,7 +50,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             List<String> retVal = new List<String>();
 
-            foreach(Manager upravnik in ManagerRepository.Instance.GetAll())
+            foreach(Manager upravnik in ManagerFileRepository.Instance.GetAll())
             {
                 retVal.Add(upravnik.Jmbg);
             }

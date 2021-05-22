@@ -4,13 +4,14 @@
 // Purpose: Definition of Class PacijentStorage
 
 using Newtonsoft.Json;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
-    public class PatientRepository : GenericFileRepository<string, Patient, PatientRepository>
+    public class PatientFileRepository : GenericFileRepository<string, Patient, PatientFileRepository>,IPatientRepository
     {
         protected override string getKey(Patient entity)
         {
@@ -24,7 +25,7 @@ namespace Model
 
         protected override void RemoveReferences(string key)
         {
-            AppointmentRepository storageT = new AppointmentRepository();
+            AppointmentFileRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Pacijent.Jmbg == key)

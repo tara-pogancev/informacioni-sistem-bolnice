@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -46,7 +47,7 @@ namespace SIMS.SekretarGUI
 
         private void FillAllergenFields(Patient patient)
         {
-            _allergens = new ObservableCollection<Allergen>(AllergenRepository.Instance.GetAll());
+            _allergens = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
             allergensComboBox.DisplayMemberPath = "Naziv";
@@ -86,7 +87,7 @@ namespace SIMS.SekretarGUI
         private void UpdatePatient_Click(object sender, RoutedEventArgs e)
         {
             Patient pacijent = UpdatePatientFromUserInput();
-            PatientRepository.Instance.Update(pacijent);
+            PatientFileRepository.Instance.Update(pacijent);
             SekretarPacijentiPage.GetInstance().RefreshView();
 
             NavigationService.Navigate(SekretarPacijentiPage.GetInstance());

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
-    public class InventoryRepository : GenericFileRepository<string, Inventory, InventoryRepository>
+    public class InventoryFileRepository : GenericFileRepository<string, Inventory, InventoryFileRepository>,IInventoryRepository
     {
         protected override string getPath()
         {
@@ -25,11 +25,11 @@ namespace Model
                 }
             }
 
-            foreach (var command in InventoryMovingCommandStorage.Instance.ReadAll().Values)
+            foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
             {
                 if (command.OpremaID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.Delete(command);
+                    InventoryMovingCommandFileRepository.Instance.Delete(command);
                 }
             }
         }

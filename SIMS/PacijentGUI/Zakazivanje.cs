@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,7 +31,7 @@ namespace SIMS.PacijentGUI
         public Zakazivanje(Patient p)
         {
             InitializeComponent();
-            DoctorRepository lk = new DoctorRepository();
+            DoctorFileRepository lk = new DoctorFileRepository();
             slobodneProstorije= new RoomRepository().UcitajProstorijeZaPreglede();
             lekari = new List<Doctor>();
             lekari = lk.GetAll();
@@ -77,7 +79,7 @@ namespace SIMS.PacijentGUI
             termin.Prostorija.Serialize = false;
             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
-            AppointmentRepository.Instance.Save(termin);
+            AppointmentFileRepository.Instance.Save(termin);
         }
 
         private void ListaDoktora_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -94,7 +96,7 @@ namespace SIMS.PacijentGUI
                 List<Appointment> nedostupniTermini = new List<Appointment>();
                 dostupniTermini = new ObservableCollection<string>( new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
                 
-                List<Appointment> sviTermini = new AppointmentRepository().GetAll();
+                List<Appointment> sviTermini = new AppointmentFileRepository().GetAll();
                 if (slobodneProstorije.Count == 0)
                 {
                     dostupniTermini.Clear();
@@ -134,7 +136,7 @@ namespace SIMS.PacijentGUI
             }
 
             DateTime zakazanoVrijeme =DateTime.Parse( OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
-            foreach(Appointment termin in new AppointmentRepository().GetAll())
+            foreach(Appointment termin in new AppointmentFileRepository().GetAll())
             {
                 if (termin.PocetnoVreme.Equals(zakazanoVrijeme))
                 {

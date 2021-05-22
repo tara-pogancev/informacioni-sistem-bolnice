@@ -4,11 +4,13 @@
 // Purpose: Definition of Class Lekar
 
 using Newtonsoft.Json;
-using SIMS.Repositories.DoctorRepo.DoctorSurveyRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class Doctor : LoggedUser
     {
@@ -33,7 +35,7 @@ namespace Model
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            retVal = AppointmentRepository.Instance.ReadByDoctor(this);
+            retVal = AppointmentFileRepository.Instance.GetDoctorAppointments(this);
 
             return retVal;
 
@@ -42,7 +44,7 @@ namespace Model
         // Salje informacije o novom terminu
         public Boolean IsFree(Appointment terminNew)
         {
-            foreach (Appointment t in AppointmentRepository.Instance.ReadByDoctor(this))
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
             {
                 if (terminNew.KrajnjeVreme > t.PocetnoVreme && terminNew.KrajnjeVreme <= t.KrajnjeVreme)
                     return false;
@@ -85,7 +87,7 @@ namespace Model
         // Salje izmenjen termin ali njega ignorise prilikom provere
         public Boolean IsFreeUpdate(Appointment terminNew)
         {
-            foreach (Appointment t in AppointmentRepository.Instance.ReadByDoctor(this))
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
             {
                 if (t.TerminKey != terminNew.TerminKey)
                 {
@@ -118,23 +120,23 @@ namespace Model
         { 
             get 
             {
-                if (SpecijalizacijaLekara == Model.Specialization.OpstaPraksa)
+                if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.OpstaPraksa)
                     return "Lekar opšte prakse";
-                else if (SpecijalizacijaLekara == Model.Specialization.Hirurg)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Hirurg)
                     return "Hirurg";
-                else if (SpecijalizacijaLekara == Model.Specialization.Internista)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Internista)
                     return "Internista";
-                else if (SpecijalizacijaLekara == Model.Specialization.Dermatolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Dermatolog)
                     return "Dermatolog";
-                else if (SpecijalizacijaLekara == Model.Specialization.Kardiolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Kardiolog)
                     return "Kardiolog";
-                else if (SpecijalizacijaLekara == Model.Specialization.Otorinolaringolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Otorinolaringolog)
                     return "Otorinolaringolog";
-                else if (SpecijalizacijaLekara == Model.Specialization.Stomatolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Stomatolog)
                     return "Stomatolog";
-                else if (SpecijalizacijaLekara == Model.Specialization.Urolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Urolog)
                     return "Urolog";
-                else if (SpecijalizacijaLekara == Model.Specialization.Ginekolog)
+                else if (SpecijalizacijaLekara == SIMS.Repositories.PatientRepo.Specialization.Ginekolog)
                     return "Ginekolog";
                 else
                     return "Neurolog";

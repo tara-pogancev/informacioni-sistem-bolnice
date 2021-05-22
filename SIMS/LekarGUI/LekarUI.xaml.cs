@@ -1,5 +1,5 @@
 ﻿
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI;
 using System;
 using System.Collections.Generic;

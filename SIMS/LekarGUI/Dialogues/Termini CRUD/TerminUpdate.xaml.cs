@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -22,10 +24,10 @@ namespace SIMS.LekarGUI
             InitializeComponent();
             this.termin = t;
 
-            DoctorRepository storageL = new DoctorRepository();
+            IDoctorRepository storageL = new DoctorFileRepository();
             lekari = storageL.GetAll();
 
-            PatientRepository storageP = new PatientRepository();
+            PatientFileRepository storageP = new PatientFileRepository();
             pacijenti = storageP.GetAll();
 
             prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
@@ -74,7 +76,7 @@ namespace SIMS.LekarGUI
                     termin.Pacijent.Serijalizuj = false;
                     termin.Prostorija.Serialize = false;
 
-                    AppointmentRepository.Instance.Update(termin);
+                    AppointmentFileRepository.Instance.Update(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }

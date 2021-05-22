@@ -11,8 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Filters;
+using SIMS.Repositories.AllergenRepo;
 
 namespace SIMS.UpravnikGUI
 {
@@ -23,7 +24,7 @@ namespace SIMS.UpravnikGUI
         public AlergeniPage()
         {
             InitializeComponent();
-            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.GetAll());
+            alergeni = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
             tabelaAlergeni.ItemsSource = alergeni;
         }
 
@@ -36,8 +37,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiAlergen_Click(object sender, RoutedEventArgs e)
         {
             Allergen SelectedAlergen = tabelaAlergeni.SelectedItem as Allergen;
-            AllergenRepository.Instance.Delete(SelectedAlergen.ID);
-            alergeni = new ObservableCollection<Allergen>(AllergenRepository.Instance.GetAll());
+            AllergenFileRepository.Instance.Delete(SelectedAlergen.ID);
+            alergeni = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
             tabelaAlergeni.ItemsSource = alergeni;
         }
 

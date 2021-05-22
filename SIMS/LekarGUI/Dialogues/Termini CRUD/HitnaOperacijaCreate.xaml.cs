@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,9 +40,9 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             AvailableAppointments = new ObservableCollection<Appointment>();
             AvailableComboBox.DataContext = AvailableAppointments;
-            SpecializationList = DoctorRepository.Instance.GetAvailableSpecializationString();
+            SpecializationList = DoctorFileRepository.Instance.GetAvailableSpecializationString();
             SpecializationList.Remove("Lekar opšte prakse");
-            SpecializationEnumList = DoctorRepository.Instance.GetAvailableSpecialization();
+            SpecializationEnumList = DoctorFileRepository.Instance.GetAvailableSpecialization();
             SpecializationEnumList.Remove(Specialization.OpstaPraksa);
 
             SpecializationComboBox.ItemsSource = SpecializationList;
@@ -74,7 +76,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 Appointment selecetdApp = (Appointment)AvailableComboBox.SelectedItem;
                 selecetdApp.InitData();
 
-                AppointmentRepository.Instance.Save(selecetdApp);
+                AppointmentFileRepository.Instance.Save(selecetdApp);
 
                 SendNotification(selecetdApp);
 
@@ -93,7 +95,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 ("Zakazana hitna operacija [" + selecetdApp.Datum + " " + selecetdApp.Vrijeme + ", " + selecetdApp.NazivProstorije + "] za pacijenta " 
                 + selecetdApp.ImePacijenta + ", vodeći lekar " + selecetdApp.ImeLekara + "."), target);
 
-            NotificationRepository.Instance.Save(notification);
+            NotificationFileRepository.Instance.Save(notification);
         }
 
         private void DurationChange(object sender, SelectionChangedEventArgs e)
@@ -133,7 +135,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            foreach (Doctor doctor in DoctorRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
+            foreach (Doctor doctor in DoctorFileRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
                 List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments();
                 int counterByDoctor = 0;

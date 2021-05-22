@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.UpravnikGUI
 {
@@ -29,7 +29,7 @@ namespace SIMS.UpravnikGUI
         }
         public UpravnikOpremaDetailPage(string Id)
         {
-            oprema = InventoryRepository.Instance.FindById(Id);
+            oprema = InventoryFileRepository.Instance.FindById(Id);
             InitializeComponent();
 
             ID.Text = oprema.Id;
@@ -52,7 +52,7 @@ namespace SIMS.UpravnikGUI
             oprema.Naziv = Naziv.Text;
             oprema.TipOpreme = Conversion.StringToTipOpreme(Tip.Text);
 
-            InventoryRepository.Instance.CreateOrUpdate(oprema);
+            InventoryFileRepository.Instance.CreateOrUpdate(oprema);
 
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
             UpravnikWindow.Instance.SetLabel("Oprema");

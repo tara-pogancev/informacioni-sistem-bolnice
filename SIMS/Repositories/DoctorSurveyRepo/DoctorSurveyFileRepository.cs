@@ -1,15 +1,14 @@
-﻿using Model;
-using SIMS.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Model;
 
-namespace SIMS.Repositories.DoctorRepo.DoctorSurveyRepo
+
+namespace SIMS.Repositories.DoctorSurveyRepo
 {
-    class DoctorSurveyFileRepository : GenericFileRepository<string, DoctorSurvey, DoctorSurveyRepository>,IDoctorSurveyRepository
+    class DoctorSurveyFileRepository : GenericFileRepository<string, DoctorSurvey, DoctorSurveyFileRepository>,IDoctorSurveyRepository
     {
-        
-
         protected override string getKey(DoctorSurvey entity)
         {
             return entity.IdAnkete;
@@ -17,7 +16,7 @@ namespace SIMS.Repositories.DoctorRepo.DoctorSurveyRepo
 
         protected override string getPath()
         {
-            return @".\..\..\..\Data\anketaLekara.json";
+             return @".\..\..\..\Data\anketaLekara.json";
         }
 
         protected override void RemoveReferences(string key)
@@ -26,4 +25,3 @@ namespace SIMS.Repositories.DoctorRepo.DoctorSurveyRepo
         }
     }
 }
-

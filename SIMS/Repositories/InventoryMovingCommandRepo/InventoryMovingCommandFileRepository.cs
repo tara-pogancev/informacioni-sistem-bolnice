@@ -1,15 +1,15 @@
-﻿using Model;
-using SIMS.Daemon.PremestajOpreme;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Daemon;
+using SIMS.Daemon.PremestajOpreme;
+using SIMS.Repositories.InventoryMovingCommandRepo;
 
-namespace SIMS.Repositories.InventoryMovingCommandRepo
+namespace SIMS.Repositories.PatientRepo
 {
-    class InventoryMovingCommandFileRepository : GenericFileRepository<string, InventoryMovingCommand, InventoryMovingCommandStorage>,IInventoryMovingCommandRepository
+    class InventoryMovingCommandFileRepository : GenericFileRepository<string, InventoryMovingCommand, InventoryMovingCommandFileRepository>,IInventoryMovingCommandRepository
     {
-       
-
         protected override string getKey(InventoryMovingCommand entity)
         {
             return entity.OpremaID + "_" + entity.DstID + "_" + entity.SrcID + "_" + entity.DateTime;
@@ -24,5 +24,4 @@ namespace SIMS.Repositories.InventoryMovingCommandRepo
         {
         }
     }
-
 }

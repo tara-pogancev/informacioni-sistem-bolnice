@@ -1,29 +1,14 @@
-﻿using Model;
-using SIMS.Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.PacijentGUI;
+using SIMS.Repositories.HospitalSurveyRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Repositories.HospitalSurveyRepo
+namespace SIMS.Model
 {
-    class HospitalSurveyFileRepository : GenericFileRepository<string, HospitalSurvey, HospitalSurveyRepository>,IHospitalSurveyRepository
+    class HospitalSurveyFileRepository : GenericFileRepository<string, HospitalSurvey, HospitalSurveyFileRepository>,IHospitalSurveyRepository
     {
-        
-
-        public List<HospitalSurvey> getPatientSurveys(Patient pacijent)
-        {
-            List<HospitalSurvey> hospitalSurveys = base.GetAll();
-            for (int i = 0; i < hospitalSurveys.Count; i++)
-            {
-                if (hospitalSurveys[i].IdVlasnika != pacijent.Jmbg)
-                {
-                    hospitalSurveys.RemoveAt(i);
-                    i--;
-                }
-            }
-            return hospitalSurveys;
-        }
-
         protected override string getKey(HospitalSurvey entity)
         {
             return entity.IdAnkete;
@@ -39,6 +24,20 @@ namespace SIMS.Repositories.HospitalSurveyRepo
             throw new NotImplementedException();
         }
 
-    
+        public List<HospitalSurvey> GetPatientSurveys(Patient pacijent)
+        {
+            List<HospitalSurvey> anketeBolnice = GetAll();
+            for(int i = 0; i < anketeBolnice.Count; i++)
+            {
+                if (anketeBolnice[i].IdVlasnika != pacijent.Jmbg)
+                {
+                    anketeBolnice.RemoveAt(i);
+                    i--;
+                }
+            }
+            return anketeBolnice;
+        } 
+
+
     }
 }

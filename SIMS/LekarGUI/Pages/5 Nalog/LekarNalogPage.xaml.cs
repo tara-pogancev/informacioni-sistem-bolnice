@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace SIMS.LekarGUI
 
         private void Button(object sender, RoutedEventArgs e)
         {
-            var window = new ActionsAfterReport(PatientRepository.Instance.GetAll()[0]);
+            var window = new ActionsAfterReport(PatientFileRepository.Instance.GetAll()[0]);
             window.Show();
         }
 

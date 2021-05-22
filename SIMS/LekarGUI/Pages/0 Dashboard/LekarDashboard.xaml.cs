@@ -1,7 +1,8 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Pages;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -47,7 +48,7 @@ namespace SIMS.LekarGUI
         public void setAktivanTermin()
         {
             //TODO uraditi varijaciju
-            List<Appointment> termini = AppointmentRepository.Instance.ReadByDoctor(lekarUser);
+            List<Appointment> termini = AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser);
 
             foreach (Appointment t in termini)
             {
@@ -73,7 +74,7 @@ namespace SIMS.LekarGUI
 
         private void RefreshGraphs1()
         {
-            List<Appointment> termini = AppointmentRepository.Instance.ReadByDoctor(lekarUser);
+            List<Appointment> termini = AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser);
 
             int evidentirani = 0;
             int ukupno = termini.Count;
@@ -94,14 +95,14 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(AppointmentRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.pregled, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.pregled, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
 
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(AppointmentRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.operacija, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.operacija, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
 
                 }

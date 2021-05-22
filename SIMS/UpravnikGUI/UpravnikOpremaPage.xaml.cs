@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Filters;
 
 namespace SIMS.UpravnikGUI
@@ -25,7 +25,7 @@ namespace SIMS.UpravnikGUI
         public UpravnikOpremaPage()
         {
             InitializeComponent();
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.GetAll());
+            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             tabelaOpreme.ItemsSource = opreme;
         }
 
@@ -38,8 +38,8 @@ namespace SIMS.UpravnikGUI
         private void Izbrisi_Click(object sender, RoutedEventArgs e)
         {
             Inventory SelectedOprema = tabelaOpreme.SelectedItem as Inventory;
-            InventoryRepository.Instance.Delete(SelectedOprema.Id);
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.GetAll());
+            InventoryFileRepository.Instance.Delete(SelectedOprema.Id);
+            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             tabelaOpreme.ItemsSource = opreme;
         }
 
@@ -53,7 +53,7 @@ namespace SIMS.UpravnikGUI
             }
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.Id));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.Id);
-            opreme = new ObservableCollection<Inventory>(InventoryRepository.Instance.GetAll());
+            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             tabelaOpreme.ItemsSource = opreme;
         }
 

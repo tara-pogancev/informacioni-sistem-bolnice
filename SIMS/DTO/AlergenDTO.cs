@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AllergenRepo;
 
 namespace SIMS.DTO
 {
@@ -27,7 +28,7 @@ namespace SIMS.DTO
         {
             List<AlergenDTO> retVal = new List<AlergenDTO>();
 
-            foreach (Allergen currentAlergen in AllergenRepository.Instance.GetAll())
+            foreach (Allergen currentAlergen in AllergenFileRepository.Instance.GetAll())
                 retVal.Add(new AlergenDTO(currentAlergen, medicine));
 
             return retVal;

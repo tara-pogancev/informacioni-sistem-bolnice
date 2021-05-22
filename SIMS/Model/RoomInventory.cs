@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     class RoomInventory
     {

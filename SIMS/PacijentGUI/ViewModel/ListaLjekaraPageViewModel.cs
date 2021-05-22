@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;

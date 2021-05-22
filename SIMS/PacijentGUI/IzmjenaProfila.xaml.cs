@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -53,7 +54,7 @@ namespace SIMS.PacijentGUI
             
             foreach(String alergen in pacijent.Alergeni)
             {
-                Allergen ucitaniAlergen = new AllergenRepository().FindById(alergen);
+                Allergen ucitaniAlergen = new AllergenFileRepository().FindById(alergen);
                 alergeni += ucitaniAlergen.Name;
                 alergeni += ", ";
 
@@ -79,7 +80,7 @@ namespace SIMS.PacijentGUI
             pacijent.Telefon = BrojTelefonaBox.Text;
             pacijent.Adresa.Street= AdresaBox.Text.Split(" ")[0];
             pacijent.Adresa.Number = AdresaBox.Text.Split(" ")[1];
-            new PatientRepository().Update(pacijent);
+            new PatientFileRepository().Update(pacijent);
             NavigationService.GoBack();
 
         }

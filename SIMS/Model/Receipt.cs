@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class Receipt
     {
@@ -47,8 +48,8 @@ namespace Model
 
         public void InitData()
         {
-            Lekar = DoctorRepository.Instance.FindById(Lekar.Jmbg);
-            Pacijent = PatientRepository.Instance.FindById(Pacijent.Jmbg);
+            Lekar = DoctorFileRepository.Instance.FindById(Lekar.Jmbg);
+            Pacijent = PatientFileRepository.Instance.FindById(Pacijent.Jmbg);
         }
 
     }

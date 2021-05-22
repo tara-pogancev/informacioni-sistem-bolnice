@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,7 +14,7 @@ namespace SIMS.SekretarGUI
         private void AddGuest_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text);
-            PatientRepository.Instance.Save(patient);
+            PatientFileRepository.Instance.Save(patient);
             SekretarPacijentiPage.GetInstance().RefreshView();
 
             NavigationService.GoBack();

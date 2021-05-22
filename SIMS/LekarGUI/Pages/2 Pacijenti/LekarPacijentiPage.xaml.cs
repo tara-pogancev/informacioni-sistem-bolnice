@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using System;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            PacijentiView = new ObservableCollection<Patient>(PatientRepository.Instance.GetAll());
+            PacijentiView = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
 
         }
 
@@ -133,7 +133,7 @@ namespace SIMS.LekarGUI
         {
             PacijentiView.Clear();
 
-            foreach(Patient patient in PatientRepository.Instance.GetAll())
+            foreach(Patient patient in PatientFileRepository.Instance.GetAll())
             {
                 PacijentiView.Add(patient);
             }
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI
             PacijentiView.Clear();
             filter = filter.ToUpper();
 
-            foreach (Patient patient in PatientRepository.Instance.GetAll())
+            foreach (Patient patient in PatientFileRepository.Instance.GetAll())
             {
                 if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
                     PacijentiView.Add(patient);

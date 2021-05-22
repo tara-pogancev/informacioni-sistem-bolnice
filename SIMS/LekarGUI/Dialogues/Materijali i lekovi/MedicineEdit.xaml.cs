@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.DTO;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
@@ -39,7 +39,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             NewComponentsView = new ObservableCollection<AlergenDTO>();
             CurrentComponentsView = new ObservableCollection<AlergenDTO>();
-            MedicineSubstitutionList = new List<Medication>(MedicationRepository.Instance.getApprovedMedicine());
+            MedicineSubstitutionList = new List<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
 
             RefreshView();
 
@@ -47,7 +47,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private static String GetSubstituteName(Medication medicine)
         {
-            return MedicationRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
         }
 
         public void RefreshView()
@@ -103,7 +103,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
             SetSubstituteMedicine();
-            MedicationRepository.Instance.Update(medicine);
+            MedicationFileRepository.Instance.Update(medicine);
 
             this.Close();
             MessageBox.Show("Lek uspešno izmenjen!");

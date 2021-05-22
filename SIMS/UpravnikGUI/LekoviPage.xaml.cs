@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Filters;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace SIMS.UpravnikGUI
         public LekoviPage()
         {
             InitializeComponent();
-            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.GetAll());
+            lekovi = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetAll());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
@@ -36,8 +36,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiLek_Click(object sender, RoutedEventArgs e)
         {
             Medication SelectedLek = tabelaLekovi.SelectedItem as Medication;
-            MedicationRepository.Instance.Delete(SelectedLek.MedicineID);
-            lekovi = new ObservableCollection<Medication>(MedicationRepository.Instance.GetAll());
+            MedicationFileRepository.Instance.Delete(SelectedLek.MedicineID);
+            lekovi = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetAll());
             tabelaLekovi.ItemsSource = lekovi;
         }
 

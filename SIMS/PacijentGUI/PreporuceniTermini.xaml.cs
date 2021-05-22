@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -47,10 +48,10 @@ namespace SIMS.PacijentGUI
 
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentRepository trm = new AppointmentRepository();
+            AppointmentFileRepository trm = new AppointmentFileRepository();
             trm.Save(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
-            AppointmentRepository terminStorage = new AppointmentRepository();
+            AppointmentFileRepository terminStorage = new AppointmentFileRepository();
         }
     }
 }

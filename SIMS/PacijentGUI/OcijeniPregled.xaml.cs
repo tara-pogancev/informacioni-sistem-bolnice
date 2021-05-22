@@ -1,5 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Model;
+using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,7 +45,7 @@ namespace SIMS.PacijentGUI
             anketaLekara.IdAnkete = anketaLekara.Termin.TerminKey;
             anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
             anketaLekara.DoctorId = anketaLekara.Termin.Lekar.Jmbg;
-            new DoctorSurveyRepository().Save(anketaLekara);
+            new DoctorSurveyFileRepository().Save(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
         }
     }

@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
 
 namespace SIMS.LekarGUI.Pages

@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -16,8 +18,8 @@ namespace SIMS.SekretarGUI
         {
             InitializeComponent();
 
-            _doctors = DoctorRepository.Instance.GetAll();
-            _patients = PatientRepository.Instance.GetAll();
+            _doctors = DoctorFileRepository.Instance.GetAll();
+            _patients = PatientFileRepository.Instance.GetAll();
 
             _rooms = new List<Room>(RoomRepository.Instance.ReadAll().Values);
 
@@ -40,7 +42,7 @@ namespace SIMS.SekretarGUI
             Appointment appointment = CreateAppointmentFromUserInput();
             if (IsAppointmentValid(appointment))
             {
-                AppointmentRepository.Instance.Save(appointment);
+                AppointmentFileRepository.Instance.Save(appointment);
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 NavigationService.Navigate(SekretarTerminiPage.GetInstance());
@@ -72,7 +74,7 @@ namespace SIMS.SekretarGUI
 
         private bool IsAppointmentValid(Appointment appointment)
         {
-            List<Appointment> appointments = AppointmentRepository.Instance.GetAll();
+            List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment a in appointments)
             {
                 if (a.KrajnjeVreme > appointment.PocetnoVreme && a.PocetnoVreme < appointment.KrajnjeVreme)

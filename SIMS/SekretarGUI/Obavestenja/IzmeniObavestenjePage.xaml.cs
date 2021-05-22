@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,10 +28,10 @@ namespace SIMS.SekretarGUI
             _notifications = notifications;
             _notification = notification;
 
-            _patients = PatientRepository.Instance.GetAll();
-            _doctors = DoctorRepository.Instance.GetAll();
+            _patients = PatientFileRepository.Instance.GetAll();
+            _doctors = DoctorFileRepository.Instance.GetAll();
             _secretaries = SecretaryRepository.Instance.GetAll();
-            _directors = ManagerRepository.Instance.GetAll();
+            _directors = ManagerFileRepository.Instance.GetAll();
 
             SetRolesForNotificationTargets();
 
@@ -110,10 +111,10 @@ namespace SIMS.SekretarGUI
             List<string> targets = UpdateNotificationTargets();
             
             _notifications.Remove(_notification);
-            NotificationRepository.Instance.Delete(_notification.ID);
+            NotificationFileRepository.Instance.Delete(_notification.ID);
 
             _notification = new Notification("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), targets);
-            NotificationRepository.Instance.Save(_notification);
+            NotificationFileRepository.Instance.Save(_notification);
 
             NavigationService.Navigate(new SekretarObavestenjaPage(_secretary));
         }

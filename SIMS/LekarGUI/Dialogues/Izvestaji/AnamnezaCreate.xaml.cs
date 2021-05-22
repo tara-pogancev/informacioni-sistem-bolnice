@@ -9,8 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
+using SIMS.Repositories.AnamnesisRepository;
 
 namespace SIMS.LekarGUI
 {
@@ -33,7 +34,7 @@ namespace SIMS.LekarGUI
             else LabelDatum.Content = "Datum operacije: " + termin.Datum;
 
             LabelPacijent.Content = "Pacijent: " + termin.ImePacijenta;
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientRepository.Instance.FindById(termin.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(termin.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
 
         }
 
@@ -48,7 +49,7 @@ namespace SIMS.LekarGUI
                 Anamnesis a = new Anamnesis(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
                 a.Termin.Serijalizuj = false;
-                AnamnesisRepository.Instance.Save(a);
+                AnamnesisFileRepository.Instance.Save(a);
                 this.Close();
 
                 LekarUI.GetInstance().ChangeTab(3);

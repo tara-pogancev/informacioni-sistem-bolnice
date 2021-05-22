@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.LekarGUI
 {
@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI
             LabelPatient.Content = "Pacijent: " + this.patient.ImePrezime;
             LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Medication> availableMedicine = new List<Medication>(MedicationRepository.Instance.getApprovedMedicine());
+            List<Medication> availableMedicine = new List<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
             MedicineComboBox.ItemsSource = availableMedicine;
 
         }
@@ -58,7 +58,7 @@ namespace SIMS.LekarGUI
 
         private String GetSubstitutionName(Medication medicine)
         {
-            return MedicationRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
         }
 
         private void WriteReceipt()
@@ -88,7 +88,7 @@ namespace SIMS.LekarGUI
         private void SendNotification(Medication medicine)
         {
             Notification notification = new Notification("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
-            NotificationRepository.Instance.Save(notification);
+            NotificationFileRepository.Instance.Save(notification);
         }
     }
 }

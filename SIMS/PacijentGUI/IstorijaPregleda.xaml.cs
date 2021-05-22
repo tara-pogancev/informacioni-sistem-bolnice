@@ -1,5 +1,9 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Model;
+using SIMS.Repositories.AnamnesisRepository;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +31,7 @@ namespace SIMS.PacijentGUI
         public IstorijaPregledaView(Appointment termin)
         {
             this.termin = termin;
-            omogucenoOcjenjivanje = new DoctorSurveyRepository().FindById(termin.TerminKey) == null ? true : false;
+            omogucenoOcjenjivanje = new DoctorSurveyFileRepository().FindById(termin.TerminKey) == null ? true : false;
         }
 
         public Appointment Termin { get => termin; set => termin = value; }
@@ -44,7 +48,7 @@ namespace SIMS.PacijentGUI
         public IstorijaPregleda()
         {
             InitializeComponent();
-            zakazaniTermini = new AppointmentRepository().ReadByPatient(PocetnaStranica.getInstance().Pacijent);
+            zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(PocetnaStranica.getInstance().Pacijent);
             prikazPoDatumu();
             dobaviLekare();
             terminiZaPrikaz = formirajTermine(zakazaniTermini);
@@ -64,7 +68,7 @@ namespace SIMS.PacijentGUI
 
         private void dobaviLekare()//ucitavanje doktora iz fajla za svaki termin
         {
-            DoctorRepository lekarStorage = new DoctorRepository();
+            IDoctorRepository lekarStorage = new DoctorFileRepository();
             for (int i = 0; i < zakazaniTermini.Count; i++)
             {
                 zakazaniTermini[i].Lekar = lekarStorage.FindById(zakazaniTermini[i].Lekar.Jmbg);
@@ -88,7 +92,7 @@ namespace SIMS.PacijentGUI
 
         private void Detalji_Click(object sender, RoutedEventArgs e)
         {
-            AnamnesisRepository anamnezaStorage = new AnamnesisRepository();
+            IAnamnesisRepository anamnezaStorage = new AnamnesisFileRepository();
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
             Anamnesis anamneza=anamnezaStorage.FindById(selektovaniTermin.Termin.TerminKey);

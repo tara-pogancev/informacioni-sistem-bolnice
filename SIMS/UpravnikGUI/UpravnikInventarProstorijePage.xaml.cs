@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.Filters;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace SIMS.UpravnikGUI
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.GetAll());
+            SvaOprema = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             foreach (Inventory op in SvaOprema)
             {
                 op.BrojProstorije = Prostorija.Number;
@@ -66,7 +66,7 @@ namespace SIMS.UpravnikGUI
 
         internal void Update()
         {
-            SvaOprema = new ObservableCollection<Inventory>(InventoryRepository.Instance.GetAll());
+            SvaOprema = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             tabelaInventara.Items.Refresh();
         }
 

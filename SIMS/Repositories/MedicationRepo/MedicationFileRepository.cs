@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
-    class MedicationRepository : GenericFileRepository<string, Medication, MedicationRepository>
+    class MedicationFileRepository : GenericFileRepository<string, Medication, MedicationFileRepository>,IMedicationRepository
     {
         protected override string getKey(Medication entity)
         {

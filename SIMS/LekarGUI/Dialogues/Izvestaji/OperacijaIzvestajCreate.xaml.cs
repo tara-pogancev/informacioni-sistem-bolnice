@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using SIMS.Model;
 using System;

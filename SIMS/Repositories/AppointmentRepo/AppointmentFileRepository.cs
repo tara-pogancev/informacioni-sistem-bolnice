@@ -1,53 +1,93 @@
-﻿using Model;
+using SIMS.Repositories.PatientRepo;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Text.Json;
 
 namespace SIMS.Repositories.AppointmentRepo
 {
-    class IAppointmentFileRepository : GenericFileRepository<string, Appointment, IAppointmentFileRepository>, IAppointmentRepository
+    public class AppointmentFileRepository : GenericFileRepository<string, Appointment, AppointmentFileRepository>,IAppointmentRepository
     {
-       
+        protected override string getPath()
+        {
+            return @".\..\..\..\Data\termini.json";
+        }
+
+        public List<Appointment> GetPatientAppointments(Patient pacijent)
+        {
+            List<Appointment> termini = new List<Appointment>();
+
+            foreach (Appointment t in this.GetAll())
+            {
+                if (pacijent.EqualJmbg(t.Lekar.Jmbg))
+                    termini.Add(t);
+            }
+
+            return termini;
+        }
+
+
+        public List<Appointment> GetDoctorAppointments(Doctor lekar)
+        {
+            List<Appointment> termini = new List<Appointment>();
+
+            foreach(Appointment t in this.GetAll())
+            {
+                if (lekar.EqualJmbg(t.Lekar.Jmbg))
+                    termini.Add(t);
+            }
+
+            return termini;
+        }
 
         protected override string getKey(Appointment entity)
         {
             return entity.TerminKey;
         }
 
-        protected override string getPath()
-        {
-            return @".\..\..\..\Data\termini.json"; 
-        }
-
         protected override void RemoveReferences(string key)
         {
-            throw new NotImplementedException();
+            //Metoda jos uvek nije neophodna za klasu TerminStorage
+            return;
         }
 
-        public IEnumerable<Appointment> GetDoctorAppoinments(Doctor lekar)
-        {
-            List<Appointment> termini = new List<Appointment>();
+       
 
-            foreach (Appointment t in this.GetAll())
+        private int getAppointmentsCountByDate(DateTime date, AppointmentType tip, Doctor l)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(l))
             {
-                if (t.Lekar.EqualJmbg(lekar.Jmbg))
-                    termini.Add(t);
+                DateTime day = t.PocetnoVreme.Date;
+                if (t.VrstaTermina == tip && day == date)
+                    retVal.Add(t);
             }
 
-            return termini;
+            return retVal.Count;
         }
 
-        public IEnumerable<Appointment> GetPatientAppointments(Patient pacijent)
+        public List<int> GetAppointmentsCountForCurrentWeek(AppointmentType tip, Doctor l)
         {
-            List<Appointment> termini = new List<Appointment>();
+            List<int> retVal = new List<int>();
+            DateTime startOfWeek = GetStartOfWeek();
 
-            foreach (Appointment t in this.GetAll())
+            for (int i = 0; i < 7; i++)
             {
-                if (t.Pacijent.EqualJmbg(pacijent.Jmbg))
-                    termini.Add(t);
+                DateTime dayOfWeek = startOfWeek.AddDays(i);
+                retVal.Add(getAppointmentsCountByDate(dayOfWeek, tip, l));
             }
 
-            return termini;
+            return retVal;
         }
+
+        private static DateTime GetStartOfWeek()
+        {
+            return DateTime.Today.AddDays(-1 * (int)(DateTime.Today.DayOfWeek) + 1);
+        }
+
+        
     }
-}
+
+}      

@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -23,7 +23,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         public MedicinePreview(Medication medicine)
         {
             InitializeComponent();
-            medicine = MedicationRepository.Instance.FindById(medicine.MedicineID);
+            medicine = MedicationFileRepository.Instance.FindById(medicine.MedicineID);
 
             this.medicine = medicine;
 
@@ -41,7 +41,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private String GetSubstituteName(Medication medicine)
         {
-            return MedicationRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)

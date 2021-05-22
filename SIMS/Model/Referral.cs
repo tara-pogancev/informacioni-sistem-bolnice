@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,8 +31,8 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Doctor = DoctorRepository.Instance.FindById(Doctor.Jmbg);
-            Patient = PatientRepository.Instance.FindById(Patient.Jmbg);
+            Doctor = DoctorFileRepository.Instance.FindById(Doctor.Jmbg);
+            Patient = PatientFileRepository.Instance.FindById(Patient.Jmbg);
         }
 
         public Boolean IsRefferalValid()

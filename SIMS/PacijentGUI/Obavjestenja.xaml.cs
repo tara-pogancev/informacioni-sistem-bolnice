@@ -1,4 +1,4 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -67,7 +67,7 @@ namespace SIMS.PacijentGUI
             InitializeComponent();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             obavjestenja = new List<Notification>();
-            NotificationRepository obavestenjaStorage = new NotificationRepository();
+            NotificationFileRepository obavestenjaStorage = new NotificationFileRepository();
             obavjestenja = obavestenjaStorage.ReadByUser(pacijent.Jmbg);
             
             obavjestenja.Reverse();

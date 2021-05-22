@@ -1,10 +1,11 @@
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class RoomRepository : GenericFileRepository<string, Room, RoomRepository>
     {
@@ -20,7 +21,7 @@ namespace Model
 
         protected override void RemoveReferences(string key)
         {
-            AppointmentRepository storageT = new AppointmentRepository();
+            AppointmentFileRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Prostorija.Number == key)
@@ -37,11 +38,11 @@ namespace Model
                 }
             }
 
-            foreach (var command in InventoryMovingCommandStorage.Instance.ReadAll().Values)
+            foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
             {
                 if (command.DstID == key || command.SrcID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.Delete(command);
+                    InventoryMovingCommandFileRepository.Instance.Delete(command);
                 }
             }
         }

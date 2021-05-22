@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class Medication
     {
@@ -37,7 +38,7 @@ namespace Model
                 return "Nije navedeno";
 
             foreach (string a in Components)
-                componentsString += AllergenRepository.Instance.FindById(a).Name + ", ";
+                componentsString += AllergenFileRepository.Instance.FindById(a).Name + ", ";
             return componentsString.Remove(componentsString.Length - 2);
         }
 

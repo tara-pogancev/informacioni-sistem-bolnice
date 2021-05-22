@@ -1,11 +1,12 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AnamnesisRepository;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.AnamnesisRepository
 {
-    public class AnamnesisRepository : GenericFileRepository<string, Anamnesis, AnamnesisRepository>
+    public class AnamnesisFileRepository : GenericFileRepository<string, Anamnesis, AnamnesisFileRepository>,IAnamnesisRepository
     {
         protected override string getKey(Anamnesis entity)
         {
@@ -22,7 +23,7 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public List<Anamnesis> ReadByPatient(Patient p)
+        public List<Anamnesis> ReadByPatient(Patient patient)
         {
             List<Anamnesis> retVal = new List<Anamnesis>();
 
@@ -30,7 +31,7 @@ namespace Model
             {
                 a.InitData();
 
-                if (a.Termin.Pacijent.Jmbg == p.Jmbg)
+                if (a.Termin.Pacijent.Jmbg == patient.Jmbg)
                     retVal.Add(a);
             }
 

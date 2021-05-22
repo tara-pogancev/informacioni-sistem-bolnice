@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
-    public class NotificationRepository : GenericFileRepository<string, Notification, NotificationRepository>
+    public class NotificationFileRepository : GenericFileRepository<string, Notification, NotificationFileRepository>,INotificationRepository
     {
         protected override string getKey(Notification entity)
         {

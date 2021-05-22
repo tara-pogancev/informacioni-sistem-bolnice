@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Daemon.PremestajOpreme;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     class RoomInventoryRepository : GenericFileRepository<string, RoomInventory, RoomInventoryRepository>
     {

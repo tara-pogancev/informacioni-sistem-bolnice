@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.LekarGUI.Dialogues.Recepti_i_terapije;
 
 namespace SIMS.LekarGUI.Dialogues.Termini_CRUD

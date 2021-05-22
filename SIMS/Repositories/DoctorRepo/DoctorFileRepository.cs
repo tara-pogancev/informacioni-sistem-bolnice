@@ -1,11 +1,12 @@
-﻿using Model;
+﻿using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SIMS.Repositories.DoctorRepo
 {
-    class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorRepository>,IDoctorRepository
+    class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorFileRepository>,IDoctorRepository
     {
        
 
@@ -84,7 +85,7 @@ namespace SIMS.Repositories.DoctorRepo
 
         protected override void RemoveReferences(string key)
         {
-            AppointmentRepository storageT = new AppointmentRepository();
+            IAppointmentRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Lekar.Jmbg == key)

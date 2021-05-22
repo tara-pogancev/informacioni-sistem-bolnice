@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.Daemon.PremestajOpreme
 {
@@ -18,16 +18,16 @@ namespace SIMS.Daemon.PremestajOpreme
 
         public void PushCommand(InventoryMovingCommand command)
         {
-            InventoryMovingCommandStorage.Instance.CreateOrUpdate(command);
+            InventoryMovingCommandFileRepository.Instance.CreateOrUpdate(command);
         }
 
         public void Consistify()
         {
-            foreach (var command in InventoryMovingCommandStorage.Instance.ReadAll().Values)
+            foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
             {
                 if (command.DateTime <= DateTime.Now)
                 {
-                    InventoryMovingCommandStorage.Instance.Delete(command);
+                    InventoryMovingCommandFileRepository.Instance.Delete(command);
                     command.Execute();
                 }
             }

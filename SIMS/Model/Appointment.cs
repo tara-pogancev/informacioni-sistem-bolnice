@@ -5,11 +5,13 @@
 
 using Newtonsoft.Json;
 using SIMS.Model;
+using SIMS.Repositories.AnamnesisRepository;
+using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
    public class Appointment : INotifyPropertyChanged
    {
@@ -154,7 +156,7 @@ namespace Model
         {
             get
             {
-                if (AnamnesisRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportRepository.Instance.FindById(this.TerminKey) == null)
+                if (AnamnesisFileRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportRepository.Instance.FindById(this.TerminKey) == null)
                     return false;
                 else return true;
             }
@@ -206,9 +208,9 @@ namespace Model
 
         public void InitData()
         {
-            Pacijent = new PatientRepository().FindById(Pacijent.Jmbg);
+            Pacijent = new PatientFileRepository().FindById(Pacijent.Jmbg);
             Prostorija = new RoomRepository().FindById(Prostorija.Number);
-            Lekar = new DoctorRepository().FindById(Lekar.Jmbg);
+            Lekar = new DoctorFileRepository().FindById(Lekar.Jmbg);
         }
 
     }

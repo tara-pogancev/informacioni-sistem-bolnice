@@ -1,10 +1,13 @@
 ﻿using Newtonsoft.Json;
+using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 
-namespace Model
+namespace SIMS.Repositories.PatientRepo
 {
     public class Anamnesis
     {       
@@ -56,7 +59,7 @@ namespace Model
 
         public Appointment getTermin()
         {
-            return AppointmentRepository.Instance.FindById(Termin.TerminKey);
+            return AppointmentFileRepository.Instance.FindById(Termin.TerminKey);
         }
 
         [JsonIgnore]
@@ -123,9 +126,9 @@ namespace Model
 
         public void InitData()
         {
-            Termin =  new AppointmentRepository().FindById(IdAnamneze);
-            Termin.Pacijent = new PatientRepository().FindById(Termin.Pacijent.Jmbg);
-            Termin.Lekar = new DoctorRepository().FindById(Termin.Lekar.Jmbg);
+            Termin =  new AppointmentFileRepository().FindById(IdAnamneze);
+            Termin.Pacijent = new PatientFileRepository().FindById(Termin.Pacijent.Jmbg);
+            Termin.Lekar = new DoctorFileRepository().FindById(Termin.Lekar.Jmbg);
         }
     }
 }
