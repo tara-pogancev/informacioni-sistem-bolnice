@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Lekar
 
 using Newtonsoft.Json;
+using SIMS.Repositories.DoctorRepo.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 
@@ -12,17 +13,20 @@ namespace Model
     public class Doctor : LoggedUser
     {
         public int DaniGodisnjegOdmora { get; set; }
+        public double Grade { get; set; }
 
         public Specialization SpecijalizacijaLekara { get; set; }
 
         public Doctor()
         {
+            Grade = 0.0;
         }
 
         public Doctor(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa, Specialization specijalizacija, int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
         {
             DaniGodisnjegOdmora = daniGodisnjegOdmora;
             SpecijalizacijaLekara = specijalizacija;
+            Grade = 0.0;
         }
              
         public List<Appointment> getZauzetiTermini()
@@ -48,6 +52,34 @@ namespace Model
             }
 
             return true;
+        }
+
+        public void RecalulateGrade()
+        {
+            IDoctorSurveyRepository doctorSurveyRepository = new DoctorSurveyFileRepository();
+            double Grades = 0;
+            int counter = 0;
+            
+            foreach (var survey in doctorSurveyRepository.GetAll())
+            {
+                if (survey.DoctorId == this.Jmbg){
+                    Grades += survey.Ocjena;
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                this.Grade = 0;
+            }
+            else
+            {
+                this.Grade = Grades / counter;
+            }
+            
+   
+
+
+
         }
 
         // Salje izmenjen termin ali njega ignorise prilikom provere

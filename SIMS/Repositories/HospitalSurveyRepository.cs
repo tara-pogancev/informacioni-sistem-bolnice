@@ -25,7 +25,7 @@ namespace SIMS.Model
 
         public List<HospitalSurvey> getAnketeByPatient(Patient pacijent)
         {
-            List<HospitalSurvey> anketeBolnice = ReadEntities();
+            List<HospitalSurvey> anketeBolnice = GetAll();
             for(int i = 0; i < anketeBolnice.Count; i++)
             {
                 if (anketeBolnice[i].IdVlasnika != pacijent.Jmbg)

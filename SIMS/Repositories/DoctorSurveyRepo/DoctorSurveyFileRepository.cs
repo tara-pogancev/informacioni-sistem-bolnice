@@ -8,31 +8,7 @@ namespace SIMS.Repositories.DoctorRepo.DoctorSurveyRepo
 {
     class DoctorSurveyFileRepository : GenericFileRepository<string, DoctorSurvey, DoctorSurveyRepository>,IDoctorSurveyRepository
     {
-        public void Delete(string key)
-        {
-            this.DeleteEntity(key);
-        }
-
-        public DoctorSurvey FindById(string key)
-        {
-            return this.ReadEntity(key);
-        }
-
-        public IEnumerable<DoctorSurvey> GetAll()
-        {
-            return this.ReadEntities();
-        }
-
-
-        public void Save(DoctorSurvey entity)
-        {
-            this.CreateEntity(entity);
-        }
-
-        public void Update(DoctorSurvey entity)
-        {
-            this.UpdateEntity(entity);
-        }
+        
 
         protected override string getKey(DoctorSurvey entity)
         {

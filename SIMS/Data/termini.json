@@ -4,6 +4,7 @@
     "VremeTrajanja": 90,
     "VrstaTermina": 1,
     "Lekar": {
+      "Grade": 0.0,
       "Jmbg": "045210805048",
       "Serijalizuj": false
     },
@@ -29,6 +30,7 @@
     "VrstaTermina": 1,
     "Lekar": {
       "DaniGodisnjegOdmora": 20,
+      "Grade": 0.0,
       "SpecijalizacijaLekara": 4,
       "Ime": "Zack",
       "Prezime": "Fair",
@@ -81,5 +83,123 @@
     },
     "InicijalnoVrijeme": "2021-05-10T13:30:00",
     "TerminKey": "210510120319176415"
+  },
+  "210521021119": {
+    "PocetnoVreme": "2021-05-21T08:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Grade": 0.0,
+      "SpecijalizacijaLekara": 2,
+      "Ime": "Tara",
+      "Prezime": "Pogančev",
+      "Jmbg": "045210805048",
+      "KorisnickoIme": "l",
+      "Lozinka": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Telefon": "629998425",
+      "Adresa": {
+        "City": null,
+        "Street": null,
+        "Number": null
+      },
+      "Serijalizuj": true
+    },
+    "Pacijent": {
+      "Lbo": "123456",
+      "Gost": false,
+      "Alergeni": [
+        "a1"
+      ],
+      "Datum_Rodjenja": "1977-12-12T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "BanovanKorisnik": false,
+      "Ime": "Petar",
+      "Prezime": "Petrovic",
+      "Jmbg": "12121977802342",
+      "KorisnickoIme": "pacijent2",
+      "Lozinka": "p",
+      "Email": "petarpetrovic@gmail.com",
+      "Telefon": "061 234567",
+      "Adresa": {
+        "City": null,
+        "Street": null,
+        "Number": null
+      },
+      "Serijalizuj": true
+    },
+    "Prostorija": {
+      "RenovationStart": null,
+      "RenovationEnd": null,
+      "InventoryAmounts": {},
+      "RoomType": 0,
+      "Number": "1",
+      "Available": true,
+      "Serialize": true
+    },
+    "InicijalnoVrijeme": "2021-05-21T08:00:00",
+    "TerminKey": "210521021119"
+  },
+  "210522092826": {
+    "PocetnoVreme": "2021-05-22T08:00:00",
+    "VremeTrajanja": 30,
+    "VrstaTermina": 0,
+    "Lekar": {
+      "DaniGodisnjegOdmora": 15,
+      "Grade": 0.0,
+      "SpecijalizacijaLekara": 2,
+      "Ime": "Tara",
+      "Prezime": "Pogančev",
+      "Jmbg": "045210805048",
+      "KorisnickoIme": "l",
+      "Lozinka": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Telefon": "629998425",
+      "Adresa": {
+        "City": null,
+        "Street": null,
+        "Number": null
+      },
+      "Serijalizuj": true
+    },
+    "Pacijent": {
+      "Lbo": "123456",
+      "Gost": false,
+      "Alergeni": [
+        "a1"
+      ],
+      "Datum_Rodjenja": "1977-12-12T00:00:00",
+      "GetHronicneBolestiString": "Nema",
+      "Pol_Pacijenta": 0,
+      "Krvna_Grupa": 0,
+      "BanovanKorisnik": false,
+      "Ime": "Petar",
+      "Prezime": "Petrovic",
+      "Jmbg": "12121977802342",
+      "KorisnickoIme": "pacijent2",
+      "Lozinka": "p",
+      "Email": "petarpetrovic@gmail.com",
+      "Telefon": "061 234567",
+      "Adresa": {
+        "City": null,
+        "Street": null,
+        "Number": null
+      },
+      "Serijalizuj": true
+    },
+    "Prostorija": {
+      "RenovationStart": null,
+      "RenovationEnd": null,
+      "InventoryAmounts": {},
+      "RoomType": 0,
+      "Number": "1",
+      "Available": true,
+      "Serialize": true
+    },
+    "InicijalnoVrijeme": "2021-05-22T08:00:00",
+    "TerminKey": "210522092826"
   }
 }

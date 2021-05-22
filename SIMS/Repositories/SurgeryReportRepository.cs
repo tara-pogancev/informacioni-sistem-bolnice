@@ -26,7 +26,7 @@ namespace SIMS.Model
         {
             List<SurgeryReport> retVal = new List<SurgeryReport>();
 
-            foreach (SurgeryReport a in this.ReadEntities())
+            foreach (SurgeryReport a in this.GetAll())
             {
                 a.InitData();
 

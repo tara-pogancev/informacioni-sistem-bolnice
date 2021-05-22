@@ -54,7 +54,7 @@ namespace Model
         }
 
 
-        public bool CreateEntity(Entity Entity)
+        public void Save(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -62,14 +62,14 @@ namespace Model
 
             if (entities.ContainsKey(key))
             {
-                return false;
+                return;
             }
 
             entities[key] = Entity;
 
             WriteFile(entities);
 
-            return true;
+            return;
         }
 
         public Dictionary<KeyType, Entity> ReadAll()
@@ -77,7 +77,7 @@ namespace Model
             return ReadFile();
         }
 
-        public Entity ReadEntity(KeyType key)
+        public Entity FindById(KeyType key)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
             Entity retVal;
@@ -90,7 +90,7 @@ namespace Model
             return retVal;
         }
 
-        public bool UpdateEntity(Entity Entity)
+        public void Update(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -98,17 +98,17 @@ namespace Model
 
             if (!entities.ContainsKey(key))
             {
-                return false;
+                return;
             }
 
             entities[key] = Entity;
 
             WriteFile(entities);
 
-            return true;
+            return;
         }
 
-        public void CreateOrUpdateEntity(Entity Entity)
+        public void CreateOrUpdate(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -120,7 +120,7 @@ namespace Model
         }
 
 
-        public bool DeleteEntity(KeyType key)
+        public void Delete(KeyType key)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
@@ -130,15 +130,15 @@ namespace Model
 
             WriteFile(entities);
 
-            return retVal;
+            
         }
 
-        public bool DeleteEntity(Entity entity)
+        public void Delete(Entity entity)
         {
-            return DeleteEntity(getKey(entity));
+             Delete(getKey(entity));
         }
 
-        public List<Entity> ReadEntities()
+        public List<Entity> GetAll()
         {
             return this.ReadFile().Values.ToList();
         }

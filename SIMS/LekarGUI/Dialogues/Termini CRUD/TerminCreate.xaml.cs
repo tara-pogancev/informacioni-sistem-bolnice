@@ -49,10 +49,10 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             DoctorRepository storageL = new DoctorRepository();
-            lekari = storageL.ReadEntities();
+            lekari = storageL.GetAll();
 
             PatientRepository storageP = new PatientRepository();
-            pacijenti = storageP.ReadEntities();
+            pacijenti = storageP.GetAll();
 
 
             prostorije = new List<Room>(RoomRepository.Instance.ReadAll().Values);
@@ -115,7 +115,7 @@ namespace SIMS.LekarGUI
                     termin.Pacijent.Serijalizuj = false;
                     termin.Prostorija.Serialize = false;
 
-                    AppointmentRepository.Instance.CreateEntity(termin);
+                    AppointmentRepository.Instance.Save(termin);
                     LekarTerminiPage.GetInstance().refresh();
                     this.Close();
                 }

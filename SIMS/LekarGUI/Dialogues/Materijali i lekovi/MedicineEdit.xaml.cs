@@ -47,7 +47,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private static String GetSubstituteName(Medication medicine)
         {
-            return MedicationRepository.Instance.ReadEntity(medicine.IDSubstitution).MedicineName;
+            return MedicationRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
         }
 
         public void RefreshView()
@@ -103,7 +103,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
             SetSubstituteMedicine();
-            MedicationRepository.Instance.UpdateEntity(medicine);
+            MedicationRepository.Instance.Update(medicine);
 
             this.Close();
             MessageBox.Show("Lek uspešno izmenjen!");

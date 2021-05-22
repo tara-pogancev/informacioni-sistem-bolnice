@@ -25,7 +25,7 @@ namespace Model
         {
             List<Receipt> retVal = new List<Receipt>();
 
-            foreach (Receipt r in this.ReadEntities())
+            foreach (Receipt r in this.GetAll())
             {
                 if (r.Pacijent.Jmbg == p.Jmbg)
                     retVal.Add(r);

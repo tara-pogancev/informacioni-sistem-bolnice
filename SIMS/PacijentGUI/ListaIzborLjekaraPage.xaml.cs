@@ -15,20 +15,14 @@ using System.Windows.Shapes;
 namespace SIMS.PacijentGUI
 {
     /// <summary>
-    /// Interaction logic for IzborLjekara.xaml
+    /// Interaction logic for ListaIzborLjekaraPage.xaml
     /// </summary>
-    public partial class IzborLjekara : Page
+    public partial class ListaIzborLjekaraPage : Page
     {
-        public IzborLjekara()
+        public ListaIzborLjekaraPage()
         {
             InitializeComponent();
-            this.DataContext = new IzborLjekaraViewModel(PocetnaStranica.getInstance().Pacijent);
-            SlikaLjekara.Source=new BitmapImage(new Uri(@"/src/muskiLjekar.png",UriKind.Relative));
-        }
-
-        private void Izmijeni_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new ListaIzborLjekaraPage());
+            this.DataContext = new ListaLjekaraPageViewModel();
         }
     }
 }

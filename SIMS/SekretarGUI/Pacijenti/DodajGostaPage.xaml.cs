@@ -14,7 +14,7 @@ namespace SIMS.SekretarGUI
         private void AddGuest_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text);
-            PatientRepository.Instance.CreateEntity(patient);
+            PatientRepository.Instance.Save(patient);
             SekretarPacijentiPage.GetInstance().RefreshView();
 
             NavigationService.GoBack();

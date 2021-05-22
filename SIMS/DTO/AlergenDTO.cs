@@ -27,7 +27,7 @@ namespace SIMS.DTO
         {
             List<AlergenDTO> retVal = new List<AlergenDTO>();
 
-            foreach (Allergen currentAlergen in AllergenRepository.Instance.ReadEntities())
+            foreach (Allergen currentAlergen in AllergenRepository.Instance.GetAll())
                 retVal.Add(new AlergenDTO(currentAlergen, medicine));
 
             return retVal;

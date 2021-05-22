@@ -29,7 +29,7 @@ namespace SIMS.UpravnikGUI
         }
         public UpravnikOpremaDetailPage(string Id)
         {
-            oprema = InventoryRepository.Instance.ReadEntity(Id);
+            oprema = InventoryRepository.Instance.FindById(Id);
             InitializeComponent();
 
             ID.Text = oprema.Id;
@@ -52,7 +52,7 @@ namespace SIMS.UpravnikGUI
             oprema.Naziv = Naziv.Text;
             oprema.TipOpreme = Conversion.StringToTipOpreme(Tip.Text);
 
-            InventoryRepository.Instance.CreateOrUpdateEntity(oprema);
+            InventoryRepository.Instance.CreateOrUpdate(oprema);
 
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
             UpravnikWindow.Instance.SetLabel("Oprema");

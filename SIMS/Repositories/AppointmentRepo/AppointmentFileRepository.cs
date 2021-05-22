@@ -7,30 +7,7 @@ namespace SIMS.Repositories.AppointmentRepo
 {
     class IAppointmentFileRepository : GenericFileRepository<string, Appointment, IAppointmentFileRepository>, IAppointmentRepository
     {
-        public void Delete(string key)
-        {
-            this.DeleteEntity(key);
-        }
-
-        public Appointment FindById(string key)
-        {
-            return this.ReadEntity(key);
-        }
-
-        public IEnumerable<Appointment> GetAll()
-        {
-            return this.ReadEntities();
-        }
-
-        public void Save(Appointment entity)
-        {
-            this.CreateEntity(entity);
-        }
-
-        public void Update(Appointment entity)
-        {
-            this.UpdateEntity(entity);
-        }
+       
 
         protected override string getKey(Appointment entity)
         {
@@ -51,7 +28,7 @@ namespace SIMS.Repositories.AppointmentRepo
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach (Appointment t in this.ReadEntities())
+            foreach (Appointment t in this.GetAll())
             {
                 if (t.Lekar.EqualJmbg(lekar.Jmbg))
                     termini.Add(t);
@@ -64,7 +41,7 @@ namespace SIMS.Repositories.AppointmentRepo
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach (Appointment t in this.ReadEntities())
+            foreach (Appointment t in this.GetAll())
             {
                 if (t.Pacijent.EqualJmbg(pacijent.Jmbg))
                     termini.Add(t);

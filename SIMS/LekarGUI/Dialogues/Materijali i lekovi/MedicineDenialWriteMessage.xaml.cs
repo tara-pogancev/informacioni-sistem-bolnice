@@ -39,7 +39,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             List<String> notificationTarget = getUpravnikKeys();
 
             Notification notification = new Notification(notificationAuthor, DateTime.Now, notificationText, notificationTarget);
-            NotificationRepository.Instance.CreateEntity(notification);
+            NotificationRepository.Instance.Save(notification);
 
             this.Close();
             MessageBox.Show("Poruka uspešno poslata!");
@@ -50,7 +50,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             List<String> retVal = new List<String>();
 
-            foreach(Manager upravnik in ManagerRepository.Instance.ReadEntities())
+            foreach(Manager upravnik in ManagerRepository.Instance.GetAll())
             {
                 retVal.Add(upravnik.Jmbg);
             }

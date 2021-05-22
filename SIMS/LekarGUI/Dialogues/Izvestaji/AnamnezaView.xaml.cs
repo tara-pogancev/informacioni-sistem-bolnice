@@ -28,8 +28,8 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             LabelDatum.Content = "Datum pregleda: " + a.Date;
 
             LabelPacijent.Content = "Pacijent: " + a.ImePacijenta;
-            Appointment t = AppointmentRepository.Instance.ReadEntity(a.IdAnamneze);
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientRepository.Instance.ReadEntity(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            Appointment t = AppointmentRepository.Instance.FindById(a.IdAnamneze);
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientRepository.Instance.FindById(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
 
             GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             GlavneTegobe.Inlines.Add("   ");

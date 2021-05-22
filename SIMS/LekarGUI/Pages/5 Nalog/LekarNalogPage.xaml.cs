@@ -53,7 +53,7 @@ namespace SIMS.LekarGUI
 
         private void Button(object sender, RoutedEventArgs e)
         {
-            var window = new ActionsAfterReport(PatientRepository.Instance.ReadEntities()[0]);
+            var window = new ActionsAfterReport(PatientRepository.Instance.GetAll()[0]);
             window.Show();
         }
 

@@ -25,18 +25,18 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadEntities())
+            foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Pacijent.Jmbg == key)
                 {
-                    storageT.DeleteEntity(t.TerminKey);
+                    storageT.Delete(t.TerminKey);
                 }
             }
         }
 
         public Patient ReadUser(String user)
         {
-            foreach (Patient p in this.ReadEntities())
+            foreach (Patient p in this.GetAll())
             {
                 if (p.KorisnickoIme == user)
                     return p;

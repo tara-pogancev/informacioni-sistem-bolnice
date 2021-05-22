@@ -56,7 +56,7 @@ namespace Model
 
         public Appointment getTermin()
         {
-            return AppointmentRepository.Instance.ReadEntity(Termin.TerminKey);
+            return AppointmentRepository.Instance.FindById(Termin.TerminKey);
         }
 
         [JsonIgnore]
@@ -123,9 +123,9 @@ namespace Model
 
         public void InitData()
         {
-            Termin =  new AppointmentRepository().ReadEntity(IdAnamneze);
-            Termin.Pacijent = new PatientRepository().ReadEntity(Termin.Pacijent.Jmbg);
-            Termin.Lekar = new DoctorRepository().ReadEntity(Termin.Lekar.Jmbg);
+            Termin =  new AppointmentRepository().FindById(IdAnamneze);
+            Termin.Pacijent = new PatientRepository().FindById(Termin.Pacijent.Jmbg);
+            Termin.Lekar = new DoctorRepository().FindById(Termin.Lekar.Jmbg);
         }
     }
 }

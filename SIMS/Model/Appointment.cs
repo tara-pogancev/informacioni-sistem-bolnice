@@ -154,7 +154,7 @@ namespace Model
         {
             get
             {
-                if (AnamnesisRepository.Instance.ReadEntity(this.TerminKey) == null && SurgeryReportRepository.Instance.ReadEntity(this.TerminKey) == null)
+                if (AnamnesisRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportRepository.Instance.FindById(this.TerminKey) == null)
                     return false;
                 else return true;
             }
@@ -206,9 +206,9 @@ namespace Model
 
         public void InitData()
         {
-            Pacijent = new PatientRepository().ReadEntity(Pacijent.Jmbg);
-            Prostorija = new RoomRepository().ReadEntity(Prostorija.Number);
-            Lekar = new DoctorRepository().ReadEntity(Lekar.Jmbg);
+            Pacijent = new PatientRepository().FindById(Pacijent.Jmbg);
+            Prostorija = new RoomRepository().FindById(Prostorija.Number);
+            Lekar = new DoctorRepository().FindById(Lekar.Jmbg);
         }
 
     }

@@ -43,7 +43,8 @@ namespace SIMS.PacijentGUI
             anketaLekara.Termin.Serijalizuj = false;
             anketaLekara.IdAnkete = anketaLekara.Termin.TerminKey;
             anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
-            new DoctorSurveyRepository().CreateEntity(anketaLekara);
+            anketaLekara.DoctorId = anketaLekara.Termin.Lekar.Jmbg;
+            new DoctorSurveyRepository().Save(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
         }
     }

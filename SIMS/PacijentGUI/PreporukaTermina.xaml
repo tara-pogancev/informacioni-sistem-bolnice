@@ -23,7 +23,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                     <DatePicker Width="150" Margin="70,0,80,0" materialDesign:HintAssist.Hint="Pocetni datum" Foreground="White" FontSize="16" Name="PocetniDatum" SelectedDateChanged="PocetniDatum_SelectedDateChanged"></DatePicker>
-                    <DatePicker Width="150" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White"  FontSize="16" Name="KrajnjiDatum"></DatePicker>
+                    <DatePicker Width="150" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White"  FontSize="16" Name="KrajnjiDatum" CalendarOpened="KrajnjiDatum_CalendarOpened"></DatePicker>
                 </StackPanel>
 
                 <Label HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="18" Foreground="White">Prioritet</Label>

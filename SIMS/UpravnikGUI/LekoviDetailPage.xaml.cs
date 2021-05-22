@@ -44,7 +44,7 @@ namespace SIMS.UpravnikGUI
 
         public LekoviDetailPage(string ID) //izmena postojece prostorije
         {
-            lek = MedicationRepository.Instance.ReadEntity(ID);
+            lek = MedicationRepository.Instance.FindById(ID);
             InitializeComponent();
 
             IDText.Text = lek.MedicineID;
@@ -95,7 +95,7 @@ namespace SIMS.UpravnikGUI
                 }
             }
 
-            MedicationRepository.Instance.CreateOrUpdateEntity(lek);
+            MedicationRepository.Instance.CreateOrUpdate(lek);
             UpravnikWindow.Instance.SetContent(new LekoviPage());
             UpravnikWindow.Instance.SetLabel("Lekovi");
         }

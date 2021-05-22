@@ -42,8 +42,8 @@ namespace SIMS.Daemon.PremestajOpreme
             src.Kolicina -= Delta;
             dst.Kolicina += Delta;
 
-            RoomInventoryRepository.Instance.UpdateEntity(src);
-            RoomInventoryRepository.Instance.UpdateEntity(dst);
+            RoomInventoryRepository.Instance.Update(src);
+            RoomInventoryRepository.Instance.Update(dst);
         }
     }
 }

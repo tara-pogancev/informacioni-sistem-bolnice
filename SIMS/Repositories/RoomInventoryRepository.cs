@@ -31,11 +31,11 @@ namespace Model
 
         public RoomInventory ReadNoConsistifying(string brojProstorije, string idInventara)
         {
-            var ret = ReadEntity(brojProstorije + "_" + idInventara);
+            var ret = FindById(brojProstorije + "_" + idInventara);
             if (ret == null)
             {
                 ret = new RoomInventory(brojProstorije, idInventara, 0);
-                CreateEntity(ret);
+                Save(ret);
             }
             return ret;
         }

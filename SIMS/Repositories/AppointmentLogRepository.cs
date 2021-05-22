@@ -24,7 +24,7 @@ namespace SIMS.Model
 
         public List<AppointmentLog> ReadByPatient(Patient pacijent)
         {
-            List<AppointmentLog> terminLogs = ReadEntities();
+            List<AppointmentLog> terminLogs = GetAll();
             for(int i = 0; i < terminLogs.Count; i++)
             {
                 if (terminLogs[i].PacijentKey != pacijent.Jmbg || terminLogs[i].Istekao==true)
@@ -42,7 +42,7 @@ namespace SIMS.Model
             foreach(AppointmentLog terminLog in terminLogs)
             {
                 terminLog.Istekao = true;
-                UpdateEntity(terminLog);
+                Update(terminLog);
             }
         }
     }

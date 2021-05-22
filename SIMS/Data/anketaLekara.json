@@ -1,12 +1,31 @@
 {
   "210503114833": {
     "Termin": {
+      "PocetnoVreme": "0001-01-01T00:00:00",
+      "VremeTrajanja": 0,
+      "VrstaTermina": 0,
+      "Lekar": null,
+      "Pacijent": null,
+      "Prostorija": null,
+      "InicijalnoVrijeme": "0001-01-01T00:00:00",
       "TerminKey": "210503114833"
     },
     "Ocjena": 5,
+    "DoctorId": null,
     "IdAnkete": "210503114833",
     "Komentar": "",
     "DatumKreiranjaAnkete": "2021-05-04T21:08:57.9956485+02:00",
     "IdVlasnika": "4865453131"
+  },
+  "210521021119": {
+    "Termin": {
+      "TerminKey": "210521021119"
+    },
+    "Ocjena": 5,
+    "DoctorId": "045210805048",
+    "IdAnkete": "210521021119",
+    "Komentar": "Najbolji lekar",
+    "DatumKreiranjaAnkete": "2021-05-21T19:58:33.3728003+02:00",
+    "IdVlasnika": "12121977802342"
   }
 }

@@ -54,7 +54,7 @@ namespace SIMS.PacijentGUI
 
             foreach (String alergen in pacijent.Alergeni)
             {
-                Allergen ucitaniAlergen = new AllergenRepository().ReadEntity(alergen);
+                Allergen ucitaniAlergen = new AllergenRepository().FindById(alergen);
                 alergeni += ucitaniAlergen.Name;
                 alergeni += ", ";
 

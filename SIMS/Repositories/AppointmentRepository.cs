@@ -17,7 +17,7 @@ namespace Model
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach (Appointment t in this.ReadEntities())
+            foreach (Appointment t in this.GetAll())
             {
                 if (istiJmbg(t.Pacijent,pacijent))
                     termini.Add(t);
@@ -35,7 +35,7 @@ namespace Model
         {
             List<Appointment> termini = new List<Appointment>();
 
-            foreach(Appointment t in this.ReadEntities())
+            foreach(Appointment t in this.GetAll())
             {
                 if (istiJmbg(t.Lekar,lekar))
                     termini.Add(t);

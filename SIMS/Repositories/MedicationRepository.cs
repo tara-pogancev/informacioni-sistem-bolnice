@@ -25,7 +25,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadEntities())
+            foreach (Medication medicine in GetAll())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Accepted)
                     retVal.Add(medicine);
@@ -38,7 +38,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadEntities())
+            foreach (Medication medicine in GetAll())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Waiting)
                     retVal.Add(medicine);
@@ -51,7 +51,7 @@ namespace Model
         {
             List<Medication> retVal = new List<Medication>();
 
-            foreach (Medication medicine in ReadEntities())
+            foreach (Medication medicine in GetAll())
             {
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Denied)
                     retVal.Add(medicine);

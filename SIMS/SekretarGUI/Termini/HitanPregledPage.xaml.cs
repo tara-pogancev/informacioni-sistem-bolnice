@@ -40,7 +40,7 @@ namespace SIMS.SekretarGUI
             //SpecializationList.Remove("Lekar opšte prakse");
             SpecializationEnumList = DoctorRepository.Instance.GetAvailableSpecialization();
             //SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
-            PatientList = new ObservableCollection<Patient>(PatientRepository.Instance.ReadEntities());
+            PatientList = new ObservableCollection<Patient>(PatientRepository.Instance.GetAll());
 
             SpecializationComboBox.ItemsSource = SpecializationList;
             DurationComboBox.ItemsSource = DurationList;
@@ -76,7 +76,7 @@ namespace SIMS.SekretarGUI
                 {
                     MovePreviousAppointment(selectedApp);
                 }
-                AppointmentRepository.Instance.CreateEntity(selectedApp);
+                AppointmentRepository.Instance.Save(selectedApp);
 
                 SendNotification(selectedApp, false);
 
@@ -104,7 +104,7 @@ namespace SIMS.SekretarGUI
 
             target.Add(selectedApp.Pacijent.Jmbg);
             target.Add(selectedApp.Lekar.Jmbg);
-            foreach (Secretary s in SecretaryRepository.Instance.ReadEntities())
+            foreach (Secretary s in SecretaryRepository.Instance.GetAll())
             {
                 target.Add(s.Jmbg);
             }
@@ -113,14 +113,14 @@ namespace SIMS.SekretarGUI
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
                 ("Pomeren/a " + selectedApp.VrstaTermina.ToString() + " [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
                 + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
-                NotificationRepository.Instance.CreateEntity(notification);
+                NotificationRepository.Instance.Save(notification);
             }
             else
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
                 ("Zakazan hitan pregled [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
                 + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
-                NotificationRepository.Instance.CreateEntity(notification);
+                NotificationRepository.Instance.Save(notification);
             }
         }
 
@@ -184,7 +184,7 @@ namespace SIMS.SekretarGUI
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    Appointment appointment = new Appointment(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, RoomRepository.Instance.ReadEntities()[0]);
+                    Appointment appointment = new Appointment(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, RoomRepository.Instance.GetAll()[0]);
                     allAppointments.Add(appointment);
                     if (doctor.IsFree(appointment) && appointment.PocetnoVreme >= appointmentValues.PocetnoVreme)
                     {
@@ -245,7 +245,7 @@ namespace SIMS.SekretarGUI
 
         private void NavigationService_Navigated(object sender, NavigationEventArgs e)
         {
-            PatientList = new ObservableCollection<Patient>(PatientRepository.Instance.ReadEntities());
+            PatientList = new ObservableCollection<Patient>(PatientRepository.Instance.GetAll());
             PatientComboBox.ItemsSource = PatientList;
         }
 
@@ -261,15 +261,15 @@ namespace SIMS.SekretarGUI
         private void MoveAppointmentToNearestDate(Appointment appointment)
         {
             List<Appointment> appointments = GetAvailableAppointmentsForAllDoctors(appointment, 10);
-            AppointmentRepository.Instance.DeleteEntity(appointment.TerminKey);
-            AppointmentRepository.Instance.CreateEntity(appointments[0]);
+            AppointmentRepository.Instance.Delete(appointment.TerminKey);
+            AppointmentRepository.Instance.Save(appointments[0]);
             SendNotification(appointments[0], true);
         }
 
         private List<Appointment> FindReservedAppointments(Appointment selectedApp)
         {
             List<Appointment> appointmentsForMoving = new List<Appointment>();
-            List<Appointment> allAppointments = AppointmentRepository.Instance.ReadEntities();
+            List<Appointment> allAppointments = AppointmentRepository.Instance.GetAll();
             foreach (Appointment app in allAppointments)
             {
                 if (app.KrajnjeVreme > selectedApp.PocetnoVreme && app.PocetnoVreme < selectedApp.KrajnjeVreme)

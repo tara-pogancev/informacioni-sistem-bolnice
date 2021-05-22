@@ -48,12 +48,12 @@ namespace SIMS.PacijentGUI
         {
             InitializeComponent();
             pacijent = p;
-            termini = new AppointmentRepository().ReadEntities();
+            termini = new AppointmentRepository().GetAll();
             preporuceniTermini = new List<Appointment>();
             //ListaDoktora.IsHitTestVisible = false;
             terminZaPreporuku = new List<TerminZaPreporuku>();
         
-            lekari = new DoctorRepository().ReadEntities();
+            lekari = new DoctorRepository().GetAll();
             this.DataContext = this;
         }
 
@@ -171,7 +171,7 @@ namespace SIMS.PacijentGUI
                 termin.VremeTrajanja = 30;
                 termin.VrstaTermina = AppointmentType.pregled;
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Lekar = new DoctorRepository().ReadEntity(idLekara);
+                termin.Lekar = new DoctorRepository().FindById(idLekara);
                 termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
                 termin.Prostorija = new Room("1",RoomType.zaPreglede);
                 termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
@@ -259,6 +259,15 @@ namespace SIMS.PacijentGUI
         private void lekarChecked_Checked(object sender, RoutedEventArgs e)
         {
             ListaDoktora.IsHitTestVisible = true;
+        }
+
+        private void KrajnjiDatum_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            if (PocetniDatum.SelectedDate == null)
+            {
+                MessageBox.Show("Potrebno je da izaberete pocetni datum");
+                return;
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SIMS.Daemon.PremestajOpreme
 
         public void PushCommand(InventoryMovingCommand command)
         {
-            InventoryMovingCommandStorage.Instance.CreateOrUpdateEntity(command);
+            InventoryMovingCommandStorage.Instance.CreateOrUpdate(command);
         }
 
         public void Consistify()
@@ -27,7 +27,7 @@ namespace SIMS.Daemon.PremestajOpreme
             {
                 if (command.DateTime <= DateTime.Now)
                 {
-                    InventoryMovingCommandStorage.Instance.DeleteEntity(command);
+                    InventoryMovingCommandStorage.Instance.Delete(command);
                     command.Execute();
                 }
             }

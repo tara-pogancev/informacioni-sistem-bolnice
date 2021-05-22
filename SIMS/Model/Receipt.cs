@@ -47,8 +47,8 @@ namespace Model
 
         public void InitData()
         {
-            Lekar = DoctorRepository.Instance.ReadEntity(Lekar.Jmbg);
-            Pacijent = PatientRepository.Instance.ReadEntity(Pacijent.Jmbg);
+            Lekar = DoctorRepository.Instance.FindById(Lekar.Jmbg);
+            Pacijent = PatientRepository.Instance.FindById(Pacijent.Jmbg);
         }
 
     }

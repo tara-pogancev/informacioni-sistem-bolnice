@@ -21,11 +21,11 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadEntities())
+            foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Prostorija.Number == key)
                 {
-                    storageT.DeleteEntity(t.TerminKey);
+                    storageT.Delete(t.TerminKey);
                 }
             }
 
@@ -33,7 +33,7 @@ namespace Model
             {
                 if (prosInv.BrojProstorije == key)
                 {
-                    RoomInventoryRepository.Instance.DeleteEntity(prosInv);
+                    RoomInventoryRepository.Instance.Delete(prosInv);
                 }
             }
 
@@ -41,14 +41,14 @@ namespace Model
             {
                 if (command.DstID == key || command.SrcID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.DeleteEntity(command);
+                    InventoryMovingCommandStorage.Instance.Delete(command);
                 }
             }
         }
 
         public List<Room> UcitajProstorijeZaPreglede()
         {
-            List<Room> prostorije = ReadEntities();
+            List<Room> prostorije = GetAll();
             for (int i = 0; i < prostorije.Count; i++)
             {
                 if (prostorije[i].RoomType != RoomType.zaPreglede || prostorije[i].Available==false)

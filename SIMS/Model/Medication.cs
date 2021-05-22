@@ -37,7 +37,7 @@ namespace Model
                 return "Nije navedeno";
 
             foreach (string a in Components)
-                componentsString += AllergenRepository.Instance.ReadEntity(a).Name + ", ";
+                componentsString += AllergenRepository.Instance.FindById(a).Name + ", ";
             return componentsString.Remove(componentsString.Length - 2);
         }
 

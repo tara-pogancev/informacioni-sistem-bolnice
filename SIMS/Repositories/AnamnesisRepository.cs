@@ -26,7 +26,7 @@ namespace Model
         {
             List<Anamnesis> retVal = new List<Anamnesis>();
 
-            foreach (Anamnesis a in this.ReadEntities())
+            foreach (Anamnesis a in this.GetAll())
             {
                 a.InitData();
 

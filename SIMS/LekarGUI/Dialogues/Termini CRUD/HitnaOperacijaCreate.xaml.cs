@@ -74,7 +74,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 Appointment selecetdApp = (Appointment)AvailableComboBox.SelectedItem;
                 selecetdApp.InitData();
 
-                AppointmentRepository.Instance.CreateEntity(selecetdApp);
+                AppointmentRepository.Instance.Save(selecetdApp);
 
                 SendNotification(selecetdApp);
 
@@ -93,7 +93,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 ("Zakazana hitna operacija [" + selecetdApp.Datum + " " + selecetdApp.Vrijeme + ", " + selecetdApp.NazivProstorije + "] za pacijenta " 
                 + selecetdApp.ImePacijenta + ", vodeći lekar " + selecetdApp.ImeLekara + "."), target);
 
-            NotificationRepository.Instance.CreateEntity(notification);
+            NotificationRepository.Instance.Save(notification);
         }
 
         private void DurationChange(object sender, SelectionChangedEventArgs e)
@@ -142,7 +142,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     
-                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomRepository.Instance.ReadEntities()[0]);
+                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomRepository.Instance.GetAll()[0]);
                     if (doctor.IsFree(appointment))
                     {
                         counterByDoctor++;

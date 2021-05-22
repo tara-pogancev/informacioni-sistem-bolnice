@@ -25,18 +25,18 @@ namespace Model
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadEntities())
+            foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Lekar.Jmbg == key)
                 {
-                    storageT.DeleteEntity(t.TerminKey);
+                    storageT.Delete(t.TerminKey);
                 }
             }
         }
 
         public Doctor ReadUser(String user)
         {
-            foreach(Doctor l in this.ReadEntities())
+            foreach(Doctor l in this.GetAll())
             {
                 if (l.KorisnickoIme == user)
                     return l;
@@ -48,7 +48,7 @@ namespace Model
         public List<String> getAllId()
         {
             List<String> ids = new List<String>();
-            List<Doctor> lekari = this.ReadEntities();
+            List<Doctor> lekari = this.GetAll();
             foreach(Doctor l in lekari)
             {
                 ids.Add(l.Jmbg);
@@ -60,7 +60,7 @@ namespace Model
         {
             List<Doctor> retVal = new List<Doctor>();
 
-            foreach(Doctor l in ReadEntities())
+            foreach(Doctor l in GetAll())
             {
                 if (l.SpecijalizacijaLekara == specialization)
                     retVal.Add(l);
@@ -73,7 +73,7 @@ namespace Model
         {
             List<Specialization> retVal = new List<Specialization>();
 
-            foreach (Doctor l in ReadEntities())
+            foreach (Doctor l in GetAll())
             {
                 if (!retVal.Contains(l.SpecijalizacijaLekara))
                     retVal.Add(l.SpecijalizacijaLekara);
@@ -86,7 +86,7 @@ namespace Model
         {
             List<String> retVal = new List<String>();
 
-            foreach (Doctor l in ReadEntities())
+            foreach (Doctor l in GetAll())
             {
                 if (!retVal.Contains(l.Specialization))
                     retVal.Add(l.Specialization);

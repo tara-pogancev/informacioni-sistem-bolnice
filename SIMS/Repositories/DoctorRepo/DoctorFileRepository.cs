@@ -7,36 +7,12 @@ namespace SIMS.Repositories.DoctorRepo
 {
     class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorRepository>,IDoctorRepository
     {
-        public void Delete(string key)
-        {
-            this.DeleteEntity(key);
-        }
+       
 
-        public Doctor FindById(string key)
-        {
-            return this.ReadEntity(key);
-        }
-
-        public IEnumerable<Doctor> GetAll()
-        {
-            return this.ReadEntities();
-        }
-
-
-        public void Save(Doctor entity)
-        {
-            this.CreateEntity(entity);
-        }
-
-        public void Update(Doctor entity)
-        {
-            this.UpdateEntity(entity);
-        }
-
-        public IEnumerable<string> getAllId()
+        public List<string> getAllId()
         {
             List<String> ids = new List<String>();
-            List<Doctor> lekari = this.ReadEntities();
+            List<Doctor> lekari = this.GetAll();
             foreach (Doctor l in lekari)
             {
                 ids.Add(l.Jmbg);
@@ -44,11 +20,11 @@ namespace SIMS.Repositories.DoctorRepo
             return ids;
         }
 
-        public IEnumerable<Specialization> GetAvailableSpecialization()
+        public List<Specialization> GetAvailableSpecialization()
         {
             List<Specialization> retVal = new List<Specialization>();
 
-            foreach (Doctor l in ReadEntities())
+            foreach (Doctor l in base.GetAll())
             {
                 if (!retVal.Contains(l.SpecijalizacijaLekara))
                     retVal.Add(l.SpecijalizacijaLekara);
@@ -57,11 +33,11 @@ namespace SIMS.Repositories.DoctorRepo
             return retVal;
         }
 
-        public IEnumerable<string> GetAvailableSpecializationString()
+        public List<string> GetAvailableSpecializationString()
         {
             List<String> retVal = new List<String>();
 
-            foreach (Doctor l in ReadEntities())
+            foreach (Doctor l in base.GetAll())
             {
                 if (!retVal.Contains(l.Specialization))
                     retVal.Add(l.Specialization);
@@ -70,11 +46,11 @@ namespace SIMS.Repositories.DoctorRepo
             return retVal;
         }
 
-        public IEnumerable<Doctor> ReadBySpecialization(Specialization specialization)
+        public List<Doctor> ReadBySpecialization(Specialization specialization)
         {
             List<Doctor> retVal = new List<Doctor>();
 
-            foreach (Doctor l in ReadEntities())
+            foreach (Doctor l in base.GetAll())
             {
                 if (l.SpecijalizacijaLekara == specialization)
                     retVal.Add(l);
@@ -85,7 +61,7 @@ namespace SIMS.Repositories.DoctorRepo
 
         public Doctor ReadUser(string user)
         {
-            foreach (Doctor l in this.ReadEntities())
+            foreach (Doctor l in this.GetAll())
             {
                 if (l.KorisnickoIme == user)
                     return l;
@@ -109,11 +85,11 @@ namespace SIMS.Repositories.DoctorRepo
         protected override void RemoveReferences(string key)
         {
             AppointmentRepository storageT = new AppointmentRepository();
-            foreach (Appointment t in storageT.ReadEntities())
+            foreach (Appointment t in storageT.GetAll())
             {
                 if (t.Lekar.Jmbg == key)
                 {
-                    storageT.DeleteEntity(t.TerminKey);
+                    storageT.Delete(t.TerminKey);
                 }
             }
         }

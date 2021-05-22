@@ -23,7 +23,7 @@ namespace Model
 
         public List<Notification> ReadByUser(String key)
         {
-            List<Notification> retVal = this.ReadEntities();
+            List<Notification> retVal = this.GetAll();
 
             for (int i=0;i<retVal.Count;i++)
             {
@@ -41,7 +41,7 @@ namespace Model
 
         public List<Notification> ReadPastNotificationsByUser(String key)
         {
-            List<Notification> retVal = this.ReadEntities();
+            List<Notification> retVal = this.GetAll();
 
             for (int i = 0; i < retVal.Count; i++)
             {

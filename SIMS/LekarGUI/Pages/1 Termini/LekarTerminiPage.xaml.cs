@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI
             //Tabela pregleda
 
             this.DataContext = this;
-            terminiView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.ReadEntities());
+            terminiView = new ObservableCollection<Appointment>(AppointmentRepository.Instance.GetAll());
             refreshView();
         }
 
@@ -63,8 +63,8 @@ namespace SIMS.LekarGUI
                 if (!t.IsPast && !t.Evidentiran)
                    terminiView.Add(t);
 
-                t.Pacijent = new PatientRepository().ReadEntity(t.Pacijent.Jmbg);
-                t.Prostorija = new RoomRepository().ReadEntity(t.Prostorija.Number);
+                t.Pacijent = new PatientRepository().FindById(t.Pacijent.Jmbg);
+                t.Prostorija = new RoomRepository().FindById(t.Prostorija.Number);
             }
         }
 
@@ -104,7 +104,7 @@ namespace SIMS.LekarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)dataGridTermini.SelectedItem;
-                    AppointmentRepository.Instance.DeleteEntity(toDelete.TerminKey);
+                    AppointmentRepository.Instance.Delete(toDelete.TerminKey);
                     refreshView();
                     MessageBox.Show("Termin je uspešno otkazan!");
                 }
@@ -114,7 +114,7 @@ namespace SIMS.LekarGUI
 
         public void dodajTermin(Appointment termin)
         {
-            AppointmentRepository.Instance.CreateEntity(termin);
+            AppointmentRepository.Instance.Save(termin);
             refreshView();
             MessageBox.Show("Termin uspešno zakazan.");
         }
@@ -139,7 +139,7 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 Appointment t = (Appointment)dataGridTermini.SelectedItem;
-                Patient p = PatientRepository.Instance.ReadEntity(t.Pacijent.Jmbg);
+                Patient p = PatientRepository.Instance.FindById(t.Pacijent.Jmbg);
 
                 LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }

@@ -27,7 +27,7 @@ namespace Model
 
         public Manager ReadUser(String user)
         {
-            foreach (Manager u in this.ReadEntities())
+            foreach (Manager u in this.GetAll())
             {
                 if (u.KorisnickoIme == user)
                     return u;

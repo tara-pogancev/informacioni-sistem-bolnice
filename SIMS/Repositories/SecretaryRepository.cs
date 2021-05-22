@@ -29,7 +29,7 @@ namespace Model
 
         public Secretary ReadUser(String user)
         {
-            foreach (Secretary s in this.ReadEntities())
+            foreach (Secretary s in this.GetAll())
             {
                 if (s.KorisnickoIme == user)
                     return s;

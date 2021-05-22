@@ -21,7 +21,7 @@ namespace Model
             {
                 if (prosInv.IdInventara == key)
                 {
-                    RoomInventoryRepository.Instance.DeleteEntity(prosInv);
+                    RoomInventoryRepository.Instance.Delete(prosInv);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace Model
             {
                 if (command.OpremaID == key)
                 {
-                    InventoryMovingCommandStorage.Instance.DeleteEntity(command);
+                    InventoryMovingCommandStorage.Instance.Delete(command);
                 }
             }
         }

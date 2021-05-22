@@ -25,7 +25,7 @@ namespace SIMS.UpravnikGUI
 
         public UpravnikProstorijaDetailPage(string broj) //izmena postojece prostorije
         {
-            prostorija = RoomRepository.Instance.ReadEntity(broj);
+            prostorija = RoomRepository.Instance.FindById(broj);
             Inventar = new UpravnikInventarProstorijePage(prostorija, this);
             InitializeComponent();
 
@@ -91,7 +91,7 @@ namespace SIMS.UpravnikGUI
             prostorija.Number = BrojText.Text;
             prostorija.RoomType = Conversion.StringToTipProstorije(TipCombo.Text);
 
-            RoomRepository.Instance.CreateOrUpdateEntity(prostorija);
+            RoomRepository.Instance.CreateOrUpdate(prostorija);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }
