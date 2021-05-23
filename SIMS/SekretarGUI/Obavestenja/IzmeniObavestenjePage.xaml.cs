@@ -36,7 +36,7 @@ namespace SIMS.SekretarGUI
             SetRolesForNotificationTargets();
 
             notificationViewer.ItemsSource = _notifications;
-            obavestenjeTextBox.Text = _notification.Tekst;
+            obavestenjeTextBox.Text = _notification.Content;
         }
 
         private void SetRolesForNotificationTargets()
@@ -81,22 +81,22 @@ namespace SIMS.SekretarGUI
             int userNumber = NumberOfRoleGroups;
             foreach (Patient p in _patients)
             {
-                rolesOfUsers.Add(new NotificationRole(p.ImePrezime, userNumber, p.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(p.FullName, userNumber, p.Jmbg));
                 userNumber++;
             }
             foreach (Doctor d in _doctors)
             {
-                rolesOfUsers.Add(new NotificationRole(d.ImePrezime, userNumber, d.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(d.FullName, userNumber, d.Jmbg));
                 userNumber++;
             }
             foreach (Secretary s in _secretaries)
             {
-                rolesOfUsers.Add(new NotificationRole(s.ImePrezime, userNumber, s.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(s.FullName, userNumber, s.Jmbg));
                 userNumber++;
             }
             foreach (Manager d in _directors)
             {
-                rolesOfUsers.Add(new NotificationRole(d.ImePrezime, userNumber, d.Jmbg));
+                rolesOfUsers.Add(new NotificationRole(d.FullName, userNumber, d.Jmbg));
                 userNumber++;
             }
         }

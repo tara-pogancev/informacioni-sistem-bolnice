@@ -19,15 +19,15 @@ namespace SIMS.LekarGUI
     public partial class LekarIzdavanjeRecepta : Window
     {
         private Patient patient;
-        private Doctor doctor = LekarUI.GetInstance().GetUser();
+        private Doctor doctor = DoctorUI.GetInstance().GetUser();
 
         public LekarIzdavanjeRecepta(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
 
-            LabelDoctor.Content = "Doktor: " + doctor.ImePrezime;
-            LabelPatient.Content = "Pacijent: " + this.patient.ImePrezime;
+            LabelDoctor.Content = "Doktor: " + doctor.FullName;
+            LabelPatient.Content = "Pacijent: " + this.patient.FullName;
             LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
             List<Medication> availableMedicine = new List<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());

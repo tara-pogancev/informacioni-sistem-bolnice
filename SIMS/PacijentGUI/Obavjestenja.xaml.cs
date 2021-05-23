@@ -41,7 +41,7 @@ namespace SIMS.PacijentGUI
             get
             {
                 
-                if (obavestenje.Autor.Equals("Sekretarijat"))
+                if (obavestenje.Author.Equals("Sekretarijat"))
                 {
                     return "/src/sekretar.png";
                 }

@@ -54,20 +54,20 @@ namespace SIMS.SekretarGUI
             Appointment appointment = new Appointment();
             string dateAndTime = datePicker.Text + " " + appointmentsComboBox.Text;
             DateTime appointmentDateAndTime = DateTime.Parse(dateAndTime);
-            appointment.PocetnoVreme = appointmentDateAndTime;
-            appointment.InicijalnoVrijeme = appointment.PocetnoVreme;
+            appointment.StartTime = appointmentDateAndTime;
+            appointment.InitialTime = appointment.StartTime;
 
             if (durationComboBox.SelectedIndex == 0)
-                appointment.VremeTrajanja = 30;
+                appointment.Duration = 30;
             else if (durationComboBox.SelectedIndex == 1)
-                appointment.VremeTrajanja = 60;
+                appointment.Duration = 60;
             else
-                appointment.VremeTrajanja = 90;
+                appointment.Duration = 90;
 
-            appointment.Prostorija = _rooms[roomsComboBox.SelectedIndex];
-            appointment.Pacijent = _patients[patientsComboBox.SelectedIndex];
-            appointment.Lekar = _doctors[doctorsComboBox.SelectedIndex];
-            appointment.VrstaTermina = AppointmentType.operacija;
+            appointment.Room = _rooms[roomsComboBox.SelectedIndex];
+            appointment.Patient = _patients[patientsComboBox.SelectedIndex];
+            appointment.Doctor = _doctors[doctorsComboBox.SelectedIndex];
+            appointment.Type = AppointmentType.surgery;
 
             return appointment;
         }
@@ -77,14 +77,14 @@ namespace SIMS.SekretarGUI
             List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment a in appointments)
             {
-                if (a.KrajnjeVreme > appointment.PocetnoVreme && a.PocetnoVreme < appointment.KrajnjeVreme)
+                if (a.EndTime > appointment.StartTime && a.StartTime < appointment.EndTime)
                 {
-                    if (a.Lekar.Jmbg.Equals(appointment.Lekar.Jmbg))
+                    if (a.Doctor.Jmbg.Equals(appointment.Doctor.Jmbg))
                     {
                         MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
                         return false;
                     }
-                    else if (a.NazivProstorije.Equals(appointment.NazivProstorije))
+                    else if (a.Room.Number.Equals(appointment.Room.Number))
                     {
                         MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
                         return false;

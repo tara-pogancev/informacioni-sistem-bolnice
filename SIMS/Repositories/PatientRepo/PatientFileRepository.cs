@@ -28,9 +28,9 @@ namespace SIMS.Repositories.SecretaryRepo
             AppointmentFileRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
-                if (t.Pacijent.Jmbg == key)
+                if (t.Patient.Jmbg == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.Delete(t.AppointmentID);
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             foreach (Patient p in this.GetAll())
             {
-                if (p.KorisnickoIme == user)
+                if (p.Username == user)
                     return p;
             }
 

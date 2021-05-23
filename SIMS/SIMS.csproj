@@ -186,6 +186,7 @@
 
   <ItemGroup>
     <Folder Include="LekarGUI\ViewModel\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
 
 </Project>

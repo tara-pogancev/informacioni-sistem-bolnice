@@ -68,18 +68,18 @@ namespace SIMS.PacijentGUI
                 return;
             }
             
-            termin.Lekar = lekari[ListaDoktora.SelectedIndex];
+            termin.Doctor = lekari[ListaDoktora.SelectedIndex];
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-            termin.PocetnoVreme = vremenskaOdrednica;
-            termin.InicijalnoVrijeme = vremenskaOdrednica;
-            termin.VremeTrajanja = 30;
-            termin.Pacijent = pacijent;
-            termin.Prostorija = slobodneProstorije[0];
+            termin.StartTime = vremenskaOdrednica;
+            termin.InitialTime = vremenskaOdrednica;
+            termin.Duration = 30;
+            termin.Patient = pacijent;
+            termin.Room = slobodneProstorije[0];
             MessageBox.Show("Termin je uspjesno zakazan");
-            termin.Lekar.Serijalizuj = false;
-            termin.Pacijent.Serijalizuj = false;
-            termin.Prostorija.Serialize = false;
+            termin.Doctor.Serialize = false;
+            termin.Patient.Serialize = false;
+            termin.Room.Serialize = false;
             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
             AppointmentFileRepository.Instance.Save(termin);
@@ -146,9 +146,9 @@ namespace SIMS.PacijentGUI
             DateTime zakazanoVrijeme =DateTime.Parse( OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
             foreach(Appointment termin in new AppointmentFileRepository().GetAll())
             {
-                if (termin.PocetnoVreme.Equals(zakazanoVrijeme))
+                if (termin.StartTime.Equals(zakazanoVrijeme))
                 {
-                    izbaciProstoriju(termin.Prostorija.Number);
+                    izbaciProstoriju(termin.Room.Number);
                 }
             }
             if (slobodneProstorije.Count == 0)

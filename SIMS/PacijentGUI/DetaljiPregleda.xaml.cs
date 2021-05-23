@@ -100,9 +100,9 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.AnamnesisAppointment = new AppointmentFileRepository().FindById(anamneza.AnamnesisAppointment.TerminKey);
-            anamneza.AnamnesisAppointment.Lekar = new DoctorFileRepository().FindById(anamneza.AnamnesisAppointment.Lekar.Jmbg);
-            anamneza.AnamnesisAppointment.Pacijent = PocetnaStranica.getInstance().Pacijent;
+            anamneza.AnamnesisAppointment = new AppointmentFileRepository().FindById(anamneza.AnamnesisAppointment.AppointmentID);
+            anamneza.AnamnesisAppointment.Doctor = new DoctorFileRepository().FindById(anamneza.AnamnesisAppointment.Doctor.Jmbg);
+            anamneza.AnamnesisAppointment.Patient = PocetnaStranica.getInstance().Pacijent;
         }
 
         public Anamnesis Anamneza { get => anamneza; set => anamneza = value; }

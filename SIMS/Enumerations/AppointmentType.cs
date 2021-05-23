@@ -9,7 +9,7 @@ namespace SIMS.Repositories.SecretaryRepo
 {
    public enum AppointmentType
    {
-      pregled,
-      operacija
+      examination,
+      surgery
    }
 }

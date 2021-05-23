@@ -31,7 +31,7 @@ namespace SIMS.Model
             {
                 a.InitData();
 
-                if (a.Operacija.Pacijent.Jmbg == p.Jmbg)
+                if (a.Operacija.Patient.Jmbg == p.Jmbg)
                     retVal.Add(a);
             }
 

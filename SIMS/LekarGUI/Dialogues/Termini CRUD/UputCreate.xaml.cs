@@ -36,7 +36,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             DataContext = this;
 
-            LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;
+            LabelPacijent.Content = "Pacijent: " + patient.FullName;
             LabelDatum.Content = "Datum: " + DateTime.Today.ToString("dd.MM.yyyy.");
 
             DoctorList = new ObservableCollection<Doctor>();
@@ -52,7 +52,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             foreach (Doctor doctor in DoctorFileRepository.Instance.GetAll())
             {
-                SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.SpecijalizacijaLekara);
+                SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.DoctorSpecialization);
 
                 if (!AvailableSpecialization.Contains(currentDoctorSpecialization));
                     AvailableSpecialization.Add(currentDoctorSpecialization);
@@ -70,7 +70,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             DoctorList = new ObservableCollection<Doctor>();
             foreach (Doctor doctor in DoctorFileRepository.Instance.GetAll())
             {
-                if (doctor.SpecijalizacijaLekara.Equals(specialization))
+                if (doctor.DoctorSpecialization.Equals(specialization))
                 {
                     DoctorList.Add(doctor);
                 }
@@ -112,11 +112,11 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void SendNotifications(Doctor doctor)
         {
-            String author = LekarUI.GetInstance().GetUser().ImePrezime;
+            String author = DoctorUI.GetInstance().GetUser().FullName;
             List<String> target = new List<string>();
             target.Add(this.patient.Jmbg);
 
-            Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.ImePrezime + ". Pogledajte ga na svom profilu."), target);
+            Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.FullName + ". Pogledajte ga na svom profilu."), target);
             NotificationFileRepository.Instance.Save(notification);
         }
     }

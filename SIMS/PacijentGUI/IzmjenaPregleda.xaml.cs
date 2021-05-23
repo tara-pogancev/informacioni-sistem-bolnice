@@ -45,7 +45,7 @@ namespace SIMS.PacijentGUI
             doktorSelektovan = false;
             moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
             odabraniTerminZaIzmjenu = termin;
-            izabraniLekar = termin.Lekar;
+            izabraniLekar = termin.Doctor;
             slobodneProstorije = new RoomFileRepository().UcitajProstorijeZaPreglede();
 
             Doktori.ItemsSource = lekari;
@@ -57,26 +57,26 @@ namespace SIMS.PacijentGUI
 
         private void BlokirajDatumeNaKalendaru()
         {
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, odabraniTerminZaIzmjenu.InicijalnoVrijeme.AddDays(-3));
-            CalendarDateRange cdr1 = new CalendarDateRange(odabraniTerminZaIzmjenu.InicijalnoVrijeme.AddDays(3), DateTime.MaxValue);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, odabraniTerminZaIzmjenu.InitialTime.AddDays(-3));
+            CalendarDateRange cdr1 = new CalendarDateRange(odabraniTerminZaIzmjenu.InitialTime.AddDays(3), DateTime.MaxValue);
             OdabirDatuma.BlackoutDates.Add(cdr);
             OdabirDatuma.BlackoutDates.Add(cdr1);
         }
 
         bool LekarZauzet(Appointment zakazaniTermin)
         {
-            return zakazaniTermin.Lekar.Jmbg.Equals(izabraniLekar.Jmbg);
+            return zakazaniTermin.Doctor.Jmbg.Equals(izabraniLekar.Jmbg);
         }
 
         bool PacijentZauzet(Appointment zakazaniTermin)
         {
-            return pacijent.Jmbg.Equals(zakazaniTermin.Pacijent.Jmbg);
+            return pacijent.Jmbg.Equals(zakazaniTermin.Patient.Jmbg);
         }
 
         bool PoklapanjeDatuma(Appointment zakazaniTermin)
         {
-            return (OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy.").Equals(zakazaniTermin.Datum) &&
-                !this.odabraniTerminZaIzmjenu.Vrijeme.Equals(zakazaniTermin.Vrijeme));
+            return (OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy.").Equals(zakazaniTermin.AppointmentDate) &&
+                !this.odabraniTerminZaIzmjenu.AppointmentTime.Equals(zakazaniTermin.AppointmentTime));
         }
 
         bool TerminSeNeMozeZakazati(Appointment termin)
@@ -98,7 +98,7 @@ namespace SIMS.PacijentGUI
             {
                 if (TerminSeNeMozeZakazati(termin))
                 {
-                    moguceSatniceTermina.Remove(termin.Vrijeme);    
+                    moguceSatniceTermina.Remove(termin.AppointmentTime);    
                 }
             }
             terminiLista.ItemsSource = moguceSatniceTermina;
@@ -109,7 +109,7 @@ namespace SIMS.PacijentGUI
             int index = 0;
             foreach (Doctor lekar in lekari)
             {
-                if (lekar.Jmbg.Equals(odabraniTerminZaIzmjenu.Lekar.Jmbg))
+                if (lekar.Jmbg.Equals(odabraniTerminZaIzmjenu.Doctor.Jmbg))
                 {
                     break;
                 }
@@ -123,7 +123,7 @@ namespace SIMS.PacijentGUI
             int index = 0;
             foreach (String moguceSatnice in moguceSatniceTermina)
             {
-                if (moguceSatnice.Equals(odabraniTerminZaIzmjenu.Vrijeme))
+                if (moguceSatnice.Equals(odabraniTerminZaIzmjenu.AppointmentTime))
                 {
                     break;
                 }
@@ -134,8 +134,8 @@ namespace SIMS.PacijentGUI
 
         public void FillComboBoxes(Appointment termin)
         {
-            OdabirDatuma.DisplayDate = termin.PocetnoVreme;
-            OdabirDatuma.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
+            OdabirDatuma.DisplayDate = termin.StartTime;
+            OdabirDatuma.Text = termin.StartTime.ToString("dd.MM.yyyy.");
             PopuniDoktora();
             PopuniVrijeme();
             doktorSelektovan = true;
@@ -174,8 +174,8 @@ namespace SIMS.PacijentGUI
 
         bool ValidirajUneseniDatum()
         {
-            return (OdabirDatuma.SelectedDate.Value > odabraniTerminZaIzmjenu.InicijalnoVrijeme.AddDays(2)) ||
-                   (OdabirDatuma.SelectedDate.Value < odabraniTerminZaIzmjenu.InicijalnoVrijeme.AddDays(-3));
+            return (OdabirDatuma.SelectedDate.Value > odabraniTerminZaIzmjenu.InitialTime.AddDays(2)) ||
+                   (OdabirDatuma.SelectedDate.Value < odabraniTerminZaIzmjenu.InitialTime.AddDays(-3));
         }
 
         private bool ValidirajUnos()
@@ -207,27 +207,27 @@ namespace SIMS.PacijentGUI
 
         private void IzmijeniTermin()
         {
-            odabraniTerminZaIzmjenu.Lekar.Jmbg = lekari[Doktori.SelectedIndex].Jmbg;
-            odabraniTerminZaIzmjenu.PocetnoVreme = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text); ;
+            odabraniTerminZaIzmjenu.Doctor.Jmbg = lekari[Doktori.SelectedIndex].Jmbg;
+            odabraniTerminZaIzmjenu.StartTime = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text); ;
             Serijalizuj();
             FormirajLog();
         }
         private void Serijalizuj()
         {
-            odabraniTerminZaIzmjenu.Lekar.Serijalizuj = false;
-            odabraniTerminZaIzmjenu.Pacijent.Serijalizuj = false;
-            odabraniTerminZaIzmjenu.Prostorija.Serialize = false;
+            odabraniTerminZaIzmjenu.Doctor.Serialize = false;
+            odabraniTerminZaIzmjenu.Patient.Serialize = false;
+            odabraniTerminZaIzmjenu.Room.Serialize = false;
             AppointmentFileRepository.Instance.Update(odabraniTerminZaIzmjenu);
         }
         private void FormirajLog()
         {
-            AppointmentLog terminLog = new AppointmentLog(FormirajKljucLoga(odabraniTerminZaIzmjenu), odabraniTerminZaIzmjenu.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Izmjena);
+            AppointmentLog terminLog = new AppointmentLog(FormirajKljucLoga(odabraniTerminZaIzmjenu), odabraniTerminZaIzmjenu.AppointmentID, pacijent.Jmbg, DateTime.Now, SurgeryType.Izmjena);
             new AppointmentLogFileRepository().Save(terminLog);
         }
 
         public String FormirajKljucLoga(Appointment termin)
         {
-            return termin.TerminKey + pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
+            return termin.AppointmentID + pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
         }
 
     
@@ -256,7 +256,7 @@ namespace SIMS.PacijentGUI
             {
                 if (postojiZakazanTermin(termin,zakazanoVrijemeIzmjenjenogTermina))
                 {
-                    IzbaciProstoriju(termin.Prostorija.Number);
+                    IzbaciProstoriju(termin.Room.Number);
                 }
             }
             IspisiUpozorenje();
@@ -265,7 +265,7 @@ namespace SIMS.PacijentGUI
 
         private bool postojiZakazanTermin(Appointment termin,DateTime zakazanoVrijemeIzmjenjenogTermina)
         {
-            return (termin.PocetnoVreme.Equals(zakazanoVrijemeIzmjenjenogTermina) && zakazanoVrijemeIzmjenjenogTermina != odabraniTerminZaIzmjenu.PocetnoVreme);
+            return (termin.StartTime.Equals(zakazanoVrijemeIzmjenjenogTermina) && zakazanoVrijemeIzmjenjenogTermina != odabraniTerminZaIzmjenu.StartTime);
         }
 
        private void IspisiUpozorenje()

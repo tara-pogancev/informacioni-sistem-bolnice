@@ -31,7 +31,7 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             foreach (Secretary s in this.GetAll())
             {
-                if (s.KorisnickoIme == user)
+                if (s.Username == user)
                     return s;
             }
 

@@ -10,48 +10,33 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     public class LoggedUser
     {
-        protected String ime;
-        protected String prezime;
-        protected String jmbg;
-        protected String korisnickoIme;
-        protected String lozinka;
-        protected String email;
-        protected String telefon;
-        protected bool serijalizuj;
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Jmbg { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public Address Address { get; set; }
+        public bool Serialize { get; set; }
 
-        private Address adresa;
-
-        public LoggedUser(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa)
+        public LoggedUser(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address)
         {
-            this.ime = ime;
-            this.prezime = prezime;
-            this.jmbg = jmbg;
-            this.korisnickoIme = korisnickoIme;
-            this.lozinka = lozinka;
-            this.email = email;
-            this.telefon = telefon;
-            this.adresa = adresa;
-            this.serijalizuj = true;
+            Name = name;
+            LastName = lastName;
+            Jmbg = jmbg;
+            Username = username;
+            Password = password;
+            Email = email;
+            Phone = phone;
+            Address = address;
+            Serialize = true;
         }
 
         public LoggedUser()
         {
-            this.serijalizuj = true;
+            Serialize = true;
         }
-
-        public String Ime
-        {
-            get { return ime; }
-            set { ime = value; }
-        }
-
-        public string Prezime { get => prezime; set => prezime = value; }
-        public string Jmbg { get => jmbg; set => jmbg = value; }
-        public string KorisnickoIme { get => korisnickoIme; set => korisnickoIme = value; }
-        public string Lozinka { get => lozinka; set => lozinka = value; }
-        public string Email { get => email; set => email = value; }
-        public string Telefon { get => telefon; set => telefon = value; }
-        public Address Adresa { get => adresa; set => adresa = value; }
 
         public bool EqualJmbg(String Jmbg)
         {
@@ -59,63 +44,60 @@ namespace SIMS.Repositories.SecretaryRepo
         }
 
         [JsonIgnore]
-        public String ImePrezime { get => (ime + " " + prezime); }
+        public String FullName { get => (Name + " " + LastName); }
 
         [JsonIgnore]
-        public String fullAddress
+        public String FullAddressString
         {
             get
             {
-                return this.Adresa.Street + " " + this.Adresa.Number + ", " +
-                    this.Adresa.City.Name + " " + this.Adresa.City.PostalCode + ", " + this.Adresa.City.Country.Name;
+                return "Novi Sad, Despota Stefana 7";
+                //return this.Address.Street + " " + this.Address.Number + ", " + this.Address.City.Name;
             }
         }
 
         [JsonIgnore]
-        public String AdresaKorisnika
+        public String AddressString
         {
             get
             {
-                return this.Adresa.Street + " " + this.Adresa.Number;
+                return this.Address.Street + " " + this.Address.Number;
             }
         }
 
-        
-        public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
-
-        public bool ShouldSerializePrezime()
+        public bool ShouldSerializeName()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
-        public bool ShouldSerializeKorisnickoIme()
+        public bool ShouldSerializeLastName()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
-        public bool ShouldSerializeLozinka()
+        public bool ShouldSerializeUsername()
         {
-            return serijalizuj;
+            return Serialize;
+        }
+
+        public bool ShouldSerializePassword()
+        {
+            return Serialize;
         }
 
         public bool ShouldSerializeEmail()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
-        public bool ShouldSerializeTelefon()
+        public bool ShouldSerializePhone()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
-        public bool ShouldSerializeAdresa()
+        public bool ShouldSerializeAddress()
         {
-            return serijalizuj;
-        }
-
-        public bool ShouldSerializeIme()
-        {
-            return serijalizuj;
+            return Serialize;
         }
 
     }

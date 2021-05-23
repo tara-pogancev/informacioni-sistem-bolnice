@@ -24,132 +24,115 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for LekarIstorijaPage.xaml
     /// </summary>
-    public partial class LekarIstorijaPage : Page
+    public partial class AppointmentHistoryView : Page
     {
-        private static Doctor lekarUser;
+        private static Doctor doctorUser;
 
-        private ObservableCollection<Appointment> evidentiraniView;
-        public ObservableCollection<Appointment> EvidentiraniView { get => evidentiraniView; set => evidentiraniView = value; }
+        public ObservableCollection<Appointment> AnamnesisViewModel { get; set; }
+        public ObservableCollection<Appointment> AppointmentsViewModel { get; set; }
 
-        private ObservableCollection<Appointment> prazniView;
-        public ObservableCollection<Appointment> PrazniView { get => prazniView; set => prazniView = value; }
-
-        public LekarIstorijaPage(Doctor l)
+        public AppointmentHistoryView(Doctor doctor)
         {
             InitializeComponent();
-
-            lekarUser = l;
-
-            //Evidentirani - pregledi sa anamnezom
-            //Prazni - pregledi bez anamneze
+            doctorUser = doctor;
 
             this.DataContext = this;
-            evidentiraniView = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
-            prazniView = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
-            dobaviPodatkeOPacijenuILekaru();
+            AnamnesisViewModel = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
+            AppointmentsViewModel = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
             refreshView();
         }
 
         public void refreshView()
         {
-            prazniView.Clear();
-            evidentiraniView.Clear();
+            AnamnesisViewModel.Clear();
+            AppointmentsViewModel.Clear();
 
-            List<Appointment> temp = new List<Appointment>(AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser));
-            popuniInformacijeODoktoruIPacijentu(temp);
-            foreach (Appointment t in temp)
+            List<Appointment> appointments = new List<Appointment>(AppointmentFileRepository.Instance.GetDoctorAppointments(doctorUser));
+            foreach (Appointment appointment in appointments)
             {
-                t.Pacijent = new PatientFileRepository().FindById(t.Pacijent.Jmbg);
+                appointment.InitData();
 
-                if (t.Evidentiran == true)
-                    evidentiraniView.Add(t);
+                if (appointment.IsRecorded == true)
+                    AnamnesisViewModel.Add(appointment);
 
-                else if (t.IsPast == true)
+                else if (appointment.IsPast == true)
                 {
-                    prazniView.Add(t);
+                    AppointmentsViewModel.Add(appointment);
                 }
-
-            }
-
-        }
-
-        private void popuniInformacijeODoktoruIPacijentu(List<Appointment> temp)
-        {
-            foreach (Appointment termin in temp)
-            {
-                termin.Pacijent = new PatientFileRepository().FindById(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorFileRepository().FindById(termin.Lekar.Jmbg);
             }
         }
 
-        private void Button_Anamneza(object sender, RoutedEventArgs e)
+        private void ButtonReadReport(object sender, RoutedEventArgs e)
         {
-            if (dataGridEvidentirani.SelectedItem != null)
+            if (dataGridReports.SelectedItem != null)
             {
-                Appointment t = (Appointment)dataGridEvidentirani.SelectedItem;
+                Appointment appointnment = (Appointment)dataGridReports.SelectedItem;
 
-                if (t.VrstaTermina == AppointmentType.pregled)
+                if (appointnment.Type == AppointmentType.examination)
                 {
-                    Anamnesis anamneza = AnamnesisFileRepository.Instance.FindById(t.TerminKey);
-                    if (anamneza != null)
-                    {
-                        AnamnezaView a = new AnamnezaView(anamneza);
-                        a.Show();
-                    }
-                        
+                    ShowAppointmentAnamnesis(appointnment);
                 }
                 else
                 {
-                    SurgeryReport report = SurgeryReportFileRepository.Instance.FindById(t.TerminKey);
-                    if (report != null)
-                    {
-                        OperacijaIzvestajView a = new OperacijaIzvestajView(report);
-                        a.Show();
-                    }
+                    ShowSurgeryReport(appointnment);
                 }
             }
         }
 
-        private void Button_Evidencija(object sender, RoutedEventArgs e)
+        private static void ShowSurgeryReport(Appointment appointnment)
         {
-            if (dataGridPrazni.SelectedItem != null)
+            SurgeryReport report = SurgeryReportFileRepository.Instance.FindById(appointnment.AppointmentID);
+            if (report != null)
             {
-                Appointment t = (Appointment)dataGridPrazni.SelectedItem;
+                SurgeryReportRead a = new SurgeryReportRead(report);
+                a.Show();
+            }
+        }
 
-                if (t.VrstaTermina == AppointmentType.pregled)
+        private static void ShowAppointmentAnamnesis(Appointment appointnment)
+        {
+            Anamnesis anamnesis = AnamnesisFileRepository.Instance.FindById(appointnment.AppointmentID);
+            if (anamnesis != null)
+            {
+                AnamnesisRead a = new AnamnesisRead(anamnesis);
+                a.Show();
+            }
+        }
+
+        private void ButtonWriteReport(object sender, RoutedEventArgs e)
+        {
+            if (dataGridAppointments.SelectedItem != null)
+            {
+                Appointment appointment = (Appointment)dataGridAppointments.SelectedItem;
+
+                if (appointment.Type == AppointmentType.examination)
                 {
-                    AnamnezaCreate a = new AnamnezaCreate((Appointment)dataGridPrazni.SelectedItem);
-                    a.ShowDialog();
-                    refreshView();
+                    WriteAnamnesis();
                 }
                 else
                 {
-                    OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Appointment)dataGridPrazni.SelectedItem);
-                    o.ShowDialog();
-                    refreshView();
+                    WriteSurgeryReport();
                 }
             }
+        }
+
+        private void WriteSurgeryReport()
+        {
+            OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Appointment)dataGridAppointments.SelectedItem);
+            o.ShowDialog();
+            refreshView();
+        }
+
+        private void WriteAnamnesis()
+        {
+            AnamnezaCreate a = new AnamnezaCreate((Appointment)dataGridAppointments.SelectedItem);
+            a.ShowDialog();
+            refreshView();
         }
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
-        }
-
-        private void dobaviPodatkeOPacijenuILekaru()
-        {
-            foreach (Appointment termin in EvidentiraniView)
-            {
-                termin.Pacijent = new PatientFileRepository().FindById(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorFileRepository().FindById(termin.Lekar.Jmbg);
-            }
-            
-            foreach (Appointment termin in prazniView)
-            {
-               termin.Pacijent = new PatientFileRepository().FindById(termin.Pacijent.Jmbg);
-               termin.Lekar = new DoctorFileRepository().FindById(termin.Lekar.Jmbg);
-            }
-            
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
     }

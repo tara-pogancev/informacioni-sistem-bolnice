@@ -31,7 +31,7 @@ namespace SIMS.PacijentGUI
         public IstorijaPregledaView(Appointment termin)
         {
             this.termin = termin;
-            omogucenoOcjenjivanje = new DoctorSurveyFileRepository().FindById(termin.TerminKey) == null ? true : false;
+            omogucenoOcjenjivanje = new DoctorSurveyFileRepository().FindById(termin.AppointmentID) == null ? true : false;
         }
 
         public Appointment Termin { get => termin; set => termin = value; }
@@ -71,7 +71,7 @@ namespace SIMS.PacijentGUI
             IDoctorRepository lekarStorage = new DoctorFileRepository();
             for (int i = 0; i < zakazaniTermini.Count; i++)
             {
-                zakazaniTermini[i].Lekar = lekarStorage.FindById(zakazaniTermini[i].Lekar.Jmbg);
+                zakazaniTermini[i].Doctor = lekarStorage.FindById(zakazaniTermini[i].Doctor.Jmbg);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SIMS.PacijentGUI
         {
             for (int i = 0; i < zakazaniTermini.Count; i++)
             {
-                if (zakazaniTermini[i].PocetnoVreme >= DateTime.Now)
+                if (zakazaniTermini[i].StartTime >= DateTime.Now)
                 {
                     zakazaniTermini.RemoveAt(i);
                     i--;
@@ -95,7 +95,7 @@ namespace SIMS.PacijentGUI
             IAnamnesisRepository anamnezaStorage = new AnamnesisFileRepository();
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
-            Anamnesis anamneza=anamnezaStorage.FindById(selektovaniTermin.Termin.TerminKey);
+            Anamnesis anamneza=anamnezaStorage.FindById(selektovaniTermin.Termin.AppointmentID);
             if (anamneza == null)
             {
                 anamneza = new Anamnesis();

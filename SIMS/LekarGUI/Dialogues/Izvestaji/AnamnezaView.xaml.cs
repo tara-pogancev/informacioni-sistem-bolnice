@@ -17,9 +17,9 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// <summary>
     /// Interaction logic for AnamnezaView.xaml
     /// </summary>
-    public partial class AnamnezaView : Window
+    public partial class AnamnesisRead : Window
     {
-        public AnamnezaView(Anamnesis a)
+        public AnamnesisRead(Anamnesis a)
         {
             InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
             LabelPacijent.Content = "Pacijent: " + a.PatientName;
             Appointment t = AppointmentFileRepository.Instance.FindById(a.AnamnesisID);
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(t.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(t.Patient.Jmbg).DateOfBirth.ToString("dd.MM.yyyy.");
 
             GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             GlavneTegobe.Inlines.Add("   ");

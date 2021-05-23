@@ -34,7 +34,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void PrikazProfila(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(patient);
             this.Close();
         }
 

@@ -31,7 +31,7 @@ namespace SIMS.Repositories.AnamnesisRepository
             {
                 a.InitData();
 
-                if (a.AnamnesisAppointment.Pacijent.Jmbg == patient.Jmbg)
+                if (a.AnamnesisAppointment.Patient.Jmbg == patient.Jmbg)
                     retVal.Add(a);
             }
 

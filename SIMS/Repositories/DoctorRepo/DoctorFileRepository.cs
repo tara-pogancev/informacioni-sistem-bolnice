@@ -27,8 +27,8 @@ namespace SIMS.Repositories.DoctorRepo
 
             foreach (Doctor l in base.GetAll())
             {
-                if (!retVal.Contains(l.SpecijalizacijaLekara))
-                    retVal.Add(l.SpecijalizacijaLekara);
+                if (!retVal.Contains(l.DoctorSpecialization))
+                    retVal.Add(l.DoctorSpecialization);
             }
 
             return retVal;
@@ -53,7 +53,7 @@ namespace SIMS.Repositories.DoctorRepo
 
             foreach (Doctor l in base.GetAll())
             {
-                if (l.SpecijalizacijaLekara == specialization)
+                if (l.DoctorSpecialization == specialization)
                     retVal.Add(l);
             }
 
@@ -64,7 +64,7 @@ namespace SIMS.Repositories.DoctorRepo
         {
             foreach (Doctor l in this.GetAll())
             {
-                if (l.KorisnickoIme == user)
+                if (l.Username == user)
                     return l;
             }
 
@@ -88,9 +88,9 @@ namespace SIMS.Repositories.DoctorRepo
             IAppointmentRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
-                if (t.Lekar.Jmbg == key)
+                if (t.Doctor.Jmbg == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.Delete(t.AppointmentID);
                 }
             }
         }

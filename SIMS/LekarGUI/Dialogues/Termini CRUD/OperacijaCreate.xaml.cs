@@ -68,7 +68,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (Doctor l in lekari)
             {
-                if (l.Jmbg.Equals(LekarUI.GetInstance().GetUser().Jmbg))
+                if (l.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
                 {
                     break;
                 }
@@ -89,20 +89,20 @@ namespace SIMS.LekarGUI
 
                 String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
                 DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-                termin.PocetnoVreme = vremenskaOdrednica;
-                termin.InicijalnoVrijeme = vremenskaOdrednica;
+                termin.StartTime = vremenskaOdrednica;
+                termin.InitialTime = vremenskaOdrednica;
 
                 if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = 30;
+                    termin.Duration = 30;
                 else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = 60;
+                    termin.Duration = 60;
                 else
-                    termin.VremeTrajanja = 90;
+                    termin.Duration = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
-                termin.VrstaTermina = AppointmentType.operacija;
+                termin.Room = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Patient = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Doctor = lekari[doktoriCombo.SelectedIndex];
+                termin.Type = AppointmentType.surgery;
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!lekari[doktoriCombo.SelectedIndex].IsFree(termin))
@@ -110,9 +110,9 @@ namespace SIMS.LekarGUI
 
                 else
                 {
-                    termin.Lekar.Serijalizuj = false;
-                    termin.Pacijent.Serijalizuj = false;
-                    termin.Prostorija.Serialize = false;
+                    termin.Doctor.Serialize = false;
+                    termin.Patient.Serialize = false;
+                    termin.Room.Serialize = false;
 
                     AppointmentFileRepository.Instance.Save(termin);
                     LekarTerminiPage.GetInstance().refresh();

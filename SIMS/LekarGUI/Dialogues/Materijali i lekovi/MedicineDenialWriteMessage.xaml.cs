@@ -34,7 +34,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void AcceptMessage(object sender, RoutedEventArgs e)
         {
-            String notificationAuthor = LekarUI.GetInstance().GetUser().ImePrezime;
+            String notificationAuthor = DoctorUI.GetInstance().GetUser().FullName;
             String notificationText = NotificationTextBox.Text;
             List<String> notificationTarget = getUpravnikKeys();
 

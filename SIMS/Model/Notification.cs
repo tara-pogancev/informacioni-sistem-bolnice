@@ -7,9 +7,9 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     public class Notification
     {
-        public string Autor { get; set; }
-        public DateTime Vreme { get; set; }
-        public string Tekst { get; set; }
+        public string Author { get; set; }
+        public DateTime Time { get; set; }
+        public string Content { get; set; }
         public string ID { get; set; }
         public List<string> Target { get; set; } 
 
@@ -18,12 +18,12 @@ namespace SIMS.Repositories.SecretaryRepo
             
         }
 
-        public Notification(string autor, DateTime vreme, string tekst, List<string> target)
+        public Notification(string author, DateTime time, string content, List<string> target)
         {
-            Autor = autor;
-            Vreme = vreme;
-            Tekst = tekst;
-            ID = autor+vreme.ToString("yyMMddHHmmssffffff");
+            Author = author;
+            Time = time;
+            Content = content;
+            ID = author+time.ToString("yyMMddHHmmssffffff");
             Target = target;
         }
 
@@ -32,14 +32,14 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             get
             {
-                return Vreme.ToString("dd.MM.yyyy. HH:mm");
+                return Time.ToString("dd.MM.yyyy. HH:mm");
             }
         }
 
         [JsonIgnore]
         public String AutorUppercase
         {
-            get { return Autor.ToUpper(); }
+            get { return Author.ToUpper(); }
         }
 
 
@@ -47,10 +47,10 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             get 
             {
-                if (Vreme.Date == (DateTime.Today))
-                    return Vreme.ToString("HH:mm");
+                if (Time.Date == (DateTime.Today))
+                    return Time.ToString("HH:mm");
 
-                return Vreme.ToString("dd.MM.yyyy.");
+                return Time.ToString("dd.MM.yyyy.");
             }
         }
 
@@ -64,10 +64,10 @@ namespace SIMS.Repositories.SecretaryRepo
             return false;
         }
 
-        public Boolean isPast()
+        public Boolean IsPast()
         {
             DateTime currentTime = DateTime.Now;
-            if (currentTime >= Vreme)
+            if (currentTime >= Time)
                 return true;
             else return false;
         }

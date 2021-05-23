@@ -61,11 +61,11 @@ namespace SIMS.LekarGUI
             
             foreach (Appointment t in temp)
             {
-                if (!t.IsPast && !t.Evidentiran)
+                if (!t.IsPast && !t.IsRecorded)
                    terminiView.Add(t);
 
-                t.Pacijent = new PatientFileRepository().FindById(t.Pacijent.Jmbg);
-                t.Prostorija = new RoomFileRepository().FindById(t.Prostorija.Number);
+                t.Patient = new PatientFileRepository().FindById(t.Patient.Jmbg);
+                t.Room = new RoomFileRepository().FindById(t.Room.Number);
             }
         }
 
@@ -105,7 +105,7 @@ namespace SIMS.LekarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)dataGridTermini.SelectedItem;
-                    AppointmentFileRepository.Instance.Delete(toDelete.TerminKey);
+                    AppointmentFileRepository.Instance.Delete(toDelete.AppointmentID);
                     refreshView();
                     MessageBox.Show("Termin je uspešno otkazan!");
                 }
@@ -132,7 +132,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void Event_Karton(object sender, MouseButtonEventArgs e)
@@ -140,9 +140,9 @@ namespace SIMS.LekarGUI
             if (dataGridTermini.SelectedItem != null)
             {
                 Appointment t = (Appointment)dataGridTermini.SelectedItem;
-                Patient p = PatientFileRepository.Instance.FindById(t.Pacijent.Jmbg);
+                Patient p = PatientFileRepository.Instance.FindById(t.Patient.Jmbg);
 
-                LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
+                DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }
         }
     }

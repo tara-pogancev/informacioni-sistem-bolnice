@@ -1,18 +1,2 @@
 {
-  "210508095158": {
-    "MainIssues": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo, odio at pharetra volutpat, nulla purus fermentum dui, et eleifend ipsum felis ac nunc",
-    "CurrentAnamnesis": "Nulla sit amet urna facilisis",
-    "GeneralOccurrences": "Nam a hendrerit augue. Suspendisse iaculis leo quis quam consequat sagittis. Vestibulum aliquam tristique diam sit amet porta. Sed fringilla mollis dignissim",
-    "RespiratorySystem": "/",
-    "CardioSystem": "/",
-    "DigestiveSystem": "/",
-    "UroGenitalSystem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo, odio at pharetra volutpat, nulla purus fermentum dui, et eleifend ipsum felis ac nunc",
-    "LocomotorSystem": "Nulla sit amet urna facilisis",
-    "NervousSystem": "/",
-    "PastDiseases": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo, odio at pharetra volutpat, nulla purus fermentum dui, et eleifend ipsum felis ac nunc",
-    "FamilyData": "/",
-    "SocioEpiData": "/",
-    "AnamnesisDate": "2021-05-10T00:00:00+02:00",
-    "AnamnesisID": "210508095158"
-  }
 }

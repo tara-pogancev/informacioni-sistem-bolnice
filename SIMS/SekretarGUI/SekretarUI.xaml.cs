@@ -24,7 +24,7 @@ namespace SIMS
             InitializeComponent();
 
             _secretary = secretary;
-            UsernameLabel.Content = _secretary.ImePrezime;
+            UsernameLabel.Content = _secretary.FullName;
 
             MainFrame.Content = SekretarHomePage.GetInstance(_secretary);
         }

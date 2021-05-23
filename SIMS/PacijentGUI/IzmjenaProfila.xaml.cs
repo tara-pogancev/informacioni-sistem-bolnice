@@ -42,7 +42,7 @@ namespace SIMS.PacijentGUI
             AlergeniText.TextWrapping = TextWrapping.Wrap;
             KrvnaGrupaText.Inlines.Add(new Run("Krvna grupa:") { FontWeight = FontWeights.Bold, FontSize = 15 });
             KrvnaGrupaText.Inlines.Add(" ");
-            KrvnaGrupaText.Inlines.Add(pacijent.KrvnaGrupaString);
+            KrvnaGrupaText.Inlines.Add(pacijent.BloodTypeString);
         }
         
 
@@ -52,7 +52,7 @@ namespace SIMS.PacijentGUI
         private void dobaviAlergene()
         {
             
-            foreach(String alergen in pacijent.Alergeni)
+            foreach(String alergen in pacijent.Allergens)
             {
                 Allergen ucitaniAlergen = new AllergenFileRepository().FindById(alergen);
                 alergeni += ucitaniAlergen.Name;
@@ -75,11 +75,11 @@ namespace SIMS.PacijentGUI
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
             pacijent.Email = EmailBox.Text;
-            pacijent.KorisnickoIme = KorisnickoImeBox.Text;
-            pacijent.Lozinka = LozinkaBox.Text;
-            pacijent.Telefon = BrojTelefonaBox.Text;
-            pacijent.Adresa.Street= AdresaBox.Text.Split(" ")[0];
-            pacijent.Adresa.Number = AdresaBox.Text.Split(" ")[1];
+            pacijent.Username = KorisnickoImeBox.Text;
+            pacijent.Password = LozinkaBox.Text;
+            pacijent.Phone = BrojTelefonaBox.Text;
+            pacijent.Address.Street= AdresaBox.Text.Split(" ")[0];
+            pacijent.Address.Number = AdresaBox.Text.Split(" ")[1];
             new PatientFileRepository().Update(pacijent);
             NavigationService.GoBack();
 

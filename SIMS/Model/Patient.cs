@@ -7,57 +7,59 @@ using Newtonsoft.Json;
 using SIMS.Model;
 using System;
 using System.Collections.Generic;
+using SIMS.Repositories.AllergenRepo;
 
 namespace SIMS.Repositories.SecretaryRepo
 {
     public class Patient : LoggedUser
     {
-        private String lbo;
-        private bool gost;
-        private List<string> alergeni;
-        private DateTime datum_rodjenja;
-        private BloodType krvna_grupa;
-        private SexType pol;
-        private bool banovanKorisnik;
-        private List<string> hronicne_bolesti = new List<string>();
+        public SexType PatientGender { get; set; }
+        public BloodType BloodType { get; set; }
+        public bool IsBanned { get; set; }
+        public string Lbo { get; set; }
+        public bool Guest { get; set; }
+        public List<string> Allergens { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public List<string> HronicalDiseases { get; set; }
 
-        public Patient(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa, String lbo, Boolean gost, List<string> alergeni) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<string> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
-            this.lbo = lbo;
-            this.gost = gost;
-            this.alergeni = alergeni;
-            this.banovanKorisnik = false;
-            this.serijalizuj = true;
+            Lbo = lbo;
+            Guest = guest;
+            Allergens = allergens;
+            IsBanned = false;
+            Serialize = true;
         }
 
-        public Patient(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa, String lbo, Boolean gost, List<string> alergeni, DateTime datum_rodjenja, BloodType krvna_grupa, SexType pol, List<string> hronicne_bolesti) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<string> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
-            this.lbo = lbo;
-            this.gost = gost;
-            this.alergeni = alergeni;
-            this.datum_rodjenja = datum_rodjenja;
-            this.krvna_grupa = krvna_grupa;
-            this.pol = pol;
-            this.hronicne_bolesti = hronicne_bolesti;
-            this.banovanKorisnik = false;
-            this.Serijalizuj = true;
+            Lbo = lbo;
+            Guest = guest;
+            Allergens = allergens;
+            DateOfBirth = dateOfBirth;
+            BloodType = bloodType;
+            PatientGender = gender;
+            HronicalDiseases = hronicalDiseases;
+            IsBanned = false;
+            Serialize = true;
         }
 
         public Patient() : base()
         {
-            this.banovanKorisnik = false;
-            this.serijalizuj = true;
+            IsBanned = false;
+            Serialize = true;
         }
 
-        public Patient(string ime, string prezime, string jmbg) : base(ime, prezime, jmbg, "", "", "", "", new Address("", "", new City("", 0, new Country(""))))
+        public Patient(string name, string lastName, string jmbg) : base(name, lastName, jmbg, "", "", "", "", new Address("", "", new City("", 0, new Country(""))))
         {
-            this.lbo = "";
-            this.gost = true;
-            this.alergeni = new List<string>();
-            this.datum_rodjenja = DateTime.MinValue;
-            this.krvna_grupa = BloodType.Op;
-            this.pol = SexType.Muški;
-            this.hronicne_bolesti = new List<string>();
+            Lbo = "";
+            Guest = true;
+            Allergens = new List<string>();
+            DateOfBirth = DateTime.MinValue;
+            BloodType = BloodType.Op;
+            PatientGender = SexType.Male;
+            HronicalDiseases = new List<string>();
         }
 
         [JsonIgnore]
@@ -65,82 +67,63 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             get
             {
-                String ret = "";
-                if (Gost)
+                if (Guest)
                 {
-                    ret = "Da";
+                    return "Da";
                 }
                 else
                 {
-                    ret = "Ne";
+                    return "Ne";
                 }
-
-                return ret;
             }
 
         }
 
         public void SetAttributes(Patient p)
         {
-            this.Ime = p.Ime;
-            this.Prezime = p.Prezime;
-            this.Jmbg = p.Jmbg;
-            this.KorisnickoIme = p.KorisnickoIme;
-            this.Lozinka = p.Lozinka;
-            this.Email = p.Email;
-            this.Telefon = p.Telefon;
-            this.Adresa = p.Adresa;
-            this.Lbo = p.Lbo;
-            this.Gost = p.Gost;
+            Name = p.Name;
+            LastName = p.LastName;
+            Jmbg = p.Jmbg;
+            Username = p.Username;
+            Password = p.Password;
+            Email = p.Email;
+            Phone = p.Phone;
+            Address = p.Address;
+            Lbo = p.Lbo;
+            Guest = p.Guest;
         }
 
-
         [JsonIgnore]
-        public string GetAlergeniString
+        public string GetAllergenListString
         {
             get
             {
-                /*string alergeniString = "";
-                if (alergeni.Count == 0 || alergeni.Contains(""))
+                string allergensString = "";
+                if (Allergens.Count == 0 || Allergens.Contains(""))
                     return "Nema";
 
-                foreach (string a in alergeni)
-                    alergeniString += AlergeniStorage.Instance.ReadEntity(a).Naziv + ", ";
-                return alergeniString.Remove(alergeniString.Length - 2); */
-                return "Nema";
+                AllergenFileRepository allergens = new AllergenFileRepository();
+
+                foreach (string a in Allergens)
+                    allergensString += allergens.FindById(a).Name + ", ";
+                return allergensString.Remove(allergensString.Length - 2); 
             }
         }
 
         public bool Available(Appointment appointment)
         {
-            return appointment.Pacijent.Jmbg == this.Jmbg;
-
+            return appointment.Patient.Jmbg == this.Jmbg;
         }
 
         [JsonIgnore]
-        public List<string> Hronicne_Bolesti
+        public String DateString { get => DateOfBirth.ToString("dd.MM.yyyy."); }
+
+        [JsonIgnore]
+        public String Gender
         {
             get
             {
-                return hronicne_bolesti;
-            }
-            set
-            {
-                hronicne_bolesti = value;
-            }
-        }
-
-        [JsonIgnore]
-
-        public String DatumString { get => datum_rodjenja.ToString("dd.MM.yyyy."); }
-        [JsonIgnore]
-
-        public String PolString
-        {
-            get
-
-            {
-                if (pol == SexType.Muški)
+                if (PatientGender == SexType.Male)
                     return "Muško";
                 else
                     return "Žensko";
@@ -148,25 +131,25 @@ namespace SIMS.Repositories.SecretaryRepo
         }
 
         [JsonIgnore]
-        public String KrvnaGrupaString
+        public String BloodTypeString
         {
             get
             {
-                if (krvna_grupa == BloodType.ABn)
+                if (BloodType == BloodType.ABn)
                     return "AB-";
-                else if (krvna_grupa == BloodType.ABp)
+                else if (BloodType == BloodType.ABp)
                     return "AB+";
-                else if (krvna_grupa == BloodType.Ap)
+                else if (BloodType == BloodType.Ap)
                     return "A+";
-                else if (krvna_grupa == BloodType.An)
+                else if (BloodType == BloodType.An)
                     return "A-";
-                else if (krvna_grupa == BloodType.Bp)
+                else if (BloodType == BloodType.Bp)
                     return "B+";
-                else if (krvna_grupa == BloodType.Bn)
+                else if (BloodType == BloodType.Bn)
                     return "B-";
-                else if (krvna_grupa == BloodType.Op)
+                else if (BloodType == BloodType.Op)
                     return "O+";
-                else if (krvna_grupa == BloodType.On)
+                else if (BloodType == BloodType.On)
                     return "O-";
 
                 return null;
@@ -175,7 +158,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
         public bool IsAlergic(Medication lek)
         {
-            foreach (string a in this.Alergeni)
+            foreach (string a in this.Allergens)
             {
                 if (lek.Components.Contains(a))
                     return true;
@@ -183,105 +166,53 @@ namespace SIMS.Repositories.SecretaryRepo
             return false;
         }
 
-        public string Lbo { get => lbo; set => lbo = value; }
-        public bool Gost { get => gost; set => gost = value; }
-        public List<string> Alergeni
-        {
-            get
-            {
-                return alergeni;
-            }
-            set
-            {
-                this.alergeni = value;
-            }
-        }
-
-        public DateTime Datum_Rodjenja
-        {
-            get
-            {
-                return datum_rodjenja;
-            }
-            set
-            {
-                this.datum_rodjenja = value;
-            }
-        }
-
-        public string GetHronicneBolestiString
+        public string GetHronicalDiseases
         {
             get
             {
                 string hronBolestiString = "";
-                if (hronicne_bolesti.Count == 0 || hronicne_bolesti.Contains(""))
+                if (HronicalDiseases.Count == 0 || HronicalDiseases.Contains(""))
                     return "Nema";
 
-                foreach (string a in hronicne_bolesti)
+                foreach (string a in HronicalDiseases)
                     hronBolestiString += a + ", ";
                 return hronBolestiString.Remove(hronBolestiString.Length - 2);
             }
         }
 
-        public SexType Pol_Pacijenta
+       
+        public bool ShouldSerializeBloodType()
         {
-            get
-            {
-                return pol;
-            }
-            set
-            {
-                pol = value;
-            }
+            return Serialize;
         }
-
-        public BloodType Krvna_Grupa
+        public bool ShouldSerializePatientGender()
         {
-            get
-            {
-                return krvna_grupa;
-            }
-            set
-            {
-                krvna_grupa = value;
-            }
+            return Serialize;
         }
-        
-        public bool BanovanKorisnik { get => banovanKorisnik; set => banovanKorisnik = value; }
-
-        public bool ShouldSerializeKrvna_Grupa()
+        public bool ShouldSerializeGetHronicalDiseases()
         {
-            return serijalizuj;
+            return Serialize;
         }
-        public bool ShouldSerializePol_Pacijenta()
+        public bool ShouldSerializeDateOfBirth()
         {
-            return serijalizuj;
+            return Serialize;
         }
-        public bool ShouldSerializeGetHronicneBolestiString()
+        public bool ShouldSerializeAllergens()
         {
-            return serijalizuj;
+            return Serialize;
         }
-        public bool ShouldSerializeDatum_Rodjenja()
+        public bool ShouldSerializeGuest()
         {
-            return serijalizuj;
-        }
-        public bool ShouldSerializeAlergeni()
-        {
-            return serijalizuj;
-        }
-        public bool ShouldSerializeGost()
-        {
-            return serijalizuj;
+            return Serialize;
         }
         public bool ShouldSerializeLbo()
         {
-            return serijalizuj;
+            return Serialize;
         }
-        public bool ShouldSerializeBanovanKorisnik()
+        public bool ShouldSerializeIsBanned()
         {
-            return serijalizuj;
+            return Serialize;
         }
-
-        
+                
     }
 }

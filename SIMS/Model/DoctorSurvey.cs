@@ -17,7 +17,7 @@ namespace SIMS.Model
         public DoctorSurvey(Appointment termin,int ocjena,String komentar,String idVlasnika):base(komentar,idVlasnika)
         {
             this.termin = termin;
-            doctorId = termin.Lekar.Jmbg;
+            doctorId = termin.Doctor.Jmbg;
         }
 
         public Appointment Termin { get => termin; set => termin = value; }

@@ -19,30 +19,30 @@ using System.Windows.Threading;
 
 namespace SIMS
 {
-    public partial class LekarUI : Window
+    public partial class DoctorUI : Window
     {
-        public static LekarUI instance;
+        public static DoctorUI instance;
 
         private static Doctor lekarUser;
 
         private WindowBar bar = new WindowBar();
 
-        public static LekarUI GetInstance(Doctor l)
+        public static DoctorUI GetInstance(Doctor l)
         {
             if (instance == null)
             {
                 lekarUser = l;
-                instance = new LekarUI();
+                instance = new DoctorUI();
             }
             return instance;
         }
 
-        public static LekarUI GetInstance()
+        public static DoctorUI GetInstance()
         {
             return instance;
         }
 
-        public LekarUI()
+        public DoctorUI()
         {
             InitializeComponent();
 
@@ -50,7 +50,7 @@ namespace SIMS
 
             SellectedTab.Content = new LekarDashboard(lekarUser);
 
-            this.UsernameLabel.Content = lekarUser.ImePrezime;
+            this.UsernameLabel.Content = lekarUser.FullName;
 
             WindowBarFrame.Content = bar;
 
@@ -150,7 +150,7 @@ namespace SIMS
                     }
                 case 3:
                     {
-                        SellectedTab.Content = new LekarIstorijaPage(lekarUser);
+                        SellectedTab.Content = new AppointmentHistoryView(lekarUser);
                         ResetActiveButtons();
                         B3.Fill = sellectedTab;
                         break;

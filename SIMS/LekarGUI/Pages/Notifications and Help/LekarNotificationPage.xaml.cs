@@ -31,7 +31,7 @@ namespace SIMS.LekarGUI
         {
             InitializeComponent();
 
-            lekarUser = LekarUI.GetInstance().GetUser();
+            lekarUser = DoctorUI.GetInstance().GetUser();
 
             List<Notification> listaObavestenja = NotificationFileRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
             listaObavestenja.Reverse();
@@ -49,7 +49,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void Button_Lekovi(object sender, RoutedEventArgs e)

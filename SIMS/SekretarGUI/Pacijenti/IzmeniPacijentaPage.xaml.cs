@@ -28,21 +28,21 @@ namespace SIMS.SekretarGUI
 
         private void FillTextBoxAndComboBoxFields(Patient patient)
         {
-            nameTextBox.Text = patient.Ime;
-            lastNameTextBox.Text = patient.Prezime;
+            nameTextBox.Text = patient.Name;
+            lastNameTextBox.Text = patient.LastName;
             jmbgTextBox.Text = patient.Jmbg;
-            usernameTextBox.Text = patient.KorisnickoIme;
-            passwordTextBox.Text = patient.Lozinka;
+            usernameTextBox.Text = patient.Username;
+            passwordTextBox.Text = patient.Password;
             emailTextBox.Text = patient.Email;
-            phoneNumberTextBox.Text = patient.Telefon;
+            phoneNumberTextBox.Text = patient.Phone;
 
             lboTextBox.Text = patient.Lbo;
-            guestCheckBox.IsChecked = patient.Gost;
+            guestCheckBox.IsChecked = patient.Guest;
 
-            sexComboBox.SelectedIndex = (int)patient.Pol_Pacijenta;
-            bloodGroupComboBox.SelectedIndex = (int)patient.Krvna_Grupa;
-            birthDateTextBox.Text = patient.Datum_Rodjenja.ToString("dd.MM.yyyy.");
-            chronicPainsTextBox.Text = patient.GetHronicneBolestiString;
+            sexComboBox.SelectedIndex = (int)patient.PatientGender;
+            bloodGroupComboBox.SelectedIndex = (int)patient.BloodType;
+            birthDateTextBox.Text = patient.DateOfBirth.ToString("dd.MM.yyyy.");
+            chronicPainsTextBox.Text = patient.GetHronicalDiseases;
         }
 
         private void FillAllergenFields(Patient patient)
@@ -53,7 +53,7 @@ namespace SIMS.SekretarGUI
             allergensComboBox.DisplayMemberPath = "Naziv";
             allergensComboBox.SelectedMemberPath = "ID";
 
-            foreach (string id in patient.Alergeni)
+            foreach (string id in patient.Allergens)
             {
                 foreach (Allergen a in _allergens)
                 {
@@ -68,7 +68,7 @@ namespace SIMS.SekretarGUI
 
         private void FillAdressFields(Patient patient)
         {
-            if (patient.Adresa == null)
+            if (patient.Address == null)
             {
                 adressTextBox.Text = "";
                 cityTextBox.Text = "";
@@ -77,10 +77,10 @@ namespace SIMS.SekretarGUI
             }
             else
             {
-                adressTextBox.Text = patient.Adresa.ToString();
-                cityTextBox.Text = patient.Adresa.City.Name;
-                postalCodeTextBox.Text = patient.Adresa.City.PostalCode.ToString();
-                countryTextBox.Text = patient.Adresa.City.Country.Name;
+                adressTextBox.Text = patient.Address.ToString();
+                cityTextBox.Text = patient.Address.City.Name;
+                postalCodeTextBox.Text = patient.Address.City.PostalCode.ToString();
+                countryTextBox.Text = patient.Address.City.Country.Name;
             }
         }
 

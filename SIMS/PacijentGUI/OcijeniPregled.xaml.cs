@@ -29,7 +29,7 @@ namespace SIMS.PacijentGUI
 
             anketaLekara = new DoctorSurvey();
             anketaLekara.Termin = termin;
-            lekar = termin.Lekar.ImePrezime;
+            lekar = termin.Doctor.FullName;
             this.DataContext = this;
             
         }
@@ -41,10 +41,10 @@ namespace SIMS.PacijentGUI
         {
             anketaLekara.Komentar = KomentarPregleda.Text;
             anketaLekara.Ocjena = BasicRatingBar.Value;
-            anketaLekara.Termin.Serijalizuj = false;
-            anketaLekara.IdAnkete = anketaLekara.Termin.TerminKey;
-            anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
-            anketaLekara.DoctorId = anketaLekara.Termin.Lekar.Jmbg;
+            anketaLekara.Termin.Serialize = false;
+            anketaLekara.IdAnkete = anketaLekara.Termin.AppointmentID;
+            anketaLekara.IdVlasnika = anketaLekara.Termin.Patient.Jmbg;
+            anketaLekara.DoctorId = anketaLekara.Termin.Doctor.Jmbg;
             new DoctorSurveyFileRepository().Save(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().frame.Content=new IstorijaPregleda());
         }

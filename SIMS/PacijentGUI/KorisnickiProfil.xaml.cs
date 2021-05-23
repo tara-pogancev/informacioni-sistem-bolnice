@@ -44,7 +44,7 @@ namespace SIMS.PacijentGUI
             AlergeniText.TextWrapping = TextWrapping.Wrap;
             KrvnaGrupaText.Inlines.Add(new Run("Krvna grupa:") { FontWeight = FontWeights.Bold, FontSize = 15 });
             KrvnaGrupaText.Inlines.Add(" ");
-            KrvnaGrupaText.Inlines.Add(pacijent.KrvnaGrupaString);
+            KrvnaGrupaText.Inlines.Add(pacijent.BloodTypeString);
 
         }
 
@@ -53,7 +53,7 @@ namespace SIMS.PacijentGUI
         private void dobaviAlergene()
         {
 
-            foreach (String alergen in pacijent.Alergeni)
+            foreach (String alergen in pacijent.Allergens)
             {
                 Allergen ucitaniAlergen = new AllergenFileRepository().FindById(alergen);
                 alergeni += ucitaniAlergen.Name;

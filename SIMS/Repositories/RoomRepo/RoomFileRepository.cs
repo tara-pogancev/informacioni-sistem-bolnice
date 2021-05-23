@@ -24,9 +24,9 @@ namespace SIMS.Repositories.SecretaryRepo
             AppointmentFileRepository storageT = new AppointmentFileRepository();
             foreach (Appointment t in storageT.GetAll())
             {
-                if (t.Prostorija.Number == key)
+                if (t.Room.Number == key)
                 {
-                    storageT.Delete(t.TerminKey);
+                    storageT.Delete(t.AppointmentID);
                 }
             }
 

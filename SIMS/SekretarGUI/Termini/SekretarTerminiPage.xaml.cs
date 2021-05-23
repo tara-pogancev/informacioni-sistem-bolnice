@@ -70,7 +70,7 @@ namespace SIMS.SekretarGUI
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
-                    AppointmentFileRepository.Instance.Delete(toDelete.TerminKey);
+                    AppointmentFileRepository.Instance.Delete(toDelete.AppointmentID);
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
                 }
@@ -97,8 +97,8 @@ namespace SIMS.SekretarGUI
         {
             foreach (Appointment appointment in appointments)
             {
-                appointment.Pacijent = PatientFileRepository.Instance.FindById(appointment.Pacijent.Jmbg);
-                appointment.Lekar = DoctorFileRepository.Instance.FindById(appointment.Lekar.Jmbg);
+                appointment.Patient = PatientFileRepository.Instance.FindById(appointment.Patient.Jmbg);
+                appointment.Doctor = DoctorFileRepository.Instance.FindById(appointment.Doctor.Jmbg);
             }
         }
 
@@ -108,7 +108,7 @@ namespace SIMS.SekretarGUI
             {
                 for (int j = 0; j < appointments.Count - i - 1; ++j)
                 {
-                    if (appointments[j].PocetnoVreme > appointments[j + 1].PocetnoVreme)
+                    if (appointments[j].StartTime > appointments[j + 1].StartTime)
                     {
                         Appointment temp = appointments[j];
                         appointments[j] = appointments[j + 1];

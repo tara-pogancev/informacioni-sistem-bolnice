@@ -87,13 +87,13 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void SendNotification(Appointment selecetdApp)
         {
-            String author = LekarUI.GetInstance().GetUser().ImePrezime;
+            String author = DoctorUI.GetInstance().GetUser().FullName;
             List<String> target = new List<String>();
             target.Add(patient.Jmbg);
-            target.Add(selecetdApp.Lekar.Jmbg);
+            target.Add(selecetdApp.Doctor.Jmbg);
             Notification notification = new Notification(author, DateTime.Now,
-                ("Zakazana hitna operacija [" + selecetdApp.Datum + " " + selecetdApp.Vrijeme + ", " + selecetdApp.NazivProstorije + "] za pacijenta " 
-                + selecetdApp.ImePacijenta + ", vodeći lekar " + selecetdApp.ImeLekara + "."), target);
+                ("Zakazana hitna operacija [" + selecetdApp.AppointmentDate + " " + selecetdApp.AppointmentTime + ", " + selecetdApp.Room.Number + "] za pacijenta " 
+                + selecetdApp.PatientName + ", vodeći lekar " + selecetdApp.DoctorName + "."), target);
 
             NotificationFileRepository.Instance.Save(notification);
         }
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     
-                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.operacija, doctor, patient, RoomFileRepository.Instance.GetAll()[0]);
+                    Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.surgery, doctor, patient, RoomFileRepository.Instance.GetAll()[0]);
                     if (doctor.IsFree(appointment))
                     {
                         counterByDoctor++;
@@ -164,7 +164,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             for (int i = 0; i < appointments.Count; i++)
                 for (int j = 0; j < appointments.Count; j++)
-                    if (appointments[i].PocetnoVreme < appointments[j].PocetnoVreme)
+                    if (appointments[i].StartTime < appointments[j].StartTime)
                     {
                         var temp = appointments[i];
                         appointments[i] = appointments[j];

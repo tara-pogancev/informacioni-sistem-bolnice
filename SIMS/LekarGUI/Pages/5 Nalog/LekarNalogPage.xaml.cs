@@ -59,7 +59,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void ChangeAccount(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace SIMS.LekarGUI
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().LogOut();
+            DoctorUI.GetInstance().LogOut();
         }
 
         private void DontRememberMe(object sender, RoutedEventArgs e)

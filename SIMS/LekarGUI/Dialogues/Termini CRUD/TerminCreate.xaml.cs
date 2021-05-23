@@ -23,19 +23,19 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class TerminCreate : Window
     {
-        private List<Doctor> lekari;
-        private List<Patient> pacijenti;
-        private List<Room> prostorije;
-        private List<String> dostupniTermini;
+        private List<Doctor> doctors;
+        private List<Patient> patients;
+        private List<Room> rooms;
+        private List<String> availableTimes;
 
         public TerminCreate(Patient patient)
         {
             InitializeComponents();
-            foreach (Patient currentPatient in pacijenti)
+            foreach (Patient currentPatient in patients)
             {
                 if (patient.Jmbg == currentPatient.Jmbg)
                 {
-                    pacijentiCombo.SelectedItem = currentPatient;
+                    patientCombo.SelectedItem = currentPatient;
                     break;
                 }
             }
@@ -50,111 +50,113 @@ namespace SIMS.LekarGUI
         {
             InitializeComponent();
 
-            DoctorFileRepository storageL = new DoctorFileRepository();
-            lekari = storageL.GetAll();
+            InitComboBoxes();
 
-            PatientFileRepository storageP = new PatientFileRepository();
-            pacijenti = storageP.GetAll();
+            InitCurrentDoctorUser();
+        }
 
-
-            prostorije = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
-
-            doktoriCombo.ItemsSource = lekari;
-            pacijentiCombo.ItemsSource = pacijenti;
-            prostorijeCombo.ItemsSource = prostorije;
-
-
-            List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
-            trajanjeLista.ItemsSource = trajanjeVrednosti;
-
+        private void InitCurrentDoctorUser()
+        {
             int index = 0;
-            foreach (Doctor l in lekari)
+            foreach (Doctor l in doctors)
             {
-                if (l.Jmbg.Equals(LekarUI.GetInstance().GetUser().Jmbg))
+                if (l.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
                 {
                     break;
                 }
                 index++;
             }
-            doktoriCombo.SelectedIndex = index;
+
+            doctorCombo.SelectedIndex = index;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void InitComboBoxes()
         {
-            //Kreiranje novog pregleda
+            DoctorFileRepository storageL = new DoctorFileRepository();
+            doctors = storageL.GetAll();
+
+            PatientFileRepository storageP = new PatientFileRepository();
+            patients = storageP.GetAll();
+
+            RoomFileRepository roomR = new RoomFileRepository();
+            rooms = roomR.GetAll();
+
+            doctorCombo.ItemsSource = doctors;
+            patientCombo.ItemsSource = patients;
+            roomCombo.ItemsSource = rooms;
+
+            List<String> durationValues = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            durationValuesList.ItemsSource = durationValues;
+        }
+
+        private void ButtonAccept(object sender, RoutedEventArgs e)
+        {
             //TODO: Odraditi sve provere
 
-            if (doktoriCombo.SelectedItem == null || datePicker1.SelectedDate == null || terminiLista.SelectedItem == null)
+            if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || timePicker.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
             else
             {
                 Appointment termin = new Appointment();
-
-                String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
-                DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-                termin.PocetnoVreme = vremenskaOdrednica;
-                termin.InicijalnoVrijeme = vremenskaOdrednica;
-
-                if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = 30;
-                else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = 60;
-                else 
-                    termin.VremeTrajanja = 90;
-
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];  
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];  
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];  
-                termin.VrstaTermina = AppointmentType.pregled;
+                CreateAppointment(termin);
 
                 //PROVERA DOSTUPNOSTI LEKARA
-                if (!lekari[doktoriCombo.SelectedIndex].IsFree(termin))
+                if (!doctors[doctorCombo.SelectedIndex].IsFree(termin))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
                 else
                 {
-                    termin.Lekar.Serijalizuj = false;
-                    termin.Pacijent.Serijalizuj = false;
-                    termin.Prostorija.Serialize = false;
-
-                    AppointmentFileRepository.Instance.Save(termin);
-                    LekarTerminiPage.GetInstance().refresh();
+                    SaveAppointment(termin);
                     this.Close();
                 }
 
             }
         }
 
-
-        private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void CreateAppointment(Appointment termin)
         {
-            if (doktoriCombo.SelectedItem != null)
+            String vrijemeIDatum = datePicker.Text + " " + timePicker.Text;
+            DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
+            termin.StartTime = vremenskaOdrednica;
+            termin.InitialTime = vremenskaOdrednica;
+            SetSellectedDuration(termin);
+            termin.Room = rooms[roomCombo.SelectedIndex];
+            termin.Patient = patients[patientCombo.SelectedIndex];
+            termin.Doctor = doctors[doctorCombo.SelectedIndex];
+            termin.Type = AppointmentType.examination;
+        }
+
+        private void SetSellectedDuration(Appointment termin)
+        {
+            if (durationValuesList.SelectedIndex == 0)
+                termin.Duration = 30;
+            else if (durationValuesList.SelectedIndex == 1)
+                termin.Duration = 60;
+            else
+                termin.Duration = 90;
+        }
+
+        private static void SaveAppointment(Appointment termin)
+        {
+            termin.Doctor.Serialize = false;
+            termin.Patient.Serialize = false;
+            termin.Room.Serialize = false;
+
+            AppointmentFileRepository.Instance.Save(termin);
+            LekarTerminiPage.GetInstance().refresh();
+        }
+
+        private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (doctorCombo.SelectedItem != null)
             {
-                Doctor lek = lekari[doktoriCombo.SelectedIndex];
+                Doctor doctor = doctors[doctorCombo.SelectedIndex];
                 List<Appointment> doktoroviTermini = new List<Appointment>();
-                dostupniTermini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+                availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
-                terminiLista.ItemsSource = dostupniTermini;
-
-                /*
-                foreach (Termin termin in new TerminStorage().ReadEntities())
-                {
-                    if (termin.LekarKey.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToShortDateString().Equals(termin.Datum))
-                    {
-                        doktoroviTermini.Add(termin);
-                    }
-                }
-
-                foreach (Termin termin in doktoroviTermini)
-                {
-                    dostupniTermini.Remove(termin.Vrijeme);
-                }
-                */
-
+                timePicker.ItemsSource = availableTimes;
 
             }
         }
-
     }
-
 }

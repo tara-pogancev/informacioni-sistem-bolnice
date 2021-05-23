@@ -84,7 +84,7 @@ namespace SIMS.PacijentGUI
         {
             for(int i= 0;i < terminZaPreporuku.Count;i++)
             {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.Lekar.Jmbg.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime) && termin.Doctor.Jmbg.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
                 {
                     terminZaPreporuku.RemoveAt(i);
                     i--;
@@ -103,14 +103,14 @@ namespace SIMS.PacijentGUI
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
                 Appointment termin = new Appointment();
-                termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
-                termin.InicijalnoVrijeme = termin.PocetnoVreme;
-                termin.VremeTrajanja = 30;
-                termin.VrstaTermina = AppointmentType.pregled;
-                termin.Lekar = lekari[ListaDoktora.SelectedIndex];
-                termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Room("1",RoomType.zaPreglede);
-                termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
+                termin.StartTime = terminZaPreporuku[i].Vrijeme;
+                termin.InitialTime = termin.StartTime;
+                termin.Duration = 30;
+                termin.Type = AppointmentType.examination;
+                termin.Doctor = lekari[ListaDoktora.SelectedIndex];
+                termin.Patient = PocetnaStranica.getInstance().Pacijent;
+                termin.Room = new Room("1",RoomType.zaPreglede);
+                termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (i == 4)
                 {
@@ -125,9 +125,9 @@ namespace SIMS.PacijentGUI
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
                 
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme))
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime))
                 {
-                    terminZaPreporuku[i].IdLekara.Remove(termin.Lekar.Jmbg);
+                    terminZaPreporuku[i].IdLekara.Remove(termin.Doctor.Jmbg);
                     break;
                 }
                 
@@ -137,7 +137,7 @@ namespace SIMS.PacijentGUI
         {
             for (int i = 0; i < terminZaPreporuku.Count; i++)
             {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.PocetnoVreme) && termin.Pacijent.Jmbg.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
+                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime) && termin.Patient.Jmbg.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
                 {
                     terminZaPreporuku.RemoveAt(i);
                     i--;
@@ -168,15 +168,15 @@ namespace SIMS.PacijentGUI
 
                 brojacPreporucenihTermina++;
                 Appointment termin = new Appointment();
-                termin.PocetnoVreme = terminZaPreporuku[i].Vrijeme;
-                termin.InicijalnoVrijeme = termin.PocetnoVreme;
-                termin.VremeTrajanja = 30;
-                termin.VrstaTermina = AppointmentType.pregled;
+                termin.StartTime = terminZaPreporuku[i].Vrijeme;
+                termin.InitialTime = termin.StartTime;
+                termin.Duration = 30;
+                termin.Type = AppointmentType.examination;
                 String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Lekar = new DoctorFileRepository().FindById(idLekara);
-                termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
-                termin.Prostorija = new Room("1",RoomType.zaPreglede);
-                termin.TerminKey = DateTime.Now.ToString("yyMMddhhmmss");
+                termin.Doctor = new DoctorFileRepository().FindById(idLekara);
+                termin.Patient = PocetnaStranica.getInstance().Pacijent;
+                termin.Room = new Room("1",RoomType.zaPreglede);
+                termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
                 preporuceniTermini.Add(termin);
                 if (brojacPreporucenihTermina == 5)
                     return;

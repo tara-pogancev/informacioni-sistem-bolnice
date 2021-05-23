@@ -20,7 +20,7 @@ namespace SIMS.Repositories.AppointmentRepo
 
             foreach (Appointment t in this.GetAll())
             {
-                if (pacijent.EqualJmbg(t.Pacijent.Jmbg))
+                if (pacijent.EqualJmbg(t.Patient.Jmbg))
                     termini.Add(t);
             }
 
@@ -34,7 +34,7 @@ namespace SIMS.Repositories.AppointmentRepo
 
             foreach(Appointment t in this.GetAll())
             {
-                if (lekar.EqualJmbg(t.Lekar.Jmbg))
+                if (lekar.EqualJmbg(t.Doctor.Jmbg))
                     termini.Add(t);
             }
 
@@ -43,7 +43,7 @@ namespace SIMS.Repositories.AppointmentRepo
 
         protected override string getKey(Appointment entity)
         {
-            return entity.TerminKey;
+            return entity.AppointmentID;
         }
 
         protected override void RemoveReferences(string key)
@@ -60,8 +60,8 @@ namespace SIMS.Repositories.AppointmentRepo
 
             foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(l))
             {
-                DateTime day = t.PocetnoVreme.Date;
-                if (t.VrstaTermina == tip && day == date)
+                DateTime day = t.StartTime.Date;
+                if (t.Type == tip && day == date)
                     retVal.Add(t);
             }
 

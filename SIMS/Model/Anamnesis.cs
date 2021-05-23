@@ -45,7 +45,7 @@ namespace SIMS.Repositories.SecretaryRepo
             MainIssues = mainIssues;
             CurrentAnamnesis = currentAnamnesis;
             GeneralOccurrences = generalOccurrences;
-            AnamnesisID = appointment.TerminKey;
+            AnamnesisID = appointment.AppointmentID;
             RespiratorySystem = respiratorySystem;
             CardioSystem = cardioSystem;
             DigestiveSystem = digestiveSystem;
@@ -75,19 +75,19 @@ namespace SIMS.Repositories.SecretaryRepo
 
         public Appointment GetAppointment()
         {
-            return AppointmentFileRepository.Instance.FindById(AnamnesisAppointment.TerminKey);
+            return AppointmentFileRepository.Instance.FindById(AnamnesisAppointment.AppointmentID);
         }
 
         [JsonIgnore]
         public String DoctorName
         {
-            get { return AnamnesisAppointment.ImeLekara; }
+            get { return AnamnesisAppointment.DoctorName; }
         }
 
         [JsonIgnore]
         public String PatientName
         {
-            get { return AnamnesisAppointment.ImePacijenta; }
+            get { return AnamnesisAppointment.PatientName; }
         }
 
         [JsonIgnore]
@@ -101,9 +101,9 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             get
             {
-                if (GetAppointment().GetVrsta.Equals(AppointmentType.pregled))
-                    return "Datum pregleda: " + GetAppointment().Datum;
-                else return "Datum operacije: " + GetAppointment().Datum;
+                if (GetAppointment().TypeString.Equals(AppointmentType.examination))
+                    return "Datum pregleda: " + GetAppointment().AppointmentDate;
+                else return "Datum operacije: " + GetAppointment().AppointmentDate;
 
             }
         }
@@ -111,8 +111,8 @@ namespace SIMS.Repositories.SecretaryRepo
         public void InitData()
         {
             AnamnesisAppointment =  new AppointmentFileRepository().FindById(AnamnesisID);
-            AnamnesisAppointment.Pacijent = new PatientFileRepository().FindById(AnamnesisAppointment.Pacijent.Jmbg);
-            AnamnesisAppointment.Lekar = new DoctorFileRepository().FindById(AnamnesisAppointment.Lekar.Jmbg);
+            AnamnesisAppointment.Patient = new PatientFileRepository().FindById(AnamnesisAppointment.Patient.Jmbg);
+            AnamnesisAppointment.Doctor = new DoctorFileRepository().FindById(AnamnesisAppointment.Doctor.Jmbg);
         }
     }
 }

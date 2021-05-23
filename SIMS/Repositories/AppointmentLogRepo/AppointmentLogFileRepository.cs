@@ -9,7 +9,7 @@ namespace SIMS.Model
     {
         protected override string getKey(AppointmentLog entity)
         {
-            return entity.TerminLogKey;
+            return entity.AppointmentLogID;
         }
 
         protected override string getPath()
@@ -27,7 +27,7 @@ namespace SIMS.Model
             List<AppointmentLog> terminLogs = GetAll();
             for(int i = 0; i < terminLogs.Count; i++)
             {
-                if (terminLogs[i].PacijentKey != pacijent.Jmbg || terminLogs[i].Istekao==true)
+                if (terminLogs[i].PatientID != pacijent.Jmbg || terminLogs[i].Expired==true)
                 {
                     terminLogs.RemoveAt(i);
                     i--;
@@ -41,7 +41,7 @@ namespace SIMS.Model
             List<AppointmentLog> terminLogs = ReadByPatient(pacijent);
             foreach(AppointmentLog terminLog in terminLogs)
             {
-                terminLog.Istekao = true;
+                terminLog.Expired = true;
                 Update(terminLog);
             }
         }
