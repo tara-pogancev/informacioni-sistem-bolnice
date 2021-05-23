@@ -26,5 +26,19 @@
     "Komentar": "Dobro je sve. Ja sam prezadovoljan",
     "DatumKreiranjaAnkete": "2021-05-08T21:05:57.5667129+02:00",
     "IdVlasnika": "121"
+  },
+  "22/05/2021 17:08:5012121977802342": {
+    "OdgovoriNaPitanja": {
+      "pitanje1": 5,
+      "pitanje2": 5,
+      "pitanje3": 5,
+      "pitanje4": 5,
+      "pitanje5": 5
+    },
+    "TrenutniBrojPregleda": 0,
+    "IdAnkete": "22/05/2021 17:08:5012121977802342",
+    "Komentar": "Najbolja bolnica u drzavi",
+    "DatumKreiranjaAnkete": "2021-05-22T17:08:50.9886071+02:00",
+    "IdVlasnika": "12121977802342"
   }
 }

@@ -47,7 +47,7 @@ namespace SIMS.PacijentGUI
             }
             IzmjenaPregleda izmjenaPregleda = new IzmjenaPregleda(termini[terminiTabela.SelectedIndex]);
             PocetnaStranica poc = PocetnaStranica.getInstance();
-            poc.Tabovi.Content = izmjenaPregleda;
+            poc.frame.Content = izmjenaPregleda;
         }
 
         private bool provjeriValidnost()

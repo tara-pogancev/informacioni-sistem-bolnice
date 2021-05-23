@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.PacijentGUI.ViewModel;
 
 namespace SIMS.PacijentGUI
 {
@@ -24,9 +25,11 @@ namespace SIMS.PacijentGUI
         public AnketaBolnicePage()
         {
             InitializeComponent();
+            this.DataContext = new HospitalSurveyViewModel();
         }
 
-        private void Posalji_Click(object sender, RoutedEventArgs e)
+       /* Kod prebacen u viewmodel
+        * private void Posalji_Click(object sender, RoutedEventArgs e)
         {
             HospitalSurvey anketaBolnice = new HospitalSurvey();
             anketaBolnice.IdVlasnika = PocetnaStranica.getInstance().Pacijent.Jmbg;
@@ -40,7 +43,7 @@ namespace SIMS.PacijentGUI
             anketaBolnice.TrenutniBrojPregleda = brojZavrsenihPRegleda();
             new HospitalSurveyFileRepository().Save(anketaBolnice);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
-            PocetnaStranica.getInstance().Tabovi.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
+            PocetnaStranica.getInstance().frame.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
 
 
         }
@@ -57,6 +60,6 @@ namespace SIMS.PacijentGUI
                 }
             }
             return brojacZavrsenihPregleda;
-        }
+        } */
     }
 }

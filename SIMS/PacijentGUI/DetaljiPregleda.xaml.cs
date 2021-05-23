@@ -109,7 +109,7 @@ namespace SIMS.PacijentGUI
 
         private void Nazad_Click(object sender, RoutedEventArgs e)
         {
-            PocetnaStranica.getInstance().Tabovi.Content = new IstorijaPregleda();
+            PocetnaStranica.getInstance().frame.Content = new IstorijaPregleda();
         }
     }
  }

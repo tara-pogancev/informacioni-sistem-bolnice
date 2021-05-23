@@ -31,7 +31,7 @@ namespace SIMS.PacijentGUI
 
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
-            PocetnaStranica.getInstance().Tabovi.Content=new KorisnickiProfil();
+            PocetnaStranica.getInstance().frame.Content=new KorisnickiProfil();
         }
     }
 }

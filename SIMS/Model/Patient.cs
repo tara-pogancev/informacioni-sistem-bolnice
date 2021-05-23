@@ -111,6 +111,12 @@ namespace SIMS.Repositories.SecretaryRepo
             }
         }
 
+        public bool Available(Appointment appointment)
+        {
+            return appointment.Pacijent.Jmbg == this.Jmbg;
+
+        }
+
         [JsonIgnore]
         public List<string> Hronicne_Bolesti
         {

@@ -36,11 +36,8 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
-            Tabovi.Content = new PocetniEkran(pacijent);
+            frame.Content = new PocetniEkran(pacijent);
             this.DataContext = this;
-            
-            
-            
         }
 
         public void kreirajAnketu()
@@ -113,38 +110,7 @@ namespace SIMS.PacijentGUI
 
         }
 
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int index = ListViewMenu.SelectedIndex;
-
-
-            switch (index)
-            {
-                case 0:
-                    Tabovi.Content=new PocetniEkran(pacijent);
-                    break;
-                case 1:
-                    ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
-                    zakazivanje.Pacijent = pacijent;
-                    Tabovi.Content = zakazivanje;
-                    break;
-                case 2:
-                    Tabovi.Content = new MojiTermini(pacijent);
-                    break;
-                case 3:
-                    Tabovi.Content = new TerapijaPacijentaView();
-                    break;
-                case 4:
-                    Tabovi.Content = new IzborLjekara();
-                    break;
-                case 5:
-                    Tabovi.Content = new IstorijaPregleda();
-                    break;
-                default:
-                    break;
-            }
-        }
-
+       
         public Patient Pacijent { get => pacijent; set => pacijent = value; }
 
         private void Iskljucivanje_Click(object sender, RoutedEventArgs e)
@@ -158,35 +124,33 @@ namespace SIMS.PacijentGUI
 
         private void Zvonce_Click(object sender, RoutedEventArgs e)
         {
-            Tabovi.Content = new Obavjestenja();
+            frame.Navigate( new Obavjestenja());
         }
 
         private void ListViewMenu_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             int index = ListViewMenu.SelectedIndex;
-
-
             switch (index)
             {
                 case 0:
-                    Tabovi.Content = new PocetniEkran(pacijent);
+                    frame.Navigate( new PocetniEkran(pacijent));
                     break;
                 case 1:
                     ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
                     zakazivanje.Pacijent = pacijent;
-                    Tabovi.Content = zakazivanje;
+                    frame.Content = zakazivanje;
                     break;
                 case 2:
-                    Tabovi.Content = new MojiTermini(pacijent);
+                    frame.Navigate( new MojiTermini(pacijent));
                     break;
                 case 3:
-                    Tabovi.Content = new TerapijaPacijentaView();
+                    frame.Navigate( new TerapijaPacijentaView());
                     break;
                 case 4:
-                    Tabovi.Content = new IzborLjekara();
+                    frame.Navigate( new IzborLjekara());
                     break;
                 case 5:
-                    Tabovi.Content = new IstorijaPregleda();
+                    frame.Navigate(new IstorijaPregleda());
                     break;
                 default:
                     break;
@@ -195,7 +159,7 @@ namespace SIMS.PacijentGUI
 
         private void Profil_Click(object sender, RoutedEventArgs e)
         {
-            Tabovi.Content = new KorisnickiProfil();
+            frame.Navigate( new KorisnickiProfil());
         }
 
         public void SetInstance()
@@ -205,7 +169,7 @@ namespace SIMS.PacijentGUI
 
         private void Anketa_Click(object sender, RoutedEventArgs e)
         {
-            Tabovi.Content = new AnketaBolnicePage();
+            frame.Navigate( new AnketaBolnicePage());
         }
     }
 }

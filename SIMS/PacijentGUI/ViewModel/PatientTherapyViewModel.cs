@@ -31,12 +31,24 @@ namespace SIMS.PacijentGUI.ViewModel
         public bool AllDay { get; set; }
     }
 
-    public class TerapijaPacijentaViewModel:ViewModel
+    public class PatientTherapyViewModel:ViewModel
     {
         public ObservableCollection<Meeting> Meetings { get; set; }
         List<string> eventNameCollection;
         List<Brush> colorCollection;
         List<string> use;
+        private static PatientTherapyViewModel _instance=null;
+        public static PatientTherapyViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new PatientTherapyViewModel();
+                }
+                return _instance;
+            }
+        }
 
 
         #region commands
@@ -47,7 +59,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
         #endregion
 
-        public TerapijaPacijentaViewModel()
+        private PatientTherapyViewModel()
         {
             
             Meetings = new ObservableCollection<Meeting>();

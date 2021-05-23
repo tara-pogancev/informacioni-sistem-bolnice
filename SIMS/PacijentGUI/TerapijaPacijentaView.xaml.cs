@@ -31,7 +31,7 @@ namespace SIMS.PacijentGUI
             System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("sr-SR");
             SfSkinManager.SetTheme(schedule, new Theme("MaterialDark"));
             schedule.AppointmentEditorOpening += Schedule_AppointmentEditorOpening;
-            this.DataContext = new TerapijaPacijentaViewModel();
+            this.DataContext =PatientTherapyViewModel.Instance;
 
 
 

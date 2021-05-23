@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -28,6 +29,7 @@ namespace SIMS.PacijentGUI
         private Appointment termin;
         Boolean doktorSelektovan;
         List<Room> slobodneProstorije;
+        AppointmentService appointmentService;
         public Zakazivanje(Patient p)
         {
             InitializeComponent();
@@ -40,6 +42,7 @@ namespace SIMS.PacijentGUI
             termin = new Appointment();
             this.DataContext = this;
             doktorSelektovan = false;
+            appointmentService = new AppointmentService();
             
         }
 
@@ -92,8 +95,9 @@ namespace SIMS.PacijentGUI
         {
             if (doktorSelektovan)
             {
-                Doctor lek = lekari[ListaDoktora.SelectedIndex];
-                List<Appointment> nedostupniTermini = new List<Appointment>();
+                /*Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
+                //List<Appointment> nedostupniTermini = new List<Appointment>();
+
                 dostupniTermini = new ObservableCollection<string>( new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
                 
                 List<Appointment> sviTermini = new AppointmentFileRepository().GetAll();
@@ -118,8 +122,12 @@ namespace SIMS.PacijentGUI
                 foreach (Appointment termin in nedostupniTermini)
                 {
                     dostupniTermini.Remove(termin.Vrijeme);
-                }
-                
+                }*/
+
+                Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
+                String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
+                dostupniTermini = new ObservableCollection<string>(appointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
+                terminiLista.ItemsSource = dostupniTermini;
             }
         }
 

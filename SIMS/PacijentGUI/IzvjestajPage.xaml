@@ -67,7 +67,7 @@
 			                AllDayMapping="AllDay"/>
                     </syncfusion:SfSchedule.AppointmentMapping>
                     <syncfusion:SfSchedule.DataContext>
-                        <local1:TerapijaPacijentaViewModel/>
+                        <local1:PatientTherapyViewModel/>
                     </syncfusion:SfSchedule.DataContext>
 
                 </syncfusion:SfSchedule>

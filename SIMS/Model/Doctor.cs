@@ -41,6 +41,12 @@ namespace SIMS.Repositories.SecretaryRepo
 
         }
 
+        public bool Available(Appointment appointment)
+        {
+            return appointment.Lekar.Jmbg == this.Jmbg;
+
+        }
+
         // Salje informacije o novom terminu
         public Boolean IsFree(Appointment terminNew)
         {

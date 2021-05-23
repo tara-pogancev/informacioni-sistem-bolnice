@@ -122,6 +122,7 @@
     <PackageReference Include="Syncfusion.Pdf.Wpf" Version="19.1.0.63" />
     <PackageReference Include="Syncfusion.SfSchedule.WPF" Version="18.3.0.53" />
     <PackageReference Include="Syncfusion.Themes.MaterialDark.WPF" Version="19.1.0.63" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>
