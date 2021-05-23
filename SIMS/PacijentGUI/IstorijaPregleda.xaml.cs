@@ -99,7 +99,7 @@ namespace SIMS.PacijentGUI
             if (anamneza == null)
             {
                 anamneza = new Anamnesis();
-                anamneza.Termin = selektovaniTermin.Termin;
+                anamneza.AnamnesisAppointment = selektovaniTermin.Termin;
             }
             PocetnaStranica.getInstance().Tabovi.Content = new DetaljiPregleda(anamneza);
         }

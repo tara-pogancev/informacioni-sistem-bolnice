@@ -30,65 +30,65 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
 
             ucitajPodatke();
-            if (anamneza.GlavneTegobe != null)
+            if (anamneza.MainIssues != null)
             {
                 GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 GlavneTegobe.Inlines.Add("   ");
-                GlavneTegobe.Inlines.Add(anamneza.GlavneTegobe);
+                GlavneTegobe.Inlines.Add(anamneza.MainIssues);
                 GlavneTegobe.TextWrapping = TextWrapping.Wrap;
                 SadasnjaAnamneza.Inlines.Add(new Run("Sadašnja anamneza:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 SadasnjaAnamneza.Inlines.Add("   ");
-                SadasnjaAnamneza.Inlines.Add(anamneza.SadasnjaAnamneza);
+                SadasnjaAnamneza.Inlines.Add(anamneza.CurrentAnamnesis);
                 SadasnjaAnamneza.TextWrapping = TextWrapping.Wrap;
 
                 OpstePojave.Inlines.Add(new Run("Opšte pojave:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 OpstePojave.Inlines.Add("   ");
-                OpstePojave.Inlines.Add(anamneza.OpstePojave);
+                OpstePojave.Inlines.Add(anamneza.GeneralOccurrences);
                 OpstePojave.TextWrapping = TextWrapping.Wrap;
 
                 RespiratorniSistem.Inlines.Add(new Run("Respiratorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 RespiratorniSistem.Inlines.Add("   ");
-                RespiratorniSistem.Inlines.Add(anamneza.RespiratorniSistem);
+                RespiratorniSistem.Inlines.Add(anamneza.RespiratorySystem);
                 RespiratorniSistem.TextWrapping = TextWrapping.Wrap;
 
                 KardiovaskularniSistem.Inlines.Add(new Run("Kardiovaskularni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 KardiovaskularniSistem.Inlines.Add("   ");
-                KardiovaskularniSistem.Inlines.Add(anamneza.KardiovaskularniSistem);
+                KardiovaskularniSistem.Inlines.Add(anamneza.CardioSystem);
                 KardiovaskularniSistem.TextWrapping = TextWrapping.Wrap;
 
                 DigestivniSistem.Inlines.Add(new Run("Digestivni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 DigestivniSistem.Inlines.Add("   ");
-                DigestivniSistem.Inlines.Add(anamneza.DigestivniSistem);
+                DigestivniSistem.Inlines.Add(anamneza.DigestiveSystem);
                 DigestivniSistem.TextWrapping = TextWrapping.Wrap;
 
                 UrogenitalniSistem.Inlines.Add(new Run("Urogenitalni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 UrogenitalniSistem.Inlines.Add("   ");
-                UrogenitalniSistem.Inlines.Add(anamneza.UrogenitalniSistem);
+                UrogenitalniSistem.Inlines.Add(anamneza.UroGenitalSystem);
                 UrogenitalniSistem.TextWrapping = TextWrapping.Wrap;
 
                 LokomotorniSistem.Inlines.Add(new Run("Lokomotorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 LokomotorniSistem.Inlines.Add("   ");
-                LokomotorniSistem.Inlines.Add(anamneza.LokomotorniSistem);
+                LokomotorniSistem.Inlines.Add(anamneza.LocomotorSystem);
                 LokomotorniSistem.TextWrapping = TextWrapping.Wrap;
 
                 NervniSistem.Inlines.Add(new Run("Nervni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 NervniSistem.Inlines.Add("   ");
-                NervniSistem.Inlines.Add(anamneza.NervniSistem);
+                NervniSistem.Inlines.Add(anamneza.NervousSystem);
                 NervniSistem.TextWrapping = TextWrapping.Wrap;
 
                 RanijaOboljenja.Inlines.Add(new Run("Ranija oboljenja:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 RanijaOboljenja.Inlines.Add("   ");
-                RanijaOboljenja.Inlines.Add(anamneza.RanijaOboljenja);
+                RanijaOboljenja.Inlines.Add(anamneza.PastDiseases);
                 RanijaOboljenja.TextWrapping = TextWrapping.Wrap;
 
                 PorodicniPodaci.Inlines.Add(new Run("Porodični podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 PorodicniPodaci.Inlines.Add("   ");
-                PorodicniPodaci.Inlines.Add(anamneza.PorodicniPodaci);
+                PorodicniPodaci.Inlines.Add(anamneza.FamilyData);
                 PorodicniPodaci.TextWrapping = TextWrapping.Wrap;
 
                 SocijalnoEpidemioloskiPodaci.Inlines.Add(new Run("Socijalno-epidemiološki podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
                 SocijalnoEpidemioloskiPodaci.Inlines.Add("   ");
-                SocijalnoEpidemioloskiPodaci.Inlines.Add(anamneza.SocioEpiPodaci);
+                SocijalnoEpidemioloskiPodaci.Inlines.Add(anamneza.SocioEpiData);
                 SocijalnoEpidemioloskiPodaci.TextWrapping = TextWrapping.Wrap;
             }
             else
@@ -100,9 +100,9 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.Termin = new AppointmentFileRepository().FindById(anamneza.Termin.TerminKey);
-            anamneza.Termin.Lekar = new DoctorFileRepository().FindById(anamneza.Termin.Lekar.Jmbg);
-            anamneza.Termin.Pacijent = PocetnaStranica.getInstance().Pacijent;
+            anamneza.AnamnesisAppointment = new AppointmentFileRepository().FindById(anamneza.AnamnesisAppointment.TerminKey);
+            anamneza.AnamnesisAppointment.Lekar = new DoctorFileRepository().FindById(anamneza.AnamnesisAppointment.Lekar.Jmbg);
+            anamneza.AnamnesisAppointment.Pacijent = PocetnaStranica.getInstance().Pacijent;
         }
 
         public Anamnesis Anamneza { get => anamneza; set => anamneza = value; }

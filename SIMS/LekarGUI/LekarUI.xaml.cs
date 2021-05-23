@@ -19,9 +19,6 @@ using System.Windows.Threading;
 
 namespace SIMS
 {
-    /// <summary>
-    /// Glavni prozor za lekara
-    /// </summary>
     public partial class LekarUI : Window
     {
         public static LekarUI instance;
@@ -49,14 +46,7 @@ namespace SIMS
         {
             InitializeComponent();
 
-            //Tred za prikazivanje sata i datuma
-
-            this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
-
-            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
-            {
-                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
-            }, this.Dispatcher);
+            SetStatusBarClock();
 
             SellectedTab.Content = new LekarDashboard(lekarUser);
 
@@ -64,6 +54,23 @@ namespace SIMS
 
             WindowBarFrame.Content = bar;
 
+        }
+
+        private void SetStatusBarClock()
+        {
+            //Tred za prikazivanje sata i datuma
+            this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
+
+            DispatcherTimer timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                this.dateAndTime.Content = DateTime.Now.ToString("HH:mm │ dd.MM.yyyy.");
+            }, this.Dispatcher);
+        }
+
+        private void Button_Dashboard(object sender, MouseButtonEventArgs e)
+        {
+            //Dashboard
+            ChangeTab(0);
         }
 
         private void Button_Termini(object sender, RoutedEventArgs e)
@@ -92,14 +99,20 @@ namespace SIMS
 
         private void Button_Nalog(object sender, RoutedEventArgs e)
         {
-            //Button: Nalog, DEBUG po potrebi
+            //Button: Nalog
             ChangeTab(5);
         }
 
-        private void Button_Dashboard(object sender, MouseButtonEventArgs e)
+        private void Button_Notification(object sender, MouseButtonEventArgs e)
         {
-            //Dashboard
-            ChangeTab(0);
+            //Button: Notifications
+            this.ChangeTab(6);
+        }
+
+        private void Button_Help(object sender, MouseButtonEventArgs e)
+        {
+            //Button: Help
+            this.ChangeTab(7);
         }
 
         public Doctor GetUser()
@@ -209,30 +222,34 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
-                    App.Current.Windows[intCounter].Close();
-
-                if (LekarEvidencijaPage.GetInstance() != null)
-                    LekarEvidencijaPage.GetInstance().RemoveInstance();
-
-                if (LekarPacijentiPage.GetInstance() != null)
-                    LekarPacijentiPage.GetInstance().RemoveInstance();
-
-                /*if (LekarIstorijaPage.GetInstance() != null)
-                    LekarIstorijaPage.GetInstance().RemoveInstance();
-                */
-
-                if (LekarNalogPage.GetInstance() != null)
-                    LekarNalogPage.GetInstance().RemoveInstance();
-
-                if (LekarTerminiPage.GetInstance() != null)
-                    LekarTerminiPage.GetInstance().RemoveInstance();
-
-                instance = null;
-
+                CloseAllActiveWindows();
+                RemoveAllInstances();
                 new MainWindow().Show();
 
             }
+        }
+
+        private static void RemoveAllInstances()
+        {
+            if (LekarEvidencijaPage.GetInstance() != null)
+                LekarEvidencijaPage.GetInstance().RemoveInstance();
+
+            if (LekarPacijentiPage.GetInstance() != null)
+                LekarPacijentiPage.GetInstance().RemoveInstance();
+
+            if (LekarNalogPage.GetInstance() != null)
+                LekarNalogPage.GetInstance().RemoveInstance();
+
+            if (LekarTerminiPage.GetInstance() != null)
+                LekarTerminiPage.GetInstance().RemoveInstance();
+
+            instance = null;
+        }
+
+        private static void CloseAllActiveWindows()
+        {
+            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+                App.Current.Windows[intCounter].Close();
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)
@@ -258,24 +275,11 @@ namespace SIMS
 
         private void ResetActiveButtons()
         {
-            //MenuGrid.Row[0].Cells[1].Style.BackColor = new SolidColorBrush(Colors.Green);
-
             B1.Fill = new SolidColorBrush(Colors.Transparent);
             B2.Fill = new SolidColorBrush(Colors.Transparent);
             B3.Fill = new SolidColorBrush(Colors.Transparent);
             B4.Fill = new SolidColorBrush(Colors.Transparent);
             B5.Fill = new SolidColorBrush(Colors.Transparent);
-
-        }
-
-        private void Button_Notification(object sender, MouseButtonEventArgs e)
-        {
-            this.ChangeTab(6);
-        }
-
-        private void Button_Help(object sender, MouseButtonEventArgs e)
-        {
-            this.ChangeTab(7);
         }
 
         private void WindowKeyListener(object sender, KeyEventArgs e)
@@ -296,7 +300,6 @@ namespace SIMS
                 ChangeTab(5);
             else if (e.Key == Key.F7)
                 ChangeTab(6);
-
         }
     }
 }

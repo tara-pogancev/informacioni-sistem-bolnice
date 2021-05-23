@@ -10,7 +10,7 @@ namespace SIMS.Repositories.AnamnesisRepository
     {
         protected override string getKey(Anamnesis entity)
         {
-            return entity.IdAnamneze;
+            return entity.AnamnesisID;
         }
 
         protected override string getPath()
@@ -31,7 +31,7 @@ namespace SIMS.Repositories.AnamnesisRepository
             {
                 a.InitData();
 
-                if (a.Termin.Pacijent.Jmbg == patient.Jmbg)
+                if (a.AnamnesisAppointment.Pacijent.Jmbg == patient.Jmbg)
                     retVal.Add(a);
             }
 

@@ -10,125 +10,109 @@ using System.Text;
 namespace SIMS.Repositories.SecretaryRepo
 {
     public class Anamnesis
-    {       
+    {
+        public String MainIssues { get; set; }
+        public String CurrentAnamnesis { get; set; }
+        public String GeneralOccurrences { get; set; }
+        public String RespiratorySystem { get; set; }
+        public String CardioSystem { get; set; }
+        public String DigestiveSystem { get; set; }
+        public String UroGenitalSystem { get; set; }
+        public String LocomotorSystem { get; set; }
+        public String NervousSystem { get; set; }
+        public String PastDiseases { get; set; }
+        public String FamilyData { get; set; }
+        public String SocioEpiData { get; set; }
+        public DateTime AnamnesisDate { get; set; }
+        public String AnamnesisID { get; set; }
+
+        [JsonIgnore]
+        public Appointment AnamnesisAppointment { get; set; }
+
+
         public Anamnesis()
         {
-            Datum = DateTime.Today;
+            AnamnesisDate = DateTime.Today;
         }
 
-        public Anamnesis(Appointment termin, String glavneTegobe, String sadasnjaAnamneza, String opstePojave, String respiratorniSistem, String kardiovaskularniSistem,
-            String digestivniSistem, String urogenitalniSistem, String lokomotorniSistem, String nervniSistem, String ranijaOboljenja, String porodicniPodaci, String socioEpiPodaci)
+        public Anamnesis(Appointment appointment, String mainIssues, String currentAnamnesis, String generalOccurrences, String respiratorySystem, String cardioSystem,
+            String digestiveSystem, String uroGenitalSystem, String locomotorSystem, String nervousSystem, String pastDiseases, String familyData, String socioEpiData)
         {
 
-            Termin = termin;
-            Datum = DateTime.Today;
+            AnamnesisAppointment = appointment;
+            AnamnesisDate = DateTime.Today;
 
-            GlavneTegobe = glavneTegobe;
-            SadasnjaAnamneza = sadasnjaAnamneza;
-            OpstePojave = opstePojave;
-            IdAnamneze = termin.TerminKey;
+            MainIssues = mainIssues;
+            CurrentAnamnesis = currentAnamnesis;
+            GeneralOccurrences = generalOccurrences;
+            AnamnesisID = appointment.TerminKey;
+            RespiratorySystem = respiratorySystem;
+            CardioSystem = cardioSystem;
+            DigestiveSystem = digestiveSystem;
+            UroGenitalSystem = uroGenitalSystem;
+            LocomotorSystem = locomotorSystem;
+            NervousSystem = nervousSystem;
+            PastDiseases = pastDiseases;
+            FamilyData = familyData;
+            SocioEpiData = socioEpiData;
 
-            if (respiratorniSistem == "") RespiratorniSistem = "/";
-                else RespiratorniSistem = respiratorniSistem;
+            SetDefaultEmptyFields();
 
-            if (kardiovaskularniSistem == "") KardiovaskularniSistem = "/";
-                else KardiovaskularniSistem = kardiovaskularniSistem;
-
-            if (digestivniSistem == "") DigestivniSistem = "/";
-                else DigestivniSistem = digestivniSistem;
-
-            if (urogenitalniSistem == "") UrogenitalniSistem = "/";
-                else UrogenitalniSistem = urogenitalniSistem;
-
-            if (lokomotorniSistem == "") LokomotorniSistem = "/";
-                else LokomotorniSistem = lokomotorniSistem;
-
-            if (nervniSistem == "") NervniSistem = "/";
-                else NervniSistem = nervniSistem;
-
-            if (ranijaOboljenja == "") RanijaOboljenja = "/";
-                else RanijaOboljenja = ranijaOboljenja;
-
-            if (porodicniPodaci == "") PorodicniPodaci = "/";
-                else PorodicniPodaci = porodicniPodaci;
-
-            if (socioEpiPodaci == "") SocioEpiPodaci = "/";
-                else SocioEpiPodaci = socioEpiPodaci;
-            
         }
 
-        public Appointment getTermin()
+        private void SetDefaultEmptyFields()
         {
-            return AppointmentFileRepository.Instance.FindById(Termin.TerminKey);
+            if (RespiratorySystem == "") RespiratorySystem = "/";
+            if (CardioSystem == "") this.CardioSystem = "/";
+            if (DigestiveSystem == "") DigestiveSystem = "/";
+            if (UroGenitalSystem == "") UroGenitalSystem = "/";
+            if (LocomotorSystem == "") LocomotorSystem = "/";
+            if (NervousSystem == "") NervousSystem = "/";
+            if (PastDiseases == "") PastDiseases = "/";
+            if (FamilyData == "") FamilyData = "/";
+            if (SocioEpiData == "") SocioEpiData = "/";
+        }
+
+        public Appointment GetAppointment()
+        {
+            return AppointmentFileRepository.Instance.FindById(AnamnesisAppointment.TerminKey);
         }
 
         [JsonIgnore]
-        public String ImeLekara
+        public String DoctorName
         {
-            get { return Termin.ImeLekara; }
+            get { return AnamnesisAppointment.ImeLekara; }
         }
 
         [JsonIgnore]
-        public String ImePacijenta
+        public String PatientName
         {
-            get { return Termin.ImePacijenta; }
+            get { return AnamnesisAppointment.ImePacijenta; }
         }
 
         [JsonIgnore]
         public String Date
         {
-            get { return Datum.ToString("dd.MM.yyyy."); }
+            get { return AnamnesisDate.ToString("dd.MM.yyyy."); }
         }
 
         [JsonIgnore]
-        public String TerminDateType
+        public String AppointmentDateType
         {
             get
             {
-                if (getTermin().GetVrsta.Equals(AppointmentType.pregled))
-                    return "Datum pregleda: " + getTermin().Datum;
-                else return "Datum operacije: " + getTermin().Datum;
+                if (GetAppointment().GetVrsta.Equals(AppointmentType.pregled))
+                    return "Datum pregleda: " + GetAppointment().Datum;
+                else return "Datum operacije: " + GetAppointment().Datum;
 
             }
         }
 
-        //TODO get set za sva polja
-        public String GlavneTegobe { get; set; }
-
-        public String SadasnjaAnamneza { get; set; }
-
-        public String OpstePojave { get; set; }
-
-        public String RespiratorniSistem { get; set; }
-
-        public String KardiovaskularniSistem { get; set; }
-
-        public String DigestivniSistem { get; set; }
-
-        public String UrogenitalniSistem { get; set; }
-
-        public String LokomotorniSistem { get; set; }
-
-        public String NervniSistem { get; set; }
-
-        public String RanijaOboljenja { get; set; }
-
-        public String PorodicniPodaci { get; set; }
-
-        public String SocioEpiPodaci { get; set; }
-
-        public DateTime Datum { get; set; }
-
-        [JsonIgnore]
-        public Appointment Termin { get; set; }
-
-        public String IdAnamneze { get; set; }
-
         public void InitData()
         {
-            Termin =  new AppointmentFileRepository().FindById(IdAnamneze);
-            Termin.Pacijent = new PatientFileRepository().FindById(Termin.Pacijent.Jmbg);
-            Termin.Lekar = new DoctorFileRepository().FindById(Termin.Lekar.Jmbg);
+            AnamnesisAppointment =  new AppointmentFileRepository().FindById(AnamnesisID);
+            AnamnesisAppointment.Pacijent = new PatientFileRepository().FindById(AnamnesisAppointment.Pacijent.Jmbg);
+            AnamnesisAppointment.Lekar = new DoctorFileRepository().FindById(AnamnesisAppointment.Lekar.Jmbg);
         }
     }
 }

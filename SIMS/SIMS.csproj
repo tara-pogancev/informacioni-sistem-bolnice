@@ -183,4 +183,8 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="LekarGUI\ViewModel\" />
+  </ItemGroup>
+
 </Project>

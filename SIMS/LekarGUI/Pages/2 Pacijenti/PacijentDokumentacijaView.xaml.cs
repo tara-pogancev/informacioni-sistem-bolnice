@@ -96,10 +96,6 @@ namespace SIMS.LekarGUI
             {
                 ReadRecept();
             }
-            else if (TabbedPanel.SelectedIndex == 3)
-            {
-                //TODO
-            }
         }
 
         private void Button_GenerisanjeIzvestaja(object sender, RoutedEventArgs e)
