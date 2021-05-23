@@ -65,7 +65,7 @@
                                 <StackPanel Margin="70,20,40,0">
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Ime i prezime:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.ImePrezime}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.FullName}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">JMBG:</Label>
@@ -73,7 +73,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Datum rođenja:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.DatumString}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.DateString}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">E-mail:</Label>
@@ -81,19 +81,19 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Korisničko ime:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.KorisnickoIme}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Username}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Lozinka:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.Lozinka}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Password}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Broj telefona:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.Telefon}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.Phone}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Adresa:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.AdresaKorisnika}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.FullAddressString}"></Label>
                                     </StackPanel>
                                 </StackPanel>
 

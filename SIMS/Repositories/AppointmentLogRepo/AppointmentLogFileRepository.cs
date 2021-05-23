@@ -10,7 +10,7 @@ namespace SIMS.Model
     {
         protected override string getKey(AppointmentLog entity)
         {
-            return entity.TerminLogKey;
+            return entity.AppointmentID;
         }
 
         protected override string getPath()

@@ -23,9 +23,9 @@ namespace SIMS.Service
             List<Room> examRooms = roomRepository.UcitajProstorijeZaPreglede();
             foreach (Appointment termin in new AppointmentFileRepository().GetAll())
             {
-                if (termin.PocetnoVreme.Equals(appointmentTime))
+                if (termin.AppointmentTime.Equals(appointmentTime))
                 {
-                    RemoveRoom(termin.Prostorija.Number,examRooms);
+                    RemoveRoom(termin.Room.Number,examRooms);
                 }
             }
             return examRooms;

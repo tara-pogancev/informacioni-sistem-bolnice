@@ -68,7 +68,7 @@
                                         <Label Content="{Binding Obavestenje.VremeString}" HorizontalAlignment="Right"  Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White"  Margin="15"/>
                                     </Grid>
                                         <Grid Grid.Row="1">
-                                            <TextBlock Grid.Row="1" Text="{Binding Obavestenje.Tekst}" TextWrapping="Wrap" Margin="50,15,35,15" Style="{StaticResource DarkTextBlock}"/>
+                                            <TextBlock Grid.Row="1" Text="{Binding Obavestenje.Content}" TextWrapping="Wrap" Margin="50,15,35,15" Style="{StaticResource DarkTextBlock}"/>
                                         </Grid>
                                     </Grid>
                              </Grid>

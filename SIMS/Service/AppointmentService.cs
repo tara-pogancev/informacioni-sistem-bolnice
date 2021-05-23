@@ -23,7 +23,7 @@ namespace SIMS.Service
             {
                 if (doctor.Unavailable(appointment) || patient.Unvailable(appointment)) 
                 {
-                    timeOfAppointment.Remove(appointment.Vrijeme);
+                    timeOfAppointment.Remove(appointment.AppointmentTime);
                 }
             }
             return timeOfAppointment;
@@ -39,7 +39,7 @@ namespace SIMS.Service
                 return false;
             }
 
-            appointmentRepository.Save(new Appointment(date, 30, AppointmentType.pregled, doctor, patient, availableRooms[0]));
+            appointmentRepository.Save(new Appointment(date, 30, AppointmentType.examination, doctor, patient, availableRooms[0]));
             return true;
         }
 
@@ -54,7 +54,7 @@ namespace SIMS.Service
             List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
             for (int i = 0; i < scheduledAppointments.Count;i++)
             {
-                    if (scheduledAppointments[i].Datum != date)
+                    if (scheduledAppointments[i].AppointmentDate != date)
                     {
                         scheduledAppointments.RemoveAt(i);
                         i--;

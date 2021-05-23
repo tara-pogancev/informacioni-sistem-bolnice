@@ -27,9 +27,9 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="300" Margin="100,40,0,0" VerticalAlignment="Top" Width="450" BorderBrush="Black" HorizontalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Doktor" Binding="{Binding ImeLekara}"/>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
-                    <DataGridTextColumn Header="Vrijeme" Binding="{Binding Vrijeme}" />
+                    <DataGridTextColumn Header="Doktor" Binding="{Binding FullName}"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" />
+                    <DataGridTextColumn Header="Vrijeme" Binding="{Binding AppointmentTime}" />
 
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>

@@ -38,7 +38,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel>
-                    <Label Content="{Binding Anamneza.Termin.GetVrstaPregleda}" Foreground="White" HorizontalAlignment="Center" FontSize="18" Margin="15">
+                    <Label Content="{Binding Anamneza.Appointment.GetVrstaPregleda}" Foreground="White" HorizontalAlignment="Center" FontSize="18" Margin="15">
                     </Label>
                 </StackPanel>
             </Grid>
@@ -47,15 +47,15 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White" FontWeight="Bold">Lekar:</Label>
-                        <Label Content="{Binding Anamneza.Termin.Lekar.ImePrezime}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.Appointment.Doctor.FullName}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White"  FontWeight="Bold">Pacijent:</Label>
-                        <Label Content="{Binding Anamneza.Termin.Pacijent.ImePrezime}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.Termin.Patient.FullName}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White"  FontWeight="Bold">Datum i vrijeme:</Label>
-                        <Label Content="{Binding Anamneza.DatumIVrijeme}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.Date}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
 
                     <Label Foreground="White" FontSize="15" FontWeight="Bold" Margin="0,30,0,0">Anamneza</Label>

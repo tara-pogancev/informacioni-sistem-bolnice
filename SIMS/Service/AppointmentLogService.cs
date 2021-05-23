@@ -30,7 +30,7 @@ namespace SIMS.Service
             List<AppointmentLog> terminLogs = GetPatientAppointmentLogs(pacijent);
             foreach (AppointmentLog terminLog in terminLogs)
             {
-                terminLog.Istekao = true;
+                terminLog.Expired = true;
                 appointmentLogRepository.Update(terminLog);
             }
         }
@@ -40,7 +40,7 @@ namespace SIMS.Service
             List<AppointmentLog> terminLogs = appointmentLogRepository.GetAll();
             for (int i = 0; i < terminLogs.Count; i++)
             {
-                if (terminLogs[i].PacijentKey != pacijent.Jmbg || terminLogs[i].Istekao == true)
+                if (terminLogs[i].PatientID != pacijent.Jmbg || terminLogs[i].Expired == true)
                 {
                     terminLogs.RemoveAt(i);
                     i--;

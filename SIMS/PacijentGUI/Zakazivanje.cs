@@ -68,7 +68,7 @@ namespace SIMS.PacijentGUI
                 return;
             }
             
-            termin.Lekar = lekari[ListaDoktora.SelectedIndex];
+            termin.Doctor = lekari[ListaDoktora.SelectedIndex];
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum); 
             if (appointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent) == false)
