@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -42,7 +43,7 @@ namespace SIMS.PacijentGUI
 
         public void kreirajAnketu()
         {
-            List<HospitalSurvey> anketeBolnice = new HospitalSurveyFileRepository().GetPatientSurveys(pacijent);
+            List<HospitalSurvey> anketeBolnice = new HospitalSurveyService().GetPatientHospitalSurveys(pacijent);
             if (anketeBolnice.Count == 0)
             {
                 Anketa.Visibility = Visibility.Visible;

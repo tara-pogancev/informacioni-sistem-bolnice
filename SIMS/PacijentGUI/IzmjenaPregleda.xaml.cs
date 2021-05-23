@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -63,7 +64,7 @@ namespace SIMS.PacijentGUI
             OdabirDatuma.BlackoutDates.Add(cdr1);
         }
 
-        bool LekarZauzet(Appointment zakazaniTermin)
+        /*bool LekarZauzet(Appointment zakazaniTermin)
         {
             return zakazaniTermin.Lekar.Jmbg.Equals(izabraniLekar.Jmbg);
         }
@@ -77,12 +78,12 @@ namespace SIMS.PacijentGUI
         {
             return (OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy.").Equals(zakazaniTermin.Datum) &&
                 !this.odabraniTerminZaIzmjenu.Vrijeme.Equals(zakazaniTermin.Vrijeme));
-        }
+        }*/
 
-        bool TerminSeNeMozeZakazati(Appointment termin)
+        /*bool TerminSeNeMozeZakazati(Appointment termin)
         {
             return PoklapanjeDatuma(termin) && (PacijentZauzet(termin) || LekarZauzet(termin));
-        }
+        }*/
 
         
 
@@ -91,16 +92,21 @@ namespace SIMS.PacijentGUI
         private void IzbacivanjeNedostupnihTermina()
         {
             Doctor lekar = (Doctor)Doktori.SelectedItem;
-            moguceSatniceTermina = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
+            String chosenDate = OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy.");
+            moguceSatniceTermina = new ObservableCollection<String>(new AppointmentService().GetAvailableTimeOfAppointment(lekar,chosenDate,pacijent));
+            moguceSatniceTermina.Add(odabraniTerminZaIzmjenu.Vrijeme);
             List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetAll();
-            
-            foreach (Appointment termin in zakazaniTermini)
+
+            /*foreach (Appointment termin in zakazaniTermini)
             {
                 if (TerminSeNeMozeZakazati(termin))
                 {
                     moguceSatniceTermina.Remove(termin.Vrijeme);    
                 }
-            }
+            }*/
+            
+            
+
             terminiLista.ItemsSource = moguceSatniceTermina;
         }
 
@@ -207,6 +213,7 @@ namespace SIMS.PacijentGUI
 
         private void IzmijeniTermin()
         {
+            new AppointmentService().ScheduleAppointment(lekari[Doktori.SelectedIndex], DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text), pacijent);
             odabraniTerminZaIzmjenu.Lekar.Jmbg = lekari[Doktori.SelectedIndex].Jmbg;
             odabraniTerminZaIzmjenu.PocetnoVreme = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text); ;
             Serijalizuj();

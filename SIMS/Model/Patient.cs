@@ -111,7 +111,7 @@ namespace SIMS.Repositories.SecretaryRepo
             }
         }
 
-        public bool Available(Appointment appointment)
+        public bool Unvailable(Appointment appointment)
         {
             return appointment.Pacijent.Jmbg == this.Jmbg;
 

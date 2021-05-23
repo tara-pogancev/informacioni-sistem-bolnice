@@ -1,24 +1,11 @@
 {
   "1": {
-    "pocetakRenoviranja": null,
-    "krajRenoviranja": null,
-    "kolicineOpreme": {},
-    "TipProstorije": 0,
-    "Broj": "1",
-    "Dostupna": true
-  },
-  "2": {
-    "pocetakRenoviranja": null,
-    "krajRenoviranja": null,
-    "kolicineOpreme": {},
-    "TipProstorije": 2,
-    "Broj": "2",
-    "Dostupna": true
-  },
-  "3": {
-    "kolicineOpreme": {},
-    "TipProstorije": 0,
-    "Broj": "3",
-    "Dostupna": true
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "InventoryAmounts": {},
+    "RoomType": 0,
+    "Number": "1",
+    "Available": true,
+    "Serialize": true
   }
 }

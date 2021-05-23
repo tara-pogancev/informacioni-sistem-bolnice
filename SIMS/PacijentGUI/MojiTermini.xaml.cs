@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -53,7 +53,7 @@ namespace SIMS.PacijentGUI
         private bool provjeriValidnost()
         {
             int brojLogova = 0;
-            List<AppointmentLog> terminLogs = new AppointmentLogFileRepository().ReadByPatient(pacijent);
+            List<AppointmentLog> terminLogs = new AppointmentLogService().GetPatientAppointmentLogs(pacijent);
             foreach(AppointmentLog terminLog in terminLogs)
             {
                 if (terminLog.DatumPromjene < DateTime.Now.AddDays(-10))
@@ -82,7 +82,7 @@ namespace SIMS.PacijentGUI
             pacijent.BanovanKorisnik = true;
             pacijent.Serijalizuj = true;
             new PatientFileRepository().Update(pacijent);
-            new AppointmentLogFileRepository().MakeLogExpired(pacijent);
+            new AppointmentLogService().MakeLogExpired(pacijent);
             new MainWindow().Show();
             PocetnaStranica.getInstance().Close();
             PocetnaStranica.getInstance(). SetInstance();
