@@ -30,7 +30,7 @@ namespace SIMS.PacijentGUI
             this.schedule.AllowEditing = false;
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sr-SR");
             System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("sr-SR");
-            this.DataContext = new TerapijaPacijentaViewModel();
+            this.DataContext = PatientTherapyViewModel.Instance;
 
 
 

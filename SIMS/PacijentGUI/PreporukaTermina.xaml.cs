@@ -240,7 +240,7 @@ namespace SIMS.PacijentGUI
             preporuka();
             PreporuceniTermini preporuceni = new PreporuceniTermini();
             preporuceni.dodajTermine(preporuceniTermini);
-            PocetnaStranica.getInstance().Tabovi.Content = preporuceni;
+            PocetnaStranica.getInstance().frame.Content = preporuceni;
         }
 
         private void PocetniDatum_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

@@ -20,7 +20,7 @@ namespace SIMS.Repositories.AppointmentRepo
 
             foreach (Appointment t in this.GetAll())
             {
-                if (pacijent.EqualJmbg(t.Lekar.Jmbg))
+                if (pacijent.EqualJmbg(t.Pacijent.Jmbg))
                     termini.Add(t);
             }
 

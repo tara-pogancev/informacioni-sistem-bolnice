@@ -46,7 +46,7 @@ namespace SIMS.PacijentGUI
             anketaLekara.IdVlasnika = anketaLekara.Termin.Pacijent.Jmbg;
             anketaLekara.DoctorId = anketaLekara.Termin.Lekar.Jmbg;
             new DoctorSurveyFileRepository().Save(anketaLekara);
-            NavigationService.Navigate(PocetnaStranica.getInstance().Tabovi.Content=new IstorijaPregleda());
+            NavigationService.Navigate(PocetnaStranica.getInstance().frame.Content=new IstorijaPregleda());
         }
     }
 }

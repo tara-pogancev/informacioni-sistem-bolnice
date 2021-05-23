@@ -83,7 +83,7 @@
                         </Grid>
                         <Grid Grid.Row="2" Name="Tab">
 
-                            <Frame x:Name="Tabovi" NavigationUIVisibility="Hidden"/>
+                            <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
                         </Grid>
 
                     </Grid>

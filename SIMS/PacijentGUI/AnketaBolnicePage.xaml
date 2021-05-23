@@ -3,7 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+
+      xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:SIMS.PacijentGUI.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       Title="AnketaBolnice">
@@ -29,30 +31,37 @@
                     zdravstvene njege i unapređenje prava pacijenta.</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="14">Ocenite kvalitet rada bolnice:</Label>
-                    <materialDesign:RatingBar x:Name="Pitanje1" Value="0"   Height="21" Width="119" />
+                    <materialDesign:RatingBar x:Name="Pitanje1" Value="{Binding QuestionOneAnswer, Mode=TwoWay}"   Height="21" Width="119" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="14">Ocenite posvećenost i ljubaznost našeg osoblja:</Label>
-                    <materialDesign:RatingBar x:Name="Pitanje2" Value="0"   Height="21" Width="119" />
+                    <materialDesign:RatingBar x:Name="Pitanje2"  Value="{Binding QuestionTwoAnswer, Mode=TwoWay}"   Height="21" Width="119" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="14">Ocenite kvalitet hrane:</Label>
-                    <materialDesign:RatingBar x:Name="Pitanje3" Value="0"   Height="21" Width="119" />
+                    <materialDesign:RatingBar x:Name="Pitanje3"  Value="{Binding QuestionThreeAnswer, Mode=TwoWay}"    Height="21" Width="119" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="14">Ocenite higijenu bolesničke sobe/ordinacije:</Label>
-                    <materialDesign:RatingBar x:Name="Pitanje4" Value="0"   Height="21" Width="119" />
+                    <materialDesign:RatingBar x:Name="Pitanje4"  Value="{Binding QuestionFourAnswer, Mode=TwoWay}"   Height="21" Width="119" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="14">Koliko ste zadovoljni radom aplikacije?</Label>
-                    <materialDesign:RatingBar x:Name="Pitanje5" Value="0"   Height="21" Width="119" />
+                    <materialDesign:RatingBar x:Name="Pitanje5"  Value="{Binding QuestionFiveAnswer, Mode=TwoWay}"   Height="21" Width="119" />
                 </StackPanel>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden"  Height="120" Name="Scroler" Margin="0,10,0,0" BorderBrush="Black" BorderThickness="2" >
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="15">
-                        <TextBox x:Name="KomentarPregleda"  Foreground="White" materialDesign:HintAssist.Hint="Navadite prijedlog za poboljšanje kvaliteta naših usluga!" materialDesign:HintAssist.Foreground="Black"  AcceptsReturn="True" TextWrapping="Wrap"   />
+                        <TextBox x:Name="KomentarPregleda"  Foreground="White" Text="{Binding Comment, Mode=TwoWay}"  materialDesign:HintAssist.Hint="Navadite prijedlog za poboljšanje kvaliteta naših usluga!" materialDesign:HintAssist.Foreground="Black"  AcceptsReturn="True" TextWrapping="Wrap"   />
                     </Border>
                 </ScrollViewer>
-                <Button Width="150"  x:Name="Posalji" Click="Posalji_Click" Margin="0,25,0,0" Content="Pošalji anketu"/>
+                <Button Width="150"  x:Name="Posalji"  Margin="0,25,0,0" Content="Pošalji anketu">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click" >
+                            <i:InvokeCommandAction Command="{Binding SendSurveyCommand}"/>
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+                </Button>
             </StackPanel>
         </StackPanel>
     </Grid>

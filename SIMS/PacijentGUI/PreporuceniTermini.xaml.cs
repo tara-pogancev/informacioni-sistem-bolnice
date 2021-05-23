@@ -42,7 +42,7 @@ namespace SIMS.PacijentGUI
             ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
             zakazivanje.Zakazivanje1.Children.Clear();
             zakazivanje.Zakazivanje1.Children.Add(new PreporukaTermina(pacijent));
-            PocetnaStranica.getInstance().Tabovi.Content =zakazivanje;
+            PocetnaStranica.getInstance().frame.Content =zakazivanje;
             
         }
 

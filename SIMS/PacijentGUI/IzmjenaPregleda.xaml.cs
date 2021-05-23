@@ -201,7 +201,7 @@ namespace SIMS.PacijentGUI
 
             IzmijeniTermin();
             MojiTermini mojiTermini = new MojiTermini(PocetnaStranica.getInstance().Pacijent);
-            PocetnaStranica.getInstance().Tabovi.Content = mojiTermini;
+            PocetnaStranica.getInstance().frame.Content = mojiTermini;
 
         }
 
@@ -245,7 +245,7 @@ namespace SIMS.PacijentGUI
         private void VratiSeNaPrethodnuStranicu()
         {
             MojiTermini mojiTerminiPage = new MojiTermini(pacijent);
-            PocetnaStranica.getInstance().Tabovi.Content = mojiTerminiPage;
+            PocetnaStranica.getInstance().frame.Content = mojiTerminiPage;
         }
 
         private void terminiLista_SelectionChanged(object sender, SelectionChangedEventArgs e)

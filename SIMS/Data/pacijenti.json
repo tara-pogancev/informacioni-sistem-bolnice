@@ -10,7 +10,7 @@
     "GetHronicneBolestiString": "Nema",
     "Pol_Pacijenta": 0,
     "Krvna_Grupa": 0,
-    "BanovanKorisnik": true,
+    "BanovanKorisnik": false,
     "Ime": "Đorđe",
     "Prezime": "Krsmanović",
     "Jmbg": "4865453131",

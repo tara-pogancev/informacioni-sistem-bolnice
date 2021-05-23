@@ -101,7 +101,7 @@ namespace SIMS.PacijentGUI
                 anamneza = new Anamnesis();
                 anamneza.AnamnesisAppointment = selektovaniTermin.Termin;
             }
-            PocetnaStranica.getInstance().Tabovi.Content = new DetaljiPregleda(anamneza);
+            PocetnaStranica.getInstance().frame.Content = new DetaljiPregleda(anamneza);
         }
 
         private void Ocijeni_Click(object sender, RoutedEventArgs e)
