@@ -20,14 +20,14 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class OperacijaCreate : Window
+    public partial class SurgeryCreate : Window
     {
         private List<Doctor> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
 
-        public OperacijaCreate(Patient patient)
+        public SurgeryCreate(Patient patient)
         {
             InitializeComponents();
 
@@ -41,7 +41,7 @@ namespace SIMS.LekarGUI
             }
         }
 
-        public OperacijaCreate()
+        public SurgeryCreate()
         {
             InitializeComponents();
         }

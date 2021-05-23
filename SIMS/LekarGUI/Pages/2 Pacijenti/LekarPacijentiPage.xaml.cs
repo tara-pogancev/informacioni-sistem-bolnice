@@ -19,37 +19,37 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for LekarPacijentiPage.xaml
     /// </summary>
-    public partial class LekarPacijentiPage : Page
+    public partial class DoctorPatientViewPage : Page
     {
-        public static LekarPacijentiPage instance;
+        public static DoctorPatientViewPage instance;
 
-        private static Doctor lekarUser;
+        private static Doctor doctorUser;
 
         private const String defaultSearchText = "Pretraži...";
 
-        public ObservableCollection<Patient> PacijentiView { get; set; }
+        public ObservableCollection<Patient> PatientViewModel { get; set; }
 
-        public static LekarPacijentiPage GetInstance(Doctor l)
+        public static DoctorPatientViewPage GetInstance(Doctor l)
         {
             if (instance == null)
             {
-                lekarUser = l;
-                instance = new LekarPacijentiPage();
+                doctorUser = l;
+                instance = new DoctorPatientViewPage();
             }
             return instance;
         }
 
-        public static LekarPacijentiPage GetInstance()
+        public static DoctorPatientViewPage GetInstance()
         {
             return instance;
         }
 
-        public LekarPacijentiPage()
+        public DoctorPatientViewPage()
         {
             InitializeComponent();
 
             this.DataContext = this;
-            PacijentiView = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
+            PatientViewModel = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
 
         }
 
@@ -58,33 +58,28 @@ namespace SIMS.LekarGUI
             instance = null;
         }
 
-        private void Button_Pregled(object sender, RoutedEventArgs e)
+        private void ButtonAppointment(object sender, RoutedEventArgs e)
         {
-            if (dataGridPacijenti.SelectedItem != null)
+            if (dataGridPatients.SelectedItem != null)
             {
-                Patient p = (Patient)dataGridPacijenti.SelectedItem;
-                DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
+                Patient patient = (Patient)dataGridPatients.SelectedItem;
+                DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(patient);
             }
         }
 
-        private void Button_Recept(object sender, RoutedEventArgs e)
+        private void ButtonReciept(object sender, RoutedEventArgs e)
         {
-            if (dataGridPacijenti.SelectedItem != null)
+            if (dataGridPatients.SelectedItem != null)
             {
-                Patient p = (Patient)dataGridPacijenti.SelectedItem;
-                LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(p);
-                r.ShowDialog();
+                Patient patient = (Patient)dataGridPatients.SelectedItem;
+                DoctorWriteReciept reciept = new DoctorWriteReciept(patient);
+                reciept.ShowDialog();
             }
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
-        }
-
-        private void Button_Terapija(object sender, RoutedEventArgs e)
-        {
-            //TODO
         }
 
         private void SearchByIcon(object sender, MouseButtonEventArgs e)
@@ -114,7 +109,7 @@ namespace SIMS.LekarGUI
                 resetView();
             } else
             {
-                filterView(searchText);
+                FilterView(searchText);
             }
 
         }
@@ -131,32 +126,32 @@ namespace SIMS.LekarGUI
 
         private void resetView()
         {
-            PacijentiView.Clear();
+            PatientViewModel.Clear();
 
             foreach(Patient patient in PatientFileRepository.Instance.GetAll())
             {
-                PacijentiView.Add(patient);
+                PatientViewModel.Add(patient);
             }
         }
 
-        private void filterView(String filter)
+        private void FilterView(String filter)
         {
-            PacijentiView.Clear();
+            PatientViewModel.Clear();
             filter = filter.ToUpper();
 
             foreach (Patient patient in PatientFileRepository.Instance.GetAll())
             {
                 if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.FullName.ToUpper()).Contains(filter))
-                    PacijentiView.Add(patient);
+                    PatientViewModel.Add(patient);
             }
         }
 
-        private void Button_Uput(object sender, RoutedEventArgs e)
+        private void ButtonReferral(object sender, RoutedEventArgs e)
         {
-            if (dataGridPacijenti.SelectedItem != null)
+            if (dataGridPatients.SelectedItem != null)
             {
-                Patient p = (Patient)dataGridPacijenti.SelectedItem;
-                new UputCreate(p).ShowDialog();
+                Patient p = (Patient)dataGridPatients.SelectedItem;
+                new WriteReferral(p).ShowDialog();
             }
         }
     }

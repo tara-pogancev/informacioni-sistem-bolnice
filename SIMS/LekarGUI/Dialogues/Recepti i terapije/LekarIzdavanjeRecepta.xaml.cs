@@ -16,12 +16,12 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for LekarIzdavanjeRecepta.xaml
     /// </summary>
-    public partial class LekarIzdavanjeRecepta : Window
+    public partial class DoctorWriteReciept : Window
     {
         private Patient patient;
         private Doctor doctor = DoctorUI.GetInstance().GetUser();
 
-        public LekarIzdavanjeRecepta(Patient patient)
+        public DoctorWriteReciept(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;

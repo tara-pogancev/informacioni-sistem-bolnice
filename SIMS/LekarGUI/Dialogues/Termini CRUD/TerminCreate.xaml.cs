@@ -21,14 +21,14 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class TerminCreate : Window
+    public partial class AppointmentCreate : Window
     {
         private List<Doctor> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
 
-        public TerminCreate(Patient patient)
+        public AppointmentCreate(Patient patient)
         {
             InitializeComponents();
             foreach (Patient currentPatient in patients)
@@ -41,7 +41,7 @@ namespace SIMS.LekarGUI
             }
         }
 
-        public TerminCreate()
+        public AppointmentCreate()
         {
             InitializeComponents();
         }

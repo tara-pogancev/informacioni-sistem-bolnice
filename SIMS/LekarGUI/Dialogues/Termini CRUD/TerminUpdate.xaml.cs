@@ -11,7 +11,7 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class TerminUpdate : Window
+    public partial class AppointmentUpdate : Window
     {
         private List<Doctor> doctors;
         private List<Patient> patients;
@@ -19,7 +19,7 @@ namespace SIMS.LekarGUI
         private List<String> availableTimes;
         Appointment appointment;
 
-        public TerminUpdate(Appointment appointment)
+        public AppointmentUpdate(Appointment appointment)
         {
             InitializeComponent();
             this.appointment = appointment;

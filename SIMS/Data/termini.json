@@ -196,7 +196,7 @@
     "AppointmentID": "210523053555540912"
   },
   "210523053608990083": {
-    "StartTime": "2021-07-27T12:00:00",
+    "StartTime": "2021-07-29T09:30:00",
     "Duration": 90,
     "Type": 1,
     "Doctor": {
@@ -222,5 +222,33 @@
     },
     "InitialTime": "2021-07-27T12:00:00",
     "AppointmentID": "210523053608990083"
+  },
+  "210523054658857930": {
+    "StartTime": "2021-05-09T08:30:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "HronicalDiseases": [],
+      "Jmbg": "1112124",
+      "Serialize": false
+    },
+    "Room": {
+      "RenovationStart": null,
+      "RenovationEnd": null,
+      "InventoryAmounts": {},
+      "RoomType": 2,
+      "Number": "2",
+      "Available": true,
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-09T08:30:00",
+    "AppointmentID": "210523054658857930"
   }
 }

@@ -68,13 +68,9 @@ namespace SIMS.Repositories.SecretaryRepo
             get
             {
                 if (Guest)
-                {
                     return "Da";
-                }
                 else
-                {
                     return "Ne";
-                }
             }
 
         }

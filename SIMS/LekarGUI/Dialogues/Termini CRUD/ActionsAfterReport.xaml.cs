@@ -40,19 +40,19 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            var window = new LekarIzdavanjeRecepta(patient);
+            var window = new DoctorWriteReciept(patient);
             window.ShowDialog();
         }
 
         private void PisajneUputa(object sender, RoutedEventArgs e)
         {
-            var window = new UputCreate(patient);
+            var window = new WriteReferral(patient);
             window.ShowDialog();
         }
 
         private void ZakazivajneOperacije(object sender, RoutedEventArgs e)
         {
-            var window = new OperacijaCreate(patient);
+            var window = new SurgeryCreate(patient);
             window.ShowDialog();
         }
 
@@ -63,7 +63,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
         {
-            var window = new TerminCreate(patient);
+            var window = new AppointmentCreate(patient);
             window.ShowDialog();
         }
 

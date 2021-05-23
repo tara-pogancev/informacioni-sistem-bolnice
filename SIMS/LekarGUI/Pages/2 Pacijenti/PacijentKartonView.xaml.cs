@@ -61,7 +61,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Recept(object sender, RoutedEventArgs e)
         {
-            LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(pacijentProfile);
+            DoctorWriteReciept r = new DoctorWriteReciept(pacijentProfile);
             r.Show();
         }
 

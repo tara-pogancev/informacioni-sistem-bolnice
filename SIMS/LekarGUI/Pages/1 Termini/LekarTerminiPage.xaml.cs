@@ -69,14 +69,14 @@ namespace SIMS.LekarGUI
         private void ButtonAppointment(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi pregled
-            TerminCreate appointmentCreate = new TerminCreate();
+            AppointmentCreate appointmentCreate = new AppointmentCreate();
             appointmentCreate.ShowDialog();
         }
 
         private void ButtonSurgery(object sender, RoutedEventArgs e)
         {
             //Button: Zakazi operaciju
-            OperacijaCreate surgeryCreate = new OperacijaCreate();
+            SurgeryCreate surgeryCreate = new SurgeryCreate();
             surgeryCreate.ShowDialog();
         }
 
@@ -85,7 +85,7 @@ namespace SIMS.LekarGUI
             //Button: Uredi termin
             if (dataGridAppointments.SelectedItem != null)
             {
-                TerminUpdate appointmentUpdate = new TerminUpdate((Appointment)dataGridAppointments.SelectedItem);
+                AppointmentUpdate appointmentUpdate = new AppointmentUpdate((Appointment)dataGridAppointments.SelectedItem);
                 appointmentUpdate.ShowDialog();
             }
         }
