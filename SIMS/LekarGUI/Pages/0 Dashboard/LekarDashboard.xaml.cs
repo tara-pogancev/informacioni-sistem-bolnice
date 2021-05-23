@@ -33,7 +33,7 @@ namespace SIMS.LekarGUI
 
             this.DataContext = this;
 
-            WelcomeMSG.Content = lekarUser.Ime + ", dobro došli!";
+            WelcomeMSG.Content = lekarUser.Name + ", dobro došli!";
             refresh();
 
         }
@@ -52,7 +52,7 @@ namespace SIMS.LekarGUI
 
             foreach (Appointment t in termini)
             {
-                if (t.IsCurrent && t.Evidentiran == false)
+                if (t.IsCurrent && t.IsRecorded == false)
                 {
                     AktivniTermin.Content = LDBAktivanTermin.GetInstance(t);
                     return;
@@ -64,7 +64,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Termini(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(1);
+            DoctorUI.GetInstance().ChangeTab(1);
         }
 
         private void Button_Hitno(object sender, RoutedEventArgs e)
@@ -80,7 +80,7 @@ namespace SIMS.LekarGUI
             int ukupno = termini.Count;
 
             foreach (Appointment t in termini)
-                if (t.Evidentiran)
+                if (t.IsRecorded)
                     evidentirani++;
 
             GraphEvidentirani.To = ukupno;
@@ -95,14 +95,14 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.pregled, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.examination, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
 
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.operacija, lekarUser)),
+                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.surgery, lekarUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
 
                 }

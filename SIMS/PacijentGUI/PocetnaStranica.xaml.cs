@@ -101,7 +101,7 @@ namespace SIMS.PacijentGUI
             List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(pacijent);
             foreach(Appointment termin in zakazaniTermini)
             {
-                if (DateTime.Now <= termin.PocetnoVreme && DateTime.Now.AddMinutes(60)>=termin.PocetnoVreme)
+                if (DateTime.Now <= termin.StartTime && DateTime.Now.AddMinutes(60)>=termin.StartTime)
                 {
                     return true;
                 }

@@ -76,7 +76,7 @@
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="Broj" SelectedValuePath="Broj" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="Broj" SelectedValuePath="Number" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker1" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />

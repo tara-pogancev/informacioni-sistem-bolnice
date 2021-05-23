@@ -39,8 +39,8 @@ namespace SIMS.LekarGUI
             this.DataContext = this;
             initializeData();
 
-            Ime_Top.Content = pacijentProfile.ImePrezime;
-            Label_Ime.Content = pacijentProfile.ImePrezime;
+            Ime_Top.Content = pacijentProfile.FullName;
+            Label_Ime.Content = pacijentProfile.FullName;
 
         }
 
@@ -69,17 +69,17 @@ namespace SIMS.LekarGUI
 
         private void Button_Pacijenti(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(2);
+            DoctorUI.GetInstance().ChangeTab(2);
         }
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void Button_PacijentKarton(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(pacijentProfile);
+            DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(pacijentProfile);
         }
 
         private void Button_Pročitaj(object sender, RoutedEventArgs e)
@@ -95,10 +95,6 @@ namespace SIMS.LekarGUI
             else if (TabbedPanel.SelectedIndex == 2)
             {
                 ReadRecept();
-            }
-            else if (TabbedPanel.SelectedIndex == 3)
-            {
-                //TODO
             }
         }
 
@@ -132,7 +128,7 @@ namespace SIMS.LekarGUI
             if (dataGridPregledi.SelectedItem != null)
             {
                 Anamnesis sellectedAnamneza = (Anamnesis)dataGridPregledi.SelectedItem;
-                AnamnezaView window = new AnamnezaView(sellectedAnamneza);
+                AnamnesisRead window = new AnamnesisRead(sellectedAnamneza);
                 window.Show();
             }
         }
@@ -142,7 +138,7 @@ namespace SIMS.LekarGUI
             if (dataGridOperacije.SelectedItem != null)
             {
                 SurgeryReport sellectedIzvestaj = (SurgeryReport)dataGridOperacije.SelectedItem;
-                OperacijaIzvestajView window = new OperacijaIzvestajView(sellectedIzvestaj);
+                SurgeryReportRead window = new SurgeryReportRead(sellectedIzvestaj);
                 window.Show();
             }
         }

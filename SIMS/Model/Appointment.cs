@@ -15,16 +15,18 @@ namespace SIMS.Repositories.SecretaryRepo
 {
    public class Appointment : INotifyPropertyChanged
    {
-        private DateTime pocetnoVreme;
-        private int vremeTrajanja;    //U minutima
-        private AppointmentType vrstaTermina;
-        private DateTime inicijalnoVrijeme;
-        private String terminKey;
-        private Doctor lekar;
-        private Patient pacijent;
-        private Room prostorija;
-        private bool serijalizuj;
-             
+        public DateTime StartTime { get; set; }
+        public int Duration { get; set; }
+        public AppointmentType Type { get; set; }
+        public Doctor Doctor { get; set; }
+        public Patient Patient { get; set; }
+        public Room Room { get; set; }
+        public DateTime InitialTime { get; set; }
+        public String AppointmentID { get; set; }
+
+        [JsonIgnore]
+        public bool Serialize { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string property)
@@ -35,140 +37,119 @@ namespace SIMS.Repositories.SecretaryRepo
             }
         }
 
-        public Appointment(DateTime pocetnoVreme, int vremeTrajanja, AppointmentType vrstaTermina, Doctor lekar, Patient pacijent, Room prostorija)
+        public Appointment(DateTime startTime, int duration, AppointmentType type, Doctor doctor, Patient patient, Room room)
         {
-            this.inicijalnoVrijeme = pocetnoVreme;
-            this.pocetnoVreme = pocetnoVreme;
-            this.vremeTrajanja = vremeTrajanja;
-            this.vrstaTermina = vrstaTermina;
-            this.lekar = lekar;
-            this.pacijent = pacijent;
-            this.prostorija = prostorija;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
-            serijalizuj = true;
+            StartTime = startTime;
+            InitialTime = startTime;
+            Duration = duration;
+            Type = type;
+            Doctor = doctor;
+            Patient = patient;
+            Room = room;
+            AppointmentID = GenerateID();
+            Serialize = true;
         }
+
 
         public Appointment()
         {
-            this.vrstaTermina = AppointmentType.pregled;
-            this.terminKey = DateTime.Now.ToString("yyMMddhhmmssffffff");
-            serijalizuj = true;
+            Type = AppointmentType.examination;
+            AppointmentID = GenerateID();
+            Serialize = true;
         }
 
-        public DateTime PocetnoVreme { get => pocetnoVreme; set { pocetnoVreme = value; OnPropertyChanged("PocetnoVreme"); OnPropertyChanged("Vrijeme"); OnPropertyChanged("Datum"); } }
-        public int VremeTrajanja { get => vremeTrajanja; set => vremeTrajanja = value; }
-        public AppointmentType VrstaTermina { get => vrstaTermina; set => vrstaTermina = value; }
-        public Doctor Lekar { get => lekar; set { lekar = value; OnPropertyChanged("Lekar"); } }
-        public Patient Pacijent { get => pacijent; set { pacijent = value; OnPropertyChanged("PacijentKey"); } }
-        public Room Prostorija { get => prostorija; set { prostorija = value; OnPropertyChanged("Prostorija"); } }
-        public DateTime InicijalnoVrijeme { get => inicijalnoVrijeme; set => inicijalnoVrijeme = value; }
-        public String TerminKey { get => terminKey; set => terminKey = value; }
-
-        [JsonIgnore]
-        public bool Serijalizuj { get => serijalizuj; set => serijalizuj = value; }
-
-        public bool ShouldSerializePocetnoVreme()
+        public bool ShouldSerializeInitialTime()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         public bool ShouldSerializeVremeTrajanja()
         {
-            return serijalizuj;
+            return Serialize;
         }
         
         public bool ShouldSerializeVrstaTermina()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         public bool ShouldSerializeLekar()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         public bool ShouldSerializePacijent()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         public bool ShouldSerializeProstorija()
         {
-            return serijalizuj;
+            return Serialize;
         }
         public bool ShouldSerializeInicijalnoVrijeme()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         [JsonIgnore]
-        public String Datum { get => PocetnoVreme.ToString("dd.MM.yyyy."); }
+        public String AppointmentDate { get => StartTime.ToString("dd.MM.yyyy."); }
 
         [JsonIgnore]
-        public String Vrijeme { get => PocetnoVreme.ToString("HH:mm"); }
+        public String AppointmentTime { get => StartTime.ToString("HH:mm"); }
                 
         [JsonIgnore]
-        public String GetVrsta
+        public String TypeString
         {
             get {
-                String ret = "";
-                if (vrstaTermina == AppointmentType.pregled)
+
+                if (Type == AppointmentType.examination)
                 {
-                    ret = "Pregled";
+                    return "Pregled";
                 }
                 else
                 {
-                    ret = "Operacija";
+                    return "Operacija";
                 }
-
-                return ret;
             }
             
         }
 
         [JsonIgnore]
-        public String ImePacijenta
+        public String PatientName
         {
             get
             { 
-                return (pacijent.ImePrezime); 
+                return (Patient.FullName); 
             }
         }
 
         [JsonIgnore]
-        public String ImeLekara
+        public String DoctorName
         {
             get
             {
-                //lekar = LekarStorage.Instance.ReadEntity(doktor) 
-                return (lekar.ImePrezime);
+                return (Doctor.FullName);
             }
         }
 
         [JsonIgnore]
-        public String NazivProstorije
-        {
-            get { return prostorija.Number; }
-        }
-
-        [JsonIgnore]
-        public bool Evidentiran
+        public bool IsRecorded
         {
             get
             {
-                if (AnamnesisFileRepository.Instance.FindById(this.TerminKey) == null && SurgeryReportFileRepository.Instance.FindById(this.TerminKey) == null)
+                if (AnamnesisFileRepository.Instance.FindById(this.AppointmentID) == null && SurgeryReportFileRepository.Instance.FindById(this.AppointmentID) == null)
                     return false;
                 else return true;
             }
         }
 
         [JsonIgnore]
-        public DateTime KrajnjeVreme
+        public DateTime EndTime
         {
             get
             {
-                DateTime krajnjeVreme = PocetnoVreme.AddMinutes(VremeTrajanja);
-                return krajnjeVreme;
+                return StartTime.AddMinutes(Duration);
             }
         }
 
@@ -178,7 +159,7 @@ namespace SIMS.Repositories.SecretaryRepo
             get
             {
                 // Vraca termine koji su se u potpunosti zavrsili
-                if (this.KrajnjeVreme <= DateTime.Now)
+                if (this.EndTime <= DateTime.Now)
                     return true;
                 else return false;
             }
@@ -190,7 +171,7 @@ namespace SIMS.Repositories.SecretaryRepo
             get
             {
                 //Vraca termine koji trenutno traju
-                if (this.PocetnoVreme <= DateTime.Now && this.KrajnjeVreme >= DateTime.Now)
+                if (this.StartTime <= DateTime.Now && this.EndTime >= DateTime.Now)
                     return true;
 
                 return false;
@@ -202,15 +183,20 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             get
             {
-                return ImeLekara + ", " + Vrijeme + " " + Datum;
+                return DoctorName + ", " + AppointmentTime + " " + AppointmentDate;
             }
         }
 
         public void InitData()
         {
-            Pacijent = new PatientFileRepository().FindById(Pacijent.Jmbg);
-            Prostorija = new RoomFileRepository().FindById(Prostorija.Number);
-            Lekar = new DoctorFileRepository().FindById(Lekar.Jmbg);
+            Patient = new PatientFileRepository().FindById(Patient.Jmbg);
+            Room = new RoomFileRepository().FindById(Room.Number);
+            Doctor = new DoctorFileRepository().FindById(Doctor.Jmbg);
+        }
+
+        private static string GenerateID()
+        {
+            return DateTime.Now.ToString("yyMMddhhmmssffffff");
         }
 
     }

@@ -6,32 +6,27 @@ namespace SIMS.Model
 {
     class AppointmentLog
     {
-        private String terminLogKey;
-        private String terminKey;
-        private String pacijentKey;
-        private DateTime datumPromjene;
-        private SurgeryType tipOperacije;
-        private bool istekao;
+        public string AppointmentLogID { get; set; }
+        public string AppointmentID { get; set; }
+        public string PatientID { get; set; }
+        public DateTime DateOfChange { get; set; }
+        public SurgeryType SurgeryType { get; set; }
+        public bool Expired { get; set; }
 
         public AppointmentLog()
         {
-            this.istekao = false;
+            Expired = false;
         }
-        public AppointmentLog(String terminLogKey,String terminKey,String pacijentKey,DateTime datumPromjene,SurgeryType tipOperacije)
+        public AppointmentLog(String appointmentLogID, String appointmentID, String patientID, 
+            DateTime dateOfChange, SurgeryType surgeryType)
         {
-            this.terminLogKey = terminLogKey;
-            this.terminKey = terminKey;
-            this.pacijentKey = pacijentKey;
-            this.datumPromjene = datumPromjene;
-            this.tipOperacije = tipOperacije;
-            this.istekao = false;
+            AppointmentLogID = appointmentLogID;
+            AppointmentID = appointmentID;
+            PatientID = patientID;
+            DateOfChange = dateOfChange;
+            SurgeryType = surgeryType;
+            Expired = false;
         }
 
-        public string TerminLogKey { get => terminLogKey; set => terminLogKey = value; }
-        public string TerminKey { get => terminKey; set => terminKey = value; }
-        public string PacijentKey { get => pacijentKey; set => pacijentKey = value; }
-        public DateTime DatumPromjene { get => datumPromjene; set => datumPromjene = value; }
-        public SurgeryType TipOperacije { get => tipOperacije; set => tipOperacije = value; }
-        public bool Istekao { get => istekao; set => istekao = value; }
     }
 }

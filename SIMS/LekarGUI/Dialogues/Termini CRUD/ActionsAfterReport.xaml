@@ -37,15 +37,16 @@
             <Button Grid.Row="0" Grid.Column="0" Content="Izdavanje recepta" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="IzdavanjeRecepta"/>
             <Button Grid.Row="1" Grid.Column="1" Content="Pisanje uputa" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="PisajneUputa"/>
             <Button Grid.Row="0" Grid.Column="2" Content="Zakazivanje operacije" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="ZakazivajneOperacije"/>
-            <Button Grid.Row="1" Grid.Column="0" Content="Pisanje terapije" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="PisanjeTerapije"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="Prikaz profila" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160"  Click="PrikazProfila"/>
             <Button Grid.Row="0" Grid.Column="1" Content="Zakazivanje pregleda" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="ZakazivanjePregleda"/>
             <Button Grid.Row="1" Grid.Column="2" Content="Hitna operacija" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="HitnaOperacija"/>
             
         </Grid>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
-            <Button Content="Prikaz profila" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}" Margin="0,0,30,0" Click="PrikazProfila"/>
+            
             <Button Content="Otkaži" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}" Click="Cancel"/>
+            
         </StackPanel>
         
     </Grid>

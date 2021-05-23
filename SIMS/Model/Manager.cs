@@ -9,23 +9,20 @@ namespace SIMS.Repositories.SecretaryRepo
 {
    public class Manager : LoggedUser
    {
-      private int daniGodisnjegOdmora;
-        
+        public int VacationDays { get; set; }
 
         public Manager()
         {
         }
 
-        public Manager(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa,int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Manager(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, int vacationDays) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
-            this.daniGodisnjegOdmora = daniGodisnjegOdmora;
-        }
-
-        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
+            VacationDays = vacationDays;
+        }        
 
         public bool ShouldSerializeDaniGodisnjegOdmora()
         {
-            return serijalizuj;
+            return Serialize;
         }
     }
 

@@ -31,7 +31,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             MedicineComponents.Inlines.Add(new Run("Sastojci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             MedicineComponents.Inlines.Add("   ");
-            MedicineComponents.Inlines.Add(medicine.getComponentsList());
+            MedicineComponents.Inlines.Add(medicine.GetComponentsList());
 
             MedicineSubstitute.Inlines.Add(new Run("Zamenski lek:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             MedicineSubstitute.Inlines.Add("   ");

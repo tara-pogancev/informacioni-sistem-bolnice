@@ -27,46 +27,46 @@ namespace SIMS.Model
             DatumIzvestaja = DateTime.Today;
             NazivOperacije = nazivOperacije;
             NapomeneOperacije = napomeneOperacije;
-            OperacijaKey = termin.TerminKey;
+            OperacijaKey = termin.AppointmentID;
 
         }
 
         public void InitData()
         {
             Operacija = new AppointmentFileRepository().FindById(OperacijaKey);
-            Operacija.Pacijent = new PatientFileRepository().FindById(Operacija.Pacijent.Jmbg);
-            Operacija.Lekar = new DoctorFileRepository().FindById(Operacija.Lekar.Jmbg);
+            Operacija.Patient = new PatientFileRepository().FindById(Operacija.Patient.Jmbg);
+            Operacija.Doctor = new DoctorFileRepository().FindById(Operacija.Doctor.Jmbg);
 
         }
 
         [JsonIgnore]
         public String ImeLekara
         {
-            get { return Operacija.ImeLekara; }
+            get { return Operacija.DoctorName; }
         }
 
         [JsonIgnore]
         public String ImePacijenta
         {
-            get { return Operacija.ImePacijenta; }
+            get { return Operacija.PatientName; }
         }
 
         [JsonIgnore]
         public String DatumRodjenjaPacijenta
         {
-            get { return Operacija.Pacijent.DatumString; }
+            get { return Operacija.Patient.DateString; }
         }
 
         [JsonIgnore]
         public String DatumOperacijeIspis
         {
-            get { return Operacija.Datum; }
+            get { return Operacija.AppointmentDate; }
         }
 
         [JsonIgnore]
         public String SobaOperacije
         {
-            get { return Operacija.NazivProstorije; }
+            get { return Operacija.Room.Number; }
         }
 
         [JsonIgnore]

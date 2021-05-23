@@ -16,9 +16,9 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// <summary>
     /// Interaction logic for OperacijaIzvestajView.xaml
     /// </summary>
-    public partial class OperacijaIzvestajView : Window
+    public partial class SurgeryReportRead : Window
     {
-        public OperacijaIzvestajView(SurgeryReport report)
+        public SurgeryReportRead(SurgeryReport report)
         {
             InitializeComponent();
             report.InitData();

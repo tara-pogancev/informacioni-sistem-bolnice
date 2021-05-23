@@ -14,20 +14,19 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     public class Doctor : LoggedUser
     {
-        public int DaniGodisnjegOdmora { get; set; }
+        public int VacationDays { get; set; }
         public double Grade { get; set; }
-
-        public Specialization SpecijalizacijaLekara { get; set; }
+        public Specialization DoctorSpecialization { get; set; }
 
         public Doctor()
         {
             Grade = 0.0;
         }
 
-        public Doctor(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa, Specialization specijalizacija, int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Doctor(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, Specialization specialization, int vacationDays) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
-            DaniGodisnjegOdmora = daniGodisnjegOdmora;
-            SpecijalizacijaLekara = specijalizacija;
+            VacationDays = vacationDays;
+            DoctorSpecialization = specialization;
             Grade = 0.0;
         }
              
@@ -43,7 +42,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
         public bool Unavailable(Appointment appointment)
         {
-            return appointment.Lekar.Jmbg == this.Jmbg;
+            return appointment.Doctor.Jmbg == this.Jmbg;
 
         }
 
@@ -52,10 +51,10 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
             {
-                if (terminNew.KrajnjeVreme > t.PocetnoVreme && terminNew.KrajnjeVreme <= t.KrajnjeVreme)
+                if (terminNew.EndTime > t.StartTime && terminNew.EndTime <= t.EndTime)
                     return false;
 
-                if (terminNew.PocetnoVreme >= t.PocetnoVreme && terminNew.PocetnoVreme < t.KrajnjeVreme)
+                if (terminNew.StartTime >= t.StartTime && terminNew.StartTime < t.EndTime)
                     return false;
             }
 
@@ -82,11 +81,7 @@ namespace SIMS.Repositories.SecretaryRepo
             else
             {
                 this.Grade = Grades / counter;
-            }
-            
-   
-
-
+            }              
 
         }
 
@@ -95,61 +90,59 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
             {
-                if (t.TerminKey != terminNew.TerminKey)
+                if (t.AppointmentID != terminNew.AppointmentID)
                 {
-                    if (terminNew.KrajnjeVreme > t.PocetnoVreme && terminNew.KrajnjeVreme <= t.KrajnjeVreme)
+                    if (terminNew.EndTime > t.StartTime && terminNew.EndTime <= t.EndTime)
                         return false;
 
-                    if (terminNew.PocetnoVreme >= t.PocetnoVreme && terminNew.PocetnoVreme < t.KrajnjeVreme)
+                    if (terminNew.StartTime >= t.StartTime && terminNew.StartTime < t.EndTime)
                         return false;
                 }
             }
-
             return true;
         }
 
         public bool ShouldSerializeDaniGodisnjegOdmora()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         public bool ShouldSerializeSpecijalizacijaLekara()
         {
-            return serijalizuj;
+            return Serialize;
         }
 
         [JsonIgnore]
-        public String NameAndSpecialization { get { return ImePrezime + ", " + Specialization; } }
+        public String NameAndSpecialization { get { return FullName + ", " + Specialization; } }
 
         [JsonIgnore]
         public String Specialization 
         { 
             get 
             {
-                if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.OpstaPraksa)
+                if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.OpstaPraksa)
                     return "Lekar opšte prakse";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Hirurg)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Hirurg)
                     return "Hirurg";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Internista)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Internista)
                     return "Internista";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Dermatolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Dermatolog)
                     return "Dermatolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Kardiolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Kardiolog)
                     return "Kardiolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Otorinolaringolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Otorinolaringolog)
                     return "Otorinolaringolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Stomatolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Stomatolog)
                     return "Stomatolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Urolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Urolog)
                     return "Urolog";
-                else if (SpecijalizacijaLekara == SIMS.Repositories.SecretaryRepo.Specialization.Ginekolog)
+                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Ginekolog)
                     return "Ginekolog";
                 else
                     return "Neurolog";
             } 
 
-        }
-        
+        }       
 
     }
 }

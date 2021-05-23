@@ -37,9 +37,9 @@ namespace SIMS
 
             //impelemntacija za pacijenta
             Patient pacijent = PatientFileRepository.Instance.ReadUser(user);
-            if (pacijent != null && pass.Equals(pacijent.Lozinka))
+            if (pacijent != null && pass.Equals(pacijent.Password))
             {
-                if (pacijent.BanovanKorisnik)
+                if (pacijent.IsBanned)
                 {
                     ObavjestenjeOTerminu o = new ObavjestenjeOTerminu();
                     o.TekstObavjestenja.Text= "Poštovani Vaš nalog je blokiran.Za više detalja obratite se sekretaru bolnice";
@@ -58,7 +58,7 @@ namespace SIMS
 
             //impelemntacija za upravnika
             Manager upravnik = ManagerFileRepository.Instance.ReadUser(user);
-            if (upravnik != null && pass.Equals(upravnik.Lozinka))
+            if (upravnik != null && pass.Equals(upravnik.Password))
             {
                 UpravnikWindow.Instance.Show();
                 this.Close();
@@ -67,9 +67,9 @@ namespace SIMS
 
             //impelementacija za doktora
             Doctor lekar = DoctorFileRepository.Instance.ReadUser(user);
-            if (lekar != null && pass.Equals(lekar.Lozinka))
+            if (lekar != null && pass.Equals(lekar.Password))
             {
-                LekarUI lekarUI = LekarUI.GetInstance(lekar);
+                DoctorUI lekarUI = DoctorUI.GetInstance(lekar);
                 lekarUI.Show();
                 this.Close();
                 return;
@@ -77,7 +77,7 @@ namespace SIMS
 
             //implementacija za sekretara
             Secretary sekretar = SecretaryFileRepository.Instance.ReadUser(user);
-            if (sekretar != null && pass.Equals(sekretar.Lozinka))
+            if (sekretar != null && pass.Equals(sekretar.Password))
             {
                     SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
                     sekretarUI.Show();

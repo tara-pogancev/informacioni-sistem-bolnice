@@ -103,8 +103,8 @@ namespace SIMS.SekretarGUI
         {
             List<string> target = new List<string>(); ;
 
-            target.Add(selectedApp.Pacijent.Jmbg);
-            target.Add(selectedApp.Lekar.Jmbg);
+            target.Add(selectedApp.Patient.Jmbg);
+            target.Add(selectedApp.Doctor.Jmbg);
             foreach (Secretary s in SecretaryFileRepository.Instance.GetAll())
             {
                 target.Add(s.Jmbg);
@@ -112,15 +112,15 @@ namespace SIMS.SekretarGUI
             if (moved)
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Pomeren/a " + selectedApp.VrstaTermina.ToString() + " [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
-                + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
+                ("Pomeren/a " + selectedApp.Type.ToString() + " [" + selectedApp.AppointmentDate + " " + selectedApp.AppointmentTime + ", " + selectedApp.Room.Number + "] za pacijenta "
+                + selectedApp.PatientName + ", vodeći lekar " + selectedApp.DoctorName + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
             else
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Zakazana hitna operacija [" + selectedApp.Datum + " " + selectedApp.Vrijeme + ", " + selectedApp.NazivProstorije + "] za pacijenta "
-                + selectedApp.ImePacijenta + ", vodeći lekar " + selectedApp.ImeLekara + "."), target);
+                ("Zakazana hitna operacija [" + selectedApp.AppointmentDate + " " + selectedApp.AppointmentTime + ", " + selectedApp.Room.Number + "] za pacijenta "
+                + selectedApp.PatientName + ", vodeći lekar " + selectedApp.DoctorName + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
         }
@@ -145,7 +145,7 @@ namespace SIMS.SekretarGUI
 
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.operacija, null, (Patient)PatientComboBox.SelectedItem, null);
+                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.surgery, null, (Patient)PatientComboBox.SelectedItem, null);
                 List<Appointment> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
                 if (allAppointments.Count == 1)
                 {
@@ -185,9 +185,9 @@ namespace SIMS.SekretarGUI
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    Appointment appointment = new Appointment(appTime, appointmentValues.VremeTrajanja, appointmentValues.VrstaTermina, doctor, appointmentValues.Pacijent, RoomFileRepository.Instance.GetAll()[0]);
+                    Appointment appointment = new Appointment(appTime, appointmentValues.Duration, appointmentValues.Type, doctor, appointmentValues.Patient, RoomFileRepository.Instance.GetAll()[0]);
                     allAppointments.Add(appointment);
-                    if (doctor.IsFree(appointment) && appointment.PocetnoVreme >= appointmentValues.PocetnoVreme)
+                    if (doctor.IsFree(appointment) && appointment.StartTime >= appointmentValues.StartTime)
                     {
                         //counterByDoctor++;
                         retVal.Add(appointment);
@@ -209,7 +209,7 @@ namespace SIMS.SekretarGUI
         {
             for (int i = 0; i < appointments.Count - 1; i++)
                 for (int j = 0; j < appointments.Count - i - 1; j++)
-                    if (appointments[j].PocetnoVreme > appointments[j + 1].PocetnoVreme)
+                    if (appointments[j].StartTime > appointments[j + 1].StartTime)
                     {
                         var temp = appointments[j];
                         appointments[j] = appointments[j + 1];
@@ -262,7 +262,7 @@ namespace SIMS.SekretarGUI
         private void MoveAppointmentToNearestDate(Appointment appointment)
         {
             List<Appointment> appointments = GetAvailableAppointmentsForAllDoctors(appointment, 10);
-            AppointmentFileRepository.Instance.Delete(appointment.TerminKey);
+            AppointmentFileRepository.Instance.Delete(appointment.AppointmentID);
             AppointmentFileRepository.Instance.Save(appointments[0]);
             SendNotification(appointments[0], true);
         }
@@ -273,7 +273,7 @@ namespace SIMS.SekretarGUI
             List<Appointment> allAppointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment app in allAppointments)
             {
-                if (app.KrajnjeVreme > selectedApp.PocetnoVreme && app.PocetnoVreme < selectedApp.KrajnjeVreme)
+                if (app.EndTime > selectedApp.StartTime && app.StartTime < selectedApp.EndTime)
                     appointmentsForMoving.Add(app);
 
             }

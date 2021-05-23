@@ -21,7 +21,7 @@ namespace SIMS.SekretarGUI
         private SekretarHomePage(Secretary secretary)
         {
             InitializeComponent();
-            welcomeText.Text = "Dobrodosli,\n" + secretary.ImePrezime;
+            welcomeText.Text = "Dobrodosli,\n" + secretary.FullName;
         }
 
         public void RemoveInstance()

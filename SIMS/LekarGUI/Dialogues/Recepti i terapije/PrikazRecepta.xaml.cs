@@ -24,16 +24,16 @@ namespace SIMS.LekarGUI
 
             receipt.InitData();
 
-            Patient patient = receipt.Pacijent;
-            Doctor doctor = receipt.Lekar;
+            Patient patient = receipt.Patient;
+            Doctor doctor = receipt.Doctor;
 
-            LabelDoktor.Content = "Doktor: " + doctor.ImePrezime;
-            LabelPacijent.Content = "Pacijent: " + patient.ImePrezime;
+            LabelDoktor.Content = "Doktor: " + doctor.FullName;
+            LabelPacijent.Content = "Pacijent: " + patient.FullName;
             LabelDatum.Content = "Datum: " + receipt.DateString;
 
-            NazivLeka.Content = receipt.NazivLeka;
-            Kolicina.Content = receipt.Kolicina;
-            Dijagnoza.Content = receipt.Dijagnoza;
+            NazivLeka.Content = receipt.MedicineName;
+            Kolicina.Content = receipt.Amount;
+            Dijagnoza.Content = receipt.Diagnosis;
 
         }
 

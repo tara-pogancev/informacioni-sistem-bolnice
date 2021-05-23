@@ -28,13 +28,13 @@ namespace SIMS.LekarGUI
 
             termin = t;
 
-            LabelDoktor.Content = "Doktor: " + termin.ImeLekara;
-            if (termin.VrstaTermina == AppointmentType.pregled)
-                LabelDatum.Content = "Datum pregleda: " + termin.Datum;
-            else LabelDatum.Content = "Datum operacije: " + termin.Datum;
+            LabelDoktor.Content = "Doktor: " + termin.DoctorName;
+            if (termin.Type == AppointmentType.examination)
+                LabelDatum.Content = "Datum pregleda: " + termin.AppointmentDate;
+            else LabelDatum.Content = "Datum operacije: " + termin.AppointmentDate;
 
-            LabelPacijent.Content = "Pacijent: " + termin.ImePacijenta;
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(termin.Pacijent.Jmbg).Datum_Rodjenja.ToString("dd.MM.yyyy.");
+            LabelPacijent.Content = "Pacijent: " + termin.PatientName;
+            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(termin.Patient.Jmbg).DateOfBirth.ToString("dd.MM.yyyy.");
 
         }
 
@@ -44,15 +44,15 @@ namespace SIMS.LekarGUI
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
             else
             {
-                Patient patient = termin.Pacijent;
+                Patient patient = termin.Patient;
 
                 Anamnesis a = new Anamnesis(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
-                a.Termin.Serijalizuj = false;
+                a.AnamnesisAppointment.Serialize = false;
                 AnamnesisFileRepository.Instance.Save(a);
                 this.Close();
 
-                LekarUI.GetInstance().ChangeTab(3);
+                DoctorUI.GetInstance().ChangeTab(3);
                 var window = new ActionsAfterReport(patient);
                 window.Show();
 

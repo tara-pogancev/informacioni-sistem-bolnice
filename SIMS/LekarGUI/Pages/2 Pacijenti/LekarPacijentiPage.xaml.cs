@@ -63,7 +63,7 @@ namespace SIMS.LekarGUI
             if (dataGridPacijenti.SelectedItem != null)
             {
                 Patient p = (Patient)dataGridPacijenti.SelectedItem;
-                LekarUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
+                DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(p);
             }
         }
 
@@ -79,7 +79,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void Button_Terapija(object sender, RoutedEventArgs e)
@@ -146,7 +146,7 @@ namespace SIMS.LekarGUI
 
             foreach (Patient patient in PatientFileRepository.Instance.GetAll())
             {
-                if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.ImePrezime.ToUpper()).Contains(filter))
+                if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.FullName.ToUpper()).Contains(filter))
                     PacijentiView.Add(patient);
             }
         }

@@ -56,7 +56,7 @@ namespace SIMS.PacijentGUI
             List<AppointmentLog> terminLogs = new AppointmentLogService().GetPatientAppointmentLogs(pacijent);
             foreach(AppointmentLog terminLog in terminLogs)
             {
-                if (terminLog.DatumPromjene < DateTime.Now.AddDays(-10))
+                if (terminLog.DateOfChange < DateTime.Now.AddDays(-10))
                 {
                     continue;
                 }
@@ -79,8 +79,8 @@ namespace SIMS.PacijentGUI
             o.TekstObavjestenja.Text = "Zbog učestalih izmjena zakazanih termina Vaš nalog je blokiran. Za dodatne informacije obratite se sekretaru bolnice!";
             o.ShowDialog();
            
-            pacijent.BanovanKorisnik = true;
-            pacijent.Serijalizuj = true;
+            pacijent.IsBanned = true;
+            pacijent.Serialize = true;
             new PatientFileRepository().Update(pacijent);
             new AppointmentLogService().MakeLogExpired(pacijent);
             new MainWindow().Show();
@@ -97,22 +97,22 @@ namespace SIMS.PacijentGUI
             }
             AppointmentFileRepository tr = new AppointmentFileRepository();
             Appointment termin = termini[terminiTabela.SelectedIndex];
-            tr.Delete(termin.TerminKey);
+            tr.Delete(termin.AppointmentID);
             termini.RemoveAt(terminiTabela.SelectedIndex);
-            AppointmentLog terminLog= new AppointmentLog(formirajKljucLog(termin), termin.TerminKey, pacijent.Jmbg, DateTime.Now, SurgeryType.Brisanje);
+            AppointmentLog terminLog= new AppointmentLog(formirajKljucLog(termin), termin.AppointmentID, pacijent.Jmbg, DateTime.Now, SurgeryType.Brisanje);
             new AppointmentLogFileRepository().Save(terminLog);
         }
 
         public String formirajKljucLog(Appointment termin)
         {
-            return termin.TerminKey + PocetnaStranica.getInstance().Pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
+            return termin.AppointmentID + PocetnaStranica.getInstance().Pacijent.Jmbg + DateTime.Now.ToString("hhmmss");
         }
         private void dobaviPodatkeOPacijenuILekaru()
         {
             foreach(Appointment termin in termini)
             {
-                termin.Pacijent = new PatientFileRepository().FindById(termin.Pacijent.Jmbg);
-                termin.Lekar = new DoctorFileRepository().FindById(termin.Lekar.Jmbg);
+                termin.Patient = new PatientFileRepository().FindById(termin.Patient.Jmbg);
+                termin.Doctor = new DoctorFileRepository().FindById(termin.Doctor.Jmbg);
             }
         }
     }

@@ -111,12 +111,6 @@
 
                 </TabItem>
 
-                <TabItem Header="Terapije">
-
-                    <Label Content="Content4"/>
-
-                </TabItem>
-
             </TabControl>
 
 

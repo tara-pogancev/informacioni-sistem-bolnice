@@ -9,29 +9,25 @@ namespace SIMS.Repositories.SecretaryRepo
 {
    public class Secretary : LoggedUser
    {
-      private int daniGodisnjegOdmora;
-
-        
+        public int VacationDays { get; set; }
 
         public Secretary() :base()
         {
         }
 
-        public Secretary(string ime, string prezime, string jmbg, string korisnickoIme, string lozinka, string email, string telefon, Address adresa,int daniGodisnjegOdmora) : base(ime, prezime, jmbg, korisnickoIme, lozinka, email, telefon, adresa)
+        public Secretary(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, int vacationDays) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
-            this.daniGodisnjegOdmora = daniGodisnjegOdmora;
+            VacationDays = vacationDays;
         }
 
-        public Secretary(Secretary s) : base(s.Ime, s.Prezime, s.Jmbg, s.KorisnickoIme, s.Lozinka, s.Email, s.Telefon, s.Adresa)
+        public Secretary(Secretary s) : base(s.Name, s.LastName, s.Jmbg, s.Username, s.Password, s.Email, s.Phone, s.Address)
         {
-            this.daniGodisnjegOdmora = s.daniGodisnjegOdmora;
+            VacationDays = s.VacationDays;
         }
-
-        public int DaniGodisnjegOdmora { get => daniGodisnjegOdmora; set => daniGodisnjegOdmora = value; }
 
         public bool ShouldSerializeDaniGodisnjegOdmora()
         {
-            return serijalizuj;
+            return Serialize;
         }
     }
    

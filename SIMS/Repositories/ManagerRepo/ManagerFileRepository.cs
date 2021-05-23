@@ -30,7 +30,7 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             foreach (Manager u in this.GetAll())
             {
-                if (u.KorisnickoIme == user)
+                if (u.Username == user)
                     return u;
             }
 

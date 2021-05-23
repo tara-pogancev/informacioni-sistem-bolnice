@@ -9,7 +9,7 @@ namespace SIMS.Repositories.SecretaryRepo
     {
         protected override string getKey(Receipt entity)
         {
-            return entity.ReceptKey;
+            return entity.RecieptKey;
         }
 
         protected override void RemoveReferences(string key)
@@ -28,7 +28,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
             foreach (Receipt r in this.GetAll())
             {
-                if (r.Pacijent.Jmbg == p.Jmbg)
+                if (r.Patient.Jmbg == p.Jmbg)
                     retVal.Add(r);
             }
 

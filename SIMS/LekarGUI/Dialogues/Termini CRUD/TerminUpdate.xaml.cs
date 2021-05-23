@@ -36,7 +36,7 @@ namespace SIMS.LekarGUI
             pacijentiCombo.ItemsSource = pacijenti;
             prostorijeCombo.ItemsSource = prostorije;
 
-            this.setValues();
+            this.SetValues();
 
             List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
             trajanjeLista.ItemsSource = trajanjeVrednosti;
@@ -54,27 +54,27 @@ namespace SIMS.LekarGUI
             {
                 String vrijemeIDatum = datePicker1.Text + " " + terminiLista.Text;
                 DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-                termin.PocetnoVreme = vremenskaOdrednica;
+                termin.StartTime = vremenskaOdrednica;
 
                 if (trajanjeLista.SelectedIndex == 0)
-                    termin.VremeTrajanja = 30;
+                    termin.Duration = 30;
                 else if (trajanjeLista.SelectedIndex == 1)
-                    termin.VremeTrajanja = 60;
+                    termin.Duration = 60;
                 else
-                    termin.VremeTrajanja = 90;
+                    termin.Duration = 90;
 
-                termin.Prostorija = prostorije[prostorijeCombo.SelectedIndex];
-                termin.Pacijent = pacijenti[pacijentiCombo.SelectedIndex];
-                termin.Lekar = lekari[doktoriCombo.SelectedIndex];
+                termin.Room = prostorije[prostorijeCombo.SelectedIndex];
+                termin.Patient = pacijenti[pacijentiCombo.SelectedIndex];
+                termin.Doctor = lekari[doktoriCombo.SelectedIndex];
 
                 if (!lekari[doktoriCombo.SelectedIndex].IsFreeUpdate(termin))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
                 else
                 {
-                    termin.Lekar.Serijalizuj = false;
-                    termin.Pacijent.Serijalizuj = false;
-                    termin.Prostorija.Serialize = false;
+                    termin.Doctor.Serialize = false;
+                    termin.Patient.Serialize = false;
+                    termin.Room.Serialize = false;
 
                     AppointmentFileRepository.Instance.Update(termin);
                     LekarTerminiPage.GetInstance().refresh();
@@ -84,17 +84,17 @@ namespace SIMS.LekarGUI
             }
         }
 
-        private void setValues()
+        private void SetValues()
         {
             termini = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             terminiLista.ItemsSource = termini;
 
-            datePicker1.DisplayDate = termin.PocetnoVreme;
-            datePicker1.Text = termin.PocetnoVreme.ToString("dd.MM.yyyy.");
+            datePicker1.DisplayDate = termin.StartTime;
+            datePicker1.Text = termin.StartTime.ToString("dd.MM.yyyy.");
 
-            if (termin.VremeTrajanja == 30)
+            if (termin.Duration == 30)
                 trajanjeLista.SelectedIndex = 0;
-            else if (termin.VremeTrajanja == 60)
+            else if (termin.Duration == 60)
                 trajanjeLista.SelectedIndex = 1;
             else
                 trajanjeLista.SelectedIndex = 2;
@@ -102,7 +102,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (Doctor l in lekari)
             {
-                if (l.Jmbg.Equals(termin.Lekar.Jmbg))
+                if (l.Jmbg.Equals(termin.Doctor.Jmbg))
                 {
                     break;
                 }
@@ -113,7 +113,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (String str in termini)
             {
-                if (str.Equals(termin.Vrijeme))
+                if (str.Equals(termin.AppointmentTime))
                 {
                     break;
                 }
@@ -124,7 +124,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Patient p in pacijenti)
             {
-                if (p.Jmbg.Equals(termin.Pacijent.Jmbg))
+                if (p.Jmbg.Equals(termin.Patient.Jmbg))
                 {
                     break;
                 }
@@ -135,7 +135,7 @@ namespace SIMS.LekarGUI
             index = 0;
             foreach (Room pr in prostorije)
             {
-                if (pr.Number.Equals(termin.Prostorija.Number))
+                if (pr.Number.Equals(termin.Room.Number))
                 {
                     break;
                 }

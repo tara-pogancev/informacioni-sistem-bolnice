@@ -5,7 +5,22 @@
     "InventoryAmounts": {},
     "RoomType": 0,
     "Number": "1",
-    "Available": true,
-    "Serialize": true
+    "Available": true
+  },
+  "2": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "InventoryAmounts": {},
+    "RoomType": 2,
+    "Number": "2",
+    "Available": true
+  },
+  "3": {
+	"RenovationStart": null,
+    "RenovationEnd": null,
+    "InventoryAmounts": {},
+    "RoomType": 0,
+    "Number": "3",
+    "Available": true
   }
 }

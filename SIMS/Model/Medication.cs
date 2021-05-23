@@ -22,16 +22,16 @@ namespace SIMS.Repositories.SecretaryRepo
             ApprovalStatus = MedicineApprovalStatus.Waiting;
         }
 
-        public Medication(string iD, string naziv, List<string> components, string iDSubstitution)
+        public Medication(string id, string name, List<string> components, string iDSubstitution)
         {
-            MedicineID = iD;
-            MedicineName = naziv;
+            MedicineID = id;
+            MedicineName = name;
             Components = components;
             ApprovalStatus = MedicineApprovalStatus.Waiting;
             IDSubstitution = iDSubstitution; 
         }
 
-        public String getComponentsList()
+        public String GetComponentsList()
         {
             string componentsString = "";
             if (Components.Count == 0 || Components.Contains(""))

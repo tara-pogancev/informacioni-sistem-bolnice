@@ -8,48 +8,48 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     public class Receipt
     {
+        public String MedicineName { get; set; }
+        public String Amount { get; set; }
+        public String Diagnosis { get; set; }
+        public String RecieptKey { get; set; }
+        public Doctor Doctor { get; set; }
+        public Patient Patient { get; set; }
+        public DateTime Date { get; set; }
+
         public Receipt()
         {
-            ReceptKey = DateTime.Now.ToString("yyMMddhhmmss");
+            RecieptKey = DateTime.Now.ToString("yyMMddhhmmss");
         }
 
-        public Receipt(Doctor lekar, Patient pacijent, String nazivLeka, String kolicina, String dijagnoza)
+        public Receipt(Doctor doctor, Patient patient, String medicineName, String amount, String diagnosis)
         {
-            Lekar = lekar;
-            Pacijent = pacijent;
-            NazivLeka = nazivLeka;
-            Kolicina = kolicina;
-            Dijagnoza = dijagnoza;
+            Doctor = doctor;
+            Patient = patient;
+            MedicineName = medicineName;
+            Amount = amount;
+            Diagnosis = diagnosis;
 
-            ReceptKey = DateTime.Now.ToString("yyMMddhhmmss");
-            Datum = DateTime.Today;
+            RecieptKey = DateTime.Now.ToString("yyMMddhhmmss");
+            Date = DateTime.Today;
 
         }   
 
         [JsonIgnore]
-        public String ImeLekara { get { return Lekar.ImePrezime; } }
+        public String DoctorName { get { return Doctor.FullName; } }
 
         [JsonIgnore]
-        public String ImePacijenta { get { return Pacijent.ImePrezime; } }
+        public String PatientName { get { return Patient.FullName; } }
 
         [JsonIgnore]
-        public String DateString { get { return Datum.ToString("dd.MM.yyyy."); } }
+        public String DateString { get { return Date.ToString("dd.MM.yyyy."); } }
 
         [JsonIgnore]
-        public String NameAndQuantity { get { return (NazivLeka + " " + Kolicina); } }
-
-        public String NazivLeka { get; set; }
-        public String Kolicina { get; set; }
-        public String Dijagnoza { get; set; }
-        public String ReceptKey { get; set; }
-        public Doctor Lekar { get; set; }
-        public Patient Pacijent { get; set; }
-        public DateTime Datum { get; set; }
+        public String NameAndQuantity { get { return (MedicineName + " " + Amount); } }
 
         public void InitData()
         {
-            Lekar = DoctorFileRepository.Instance.FindById(Lekar.Jmbg);
-            Pacijent = PatientFileRepository.Instance.FindById(Pacijent.Jmbg);
+            Doctor = DoctorFileRepository.Instance.FindById(Doctor.Jmbg);
+            Patient = PatientFileRepository.Instance.FindById(Patient.Jmbg);
         }
 
     }

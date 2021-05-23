@@ -27,13 +27,13 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             InitializeComponent();
             operation = operationPar;
 
-            LabelDoctor.Content = "Doktor: " + operation.ImeLekara;
-            LabelDate.Content = "Datum operacije: " + operation.Datum;
+            LabelDoctor.Content = "Doktor: " + operation.DoctorName;
+            LabelDate.Content = "Datum operacije: " + operation.AppointmentDate;
 
-            LabelPacijent.Content = "Pacijent: " + operation.ImePacijenta;
-            LabelBirthDate.Content = "Datum rođenja: " + operation.Pacijent.Datum_Rodjenja;
+            LabelPacijent.Content = "Pacijent: " + operation.PatientName;
+            LabelBirthDate.Content = "Datum rođenja: " + operation.Patient.DateOfBirth;
 
-            LabelRoom.Content = "Prostorija: " + operation.NazivProstorije;
+            LabelRoom.Content = "Prostorija: " + operation.Room.Number;
 
         }
 
@@ -41,16 +41,16 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
             {
-                Patient patient = operation.Pacijent;
+                Patient patient = operation.Patient;
 
                 SurgeryReport o = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
-                o.Operacija.Lekar.Serijalizuj = false;
-                o.Operacija.Pacijent.Serijalizuj = false;
-                o.Operacija.Serijalizuj = false;
+                o.Operacija.Doctor.Serialize = false;
+                o.Operacija.Patient.Serialize = false;
+                o.Operacija.Serialize = false;
                 SurgeryReportFileRepository.Instance.Save(o);
 
                 this.Close();
-                LekarUI.GetInstance().ChangeTab(3);
+                DoctorUI.GetInstance().ChangeTab(3);
                 var window = new ActionsAfterReport(patient);
                 window.Show();
 

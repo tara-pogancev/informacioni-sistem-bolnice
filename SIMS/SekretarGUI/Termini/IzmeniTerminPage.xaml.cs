@@ -59,19 +59,19 @@ namespace SIMS.SekretarGUI
         {
             string dateAndTime = datePicker.Text + " " + appointmentsComboBox.Text;
             DateTime appointmentDateAndTime = DateTime.Parse(dateAndTime);
-            _appointment.PocetnoVreme = appointmentDateAndTime;
-            _appointment.InicijalnoVrijeme = _appointment.PocetnoVreme;
+            _appointment.StartTime = appointmentDateAndTime;
+            _appointment.InitialTime = _appointment.StartTime;
 
             if (durationComboBox.SelectedIndex == 0)
-                _appointment.VremeTrajanja = 30;
+                _appointment.Duration = 30;
             else if (durationComboBox.SelectedIndex == 1)
-                _appointment.VremeTrajanja = 60;
+                _appointment.Duration = 60;
             else
-                _appointment.VremeTrajanja = 90;
+                _appointment.Duration = 90;
 
-            _appointment.Prostorija = _rooms[roomsComboBox.SelectedIndex];
-            _appointment.Pacijent = _patients[patientsComboBox.SelectedIndex];
-            _appointment.Lekar = _doctors[doctorsComboBox.SelectedIndex];
+            _appointment.Room = _rooms[roomsComboBox.SelectedIndex];
+            _appointment.Patient = _patients[patientsComboBox.SelectedIndex];
+            _appointment.Doctor = _doctors[doctorsComboBox.SelectedIndex];
         }
 
         private bool IsAppointmentValid()
@@ -79,14 +79,14 @@ namespace SIMS.SekretarGUI
             List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment a in appointments)
             {
-                if (a.KrajnjeVreme > _appointment.PocetnoVreme && a.PocetnoVreme < _appointment.KrajnjeVreme && !a.TerminKey.Equals(_appointment.TerminKey))
+                if (a.EndTime > _appointment.StartTime && a.StartTime < _appointment.EndTime && !a.AppointmentID.Equals(_appointment.AppointmentID))
                 {
-                    if (a.Lekar.Jmbg.Equals(_appointment.Lekar.Jmbg))
+                    if (a.Doctor.Jmbg.Equals(_appointment.Doctor.Jmbg))
                     {
                         MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
                         return false;
                     }
-                    else if (a.NazivProstorije.Equals(_appointment.NazivProstorije))
+                    else if (a.Room.Number.Equals(_appointment.Room.Number))
                     {
                         MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
                         return false;
@@ -113,15 +113,15 @@ namespace SIMS.SekretarGUI
 
         private void SetDatePickerValue()
         {
-            datePicker.DisplayDate = _appointment.PocetnoVreme;
-            datePicker.Text = _appointment.PocetnoVreme.ToString("dd.MM.yyyy.");
+            datePicker.DisplayDate = _appointment.StartTime;
+            datePicker.Text = _appointment.StartTime.ToString("dd.MM.yyyy.");
         }
 
         private void SetDurateionValue()
         {
-            if (_appointment.VremeTrajanja == 30)
+            if (_appointment.Duration == 30)
                 durationComboBox.SelectedIndex = 0;
-            else if (_appointment.VremeTrajanja == 60)
+            else if (_appointment.Duration == 60)
                 durationComboBox.SelectedIndex = 1;
             else
                 durationComboBox.SelectedIndex = 2;
@@ -132,7 +132,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (Room r in _rooms)
             {
-                if (r.Number.Equals(_appointment.Prostorija.Number))
+                if (r.Number.Equals(_appointment.Room.Number))
                 {
                     break;
                 }
@@ -146,7 +146,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (Patient p in _patients)
             {
-                if (p.Jmbg.Equals(_appointment.Pacijent.Jmbg))
+                if (p.Jmbg.Equals(_appointment.Patient.Jmbg))
                 {
                     break;
                 }
@@ -160,7 +160,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (String a in _freeAppointments)
             {
-                if (a.Equals(_appointment.Vrijeme))
+                if (a.Equals(_appointment.AppointmentTime))
                 {
                     break;
                 }
@@ -174,7 +174,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (Doctor d in _doctors)
             {
-                if (d.Jmbg.Equals(_appointment.Lekar.Jmbg))
+                if (d.Jmbg.Equals(_appointment.Doctor.Jmbg))
                 {
                     break;
                 }

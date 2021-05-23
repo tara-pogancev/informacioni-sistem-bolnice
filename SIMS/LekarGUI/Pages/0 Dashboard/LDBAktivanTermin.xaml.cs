@@ -40,9 +40,9 @@ namespace SIMS.LekarGUI.Pages
 
         private void Evidentiraj_Button(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(3);
+            DoctorUI.GetInstance().ChangeTab(3);
 
-            if (aktivanTermin.VrstaTermina == AppointmentType.pregled)
+            if (aktivanTermin.Type == AppointmentType.examination)
             {
                 AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
                 a.ShowDialog();

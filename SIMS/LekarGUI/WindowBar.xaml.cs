@@ -28,12 +28,12 @@ namespace SIMS.LekarGUI
 
         private void Button_Minimize(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().ChangeWindowMinimize();
+            DoctorUI.GetInstance().ChangeWindowMinimize();
         }
 
         private void Button_Size(object sender, RoutedEventArgs e)
         {
-            LekarUI.GetInstance().ChangeWindowSize();
+            DoctorUI.GetInstance().ChangeWindowSize();
 
             ChangeMinimizeButton();
 
@@ -41,12 +41,12 @@ namespace SIMS.LekarGUI
 
         public void ChangeMinimizeButton()
         {
-            if (LekarUI.GetInstance().GetWindowState() == WindowState.Maximized)
+            if (DoctorUI.GetInstance().GetWindowState() == WindowState.Maximized)
             {
                 SizeImg.Source = new BitmapImage(new Uri(@"/src/small_window.png", UriKind.RelativeOrAbsolute));
             }
 
-            if (LekarUI.GetInstance().GetWindowState() == WindowState.Normal)
+            if (DoctorUI.GetInstance().GetWindowState() == WindowState.Normal)
             {
                 SizeImg.Source = new BitmapImage(new Uri(@"/src/max_window.png", UriKind.RelativeOrAbsolute));
             }
@@ -57,7 +57,7 @@ namespace SIMS.LekarGUI
             for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
                App.Current.Windows[intCounter].Close();
 
-            LekarUI.GetInstance().ChangeWindowClose();
+            DoctorUI.GetInstance().ChangeWindowClose();
         }
     }
 }

@@ -5,7 +5,9 @@ namespace SIMS.Repositories.SecretaryRepo
 {
    public class Address
    {
-        
+        public City City { get; set; }
+        public string Street { get; set; }
+        public string Number { get; set; }
 
         public Address()
         {
@@ -17,11 +19,6 @@ namespace SIMS.Repositories.SecretaryRepo
             Street = street;
             Number = number;
         }
-
-        public City City { get; set; }
-
-        public string Street { get; set; }
-        public string Number { get; set; }
 
         public override string ToString()
         {

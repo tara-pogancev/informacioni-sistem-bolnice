@@ -52,7 +52,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
-            LekarUI.GetInstance().ChangeTab(0);
+            DoctorUI.GetInstance().ChangeTab(0);
         }
 
         private void ButtonMaterialConsumption(object sender, RoutedEventArgs e)
