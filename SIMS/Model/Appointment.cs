@@ -97,7 +97,22 @@ namespace SIMS.Repositories.SecretaryRepo
 
         [JsonIgnore]
         public String AppointmentTime { get => StartTime.ToString("HH:mm"); }
-                
+
+        [JsonIgnore]
+        public String RoomNumber { get => Room.Number; }
+
+        [JsonIgnore]
+        public String AppointmentTypeString 
+        { 
+            get 
+            {
+                if (Type == AppointmentType.examination)
+                    return "Pregled";
+                else 
+                    return "Operacija";
+            }
+        }
+
         [JsonIgnore]
         public String TypeString
         {

@@ -119,14 +119,14 @@ namespace SIMS.LekarGUI
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.StartTime = vremenskaOdrednica;
             termin.InitialTime = vremenskaOdrednica;
-            SetSellectedDuration(termin);
+            SetSelectedDuration(termin);
             termin.Room = rooms[roomCombo.SelectedIndex];
             termin.Patient = patients[patientCombo.SelectedIndex];
             termin.Doctor = doctors[doctorCombo.SelectedIndex];
             termin.Type = AppointmentType.examination;
         }
 
-        private void SetSellectedDuration(Appointment termin)
+        private void SetSelectedDuration(Appointment termin)
         {
             if (durationValuesList.SelectedIndex == 0)
                 termin.Duration = 30;
@@ -143,7 +143,7 @@ namespace SIMS.LekarGUI
             termin.Room.Serialize = false;
 
             AppointmentFileRepository.Instance.Save(termin);
-            LekarTerminiPage.GetInstance().refresh();
+            DoctorAppointmentsPage.GetInstance().RefreshView();
         }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

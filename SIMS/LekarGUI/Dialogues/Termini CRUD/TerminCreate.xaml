@@ -68,10 +68,10 @@
 
                 <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
-                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorCombo"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="ImePrezime"
+                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorCombo"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="FullName"
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientCombo"  DisplayMemberPath="ImePrezime"  SelectedValuePath="ImePrezime" 
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientCombo"  DisplayMemberPath="FullName"  SelectedValuePath="FullName" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
 

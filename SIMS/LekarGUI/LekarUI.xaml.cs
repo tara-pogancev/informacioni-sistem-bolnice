@@ -136,7 +136,7 @@ namespace SIMS
                     }
                 case 1:
                     {
-                        SellectedTab.Content = LekarTerminiPage.GetInstance(lekarUser);
+                        SellectedTab.Content = DoctorAppointmentsPage.GetInstance(lekarUser);
                         ResetActiveButtons();
                         B1.Fill = sellectedTab;
                         break;
@@ -240,8 +240,8 @@ namespace SIMS
             if (LekarNalogPage.GetInstance() != null)
                 LekarNalogPage.GetInstance().RemoveInstance();
 
-            if (LekarTerminiPage.GetInstance() != null)
-                LekarTerminiPage.GetInstance().RemoveInstance();
+            if (DoctorAppointmentsPage.GetInstance() != null)
+                DoctorAppointmentsPage.GetInstance().RemoveInstance();
 
             instance = null;
         }
