@@ -9,7 +9,7 @@ namespace SIMS.Repositories.DoctorRepo
 {
     class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorFileRepository>, IDoctorRepository
     {
-        public List<string> getAllId()
+        public List<string> GetAllId()
         {
             List<String> ids = new List<String>();
             List<Doctor> lekari = this.GetAll();
@@ -69,8 +69,6 @@ namespace SIMS.Repositories.DoctorRepo
 
             return null;
         }
-
-       
 
         protected override string getKey(Doctor entity)
         {

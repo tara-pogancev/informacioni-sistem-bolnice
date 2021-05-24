@@ -20,5 +20,25 @@ namespace SIMS.Service
             return doctorRepository.GetAvailableSpecialization();
         }
 
+        public List<string> GetAvailableSpecializationString()
+        {
+            return doctorRepository.GetAvailableSpecializationString();
+        }
+
+        public List<String> GetAllIds()
+        {
+            return doctorRepository.GetAllId();
+        }
+
+        public List<Doctor> ReadBySpecialization(Specialization specialization)
+        {
+            return doctorRepository.ReadBySpecialization(specialization);
+        }
+
+        public Doctor ReadUserByUsername(String username)
+        {
+            return doctorRepository.ReadUser(username);
+        }
+
     }
 }

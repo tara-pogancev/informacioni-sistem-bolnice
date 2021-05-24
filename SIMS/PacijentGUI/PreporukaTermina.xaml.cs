@@ -33,7 +33,7 @@ namespace SIMS.PacijentGUI
         public TerminZaPreporuku(DateTime vrijeme)
         {
             this.vrijeme = vrijeme;
-            this.idLekara = new DoctorFileRepository().getAllId();
+            this.idLekara = new DoctorFileRepository().GetAllId();
         }
 
         public List<string> IdLekara { get => idLekara; set => idLekara = value; }

@@ -9,7 +9,7 @@ namespace SIMS.Repositories.DoctorRepo
     interface IDoctorRepository:IGenericRepository<Doctor,String>
     {
         Doctor ReadUser(String user);
-        List<String> getAllId();
+        List<String> GetAllId();
         List<Doctor> ReadBySpecialization(Specialization specialization);
         List<Specialization> GetAvailableSpecialization();
         List<String> GetAvailableSpecializationString();
