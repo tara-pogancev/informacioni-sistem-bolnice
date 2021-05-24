@@ -60,6 +60,9 @@ namespace SIMS.Repositories.SecretaryRepo
             return retVal;
         }
 
-
+        protected override void shouldSerialize(Medication entity)
+        {
+            //ne treba logika za serijalizaciju
+        }
     }
 }

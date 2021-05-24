@@ -24,6 +24,7 @@ namespace SIMS.Repositories.SecretaryRepo
         protected abstract string getPath();
         protected abstract KeyType getKey(Entity entity);
         protected abstract void RemoveReferences(KeyType key);
+        protected abstract void shouldSerialize(Entity entity);
 
         private Dictionary<KeyType, Entity> ReadFile()
         {
@@ -47,6 +48,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
         private void WriteFile(Dictionary<KeyType, Entity> entities)
         {
+            
             string path = getPath();
             string json = JsonConvert.SerializeObject(entities, Formatting.Indented);
 
@@ -57,7 +59,7 @@ namespace SIMS.Repositories.SecretaryRepo
         public void Save(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
-
+            shouldSerialize(Entity);
             KeyType key = getKey(Entity);
 
             if (entities.ContainsKey(key))
@@ -94,6 +96,7 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
 
+            shouldSerialize(Entity);
             KeyType key = getKey(Entity);
 
             if (!entities.ContainsKey(key))

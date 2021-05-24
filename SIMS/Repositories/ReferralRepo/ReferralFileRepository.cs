@@ -6,7 +6,7 @@ using SIMS.Repositories.ReferralRepo;
 
 namespace SIMS.Model
 {
-    public class ReferralRepository : GenericFileRepository<string, Referral, ReferralRepository>,IReferralRepository
+    public class ReferralFileRepository : GenericFileRepository<string, Referral, ReferralFileRepository>,IReferralRepository
     {
         protected override string getKey(Referral entity)
         {
@@ -21,6 +21,10 @@ namespace SIMS.Model
         protected override void RemoveReferences(string key)
         {
             throw new NotImplementedException();
+        }
+
+        protected override void shouldSerialize(Referral entity)
+        {
         }
     }
 }

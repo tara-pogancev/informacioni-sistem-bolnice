@@ -38,5 +38,9 @@ namespace SIMS.Repositories.AnamnesisRepository
             return retVal;
         }
 
+        protected override void shouldSerialize(Anamnesis entity)
+        {
+            //ne treba logika za serijalizaciju
+        }
     }
 }

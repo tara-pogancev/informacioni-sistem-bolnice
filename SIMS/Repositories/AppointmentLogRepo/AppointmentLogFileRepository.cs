@@ -10,7 +10,7 @@ namespace SIMS.Model
     {
         protected override string getKey(AppointmentLog entity)
         {
-            return entity.AppointmentID;
+            return entity.AppointmentLogID;
         }
 
         protected override string getPath()
@@ -23,8 +23,9 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        
-
-        
+        protected override void shouldSerialize(AppointmentLog entity)
+        {
+            //ne treba implementacija
+        }
     }
 }

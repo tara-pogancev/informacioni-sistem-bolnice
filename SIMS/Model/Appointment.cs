@@ -114,7 +114,10 @@ namespace SIMS.Repositories.SecretaryRepo
             }
             
         }
-
+        public bool EqualDate(DateTime date)
+        {
+            return this.StartTime == date;
+        }
         [JsonIgnore]
         public String PatientName
         {
@@ -164,6 +167,8 @@ namespace SIMS.Repositories.SecretaryRepo
                 else return false;
             }
         }
+
+
 
         [JsonIgnore]
         public bool IsCurrent

@@ -77,27 +77,27 @@ namespace SIMS.Repositories.SecretaryRepo
         
         public bool Serialize { get; set; }
 
-        public bool ShouldSerializeDostupna()
+        public bool ShouldSerializeAvailable()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializeTipProstorije()
+        public bool ShouldSerializeRoomType()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializekolicineOpreme()
+        public bool ShouldSerializeInventoryAmount()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializepocetakRenoviranja()
+        public bool ShouldSerializeRenovationStart()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializekrajRenoviranja()
+        public bool ShouldSerializeRenovationEnd()
         {
             return Serialize;
         }

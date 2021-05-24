@@ -7,8 +7,8 @@ namespace SIMS.Model
 {
     public class DoctorSurvey : Survey
     {
-        private Appointment termin;
-        private int ocjena;
+        private Appointment appointment;
+        private int grade;
         private String doctorId;
         public DoctorSurvey():base()
         {
@@ -16,12 +16,12 @@ namespace SIMS.Model
 
         public DoctorSurvey(Appointment termin,int ocjena,String komentar,String idVlasnika):base(komentar,idVlasnika)
         {
-            this.termin = termin;
+            this.appointment = termin;
             doctorId = termin.Doctor.Jmbg;
         }
 
-        public Appointment Termin { get => termin; set => termin = value; }
-        public int Ocjena { get => ocjena; set => ocjena = value; }
+        public Appointment Appointment { get => appointment; set => appointment = value; }
+        public int Grade { get => grade; set => grade = value; }
         public string DoctorId { get => doctorId; set =>doctorId = value; }
     }
 }

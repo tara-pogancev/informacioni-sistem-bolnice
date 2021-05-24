@@ -70,7 +70,7 @@ namespace SIMS.Repositories.SecretaryRepo
             foreach (var survey in doctorSurveyRepository.GetAll())
             {
                 if (survey.DoctorId == this.Jmbg){
-                    Grades += survey.Ocjena;
+                    Grades += survey.Grade;
                     counter++;
                 }
             }
@@ -102,12 +102,17 @@ namespace SIMS.Repositories.SecretaryRepo
             return true;
         }
 
-        public bool ShouldSerializeDaniGodisnjegOdmora()
+        public bool ShouldSerializeVacationDays()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializeSpecijalizacijaLekara()
+        public bool ShouldSerializeDoctorSpecialization()
+        {
+            return Serialize;
+        }
+
+        public bool ShouldSerializeGrade()
         {
             return Serialize;
         }

@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -40,7 +41,7 @@ namespace SIMS.PacijentGUI
     public partial class IstorijaPregleda : Page
     {
         private List<IstorijaPregledaView> terminiZaPrikaz;
-        private List<Appointment> zakazaniTermini;
+        private List<Appointment> pastAppointments;
 
         public List<IstorijaPregledaView> TerminiZaPrikaz { get => terminiZaPrikaz; set => terminiZaPrikaz = value; }
         
@@ -48,10 +49,9 @@ namespace SIMS.PacijentGUI
         public IstorijaPregleda()
         {
             InitializeComponent();
-            zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(PocetnaStranica.getInstance().Pacijent);
-            prikazPoDatumu();
+            pastAppointments = new AppointmentService().GetPastAppointments();
             dobaviLekare();
-            terminiZaPrikaz = formirajTermine(zakazaniTermini);
+            terminiZaPrikaz = formirajTermine(pastAppointments);
             this.DataContext = this;
         }
 
@@ -69,24 +69,13 @@ namespace SIMS.PacijentGUI
         private void dobaviLekare()//ucitavanje doktora iz fajla za svaki termin
         {
             IDoctorRepository lekarStorage = new DoctorFileRepository();
-            for (int i = 0; i < zakazaniTermini.Count; i++)
+            for (int i = 0; i < pastAppointments.Count; i++)
             {
-                zakazaniTermini[i].Doctor = lekarStorage.FindById(zakazaniTermini[i].Doctor.Jmbg);
+                pastAppointments[i].Doctor = lekarStorage.FindById(pastAppointments[i].Doctor.Jmbg);
             }
         }
 
-        private void prikazPoDatumu() // izbacuje sve termine koji jos nisu prosli
-        {
-            for (int i = 0; i < zakazaniTermini.Count; i++)
-            {
-                if (zakazaniTermini[i].StartTime >= DateTime.Now)
-                {
-                    zakazaniTermini.RemoveAt(i);
-                    i--;
-                }
-                
-            }
-        }
+        
 
         
 

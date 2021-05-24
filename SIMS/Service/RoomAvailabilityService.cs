@@ -23,7 +23,7 @@ namespace SIMS.Service
             List<Room> examRooms = roomRepository.UcitajProstorijeZaPreglede();
             foreach (Appointment termin in new AppointmentFileRepository().GetAll())
             {
-                if (termin.AppointmentTime.Equals(appointmentTime))
+                if (termin.EqualDate(appointmentTime))
                 {
                     RemoveRoom(termin.Room.Number,examRooms);
                 }
@@ -42,6 +42,11 @@ namespace SIMS.Service
                     i--;
                 }
             }
+        }
+
+        public bool IsFreeRoom(DateTime appointmentTime)
+        {
+            return GetAvailableRooms(appointmentTime).Count != 0;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SIMS.Repositories.AppointmentRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,17 @@ namespace SIMS.Service
             appointmentRepository = new AppointmentFileRepository();
             
         }
+
+        public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
+
+        public void UpdateAppointment(Appointment appointment) => appointmentRepository.Update(appointment);
+
+        public void DeleteAppointment(Appointment appointment) => appointmentRepository.Delete(appointment.AppointmentID);
+
+        public void SaveAppointment(Appointment appointment) => appointmentRepository.Save(appointment);
+
+        public Appointment GetDoctorSurvey(String key) => appointmentRepository.FindById(key);
+
         //Staviti DTO object
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor,String date,Patient patient)
         {
@@ -43,9 +55,18 @@ namespace SIMS.Service
             return true;
         }
 
-        public void changeAppointment()
+        public int GetNumberOfFinishedAppointments(Patient patient)
         {
-
+            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
+            int finishedAppointmentCounter = 0;
+            foreach (Appointment appointment in scheduledAppointments)
+            {
+                if (appointment.IsPast)
+                {
+                    finishedAppointmentCounter++;
+                }
+            }
+            return finishedAppointmentCounter;
         }
 
 
@@ -61,6 +82,50 @@ namespace SIMS.Service
                     }
             }
             return scheduledAppointments;
+        }
+
+        public List<Appointment> GetPastAppointments()
+        {
+            List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
+            for (int i = 0; i < scheduledAppointments.Count; i++)
+            {
+                if (!scheduledAppointments[i].IsPast)
+                {
+                    scheduledAppointments.RemoveAt(i);
+                    i--;
+                }
+            }
+            return scheduledAppointments;
+        }
+        public List<Appointment> GetFutureAppointments(Patient patient)
+        {
+            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
+            for (int i = 0; i < scheduledAppointments.Count; i++)
+            {
+                if (scheduledAppointments[i].IsPast)
+                {
+                    scheduledAppointments.RemoveAt(i);
+                    i--;
+                }
+            }
+            return scheduledAppointments;
+        }
+
+        public void CancelAppointment(Appointment appointment)
+        {
+
+            DeleteAppointment(appointment);
+
+            AppointmentLog terminLog = new AppointmentLog(appointment.AppointmentID + appointment.Patient.Jmbg + DateTime.Now.ToString("hhmmss"), appointment.AppointmentID, appointment.Patient.Jmbg, DateTime.Now, SurgeryType.Brisanje);
+            new AppointmentLogFileRepository().Save(terminLog);
+        }
+
+        public void ChangeAppointment(Appointment appointment)
+        {
+            UpdateAppointment(appointment);
+            AppointmentLog terminLog = new AppointmentLog(appointment.AppointmentID + appointment.Patient.Jmbg + DateTime.Now.ToString("hhmmss"), appointment.AppointmentID, appointment.Patient.Jmbg, DateTime.Now, SurgeryType.Brisanje);
+            new AppointmentLogFileRepository().Save(terminLog);
+
         }
        
     }

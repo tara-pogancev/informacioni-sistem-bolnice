@@ -213,6 +213,10 @@ namespace SIMS.Repositories.SecretaryRepo
         {
             return Serialize;
         }
+        public bool ShouldSerializeHronicalDiseases()
+        {
+            return Serialize;
+        }
                 
     }
 }
