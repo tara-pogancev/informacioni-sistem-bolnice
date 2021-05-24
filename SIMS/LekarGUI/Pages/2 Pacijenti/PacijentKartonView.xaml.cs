@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.LekarGUI
@@ -61,7 +62,7 @@ namespace SIMS.LekarGUI
 
         private void Button_Recept(object sender, RoutedEventArgs e)
         {
-            LekarIzdavanjeRecepta r = new LekarIzdavanjeRecepta(pacijentProfile);
+            DoctorWriteReciept r = new DoctorWriteReciept(pacijentProfile);
             r.Show();
         }
 

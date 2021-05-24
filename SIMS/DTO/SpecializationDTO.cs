@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.DTO

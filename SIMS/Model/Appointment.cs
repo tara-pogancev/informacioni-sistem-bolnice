@@ -7,11 +7,12 @@ using Newtonsoft.Json;
 using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
    public class Appointment : INotifyPropertyChanged
    {
@@ -98,7 +99,22 @@ namespace SIMS.Repositories.SecretaryRepo
 
         [JsonIgnore]
         public String AppointmentTime { get => StartTime.ToString("HH:mm"); }
-                
+
+        [JsonIgnore]
+        public String RoomNumber { get => Room.Number; }
+
+        [JsonIgnore]
+        public String AppointmentTypeString 
+        { 
+            get 
+            {
+                if (Type == AppointmentType.examination)
+                    return "Pregled";
+                else 
+                    return "Operacija";
+            }
+        }
+
         [JsonIgnore]
         public String TypeString
         {

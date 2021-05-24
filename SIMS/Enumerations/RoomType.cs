@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public enum RoomType
     {

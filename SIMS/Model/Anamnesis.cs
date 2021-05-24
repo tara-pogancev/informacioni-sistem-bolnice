@@ -2,12 +2,13 @@
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.DoctorSurveyRepo;
+using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class Anamnesis
     {

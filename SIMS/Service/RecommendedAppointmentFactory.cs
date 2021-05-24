@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Service
-
-  
+namespace SIMS.Service  
 {
 
     class RecommendedAppointment
@@ -21,7 +19,7 @@ namespace SIMS.Service
         public RecommendedAppointment(DateTime vrijeme)
         {
             this.timeOfAppointment = vrijeme;
-            availableDoctorsID = new DoctorFileRepository().getAllId();
+            availableDoctorsID = new DoctorFileRepository().GetAllId();
         }
 
         public List<String> AvailableDoctorsID { get => availableDoctorsID; set => availableDoctorsID = value; }

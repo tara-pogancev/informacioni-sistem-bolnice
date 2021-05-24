@@ -15,20 +15,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for TerminCreate.xaml
     /// </summary>
-    public partial class TerminCreate : Window
+    public partial class AppointmentCreate : Window
     {
         private List<Doctor> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
 
-        public TerminCreate(Patient patient)
+        public AppointmentCreate(Patient patient)
         {
             InitializeComponents();
             foreach (Patient currentPatient in patients)
@@ -41,7 +42,7 @@ namespace SIMS.LekarGUI
             }
         }
 
-        public TerminCreate()
+        public AppointmentCreate()
         {
             InitializeComponents();
         }
@@ -119,14 +120,14 @@ namespace SIMS.LekarGUI
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
             termin.StartTime = vremenskaOdrednica;
             termin.InitialTime = vremenskaOdrednica;
-            SetSellectedDuration(termin);
+            SetSelectedDuration(termin);
             termin.Room = rooms[roomCombo.SelectedIndex];
             termin.Patient = patients[patientCombo.SelectedIndex];
             termin.Doctor = doctors[doctorCombo.SelectedIndex];
             termin.Type = AppointmentType.examination;
         }
 
-        private void SetSellectedDuration(Appointment termin)
+        private void SetSelectedDuration(Appointment termin)
         {
             if (durationValuesList.SelectedIndex == 0)
                 termin.Duration = 30;
@@ -143,7 +144,7 @@ namespace SIMS.LekarGUI
             termin.Room.Serialize = false;
 
             AppointmentFileRepository.Instance.Save(termin);
-            LekarTerminiPage.GetInstance().refresh();
+            DoctorAppointmentsPage.GetInstance().RefreshView();
         }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

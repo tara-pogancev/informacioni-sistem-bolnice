@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Daemon.PremestajOpreme;
+using SIMS.Model;
 
 namespace SIMS.Repositories.SecretaryRepo
 {

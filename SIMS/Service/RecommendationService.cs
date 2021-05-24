@@ -1,4 +1,5 @@
-﻿using SIMS.Repositories.DoctorRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;

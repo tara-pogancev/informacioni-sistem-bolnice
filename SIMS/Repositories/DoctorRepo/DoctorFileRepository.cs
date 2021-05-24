@@ -3,14 +3,13 @@ using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Model;
 
 namespace SIMS.Repositories.DoctorRepo
 {
-    class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorFileRepository>,IDoctorRepository
+    class DoctorFileRepository : GenericFileRepository<string, Doctor, DoctorFileRepository>, IDoctorRepository
     {
-       
-
-        public List<string> getAllId()
+        public List<string> GetAllId()
         {
             List<String> ids = new List<String>();
             List<Doctor> lekari = this.GetAll();
@@ -40,8 +39,8 @@ namespace SIMS.Repositories.DoctorRepo
 
             foreach (Doctor l in base.GetAll())
             {
-                if (!retVal.Contains(l.Specialization))
-                    retVal.Add(l.Specialization);
+                if (!retVal.Contains(l.SpecializationString))
+                    retVal.Add(l.SpecializationString);
             }
 
             return retVal;
@@ -70,8 +69,6 @@ namespace SIMS.Repositories.DoctorRepo
 
             return null;
         }
-
-       
 
         protected override string getKey(Doctor entity)
         {

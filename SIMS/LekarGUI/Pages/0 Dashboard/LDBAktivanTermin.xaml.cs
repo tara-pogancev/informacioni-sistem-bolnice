@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI.Pages
 {
