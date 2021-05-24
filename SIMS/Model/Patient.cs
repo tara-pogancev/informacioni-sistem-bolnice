@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using SIMS.Repositories.AllergenRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class Patient : LoggedUser
     {
@@ -68,13 +68,9 @@ namespace SIMS.Repositories.SecretaryRepo
             get
             {
                 if (Guest)
-                {
                     return "Da";
-                }
                 else
-                {
                     return "Ne";
-                }
             }
 
         }

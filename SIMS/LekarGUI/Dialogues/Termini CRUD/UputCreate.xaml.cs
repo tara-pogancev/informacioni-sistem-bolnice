@@ -20,7 +20,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     /// <summary>
     /// Interaction logic for ActionsAfterReport.xaml
     /// </summary>
-    public partial class UputCreate : Window
+    public partial class WriteReferral : Window
     {
         public ObservableCollection<Doctor> DoctorList { get; set; }
         public Specialization SellectedSpecialization { get; set; }
@@ -28,7 +28,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private Patient patient;
 
-        public UputCreate(Patient patient)
+        public WriteReferral(Patient patient)
         {
             this.patient = patient;
 

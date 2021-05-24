@@ -5,12 +5,11 @@
 
 using Newtonsoft.Json;
 using SIMS.Repositories.AppointmentRepo;
-using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class Doctor : LoggedUser
     {
@@ -23,14 +22,16 @@ namespace SIMS.Repositories.SecretaryRepo
             Grade = 0.0;
         }
 
-        public Doctor(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, Specialization specialization, int vacationDays) : base(name, lastName, jmbg, username, password, email, phone, address)
+        public Doctor(string name, string lastName, string jmbg, string username, string password, string email, 
+            string phone, Address address, Specialization specialization, int vacationDays) 
+            : base(name, lastName, jmbg, username, password, email, phone, address)
         {
             VacationDays = vacationDays;
             DoctorSpecialization = specialization;
             Grade = 0.0;
         }
              
-        public List<Appointment> getZauzetiTermini()
+        public List<Appointment> GetZauzetiTermini()
         {
             List<Appointment> retVal = new List<Appointment>();
 
@@ -113,30 +114,30 @@ namespace SIMS.Repositories.SecretaryRepo
         }
 
         [JsonIgnore]
-        public String NameAndSpecialization { get { return FullName + ", " + Specialization; } }
+        public String NameAndSpecialization { get { return FullName + ", " + SpecializationString; } }
 
         [JsonIgnore]
-        public String Specialization 
+        public String SpecializationString
         { 
             get 
             {
-                if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.OpstaPraksa)
+                if (DoctorSpecialization == Specialization.OpstaPraksa)
                     return "Lekar opšte prakse";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Hirurg)
+                else if (DoctorSpecialization == Specialization.Hirurg)
                     return "Hirurg";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Internista)
+                else if (DoctorSpecialization == Specialization.Internista)
                     return "Internista";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Dermatolog)
+                else if (DoctorSpecialization == Specialization.Dermatolog)
                     return "Dermatolog";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Kardiolog)
+                else if (DoctorSpecialization == Specialization.Kardiolog)
                     return "Kardiolog";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Otorinolaringolog)
+                else if (DoctorSpecialization == Specialization.Otorinolaringolog)
                     return "Otorinolaringolog";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Stomatolog)
+                else if (DoctorSpecialization == Specialization.Stomatolog)
                     return "Stomatolog";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Urolog)
+                else if (DoctorSpecialization == Specialization.Urolog)
                     return "Urolog";
-                else if (DoctorSpecialization == SIMS.Repositories.SecretaryRepo.Specialization.Ginekolog)
+                else if (DoctorSpecialization == Specialization.Ginekolog)
                     return "Ginekolog";
                 else
                     return "Neurolog";

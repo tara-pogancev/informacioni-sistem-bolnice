@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Repositories.SecretaryRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     class RoomInventory
     {

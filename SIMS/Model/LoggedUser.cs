@@ -6,7 +6,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class LoggedUser
     {

@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using SIMS.Repositories.AnamnesisRepository;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {

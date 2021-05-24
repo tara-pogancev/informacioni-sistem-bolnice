@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class Room
     {

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.DTO;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {

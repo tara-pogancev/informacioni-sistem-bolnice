@@ -8,6 +8,7 @@ using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using SIMS.Model;
 
 namespace SIMS.Repositories.SecretaryRepo
 {

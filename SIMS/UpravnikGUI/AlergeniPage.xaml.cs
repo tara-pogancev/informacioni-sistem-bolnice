@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
 using SIMS.Repositories.AllergenRepo;
+using SIMS.Model;
 
 namespace SIMS.UpravnikGUI
 {

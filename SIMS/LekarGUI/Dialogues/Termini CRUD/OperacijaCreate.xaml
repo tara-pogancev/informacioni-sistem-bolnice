@@ -1,4 +1,4 @@
-﻿<Window x:Class="SIMS.LekarGUI.OperacijaCreate"
+﻿<Window x:Class="SIMS.LekarGUI.SurgeryCreate"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -68,27 +68,24 @@
 
                 <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
-                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doktoriCombo"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="ImePrezime"
+                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorCombo"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="ImePrezime"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-
-
-                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="pacijentiCombo"  DisplayMemberPath="ImePrezime" SelectedValuePath="ImePrezime" 
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientCombo"  DisplayMemberPath="FullName" SelectedValuePath="FullName" 
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="prostorijeCombo"  DisplayMemberPath="Broj" SelectedValuePath="Number" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomCombo"  DisplayMemberPath="Number" SelectedValuePath="Number" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker1" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" SelectedDateChanged="datePicker1_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
 
-                <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="terminiLista" ItemsSource="{Binding termini}"
+                <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="timeStringList" ItemsSource="{Binding termini}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="trajanjeLista" ItemsSource="{Binding trajanje}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Click="Button_Click" 
+                <Button Grid.Row="8" Grid.RowSpan="2" Content="ZAKAŽI" Click="ButtonAccept" 
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="160,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
 
                 <Grid Margin="-200,0,0,0" Grid.RowSpan="2">

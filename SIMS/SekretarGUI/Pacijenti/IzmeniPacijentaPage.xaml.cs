@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Model;
 
 namespace SIMS.SekretarGUI
 {

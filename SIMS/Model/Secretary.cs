@@ -5,8 +5,8 @@
 
 using System;
 
-namespace SIMS.Repositories.SecretaryRepo
-{
+namespace SIMS.Model
+{ 
    public class Secretary : LoggedUser
    {
         public int VacationDays { get; set; }

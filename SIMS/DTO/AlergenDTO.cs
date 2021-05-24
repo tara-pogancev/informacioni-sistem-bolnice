@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AllergenRepo;
+using SIMS.Model;
 
 namespace SIMS.DTO
 {

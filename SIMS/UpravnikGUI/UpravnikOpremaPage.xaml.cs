@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
+using SIMS.Model;
 
 namespace SIMS.UpravnikGUI
 {
