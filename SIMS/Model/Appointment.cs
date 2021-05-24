@@ -23,6 +23,7 @@ namespace SIMS.Repositories.SecretaryRepo
         public Room Room { get; set; }
         public DateTime InitialTime { get; set; }
         public String AppointmentID { get; set; }
+        
 
         [JsonIgnore]
         public bool Serialize { get; set; }

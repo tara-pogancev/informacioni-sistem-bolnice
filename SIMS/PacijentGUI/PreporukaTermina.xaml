@@ -41,7 +41,7 @@
 
                 <Label FontSize="18" Content="Izaberite doktora" Margin="208,10,0,0" Foreground="White"/>
                 <Border BorderThickness="1" BorderBrush="Black"  Width="350" Height="100" CornerRadius="15" >
-                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0" Name="ListaDoktora" ItemsSource="{Binding Lekari}"  DisplayMemberPath="ImePrezime">
+                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0" Name="ListaDoktora" ItemsSource="{Binding Lekari}"  DisplayMemberPath="FullName">
                         
                     </ListView>
                 </Border>

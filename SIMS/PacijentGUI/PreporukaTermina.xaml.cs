@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -95,28 +96,35 @@ namespace SIMS.PacijentGUI
         {
             if (lekarChecked.IsChecked == true)
             {
-                foreach (Appointment ter in termini)
+                RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DoctorRecommendation, lekari[ListaDoktora.SelectedIndex].Jmbg, (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
+                preporuceniTermini = recommendationService.GetRecommendedAppointments();
+                /*foreach (Appointment ter in termini)
                 {
                     izbaciZauzeteTermine(ter);
-                }
+                }*/
             }
-            for (int i = 0; i < terminZaPreporuku.Count; i++)
+            else if(datumChecked.IsChecked==true)
             {
-                Appointment termin = new Appointment();
-                termin.StartTime = terminZaPreporuku[i].Vrijeme;
-                termin.InitialTime = termin.StartTime;
-                termin.Duration = 30;
-                termin.Type = AppointmentType.examination;
-                termin.Doctor = lekari[ListaDoktora.SelectedIndex];
-                termin.Patient = PocetnaStranica.getInstance().Pacijent;
-                termin.Room = new Room("1",RoomType.zaPreglede);
-                termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
-                preporuceniTermini.Add(termin);
-                if (i == 4)
-                {
-                    break;
-                }
+               
+
             }
+            /* for (int i = 0; i < terminZaPreporuku.Count; i++)
+             {
+                 Appointment termin = new Appointment();
+                 termin.StartTime = terminZaPreporuku[i].Vrijeme;
+                 termin.InitialTime = termin.StartTime;
+                 termin.Duration = 30;
+                 termin.Type = AppointmentType.examination;
+                 termin.Doctor = lekari[ListaDoktora.SelectedIndex];
+                 termin.Patient = PocetnaStranica.getInstance().Pacijent;
+                 termin.Room = new Room("1",RoomType.zaPreglede);
+                 termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
+                 preporuceniTermini.Add(termin);
+                 if (i == 4)
+                 {
+                     break;
+                 } 
+             }*/
         }
 
         private void izbaciZauzeteDoktore(Appointment termin)
@@ -146,8 +154,11 @@ namespace SIMS.PacijentGUI
         }
         private void preporukaZaDatum()
         {
+
+            RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DateRecommendation, "", (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
+            preporuceniTermini = recommendationService.GetRecommendedAppointments();
             System.Console.WriteLine("Preporuka za datum");
-            if (datumChecked.IsChecked == true)
+           /* if (datumChecked.IsChecked == true)
             {
                 for (int i= 0; i<termini.Count;i++)
                 {
@@ -182,8 +193,8 @@ namespace SIMS.PacijentGUI
                     return;
 
 
-
-            }
+             
+            }*/
         }
 
         private void preporuka()

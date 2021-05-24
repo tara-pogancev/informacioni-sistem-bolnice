@@ -30,7 +30,7 @@
             <StackPanel Orientation="Vertical" Margin="64,90,136,10" RenderTransformOrigin="0.471,0.499">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
                     <Label FontSize="20"  >Lekar:</Label>
-                    <ComboBox FontSize="17" Margin="30,0,0,0" x:Name="Doktori" ItemsSource="{Binding lekari}" DisplayMemberPath="FullName" 
+                    <ComboBox FontSize="17" Margin="30,0,0,0" x:Name="Doktori" ItemsSource="{Binding lekari}" DisplayMemberPath="FullName" Text="{Binding OdabraniTerminZaIzmjenu.Doctor.FullName, Mode=OneTime}"
                        SelectedValuePath="ImePrezime" Width="150" MaxDropDownHeight="150" SelectionChanged="Doktori_SelectionChanged" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
@@ -42,7 +42,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label FontSize="20">Termin</Label>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" MaxDropDownHeight="150" SelectionChanged="terminiLista_SelectionChanged" >
+                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Width="150" FontSize="17" Margin="30,0,0,0"  x:Name="terminiLista" ItemsSource="{Binding termini}" Text="{Binding Vrijeme, Mode=TwoWay}" MaxDropDownHeight="150" SelectionChanged="terminiLista_SelectionChanged" >
 
                     </ComboBox>
                 </StackPanel>

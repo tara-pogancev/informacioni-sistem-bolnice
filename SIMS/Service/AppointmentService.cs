@@ -25,7 +25,7 @@ namespace SIMS.Service
 
         public void SaveAppointment(Appointment appointment) => appointmentRepository.Save(appointment);
 
-        public Appointment GetDoctorSurvey(String key) => appointmentRepository.FindById(key);
+        public Appointment GetAppointment(String key) => appointmentRepository.FindById(key);
 
         //Staviti DTO object
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor,String date,Patient patient)
