@@ -6,42 +6,42 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     public class Inventory
     {
-        public string Naziv { get; set; }
-        public string Id { get; set; }
-        public InventoryType TipOpreme { get; set; }
+        public string Name { get; set; }
+        public string ID { get; set; }
+        public InventoryType Type { get; set; }
 
-        public string BrojProstorije { get; set; } //neophodno za bindovanje
+        public string RoomNumber { get; set; } //neophodno za bindovanje
 
         public Inventory()
         {
-            Naziv = "";
-            Id = "";
-            TipOpreme = InventoryType.statička;
+            Name = "";
+            ID = "";
+            Type = InventoryType.statička;
         }
         public Inventory(string naziv, string id, InventoryType TipOpreme)
         {
-            this.Naziv = naziv;
-            this.Id = id;
-            this.TipOpreme = TipOpreme;
+            this.Name = naziv;
+            this.ID = id;
+            this.Type = TipOpreme;
         }
 
-        public int Kolicina
+        public int Amount
         {
             get
             {
-                if (BrojProstorije == null)
+                if (RoomNumber == null)
                 {
                     return 0;
                 }
-                return RoomInventoryFileRepository.Instance.Read(BrojProstorije, Id).Kolicina;
+                return RoomInventoryFileRepository.Instance.Read(RoomNumber, ID).Kolicina;
             }
         }
 
-        public string TipToString
+        public string TypeToString
         {
             get
             {
-                return Conversion.TipOpremeToString(TipOpreme);
+                return Conversion.TipOpremeToString(Type);
             }
         }
 

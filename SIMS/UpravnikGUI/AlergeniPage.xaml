@@ -49,7 +49,7 @@
                   SelectionMode="Single" AutoGenerateColumns="False" >
                 <DataGrid.Columns >
                     <DataGridTextColumn Header="Broj" Binding="{Binding ID}" Width="70"/>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}"/>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Grid>

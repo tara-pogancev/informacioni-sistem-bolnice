@@ -29,7 +29,7 @@ namespace SIMS.UpravnikGUI
             SvaOprema = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
             foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Number;
+                op.RoomNumber = Prostorija.Number;
             }
             InitializeComponent();
             tabelaInventara.ItemsSource = SvaOprema;
@@ -44,7 +44,7 @@ namespace SIMS.UpravnikGUI
                 return;
             }
             UpravnikWindow.Instance.SetContent(new UpravnikPremestiOpremu(this, Prostorija.Number, SelectedOprema));
-            UpravnikWindow.Instance.SetLabel("Premesti iz prostorije " + Prostorija.Number + " - " + SelectedOprema.Naziv);
+            UpravnikWindow.Instance.SetLabel("Premesti iz prostorije " + Prostorija.Number + " - " + SelectedOprema.Name);
         }
 
         private void PromeniKolicinu_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace SIMS.UpravnikGUI
                 return;
             }
             UpravnikWindow.Instance.SetContent(new UpravnikKolicinaOpreme(this, Prostorija.Number, SelectedOprema));
-            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Number + " - " + SelectedOprema.Naziv);
+            UpravnikWindow.Instance.SetLabel("Prostorija " + Prostorija.Number + " - " + SelectedOprema.Name);
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
@@ -74,7 +74,7 @@ namespace SIMS.UpravnikGUI
         {
             foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Number;
+                op.RoomNumber = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
@@ -83,7 +83,7 @@ namespace SIMS.UpravnikGUI
         {
             foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Number;
+                op.RoomNumber = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }
@@ -92,7 +92,7 @@ namespace SIMS.UpravnikGUI
         {
             foreach (Inventory op in SvaOprema)
             {
-                op.BrojProstorije = Prostorija.Number;
+                op.RoomNumber = Prostorija.Number;
             }
             tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
         }

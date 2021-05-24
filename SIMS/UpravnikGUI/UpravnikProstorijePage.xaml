@@ -47,9 +47,9 @@
                 <DataGrid x:Name="tabelaProstorije" Margin="20, 20"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Broj" Binding="{Binding Broj}" Width="70"/>
-                        <DataGridTextColumn Header="Dostupnost" Binding="{Binding DostupnaToString}" Width="100"/>
-                        <DataGridTextColumn Header="Tip" Binding="{Binding TipProstorijeToString}" Width="250"/>
+                        <DataGridTextColumn Header="Broj" Binding="{Binding Number}" Width="70"/>
+                        <DataGridTextColumn Header="Dostupnost" Binding="{Binding AvailableToString}" Width="100"/>
+                        <DataGridTextColumn Header="Tip" Binding="{Binding TypeToString}" Width="250"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid>

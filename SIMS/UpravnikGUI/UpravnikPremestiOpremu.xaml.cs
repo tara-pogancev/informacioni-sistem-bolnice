@@ -31,7 +31,7 @@ namespace SIMS.UpravnikGUI
             this.Oprema = Oprema;
             InitializeComponent();
 
-            if (Oprema.TipOpreme != InventoryType.statička)
+            if (Oprema.Type != InventoryType.statička)
             {
                 DatumPicker.Visibility = Visibility.Hidden;
                 DatumLabel.Visibility = Visibility.Hidden;
@@ -70,7 +70,7 @@ namespace SIMS.UpravnikGUI
                 timeOfExecution = (DateTime)DatumPicker.SelectedDate;
             }
 
-            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.Id, amountToBeMoved));
+            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.ID, amountToBeMoved));
 
             ParentPage.Update();
 

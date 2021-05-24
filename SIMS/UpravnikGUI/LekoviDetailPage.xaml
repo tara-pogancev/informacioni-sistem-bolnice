@@ -30,7 +30,7 @@
                 <ListBox x:Name="tabelaSastojaka" Margin="10,10" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Alergen.Naziv}" IsChecked="{Binding IsChecked }"/>
+                            <CheckBox Content="{Binding Alergen.Name}" IsChecked="{Binding IsChecked }"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

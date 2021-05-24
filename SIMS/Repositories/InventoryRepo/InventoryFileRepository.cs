@@ -12,7 +12,7 @@ namespace SIMS.Repositories.SecretaryRepo
         }
         protected override string getKey(Inventory dinamickaOprema)
         {
-            return dinamickaOprema.Id;
+            return dinamickaOprema.ID;
         }
 
         protected override void RemoveReferences(string key)

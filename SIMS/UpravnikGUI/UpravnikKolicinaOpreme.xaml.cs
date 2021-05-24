@@ -30,15 +30,15 @@ namespace SIMS.UpravnikGUI
             this.Oprema = Oprema;
             InitializeComponent();
 
-            ID.Text = Oprema.Id;
-            Naziv.Text = Oprema.Naziv;
+            ID.Text = Oprema.ID;
+            Naziv.Text = Oprema.Name;
             Tip.ItemsSource = Conversion.GetTipoviOpreme();
-            Tip.SelectedItem = Oprema.TipToString;
+            Tip.SelectedItem = Oprema.TypeToString;
 
             ID.IsEnabled = false;
             Naziv.IsEnabled = false;
             Tip.IsEnabled = false;
-            Kolicina.Text = RoomInventoryFileRepository.Instance.Read(BrojProstorije, Oprema.Id).Kolicina.ToString();
+            Kolicina.Text = RoomInventoryFileRepository.Instance.Read(BrojProstorije, Oprema.ID).Kolicina.ToString();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)
@@ -69,7 +69,7 @@ namespace SIMS.UpravnikGUI
                 MessageBox.Show("Uneti broj veći od 0.");
                 return;
             }
-            RoomInventoryFileRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.Id, amount));
+            RoomInventoryFileRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.ID, amount));
 
             ParentPage.Update();
 

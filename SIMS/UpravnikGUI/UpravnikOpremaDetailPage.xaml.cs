@@ -32,10 +32,10 @@ namespace SIMS.UpravnikGUI
             oprema = InventoryFileRepository.Instance.FindById(Id);
             InitializeComponent();
 
-            ID.Text = oprema.Id;
-            Naziv.Text = oprema.Naziv;
+            ID.Text = oprema.ID;
+            Naziv.Text = oprema.Name;
             Tip.ItemsSource = Conversion.GetTipoviOpreme();
-            Tip.SelectedItem = oprema.TipToString;
+            Tip.SelectedItem = oprema.TypeToString;
 
             ID.IsEnabled = false;
         }
@@ -48,9 +48,9 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            oprema.Id = ID.Text;
-            oprema.Naziv = Naziv.Text;
-            oprema.TipOpreme = Conversion.StringToTipOpreme(Tip.Text);
+            oprema.ID = ID.Text;
+            oprema.Name = Naziv.Text;
+            oprema.Type = Conversion.StringToTipOpreme(Tip.Text);
 
             InventoryFileRepository.Instance.CreateOrUpdate(oprema);
 
