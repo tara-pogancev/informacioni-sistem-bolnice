@@ -107,7 +107,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             Doctor doctor = (Doctor)DoctorComboBox.SelectedItem;
             Referral refferal = new Referral(doctor, patient);
-            ReferralRepository.Instance.Save(refferal);
+            ReferralFileRepository.Instance.Save(refferal);
         }
 
         private void SendNotifications(Doctor doctor)

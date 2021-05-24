@@ -28,7 +28,7 @@ namespace SIMS.PacijentGUI
             InitializeComponent();
 
             anketaLekara = new DoctorSurvey();
-            anketaLekara.Termin = termin;
+            anketaLekara.Appointment = termin;
             lekar = termin.Doctor.FullName;
             this.DataContext = this;
             
@@ -40,11 +40,11 @@ namespace SIMS.PacijentGUI
         private void Posalji_Click(object sender, RoutedEventArgs e)
         {
             anketaLekara.Komentar = KomentarPregleda.Text;
-            anketaLekara.Ocjena = BasicRatingBar.Value;
-            anketaLekara.Termin.Serialize = false;
-            anketaLekara.IdAnkete = anketaLekara.Termin.AppointmentID;
-            anketaLekara.IdVlasnika = anketaLekara.Termin.Patient.Jmbg;
-            anketaLekara.DoctorId = anketaLekara.Termin.Doctor.Jmbg;
+            anketaLekara.Grade = BasicRatingBar.Value;
+            anketaLekara.Appointment.Serialize = false;
+            anketaLekara.IdAnkete = anketaLekara.Appointment.AppointmentID;
+            anketaLekara.IdVlasnika = anketaLekara.Appointment.Patient.Jmbg;
+            anketaLekara.DoctorId = anketaLekara.Appointment.Doctor.Jmbg;
             new DoctorSurveyFileRepository().Save(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().frame.Content=new IstorijaPregleda());
         }

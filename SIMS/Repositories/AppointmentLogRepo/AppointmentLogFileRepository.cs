@@ -1,11 +1,12 @@
-﻿using SIMS.Repositories.SecretaryRepo;
+﻿using SIMS.Repositories.AppointmentLogRepo;
+using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SIMS.Model
 {
-    class AppointmentLogFileRepository : GenericFileRepository<string, AppointmentLog, AppointmentLogFileRepository>
+    class AppointmentLogFileRepository : GenericFileRepository<string, AppointmentLog, AppointmentLogFileRepository>,IAppointmentLogRepository
     {
         protected override string getKey(AppointmentLog entity)
         {
@@ -22,28 +23,9 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        public List<AppointmentLog> ReadByPatient(Patient pacijent)
+        protected override void shouldSerialize(AppointmentLog entity)
         {
-            List<AppointmentLog> terminLogs = GetAll();
-            for(int i = 0; i < terminLogs.Count; i++)
-            {
-                if (terminLogs[i].PatientID != pacijent.Jmbg || terminLogs[i].Expired==true)
-                {
-                    terminLogs.RemoveAt(i);
-                    i--;
-                }
-            }
-            return terminLogs;
-        }
-
-        public void MakeLogExpired(Patient pacijent)
-        {
-            List<AppointmentLog> terminLogs = ReadByPatient(pacijent);
-            foreach(AppointmentLog terminLog in terminLogs)
-            {
-                terminLog.Expired = true;
-                Update(terminLog);
-            }
+            //ne treba implementacija
         }
     }
 }

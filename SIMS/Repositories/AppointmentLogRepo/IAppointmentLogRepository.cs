@@ -8,7 +8,6 @@ namespace SIMS.Repositories.AppointmentLogRepo
 {
     interface IAppointmentLogRepository:IGenericRepository<AppointmentLog,String>
     {
-        IEnumerable<AppointmentLog> GetPatientLogs(Patient patient);
-        void MakeLogExpired(Patient pacijent); //mozda bi trebala da se nadje u servisu
+        
     }
 }

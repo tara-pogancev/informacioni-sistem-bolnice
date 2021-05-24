@@ -22,5 +22,10 @@ namespace SIMS.Repositories.AllergenRepo
         protected override void RemoveReferences(string key)
         {
         }
+
+        protected override void shouldSerialize(Allergen entity)
+        {
+            //ne treba logika za serijalizaciju
+        }
     }
 }

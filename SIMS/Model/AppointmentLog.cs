@@ -28,5 +28,10 @@ namespace SIMS.Model
             Expired = false;
         }
 
+        public bool NotInLastTenDays()
+        {
+            return this.DateOfChange < DateTime.Now.AddDays(-10);
+        }
+
     }
 }

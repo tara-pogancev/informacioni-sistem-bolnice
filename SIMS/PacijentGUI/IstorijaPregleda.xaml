@@ -23,11 +23,11 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Doktor" Binding="{Binding Termin.Lekar.ImePrezime}"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding Termin.Datum}" />
+                <DataGridTextColumn Header="Doktor" Binding="{Binding Termin.Doctor.FullName}"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Termin.AppointmentDate}" />
                 
                 
-                <DataGridTextColumn Header="Vrsta" Binding="{Binding Termin.GetVrsta}" />
+                <DataGridTextColumn Header="Vrsta" Binding="{Binding Termin.TypeString}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

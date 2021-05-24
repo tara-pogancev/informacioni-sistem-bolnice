@@ -31,7 +31,7 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="500" BorderBrush="Black" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding ImePrezime}"/>
+                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}"/>
                     <DataGridTextColumn Header="Ocjena" Binding="{Binding Grade}" />
 
                     <DataGridTemplateColumn>

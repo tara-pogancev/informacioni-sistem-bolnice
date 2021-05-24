@@ -24,6 +24,7 @@ namespace SIMS.Model
         public Room Room { get; set; }
         public DateTime InitialTime { get; set; }
         public String AppointmentID { get; set; }
+        
 
         [JsonIgnore]
         public bool Serialize { get; set; }
@@ -130,7 +131,10 @@ namespace SIMS.Model
             }
             
         }
-
+        public bool EqualDate(DateTime date)
+        {
+            return this.StartTime == date;
+        }
         [JsonIgnore]
         public String PatientName
         {
@@ -180,6 +184,8 @@ namespace SIMS.Model
                 else return false;
             }
         }
+
+
 
         [JsonIgnore]
         public bool IsCurrent

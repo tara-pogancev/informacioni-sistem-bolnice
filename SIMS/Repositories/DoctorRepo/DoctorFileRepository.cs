@@ -92,5 +92,9 @@ namespace SIMS.Repositories.DoctorRepo
             }
         }
 
+        protected override void shouldSerialize(Doctor entity)
+        {
+            entity.Serialize = true;
+        }
     }
 }

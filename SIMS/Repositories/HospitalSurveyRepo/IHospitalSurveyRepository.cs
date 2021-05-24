@@ -8,6 +8,6 @@ namespace SIMS.Repositories.HospitalSurveyRepo
 {
     interface IHospitalSurveyRepository:IGenericRepository<HospitalSurvey,String>
     {
-        List<HospitalSurvey> GetPatientSurveys(Patient pacijent);
+        
     }
 }

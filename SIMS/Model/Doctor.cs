@@ -41,7 +41,7 @@ namespace SIMS.Model
 
         }
 
-        public bool Available(Appointment appointment)
+        public bool Unavailable(Appointment appointment)
         {
             return appointment.Doctor.Jmbg == this.Jmbg;
 
@@ -71,7 +71,7 @@ namespace SIMS.Model
             foreach (var survey in doctorSurveyRepository.GetAll())
             {
                 if (survey.DoctorId == this.Jmbg){
-                    Grades += survey.Ocjena;
+                    Grades += survey.Grade;
                     counter++;
                 }
             }
@@ -103,12 +103,17 @@ namespace SIMS.Model
             return true;
         }
 
-        public bool ShouldSerializeDaniGodisnjegOdmora()
+        public bool ShouldSerializeVacationDays()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializeSpecijalizacijaLekara()
+        public bool ShouldSerializeDoctorSpecialization()
+        {
+            return Serialize;
+        }
+
+        public bool ShouldSerializeGrade()
         {
             return Serialize;
         }

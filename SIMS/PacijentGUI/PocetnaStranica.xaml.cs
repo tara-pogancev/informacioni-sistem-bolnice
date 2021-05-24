@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Service;
 
 namespace SIMS.PacijentGUI
 {
@@ -21,7 +22,7 @@ namespace SIMS.PacijentGUI
     /// </summary>
     public partial class PocetnaStranica : Window
     {
-        private Patient pacijent;
+        private Patient patient;
         private static PocetnaStranica instance=null;
         public static PocetnaStranica getInstance()
         {
@@ -36,42 +37,21 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
-            frame.Content = new PocetniEkran(pacijent);
+            frame.Content = new PocetniEkran(patient);
             this.DataContext = this;
         }
 
         public void kreirajAnketu()
         {
-            List<HospitalSurvey> anketeBolnice = new HospitalSurveyFileRepository().GetPatientSurveys(pacijent);
-            if (anketeBolnice.Count == 0)
-            {
-                Anketa.Visibility = Visibility.Visible;
-                return;
-            }
-            if (Math.Abs(anketeBolnice[anketeBolnice.Count-1].TrenutniBrojPregleda - brojZavrsenihPRegleda()) > 5)
-            {
-                Anketa.Visibility = Visibility.Visible;
-            }
-            else if (anketeBolnice[0].DatumKreiranjaAnkete.AddMonths(3) < DateTime.Now)
+           
+            if (new HospitalSurveyService().ShowSurveyToPatient(patient))
             {
                 Anketa.Visibility = Visibility.Visible;
             }
             
         }
 
-        private int brojZavrsenihPRegleda()
-        {
-            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(pacijent);
-            int brojacZavrsenihPregleda = 0;
-            foreach(Appointment termin in zakazaniTermini)
-            {
-                if (termin.IsPast)
-                {
-                    brojacZavrsenihPregleda++;
-                }
-            }
-            return brojacZavrsenihPregleda;
-        }
+
 
         public void pokreniNit()
         {
@@ -97,7 +77,7 @@ namespace SIMS.PacijentGUI
 
         private bool postojeTermini()
         {
-            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(pacijent);
+            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(patient);
             foreach(Appointment termin in zakazaniTermini)
             {
                 if (DateTime.Now <= termin.StartTime && DateTime.Now.AddMinutes(60)>=termin.StartTime)
@@ -111,7 +91,7 @@ namespace SIMS.PacijentGUI
         }
 
        
-        public Patient Pacijent { get => pacijent; set => pacijent = value; }
+        public Patient Pacijent { get => patient; set => patient = value; }
 
         private void Iskljucivanje_Click(object sender, RoutedEventArgs e)
         {
@@ -133,15 +113,15 @@ namespace SIMS.PacijentGUI
             switch (index)
             {
                 case 0:
-                    frame.Navigate( new PocetniEkran(pacijent));
+                    frame.Navigate( new PocetniEkran(patient));
                     break;
                 case 1:
                     ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
-                    zakazivanje.Pacijent = pacijent;
+                    zakazivanje.Pacijent = patient;
                     frame.Content = zakazivanje;
                     break;
                 case 2:
-                    frame.Navigate( new MojiTermini(pacijent));
+                    frame.Navigate( new MojiTermini(patient));
                     break;
                 case 3:
                     frame.Navigate( new TerapijaPacijentaView());

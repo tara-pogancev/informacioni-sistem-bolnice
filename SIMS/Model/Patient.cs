@@ -106,7 +106,7 @@ namespace SIMS.Model
             }
         }
 
-        public bool Available(Appointment appointment)
+        public bool Unvailable(Appointment appointment)
         {
             return appointment.Patient.Jmbg == this.Jmbg;
         }
@@ -206,6 +206,10 @@ namespace SIMS.Model
             return Serialize;
         }
         public bool ShouldSerializeIsBanned()
+        {
+            return Serialize;
+        }
+        public bool ShouldSerializeHronicalDiseases()
         {
             return Serialize;
         }
