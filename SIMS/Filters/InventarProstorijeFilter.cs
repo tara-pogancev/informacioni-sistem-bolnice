@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using SIMS.Repositories.SecretaryRepo;
+using SIMS.Model;
+
 namespace SIMS.Filters
 {
     class InventarProstorijeFilter : TableFilter<Inventory, InventarProstorijeFilter>

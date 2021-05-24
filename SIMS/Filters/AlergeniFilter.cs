@@ -1,4 +1,5 @@
-﻿using SIMS.Repositories.SecretaryRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Repositories.SecretaryRepo;
 

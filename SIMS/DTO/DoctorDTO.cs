@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Model
+namespace SIMS.DTO
 {
-    public enum SexType {
-        Male,
-        Female
+    //TODO
+
+    class DoctorDTO
+    {
     }
 }

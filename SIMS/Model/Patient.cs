@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using SIMS.Repositories.AllergenRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
     public class Patient : LoggedUser
     {

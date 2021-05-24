@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI
 {

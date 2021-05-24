@@ -1,7 +1,6 @@
-
 using System;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
    public class Address
    {

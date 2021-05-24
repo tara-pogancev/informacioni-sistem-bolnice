@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
+using SIMS.Model;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {

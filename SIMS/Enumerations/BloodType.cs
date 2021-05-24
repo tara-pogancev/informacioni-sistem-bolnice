@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace SIMS.Model
-{
-    public enum Krvne_Grupe 
-    { 
+{    
+    public enum BloodType
+    {
         Op = 0,
         On,
-        Ap, 
-        An, 
-        Bp, 
+        Ap,
+        An,
+        Bp,
         Bn,
-        ABp, 
+        ABp,
         ABn
     }
+    
 }

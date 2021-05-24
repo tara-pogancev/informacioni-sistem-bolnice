@@ -7,11 +7,12 @@ using Newtonsoft.Json;
 using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Model
 {
    public class Appointment : INotifyPropertyChanged
    {

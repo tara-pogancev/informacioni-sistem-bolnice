@@ -4,6 +4,7 @@
 // Purpose: Definition of Class SekretarStorage
 
 using Newtonsoft.Json;
+using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;

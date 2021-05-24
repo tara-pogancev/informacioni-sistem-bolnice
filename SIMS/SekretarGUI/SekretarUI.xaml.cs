@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using SIMS.SekretarGUI;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using SIMS.Model;
 
 namespace SIMS
 {

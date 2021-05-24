@@ -1,6 +1,7 @@
 ﻿using SIMS.Repositories.SecretaryRepo;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Model;
 
 namespace SIMS.SekretarGUI
 {
