@@ -1,10 +1,8 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
-using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using SIMS.Model;
 
 namespace SIMS.Service
 {
@@ -14,8 +12,7 @@ namespace SIMS.Service
 
         public AppointmentService()
         {
-            appointmentRepository = new AppointmentFileRepository();
-            
+            appointmentRepository = new AppointmentFileRepository();            
         }
 
         public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
@@ -36,7 +33,7 @@ namespace SIMS.Service
             {
                 if (doctor.Unavailable(appointment) || patient.Unvailable(appointment)) 
                 {
-                    timeOfAppointment.Remove(appointment.AppointmentTime);
+                    timeOfAppointment.Remove(appointment.GetAppointmentTime());
                 }
             }
             return timeOfAppointment;
@@ -62,7 +59,7 @@ namespace SIMS.Service
             int finishedAppointmentCounter = 0;
             foreach (Appointment appointment in scheduledAppointments)
             {
-                if (appointment.IsPast)
+                if (appointment.IsPast())
                 {
                     finishedAppointmentCounter++;
                 }
@@ -70,13 +67,12 @@ namespace SIMS.Service
             return finishedAppointmentCounter;
         }
 
-
         private List<Appointment> GetScheduledAppointments(String date)
         {
             List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
             for (int i = 0; i < scheduledAppointments.Count;i++)
             {
-                    if (scheduledAppointments[i].AppointmentDate != date)
+                    if (scheduledAppointments[i].GetAppointmentDate() != date)
                     {
                         scheduledAppointments.RemoveAt(i);
                         i--;
@@ -90,7 +86,7 @@ namespace SIMS.Service
             List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (!scheduledAppointments[i].IsPast)
+                if (!scheduledAppointments[i].IsPast())
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;
@@ -98,12 +94,13 @@ namespace SIMS.Service
             }
             return scheduledAppointments;
         }
+
         public List<Appointment> GetFutureAppointments(Patient patient)
         {
             List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (scheduledAppointments[i].IsPast)
+                if (scheduledAppointments[i].IsPast())
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;
@@ -126,7 +123,11 @@ namespace SIMS.Service
             UpdateAppointment(appointment);
             AppointmentLog terminLog = new AppointmentLog(appointment.AppointmentID + appointment.Patient.Jmbg + DateTime.Now.ToString("hhmmss"), appointment.AppointmentID, appointment.Patient.Jmbg, DateTime.Now, SurgeryType.Brisanje);
             new AppointmentLogFileRepository().Save(terminLog);
+        }
 
+        public AppointmentDTO GetDTO(Appointment appointment)
+        {
+            return new AppointmentDTO(appointment);
         }
        
     }

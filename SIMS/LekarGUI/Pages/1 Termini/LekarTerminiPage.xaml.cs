@@ -59,7 +59,7 @@ namespace SIMS.LekarGUI
             
             foreach (Appointment t in temp)
             {
-                if (!t.IsPast && !t.IsRecorded)
+                if (!t.IsPast() && !t.GetIfRecorded())
                     AppointmentsViewModel.Add(t);
 
                 t.Patient = new PatientFileRepository().FindById(t.Patient.Jmbg);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -19,6 +20,8 @@ namespace SIMS.LekarGUI
         private List<Room> rooms;
         private List<String> availableTimes;
         Appointment appointment;
+
+        private DoctorController doctorController = new DoctorController();
 
         public AppointmentUpdate(Appointment appointment)
         {
@@ -59,8 +62,9 @@ namespace SIMS.LekarGUI
             else
             {
                 CreateAppointment();
+                Doctor doctor = doctors[doctorCombo.SelectedIndex];
 
-                if (!doctors[doctorCombo.SelectedIndex].IsFreeUpdate(appointment))
+                if (!doctorController.CheckIfFreeUpdate(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
                 else
@@ -157,7 +161,7 @@ namespace SIMS.LekarGUI
             int index = 0;
             foreach (String str in availableTimes)
             {
-                if (str.Equals(appointment.AppointmentTime))
+                if (str.Equals(appointment.GetAppointmentTime()))
                 {
                     break;
                 }

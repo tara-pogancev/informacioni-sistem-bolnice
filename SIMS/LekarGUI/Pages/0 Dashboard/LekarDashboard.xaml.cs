@@ -53,7 +53,7 @@ namespace SIMS.LekarGUI
 
             foreach (Appointment t in termini)
             {
-                if (t.IsCurrent && t.IsRecorded == false)
+                if (t.GetIfCurrent() && t.GetIfRecorded() == false)
                 {
                     AktivniTermin.Content = LDBAktivanTermin.GetInstance(t);
                     return;
@@ -81,7 +81,7 @@ namespace SIMS.LekarGUI
             int ukupno = termini.Count;
 
             foreach (Appointment t in termini)
-                if (t.IsRecorded)
+                if (t.GetIfRecorded())
                     evidentirani++;
 
             GraphEvidentirani.To = ukupno;

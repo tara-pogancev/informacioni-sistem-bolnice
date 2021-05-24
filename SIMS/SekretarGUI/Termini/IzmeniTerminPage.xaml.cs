@@ -80,7 +80,7 @@ namespace SIMS.SekretarGUI
             List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment a in appointments)
             {
-                if (a.EndTime > _appointment.StartTime && a.StartTime < _appointment.EndTime && !a.AppointmentID.Equals(_appointment.AppointmentID))
+                if (a.GetEndTime() > _appointment.StartTime && a.StartTime < _appointment.GetEndTime() && !a.AppointmentID.Equals(_appointment.AppointmentID))
                 {
                     if (a.Doctor.Jmbg.Equals(_appointment.Doctor.Jmbg))
                     {
@@ -161,7 +161,7 @@ namespace SIMS.SekretarGUI
             int index = 0;
             foreach (String a in _freeAppointments)
             {
-                if (a.Equals(_appointment.AppointmentTime))
+                if (a.Equals(_appointment.GetAppointmentTime()))
                 {
                     break;
                 }

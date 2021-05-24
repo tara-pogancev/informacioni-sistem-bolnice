@@ -13,6 +13,8 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Model;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -21,38 +23,39 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class AnamnezaCreate : Window
     {
-        private Appointment termin;
+        private Appointment appointment;
+        private AppointmentDTO appointmentDTO;
+        private AppointmentController appointmentController = new AppointmentController();
+        private AnamnesisController anamnesisController = new AnamnesisController();
 
-        public AnamnezaCreate(Appointment t)
+        public AnamnezaCreate(Appointment appointment)
         {
             InitializeComponent();
 
-            termin = t;
+            this.appointment = appointment;
+            appointmentDTO = appointmentController.GetDTO(appointment);
 
-            LabelDoktor.Content = "Doktor: " + termin.DoctorName;
-            if (termin.Type == AppointmentType.examination)
-                LabelDatum.Content = "Datum pregleda: " + termin.AppointmentDate;
-            else LabelDatum.Content = "Datum operacije: " + termin.AppointmentDate;
+            LabelDoctor.Content = "Doktor: " + appointmentDTO.DoctorName;
+            LabelDate.Content = appointmentDTO.AppointmentTypeAndDate;
 
-            LabelPacijent.Content = "Pacijent: " + termin.PatientName;
-            LabelDatumRodjenja.Content = "Datum rođenja: " + PatientFileRepository.Instance.FindById(termin.Patient.Jmbg).DateOfBirth.ToString("dd.MM.yyyy.");
-
+            LabelPatient.Content = "Pacijent: " + appointmentDTO.PatientName;
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + appointmentDTO.Patient.DateString;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonAccept(object sender, RoutedEventArgs e)
         {
             if (txt1.Text.Equals("") || txt2.Text.Equals("") || txt3.Text.Equals(""))
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
             else
             {
-                Patient patient = termin.Patient;
+                Patient patient = appointment.Patient;
 
-                Anamnesis a = new Anamnesis(termin, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
+                Anamnesis a = new Anamnesis(appointment, txt1.Text, txt2.Text, txt3.Text, txt4.Text, txt5.Text, txt6.Text,
                     txt7.Text, txt8.Text, txt9.Text, txt10.Text, txt11.Text, txt12.Text);
-                a.AnamnesisAppointment.Serialize = false;
-                AnamnesisFileRepository.Instance.Save(a);
-                this.Close();
 
+                anamnesisController.SaveAnamnesis(a);
+
+                this.Close();
                 DoctorUI.GetInstance().ChangeTab(3);
                 var window = new ActionsAfterReport(patient);
                 window.Show();

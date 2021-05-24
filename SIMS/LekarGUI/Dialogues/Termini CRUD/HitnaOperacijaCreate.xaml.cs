@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 {
@@ -28,6 +29,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private ObservableCollection<Appointment> AvailableAppointments;
         private Patient patient;
+        private DoctorController doctorController = new DoctorController();
 
         private static int findNearest = 5;
 
@@ -92,9 +94,10 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             List<String> target = new List<String>();
             target.Add(patient.Jmbg);
             target.Add(selecetdApp.Doctor.Jmbg);
+                        
             Notification notification = new Notification(author, DateTime.Now,
-                ("Zakazana hitna operacija [" + selecetdApp.AppointmentDate + " " + selecetdApp.AppointmentTime + ", " + selecetdApp.Room.Number + "] za pacijenta " 
-                + selecetdApp.PatientName + ", vodeći lekar " + selecetdApp.DoctorName + "."), target);
+                ("Zakazana hitna operacija [" + selecetdApp.GetAppointmentDate() + " " + selecetdApp.GetAppointmentTime() + ", " + selecetdApp.Room.Number + "] za pacijenta " 
+                + selecetdApp.GetPatientName() + ", vodeći lekar " + selecetdApp.GetDoctorName() + "."), target);
 
             NotificationFileRepository.Instance.Save(notification);
         }
@@ -146,7 +149,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     
                     Appointment appointment = new Appointment(appTime, GetSelectedDuration(), AppointmentType.surgery, doctor, patient, RoomFileRepository.Instance.GetAll()[0]);
-                    if (doctor.IsFree(appointment))
+                    if (doctorController.CheckIfFree(doctor, appointment))
                     {
                         counterByDoctor++;
                         retVal.Add(appointment);

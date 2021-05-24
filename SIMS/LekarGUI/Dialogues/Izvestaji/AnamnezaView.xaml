@@ -39,11 +39,11 @@
         <Label Grid.Row="0" Content="Anamneza" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="32" Margin="90,00,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="90,0,0,20">
-            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoktor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
-            <Label Content="Datum: 30/03/2021" Name="LabelDatum" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Datum: 30/03/2021" Name="LabelDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
 
-            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,20,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
-            <Label Content="Datum rođenja: 18/06/1993" Name="LabelDatumRodjenja" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Pacijent: Milan Marković" Name="LabelPatient" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,20,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Datum rođenja: 18/06/1993" Name="LabelPatientDateOfBirth" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
         </StackPanel>
 
         <Rectangle Grid.Row="2" RadiusX="5" RadiusY="5" Fill="#FF3A475F" Margin="70,0,70,0"/>

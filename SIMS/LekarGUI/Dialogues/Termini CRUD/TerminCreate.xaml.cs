@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -28,6 +29,8 @@ namespace SIMS.LekarGUI
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
+
+        private DoctorController doctorController = new DoctorController();
 
         public AppointmentCreate(Patient patient)
         {
@@ -98,16 +101,17 @@ namespace SIMS.LekarGUI
                 MessageBox.Show("Molimo popunite sva polja!");
             else
             {
-                Appointment termin = new Appointment();
-                CreateAppointment(termin);
+                Appointment appointment = new Appointment();
+                CreateAppointment(appointment);
+                Doctor doctor = doctors[doctorCombo.SelectedIndex];
 
                 //PROVERA DOSTUPNOSTI LEKARA
-                if (!doctors[doctorCombo.SelectedIndex].IsFree(termin))
+                if (!doctorController.CheckIfFree(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
                 else
                 {
-                    SaveAppointment(termin);
+                    SaveAppointment(appointment);
                     this.Close();
                 }
 

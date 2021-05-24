@@ -121,7 +121,7 @@ namespace SIMS.PacijentGUI.ViewModel
             int brojacZavrsenihPregleda = 0;
             foreach (Appointment termin in zakazaniTermini)
             {
-                if (termin.IsPast)
+                if (termin.IsPast())
                 {
                     brojacZavrsenihPregleda++;
                 }

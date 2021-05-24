@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
+using SIMS.DTO;
 
 namespace SIMS.Repositories.DoctorRepo
 {
@@ -37,10 +38,11 @@ namespace SIMS.Repositories.DoctorRepo
         {
             List<String> retVal = new List<String>();
 
-            foreach (Doctor l in base.GetAll())
+            foreach (Doctor d in base.GetAll())
             {
-                if (!retVal.Contains(l.SpecializationString))
-                    retVal.Add(l.SpecializationString);
+                DoctorDTO doctorDTO = new DoctorDTO(d);
+                if (!retVal.Contains(doctorDTO.SpecializationString))
+                    retVal.Add(doctorDTO.SpecializationString);
             }
 
             return retVal;

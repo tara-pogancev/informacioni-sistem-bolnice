@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
     class ListaLjekaraPageViewModel
     {
         public ObservableCollection<Doctor> Doctors { get; set; }
-        
+        private DoctorController doctorController = new DoctorController();
         
 
         public ListaLjekaraPageViewModel()
@@ -25,8 +26,7 @@ namespace SIMS.PacijentGUI.ViewModel
         {
             foreach(var doctor in Doctors)
             {
-                doctor.RecalulateGrade();
-                
+                doctorController.RecalulateGrade(doctor);
             }
         }
     }

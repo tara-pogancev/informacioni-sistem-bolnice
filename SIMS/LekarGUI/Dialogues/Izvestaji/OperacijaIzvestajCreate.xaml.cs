@@ -27,11 +27,11 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             InitializeComponent();
             operation = operationPar;
 
-            LabelDoctor.Content = "Doktor: " + operation.DoctorName;
-            LabelDate.Content = "Datum operacije: " + operation.AppointmentDate;
+            LabelDoctor.Content = "Doktor: " + operation.GetDoctorName();
+            LabelDate.Content = "Datum operacije: " + operation.GetAppointmentDate();
 
-            LabelPacijent.Content = "Pacijent: " + operation.PatientName;
-            LabelBirthDate.Content = "Datum rođenja: " + operation.Patient.DateOfBirth;
+            LabelPacijent.Content = "Pacijent: " + operation.GetPatientName();
+            LabelBirthDate.Content = "Datum rođenja: " + operation.Patient.DateString;
 
             LabelRoom.Content = "Prostorija: " + operation.Room.Number;
 

@@ -1,8 +1,9 @@
 ﻿using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.DoctorSurveyRepo;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SIMS.Service
 {
@@ -38,6 +39,60 @@ namespace SIMS.Service
         public Doctor ReadUserByUsername(String username)
         {
             return doctorRepository.ReadUser(username);
+        }
+
+        // Salje informacije o novom terminu
+        public Boolean CheckIfFree(Doctor doctor, Appointment newAppointment)
+        {
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
+            {
+                if (newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime())
+                    return false;
+
+                if (newAppointment.StartTime >= t.StartTime && newAppointment.StartTime < t.GetEndTime())
+                    return false;
+            }
+
+            return true;
+        }
+
+        //Salje izmenjen termin ali njega ignorise prilikom provere
+        public Boolean CheckIfFreeUpdate(Doctor doctor, Appointment newAppointment)
+        {
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
+            {
+                if (t.AppointmentID != newAppointment.AppointmentID)
+                {
+                    if ((newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime()) || 
+                        (newAppointment.StartTime >= t.StartTime && newAppointment.StartTime < t.GetEndTime()))
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        public void RecalulateGrade(Doctor doctor)
+        {
+            IDoctorSurveyRepository doctorSurveyRepository = new DoctorSurveyFileRepository();
+            double Grades = 0;
+            int counter = 0;
+
+            foreach (var survey in doctorSurveyRepository.GetAll())
+            {
+                if (survey.DoctorId == doctor.Jmbg)
+                {
+                    Grades += survey.Grade;
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                doctor.Grade = 0;
+            }
+            else
+            {
+                doctor.Grade = Grades / counter;
+            }
         }
 
     }

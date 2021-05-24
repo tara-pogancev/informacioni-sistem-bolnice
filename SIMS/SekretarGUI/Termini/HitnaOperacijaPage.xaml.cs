@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.SekretarGUI
 {
@@ -27,6 +28,7 @@ namespace SIMS.SekretarGUI
         private List<Specialization> SpecializationEnumList;
         private List<string> DurationList = new List<string>() { "30 minuta", "60 minuta", "90 minuta" };
         private ObservableCollection<Patient> PatientList;
+        private DoctorController doctorController = new DoctorController();
 
         private ObservableCollection<Appointment> AvailableAppointments;
         public HitnaOperacijaPage()
@@ -113,15 +115,15 @@ namespace SIMS.SekretarGUI
             if (moved)
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Pomeren/a " + selectedApp.Type.ToString() + " [" + selectedApp.AppointmentDate + " " + selectedApp.AppointmentTime + ", " + selectedApp.Room.Number + "] za pacijenta "
-                + selectedApp.PatientName + ", vodeći lekar " + selectedApp.DoctorName + "."), target);
+                ("Pomeren/a " + selectedApp.Type.ToString() + " [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
+                + selectedApp.GetPatientName() + ", vodeći lekar " + selectedApp.GetDoctorName() + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
             else
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Zakazana hitna operacija [" + selectedApp.AppointmentDate + " " + selectedApp.AppointmentTime + ", " + selectedApp.Room.Number + "] za pacijenta "
-                + selectedApp.PatientName + ", vodeći lekar " + selectedApp.DoctorName + "."), target);
+                ("Zakazana hitna operacija [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
+                + selectedApp.GetPatientName() + ", vodeći lekar " + selectedApp.GetDoctorName() + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
         }
@@ -188,7 +190,7 @@ namespace SIMS.SekretarGUI
 
                     Appointment appointment = new Appointment(appTime, appointmentValues.Duration, appointmentValues.Type, doctor, appointmentValues.Patient, RoomFileRepository.Instance.GetAll()[0]);
                     allAppointments.Add(appointment);
-                    if (doctor.IsFree(appointment) && appointment.StartTime >= appointmentValues.StartTime)
+                    if (doctorController.CheckIfFree(doctor, appointment) && appointment.StartTime >= appointmentValues.StartTime)
                     {
                         //counterByDoctor++;
                         retVal.Add(appointment);
@@ -274,7 +276,7 @@ namespace SIMS.SekretarGUI
             List<Appointment> allAppointments = AppointmentFileRepository.Instance.GetAll();
             foreach (Appointment app in allAppointments)
             {
-                if (app.EndTime > selectedApp.StartTime && app.StartTime < selectedApp.EndTime)
+                if (app.GetEndTime() > selectedApp.StartTime && app.StartTime < selectedApp.GetEndTime())
                     appointmentsForMoving.Add(app);
 
             }

@@ -52,10 +52,10 @@ namespace SIMS.LekarGUI
             {
                 appointment.InitData();
 
-                if (appointment.IsRecorded == true)
+                if (appointment.GetIfRecorded() == true)
                     AnamnesisViewModel.Add(appointment);
 
-                else if (appointment.IsPast == true)
+                else if (appointment.IsPast() == true)
                 {
                     AppointmentsViewModel.Add(appointment);
                 }

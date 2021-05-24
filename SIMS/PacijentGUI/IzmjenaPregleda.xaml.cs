@@ -57,7 +57,7 @@ namespace SIMS.PacijentGUI
             FillComboBoxes(termin);
             this.DataContext = this;
             terminiLista.ItemsSource = dostupniTermini;
-            Vrijeme = OdabraniTerminZaIzmjenu.AppointmentTime;
+            Vrijeme = OdabraniTerminZaIzmjenu.GetAppointmentTime();
             Vrijeme = "";
         }
 
@@ -99,7 +99,7 @@ namespace SIMS.PacijentGUI
             int index = 0;
             foreach (String moguceSatnice in dostupniTermini)
             {
-                if (moguceSatnice.Equals(OdabraniTerminZaIzmjenu.AppointmentTime))
+                if (moguceSatnice.Equals(OdabraniTerminZaIzmjenu.GetAppointmentTime()))
                 {
                     break;
                 }
