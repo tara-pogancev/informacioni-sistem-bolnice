@@ -1,12 +1,90 @@
 {
   "210503114833": {
-    "Termin": {
-      "TerminKey": "210503114833"
-    },
-    "Ocjena": 5,
+    "Appointment": null,
+    "Grade": 0,
+    "DoctorId": null,
     "IdAnkete": "210503114833",
     "Komentar": "",
     "DatumKreiranjaAnkete": "2021-05-04T21:08:57.9956485+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210521021119": {
+    "Appointment": null,
+    "Grade": 0,
+    "DoctorId": "045210805048",
+    "IdAnkete": "210521021119",
+    "Komentar": "Najbolji lekar",
+    "DatumKreiranjaAnkete": "2021-05-21T19:58:33.3728003+02:00",
+    "IdVlasnika": "12121977802342"
+  },
+  "210524062232283865": {
+    "Appointment": {
+      "StartTime": "2021-05-11T08:00:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "PatientGender": 0,
+        "BloodType": 0,
+        "IsBanned": false,
+        "Lbo": "123",
+        "Guest": false,
+        "Allergens": [
+          "a2",
+          "a7"
+        ],
+        "DateOfBirth": "1999-03-05T00:00:00",
+        "HronicalDiseases": [],
+        "GetHronicalDiseases": "Nema",
+        "Name": "Đorđe",
+        "LastName": "Krsmanović",
+        "Jmbg": "4865453131",
+        "Username": "pacijent",
+        "Password": "p",
+        "Email": "djordje1499@gmail.com",
+        "Phone": "0645568131",
+        "Address": null,
+        "Serialize": true
+      },
+      "Room": {
+        "RenovationStart": null,
+        "RenovationEnd": null,
+        "InventoryAmounts": {},
+        "RoomType": 0,
+        "Number": "1",
+        "Available": true,
+        "Serialize": true
+      },
+      "AppointmentID": "210524062232283865"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "IdAnkete": "210524062232283865",
+    "Komentar": "",
+    "DatumKreiranjaAnkete": "2021-05-24T08:12:09.7077861+02:00",
     "IdVlasnika": "4865453131"
   }
 }

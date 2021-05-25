@@ -1,73 +1,73 @@
 ﻿{
   "045210805048": {
-    "DaniGodisnjegOdmora": 15,
-    "SpecijalizacijaLekara": 2,
-    "Ime": "Tara",
-    "Prezime": "Pogančev",
+    "VacationDays": 15,
+    "DoctorSpecialization": 2,
+    "Name": "Tara",
+    "LastName": "Pogančev",
     "Jmbg": "045210805048",
-    "KorisnickoIme": "l",
-    "Lozinka": "l",
+    "Username": "l",
+    "Password": "l",
     "Email": "tarapogancev@gmail.com",
-    "Telefon": "629998425",
-    "Adresa": {
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21400,
-        "Drzava": {
-          "Naziv": "Srbija"
+    "Phone": "629998425",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
         }
       },
-      "Ulica": "Bulevar Despota Stefana",
-      "Broj": "7"
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
     },
-    "ImePrezime": "Tara Pogancev"
+    "FullName": "Tara Pogancev"
   },
 
   "4848555021548": {
-    "DaniGodisnjegOdmora": 20,
-    "SpecijalizacijaLekara": 4,
-    "Ime": "Zack",
-    "Prezime": "Fair",
+    "VacationDays": 20,
+    "DoctorSpecialization": 4,
+    "Name": "Zack",
+    "LastName": "Fair",
     "Jmbg": "4848555021548",
-    "KorisnickoIme": "zack",
-    "Lozinka": "l",
+    "Username": "zack",
+    "Password": "l",
     "Email": "zackfair@zdravo.com",
-    "Telefon": "0698547521",
-    "Adresa": {
-      "Grad": {
-        "Naziv": "Midgar",
-        "PostanskiBroj": 99888,
-        "Drzava": {
-          "Naziv": "Gaia"
+    "Phone": "0698547521",
+    "Address": {
+      "City": {
+        "Name": "Midgar",
+        "PostalCode": 99888,
+        "Country": {
+          "Name": "Gaia"
         }
       },
-      "Ulica": "Shinra Inc",
-      "Broj": "Floor 75"
+      "Street": "Shinra Inc",
+      "Number": "Floor 75"
     },
-    "ImePrezime": "MilanMarkovic"
+    "FullName": "MilanMarkovic"
   },
 
   "22157484654211": {
-    "DaniGodisnjegOdmora": 18,
-    "SpecijalizacijaLekara": 0,
-    "Ime": "Cloud",
-    "Prezime": "Strife",
+    "VacationDays": 18,
+    "DoctorSpecialization": 0,
+    "Name": "Cloud",
+    "LastName": "Strife",
     "Jmbg": "22157484654211",
-    "KorisnickoIme": "cloud",
-    "Lozinka": "l",
+    "Username": "cloud",
+    "Password": "l",
     "Email": "fluffy@clouds.com",
-    "Telefon": "0640005481",
-    "Adresa": {
-      "Grad": {
-        "Naziv": "Nibelheim",
-        "PostanskiBroj": 33654,
-        "Drzava": {
-          "Naziv": "Gaia"
+    "Phone": "0640005481",
+    "Address": {
+      "City": {
+        "Name": "Nibelheim",
+        "PostalCode": 33654,
+        "Country": {
+          "Name": "Gaia"
         }
       },
-      "Ulica": "Main Town Square",
-      "Broj": "5"
+      "Street": "Main Town Square",
+      "Number": "5"
     },
-    "ImePrezime": "Cloud Strife"
+    "FullName": "Cloud Strife"
   }
 }

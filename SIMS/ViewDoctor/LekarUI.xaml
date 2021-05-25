@@ -1,0 +1,127 @@
+﻿<Window x:Class="SIMS.DoctorUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="CanResize"
+        MinHeight="630" MinWidth="900"
+        Title="Bolnica Zdravo - Lekar" Height="625" Width="1050"
+        KeyDown="WindowKeyListener">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Name="WindowBarFrame" NavigationUIVisibility="Hidden" MouseDown="OnDragMoveWindow" MouseDoubleClick="MinimizeWindow"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid Background="#191E29">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Cursor="Hand" PreviewMouseDown="Button_Dashboard">
+                        <Image Source="/src/logo_h_small.png" Margin="3,3,3,3" Width="auto" Height="auto"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="55"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Rectangle Name="B1" Grid.Row="0" Fill="{x:Null}"/>
+                            <Rectangle Name="B2" Grid.Row="1" Fill="{x:Null}"/>
+                            <Rectangle Name="B3" Grid.Row="2" Fill="{x:Null}"/>
+                            <Rectangle Name="B4" Grid.Row="3" Fill="{x:Null}"/>
+                            <Rectangle Name="B5" Grid.Row="4" Fill="{x:Null}"/>
+
+
+                            <Button Content="Termini" Click="Button_Termini" Grid.Row="0" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+
+                            <Button Content="Pacijenti" Grid.Row="1" Click="Button_Pacijenti" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+
+                            <Button Content="Istorija pregleda" Grid.Row="2" Click="Button_Istorija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+
+                            <Button Content="Potrošnja materijala" Grid.Row="3" Click="Button_Evidencija" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+
+                            <Button Content="Nalog" Grid.Row="4" Click="Button_Nalog" Style="{StaticResource SideMenuButton}" Template="{StaticResource BlankButton}"/>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,10,10" Cursor="Hand" PreviewMouseDown="Button_LogOut">
+
+                                <Image Source="../src/exit.png" Width="18"/>
+                                <Label Content="ODJAVI SE" Style="{StaticResource DefaultLabel}" FontSize="14"/>
+
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#292C3B">
+                        
+                        <Label Content="Lucrecia Crescent" Name ="UsernameLabel"  HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Width="250" FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" HorizontalContentAlignment="Left" Padding="5,5,5,5" VerticalContentAlignment="Center" FlowDirection="RightToLeft"
+                               Cursor="Hand" PreviewMouseDown="Button_Nalog" ToolTip="Korisnički nalog"/>
+
+                        <Image Source="/src/notification.png" Height="24" Margin="25,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Notification" ToolTip="Obaveštenja"/>
+                        <Image Source="/src/help.png" Height="24" Margin="80,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" PreviewMouseDown="Button_Help" ToolTip="Pomoć"/>
+                        <Label Content="Pritisnite [f1] za pomoć" VerticalAlignment="Center" Margin="130,0,0,0" Style="{StaticResource DefaultLabelS}" Foreground="#FF7F85A2"/>
+
+
+                        <Image Source="/src/profile.png" Height="32" Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="28" RenderTransformOrigin="0.5,0.52" Cursor="Hand" PreviewMouseDown="Button_Nalog"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1" Background="#323D52">
+
+                        <!--SELLECTED TAB CONTENT-->
+                        <Frame x:Name="SellectedTab" NavigationUIVisibility="Hidden"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2" Background="#FF404C63">
+                        <Label Content="16:14 │ 25/03/2021" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#FFC9C9C9" FontSize="12" Margin="0,0,10,0" Name="dateAndTime" VerticalContentAlignment="Center"/>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+    
+</Window>

@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="LekarGUI\logo_h_small.png" />
-    <None Remove="LekarGUI\notification.png" />
-    <None Remove="LekarGUI\profile.png" />
-    <None Remove="LekarGUI\search.png" />
+    <None Remove="ViewDoctor\logo_h_small.png" />
+    <None Remove="ViewDoctor\notification.png" />
+    <None Remove="ViewDoctor\profile.png" />
+    <None Remove="ViewDoctor\search.png" />
     <None Remove="logo.ico" />
     <None Remove="src\arrow.png" />
     <None Remove="src\close.png" />
@@ -117,13 +117,20 @@
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="16.9.31024.71" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="19.1.0.63" />
+    <PackageReference Include="Syncfusion.SfSchedule.WPF" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Themes.MaterialDark.WPF" Version="19.1.0.63" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="logo.ico" />
     <Resource Include="src\logo.ico" />
-    <Resource Include="src\logo_glow.jpg" />
+    <Resource Include="src\logo_glow.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\logo_glow_tr.png" />
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />
@@ -165,16 +172,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
+    <Page Update="ViewDoctor\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="LekarGUI\Dialogues\Termini CRUD\OperacijaCreate.xaml">
+    <Page Update="ViewDoctor\Dialogues\Termini CRUD\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="LekarGUI\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
+    <Page Update="ViewDoctor\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewDoctor\ViewModel\" />
   </ItemGroup>
 
 </Project>

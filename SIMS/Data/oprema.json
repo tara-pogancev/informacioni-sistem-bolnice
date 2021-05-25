@@ -1,34 +1,34 @@
 {
   "1": {
-    "Naziv": "Stolica",
-    "Id": "1",
-    "TipOpreme": 0,
-    "BrojProstorije": null,
-    "Kolicina": 0,
-    "TipToString": "statička"
+    "Name": "Stolica",
+    "ID": "1",
+    "Type": 0,
+    "RoomNumber": null,
+    "Amount": 0,
+    "TypeToString": "statička"
   },
   "2": {
-    "Naziv": "Flaster",
-    "Id": "2",
-    "TipOpreme": 1,
-    "BrojProstorije": null,
-    "Kolicina": 0,
-    "TipToString": "dinamička"
+    "Name": "Flaster",
+    "ID": "2",
+    "Type": 1,
+    "RoomNumber": null,
+    "Amount": 0,
+    "TypeToString": "dinamička"
   },
   "3": {
-    "Naziv": "Ultrazvuk",
-    "Id": "3",
-    "TipOpreme": 0,
-    "BrojProstorije": null,
-    "Kolicina": 0,
-    "TipToString": "statička"
+    "Name": "Ultrazvuk",
+    "ID": "3",
+    "Type": 0,
+    "RoomNumber": null,
+    "Amount": 0,
+    "TypeToString": "statička"
   },
   "4": {
-    "Naziv": "Krema",
-    "Id": "4",
-    "TipOpreme": 1,
-    "BrojProstorije": null,
-    "Kolicina": 0,
-    "TipToString": "dinamička"
+    "Name": "Krema",
+    "ID": "4",
+    "Type": 1,
+    "RoomNumber": null,
+    "Amount": 0,
+    "TypeToString": "dinamička"
   }
 }

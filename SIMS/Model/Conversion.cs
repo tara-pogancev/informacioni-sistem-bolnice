@@ -2,56 +2,56 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model
+namespace SIMS.Model
 {
     public class Conversion
     {
-        public static string TipProstorijeToString(TipProstorije tip)
+        public static string TipProstorijeToString(RoomType tip)
         {
             return tip switch
             {
-                TipProstorije.zaPreglede => "Prostorija za preglede",
-                TipProstorije.sala => "Operaciona sala",
-                TipProstorije.bolesnicka => "Bolesnička soba",
+                RoomType.zaPreglede => "Prostorija za preglede",
+                RoomType.sala => "Operaciona sala",
+                RoomType.bolesnicka => "Bolesnička soba",
                 _ => "",
             };
         }
 
-        public static string TipOpremeToString(TipOpreme tip)
+        public static string TipOpremeToString(InventoryType tip)
         {
             return tip switch
             {
-                TipOpreme.dinamička => "dinamička",
-                TipOpreme.statička => "statička",
+                InventoryType.dinamička => "dinamička",
+                InventoryType.statička => "statička",
                 _ => "",
             };
         }
 
-        public static TipOpreme StringToTipOpreme(string str)
+        public static InventoryType StringToTipOpreme(string str)
         {
             return str switch
             {
-                "dinamička" => TipOpreme.dinamička,
-                "statička" => TipOpreme.statička,
-                _ => TipOpreme.dinamička,
+                "dinamička" => InventoryType.dinamička,
+                "statička" => InventoryType.statička,
+                _ => InventoryType.dinamička,
             };
         }
 
-        public static TipProstorije StringToTipProstorije(string str)
+        public static RoomType StringToTipProstorije(string str)
         {
             return str switch
             {
-                "Prostorija za preglede" => TipProstorije.zaPreglede,
-                "Operaciona sala" => TipProstorije.sala,
-                "Bolesnička soba" => TipProstorije.bolesnicka,
-                _ => TipProstorije.bolesnicka,
+                "Prostorija za preglede" => RoomType.zaPreglede,
+                "Operaciona sala" => RoomType.sala,
+                "Bolesnička soba" => RoomType.bolesnicka,
+                _ => RoomType.bolesnicka,
             };
         }
 
         public static List<string> GetTipoviProstorije()
         {
             List<string> tipovi = new List<string>();
-            foreach (TipProstorije tip in Enum.GetValues(typeof(TipProstorije)))
+            foreach (RoomType tip in Enum.GetValues(typeof(RoomType)))
             {
                 string s = TipProstorijeToString(tip);
                 tipovi.Add(s);
@@ -62,7 +62,7 @@ namespace Model
         public static List<string> GetTipoviOpreme()
         {
             List<string> tipovi = new List<string>();
-            foreach (TipOpreme tip in Enum.GetValues(typeof(TipOpreme)))
+            foreach (InventoryType tip in Enum.GetValues(typeof(InventoryType)))
             {
                 string s = TipOpremeToString(tip);
                 tipovi.Add(s);

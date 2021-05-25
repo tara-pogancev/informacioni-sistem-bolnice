@@ -3,8 +3,6 @@
     "MedicineID": "l1",
     "MedicineName": "Katopil",
     "Components": [
-      "a3",
-      "a5"
     ],
     "IDSubstitution": "l4",
     "ApprovalStatus": 2
@@ -13,8 +11,6 @@
     "MedicineID": "l2",
     "MedicineName": "Brufen 200",
     "Components": [
-      "a6",
-      "a1"
     ],
     "IDSubstitution": "l6",
     "ApprovalStatus": 0
@@ -23,8 +19,6 @@
     "MedicineID": "l3",
     "MedicineName": "Prilenap",
     "Components": [
-      "a6",
-      "a10"
     ],
     "IDSubstitution": "l5",
     "ApprovalStatus": 0
@@ -33,11 +27,6 @@
     "MedicineID": "l4",
     "MedicineName": "Vivace",
     "Components": [
-      "a2",
-      "a3",
-      "a4",
-      "a8",
-      "a9"
     ],
     "IDSubstitution": "l5",
     "ApprovalStatus": 0
@@ -46,7 +35,6 @@
     "MedicineID": "l5",
     "MedicineName": "Fervex",
     "Components": [
-      "a2"
     ],
     "IDSubstitution": "l3",
     "ApprovalStatus": 0
@@ -55,8 +43,6 @@
     "MedicineID": "l6",
     "MedicineName": "Analgin",
     "Components": [
-      "a9",
-      "a10"
     ],
     "IDSubstitution": "l2",
     "ApprovalStatus": 2

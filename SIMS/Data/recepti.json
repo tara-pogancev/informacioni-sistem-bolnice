@@ -1,80 +1,80 @@
 {
   "210429091946": {
-    "NazivLeka": "Vivace",
-    "Kolicina": "50 mg",
-    "Dijagnoza": "Temperatura",
-    "ReceptKey": "210429091946",
-    "Lekar": {
+    "MedicineName": "Vivace",
+    "Amount": "50 mg",
+    "Diagnosis": "Temperatura",
+    "ReceptID": "210429091946",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "4484552102"
     },
-    "Datum": "2021-04-29T00:00:00+02:00"
+    "Date": "2021-04-29T00:00:00+02:00"
   },
   "210429093023": {
-    "NazivLeka": "Katopil",
-    "Kolicina": "15 ml",
-    "Dijagnoza": "/",
-    "ReceptKey": "210429093023",
-    "Lekar": {
+    "MedicineName": "Katopil",
+    "Amount": "15 ml",
+    "Diagnosis": "/",
+    "ReceptID": "210429093023",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "12645323206"
     },
-    "Datum": "2021-04-29T00:00:00+02:00"
+    "Date": "2021-04-29T00:00:00+02:00"
   },
   "210504121035": {
-    "NazivLeka": "Prilenap",
-    "Kolicina": "55 ml",
-    "Dijagnoza": "Bolovi",
-    "ReceptKey": "210504121035",
-    "Lekar": {
+    "MedicineName": "Prilenap",
+    "Amount": "55 ml",
+    "Diagnosis": "Bolovi",
+    "ReceptID": "210504121035",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "2484848556"
     },
-    "Datum": "2021-05-04T00:00:00+02:00"
+    "Date": "2021-05-04T00:00:00+02:00"
   },
   "210508122801": {
-    "NazivLeka": "Prilenap",
-    "Kolicina": "/",
-    "Dijagnoza": "/",
-    "ReceptKey": "210508122801",
-    "Lekar": {
+    "MedicineName": "Prilenap",
+    "Amount": "/",
+    "Diagnosis": "/",
+    "ReceptID": "210508122801",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "12645323206"
     },
-    "Datum": "2021-05-08T00:00:00+02:00"
+    "Date": "2021-05-08T00:00:00+02:00"
   },
   "210508122835": {
-    "NazivLeka": "Fervex",
-    "Kolicina": "/",
-    "Dijagnoza": "/",
-    "ReceptKey": "210508122835",
-    "Lekar": {
+    "MedicineName": "Fervex",
+    "Amount": "/",
+    "Diagnosis": "/",
+    "ReceptID": "210508122835",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "4484552102"
     },
-    "Datum": "2021-05-08T00:00:00+02:00"
+    "Date": "2021-05-08T00:00:00+02:00"
   },
   "210508031317": {
-    "NazivLeka": "Fervex",
-    "Kolicina": "85 ml",
-    "Dijagnoza": "Prehlada",
-    "ReceptKey": "210508031317",
-    "Lekar": {
+    "MedicineName": "Fervex",
+    "Amount": "85 ml",
+    "Diagnosis": "Prehlada",
+    "ReceptID": "210508031317",
+    "Doctor": {
       "Jmbg": "045210805048"
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "12645323206"
     },
-    "Datum": "2021-05-08T00:00:00+02:00"
+    "Date": "2021-05-08T00:00:00+02:00"
   }
 }

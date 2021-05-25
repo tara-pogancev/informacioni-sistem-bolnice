@@ -1,239 +1,122 @@
 {
-  "210508095158": {
-    "PocetnoVreme": "2021-05-08T08:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
+  "210524022557553316": {
+    "StartTime": "2021-05-25T08:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
       "Jmbg": "045210805048",
-      "Serijalizuj": false
+      "Serialize": false
     },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "4865453131",
-      "Serijalizuj": false
+      "Serialize": false
     },
-    "Prostorija": {
-      "Broj": "1",
-      "Serijalizuj": false
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
     },
-    "InicijalnoVrijeme": "2021-05-08T08:00:00",
-    "TerminKey": "210508095158"
+    "InitialTime": "2021-05-25T08:00:00",
+    "AppointmentID": "210524022557553316"
   },
-  "210508095211": {
-    "PocetnoVreme": "2021-05-08T09:30:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
+  "210524022606534957": {
+    "StartTime": "2021-05-25T09:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-25T09:00:00",
+    "AppointmentID": "210524022606534957"
+  },
+  "210524022616967574": {
+    "StartTime": "2021-05-25T10:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-25T10:00:00",
+    "AppointmentID": "210524022616967574"
+  },
+  "210524022634266372": {
+    "StartTime": "2021-05-26T09:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-26T09:00:00",
+    "AppointmentID": "210524022634266372"
+  },
+  "210524055823692335": {
+    "StartTime": "2021-05-25T08:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
       "Jmbg": "4848555021548",
-      "Serijalizuj": false
+      "Serialize": false
     },
-    "Pacijent": {
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "1",
-      "Serijalizuj": false
-    },
-    "InicijalnoVrijeme": "2021-05-08T09:30:00",
-    "TerminKey": "210508095211"
-  },
-  "210509104134": {
-    "PocetnoVreme": "2021-05-09T08:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "1",
-      "Serijalizuj": false
-    },
-    "InicijalnoVrijeme": "2021-05-09T08:00:00",
-    "TerminKey": "210509104134"
-  },
-  "210510120205971752": {
-    "PocetnoVreme": "2021-05-11T10:00:00",
-    "VremeTrajanja": 60,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "12121977802342",
-      "Serijalizuj": false
+      "Serialize": false
     },
-    "Prostorija": {
-      "Broj": "2",
-      "Serijalizuj": false
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "3",
+      "Serialize": false
     },
-    "InicijalnoVrijeme": "2021-05-11T10:00:00",
-    "TerminKey": "210510120205971752"
+    "InitialTime": "2021-05-25T08:00:00",
+    "AppointmentID": "210524055823692335"
   },
-  "210510120212600947": {
-    "PocetnoVreme": "2021-05-15T10:00:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
+  "210524060702290670": {
+    "StartTime": "2021-05-25T09:00:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "22157484654211",
+      "Serialize": false
     },
-    "Pacijent": {
-      "Jmbg": "12121977802342",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "3",
-      "Serijalizuj": false
-    },
-    "InicijalnoVrijeme": "2021-05-15T10:00:00",
-    "TerminKey": "210510120212600947"
-  },
-  "210510120225769692": {
-    "PocetnoVreme": "2021-05-15T14:00:00",
-    "VremeTrajanja": 60,
-    "VrstaTermina": 0,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "2",
-      "Serijalizuj": false
-    },
-    "InicijalnoVrijeme": "2021-05-15T14:00:00",
-    "TerminKey": "210510120225769692"
-  },
-  "210510120236219201": {
-    "PocetnoVreme": "2021-05-14T09:00:00",
-    "VremeTrajanja": 90,
-    "VrstaTermina": 1,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
+    "Patient": {
       "Jmbg": "121",
-      "Serijalizuj": false
+      "Serialize": false
     },
-    "Prostorija": {
-      "Broj": "2",
-      "Serijalizuj": false
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "3",
+      "Serialize": false
     },
-    "InicijalnoVrijeme": "2021-05-14T09:00:00",
-    "TerminKey": "210510120236219201"
-  },
-  "210510120257384637": {
-    "PocetnoVreme": "2021-04-28T10:00:00",
-    "VremeTrajanja": 60,
-    "VrstaTermina": 1,
-    "Lekar": {
-      "Jmbg": "045210805048",
-      "Serijalizuj": false
-    },
-    "Pacijent": {
-      "Jmbg": "4865453131",
-      "Serijalizuj": false
-    },
-    "Prostorija": {
-      "Broj": "1",
-      "Serijalizuj": false
-    },
-    "InicijalnoVrijeme": "2021-04-28T10:00:00",
-    "TerminKey": "210510120257384637"
-  },
-  "210510120319176415": {
-    "PocetnoVreme": "2021-05-10T13:30:00",
-    "VremeTrajanja": 30,
-    "VrstaTermina": 1,
-    "Lekar": {
-      "DaniGodisnjegOdmora": 20,
-      "SpecijalizacijaLekara": 4,
-      "Ime": "Zack",
-      "Prezime": "Fair",
-      "Jmbg": "4848555021548",
-      "KorisnickoIme": "zack",
-      "Lozinka": "l",
-      "Email": "zackfair@zdravo.com",
-      "Telefon": "0698547521",
-      "Adresa": {
-        "grad": {
-          "Naziv": "Midgar",
-          "PostanskiBroj": 99888,
-          "Drzava": {
-            "Naziv": "Gaia"
-          }
-        },
-        "Grad": {
-          "Naziv": "Midgar",
-          "PostanskiBroj": 99888,
-          "Drzava": {
-            "Naziv": "Gaia"
-          }
-        },
-        "Ulica": "Shinra Inc",
-        "Broj": "Floor 75"
-      },
-      "Serijalizuj": true
-    },
-    "Pacijent": {
-      "Lbo": "123",
-      "Gost": false,
-      "Alergeni": [
-        "a2",
-        "a7"
-      ],
-      "Datum_Rodjenja": "1999-03-05T00:00:00",
-      "GetHronicneBolestiString": "Nema",
-      "Pol_Pacijenta": 0,
-      "Krvna_Grupa": 0,
-      "BanovanKorisnik": false,
-      "Ime": "Đorđe",
-      "Prezime": "Krsmanović",
-      "Jmbg": "4865453131",
-      "KorisnickoIme": "pacijent",
-      "Lozinka": "p",
-      "Email": "djordje1499@gmail.com",
-      "Telefon": "0645568131",
-      "Adresa": {
-        "grad": {
-          "Naziv": "Novi Sad",
-          "PostanskiBroj": 21000,
-          "Drzava": {
-            "Naziv": "Srbija"
-          }
-        },
-        "Grad": {
-          "Naziv": "Novi Sad",
-          "PostanskiBroj": 21000,
-          "Drzava": {
-            "Naziv": "Srbija"
-          }
-        },
-        "Ulica": "Hopovska",
-        "Broj": "5a"
-      },
-      "Serijalizuj": true
-    },
-    "Prostorija": {
-      "pocetakRenoviranja": null,
-      "krajRenoviranja": null,
-      "kolicineOpreme": {},
-      "TipProstorije": 0,
-      "Broj": "1",
-      "Dostupna": true,
-      "Serijalizuj": true
-    },
-    "InicijalnoVrijeme": "2021-05-10T13:30:00",
-    "TerminKey": "210510120319176415"
+    "InitialTime": "2021-05-25T09:00:00",
+    "AppointmentID": "210524060702290670"
   }
 }

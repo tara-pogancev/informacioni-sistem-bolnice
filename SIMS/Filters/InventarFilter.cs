@@ -1,22 +1,23 @@
-﻿using Model;
+﻿using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Model;
 
 namespace SIMS.Filters
 {
-    class InventarFilter : TableFilter<Oprema, InventarFilter>
+    class InventarFilter : TableFilter<Inventory, InventarFilter>
     {
-        public override bool CheckBoxFilter(Oprema oprema, bool checkboxChecked)
+        public override bool CheckBoxFilter(Inventory oprema, bool checkboxChecked)
         {
             return true;
         }
 
-        public override bool KeywordFilter(Oprema oprema, string keyword)
+        public override bool KeywordFilter(Inventory oprema, string keyword)
         {
-            return (oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
+            return (oprema.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Name.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.TypeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

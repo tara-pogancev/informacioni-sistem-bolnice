@@ -1,46 +1,46 @@
 ﻿{
   "0603850721311": {
-    "DaniGodisnjegOdmora": 18,
-    "Ime": "Ivan",
-    "Prezime": "Stanić",
+    "VacationDays": 18,
+    "Name": "Ivan",
+    "LastName": "Stanić",
     "Jmbg": "0603850721311",
-    "KorisnickoIme": "sekretar",
-    "Lozinka": "s",
+    "Username": "sekretar",
+    "Password": "s",
     "Email": "sekretar@zdravo.com",
-    "Telefon": "0649962541",
-    "Adresa": {
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
+    "Phone": "0649962541",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21000,
+        "Country": {
+          "Name": "Srbija"
         }
       },
-      "Ulica": "Bolmanska",
-      "Broj": "112"
+      "Street": "Bolmanska",
+      "Number": "112"
     },
-    "ImePrezime": "Ivan Stanić"
+    "FullName": "Ivan Stanić"
   },
   "064865071221": {
-    "DaniGodisnjegOdmora": 23,
-    "Ime": "Mladen",
-    "Prezime": "Zorić",
+    "VacationDays": 23,
+    "Name": "Mladen",
+    "LastName": "Zorić",
     "Jmbg": "064865071221",
-    "KorisnickoIme": "mladen22",
-    "Lozinka": "s",
+    "Username": "mladen22",
+    "Password": "s",
     "Email": "mladen.sekretar@zdravo.com",
-    "Telefon": "0625967781",
-    "Adresa": {
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
+    "Phone": "0625967781",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21000,
+        "Country": {
+          "Name": "Srbija"
         }
       },
-      "Ulica": "Otona Županića",
-      "Broj": "48"
+      "Street": "Otona Županića",
+      "Number": "48"
     },
-    "ImePrezime": "Mladen Zorić"
+    "FullName": "Mladen Zorić"
   }
 }

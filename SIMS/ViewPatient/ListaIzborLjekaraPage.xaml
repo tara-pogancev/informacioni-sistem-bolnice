@@ -1,0 +1,56 @@
+﻿<Page x:Class="SIMS.PacijentGUI.ListaIzborLjekaraPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.PacijentGUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="ListaIzborLjekaraPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Button Width="150" Height="35" Margin="25,50,25,464"> Nazad </Button>
+        </Grid>
+        <Grid Grid.Column="1">
+            <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Doctors, Mode=TwoWay}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
+                  Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="500" BorderBrush="Black" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}"/>
+                    <DataGridTextColumn Header="Ocjena" Binding="{Binding Grade}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Padding="0" Width="60" Name="Odaberi" Background="Firebrick" >Izmijeni</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Padding="0" Width="60" Background="Firebrick" Name="Detalji">Obrisi</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        
+    </Grid>
+</Page>

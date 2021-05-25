@@ -1,67 +1,66 @@
 {
   "a1": {
     "ID": "a1",
-    "Naziv": "Polen"
+    "Name": "Polen"
   },
   "a2": {
     "ID": "a2",
-    "Naziv": "Laktoza"
+    "Name": "Laktoza"
   },
   "a3": {
     "ID": "a3",
-    "Naziv": "Ambrozija"
+    "Name": "Ambrozija"
   },
   "a4": {
     "ID": "a4",
-    "Naziv": "Životinjska dlaka"
+    "Name": "Životinjska dlaka"
   },
   "a5": {
     "ID": "a5",
-    "Naziv": "Prašina"
+    "Name": "Prašina"
   },
   "a6": {
     "ID": "a6",
-    "Naziv": "Ibuprofen"
+    "Name": "Ibuprofen"
   },
   "a7": {
     "ID": "a7",
-    "Naziv": "Titan-dioksid"
+    "Name": "Titan-dioksid"
   },
   "a8": {
     "ID": "a8",
-    "Naziv": "Celuloza"
+    "Name": "Celuloza"
   },
   "a9": {
     "ID": "a9",
-    "Naziv": "Monohidrat"
+    "Name": "Monohidrat"
   },
   "a10": {
     "ID": "a10",
-    "Naziv": "Silicijum-dioksid"
+    "Name": "Silicijum-dioksid"
   },
   "a11": {
     "ID": "a11",
-    "Naziv": "Natrijum-laurilsulfat"
+    "Name": "Natrijum-laurilsulfat"
   },
   "a12": {
     "ID": "a12",
-    "Naziv": "Magnezijum-stearat"
+    "Name": "Magnezijum-stearat"
   },
   "a13": {
     "ID": "a13",
-    "Naziv": "Gestoden"
+    "Name": "Gestoden"
   },
   "a14": {
     "ID": "a14",
-    "Naziv": "Etinilestradiol"
+    "Name": "Etinilestradiol"
   },
   "a15": {
     "ID": "a15",
-    "Naziv": "Skrob"
+    "Name": "Skrob"
   },
   "a16": {
     "ID": "a16",
-    "Naziv": "Povidon 90"
+    "Name": "Povidon 90"
   }
-
 }

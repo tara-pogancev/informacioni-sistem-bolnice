@@ -1,5 +1,6 @@
-﻿using Model;
+﻿using SIMS.Repositories.SecretaryRepo;
 using SIMS.PacijentGUI;
+using SIMS.Repositories.DoctorRepo;
 using SIMS.UpravnikGUI;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Model;
 
 namespace SIMS
 {
@@ -35,10 +37,10 @@ namespace SIMS
             String pass = password.Password;
 
             //impelemntacija za pacijenta
-            Pacijent pacijent = PacijentStorage.Instance.ReadUser(user);
-            if (pacijent != null && pass.Equals(pacijent.Lozinka))
+            Patient pacijent = PatientFileRepository.Instance.ReadUser(user);
+            if (pacijent != null && pass.Equals(pacijent.Password))
             {
-                if (pacijent.BanovanKorisnik)
+                if (pacijent.IsBanned)
                 {
                     ObavjestenjeOTerminu o = new ObavjestenjeOTerminu();
                     o.TekstObavjestenja.Text= "Poštovani Vaš nalog je blokiran.Za više detalja obratite se sekretaru bolnice";
@@ -56,8 +58,8 @@ namespace SIMS
 
 
             //impelemntacija za upravnika
-            Upravnik upravnik = UpravnikStorage.Instance.ReadUser(user);
-            if (upravnik != null && pass.Equals(upravnik.Lozinka))
+            Manager upravnik = ManagerFileRepository.Instance.ReadUser(user);
+            if (upravnik != null && pass.Equals(upravnik.Password))
             {
                 UpravnikWindow.Instance.Show();
                 this.Close();
@@ -65,18 +67,18 @@ namespace SIMS
             }
 
             //impelementacija za doktora
-            Lekar lekar = LekarStorage.Instance.ReadUser(user);
-            if (lekar != null && pass.Equals(lekar.Lozinka))
+            Doctor lekar = DoctorFileRepository.Instance.ReadUser(user);
+            if (lekar != null && pass.Equals(lekar.Password))
             {
-                LekarUI lekarUI = LekarUI.GetInstance(lekar);
+                DoctorUI lekarUI = DoctorUI.GetInstance(lekar);
                 lekarUI.Show();
                 this.Close();
                 return;
             }
 
             //implementacija za sekretara
-            Sekretar sekretar = SekretarStorage.Instance.ReadUser(user);
-            if (sekretar != null && pass.Equals(sekretar.Lozinka))
+            Secretary sekretar = SecretaryFileRepository.Instance.ReadUser(user);
+            if (sekretar != null && pass.Equals(sekretar.Password))
             {
                     SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
                     sekretarUI.Show();

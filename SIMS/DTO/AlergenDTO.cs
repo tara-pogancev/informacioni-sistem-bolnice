@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.SecretaryRepo;
+using SIMS.Repositories.AllergenRepo;
+using SIMS.Model;
 
 namespace SIMS.DTO
 {
@@ -16,18 +18,18 @@ namespace SIMS.DTO
 
         }
 
-        public AlergenDTO(Alergen alergen, Lek medicine)
+        public AlergenDTO(Allergen alergen, Medication medicine)
         {
             AlergenID = alergen.ID;
-            AlergenNaziv = alergen.Naziv;
-            IsIncludedInMedicine = medicine.Components.Contains(AlergenID);
+            AlergenNaziv = alergen.Name;
+            IsIncludedInMedicine = medicine.Components.Contains(alergen);
         }
 
-        public List<AlergenDTO> GetAllAlergenList(Lek medicine)
+        public List<AlergenDTO> GetAllAlergenList(Medication medicine)
         {
             List<AlergenDTO> retVal = new List<AlergenDTO>();
 
-            foreach (Alergen currentAlergen in AlergeniStorage.Instance.ReadList())
+            foreach (Allergen currentAlergen in AllergenFileRepository.Instance.GetAll())
                 retVal.Add(new AlergenDTO(currentAlergen, medicine));
 
             return retVal;

@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using SIMS.Repositories.SecretaryRepo;
+using SIMS.LekarGUI.Dialogues.Izvestaji;
+using SIMS.Model;
+
+namespace SIMS.LekarGUI.Pages
+{
+    /// <summary>
+    /// Interaction logic for LDBAktivanTermin.xaml
+    /// </summary>
+    public partial class LDBAktivanTermin : Page
+    {
+        public static LDBAktivanTermin instance;
+        private static Appointment aktivanTermin;
+
+        public static LDBAktivanTermin GetInstance(Appointment t)
+        {
+            if (instance == null)
+            {
+                instance = new LDBAktivanTermin();
+                aktivanTermin = t;
+            }
+            return instance;
+        }
+
+        public LDBAktivanTermin()
+        {
+            InitializeComponent();
+        }
+
+        private void Evidentiraj_Button(object sender, RoutedEventArgs e)
+        {
+            DoctorUI.GetInstance().ChangeTab(3);
+
+            if (aktivanTermin.Type == AppointmentType.examination)
+            {
+                AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
+                a.ShowDialog();
+            }
+            else
+            {
+                OperacijaIzvestajCreate o = new OperacijaIzvestajCreate(aktivanTermin);
+                o.ShowDialog();
+            }
+        }
+    }
+}

@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model;
+using SIMS.Repositories.SecretaryRepo;
+using SIMS.Model;
+
 namespace SIMS.Filters
 {
-    class InventarProstorijeFilter : TableFilter<Oprema, InventarProstorijeFilter>
+    class InventarProstorijeFilter : TableFilter<Inventory, InventarProstorijeFilter>
     {
-        public override bool CheckBoxFilter(Oprema oprema, bool checkboxChecked)
+        public override bool CheckBoxFilter(Inventory oprema, bool checkboxChecked)
         {
-            return !checkboxChecked || oprema.Kolicina != 0;
+            return !checkboxChecked || oprema.Amount != 0;
         }
 
-        public override bool KeywordFilter(Oprema oprema, string keyword)
+        public override bool KeywordFilter(Inventory oprema, string keyword)
         {
-            return (oprema.Id.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Naziv.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.Kolicina.ToString().Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
-                    oprema.TipToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
+            return (oprema.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Name.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.Amount.ToString().Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
+                    oprema.TypeToString.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

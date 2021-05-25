@@ -1,153 +1,82 @@
 {
   "4865453131": {
+    "PatientGender": 0,
+    "BloodType": 0,
+    "IsBanned": false,
     "Lbo": "123",
-    "Gost": false,
-    "Alergeni": [
-      "a2",
-      "a7"
-    ],
-    "Datum_Rodjenja": "1999-03-05T00:00:00",
-    "GetHronicneBolestiString": "Nema",
-    "Pol_Pacijenta": 0,
-    "Krvna_Grupa": 0,
-    "BanovanKorisnik": false,
-    "Ime": "Đorđe",
-    "Prezime": "Krsmanović",
+    "Guest": false,
+    "Allergens": [],
+    "DateOfBirth": "1999-03-05T00:00:00",
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
+    "Name": "Đorđe",
+    "LastName": "Krsmanović",
     "Jmbg": "4865453131",
-    "KorisnickoIme": "pacijent",
-    "Lozinka": "p",
+    "Username": "pacijent",
+    "Password": "p",
     "Email": "djordje1499@gmail.com",
-    "Telefon": "0645568131",
-    "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Hopovska",
-      "Broj": "5a"
-    },
-    "Serijalizuj": true
+    "Phone": "0645568131",
+    "Address": null,
+    "Serialize": true
   },
   "12645323206": {
+    "PatientGender": 0,
+    "BloodType": 5,
+    "IsBanned": true,
     "Lbo": "45645",
-    "Gost": false,
-    "Alergeni": [
-      ""
-    ],
-    "Datum_Rodjenja": "1999-03-05T00:00:00",
-    "GetHronicneBolestiString": "Nema",
-    "Pol_Pacijenta": 0,
-    "Krvna_Grupa": 5,
-    "BanovanKorisnik": true,
-    "Ime": "Miha",
-    "Prezime": "Mihajlo",
+    "Guest": false,
+    "Allergens": [],
+    "DateOfBirth": "1999-03-05T00:00:00",
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
+    "Name": "Miha",
+    "LastName": "Mihajlo",
     "Jmbg": "12645323206",
-    "KorisnickoIme": "pacijent1",
-    "Lozinka": "p",
+    "Username": "pacijent1",
+    "Password": "p",
     "Email": "email.miha@gmail.com",
-    "Telefon": "06250",
-    "Adresa": {
-      "grad": {
-        "Naziv": "Beograd",
-        "PostanskiBroj": 101801,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Beograd",
-        "PostanskiBroj": 101801,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Milentija Popovića",
-      "Broj": "45"
-    },
-    "Serijalizuj": true
+    "Phone": "06250",
+    "Address": null,
+    "Serialize": true
   },
   "12121977802342": {
+    "PatientGender": 0,
+    "BloodType": 0,
+    "IsBanned": false,
     "Lbo": "123456",
-    "Gost": false,
-    "Alergeni": [
-      "a1"
-    ],
-    "Datum_Rodjenja": "1977-12-12T00:00:00",
-    "GetHronicneBolestiString": "Nema",
-    "Pol_Pacijenta": 0,
-    "Krvna_Grupa": 0,
-    "BanovanKorisnik": false,
-    "Ime": "Petar",
-    "Prezime": "Petrovic",
+    "Guest": false,
+    "Allergens": [],
+    "DateOfBirth": "1977-12-12T00:00:00",
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
+    "Name": "Petar",
+    "LastName": "Petrović",
     "Jmbg": "12121977802342",
-    "KorisnickoIme": "pacijent2",
-    "Lozinka": "p",
+    "Username": "pacijent2",
+    "Password": "p",
     "Email": "petarpetrovic@gmail.com",
-    "Telefon": "061 234567",
-    "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Turnjegevljeva",
-      "Broj": "16"
-    },
-    "Serijalizuj": true
+    "Phone": "061 234567",
+    "Address": null,
+    "Serialize": true
   },
   "121": {
+    "PatientGender": 1,
+    "BloodType": 3,
+    "IsBanned": false,
     "Lbo": "123456",
-    "Gost": false,
-    "Alergeni": [],
-    "Datum_Rodjenja": "1977-12-12T00:00:00",
-    "GetHronicneBolestiString": "Nema",
-    "Pol_Pacijenta": 0,
-    "Krvna_Grupa": 0,
-    "BanovanKorisnik": false,
-    "Ime": "Petar",
-    "Prezime": "Petrovic",
-    "Jmbg": "121",
-    "KorisnickoIme": "pacijent3",
-    "Lozinka": "p",
-    "Email": "petarpetrovic@gmail.com",
-    "Telefon": "061 234567",
-    "Adresa": {
-      "grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Grad": {
-        "Naziv": "Novi Sad",
-        "PostanskiBroj": 21000,
-        "Drzava": {
-          "Naziv": "Srbija"
-        }
-      },
-      "Ulica": "Turnjegevljeva",
-      "Broj": "16"
-    },
-    "Serijalizuj": true
+    "Guest": false,
+    "Allergens": [],
+    "DateOfBirth": "1985-11-10T00:00:00",
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
+    "Name": "Milena",
+    "LastName": "Zorić",
+    "Jmbg": "1445857",
+    "Username": "pacijent3",
+    "Password": "p",
+    "Email": "milena@gmail.com",
+    "Phone": "061 2345857",
+    "Address": null,
+    "Serialize": true
   }
 }
