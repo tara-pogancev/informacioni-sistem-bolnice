@@ -45,7 +45,7 @@ namespace SIMS.PacijentGUI
             AlergeniText.TextWrapping = TextWrapping.Wrap;
             KrvnaGrupaText.Inlines.Add(new Run("Krvna grupa:") { FontWeight = FontWeights.Bold, FontSize = 15 });
             KrvnaGrupaText.Inlines.Add(" ");
-            KrvnaGrupaText.Inlines.Add(pacijent.BloodTypeString);
+            KrvnaGrupaText.Inlines.Add(pacijent.GetBloodTypeString());
 
         }
 

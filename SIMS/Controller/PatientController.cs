@@ -15,6 +15,13 @@ namespace SIMS.Controller
             patientService = new PatientService();
         }
 
+        public void UpdatePatient(Patient patient) => patientService.UpdatePatient(patient);
+
+        public void DeletePatient(String patientKey) => patientService.DeletePatient(patientKey);
+
+        public void SavePatient(Patient patient) => patientService.SavePatient(patient);
+
+        public Patient GetPatient(String patientKey) => patientService.GetPatient(patientKey);
 
     }
 }

@@ -45,6 +45,27 @@ namespace SIMS.Model
             Serialize = true;
         }
 
+        public Patient(Patient patient)
+        {
+            Name = patient.Name;
+            LastName = patient.LastName;
+            Jmbg = patient.Jmbg;
+            Username = patient.Username;
+            Password = patient.Password;
+            Email = patient.Email;
+            Phone = patient.Phone;
+            Address = patient.Address;
+            Serialize = patient.Serialize;
+            Lbo = patient.Lbo;
+            Guest = patient.Guest;
+            Allergens = patient.Allergens;
+            DateOfBirth = patient.DateOfBirth;
+            BloodType = patient.BloodType;
+            PatientGender = patient.PatientGender;
+            HronicalDiseases = patient.HronicalDiseases;
+            IsBanned = patient.IsBanned;
+        }
+
         public Patient() : base()
         {
             IsBanned = false;
@@ -62,17 +83,12 @@ namespace SIMS.Model
             HronicalDiseases = new List<string>();
         }
 
-        [JsonIgnore]
-        public String GetGost
+        public String GetIfGuestString()
         {
-            get
-            {
                 if (Guest)
                     return "Da";
                 else
                     return "Ne";
-            }
-
         }
 
         public void SetAttributes(Patient p)
@@ -89,11 +105,8 @@ namespace SIMS.Model
             Guest = p.Guest;
         }
 
-        [JsonIgnore]
-        public string GetAllergenListString
+        public string GetAllergenListString()
         {
-            get
-            {
                 string allergensString = "";
                 if (Allergens.Count == 0 || Allergens.Contains(""))
                     return "Nema";
@@ -103,7 +116,6 @@ namespace SIMS.Model
                 foreach (string a in Allergens)
                     allergensString += allergens.FindById(a).Name + ", ";
                 return allergensString.Remove(allergensString.Length - 2); 
-            }
         }
 
         public bool Unvailable(Appointment appointment)
@@ -111,26 +123,21 @@ namespace SIMS.Model
             return appointment.Patient.Jmbg == this.Jmbg;
         }
 
-        [JsonIgnore]
-        public String DateString { get => DateOfBirth.ToString("dd.MM.yyyy."); }
+        public String GetDateOfBirthString() 
+        { 
+            return DateOfBirth.ToString("dd.MM.yyyy."); 
+        }
 
-        [JsonIgnore]
-        public String Gender
+        public String GetGenderString()
         {
-            get
-            {
                 if (PatientGender == SexType.Male)
                     return "Muško";
                 else
                     return "Žensko";
-            }
         }
 
-        [JsonIgnore]
-        public String BloodTypeString
+        public String GetBloodTypeString()
         {
-            get
-            {
                 if (BloodType == BloodType.ABn)
                     return "AB-";
                 else if (BloodType == BloodType.ABp)
@@ -149,7 +156,6 @@ namespace SIMS.Model
                     return "O-";
 
                 return null;
-            }
         }
 
         public bool IsAlergic(Medication lek)

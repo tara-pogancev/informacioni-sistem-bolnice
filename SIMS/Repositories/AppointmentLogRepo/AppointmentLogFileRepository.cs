@@ -23,7 +23,7 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        protected override void shouldSerialize(AppointmentLog entity)
+        protected override void ShouldSerialize(AppointmentLog entity)
         {
             //ne treba implementacija
         }

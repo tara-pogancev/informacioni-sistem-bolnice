@@ -31,7 +31,7 @@ namespace SIMS.LekarGUI
             LabelPatient.Content = "Pacijent: " + this.patient.FullName;
             LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Medication> availableMedicine = new List<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
+            List<Medication> availableMedicine = new List<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
             MedicineComboBox.ItemsSource = availableMedicine;
 
         }

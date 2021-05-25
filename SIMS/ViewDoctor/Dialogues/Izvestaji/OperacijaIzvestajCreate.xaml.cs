@@ -31,7 +31,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             LabelDate.Content = "Datum operacije: " + operation.GetAppointmentDate();
 
             LabelPacijent.Content = "Pacijent: " + operation.GetPatientName();
-            LabelBirthDate.Content = "Datum rođenja: " + operation.Patient.DateString;
+            LabelBirthDate.Content = "Datum rođenja: " + operation.Patient.GetDateOfBirthString();
 
             LabelRoom.Content = "Prostorija: " + operation.Room.Number;
 

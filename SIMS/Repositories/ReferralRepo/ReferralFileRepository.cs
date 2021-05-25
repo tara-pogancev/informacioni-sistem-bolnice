@@ -23,7 +23,7 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        protected override void shouldSerialize(Referral entity)
+        protected override void ShouldSerialize(Referral entity)
         {
         }
     }

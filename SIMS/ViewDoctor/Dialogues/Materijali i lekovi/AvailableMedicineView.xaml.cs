@@ -28,7 +28,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
+            MedicineView = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
 
         }
         

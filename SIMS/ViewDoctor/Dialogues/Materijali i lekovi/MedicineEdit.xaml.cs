@@ -40,7 +40,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             NewComponentsView = new ObservableCollection<AlergenDTO>();
             CurrentComponentsView = new ObservableCollection<AlergenDTO>();
-            MedicineSubstitutionList = new List<Medication>(MedicationFileRepository.Instance.getApprovedMedicine());
+            MedicineSubstitutionList = new List<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
 
             RefreshView();
 

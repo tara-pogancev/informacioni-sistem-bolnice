@@ -38,7 +38,7 @@ namespace SIMS.Model
             return retVal;
         }
 
-        protected override void shouldSerialize(SurgeryReport entity)
+        protected override void ShouldSerialize(SurgeryReport entity)
         {
         }
     }

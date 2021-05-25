@@ -33,7 +33,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
             LabelPatient.Content = "Pacijent: " + anamnesisDTO.PatientName;
             Appointment t = AppointmentFileRepository.Instance.FindById(anamnesis.AnamnesisID);
-            LabelPatientDateOfBirth.Content = "Datum rođenja: " + anamnesisDTO.GetAppointment().Patient.DateString;
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + anamnesisDTO.GetAppointment().Patient.GetDateOfBirthString();
 
             GenerateText(anamnesis);
 

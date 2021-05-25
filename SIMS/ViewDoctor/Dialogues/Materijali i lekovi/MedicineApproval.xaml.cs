@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             DataContext = this;
 
             MedicineView = new ObservableCollection<Medication>();
-            MedicineChanges = new List<Medication>(MedicationFileRepository.Instance.getMedicineWaitingForApproval());
+            MedicineChanges = new List<Medication>(MedicationFileRepository.Instance.GetMedicineWaitingForApproval());
             refresh();
 
         }

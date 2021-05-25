@@ -24,7 +24,7 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        protected override void shouldSerialize(HospitalSurvey entity)
+        protected override void ShouldSerialize(HospitalSurvey entity)
         {
             //ne treba logika za serijalizaciju
         }

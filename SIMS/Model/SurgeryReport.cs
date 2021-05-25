@@ -54,7 +54,7 @@ namespace SIMS.Model
         [JsonIgnore]
         public String DatumRodjenjaPacijenta
         {
-            get { return Operacija.Patient.DateString; }
+            get { return Operacija.Patient.GetDateOfBirthString(); }
         }
 
         [JsonIgnore]

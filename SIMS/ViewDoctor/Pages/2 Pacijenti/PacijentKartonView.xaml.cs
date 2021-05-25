@@ -44,8 +44,8 @@ namespace SIMS.LekarGUI
             Ime_Top.Content = pacijentProfile.FullName;
             Label_Ime.Content = pacijentProfile.FullName;
 
-            Label_Pol.Content = "Pol: " + pacijentProfile.Gender;
-            Label_Datum.Content = "Datum rođenja: " + pacijentProfile.DateString;
+            Label_Pol.Content = "Pol: " + pacijentProfile.GetGenderString();
+            Label_Datum.Content = "Datum rođenja: " + pacijentProfile.GetDateOfBirthString();
             Label_JMBG.Content = "JMBG: " + pacijentProfile.Jmbg;
             Label_LBO.Content = "LBO: " + pacijentProfile.Lbo;
 
@@ -54,8 +54,8 @@ namespace SIMS.LekarGUI
             Label_Adresa.Content = "Adresa: " + pacijentProfile.FullAddressString;
 
 
-            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.BloodTypeString;
-            Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAllergenListString;
+            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.GetBloodTypeString();
+            Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAllergenListString();
             Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.GetHronicalDiseases;
 
         }

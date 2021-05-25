@@ -39,7 +39,7 @@ namespace SIMS.LekarGUI
             LabelDate.Content = appointmentDTO.AppointmentTypeAndDate;
 
             LabelPatient.Content = "Pacijent: " + appointmentDTO.PatientName;
-            LabelPatientDateOfBirth.Content = "Datum rođenja: " + appointmentDTO.Patient.DateString;
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + appointmentDTO.Patient.GetDateOfBirthString();
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Service
+namespace SIMS.Model
 {
     public enum TypeOfRecommendation
     {

@@ -58,7 +58,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
         }
 
-        protected override void shouldSerialize(Notification entity)
+        protected override void ShouldSerialize(Notification entity)
         {
             
         }
