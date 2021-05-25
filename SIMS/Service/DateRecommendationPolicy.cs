@@ -39,12 +39,12 @@ namespace SIMS.Service
             }
         }
 
-        private void RemovePatientAppointments(Appointment termin)
+        private void RemovePatientAppointments(Appointment appointment)
         {
             RoomAvailabilityService roomAvailability = new RoomAvailabilityService();
             for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
-                if ((recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(termin.StartTime) && termin.Patient.Jmbg==(patientID)) || !roomAvailability.IsFreeRoom(recommendedAppointementsDrafts[i].TimeOfAppointment))
+                if ((recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(appointment.StartTime) && appointment.Patient.Jmbg==(patientID)) || !roomAvailability.IsFreeRoom(recommendedAppointementsDrafts[i].TimeOfAppointment))
                 {
                     recommendedAppointementsDrafts.RemoveAt(i);
                     i--;
