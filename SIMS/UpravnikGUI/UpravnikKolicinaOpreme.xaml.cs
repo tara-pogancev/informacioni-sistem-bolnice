@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
@@ -20,9 +21,11 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikKolicinaOpreme : Page
     {
-        UpravnikInventarProstorijePage ParentPage;
-        string BrojProstorije;
-        Inventory Oprema;
+        private UpravnikInventarProstorijePage ParentPage;
+        private string BrojProstorije;
+        private Inventory Oprema;
+        private InventoryController inventoryController = new InventoryController();
+        private RoomInventoryController roomInventoryController = new RoomInventoryController();
 
         public UpravnikKolicinaOpreme(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Inventory Oprema)
         {
@@ -54,23 +57,7 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            int amount;
-            try
-            {
-                amount = int.Parse(Kolicina.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Uneti broj.");
-                return;
-            }
-
-            if (amount < 0)
-            {
-                MessageBox.Show("Uneti broj veći od 0.");
-                return;
-            }
-            RoomInventoryFileRepository.Instance.Update(new RoomInventory(BrojProstorije, Oprema.ID, amount));
+            roomInventoryController.Update(BrojProstorije, Oprema.ID, Kolicina.Text);
 
             ParentPage.Update();
 

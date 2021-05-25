@@ -14,12 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
     public partial class UpravnikProstorijePage : Page
     {
         private ObservableCollection<Room> prostorije;
+        private RoomController roomController = new RoomController();
 
         public UpravnikProstorijePage()
         {
@@ -37,7 +39,9 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiProstorija_Click(object sender, RoutedEventArgs e)
         {
             Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
-            RoomFileRepository.Instance.Delete(SelectedProstorija.Number);
+
+            roomController.Delete(SelectedProstorija.Number);
+
             prostorije = new ObservableCollection<Room>(RoomFileRepository.Instance.GetAll());
             tabelaProstorije.ItemsSource = prostorije;
         }
@@ -45,11 +49,13 @@ namespace SIMS.UpravnikGUI
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
         {
             Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
+
             if (SelectedProstorija == null)
             {
                 MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
+
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(SelectedProstorija.Number));
             UpravnikWindow.Instance.SetLabel("Prostorija " + SelectedProstorija.Number);
         }
@@ -62,11 +68,13 @@ namespace SIMS.UpravnikGUI
         private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)
         {
             Room SelectedProstorija = tabelaProstorije.SelectedItem as Room;
+
             if (SelectedProstorija == null)
             {
                 MessageBox.Show("Izabrati prostoriju.");
                 return;
             }
+
             UpravnikWindow.Instance.SetContent(new RenoviranjePage(SelectedProstorija.Number));
             UpravnikWindow.Instance.SetLabel("Renoviranje prostorije " + SelectedProstorija.Number);
         }

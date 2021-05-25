@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Controller;
 using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 
@@ -21,8 +22,9 @@ namespace SIMS.UpravnikGUI
     public partial class UpravnikProstorijaDetailPage : Page
 
     {
-        Room prostorija;
-        UpravnikInventarProstorijePage Inventar;
+        private Room prostorija;
+        private UpravnikInventarProstorijePage Inventar;
+        private RoomController roomController = new RoomController();
 
         public UpravnikProstorijaDetailPage(string broj) //izmena postojece prostorije
         {
@@ -92,7 +94,8 @@ namespace SIMS.UpravnikGUI
             prostorija.Number = BrojText.Text;
             prostorija.RoomType = Conversion.StringToTipProstorije(TipCombo.Text);
 
-            RoomFileRepository.Instance.CreateOrUpdate(prostorija);
+            roomController.CreateOrUpdate(prostorija);
+
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }

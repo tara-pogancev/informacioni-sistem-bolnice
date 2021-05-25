@@ -15,12 +15,15 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
 using SIMS.Repositories.AllergenRepo;
 using SIMS.Model;
+using SIMS.Service;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
     public partial class AlergeniPage : Page
     {
         private ObservableCollection<Allergen> alergeni;
+        private AllergenController allergenController = new AllergenController();
 
         public AlergeniPage()
         {
@@ -38,8 +41,11 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiAlergen_Click(object sender, RoutedEventArgs e)
         {
             Allergen SelectedAlergen = tabelaAlergeni.SelectedItem as Allergen;
-            AllergenFileRepository.Instance.Delete(SelectedAlergen.ID);
-            alergeni = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
+
+            allergenController.Delete(SelectedAlergen.ID);
+
+            alergeni = new ObservableCollection<Allergen>(allergenController.GetAll());
+
             tabelaAlergeni.ItemsSource = alergeni;
         }
 

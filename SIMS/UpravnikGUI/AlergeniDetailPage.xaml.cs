@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
@@ -21,21 +22,22 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class AlergeniDetailPage : Page
     {
-        Allergen alergen;
+        Allergen allergen;
+        AllergenController allergenController = new AllergenController();
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            alergen = AllergenFileRepository.Instance.FindById(ID);
+            allergen = allergenController.FindById(ID);
             InitializeComponent();
 
-            NazivText.Text = alergen.Name;
-            IDText.Text = alergen.ID;
+            NazivText.Text = allergen.Name;
+            IDText.Text = allergen.ID;
             IDText.IsEnabled = false;
         }
 
         public AlergeniDetailPage() //nov alergen
         {
-            alergen = new Allergen();
+            allergen = new Allergen();
             InitializeComponent();
         }
 
@@ -48,10 +50,11 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            alergen.Name = NazivText.Text;
-            alergen.ID = IDText.Text;
+            allergen.Name = NazivText.Text;
+            allergen.ID = IDText.Text;
 
-            AllergenFileRepository.Instance.CreateOrUpdate(alergen);
+            allergenController.CreateOrUpdate(allergen);
+
             UpravnikWindow.Instance.SetContent(new AlergeniPage());
             UpravnikWindow.Instance.SetLabel("Alergeni");
         }

@@ -10,6 +10,7 @@ namespace SIMS.Repositories
         void Update(T entity);
         void Delete(ID key);
         void Save(T entity);
+        void CreateOrUpdate(T entity);
         T FindById(ID key);
     }
 }

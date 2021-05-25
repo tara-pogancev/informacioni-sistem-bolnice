@@ -48,9 +48,9 @@
                 <DataGrid x:Name="tabelaOpreme" Margin="20, 20" ItemsSource="{Binding opreme}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="70"/>
-                        <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" Width="100"/>
-                        <DataGridTextColumn Header="Tip" Binding="{Binding TipToString}" Width="100"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="70"/>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding Name}" Width="100"/>
+                        <DataGridTextColumn Header="Tip" Binding="{Binding TypeToString}" Width="100"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid>

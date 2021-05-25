@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
@@ -20,7 +21,8 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikOpremaDetailPage : Page
     {
-        Inventory oprema;
+        private Inventory oprema;
+        private InventoryController inventoryController = new InventoryController();
 
         public UpravnikOpremaDetailPage()
         {
@@ -53,7 +55,7 @@ namespace SIMS.UpravnikGUI
             oprema.Name = Naziv.Text;
             oprema.Type = Conversion.StringToTipOpreme(Tip.Text);
 
-            InventoryFileRepository.Instance.CreateOrUpdate(oprema);
+            inventoryController.CreateOrUpdate(oprema);
 
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaPage());
             UpravnikWindow.Instance.SetLabel("Oprema");

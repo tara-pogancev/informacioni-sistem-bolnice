@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Daemon.PremestajOpreme;
 using SIMS.Model;
+using SIMS.Controller;
+using SIMS.DTO;
 
 namespace SIMS.UpravnikGUI
 {
@@ -21,10 +23,10 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikPremestiOpremu : Page
     {
-
-        UpravnikInventarProstorijePage ParentPage;
-        string BrojProstorije;
-        Inventory Oprema;
+        private InventoryController inventoryController = new InventoryController();
+        private UpravnikInventarProstorijePage ParentPage;
+        private string BrojProstorije;
+        private Inventory Oprema;
         public UpravnikPremestiOpremu(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Inventory Oprema)
         {
             this.ParentPage = ParentPage;
@@ -47,31 +49,7 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            int amountToBeMoved;
-
-            try 
-            {
-                amountToBeMoved = int.Parse(Kolicina.Text);
-            } 
-            catch (Exception)
-            {
-                MessageBox.Show("Uneti broj kao količinu.");
-                Kolicina.Text = "";
-                return;
-            }
-
-            DateTime timeOfExecution;
-
-            if (DatumPicker.SelectedDate == null)
-            {
-                timeOfExecution = DateTime.Now;
-            }
-            else
-            {
-                timeOfExecution = (DateTime)DatumPicker.SelectedDate;
-            }
-
-            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, BrojProstorije, BrojPremestanja.Text, Oprema.ID, amountToBeMoved));
+            inventoryController.MoveInventory(new MovingInventoryDTO(BrojProstorije, BrojPremestanja.Text, Kolicina.Text, DatumPicker.SelectedDate, Oprema.ID));
 
             ParentPage.Update();
 

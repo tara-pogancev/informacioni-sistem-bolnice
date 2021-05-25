@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
@@ -20,15 +21,16 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class RenoviranjePage : Page
     {
-        Room prostorija;
+        private Room room;
+        private RoomController roomController = new RoomController();
         public RenoviranjePage(string BrojProstorije)
         {
             InitializeComponent();
-            prostorija = RoomFileRepository.Instance.FindById(BrojProstorije);
-            if (prostorija.RenovationStart != null && prostorija.RenovationEnd != null)
+            room = RoomFileRepository.Instance.FindById(BrojProstorije);
+            if (room.RenovationStart != null && room.RenovationEnd != null)
             {
-                Pocetak.SelectedDate = prostorija.RenovationStart;
-                Kraj.SelectedDate = prostorija.RenovationEnd;
+                Pocetak.SelectedDate = room.RenovationStart;
+                Kraj.SelectedDate = room.RenovationEnd;
             }
         }
 
@@ -36,9 +38,9 @@ namespace SIMS.UpravnikGUI
         {
             if (Pocetak.SelectedDate != null && Kraj.SelectedDate != null)
             {
-                prostorija.RenovationStart = Pocetak.SelectedDate;
-                prostorija.RenovationEnd = Kraj.SelectedDate;
-                RoomFileRepository.Instance.Update(prostorija);
+                room.RenovationStart = Pocetak.SelectedDate;
+                room.RenovationEnd = Kraj.SelectedDate;
+                roomController.Update(room);
             }
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
@@ -52,9 +54,9 @@ namespace SIMS.UpravnikGUI
 
         private void Otkaz_Click(object sender, RoutedEventArgs e)
         {
-            prostorija.RenovationStart = null;
-            prostorija.RenovationEnd = null;
-            RoomFileRepository.Instance.Update(prostorija);
+            room.RenovationStart = null;
+            room.RenovationEnd = null;
+            roomController.Update(room);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
         }

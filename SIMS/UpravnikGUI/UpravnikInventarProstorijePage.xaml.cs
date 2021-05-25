@@ -14,20 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
     public partial class UpravnikInventarProstorijePage : Page
     {
-        Room Prostorija;
-        UpravnikProstorijaDetailPage ParentPage;
-        ObservableCollection<Inventory> SvaOprema;
-
+        private Room Prostorija;
+        private UpravnikProstorijaDetailPage ParentPage;
+        private ObservableCollection<Inventory> SvaOprema;
+        private InventoryController inventoryController = new InventoryController();
         public UpravnikInventarProstorijePage(Room prostorija, UpravnikProstorijaDetailPage parent)
         {
             Prostorija = prostorija;
             ParentPage = parent;
-            SvaOprema = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
+            SvaOprema = new ObservableCollection<Inventory>(inventoryController.GetAll());
             foreach (Inventory op in SvaOprema)
             {
                 op.RoomNumber = Prostorija.Number;

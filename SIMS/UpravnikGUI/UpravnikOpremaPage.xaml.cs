@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
@@ -22,12 +23,13 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikOpremaPage : Page
     {
-        private ObservableCollection<Inventory> opreme;
+        private ObservableCollection<Inventory> inventories;
+        private InventoryController inventoryController = new InventoryController();
         public UpravnikOpremaPage()
         {
             InitializeComponent();
-            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
-            tabelaOpreme.ItemsSource = opreme;
+            inventories = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
+            tabelaOpreme.ItemsSource = inventories;
         }
 
         private void Dodaj_Click(object sender, RoutedEventArgs e)
@@ -39,9 +41,9 @@ namespace SIMS.UpravnikGUI
         private void Izbrisi_Click(object sender, RoutedEventArgs e)
         {
             Inventory SelectedOprema = tabelaOpreme.SelectedItem as Inventory;
-            InventoryFileRepository.Instance.Delete(SelectedOprema.ID);
-            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
-            tabelaOpreme.ItemsSource = opreme;
+            inventoryController.Delete(SelectedOprema.ID);
+            inventories = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
+            tabelaOpreme.ItemsSource = inventories;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
@@ -54,13 +56,13 @@ namespace SIMS.UpravnikGUI
             }
             UpravnikWindow.Instance.SetContent(new UpravnikOpremaDetailPage(SelectedOprema.ID));
             UpravnikWindow.Instance.SetLabel("Oprema " + SelectedOprema.ID);
-            opreme = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
-            tabelaOpreme.ItemsSource = opreme;
+            inventories = new ObservableCollection<Inventory>(InventoryFileRepository.Instance.GetAll());
+            tabelaOpreme.ItemsSource = inventories;
         }
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaOpreme.ItemsSource = InventarFilter.Instance.ApplyFilters(opreme, SearchBox.Text, false);
+            tabelaOpreme.ItemsSource = InventarFilter.Instance.ApplyFilters(inventories, SearchBox.Text, false);
         }
     }
 }
