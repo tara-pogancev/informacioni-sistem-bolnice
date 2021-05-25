@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -26,7 +28,10 @@ namespace SIMS.LekarGUI
 
         private static Doctor doctorUser;
 
-        public ObservableCollection<Appointment> AppointmentsViewModel { get; set; }
+        private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+
+        public ObservableCollection<AppointmentDTO> AppointmentsViewModel { get; set; }
 
         public static DoctorAppointmentsPage GetInstance(Doctor doctor)
         {
@@ -48,73 +53,57 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            AppointmentsViewModel = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
+
+            AppointmentsViewModel = new ObservableCollection<AppointmentDTO>();
             RefreshView();
         }
 
         public void RefreshView()
         {
+            List<Appointment> allAppointments = appointmentController.GetAppointmentsByDoctor(doctorUser);
             AppointmentsViewModel.Clear();
-            List<Appointment> temp = new List<Appointment>(AppointmentFileRepository.Instance.GetDoctorAppointments(doctorUser));
-            
-            foreach (Appointment t in temp)
-            {
-                if (!t.IsPast() && !t.GetIfRecorded())
-                    AppointmentsViewModel.Add(t);
-
-                t.Patient = new PatientFileRepository().FindById(t.Patient.Jmbg);
-                t.Room = new RoomFileRepository().FindById(t.Room.Number);
-            }
+            foreach (AppointmentDTO dto in appointmentController.GetDTOFromList(allAppointments))
+                AppointmentsViewModel.Add(dto);
         }
 
         private void ButtonAppointment(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi pregled
-            AppointmentCreate appointmentCreate = new AppointmentCreate();
-            appointmentCreate.ShowDialog();
+            new AppointmentCreate().ShowDialog();
         }
 
         private void ButtonSurgery(object sender, RoutedEventArgs e)
         {
-            //Button: Zakazi operaciju
-            SurgeryCreate surgeryCreate = new SurgeryCreate();
-            surgeryCreate.ShowDialog();
+            new SurgeryCreate().ShowDialog();
         }
 
         private void ButtonEdit(object sender, RoutedEventArgs e)
         {
-            //Button: Uredi termin
             if (dataGridAppointments.SelectedItem != null)
             {
-                AppointmentUpdate appointmentUpdate = new AppointmentUpdate((Appointment)dataGridAppointments.SelectedItem);
-                appointmentUpdate.ShowDialog();
+                Appointment appointmentToEdit = GetSellectedAppointment();
+                new AppointmentUpdate(appointmentToEdit).ShowDialog();
             }
+        }
+
+        private Appointment GetSellectedAppointment()
+        {
+            AppointmentDTO sellectedDTO = (AppointmentDTO)dataGridAppointments.SelectedItem;
+            return appointmentController.GetAppointment(sellectedDTO.AppointmentID);
         }
 
         private void ButtonCancel(object sender, RoutedEventArgs e)
         {
-            //Button: Otkaži pregled
-
             if (dataGridAppointments.SelectedItem != null)
             {
-
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Appointment appointmentToDelete = (Appointment)dataGridAppointments.SelectedItem;
-                    AppointmentFileRepository.Instance.Delete(appointmentToDelete.AppointmentID);
+                    Appointment appointmentToDelete = GetSellectedAppointment();
+                    appointmentController.DeleteAppointment(appointmentToDelete);
                     RefreshView();
                     MessageBox.Show("Termin je uspešno otkazan!");
                 }
-
             }
-        }
-
-        public void AddAppointment(Appointment termin)
-        {
-            AppointmentFileRepository.Instance.Save(termin);
-            RefreshView();
-            MessageBox.Show("Termin uspešno zakazan.");
         }
 
         public void RemoveInstance()
@@ -131,8 +120,8 @@ namespace SIMS.LekarGUI
         {
             if (dataGridAppointments.SelectedItem != null)
             {
-                Appointment sellectedAppointment = (Appointment)dataGridAppointments.SelectedItem;
-                Patient sellectedPatient = PatientFileRepository.Instance.FindById(sellectedAppointment.Patient.Jmbg);
+                Appointment sellectedAppointment = GetSellectedAppointment();
+                Patient sellectedPatient = patientController.GetPatient(sellectedAppointment.Patient.Jmbg);
 
                 DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(sellectedPatient);
             }

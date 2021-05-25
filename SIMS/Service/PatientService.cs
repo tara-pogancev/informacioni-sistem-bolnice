@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SIMS.Service
 {
-    class PatientService
+    public class PatientService
     {
         private IPatientRepository patientRepositry;
 
@@ -15,7 +15,9 @@ namespace SIMS.Service
             patientRepositry = new PatientFileRepository();
         }
 
-        public void UpdatePatient(Patient patient)=>patientRepositry.Update(patient);
+        public List<Patient> GetAllPatients() => patientRepositry.GetAll();
+
+        public void UpdatePatient(Patient patient) => patientRepositry.Update(patient);
 
         public void DeletePatient(String patientKey) => patientRepositry.Delete(patientKey);
 

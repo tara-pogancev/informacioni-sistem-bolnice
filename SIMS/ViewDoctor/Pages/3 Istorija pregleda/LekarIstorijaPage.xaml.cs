@@ -55,7 +55,7 @@ namespace SIMS.LekarGUI
                 if (appointment.GetIfRecorded() == true)
                     AnamnesisViewModel.Add(appointment);
 
-                else if (appointment.IsPast() == true)
+                else if (appointment.GetIfPast() == true)
                 {
                     AppointmentsViewModel.Add(appointment);
                 }
@@ -118,14 +118,14 @@ namespace SIMS.LekarGUI
 
         private void WriteSurgeryReport()
         {
-            OperacijaIzvestajCreate o = new OperacijaIzvestajCreate((Appointment)dataGridAppointments.SelectedItem);
+            SurgeryReportCreate o = new SurgeryReportCreate((Appointment)dataGridAppointments.SelectedItem);
             o.ShowDialog();
             refreshView();
         }
 
         private void WriteAnamnesis()
         {
-            AnamnezaCreate a = new AnamnezaCreate((Appointment)dataGridAppointments.SelectedItem);
+            AnamnesisCreate a = new AnamnesisCreate((Appointment)dataGridAppointments.SelectedItem);
             a.ShowDialog();
             refreshView();
         }

@@ -25,6 +25,35 @@ namespace SIMS.Service
 
         public Appointment GetAppointment(String key) => appointmentRepository.FindById(key);
 
+        public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentRepository.GetDoctorAppointments(doctor);
+        }
+
+        public Appointment CheckIfActiveAppointment(Doctor doctor)
+        {
+            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            {
+                if (appointment.GetIfCurrent() && appointment.GetIfRecorded() == false)
+                {
+                    return appointment;
+                }
+            }
+
+            return null;
+        }
+
+        public int GetRecordedAppointmentsByDoctor(Doctor doctor)
+        {
+            int recorded = 0;
+
+            foreach (Appointment t in GetAppointmentsByDoctor(doctor))
+                if (t.GetIfRecorded())
+                    recorded++;
+
+            return recorded;
+        }
+
         //Staviti DTO object
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor,String date,Patient patient)
         {
@@ -59,7 +88,7 @@ namespace SIMS.Service
             int finishedAppointmentCounter = 0;
             foreach (Appointment appointment in scheduledAppointments)
             {
-                if (appointment.IsPast())
+                if (appointment.GetIfPast())
                 {
                     finishedAppointmentCounter++;
                 }
@@ -81,12 +110,37 @@ namespace SIMS.Service
             return scheduledAppointments;
         }
 
+        public List<AppointmentDTO> GetDTOFromList(List<Appointment> list)
+        {
+            List<AppointmentDTO> retVal = new List<AppointmentDTO>();
+            foreach(Appointment appointment in list)
+            {
+                AppointmentDTO dto = new AppointmentDTO(appointment);
+                retVal.Add(dto);
+            }
+
+            return retVal;
+            
+        }
+
+        public List<Appointment> GetUpcommingAppointmentsByDoctor(Doctor doctor)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            {
+                if (!appointment.GetIfPast() && !appointment.GetIfRecorded())
+                    retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
         public List<Appointment> GetPastAppointments()
         {
             List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (!scheduledAppointments[i].IsPast())
+                if (!scheduledAppointments[i].GetIfPast())
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;
@@ -100,7 +154,7 @@ namespace SIMS.Service
             List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (scheduledAppointments[i].IsPast())
+                if (scheduledAppointments[i].GetIfPast())
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;
@@ -129,6 +183,12 @@ namespace SIMS.Service
         {
             return new AppointmentDTO(appointment);
         }
-       
+
+        public List<int> GetAppointmentsCountForCurrentWeek(AppointmentType type, Doctor doctor)
+        {
+            return appointmentRepository.GetAppointmentsCountForCurrentWeek(type, doctor);
+        }
+
+
     }
 }

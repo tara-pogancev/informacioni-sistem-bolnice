@@ -114,7 +114,7 @@ namespace SIMS.Model
             return StartTime.AddMinutes(Duration);
         }
 
-        public bool IsPast()
+        public bool GetIfPast()
         {
             return (GetEndTime() > DateTime.Now);
         }
