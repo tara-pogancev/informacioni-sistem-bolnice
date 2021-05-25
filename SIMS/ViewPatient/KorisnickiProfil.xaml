@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
       Title="KorisnickiProfil">
     <Page.Resources>
         <ResourceDictionary>
@@ -65,7 +66,7 @@
                                 <StackPanel Margin="70,20,40,0">
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Ime i prezime:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.FullName}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent,Converter={cvt:UserFullNameConverter}}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">JMBG:</Label>
@@ -73,7 +74,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">Datum rođenja:</Label>
-                                        <Label FontSize="14" Content="{Binding Pacijent.DateString}"></Label>
+                                        <Label FontSize="14" Content="{Binding Pacijent.DateOfBirth,StringFormat=dd.MM.yyyy.}"></Label>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
                                         <Label FontSize="14">E-mail:</Label>

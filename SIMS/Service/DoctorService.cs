@@ -16,6 +16,18 @@ namespace SIMS.Service
             doctorRepository = new DoctorFileRepository();
         }
 
+        public List<Doctor> GetAllDoctors()=>doctorRepository.GetAll();
+
+        public void UpdateDoctor(Doctor doctor)=>doctorRepository.Update(doctor);
+
+        public void DeleteDoctor(String key)=>doctorRepository.Delete(key);
+
+        public void SaveDoctor(Doctor doctor)=>doctorRepository.Save(doctor);
+
+        public void CreateOrUpdateDoctor(Doctor doctor)=>doctorRepository.CreateOrUpdate(doctor);
+
+        public Doctor FindByIdDoctor(String key)=>doctorRepository.FindById(key);
+
         public List<Specialization> GetAvailableSpecialization()
         {
             return doctorRepository.GetAvailableSpecialization();

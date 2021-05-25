@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:model="clr-namespace:SIMS.Repositories.SecretaryRepo" 
       mc:Ignorable="d" 
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
       d:DesignHeight="550" d:DesignWidth="800" ShowsNavigationUI="False"
       Title="DetaljiPregleda">
     <Page.Resources>
@@ -38,7 +39,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel>
-                    <Label Content="{Binding Anamneza.Appointment.GetVrstaPregleda}" Foreground="White" HorizontalAlignment="Center" FontSize="18" Margin="15">
+                    <Label Content="{Binding Anamneza.AnamnesisAppointment.Type ,Converter={cvt:AppointmentTypeConverter}}" Foreground="White" HorizontalAlignment="Center" FontSize="18" Margin="15">
                     </Label>
                 </StackPanel>
             </Grid>
@@ -47,15 +48,15 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White" FontWeight="Bold">Lekar:</Label>
-                        <Label Content="{Binding Anamneza.Appointment.Doctor.FullName}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.AnamnesisAppointment.Doctor,Converter={cvt:UserFullNameConverter}}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White"  FontWeight="Bold">Pacijent:</Label>
-                        <Label Content="{Binding Anamneza.Termin.Patient.FullName}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.AnamnesisAppointment.Patient,Converter={cvt:UserFullNameConverter}}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontSize="15" Foreground="White"  FontWeight="Bold">Datum i vrijeme:</Label>
-                        <Label Content="{Binding Anamneza.Date}" FontSize="15" Foreground="White"></Label>
+                        <Label Content="{Binding Anamneza.AnamnesisDate, StringFormat=dd.MM.yyyy.}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
 
                     <Label Foreground="White" FontSize="15" FontWeight="Bold" Margin="0,30,0,0">Anamneza</Label>

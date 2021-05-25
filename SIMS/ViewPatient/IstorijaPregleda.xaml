@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.PacijentGUI"
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
       Title="IstorijaPregleda">
@@ -23,11 +24,11 @@
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Doktor" Binding="{Binding Termin.Doctor.FullName}"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding Termin.AppointmentDate}" />
-                
-                
-                <DataGridTextColumn Header="Vrsta" Binding="{Binding Termin.TypeString}" />
+                <DataGridTextColumn Header="Doktor" Binding="{Binding Appointment.Doctor,Converter={cvt:UserFullNameConverter}}"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Appointment.StartTime, StringFormat=dd.MM.yyyy.}" />
+
+
+                <DataGridTextColumn Header="Vrsta" Binding="{Binding Appointment.Type,Converter={cvt:AppointmentTypeConverter}}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

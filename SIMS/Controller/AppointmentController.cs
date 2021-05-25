@@ -16,6 +16,8 @@ namespace SIMS.Controller
             appointmentService = new AppointmentService();
         }
 
+
+       
         public List<Appointment> GetAllAppointments()
         {
             return appointmentService.GetAllAppointments();
@@ -40,6 +42,10 @@ namespace SIMS.Controller
         {
             return appointmentService.GetAppointment(key);
         }
+
+        public List<Appointment> GetPatientAppointments(Patient patient) => appointmentService.GetPatientAppointments(patient);
+
+        public List<Appointment> GetDoctorAppointments(Doctor doctor) => appointmentService.GetDoctorAppointments(doctor);
 
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor, String date, Patient patient)
         {

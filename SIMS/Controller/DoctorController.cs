@@ -14,6 +14,18 @@ namespace SIMS.Controller
             doctorService = new DoctorService();
         }
 
+        public List<Doctor> GetAllDoctors() => doctorService.GetAllDoctors();
+
+        public void UpdateDoctor(Doctor doctor) => doctorService.UpdateDoctor(doctor);
+
+        public void DeleteDoctor(String key) => doctorService.DeleteDoctor(key);
+
+        public void SaveDoctor(Doctor doctor) => doctorService.SaveDoctor(doctor);
+
+        public void CreateOrUpdateDoctor(Doctor doctor) => doctorService.CreateOrUpdateDoctor(doctor);
+
+        public Doctor FindByIdDoctor(String key) => doctorService.FindByIdDoctor(key);
+
         public List<Specialization> GetAvailableSpecialization()
         {
             return doctorService.GetAvailableSpecialization();

@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Service;
+using SIMS.PacijentGUI.ViewModel;
 
 namespace SIMS.PacijentGUI
 {
@@ -25,11 +26,7 @@ namespace SIMS.PacijentGUI
         public MojiTermini(Patient p)
         {
             patient = p;
-            IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
-           
-            termini = new ObservableCollection<Appointment>(new AppointmentService().GetFutureAppointments(patient));
-            dobaviPodatkeOPacijenuILekaru();
-            this.DataContext = this;
+            this.DataContext = new ScheduledAppointmentsViewModel(patient);
             InitializeComponent();
             
         }
@@ -85,13 +82,6 @@ namespace SIMS.PacijentGUI
         }
 
        
-        private void dobaviPodatkeOPacijenuILekaru()
-        {
-            foreach(Appointment termin in termini)
-            {
-                termin.Patient = new PatientFileRepository().FindById(termin.Patient.Jmbg);
-                termin.Doctor = new DoctorFileRepository().FindById(termin.Doctor.Jmbg);
-            }
-        }
+        
     }
 }

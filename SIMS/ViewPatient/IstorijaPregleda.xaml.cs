@@ -22,20 +22,20 @@ namespace SIMS.PacijentGUI
 {
     public class IstorijaPregledaView
     {
-        private Appointment termin;
+        private Appointment appointment;
         private bool omogucenoOcjenjivanje;
 
         public IstorijaPregledaView() {
-            termin = new Appointment();
+            appointment = new Appointment();
             omogucenoOcjenjivanje = true;
         }
         public IstorijaPregledaView(Appointment termin)
         {
-            this.termin = termin;
+            this.appointment = termin;
             omogucenoOcjenjivanje = new DoctorSurveyFileRepository().FindById(termin.AppointmentID) == null ? true : false;
         }
 
-        public Appointment Termin { get => termin; set => termin = value; }
+        public Appointment Appointment { get => appointment; set => appointment = value; }
         public bool OmogucenoOcjenjivanje { get => omogucenoOcjenjivanje; set => omogucenoOcjenjivanje = value; }
     }
     public partial class IstorijaPregleda : Page
@@ -84,11 +84,11 @@ namespace SIMS.PacijentGUI
             IAnamnesisRepository anamnezaStorage = new AnamnesisFileRepository();
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
             
-            Anamnesis anamneza=anamnezaStorage.FindById(selektovaniTermin.Termin.AppointmentID);
+            Anamnesis anamneza=anamnezaStorage.FindById(selektovaniTermin.Appointment.AppointmentID);
             if (anamneza == null)
             {
                 anamneza = new Anamnesis();
-                anamneza.AnamnesisAppointment = selektovaniTermin.Termin;
+                anamneza.AnamnesisAppointment = selektovaniTermin.Appointment;
             }
             PocetnaStranica.getInstance().frame.Content = new DetaljiPregleda(anamneza);
         }
@@ -96,7 +96,7 @@ namespace SIMS.PacijentGUI
         private void Ocijeni_Click(object sender, RoutedEventArgs e)
         {
             IstorijaPregledaView selektovaniTermin = (IstorijaPregledaView)terminiTabela.SelectedItem;
-            Appointment termin = selektovaniTermin.Termin;
+            Appointment termin = selektovaniTermin.Appointment;
             this.NavigationService.Navigate(new OcijeniPregled(termin));
             
         }
