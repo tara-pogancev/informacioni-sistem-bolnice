@@ -3,7 +3,7 @@
     "MedicineName": "Vivace",
     "Amount": "50 mg",
     "Diagnosis": "Temperatura",
-    "ReceptKey": "210429091946",
+    "ReceptID": "210429091946",
     "Doctor": {
       "Jmbg": "045210805048"
     },
@@ -16,7 +16,7 @@
     "MedicineName": "Katopil",
     "Amount": "15 ml",
     "Diagnosis": "/",
-    "ReceptKey": "210429093023",
+    "ReceptID": "210429093023",
     "Doctor": {
       "Jmbg": "045210805048"
     },
@@ -29,7 +29,7 @@
     "MedicineName": "Prilenap",
     "Amount": "55 ml",
     "Diagnosis": "Bolovi",
-    "ReceptKey": "210504121035",
+    "ReceptID": "210504121035",
     "Doctor": {
       "Jmbg": "045210805048"
     },
@@ -42,7 +42,7 @@
     "MedicineName": "Prilenap",
     "Amount": "/",
     "Diagnosis": "/",
-    "ReceptKey": "210508122801",
+    "ReceptID": "210508122801",
     "Doctor": {
       "Jmbg": "045210805048"
     },
@@ -55,7 +55,7 @@
     "MedicineName": "Fervex",
     "Amount": "/",
     "Diagnosis": "/",
-    "ReceptKey": "210508122835",
+    "ReceptID": "210508122835",
     "Doctor": {
       "Jmbg": "045210805048"
     },
@@ -68,7 +68,7 @@
     "MedicineName": "Fervex",
     "Amount": "85 ml",
     "Diagnosis": "Prehlada",
-    "ReceptKey": "210508031317",
+    "ReceptID": "210508031317",
     "Doctor": {
       "Jmbg": "045210805048"
     },

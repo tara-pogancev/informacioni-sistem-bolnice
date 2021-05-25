@@ -62,7 +62,7 @@ namespace SIMS.LekarGUI
 
             foreach (SurgeryReport operacijaIzvestaj in OperacijaIzvestajView)
             {
-                operacijaIzvestaj.InitData();
+                //operacijaIzvestaj.InitData();
             }
 
         }

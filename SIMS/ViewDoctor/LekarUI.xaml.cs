@@ -223,10 +223,9 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                CloseAllActiveWindows();
+                this.Close();
                 RemoveAllInstances();
                 new MainWindow().Show();
-
             }
         }
 
@@ -245,12 +244,6 @@ namespace SIMS
                 DoctorAppointmentsPage.GetInstance().RemoveInstance();
 
             instance = null;
-        }
-
-        private static void CloseAllActiveWindows()
-        {
-            for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
-                App.Current.Windows[intCounter].Close();
         }
 
         private void OnDragMoveWindow(object sender, MouseButtonEventArgs e)

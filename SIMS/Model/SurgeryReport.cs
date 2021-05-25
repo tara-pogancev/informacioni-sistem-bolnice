@@ -10,67 +10,28 @@ namespace SIMS.Model
 {
     public class SurgeryReport
     {
-        public DateTime DatumIzvestaja { get; set; }
-        public String OperacijaKey { get; set; }
-        public String NazivOperacije { get; set; }
-        public String NapomeneOperacije { get; set; }
+        public DateTime DateOfReport { get; set; }
+        public String ReportID { get; set; }
+        public String SurgeryName { get; set; }
+        public String SurgeryDescription { get; set; }
 
         public SurgeryReport()
         {
-            DatumIzvestaja = DateTime.Today;
+            DateOfReport = DateTime.Today;
         }
 
-        public SurgeryReport(Appointment termin, String nazivOperacije, String napomeneOperacije)
+        public SurgeryReport(Appointment surgery, String surgeryName, String surgeryDescription)
         {
-            Operacija = termin;
-
-            DatumIzvestaja = DateTime.Today;
-            NazivOperacije = nazivOperacije;
-            NapomeneOperacije = napomeneOperacije;
-            OperacijaKey = termin.AppointmentID;
-
+            DateOfReport = DateTime.Today;
+            SurgeryName = surgeryName;
+            SurgeryDescription = surgeryDescription;
+            ReportID = surgery.AppointmentID;
         }
 
-        public void InitData()
+        public Appointment GetSurgery()
         {
-            Operacija = new AppointmentFileRepository().FindById(OperacijaKey);
-            Operacija.Patient = new PatientFileRepository().FindById(Operacija.Patient.Jmbg);
-            Operacija.Doctor = new DoctorFileRepository().FindById(Operacija.Doctor.Jmbg);
-
+            return new AppointmentFileRepository().FindById(ReportID);
         }
-
-        [JsonIgnore]
-        public String ImeLekara
-        {
-            get { return Operacija.GetDoctorName(); }
-        }
-
-        [JsonIgnore]
-        public String ImePacijenta
-        {
-            get { return Operacija.GetPatientName(); }
-        }
-
-        [JsonIgnore]
-        public String DatumRodjenjaPacijenta
-        {
-            get { return Operacija.Patient.GetDateOfBirthString(); }
-        }
-
-        [JsonIgnore]
-        public String DatumOperacijeIspis
-        {
-            get { return Operacija.GetAppointmentDate(); }
-        }
-
-        [JsonIgnore]
-        public String SobaOperacije
-        {
-            get { return Operacija.Room.Number; }
-        }
-
-        [JsonIgnore]
-        public Appointment Operacija { get; set; }
 
     }
 }
