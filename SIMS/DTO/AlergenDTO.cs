@@ -22,7 +22,7 @@ namespace SIMS.DTO
         {
             AlergenID = alergen.ID;
             AlergenNaziv = alergen.Name;
-            IsIncludedInMedicine = medicine.Components.Contains(AlergenID);
+            IsIncludedInMedicine = medicine.Components.Contains(alergen);
         }
 
         public List<AlergenDTO> GetAllAlergenList(Medication medicine)

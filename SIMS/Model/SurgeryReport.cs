@@ -42,25 +42,25 @@ namespace SIMS.Model
         [JsonIgnore]
         public String ImeLekara
         {
-            get { return Operacija.DoctorName; }
+            get { return Operacija.GetDoctorName(); }
         }
 
         [JsonIgnore]
         public String ImePacijenta
         {
-            get { return Operacija.PatientName; }
+            get { return Operacija.GetPatientName(); }
         }
 
         [JsonIgnore]
         public String DatumRodjenjaPacijenta
         {
-            get { return Operacija.Patient.DateString; }
+            get { return Operacija.Patient.GetDateOfBirthString(); }
         }
 
         [JsonIgnore]
         public String DatumOperacijeIspis
         {
-            get { return Operacija.AppointmentDate; }
+            get { return Operacija.GetAppointmentDate(); }
         }
 
         [JsonIgnore]

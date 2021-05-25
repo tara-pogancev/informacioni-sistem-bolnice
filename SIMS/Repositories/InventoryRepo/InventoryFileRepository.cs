@@ -13,7 +13,7 @@ namespace SIMS.Repositories.SecretaryRepo
         }
         protected override string getKey(Inventory dinamickaOprema)
         {
-            return dinamickaOprema.Id;
+            return dinamickaOprema.ID;
         }
 
         protected override void RemoveReferences(string key)
@@ -35,7 +35,7 @@ namespace SIMS.Repositories.SecretaryRepo
             }
         }
 
-        protected override void shouldSerialize(Inventory entity)
+        protected override void ShouldSerialize(Inventory entity)
         {
             //ne treba logika za serijalizaciju
         }

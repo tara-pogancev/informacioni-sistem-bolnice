@@ -24,7 +24,7 @@ namespace SIMS.Repositories.SecretaryRepo
         {
         }
 
-        protected override void shouldSerialize(InventoryMovingCommand entity)
+        protected override void ShouldSerialize(InventoryMovingCommand entity)
         {
            //ne treba logika za serijalizaciju
         }

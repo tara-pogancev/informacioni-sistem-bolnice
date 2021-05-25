@@ -41,7 +41,7 @@ namespace SIMS.Repositories.SecretaryRepo
             return ret;
         }
 
-        protected override void shouldSerialize(RoomInventory entity)
+        protected override void ShouldSerialize(RoomInventory entity)
         {
             
         }

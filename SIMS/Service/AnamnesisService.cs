@@ -16,6 +16,16 @@ namespace SIMS.Service
             anamnesisRepository = new AnamnesisFileRepository();
         }
 
+        public List<Anamnesis> GetAllAnamnesis() => anamnesisRepository.GetAll();
+
+        public void UpdateAnamnesis(Anamnesis anamnesis) => anamnesisRepository.Update(anamnesis);
+
+        public void DeleteAnamnesis(Anamnesis anamnesis) => anamnesisRepository.Delete(anamnesis.AnamnesisID);
+
+        public void SaveAnamnesis(Anamnesis anamnesis) => anamnesisRepository.Save(anamnesis);
+
+        public Anamnesis GetAnamnesis(String key) => anamnesisRepository.FindById(key);
+
         public List<Anamnesis> GetAnamnesisByDoctor(Doctor doctor)
         {
             List<Anamnesis> retVal = new List<Anamnesis>();

@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="LekarGUI\logo_h_small.png" />
-    <None Remove="LekarGUI\notification.png" />
-    <None Remove="LekarGUI\profile.png" />
-    <None Remove="LekarGUI\search.png" />
+    <None Remove="ViewDoctor\logo_h_small.png" />
+    <None Remove="ViewDoctor\notification.png" />
+    <None Remove="ViewDoctor\profile.png" />
+    <None Remove="ViewDoctor\search.png" />
     <None Remove="logo.ico" />
     <None Remove="src\arrow.png" />
     <None Remove="src\close.png" />
@@ -172,20 +172,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="LekarGUI\Dialogues\Termini CRUD\TerminUpdate.xaml">
+    <Page Update="ViewDoctor\Dialogues\Termini CRUD\TerminUpdate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="LekarGUI\Dialogues\Termini CRUD\OperacijaCreate.xaml">
+    <Page Update="ViewDoctor\Dialogues\Termini CRUD\OperacijaCreate.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="LekarGUI\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
+    <Page Update="ViewDoctor\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="LekarGUI\ViewModel\" />
+    <Folder Include="ViewDoctor\ViewModel\" />
   </ItemGroup>
 
 </Project>

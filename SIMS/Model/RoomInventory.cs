@@ -5,7 +5,7 @@ using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.Model
 {
-    class RoomInventory
+    public class RoomInventory
     {
         public string BrojProstorije { get; set; }
         public string IdInventara { get; set; }

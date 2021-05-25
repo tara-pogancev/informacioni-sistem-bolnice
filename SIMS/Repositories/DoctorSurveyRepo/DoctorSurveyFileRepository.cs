@@ -24,7 +24,7 @@ namespace SIMS.Repositories.DoctorSurveyRepo
             throw new NotImplementedException();
         }
 
-        protected override void shouldSerialize(DoctorSurvey entity)
+        protected override void ShouldSerialize(DoctorSurvey entity)
         {
             //ne treba logika za serijalizaciju
         }

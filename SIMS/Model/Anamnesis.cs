@@ -30,7 +30,6 @@ namespace SIMS.Model
         [JsonIgnore]
         public Appointment AnamnesisAppointment { get; set; }
 
-
         public Anamnesis()
         {
             AnamnesisDate = DateTime.Today;
@@ -61,6 +60,28 @@ namespace SIMS.Model
 
         }
 
+        public Anamnesis(Anamnesis anamnesis)
+        {
+            AnamnesisAppointment = anamnesis.AnamnesisAppointment;
+            AnamnesisDate = anamnesis.AnamnesisDate;
+
+            MainIssues = anamnesis.MainIssues;
+            CurrentAnamnesis = anamnesis.CurrentAnamnesis;
+            GeneralOccurrences = anamnesis.GeneralOccurrences;
+            AnamnesisID = anamnesis.AnamnesisID;
+            RespiratorySystem = anamnesis.RespiratorySystem;
+            CardioSystem = anamnesis.CardioSystem;
+            DigestiveSystem = anamnesis.DigestiveSystem;
+            UroGenitalSystem = anamnesis.UroGenitalSystem;
+            LocomotorSystem = anamnesis.LocomotorSystem;
+            NervousSystem = anamnesis.NervousSystem;
+            PastDiseases = anamnesis.PastDiseases;
+            FamilyData = anamnesis.FamilyData;
+            SocioEpiData = anamnesis.SocioEpiData;
+
+            SetDefaultEmptyFields();
+        }
+
         private void SetDefaultEmptyFields()
         {
             if (RespiratorySystem == "") RespiratorySystem = "/";
@@ -78,37 +99,7 @@ namespace SIMS.Model
         {
             return AppointmentFileRepository.Instance.FindById(AnamnesisAppointment.AppointmentID);
         }
-
-        [JsonIgnore]
-        public String DoctorName
-        {
-            get { return AnamnesisAppointment.DoctorName; }
-        }
-
-        [JsonIgnore]
-        public String PatientName
-        {
-            get { return AnamnesisAppointment.PatientName; }
-        }
-
-        [JsonIgnore]
-        public String Date
-        {
-            get { return AnamnesisDate.ToString("dd.MM.yyyy."); }
-        }
-
-        [JsonIgnore]
-        public String AppointmentDateType
-        {
-            get
-            {
-                if (GetAppointment().TypeString.Equals(AppointmentType.examination))
-                    return "Datum pregleda: " + GetAppointment().AppointmentDate;
-                else return "Datum operacije: " + GetAppointment().AppointmentDate;
-
-            }
-        }
-
+        
         public void InitData()
         {
             AnamnesisAppointment =  new AppointmentFileRepository().FindById(AnamnesisID);

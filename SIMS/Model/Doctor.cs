@@ -30,77 +30,27 @@ namespace SIMS.Model
             DoctorSpecialization = specialization;
             Grade = 0.0;
         }
-             
-        public List<Appointment> GetZauzetiTermini()
+
+        public Doctor(Doctor doctor)
         {
-            List<Appointment> retVal = new List<Appointment>();
-
-            retVal = AppointmentFileRepository.Instance.GetDoctorAppointments(this);
-
-            return retVal;
-
+            Name = doctor.Name;
+            LastName = doctor.LastName;
+            Jmbg = doctor.Jmbg;
+            Username = doctor.Username;
+            Password = doctor.Password;
+            Email = doctor.Email;
+            Phone = doctor.Phone;
+            Address = doctor.Address;
+            Serialize = doctor.Serialize;
+            VacationDays = doctor.VacationDays;
+            DoctorSpecialization = doctor.DoctorSpecialization;
+            Grade = doctor.Grade;
         }
 
+        // Prebaciti u servis klasu?
         public bool Unavailable(Appointment appointment)
         {
             return appointment.Doctor.Jmbg == this.Jmbg;
-
-        }
-
-        // Salje informacije o novom terminu
-        public Boolean IsFree(Appointment terminNew)
-        {
-            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
-            {
-                if (terminNew.EndTime > t.StartTime && terminNew.EndTime <= t.EndTime)
-                    return false;
-
-                if (terminNew.StartTime >= t.StartTime && terminNew.StartTime < t.EndTime)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public void RecalulateGrade()
-        {
-            IDoctorSurveyRepository doctorSurveyRepository = new DoctorSurveyFileRepository();
-            double Grades = 0;
-            int counter = 0;
-            
-            foreach (var survey in doctorSurveyRepository.GetAll())
-            {
-                if (survey.DoctorId == this.Jmbg){
-                    Grades += survey.Grade;
-                    counter++;
-                }
-            }
-            if (counter == 0)
-            {
-                this.Grade = 0;
-            }
-            else
-            {
-                this.Grade = Grades / counter;
-            }              
-
-        }
-
-        // Salje izmenjen termin ali njega ignorise prilikom provere
-        public Boolean IsFreeUpdate(Appointment terminNew)
-        {
-            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(this))
-            {
-                if (t.AppointmentID != terminNew.AppointmentID)
-                {
-                    if (terminNew.EndTime > t.StartTime && terminNew.EndTime <= t.EndTime)
-                        return false;
-
-                    if (terminNew.StartTime >= t.StartTime && terminNew.StartTime < t.EndTime)
-                        return false;
-                }
-            }
-            return true;
         }
 
         public bool ShouldSerializeVacationDays()
@@ -117,38 +67,6 @@ namespace SIMS.Model
         {
             return Serialize;
         }
-
-        [JsonIgnore]
-        public String NameAndSpecialization { get { return FullName + ", " + SpecializationString; } }
-
-        [JsonIgnore]
-        public String SpecializationString
-        { 
-            get 
-            {
-                if (DoctorSpecialization == Specialization.OpstaPraksa)
-                    return "Lekar opšte prakse";
-                else if (DoctorSpecialization == Specialization.Hirurg)
-                    return "Hirurg";
-                else if (DoctorSpecialization == Specialization.Internista)
-                    return "Internista";
-                else if (DoctorSpecialization == Specialization.Dermatolog)
-                    return "Dermatolog";
-                else if (DoctorSpecialization == Specialization.Kardiolog)
-                    return "Kardiolog";
-                else if (DoctorSpecialization == Specialization.Otorinolaringolog)
-                    return "Otorinolaringolog";
-                else if (DoctorSpecialization == Specialization.Stomatolog)
-                    return "Stomatolog";
-                else if (DoctorSpecialization == Specialization.Urolog)
-                    return "Urolog";
-                else if (DoctorSpecialization == Specialization.Ginekolog)
-                    return "Ginekolog";
-                else
-                    return "Neurolog";
-            } 
-
-        }       
 
     }
 }

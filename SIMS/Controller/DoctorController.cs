@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using SIMS.Service;
 using SIMS.Model;
 
@@ -39,5 +38,23 @@ namespace SIMS.Controller
         {
             return doctorService.ReadUserByUsername(username);
         }
+
+        // Salje informacije o novom terminu
+        public Boolean CheckIfFree(Doctor doctor, Appointment newAppointment)
+        {
+            return doctorService.CheckIfFree(doctor, newAppointment);
+        }
+
+        //Salje izmenjen termin ali njega ignorise prilikom provere
+        public Boolean CheckIfFreeUpdate(Doctor doctor, Appointment newAppointment)
+        {
+            return doctorService.CheckIfFreeUpdate(doctor, newAppointment);
+        }
+
+        public void RecalulateGrade(Doctor doctor)
+        {
+            doctorService.RecalulateGrade(doctor);
+        }
+
     }
 }
