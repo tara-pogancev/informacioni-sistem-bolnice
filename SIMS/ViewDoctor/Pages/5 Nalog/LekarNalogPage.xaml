@@ -1,4 +1,4 @@
-﻿<Page x:Class="SIMS.LekarGUI.LekarNalogPage"
+﻿<Page x:Class="SIMS.LekarGUI.DoctorAccountPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -16,7 +16,7 @@
 
         <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
 
-            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="ButtonHome"/>
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Nalog" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
 
@@ -48,7 +48,7 @@
 
 
             <StackPanel Grid.Row="2" Margin="50,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Content="Izmeni podatke" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="ChangeAccount"/>
+                <Button Content="Izmeni podatke" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="ButtonChangeAccount"/>
                 <Button Content="Odjavi se" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="LogOut" Margin="20,0,0,0"/>
                 
             </StackPanel>

@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using SIMS.Model;
 
 using System.Windows.Threading;
+using SIMS.Controller;
 
 namespace SIMS
 {
@@ -25,6 +26,8 @@ namespace SIMS
         public static DoctorUI instance;
         private static Doctor doctorUser;
         private WindowBar bar = new WindowBar();
+
+        private LastLoginController loginController = new LastLoginController();
 
         public static DoctorUI GetInstance(Doctor doctor)
         {
@@ -160,7 +163,7 @@ namespace SIMS
                     }
                 case 5:
                     {
-                        SellectedTab.Content = LekarNalogPage.GetInstance(doctorUser);
+                        SellectedTab.Content = DoctorAccountPage.GetInstance(doctorUser);
                         ResetActiveButtons();
                         B5.Fill = sellectedTab;
                         break;
@@ -214,6 +217,7 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                loginController.ClearAll();
                 new MainWindow().Show();
                 this.Close();
                 RemoveAllInstances();
@@ -228,8 +232,8 @@ namespace SIMS
             if (DoctorPatientViewPage.GetInstance() != null)
                 DoctorPatientViewPage.GetInstance().RemoveInstance();
 
-            if (LekarNalogPage.GetInstance() != null)
-                LekarNalogPage.GetInstance().RemoveInstance();
+            if (DoctorAccountPage.GetInstance() != null)
+                DoctorAccountPage.GetInstance().RemoveInstance();
 
             if (DoctorAppointmentsPage.GetInstance() != null)
                 DoctorAppointmentsPage.GetInstance().RemoveInstance();
