@@ -57,8 +57,8 @@
 
                     <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="*"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Pol" Binding="{Binding Gender}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Datum rodjenja" Binding="{Binding DateString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pol" Binding="{Binding GenderString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum rodjenja" Binding="{Binding DateOfBirthString}" Width="*"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="LBO" Binding="{Binding Lbo}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                 </DataGrid.Columns>

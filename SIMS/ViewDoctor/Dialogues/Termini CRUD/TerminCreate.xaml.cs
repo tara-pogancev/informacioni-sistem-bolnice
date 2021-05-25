@@ -97,7 +97,7 @@ namespace SIMS.LekarGUI
             {
                 Appointment appointment = new Appointment();
                 CreateAppointment(appointment);
-                Doctor doctor = GetSellectedDoctor();
+                Doctor doctor = GetSelectedDoctor();
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!doctorController.CheckIfFree(doctor, appointment))
@@ -113,7 +113,7 @@ namespace SIMS.LekarGUI
             }
         }
 
-        private Doctor GetSellectedDoctor()
+        private Doctor GetSelectedDoctor()
         {
             DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
             return doctorController.GetDoctor(dto.Jmbg);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SIMS.DTO
 {
-    class PatientDTO : Patient
+    public class PatientDTO : Patient
     {
         public String BloodTypeString { get => GetBloodTypeString();  }
         public String GenderString { get => GetGenderString();  }

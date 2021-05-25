@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Service;
 using System;
 using System.Collections.Generic;
@@ -34,5 +35,16 @@ namespace SIMS.Controller
         {
             return anamnesisService.GetAnamnesisByPatient(patient);
         }
+
+        public AnamnesisDTO GetDTO(Anamnesis anamnesis)
+        {
+            return anamnesisService.GetDTO(anamnesis);
+        }
+
+        public List<AnamnesisDTO> GetDTOFromList(List<Anamnesis> list)
+        {
+            return anamnesisService.GetDTOFromList(list);
+        }
+
     }
 }

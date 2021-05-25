@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Service;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,16 @@ namespace SIMS.Controller
         public List<Receipt> ReadByPatient(Patient patient)
         {
             return receiptService.ReadByPatient(patient);
+        }
+
+        public ReceiptDTO GetDTO(Receipt receipt)
+        {
+            return receiptService.GetDTO(receipt);
+        }
+
+        public List<ReceiptDTO> GetDTOFromList(List<Receipt> list)
+        {
+            return receiptService.GetDTOFromList(list);
         }
 
     }

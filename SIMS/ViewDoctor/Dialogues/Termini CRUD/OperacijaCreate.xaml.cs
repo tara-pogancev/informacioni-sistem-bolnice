@@ -100,7 +100,7 @@ namespace SIMS.LekarGUI
             else
             {
                 Appointment surgery = CreateSurgery();
-                Doctor doctor = GetSellectedDoctor();
+                Doctor doctor = GetSelectedDoctor();
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!doctorController.CheckIfFree(doctor, surgery))
@@ -115,7 +115,7 @@ namespace SIMS.LekarGUI
 
         }
 
-        private Doctor GetSellectedDoctor()
+        private Doctor GetSelectedDoctor()
         {
             DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
             return doctorController.GetDoctor(dto.Jmbg);
@@ -136,7 +136,7 @@ namespace SIMS.LekarGUI
             SetSurgeryDuration(surgery);
             surgery.Room = rooms[roomCombo.SelectedIndex];
             surgery.Patient = patients[patientCombo.SelectedIndex];
-            surgery.Doctor = GetSellectedDoctor();
+            surgery.Doctor = GetSelectedDoctor();
             surgery.Type = AppointmentType.surgery;
             return surgery;
         }

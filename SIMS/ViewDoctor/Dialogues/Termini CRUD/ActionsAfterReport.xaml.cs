@@ -35,13 +35,13 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void PrikazProfila(object sender, RoutedEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
             this.Close();
         }
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            var window = new DoctorWriteReciept(patient);
+            var window = new DoctorWriteRecript(patient);
             window.ShowDialog();
         }
 

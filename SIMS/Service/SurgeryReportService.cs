@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.SurgeryReportRepo;
 
@@ -28,6 +29,20 @@ namespace SIMS.Service
         public List<SurgeryReport> ReadByPatient(Patient patient)
         {
             return surgeryReportRepository.ReadByPatient(patient);
+        }
+
+        public SurgeryReportDTO GetDTO(SurgeryReport report)
+        {
+            return new SurgeryReportDTO(report);
+        }
+
+        public List<SurgeryReportDTO> GetDTOFromList(List<SurgeryReport> list)
+        {
+            List<SurgeryReportDTO> retVal = new List<SurgeryReportDTO>();
+            foreach (SurgeryReport report in list)
+                retVal.Add(GetDTO(report));
+
+            return retVal;
         }
 
     }

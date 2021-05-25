@@ -15,17 +15,18 @@ namespace SIMS.LekarGUI.Dialogues.Recepti_i_terapije
     /// <summary>
     /// Interaction logic for PisanjeTerapije.xaml
     /// </summary>
-    public partial class PisanjeTerapije : Window
+    public partial class TherapyCreate : Window
     {
-        public PisanjeTerapije()
+        public TherapyCreate()
         {
             InitializeComponent();
         }
 
-        private void Button_Accept(object sender, RoutedEventArgs e)
+        private void ButtonAccept(object sender, RoutedEventArgs e)
         {
             this.Close();
-            MessageBox.Show("Terapija uspešno kreirana!");
+            //MessageBox.Show("Terapija uspešno kreirana!");
+            new TherapyView().Show();
         }
     }
 }

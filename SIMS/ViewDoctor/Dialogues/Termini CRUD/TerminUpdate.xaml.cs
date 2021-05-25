@@ -61,7 +61,7 @@ namespace SIMS.LekarGUI
             else
             {
                 CreateAppointment();
-                Doctor doctor = GetSellectedDoctor();
+                Doctor doctor = GetSelectedDoctor();
 
                 if (!doctorController.CheckIfFreeUpdate(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
@@ -75,7 +75,7 @@ namespace SIMS.LekarGUI
             }
         }
 
-        private Doctor GetSellectedDoctor()
+        private Doctor GetSelectedDoctor()
         {
             DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
             return doctorController.GetDoctor(dto.Jmbg);
@@ -95,7 +95,7 @@ namespace SIMS.LekarGUI
             SetSelectedDuration();
             appointment.Room = rooms[roomCombo.SelectedIndex];
             appointment.Patient = patients[patientCombo.SelectedIndex];
-            appointment.Doctor = GetSellectedDoctor();
+            appointment.Doctor = GetSelectedDoctor();
         }
 
         private void SetSelectedDuration()

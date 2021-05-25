@@ -139,7 +139,7 @@ namespace SIMS
                     }
                 case 2:
                     {
-                        SellectedTab.Content = DoctorPatientViewPage.GetInstance(doctorUser);
+                        SellectedTab.Content = DoctorPatientViewPage.GetInstance();
                         ResetActiveButtons();
                         B2.Fill = sellectedTab;
                         break;
@@ -214,9 +214,9 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                new MainWindow().Show();
                 this.Close();
                 RemoveAllInstances();
-                new MainWindow().Show();
             }
         }
 

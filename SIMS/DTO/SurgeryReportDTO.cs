@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SIMS.DTO
 {
-    class SurgeryReportDTO
+    public class SurgeryReportDTO
     {
         private AppointmentController appointmentController = new AppointmentController();
         private SurgeryReportController surgeryReportController = new SurgeryReportController();

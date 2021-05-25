@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.LekarGUI.Dialogues.Recepti_i_terapije;
 using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 
@@ -18,77 +19,76 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for PacijentKartonView.xaml
     /// </summary>
-    public partial class PacijentKartonView : Page
+    public partial class PatientRecordCheck : Page
     {
-        private Patient pacijentProfile;
+        private Patient patient;
 
-        public static PacijentKartonView instance;
+        public static PatientRecordCheck instance;
 
-        public static PacijentKartonView GetInstance(Patient p)
+        public static PatientRecordCheck GetInstance(Patient patient)
         {
-            instance = new PacijentKartonView(p);
+            instance = new PatientRecordCheck(patient);
             return instance;
         }
 
-        public static PacijentKartonView GetInstance()
+        public static PatientRecordCheck GetInstance()
         {
             return instance;
         }
 
-        public PacijentKartonView(Patient p)
+        public PatientRecordCheck(Patient patient)
         {
             InitializeComponent();
 
-            pacijentProfile = p;
+            this.patient = patient;
 
-            Ime_Top.Content = pacijentProfile.FullName;
-            Label_Ime.Content = pacijentProfile.FullName;
+            LabelNameTop.Content = this.patient.FullName;
+            LabelName.Content = this.patient.FullName;
 
-            Label_Pol.Content = "Pol: " + pacijentProfile.GetGenderString();
-            Label_Datum.Content = "Datum rođenja: " + pacijentProfile.GetDateOfBirthString();
-            Label_JMBG.Content = "JMBG: " + pacijentProfile.Jmbg;
-            Label_LBO.Content = "LBO: " + pacijentProfile.Lbo;
+            LabelGender.Content = "Pol: " + this.patient.GetGenderString();
+            LabelDateOfBirth.Content = "Datum rođenja: " + this.patient.GetDateOfBirthString();
+            LabelJMBG.Content = "JMBG: " + this.patient.Jmbg;
+            LabelLBO.Content = "LBO: " + this.patient.Lbo;
 
-            Label_Telefon.Content = "Broj telefona: " + pacijentProfile.Phone;
-            Label_Email.Content = "Email: " + pacijentProfile.Email;
-            Label_Adresa.Content = "Adresa: " + pacijentProfile.FullAddressString;
+            LabelPhone.Content = "Broj telefona: " + this.patient.Phone;
+            LabelEmail.Content = "Email: " + this.patient.Email;
+            LabelAddress.Content = "Adresa: " + this.patient.FullAddressString;
 
 
-            Label_KrvnaGrupa.Content = "Krvna grupa: " + pacijentProfile.GetBloodTypeString();
-            Label_Alergeni.Content = "Alergeni: " + pacijentProfile.GetAllergenListString();
-            Label_HronicneBolesti.Content = "Hronične bolesti: " + pacijentProfile.GetHronicalDiseases;
+            LabelBloodType.Content = "Krvna grupa: " + this.patient.GetBloodTypeString();
+            LabelAllergens.Content = "Alergeni: " + this.patient.GetAllergenListString();
+            LabelHronical.Content = "Hronične bolesti: " + this.patient.GetHronicalDiseases;
 
         }
 
-        private void Button_Recept(object sender, RoutedEventArgs e)
+        private void ButtonWriteReceipt(object sender, RoutedEventArgs e)
         {
-            DoctorWriteReciept r = new DoctorWriteReciept(pacijentProfile);
-            r.Show();
+            new DoctorWriteRecript(patient).Show();
         }
 
-        private void Button_Dokumenti(object sender, RoutedEventArgs e)
+        private void ButtonDocumentation(object sender, RoutedEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = new PacijentDokumentacijaView(pacijentProfile);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientDocumentationView(patient);
         }
 
-        private void Button_Hositalizaijca(object sender, RoutedEventArgs e)
+        private void ButtonHospitalize(object sender, RoutedEventArgs e)
         {
             //TODO
         }
 
-        private void Button_Pacijenti(object sender, MouseButtonEventArgs e)
+        private void ButtonPatientView(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(2);
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }
 
-        private void Button_Terapija(object sender, RoutedEventArgs e)
+        private void ButtonTherapy(object sender, RoutedEventArgs e)
         {
-            //TODO
+            new TherapyCreate().ShowDialog();
         }
     }
 }
