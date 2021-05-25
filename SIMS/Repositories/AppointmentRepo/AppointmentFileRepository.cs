@@ -15,6 +15,13 @@ namespace SIMS.Repositories.AppointmentRepo
             return @".\..\..\..\Data\termini.json";
         }
 
+        protected override void ShouldSerialize(Appointment entity)
+        {
+            entity.Patient.Serialize = false;
+            entity.Doctor.Serialize = false;
+            entity.Room.Serialize = false;
+        }
+
         public List<Appointment> GetPatientAppointments(Patient pacijent)
         {
             List<Appointment> termini = new List<Appointment>();

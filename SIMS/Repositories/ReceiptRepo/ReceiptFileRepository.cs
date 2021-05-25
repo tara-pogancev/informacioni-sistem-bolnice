@@ -36,5 +36,11 @@ namespace SIMS.Repositories.SecretaryRepo
             return retVal;
         }
 
+        protected override void ShouldSerialize(Receipt entity)
+        {
+            entity.Doctor.Serialize = false;
+            entity.Patient.Serialize = false;
+            
+        }
     }
 }

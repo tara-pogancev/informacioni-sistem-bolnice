@@ -1,5 +1,8 @@
 {
   "4865453131": {
+    "PatientGender": 0,
+    "BloodType": 0,
+    "IsBanned": false,
     "Lbo": "123",
     "Guest": false,
     "Allergens": [
@@ -7,9 +10,8 @@
       "a7"
     ],
     "DateOfBirth": "1999-03-05T00:00:00",
-    "PatientGender": 0,
-    "BloodType": 0,
-    "IsBanned": false,
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
     "Name": "Đorđe",
     "LastName": "Krsmanović",
     "Jmbg": "4865453131",
@@ -17,25 +19,21 @@
     "Password": "p",
     "Email": "djordje1499@gmail.com",
     "Phone": "0645568131",
-	"HronicalDiseases": [],
-    "Adresa": {
-      "City": "Novi Sad",
-      "Street": "Despota Stefana",
-      "Number": "8"
-    },
+    "Address": null,
     "Serialize": true
   },
   "12645323206": {
+    "PatientGender": 0,
+    "BloodType": 5,
+    "IsBanned": true,
     "Lbo": "45645",
     "Guest": false,
     "Allergens": [
       ""
     ],
     "DateOfBirth": "1999-03-05T00:00:00",
-    "GetHronicneBolestiString": "Nema",
-    "PatientGender": 0,
-    "BloodType": 5,
-    "IsBanned": true,
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
     "Name": "Miha",
     "LastName": "Mihajlo",
     "Jmbg": "12645323206",
@@ -43,60 +41,49 @@
     "Password": "p",
     "Email": "email.miha@gmail.com",
     "Phone": "06250",
-	"HronicalDiseases": [],
-    "Adresa": {
-      "City": "Novi Sad",
-      "Street": "Jugoslovenske Armije",
-      "Number": "8"
-    },
+    "Address": null,
     "Serialize": true
   },
   "12121977802342": {
+    "PatientGender": 0,
+    "BloodType": 0,
+    "IsBanned": false,
     "Lbo": "123456",
     "Guest": false,
     "Allergens": [
       "a1"
     ],
     "DateOfBirth": "1977-12-12T00:00:00",
-    "PatientGender": 0,
-    "BloodType": 0,
-    "IsBanned": false,
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
     "Name": "Petar",
-    "LastName": "Petrovic",
+    "LastName": "Petrović",
     "Jmbg": "12121977802342",
     "Username": "pacijent2",
     "Password": "p",
     "Email": "petarpetrovic@gmail.com",
     "Phone": "061 234567",
-	"HronicalDiseases": [],
-    "Adresa": {
-      "City": "Novi Sad",
-      "Street": "Despota Stefana",
-      "Number": "87"
-    },
+    "Address": null,
     "Serialize": true
   },
   "121": {
-    "Lbo": "123456",
-    "Guest": false,
-    "Allergens": [],
-    "DateOfBirth": "1989-11-12T00:00:00",
     "PatientGender": 1,
     "BloodType": 3,
     "IsBanned": false,
-    "Name": "Ana",
+    "Lbo": "123456",
+    "Guest": false,
+    "Allergens": [],
+    "DateOfBirth": "1985-11-10T00:00:00",
+    "HronicalDiseases": [],
+    "GetHronicalDiseases": "Nema",
+    "Name": "Milena",
     "LastName": "Zorić",
-    "Jmbg": "1112124",
+    "Jmbg": "1445857",
     "Username": "pacijent3",
     "Password": "p",
-    "Email": "anaa@gmail.com",
-    "Phone": "061 546847",
-	"HronicalDiseases": [],
-    "Adresa": {
-      "City": "Novi Sad",
-      "Street": "Despota Stefana",
-      "Number": "38"
-    },
+    "Email": "milena@gmail.com",
+    "Phone": "061 2345857",
+    "Address": null,
     "Serialize": true
   }
 }

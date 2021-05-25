@@ -24,20 +24,9 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        public List<HospitalSurvey> GetPatientSurveys(Patient pacijent)
+        protected override void ShouldSerialize(HospitalSurvey entity)
         {
-            List<HospitalSurvey> anketeBolnice = GetAll();
-            for(int i = 0; i < anketeBolnice.Count; i++)
-            {
-                if (anketeBolnice[i].IdVlasnika != pacijent.Jmbg)
-                {
-                    anketeBolnice.RemoveAt(i);
-                    i--;
-                }
-            }
-            return anketeBolnice;
-        } 
-
-
+            //ne treba logika za serijalizaciju
+        }
     }
 }

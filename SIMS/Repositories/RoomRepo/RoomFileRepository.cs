@@ -61,5 +61,9 @@ namespace SIMS.Repositories.SecretaryRepo
             }
             return prostorije;
         }
+
+        protected override void ShouldSerialize(Room entity)
+        {
+        }
     }
 }

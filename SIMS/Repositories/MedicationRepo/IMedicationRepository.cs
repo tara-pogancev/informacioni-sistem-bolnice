@@ -7,8 +7,8 @@ namespace SIMS.Repositories.SecretaryRepo
 {
     interface IMedicationRepository:IGenericRepository<Medication,String>
     {
-        List<Medication> getApprovedMedicine();
-        List<Medication> getMedicineWaitingForApproval();
-        List<Medication> getDeniedMedicine();
+        List<Medication> GetApprovedMedicine();
+        List<Medication> GetMedicineWaitingForApproval();
+        List<Medication> GetDeniedMedicine();
     }
 }

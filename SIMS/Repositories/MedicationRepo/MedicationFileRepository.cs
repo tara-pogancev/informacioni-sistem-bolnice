@@ -22,7 +22,7 @@ namespace SIMS.Repositories.SecretaryRepo
         
         }
 
-        public List<Medication> getApprovedMedicine()
+        public List<Medication> GetApprovedMedicine()
         {
             List<Medication> retVal = new List<Medication>();
 
@@ -35,7 +35,7 @@ namespace SIMS.Repositories.SecretaryRepo
             return retVal;
         }
 
-        public List<Medication> getMedicineWaitingForApproval()
+        public List<Medication> GetMedicineWaitingForApproval()
         {
             List<Medication> retVal = new List<Medication>();
 
@@ -48,7 +48,7 @@ namespace SIMS.Repositories.SecretaryRepo
             return retVal;
         }
 
-        public List<Medication> getDeniedMedicine()
+        public List<Medication> GetDeniedMedicine()
         {
             List<Medication> retVal = new List<Medication>();
 
@@ -61,6 +61,9 @@ namespace SIMS.Repositories.SecretaryRepo
             return retVal;
         }
 
-
+        protected override void ShouldSerialize(Medication entity)
+        {
+            //ne treba logika za serijalizaciju
+        }
     }
 }

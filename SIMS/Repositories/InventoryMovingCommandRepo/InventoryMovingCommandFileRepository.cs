@@ -23,5 +23,10 @@ namespace SIMS.Repositories.SecretaryRepo
         protected override void RemoveReferences(string key)
         {
         }
+
+        protected override void ShouldSerialize(InventoryMovingCommand entity)
+        {
+           //ne treba logika za serijalizaciju
+        }
     }
 }

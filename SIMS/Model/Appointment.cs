@@ -9,7 +9,6 @@ using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SIMS.Model
@@ -24,7 +23,7 @@ namespace SIMS.Model
         public Room Room { get; set; }
         public DateTime InitialTime { get; set; }
         public String AppointmentID { get; set; }
-
+        
         [JsonIgnore]
         public bool Serialize { get; set; }
 
@@ -51,11 +50,23 @@ namespace SIMS.Model
             Serialize = true;
         }
 
-
         public Appointment()
         {
             Type = AppointmentType.examination;
             AppointmentID = GenerateID();
+            Serialize = true;
+        }
+
+        public Appointment(Appointment anamnesisAppointment)
+        {
+            StartTime = anamnesisAppointment.StartTime;
+            InitialTime = anamnesisAppointment.InitialTime;
+            Duration = anamnesisAppointment.Duration;
+            Type = anamnesisAppointment.Type;
+            Doctor = anamnesisAppointment.Doctor;
+            Patient = anamnesisAppointment.Patient;
+            Room = anamnesisAppointment.Room;
+            AppointmentID = anamnesisAppointment.AppointmentID;
             Serialize = true;
         }
 
@@ -93,114 +104,29 @@ namespace SIMS.Model
             return Serialize;
         }
 
-        [JsonIgnore]
-        public String AppointmentDate { get => StartTime.ToString("dd.MM.yyyy."); }
+        public bool EqualDate(DateTime date)
+        {
+            return this.StartTime == date;
+        }
 
-        [JsonIgnore]
-        public String AppointmentTime { get => StartTime.ToString("HH:mm"); }
+        public DateTime GetEndTime()
+        {
+            return StartTime.AddMinutes(Duration);
+        }
 
-        [JsonIgnore]
-        public String RoomNumber { get => Room.Number; }
+        public bool IsPast()
+        {
+            return (GetEndTime() > DateTime.Now);
+        }
 
-        [JsonIgnore]
-        public String AppointmentTypeString 
+        public String GetAppointmentDate() 
         { 
-            get 
-            {
-                if (Type == AppointmentType.examination)
-                    return "Pregled";
-                else 
-                    return "Operacija";
-            }
+            return StartTime.ToString("dd.MM.yyyy."); 
         }
 
-        [JsonIgnore]
-        public String TypeString
+        public String GetAppointmentTime()
         {
-            get {
-
-                if (Type == AppointmentType.examination)
-                {
-                    return "Pregled";
-                }
-                else
-                {
-                    return "Operacija";
-                }
-            }
-            
-        }
-
-        [JsonIgnore]
-        public String PatientName
-        {
-            get
-            { 
-                return (Patient.FullName); 
-            }
-        }
-
-        [JsonIgnore]
-        public String DoctorName
-        {
-            get
-            {
-                return (Doctor.FullName);
-            }
-        }
-
-        [JsonIgnore]
-        public bool IsRecorded
-        {
-            get
-            {
-                if (AnamnesisFileRepository.Instance.FindById(this.AppointmentID) == null && SurgeryReportFileRepository.Instance.FindById(this.AppointmentID) == null)
-                    return false;
-                else return true;
-            }
-        }
-
-        [JsonIgnore]
-        public DateTime EndTime
-        {
-            get
-            {
-                return StartTime.AddMinutes(Duration);
-            }
-        }
-
-        [JsonIgnore]
-        public bool IsPast
-        {
-            get
-            {
-                // Vraca termine koji su se u potpunosti zavrsili
-                if (this.EndTime <= DateTime.Now)
-                    return true;
-                else return false;
-            }
-        }
-
-        [JsonIgnore]
-        public bool IsCurrent
-        {
-            get
-            {
-                //Vraca termine koji trenutno traju
-                if (this.StartTime <= DateTime.Now && this.EndTime >= DateTime.Now)
-                    return true;
-
-                return false;
-            }
-        }
-
-        [JsonIgnore]
-        public String AppointmentFullInfo
-        {
-            get
-            {
-                return DoctorName + ", " + AppointmentTime + " " + AppointmentDate;
-            }
+            return StartTime.ToString("HH:mm");
         }
 
         public void InitData()
@@ -213,6 +139,27 @@ namespace SIMS.Model
         private static string GenerateID()
         {
             return DateTime.Now.ToString("yyMMddhhmmssffffff");
+        }
+
+        public bool GetIfCurrent()
+        {
+            return (this.StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
+        }
+
+        public bool GetIfRecorded()
+        {
+            return (!(AnamnesisFileRepository.Instance.FindById(this.AppointmentID) == null
+                    && SurgeryReportFileRepository.Instance.FindById(this.AppointmentID) == null));
+        }
+
+        public String GetPatientName()
+        {
+            return Patient.FullName;
+        }
+
+        public String GetDoctorName()
+        {
+            return Doctor.FullName;
         }
 
     }

@@ -38,5 +38,10 @@ namespace SIMS.Repositories.SecretaryRepo
 
             return null;
         }
+
+        protected override void ShouldSerialize(Secretary entity)
+        {
+            entity.Serialize = true;
+        }
     }
 }
