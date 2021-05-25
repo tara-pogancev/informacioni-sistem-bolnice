@@ -5,10 +5,7 @@
     "IsBanned": false,
     "Lbo": "123",
     "Guest": false,
-    "Allergens": [
-      "a2",
-      "a7"
-    ],
+    "Allergens": [],
     "DateOfBirth": "1999-03-05T00:00:00",
     "HronicalDiseases": [],
     "GetHronicalDiseases": "Nema",
@@ -28,9 +25,7 @@
     "IsBanned": true,
     "Lbo": "45645",
     "Guest": false,
-    "Allergens": [
-      ""
-    ],
+    "Allergens": [],
     "DateOfBirth": "1999-03-05T00:00:00",
     "HronicalDiseases": [],
     "GetHronicalDiseases": "Nema",
@@ -50,9 +45,7 @@
     "IsBanned": false,
     "Lbo": "123456",
     "Guest": false,
-    "Allergens": [
-      "a1"
-    ],
+    "Allergens": [],
     "DateOfBirth": "1977-12-12T00:00:00",
     "HronicalDiseases": [],
     "GetHronicalDiseases": "Nema",

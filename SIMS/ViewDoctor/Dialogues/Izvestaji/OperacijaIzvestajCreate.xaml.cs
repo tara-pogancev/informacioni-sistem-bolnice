@@ -43,11 +43,8 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             {
                 Patient patient = operation.Patient;
 
-                SurgeryReport o = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
-                o.Operacija.Doctor.Serialize = false;
-                o.Operacija.Patient.Serialize = false;
-                o.Operacija.Serialize = false;
-                SurgeryReportFileRepository.Instance.Save(o);
+                SurgeryReport report = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
+                SurgeryReportFileRepository.Instance.Save(report);
 
                 this.Close();
                 DoctorUI.GetInstance().ChangeTab(3);

@@ -21,19 +21,17 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         public SurgeryReportRead(SurgeryReport report)
         {
             InitializeComponent();
-            report.InitData();
 
-            LabelDoctor.Content = "Doktor: " + report.ImeLekara;
-            LabelDate.Content = "Datum operacije: " + report.DatumOperacijeIspis;
+            LabelDoctor.Content = "Doktor: " + report.GetSurgery().GetDoctorName();
+            LabelDate.Content = "Datum operacije: " + report.GetSurgery().GetAppointmentDate();
 
-            LabelPacijent.Content = "Pacijent: " + report.ImePacijenta;
-            LabelBirthDate.Content = "Datum rođenja: " + report.DatumRodjenjaPacijenta;
+            LabelPacijent.Content = "Pacijent: " + report.GetSurgery().GetPatientName();
+            LabelBirthDate.Content = "Datum rođenja: " + report.GetSurgery().Patient.GetDateOfBirthString();
 
-            LabelRoom.Content = "Prostorija: " + report.SobaOperacije;
+            LabelRoom.Content = "Prostorija: " + report.GetSurgery().Room.Number;
 
-            OperationName.Content = report.NazivOperacije;
-
-            OperationDescription.Text = report.NapomeneOperacije;
+            OperationName.Content = report.SurgeryName;
+            OperationDescription.Text = report.SurgeryDescription;
 
         }
 
