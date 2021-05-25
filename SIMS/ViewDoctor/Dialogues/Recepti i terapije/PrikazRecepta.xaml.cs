@@ -30,7 +30,7 @@ namespace SIMS.LekarGUI
 
             LabelDoktor.Content = "Doktor: " + doctor.FullName;
             LabelPacijent.Content = "Pacijent: " + patient.FullName;
-            LabelDatum.Content = "Datum: " + receipt.DateString;
+            LabelDatum.Content = "Datum: " + receipt.GetRecieptDateString();
 
             NazivLeka.Content = receipt.MedicineName;
             Kolicina.Content = receipt.Amount;
