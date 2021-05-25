@@ -2,7 +2,7 @@
   "4865453131": {
     "PatientGender": 0,
     "BloodType": 0,
-    "IsBanned": false,
+    "IsBanned": true,
     "Lbo": "123",
     "Guest": false,
     "Allergens": [],

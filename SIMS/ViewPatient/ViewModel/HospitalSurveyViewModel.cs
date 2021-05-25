@@ -91,7 +91,7 @@ namespace SIMS.PacijentGUI.ViewModel
         #region actions
         public void Execute_SendSurveyCommand(object obj)
         {
-            obj.GetType();
+           
             HospitalSurvey hospitalSurvey = new HospitalSurvey();
             hospitalSurvey.IdVlasnika = PocetnaStranica.getInstance().Pacijent.Jmbg;
             hospitalSurvey.IdAnkete = hospitalSurvey.DatumKreiranjaAnkete + hospitalSurvey.IdVlasnika;
