@@ -38,9 +38,9 @@ namespace SIMS.SekretarGUI
             GetStreetAndNumberFromAdress(out string street, out string number);
             int.TryParse(postalCodeTextBox.Text, out int postalCode);
 
-            List<string> allergens = new List<string>();
+            List<Allergen> allergens = new List<Allergen>();
             foreach (Allergen a in allergensComboBox.SelectedItems)
-                allergens.Add(a.ID);
+                allergens.Add(a);
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, postalCode, new Country(countryTextBox.Text))), lboTextBox.Text, false, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);

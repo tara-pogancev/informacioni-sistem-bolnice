@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.AllergenRepo;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -118,7 +119,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void RemoveElements(object sender, RoutedEventArgs e)
         {
             foreach (AlergenDTO component in GetSelectedComponents())
-                medicine.Components.Remove(component.AlergenID);
+                medicine.Components.Remove(AllergenFileRepository.Instance.FindById(component.AlergenID));
 
             RefreshView();
         }
@@ -135,7 +136,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void AddElements(object sender, RoutedEventArgs e)
         {
             foreach (AlergenDTO component in GetSelectedComponents())
-                medicine.Components.Add(component.AlergenID);
+                medicine.Components.Add(AllergenFileRepository.Instance.FindById(component.AlergenID));
 
             RefreshView();
         }

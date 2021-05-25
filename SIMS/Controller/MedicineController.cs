@@ -6,20 +6,17 @@ using SIMS.Service;
 
 namespace SIMS.Controller
 {
-    class MedicineController
+    public class MedicineController
     {
         private MedicineService medicineService = new MedicineService();
-
-        MedicineController()
-        {
-
-        }
 
         public List<Medication> GetAllMedicine() => medicineService.GetAllMedicine();
 
         public void UpdateMedicine(Medication medication) => medicineService.UpdateMedicine(medication);
 
         public void DeleteMedicine(Medication medication) => medicineService.DeleteMedicine(medication);
+
+        public void DeleteMedicine(string ID) => medicineService.DeleteMedicine(ID);
 
         public void SaveMedicine(Medication medication) => medicineService.SaveMedicine(medication);
 

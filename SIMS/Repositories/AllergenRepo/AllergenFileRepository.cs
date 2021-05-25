@@ -25,7 +25,7 @@ namespace SIMS.Repositories.AllergenRepo
 
         protected override void ShouldSerialize(Allergen entity)
         {
-            //ne treba logika za serijalizaciju
+            entity.Serialize = true;
         }
     }
 }

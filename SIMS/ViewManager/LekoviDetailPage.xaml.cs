@@ -57,7 +57,7 @@ namespace SIMS.UpravnikGUI
 
             foreach (Allergen alergen in AllergenFileRepository.Instance.ReadAll().Values)
             {
-                Sastojci.Add(new Sastojak(alergen, lek.Components.Contains(alergen.ID)));
+                Sastojci.Add(new Sastojak(alergen, lek.Components.Contains(alergen)));
             }
 
             tabelaSastojaka.ItemsSource = Sastojci;
@@ -93,7 +93,7 @@ namespace SIMS.UpravnikGUI
             {
                 if (sastojak.IsChecked)
                 {
-                    lek.Components.Add(sastojak.Alergen.ID);
+                    lek.Components.Add(sastojak.Alergen);
                 }
             }
 

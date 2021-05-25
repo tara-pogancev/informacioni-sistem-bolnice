@@ -18,21 +18,26 @@ namespace SIMS.Model
         public bool IsBanned { get; set; }
         public string Lbo { get; set; }
         public bool Guest { get; set; }
-        public List<string> Allergens { get; set; }
+        public List<Allergen> Allergens { get; set; }
         public DateTime DateOfBirth { get; set; }
         public List<string> HronicalDiseases { get; set; }
 
 
-        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<string> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
             Lbo = lbo;
             Guest = guest;
             Allergens = allergens;
             IsBanned = false;
             Serialize = true;
+
+            foreach (var allergen in allergens)
+            {
+                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+            }
         }
 
-        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<string> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
             Lbo = lbo;
             Guest = guest;
@@ -43,6 +48,11 @@ namespace SIMS.Model
             HronicalDiseases = hronicalDiseases;
             IsBanned = false;
             Serialize = true;
+
+            foreach (var allergen in Allergens)
+            {
+                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+            }
         }
 
         public Patient(Patient patient)
@@ -76,7 +86,7 @@ namespace SIMS.Model
         {
             Lbo = "";
             Guest = true;
-            Allergens = new List<string>();
+            Allergens = new List<Allergen>();
             DateOfBirth = DateTime.MinValue;
             BloodType = BloodType.Op;
             PatientGender = SexType.Male;
@@ -108,13 +118,13 @@ namespace SIMS.Model
         public string GetAllergenListString()
         {
                 string allergensString = "";
-                if (Allergens.Count == 0 || Allergens.Contains(""))
+                if (Allergens.Count == 0)
                     return "Nema";
 
                 AllergenFileRepository allergens = new AllergenFileRepository();
 
-                foreach (string a in Allergens)
-                    allergensString += allergens.FindById(a).Name + ", ";
+                foreach (Allergen a in Allergens)
+                    allergensString += a.Name + ", ";
                 return allergensString.Remove(allergensString.Length - 2); 
         }
 
@@ -160,7 +170,7 @@ namespace SIMS.Model
 
         public bool IsAlergic(Medication lek)
         {
-            foreach (string a in this.Allergens)
+            foreach (var a in this.Allergens)
             {
                 if (lek.Components.Contains(a))
                     return true;

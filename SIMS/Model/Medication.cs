@@ -11,22 +11,28 @@ namespace SIMS.Model
 
         public string MedicineID { get; set; }
         public string MedicineName { get; set; }
-        public List<string> Components { get; set; }
+        public List<Allergen> Components { get; set; }
         public string IDSubstitution { get; set; }
 
         public MedicineApprovalStatus ApprovalStatus { get; set; }
 
         public Medication()
         {
-            Components = new List<string>();
+            Components = new List<Allergen>();
             ApprovalStatus = MedicineApprovalStatus.Waiting;
         }
 
-        public Medication(string id, string name, List<string> components, string iDSubstitution)
+        public Medication(string id, string name, List<Allergen> components, string iDSubstitution)
         {
             MedicineID = id;
             MedicineName = name;
             Components = components;
+
+            foreach (var allergen in components)
+            {
+                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+            }
+
             ApprovalStatus = MedicineApprovalStatus.Waiting;
             IDSubstitution = iDSubstitution; 
         }
@@ -34,11 +40,11 @@ namespace SIMS.Model
         public String GetComponentsList()
         {
             string componentsString = "";
-            if (Components.Count == 0 || Components.Contains(""))
+            if (Components.Count == 0)
                 return "Nije navedeno";
 
-            foreach (string a in Components)
-                componentsString += AllergenFileRepository.Instance.FindById(a).Name + ", ";
+            foreach (var a in Components)
+                componentsString += a.Name;
             return componentsString.Remove(componentsString.Length - 2);
         }
 

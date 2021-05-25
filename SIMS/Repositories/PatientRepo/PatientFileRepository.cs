@@ -50,6 +50,10 @@ namespace SIMS.Repositories.SecretaryRepo
         protected override void ShouldSerialize(Patient entity)
         {
             entity.Serialize = true;
+            foreach (var allergen in entity.Allergens)
+            {
+                allergen.Serialize = false;
+            }
         }
     }
 }

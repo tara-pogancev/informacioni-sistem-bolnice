@@ -54,13 +54,13 @@ namespace SIMS.SekretarGUI
             allergensComboBox.DisplayMemberPath = "Naziv";
             allergensComboBox.SelectedMemberPath = "ID";
 
-            foreach (string id in patient.Allergens)
+            foreach (var allergen in patient.Allergens)
             {
                 foreach (Allergen a in _allergens)
                 {
-                    if (id.Equals(a.ID))
+                    if (allergen.ID == a.ID)
                     {
-                        allergensComboBox.SelectedItems.Add(a);
+                        allergensComboBox.SelectedItems.Add(a.Name);
                         break;
                     }
                 }
@@ -99,10 +99,10 @@ namespace SIMS.SekretarGUI
             GetStreetAndNumberFromAdress(out string street, out string number);
             int.TryParse(postalCodeTextBox.Text, out int post_broj);
 
-            List<string> allergens = new List<string>();
+            List<Allergen> allergens = new List<Allergen>();
             foreach (Allergen a in allergensComboBox.SelectedItems)
             {
-                allergens.Add(a.ID);
+                allergens.Add(a);
             }
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 

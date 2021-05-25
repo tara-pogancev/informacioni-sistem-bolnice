@@ -19,6 +19,8 @@ namespace SIMS.Service
 
         public void SaveMedicine(Medication medication) => medicationRepository.Save(medication);
 
+        public void DeleteMedicine(string ID) => medicationRepository.Delete(ID);
+
         public Medication GetMedicine(String key) => medicationRepository.FindById(key);
 
         public List<Medication> GetApprovedMedicine()

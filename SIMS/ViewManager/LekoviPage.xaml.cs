@@ -14,17 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.UpravnikGUI
 {
     public partial class LekoviPage : Page
     {
         private ObservableCollection<Medication> lekovi;
-
+        private MedicineController medicineController = new MedicineController();
         public LekoviPage()
         {
             InitializeComponent();
-            lekovi = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetAll());
+            lekovi = new ObservableCollection<Medication>(medicineController.GetAllMedicine());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
@@ -37,8 +38,8 @@ namespace SIMS.UpravnikGUI
         private void IzbrisiLek_Click(object sender, RoutedEventArgs e)
         {
             Medication SelectedLek = tabelaLekovi.SelectedItem as Medication;
-            MedicationFileRepository.Instance.Delete(SelectedLek.MedicineID);
-            lekovi = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetAll());
+            medicineController.DeleteMedicine(SelectedLek.MedicineID);
+            lekovi = new ObservableCollection<Medication>(medicineController.GetAllMedicine());
             tabelaLekovi.ItemsSource = lekovi;
         }
 
