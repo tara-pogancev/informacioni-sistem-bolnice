@@ -15,7 +15,7 @@ namespace SIMS.Controller
             allergenService.CreateOrUpdate(allergen);
         }
 
-        public Allergen FindById(string ID)
+        public Allergen GetAllergen(string ID)
         {
             return allergenService.FindById(ID);
         }

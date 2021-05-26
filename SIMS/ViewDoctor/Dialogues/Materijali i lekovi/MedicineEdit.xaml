@@ -47,8 +47,8 @@
 
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding AlergenID}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding AlergenNaziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding ID}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding Name}" Width="2*"  DataGridColumn.CanUserResize="False"/>
 
                     </DataGrid.Columns>
 
@@ -62,8 +62,8 @@
 
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding AlergenID}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding AlergenNaziv}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="ID sastojka" Binding="{Binding ID}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                        <DataGridTextColumn Header="Sastojci leka" Binding="{Binding Name}" Width="2*"  DataGridColumn.CanUserResize="False"/>
 
                     </DataGrid.Columns>
 
@@ -92,7 +92,6 @@
 
         <Button Grid.Row="3" Content="Ukloni" Click="RemoveElements" Name="RemoveButton" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"
             Style="{StaticResource RedButton}" Template="{StaticResource BasicButtonNarrow}"/>
-
         
 
         <Button Grid.Row="3" Content="Odustani" Click="ButtonCloseWindow" HorizontalAlignment="Right" Margin="0,0,120,0" VerticalAlignment="Center"
