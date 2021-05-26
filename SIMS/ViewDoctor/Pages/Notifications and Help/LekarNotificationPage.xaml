@@ -17,7 +17,7 @@
 
         <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
 
-            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="ButtonHome"/>
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Obaveštenja" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
 
@@ -25,10 +25,10 @@
 
         <StackPanel Orientation="Horizontal" Margin="0,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right">
 
-            <Button Content="Lekovi" Click="Button_Lekovi" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"
+            <Button Content="Lekovi" Click="ButtonViewMedicineList" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonNarrow}"
                 HorizontalAlignment="Right"/>
 
-            <Button Content="Odobravanje lekova" Click="Button_Odobravanje" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonSlick}"
+            <Button Content="Odobravanje lekova" Click="ButtonMedicineApproval" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonSlick}"
                 Margin="20,0,0,0"/>
 
         </StackPanel>

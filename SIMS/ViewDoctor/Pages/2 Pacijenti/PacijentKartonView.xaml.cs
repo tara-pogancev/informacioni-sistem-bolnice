@@ -63,7 +63,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonWriteReceipt(object sender, RoutedEventArgs e)
         {
-            new DoctorWriteRecript(patient).Show();
+            new DoctorWriteReceipt(patient).Show();
         }
 
         private void ButtonDocumentation(object sender, RoutedEventArgs e)

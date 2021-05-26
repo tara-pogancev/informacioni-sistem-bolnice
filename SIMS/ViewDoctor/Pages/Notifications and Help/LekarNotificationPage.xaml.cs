@@ -48,21 +48,19 @@ namespace SIMS.LekarGUI
             notificationViewModel = new ObservableCollection<Notification>(notificationList);
         }
 
-        private void Button_Odobravanje(object sender, RoutedEventArgs e)
+        private void ButtonMedicineApproval(object sender, RoutedEventArgs e)
         {
-            MedicineApproval m = new MedicineApproval();
-            m.Show();
+            new MedicineApproval().Show();
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }
 
-        private void Button_Lekovi(object sender, RoutedEventArgs e)
+        private void ButtonViewMedicineList(object sender, RoutedEventArgs e)
         {
-            AvailableMedicineView window = new AvailableMedicineView();
-            window.Show();
+            new AvailableMedicineView().Show();
         }
     }
 }

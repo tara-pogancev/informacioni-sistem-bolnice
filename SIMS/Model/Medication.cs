@@ -58,7 +58,6 @@ namespace SIMS.Model
                 else if (ApprovalStatus == MedicineApprovalStatus.Waiting)
                     return "Na čekanju";
                 else return "Odbijen";
-
             }
         }
     }

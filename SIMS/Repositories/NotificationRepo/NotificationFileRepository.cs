@@ -51,7 +51,6 @@ namespace SIMS.Repositories.SecretaryRepo
                     retVal.RemoveAt(i);
                     i--;
                 }
-
             }
 
             return retVal;

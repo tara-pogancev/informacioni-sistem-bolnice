@@ -8,8 +8,7 @@
       "0603850721311",
       "064865071221",
       "All"
-    ],
-    "VremeString": "17:43"
+    ]
   },
   "Sekretarijat210525174346027694": {
     "Author": "Sekretarijat",
@@ -20,8 +19,7 @@
       "0603850721311",
       "064865071221",
       "All"
-    ],
-    "VremeString": "17:43"
+    ]
   },
   "Sekretarijat210525174353591857": {
     "Author": "Sekretarijat",
@@ -32,7 +30,15 @@
       "0603850721311",
       "064865071221",
       "All"
-    ],
-    "VremeString": "17:43"
+    ]
+  },
+  "Recept210526113345476609": {
+    "Author": "Recept",
+    "Time": "2021-05-26T11:33:45.4766096+02:00",
+    "Content": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210526113345476609",
+    "Target": [
+      "12645323206"
+    ]
   }
 }

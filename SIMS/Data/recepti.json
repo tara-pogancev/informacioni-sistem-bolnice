@@ -1,2 +1,17 @@
 {
+  "210526113344": {
+    "MedicineName": "Vivace",
+    "Amount": "50mg",
+    "Diagnosis": "Parla",
+    "RecieptID": "210526113344",
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Date": "2021-05-26T00:00:00+02:00"
+  }
 }

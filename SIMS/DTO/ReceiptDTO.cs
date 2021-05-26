@@ -20,6 +20,7 @@ namespace SIMS.DTO
             Receipt = receiptController.GetReceipt(receipt.RecieptID);
             Receipt.InitData();
             DoctorName = Receipt.Doctor.FullName;
+            DateString = receipt.GetRecieptDateString();
             MedicationNameAmount = Receipt.MedicineName + ", " + Receipt.Amount;
         }
 

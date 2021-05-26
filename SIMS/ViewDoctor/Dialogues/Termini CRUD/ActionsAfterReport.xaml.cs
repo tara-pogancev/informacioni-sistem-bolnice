@@ -41,7 +41,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
         {
-            var window = new DoctorWriteRecript(patient);
+            var window = new DoctorWriteReceipt(patient);
             window.ShowDialog();
         }
 
