@@ -51,7 +51,7 @@ namespace SIMS.ViewPatient.ViewModel
         {
 
             Appointment appointment = new AppointmentController().GetAppointment(SelectedAppointment.AppointmentID);
-            appointment.Doctor = new DoctorController().FindByIdDoctor(appointment.Doctor.Jmbg);
+            appointment.Doctor = new DoctorController().GetDoctor(appointment.Doctor.Jmbg);
             navService.Navigate(new OcijeniPregled(appointment));
         }
         public bool CanExecute_DetailsAppointmentCommand(object obj)

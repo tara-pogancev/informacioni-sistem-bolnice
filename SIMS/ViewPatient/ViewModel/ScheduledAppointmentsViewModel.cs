@@ -84,7 +84,7 @@ namespace SIMS.PacijentGUI.ViewModel
             foreach (Appointment appointment in PatientAppointments)
             {
                 appointment.Patient = new PatientController().GetPatient(appointment.Patient.Jmbg);
-                appointment.Doctor = new DoctorController().FindByIdDoctor(appointment.Doctor.Jmbg);
+                appointment.Doctor = new DoctorController().GetDoctor(appointment.Doctor.Jmbg);
             }
         }
 

@@ -19,13 +19,11 @@ namespace SIMS.Controller
 
         public void UpdateDoctor(Doctor doctor) => doctorService.UpdateDoctor(doctor);
 
-        public void DeleteDoctor(String key) => doctorService.DeleteDoctor(key);
+        public void DeleteDoctor(Doctor doctor) => doctorService.DeleteDoctor(doctor);
 
         public void SaveDoctor(Doctor doctor) => doctorService.SaveDoctor(doctor);
 
-        public void CreateOrUpdateDoctor(Doctor doctor) => doctorService.CreateOrUpdateDoctor(doctor);
-
-        public Doctor FindByIdDoctor(String key) => doctorService.FindByIdDoctor(key);
+        public Doctor GetDoctor(String key) => doctorService.GetDoctor(key);
 
         public List<Specialization> GetAvailableSpecialization()
         {

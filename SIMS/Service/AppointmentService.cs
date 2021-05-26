@@ -117,7 +117,7 @@ namespace SIMS.Service
             List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
              for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (!scheduledAppointments[i].IsPast() || scheduledAppointments[i].Patient.Jmbg!=patient.Jmbg)
+                if (!scheduledAppointments[i].GetIfPast() || scheduledAppointments[i].Patient.Jmbg!=patient.Jmbg)
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;
@@ -153,7 +153,7 @@ namespace SIMS.Service
 
         public List<Appointment> GetPastAppointments()
         {
-            
+            List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
                 
