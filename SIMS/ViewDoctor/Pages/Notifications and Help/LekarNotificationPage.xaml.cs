@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -24,22 +25,27 @@ namespace SIMS.LekarGUI
 
     public partial class LekarNotificationPage : Page
     {
-        private Doctor lekarUser;
+        private Doctor doctorUser;
+        private ObservableCollection<Notification> notificationViewModel;
 
-        private ObservableCollection<Notification> obavestenjeView;
+        private NotificationController notificationController = new NotificationController();
 
         public LekarNotificationPage()
         {
             InitializeComponent();
 
-            lekarUser = DoctorUI.GetInstance().GetUser();
+            doctorUser = DoctorUI.GetInstance().GetUser();
 
-            List<Notification> listaObavestenja = NotificationFileRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
-            listaObavestenja.Reverse();
-            obavestenjeView = new ObservableCollection<Notification>(listaObavestenja);
+            InitializeNotificationsList();
 
-            viewerObavestenja.ItemsSource = listaObavestenja;
+            notificationViewer.ItemsSource = notificationViewModel;
+        }
 
+        private void InitializeNotificationsList()
+        {
+            List<Notification> notificationList = notificationController.ReadPastNotificationsByUser(doctorUser.Jmbg);
+            notificationList.Reverse();
+            notificationViewModel = new ObservableCollection<Notification>(notificationList);
         }
 
         private void Button_Odobravanje(object sender, RoutedEventArgs e)

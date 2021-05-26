@@ -37,7 +37,7 @@ namespace SIMS.Model
         }
 
         [JsonIgnore]
-        public String AutorUppercase
+        public String AuthorUppercase
         {
             get { return Author.ToUpper(); }
         }
@@ -54,11 +54,11 @@ namespace SIMS.Model
             }
         }
 
-        public bool ContainsTarget(string key)
+        public bool ContainsTarget(string target)
         {
             foreach (string s in Target)
             {
-                if (s.Equals(key))
+                if (s.Equals(target))
                     return true;
             }
             return false;
