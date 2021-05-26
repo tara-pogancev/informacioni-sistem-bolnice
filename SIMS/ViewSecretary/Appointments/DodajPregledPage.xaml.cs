@@ -7,15 +7,15 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.SekretarGUI
+namespace SIMS.ViewSecretary
 {
-    public partial class DodajOperacijuPage : Page
+    public partial class DodajPregledPage : Page
     {
         private List<Doctor> _doctors;
         private List<Patient> _patients;
         private List<Room> _rooms;
 
-        public DodajOperacijuPage()
+        public DodajPregledPage()
         {
             InitializeComponent();
 
@@ -68,7 +68,7 @@ namespace SIMS.SekretarGUI
             appointment.Room = _rooms[roomsComboBox.SelectedIndex];
             appointment.Patient = _patients[patientsComboBox.SelectedIndex];
             appointment.Doctor = _doctors[doctorsComboBox.SelectedIndex];
-            appointment.Type = AppointmentType.surgery;
+            appointment.Type = AppointmentType.examination;
 
             return appointment;
         }

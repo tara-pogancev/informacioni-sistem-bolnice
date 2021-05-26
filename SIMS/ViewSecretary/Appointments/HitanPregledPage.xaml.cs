@@ -17,21 +17,23 @@ using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
 
-namespace SIMS.SekretarGUI
+namespace SIMS.ViewSecretary
 {
     /// <summary>
-    /// Interaction logic for HitnaOperacijaPage.xaml
+    /// Interaction logic for HitanPregledPage.xaml
     /// </summary>
-    public partial class HitnaOperacijaPage : Page
+    public partial class HitanPregledPage : Page
     {
         private List<string> SpecializationList;
         private List<Specialization> SpecializationEnumList;
         private List<string> DurationList = new List<string>() { "30 minuta", "60 minuta", "90 minuta" };
         private ObservableCollection<Patient> PatientList;
+
         private DoctorController doctorController = new DoctorController();
 
         private ObservableCollection<Appointment> AvailableAppointments;
-        public HitnaOperacijaPage()
+
+        public HitanPregledPage()
         {
             InitializeComponent();
 
@@ -41,9 +43,9 @@ namespace SIMS.SekretarGUI
             AvailableAppointments = new ObservableCollection<Appointment>();
             AvailableComboBox.DataContext = AvailableAppointments;
             SpecializationList = DoctorFileRepository.Instance.GetAvailableSpecializationString();
-            SpecializationList.Remove("Lekar opšte prakse");
+            //SpecializationList.Remove("Lekar opšte prakse");
             SpecializationEnumList = DoctorFileRepository.Instance.GetAvailableSpecialization();
-            SpecializationEnumList.Remove(Specialization.OpstaPraksa);
+            //SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
             PatientList = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
 
             SpecializationComboBox.ItemsSource = SpecializationList;
@@ -87,7 +89,7 @@ namespace SIMS.SekretarGUI
                 SekretarTerminiPage.GetInstance().RefreshView();
 
                 this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
-                MessageBox.Show("Hitna operacija uspesno zakazana!");
+                MessageBox.Show("Hitan pregled uspesno zakazan!");
             }
         }
 
@@ -122,7 +124,7 @@ namespace SIMS.SekretarGUI
             else
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Zakazana hitna operacija [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
+                ("Zakazan hitan pregled [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
                 + selectedApp.GetPatientName() + ", vodeći lekar " + selectedApp.GetDoctorName() + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
@@ -148,7 +150,7 @@ namespace SIMS.SekretarGUI
 
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.surgery, null, (Patient)PatientComboBox.SelectedItem, null);
+                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.examination, null, (Patient)PatientComboBox.SelectedItem, null);
                 List<Appointment> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
                 if (allAppointments.Count == 1)
                 {
@@ -182,7 +184,6 @@ namespace SIMS.SekretarGUI
             foreach (Doctor doctor in DoctorFileRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
                 List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments(numberOfDays);
-                //int counterByDoctor = 0;
 
                 foreach (DateTime appTime in potentialAppointmentTimeList)
                 {
@@ -192,15 +193,13 @@ namespace SIMS.SekretarGUI
                     allAppointments.Add(appointment);
                     if (doctorController.CheckIfFree(doctor, appointment) && appointment.StartTime >= appointmentValues.StartTime)
                     {
-                        //counterByDoctor++;
                         retVal.Add(appointment);
                         goto Exit;
                     }
 
-                    /*if (counterByDoctor >= 5)
-                        break;*/
                 }
             }
+
         Exit:
             if (retVal.Count == 0)
                 return allAppointments;

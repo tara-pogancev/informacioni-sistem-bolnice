@@ -1,7 +1,7 @@
 ﻿using SIMS.Repositories.SecretaryRepo;
 using System.Windows;
 using System.Windows.Controls;
-using SIMS.SekretarGUI;
+using SIMS.ViewSecretary;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using SIMS.Model;

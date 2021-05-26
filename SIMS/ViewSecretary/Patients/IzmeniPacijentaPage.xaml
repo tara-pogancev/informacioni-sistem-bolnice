@@ -1,4 +1,4 @@
-﻿<Page x:Class="SIMS.SekretarGUI.DodajPacijentaPage"
+﻿<Page x:Class="SIMS.ViewSecretary.IzmeniPacijentaPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,8 +7,8 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
-      Title="DodajPacijentaPage"
-      xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit">
+      Title="IzmeniPacijentaPage"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit">
 
     <Page.Resources>
         <ObjectDataProvider x:Key="PolFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
@@ -28,6 +28,7 @@
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
@@ -67,6 +68,7 @@
                 <Label Content="Lbo:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="16" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
                 <Label Content="Alergeni:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="17" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
                 <Label Content="Hronicne bolesti:" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="18" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+                <Label Content="Gost:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="19" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -92,16 +94,17 @@
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
                         <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Row="2" Grid.RowSpan="17" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                    <Border Grid.Row="2" Grid.RowSpan="18" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
                     <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="birthDateTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12.12.1977." TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                    <ComboBox x:Name="sexComboBox" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" ItemsSource="{Binding Source={StaticResource PolFromEnum}}" SelectedIndex="0"/>
-                    <ComboBox x:Name="bloodGroupComboBox" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" SelectedIndex="0">
+                    <ComboBox x:Name="sexComboBox" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" ItemsSource="{Binding Source={StaticResource PolFromEnum}}" SelectedIndex="0"/>
+                    <ComboBox x:Name="bloodGroupComboBox" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" SelectedIndex="0">
                         <ComboBoxItem>O+</ComboBoxItem>
                         <ComboBoxItem>O-</ComboBoxItem>
                         <ComboBoxItem>A+</ComboBoxItem>
@@ -111,7 +114,7 @@
                         <ComboBoxItem>AB+</ComboBoxItem>
                         <ComboBoxItem>AB-</ComboBoxItem>
                     </ComboBox>
-                    <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
                     <TextBox x:Name="usernameTextBox" HorizontalAlignment="Left" Grid.Row="8" Margin="30,0,0,0" Text="pera" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Grid.Row="9" Margin="30,0,0,0" Text="pera" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Grid.Row="10" Margin="30,0,0,0" Text="petarpetrovic@gmail.com" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
@@ -123,14 +126,15 @@
                     <TextBox x:Name="lboTextBox" HorizontalAlignment="Left" Grid.Row="16" Margin="30,0,0,0" Text="123456" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <xceet:CheckComboBox x:Name="allergensComboBox" HorizontalAlignment="Left" Grid.Row="17" Margin="30,0,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" MaxDropDownHeight="100"/>
                     <TextBox x:Name="chronicPainsTextBox" HorizontalAlignment="Left" Grid.Row="18" Margin="30,0,0,0" Text="" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                    <CheckBox x:Name="guestCheckBox" HorizontalAlignment="Left" Grid.Row="19" Margin="145,15,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" Content=""/>
 
-                    <StackPanel Grid.Row="19"  Grid.RowSpan="2" Orientation="Horizontal">
+                    <StackPanel Grid.Row="20"  Grid.RowSpan="2" Orientation="Horizontal">
                         <Button Content="OTKAZI" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                        <Button Content="DODAJ" Click="AddPatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                        <Button Content="IZMENI" Click="UpdatePatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                     </StackPanel>
 
                     <Grid Margin="-100,-20,0,0" Grid.RowSpan="2">
-                        <Label Content="Dodavanje pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                        <Label Content="Izmena pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
                     </Grid>
                 </Grid>
             </Grid>

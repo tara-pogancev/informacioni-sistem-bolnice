@@ -1,12 +1,12 @@
-﻿<Page x:Class="SIMS.SekretarGUI.IzmeniTerminPage"
+﻿<Page x:Class="SIMS.ViewSecretary.DodajPregledPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.SekretarGUI"
+      xmlns:local="clr-namespace:SIMS.ViewSecretary"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
-      Title="IzmeniTerminPage">
+      Title="DodajPregledPage">
 
     <Page.Resources>
         <Style TargetType="Label">
@@ -36,12 +36,12 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -64,15 +64,15 @@
                 <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientsComboBox"  DisplayMemberPath="ImePrezime" SelectedValuePath="ImePrezime" 
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientsComboBox"  DisplayMemberPath="ImePrezime"  SelectedValuePath="ImePrezime" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Broj" SelectedValuePath="Broj" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Broj"  SelectedValuePath="Broj" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" SelectedDateChanged="DatePicker_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
 
-                <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="appointmentsComboBox" ItemsSource="{Binding termini}"
+                <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="appointmentsComboBox" ItemsSource="{Binding dostupniTermini}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="durationComboBox" ItemsSource="{Binding trajanje}"
@@ -81,12 +81,12 @@
                 <StackPanel Grid.Row="8" Grid.RowSpan="2" Orientation="Horizontal">
                     <Button Grid.Row="8" Grid.RowSpan="2" Content="ODUSTANI" Click="Quit_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button  Content="IZMENI" Click="AddExamination_Click" Width="100"
+                    <Button  Content="ZAKAŽI" Click="AddExamination_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
                 <Grid Margin="-100,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Uređivanje termina" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+                    <Label Content="Zakazivanje pregleda" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

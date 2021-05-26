@@ -2,7 +2,7 @@
 using SIMS.Repositories.SecretaryRepo;
 using System.Windows.Controls;
 
-namespace SIMS.SekretarGUI
+namespace SIMS.ViewSecretary
 {
     public partial class SekretarHomePage : Page
     {

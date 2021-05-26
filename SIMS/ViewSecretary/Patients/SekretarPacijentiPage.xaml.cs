@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.SekretarGUI
+namespace SIMS.ViewSecretary
 {
     public partial class SekretarPacijentiPage : Page
     {
