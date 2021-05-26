@@ -11,7 +11,7 @@
     "MedicineName": "Brufen 200",
     "Components": [],
     "IDSubstitution": "l6",
-    "ApprovalStatus": 0
+    "ApprovalStatus": 2
   },
   "l3": {
     "MedicineID": "l3",
@@ -77,6 +77,6 @@
     "MedicineName": "Analgin",
     "Components": [],
     "IDSubstitution": "l2",
-    "ApprovalStatus": 2
+    "ApprovalStatus": 0
   }
 }
