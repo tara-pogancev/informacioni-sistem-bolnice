@@ -59,7 +59,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
         #endregion
 
-        private PatientTherapyViewModel()
+        public PatientTherapyViewModel()
         {
             
             Meetings = new ObservableCollection<Meeting>();

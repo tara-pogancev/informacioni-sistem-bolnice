@@ -8,6 +8,7 @@ using SIMS.Model;
 using System;
 using System.Collections.Generic;
 using SIMS.Repositories.AllergenRepo;
+using SIMS.Repositories.DoctorRepo;
 
 namespace SIMS.Model
 {
@@ -21,6 +22,7 @@ namespace SIMS.Model
         public List<Allergen> Allergens { get; set; }
         public DateTime DateOfBirth { get; set; }
         public List<string> HronicalDiseases { get; set; }
+        public Doctor ChosenDoctor {get;set;}
 
 
         public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
@@ -35,6 +37,7 @@ namespace SIMS.Model
             {
                 allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
             }
+            ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
 
         public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
@@ -53,6 +56,7 @@ namespace SIMS.Model
             {
                 allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
             }
+            ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
 
         public Patient(Patient patient)
@@ -80,6 +84,7 @@ namespace SIMS.Model
         {
             IsBanned = false;
             Serialize = true;
+            ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
 
         public Patient(string name, string lastName, string jmbg) : base(name, lastName, jmbg, "", "", "", "", new Address("", "", new City("", 0, new Country(""))))
@@ -91,6 +96,7 @@ namespace SIMS.Model
             BloodType = BloodType.Op;
             PatientGender = SexType.Male;
             HronicalDiseases = new List<string>();
+            ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
 
         public String GetIfGuestString()
@@ -226,6 +232,10 @@ namespace SIMS.Model
             return Serialize;
         }
         public bool ShouldSerializeHronicalDiseases()
+        {
+            return Serialize;
+        }
+        public bool ShouldSerializeChosenDoctor()
         {
             return Serialize;
         }
