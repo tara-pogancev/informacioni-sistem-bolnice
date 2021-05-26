@@ -21,7 +21,7 @@ namespace SIMS.PacijentGUI.ViewModel
         {
             this.patient = patient;
             appointmentController = new AppointmentController();
-            PatientAppointments=new ObservableCollection<Appointment>(appointmentController.GetPatientAppointments(patient));
+            PatientAppointments=new ObservableCollection<Appointment>(appointmentController.GetFutureAppointments(patient));
             DeleteAppointmentCommand = new RelayCommand(Execute_DeleteAppointmentCommand,CanExecute_DeleteAppointmentCommand);
             EditAppointmentCommand = new RelayCommand(Execute_EditAppointmentCommand, CanExecute_EditAppointmentCommand);
             LoadPatientAndDoctorData();

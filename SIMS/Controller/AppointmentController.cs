@@ -62,9 +62,9 @@ namespace SIMS.Controller
             return appointmentService.GetNumberOfFinishedAppointments(patient);
         }
 
-        public List<Appointment> GetPastAppointments()
+        public List<Appointment> GetPastAppointmentsForPatient(Patient patient)
         {
-            return appointmentService.GetPastAppointments();
+            return appointmentService.GetPastAppointmentsForPatient(patient);
         }
 
         public List<Appointment> GetFutureAppointments(Patient patient)

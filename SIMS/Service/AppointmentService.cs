@@ -85,12 +85,12 @@ namespace SIMS.Service
             return scheduledAppointments;
         }
 
-        public List<Appointment> GetPastAppointments()
+        public List<Appointment> GetPastAppointmentsForPatient(Patient patient)
         {
-            List<Appointment> scheduledAppointments = appointmentRepository.GetAll();
+            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
-                if (!scheduledAppointments[i].IsPast())
+                if (!scheduledAppointments[i].IsPast() || scheduledAppointments[i].Patient.Jmbg!=patient.Jmbg)
                 {
                     scheduledAppointments.RemoveAt(i);
                     i--;

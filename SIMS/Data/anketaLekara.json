@@ -37,6 +37,7 @@
         "Number": "1",
         "Serialize": false
       },
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210524022634266372"
     },
     "Grade": 5,
@@ -45,5 +46,148 @@
     "Komentar": "Najbolja doktorica u bolnici",
     "DatumKreiranjaAnkete": "2021-05-25T19:41:17.8631442+02:00",
     "IdVlasnika": "4865453131"
+  },
+  "210525105929653208": {
+    "Appointment": {
+      "StartTime": "2021-05-27T10:00:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "4865453131",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210525105929653208"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "IdAnkete": "210525105929653208",
+    "Komentar": "MAdada",
+    "DatumKreiranjaAnkete": "2021-05-26T07:57:01.5592916+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210525105938960295": {
+    "Appointment": {
+      "StartTime": "2021-05-27T10:30:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 20,
+        "Grade": 0.0,
+        "DoctorSpecialization": 4,
+        "Name": "Zack",
+        "LastName": "Fair",
+        "Jmbg": "4848555021548",
+        "Username": "zack",
+        "Password": "l",
+        "Email": "zackfair@zdravo.com",
+        "Phone": "0698547521",
+        "Address": {
+          "City": {
+            "Name": "Midgar",
+            "PostalCode": 99888,
+            "Country": {
+              "Name": "Gaia"
+            }
+          },
+          "Street": "Shinra Inc",
+          "Number": "Floor 75"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "4865453131",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210525105938960295"
+    },
+    "Grade": 3,
+    "DoctorId": "4848555021548",
+    "IdAnkete": "210525105938960295",
+    "Komentar": "adadad",
+    "DatumKreiranjaAnkete": "2021-05-26T07:57:16.6791183+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210526083057470805": {
+    "Appointment": {
+      "StartTime": "2021-05-19T09:30:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "12121977802342",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "AppointmentID": "210526083057470805"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "IdAnkete": "210526083057470805",
+    "Komentar": "Najbolja",
+    "DatumKreiranjaAnkete": "2021-05-26T09:07:23.9147793+02:00",
+    "IdVlasnika": "12121977802342"
   }
 }

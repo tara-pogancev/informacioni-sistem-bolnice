@@ -116,7 +116,7 @@ namespace SIMS.Model
 
         public bool IsPast()
         {
-            return (GetEndTime() > DateTime.Now);
+            return (GetEndTime() < DateTime.Now);
         }
 
         public String GetAppointmentDate() 
