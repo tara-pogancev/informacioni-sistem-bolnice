@@ -9,7 +9,7 @@
         WindowStyle="ThreeDBorderWindow"
         ResizeMode="CanResize"
         MinHeight="630" MinWidth="900"
-        Title="Bolnica Zdravo - Lekar" Height="625" Width="1050"
+        Title="Bolnica Zdravo - Lekar" Height="625" Width="1065"
         KeyDown="WindowKeyListener">
 
     <WindowChrome.WindowChrome>

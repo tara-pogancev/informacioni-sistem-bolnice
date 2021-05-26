@@ -4,11 +4,15 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
     public class Receipt
     {
+        private DoctorController doctorController = new DoctorController();
+        private PatientController patientController = new PatientController();
+
         public String MedicineName { get; set; }
         public String Amount { get; set; }
         public String Diagnosis { get; set; }
@@ -55,8 +59,8 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Doctor = DoctorFileRepository.Instance.FindById(Doctor.Jmbg);
-            Patient = PatientFileRepository.Instance.FindById(Patient.Jmbg);
+            Doctor = doctorController.GetDoctor(Doctor.Jmbg);
+            Patient = patientController.GetPatient(Patient.Jmbg);
         }
 
     }

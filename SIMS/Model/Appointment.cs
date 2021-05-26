@@ -10,11 +10,14 @@ using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.ComponentModel;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
    public class Appointment : INotifyPropertyChanged
    {
+        private AppointmentController appointmentController = new AppointmentController();
+
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
         public AppointmentType Type { get; set; }
@@ -59,6 +62,9 @@ namespace SIMS.Model
 
         public Appointment(Appointment anamnesisAppointment)
         {
+            anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
+            anamnesisAppointment.InitData();
+
             StartTime = anamnesisAppointment.StartTime;
             InitialTime = anamnesisAppointment.InitialTime;
             Duration = anamnesisAppointment.Duration;
@@ -67,7 +73,7 @@ namespace SIMS.Model
             Patient = anamnesisAppointment.Patient;
             Room = anamnesisAppointment.Room;
             AppointmentID = anamnesisAppointment.AppointmentID;
-            Serialize = true;
+            Serialize = anamnesisAppointment.Serialize;
         }
 
         public bool ShouldSerializeInitialTime()

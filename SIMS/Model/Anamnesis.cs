@@ -6,12 +6,15 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Controller;
 
 
 namespace SIMS.Model
 {
     public class Anamnesis
     {
+        private AppointmentController appointmentController = new AppointmentController();
+
         public String MainIssues { get; set; }
         public String CurrentAnamnesis { get; set; }
         public String GeneralOccurrences { get; set; }
@@ -38,7 +41,6 @@ namespace SIMS.Model
         public Anamnesis(Appointment appointment, String mainIssues, String currentAnamnesis, String generalOccurrences, String respiratorySystem, String cardioSystem,
             String digestiveSystem, String uroGenitalSystem, String locomotorSystem, String nervousSystem, String pastDiseases, String familyData, String socioEpiData)
         {
-
             AnamnesisAppointment = appointment;
             AnamnesisDate = DateTime.Today;
 
@@ -57,11 +59,12 @@ namespace SIMS.Model
             SocioEpiData = socioEpiData;
 
             SetDefaultEmptyFields();
-
         }
 
         public Anamnesis(Anamnesis anamnesis)
         {
+            anamnesis.InitData();
+
             AnamnesisAppointment = anamnesis.AnamnesisAppointment;
             AnamnesisDate = anamnesis.AnamnesisDate;
 
@@ -97,14 +100,13 @@ namespace SIMS.Model
 
         public Appointment GetAppointment()
         {
-            return AppointmentFileRepository.Instance.FindById(AnamnesisAppointment.AppointmentID);
+            return appointmentController.GetAppointment(AnamnesisID);
         }
-        
+
         public void InitData()
         {
-            AnamnesisAppointment =  new AppointmentFileRepository().FindById(AnamnesisID);
-            AnamnesisAppointment.Patient = new PatientFileRepository().FindById(AnamnesisAppointment.Patient.Jmbg);
-            AnamnesisAppointment.Doctor = new DoctorFileRepository().FindById(AnamnesisAppointment.Doctor.Jmbg);
+            AnamnesisAppointment = GetAppointment();
+            AnamnesisAppointment.InitData();
         }
     }
 }

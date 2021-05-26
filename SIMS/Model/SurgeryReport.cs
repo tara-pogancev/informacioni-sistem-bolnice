@@ -5,11 +5,14 @@ using System.Text;
 using Newtonsoft.Json;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
     public class SurgeryReport
     {
+        private AppointmentController appointmentController = new AppointmentController();
+
         public DateTime DateOfReport { get; set; }
         public String ReportID { get; set; }
         public String SurgeryName { get; set; }
@@ -30,7 +33,7 @@ namespace SIMS.Model
 
         public Appointment GetSurgery()
         {
-            return new AppointmentFileRepository().FindById(ReportID);
+            return appointmentController.GetAppointment(ReportID);
         }
 
     }

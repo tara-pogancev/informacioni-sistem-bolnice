@@ -23,6 +23,5 @@ namespace SIMS.DTO
             MedicationNameAmount = Receipt.MedicineName + ", " + Receipt.Amount;
         }
 
-
     }
 }

@@ -21,6 +21,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         public SurgeryReportRead(SurgeryReport report)
         {
             InitializeComponent();
+            report.GetSurgery().InitData();
 
             LabelDoctor.Content = "Doktor: " + report.GetSurgery().GetDoctorName();
             LabelDate.Content = "Datum operacije: " + report.GetSurgery().GetAppointmentDate();

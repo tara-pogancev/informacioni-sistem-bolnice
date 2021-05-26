@@ -21,22 +21,21 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// </summary>
     public partial class AnamnesisRead : Window
     {
-        private AnamnesisDTO anamnesisDTO;
+        private Anamnesis anamnesis;
 
-        public AnamnesisRead(Anamnesis anamnesis)
+        public AnamnesisRead(Anamnesis anamnesisPar)
         {
             InitializeComponent();
-            anamnesisDTO = new AnamnesisDTO(anamnesis);
+            anamnesis = anamnesisPar;
+            anamnesis.GetAppointment().InitData();
 
-            LabelDoctor.Content = "Doktor: " + anamnesisDTO.DoctorName;
-            LabelDate.Content = anamnesisDTO.AppointmentTypeAndDate;
+            LabelDoctor.Content = "Doktor: " + anamnesis.GetAppointment().GetDoctorName();
+            LabelDate.Content = "Datum pregleda: " + anamnesis.GetAppointment().GetAppointmentDate();
 
-            LabelPatient.Content = "Pacijent: " + anamnesisDTO.PatientName;
-            Appointment t = AppointmentFileRepository.Instance.FindById(anamnesis.AnamnesisID);
-            LabelPatientDateOfBirth.Content = "Datum rođenja: " + anamnesisDTO.GetAppointment().Patient.GetDateOfBirthString();
+            LabelPatient.Content = "Pacijent: " + anamnesis.GetAppointment().GetPatientName();
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + anamnesis.GetAppointment().Patient.GetDateOfBirthString();
 
             GenerateText(anamnesis);
-
         }
 
         private void GenerateText(Anamnesis anamnesis)
