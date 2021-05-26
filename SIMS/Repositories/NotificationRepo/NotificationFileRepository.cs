@@ -46,7 +46,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
             for (int i = 0; i < retVal.Count; i++)
             {
-                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)) || !retVal[i].IsPast())
+                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)) || !retVal[i].GetIfPast())
                 {
                     retVal.RemoveAt(i);
                     i--;

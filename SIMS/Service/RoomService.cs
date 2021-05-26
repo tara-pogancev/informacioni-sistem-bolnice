@@ -9,6 +9,14 @@ namespace SIMS.Service
     class RoomService
     {
         private IRoomRepository roomRepository = new RoomFileRepository();
+
+        public RoomService()
+        {
+
+        }
+
+        public List<Room> GetAllRooms() => roomRepository.GetAll();
+
         public void CreateOrUpdate(Room room)
         {
             roomRepository.CreateOrUpdate(room);

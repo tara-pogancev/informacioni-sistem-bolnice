@@ -114,7 +114,7 @@ namespace SIMS.Model
             return StartTime.AddMinutes(Duration);
         }
 
-        public bool IsPast()
+        public bool GetIfPast()
         {
             return (GetEndTime() < DateTime.Now);
         }
@@ -143,7 +143,7 @@ namespace SIMS.Model
 
         public bool GetIfCurrent()
         {
-            return (this.StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
+            return (StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
         }
 
         public bool GetIfRecorded()

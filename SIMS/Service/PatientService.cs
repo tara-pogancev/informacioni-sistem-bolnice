@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace SIMS.Service
 {
-    class PatientService
+    public class PatientService
     {
         private IPatientRepository patientRepositry;
 
@@ -15,13 +16,29 @@ namespace SIMS.Service
             patientRepositry = new PatientFileRepository();
         }
 
-        public void UpdatePatient(Patient patient)=>patientRepositry.Update(patient);
+        public List<Patient> GetAllPatients() => patientRepositry.GetAll();
+
+        public void UpdatePatient(Patient patient) => patientRepositry.Update(patient);
 
         public void DeletePatient(String patientKey) => patientRepositry.Delete(patientKey);
 
         public void SavePatient(Patient patient) => patientRepositry.Save(patient);
 
         public Patient GetPatient(String patientKey) => patientRepositry.FindById(patientKey);
+
+        public PatientDTO GetDTO(Patient patient)
+        {
+            return new PatientDTO(patient);
+        }
+
+        public List<PatientDTO> GetDTOFromList(List<Patient> list)
+        {
+            List<PatientDTO> retVal = new List<PatientDTO>();
+            foreach (Patient patient in list)
+                retVal.Add(GetDTO(patient));
+
+            return retVal;
+        }
 
 
     }

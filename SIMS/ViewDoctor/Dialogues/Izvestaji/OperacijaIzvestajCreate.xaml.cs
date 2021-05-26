@@ -18,11 +18,11 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// <summary>
     /// Interaction logic for OperacijaCreate.xaml
     /// </summary>
-    public partial class OperacijaIzvestajCreate : Window
+    public partial class SurgeryReportCreate : Window
     {
         private Appointment operation;
 
-        public OperacijaIzvestajCreate(Appointment operationPar)
+        public SurgeryReportCreate(Appointment operationPar)
         {
             InitializeComponent();
             operation = operationPar;

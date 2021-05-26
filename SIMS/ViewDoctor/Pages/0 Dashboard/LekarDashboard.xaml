@@ -1,4 +1,4 @@
-﻿<Page x:Class="SIMS.LekarGUI.LekarDashboard"
+﻿<Page x:Class="SIMS.LekarGUI.DoctorDashboard"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -37,10 +37,10 @@
                     <StackPanel Orientation="Horizontal" Grid.Row="2">
                     
                     <Button Content="Uvid u preglede" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"
-                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Termini"/>
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="ButtonAppointments"/>
 
-                    <Button Content="Hitan termin" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"
-                             HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Hitno" Margin="20,0,0,0"/>
+                    <Button Content="Obaveštenja" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"
+                             HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="ButtonNotifications" Margin="20,0,0,0"/>
 
                     </StackPanel>
 

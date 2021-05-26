@@ -17,22 +17,23 @@ using System.Windows.Shapes;
 using SIMS.Model;
 
 using System.Windows.Threading;
+using SIMS.Controller;
 
 namespace SIMS
 {
     public partial class DoctorUI : Window
     {
         public static DoctorUI instance;
-
-        private static Doctor lekarUser;
-
+        private static Doctor doctorUser;
         private WindowBar bar = new WindowBar();
 
-        public static DoctorUI GetInstance(Doctor l)
+        private LastLoginController loginController = new LastLoginController();
+
+        public static DoctorUI GetInstance(Doctor doctor)
         {
             if (instance == null)
             {
-                lekarUser = l;
+                doctorUser = doctor;
                 instance = new DoctorUI();
             }
             return instance;
@@ -49,12 +50,9 @@ namespace SIMS
 
             SetStatusBarClock();
 
-            SellectedTab.Content = new LekarDashboard(lekarUser);
-
-            this.UsernameLabel.Content = lekarUser.FullName;
-
+            SellectedTab.Content = new DoctorDashboard(doctorUser);
+            UsernameLabel.Content = doctorUser.FullName;
             WindowBarFrame.Content = bar;
-
         }
 
         private void SetStatusBarClock()
@@ -68,49 +66,49 @@ namespace SIMS
             }, this.Dispatcher);
         }
 
-        private void Button_Dashboard(object sender, MouseButtonEventArgs e)
+        private void ButtonDashboard(object sender, MouseButtonEventArgs e)
         {
             //Dashboard
             ChangeTab(0);
         }
 
-        private void Button_Termini(object sender, RoutedEventArgs e)
+        private void ButtonAppointments(object sender, RoutedEventArgs e)
         {
             //Button: Termini
             ChangeTab(1);
         }
 
-        private void Button_Pacijenti(object sender, RoutedEventArgs e)
+        private void ButtonPatients(object sender, RoutedEventArgs e)
         {
             //Button: Pacijenti
             ChangeTab(2);
         }
 
-        private void Button_Istorija(object sender, RoutedEventArgs e)
+        private void ButtonAppointmentHistory(object sender, RoutedEventArgs e)
         {
             //Button: Istorija pregleda
             ChangeTab(3);
         }
 
-        private void Button_Evidencija(object sender, RoutedEventArgs e)
+        private void ButtonMaterials(object sender, RoutedEventArgs e)
         {
             //Button: Evidentiranje materijala
             ChangeTab(4);
         }
 
-        private void Button_Nalog(object sender, RoutedEventArgs e)
+        private void ButtonAccount(object sender, RoutedEventArgs e)
         {
             //Button: Nalog
             ChangeTab(5);
         }
 
-        private void Button_Notification(object sender, MouseButtonEventArgs e)
+        private void ButtonNotifications(object sender, MouseButtonEventArgs e)
         {
             //Button: Notifications
             this.ChangeTab(6);
         }
 
-        private void Button_Help(object sender, MouseButtonEventArgs e)
+        private void ButtonHelp(object sender, MouseButtonEventArgs e)
         {
             //Button: Help
             this.ChangeTab(7);
@@ -118,7 +116,7 @@ namespace SIMS
 
         public Doctor GetUser()
         {
-            return lekarUser;
+            return doctorUser;
         }
 
         public void ChangeTab(int tabNum)
@@ -131,41 +129,41 @@ namespace SIMS
             {
                 case 0:
                     {
-                        SellectedTab.Content = new LekarDashboard(lekarUser);
+                        SellectedTab.Content = new DoctorDashboard(doctorUser);
                         ResetActiveButtons();
                         break;
                     }
                 case 1:
                     {
-                        SellectedTab.Content = DoctorAppointmentsPage.GetInstance(lekarUser);
+                        SellectedTab.Content = DoctorAppointmentsPage.GetInstance(doctorUser);
                         ResetActiveButtons();
                         B1.Fill = sellectedTab;
                         break;
                     }
                 case 2:
                     {
-                        SellectedTab.Content = DoctorPatientViewPage.GetInstance(lekarUser);
+                        SellectedTab.Content = DoctorPatientViewPage.GetInstance();
                         ResetActiveButtons();
                         B2.Fill = sellectedTab;
                         break;
                     }
                 case 3:
                     {
-                        SellectedTab.Content = new AppointmentHistoryView(lekarUser);
+                        SellectedTab.Content = new AppointmentHistoryView(doctorUser);
                         ResetActiveButtons();
                         B3.Fill = sellectedTab;
                         break;
                     }
                 case 4:
                     {
-                        SellectedTab.Content = LekarEvidencijaPage.GetInstance(lekarUser);
+                        SellectedTab.Content = LekarEvidencijaPage.GetInstance(doctorUser);
                         ResetActiveButtons();
                         B4.Fill = sellectedTab;
                         break;
                     }
                 case 5:
                     {
-                        SellectedTab.Content = LekarNalogPage.GetInstance(lekarUser);
+                        SellectedTab.Content = DoctorAccountPage.GetInstance(doctorUser);
                         ResetActiveButtons();
                         B5.Fill = sellectedTab;
                         break;
@@ -199,13 +197,9 @@ namespace SIMS
         public void ChangeWindowSize()
         {
             if (this.WindowState == WindowState.Maximized)
-            {
                 this.WindowState = WindowState.Normal;
-            }
             else
-            {
                 this.WindowState = WindowState.Maximized;
-            }
         }
 
         public WindowState GetWindowState()
@@ -213,7 +207,7 @@ namespace SIMS
             return this.WindowState;
         }
 
-        private void Button_LogOut(object sender, MouseButtonEventArgs e)
+        private void ButtonLogOut(object sender, MouseButtonEventArgs e)
         {
             LogOut();
         }
@@ -223,9 +217,10 @@ namespace SIMS
             if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
                 "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                loginController.ClearAll();
+                new MainWindow().Show();
                 this.Close();
                 RemoveAllInstances();
-                new MainWindow().Show();
             }
         }
 
@@ -237,8 +232,8 @@ namespace SIMS
             if (DoctorPatientViewPage.GetInstance() != null)
                 DoctorPatientViewPage.GetInstance().RemoveInstance();
 
-            if (LekarNalogPage.GetInstance() != null)
-                LekarNalogPage.GetInstance().RemoveInstance();
+            if (DoctorAccountPage.GetInstance() != null)
+                DoctorAccountPage.GetInstance().RemoveInstance();
 
             if (DoctorAppointmentsPage.GetInstance() != null)
                 DoctorAppointmentsPage.GetInstance().RemoveInstance();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SIMS.Service;
 using SIMS.Model;
+using SIMS.DTO;
 
 namespace SIMS.Controller
 {
@@ -66,6 +67,16 @@ namespace SIMS.Controller
         public void RecalulateGrade(Doctor doctor)
         {
             doctorService.RecalulateGrade(doctor);
+        }
+
+        public DoctorDTO GetDTO(Doctor doctor)
+        {
+            return doctorService.GetDTO(doctor);
+        }
+
+        public List<DoctorDTO> GetDTOFromList(List<Doctor> list)
+        {
+            return doctorService.GetDTOFromList(list);
         }
 
     }

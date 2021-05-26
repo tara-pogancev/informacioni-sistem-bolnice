@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -21,30 +22,35 @@ namespace SIMS.LekarGUI
     /// </summary>
     /// 
 
-    public partial class LekarNalogPage : Page
+    public partial class DoctorAccountPage : Page
     {
-        public static LekarNalogPage instance;
+        public static DoctorAccountPage instance;
 
-        private static Doctor lekarUser;
+        private static Doctor doctorUser;
+        private LastLoginController loginController = new LastLoginController();
 
-        public static LekarNalogPage GetInstance(Doctor l)
+        public static DoctorAccountPage GetInstance(Doctor doctor)
         {
             if (instance == null)
             {
-                lekarUser = l;
-                instance = new LekarNalogPage();
+                doctorUser = doctor;
+                instance = new DoctorAccountPage();
             }
             return instance;
         }
 
-        public static LekarNalogPage GetInstance()
+        public static DoctorAccountPage GetInstance()
         {
             return instance;
         }
 
-        public LekarNalogPage()
+        public DoctorAccountPage()
         {
             InitializeComponent();
+
+            if (loginController.IsSelfLastLogged(doctorUser))
+                RememberMeCheckbox.IsChecked = true;
+
         }
 
         public void RemoveInstance()
@@ -58,12 +64,12 @@ namespace SIMS.LekarGUI
             window.Show();
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }
 
-        private void ChangeAccount(object sender, RoutedEventArgs e)
+        private void ButtonChangeAccount(object sender, RoutedEventArgs e)
         {
 
         }
@@ -75,12 +81,12 @@ namespace SIMS.LekarGUI
 
         private void DontRememberMe(object sender, RoutedEventArgs e)
         {
-            //TODO
+            loginController.ClearAll();
         }
 
         private void RememberMe(object sender, RoutedEventArgs e)
         {
-            //TODO
+            loginController.SaveLoggedUser((LoggedUser)doctorUser);
         }
     }
 }

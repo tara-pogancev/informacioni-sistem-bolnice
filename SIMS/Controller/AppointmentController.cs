@@ -57,6 +57,21 @@ namespace SIMS.Controller
             return appointmentService.ScheduleAppointment(doctor, date, patient);
         }
 
+        public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentService.GetAppointmentsByDoctor(doctor);
+        }
+
+        public Appointment CheckIfActiveAppointment(Doctor doctor)
+        {
+            return appointmentService.CheckIfActiveAppointment(doctor);
+        }
+
+        public int GetRecordedAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentService.GetRecordedAppointmentsByDoctor(doctor);
+        }
+
         public int GetNumberOfFinishedAppointments(Patient patient)
         {
             return appointmentService.GetNumberOfFinishedAppointments(patient);
@@ -85,6 +100,36 @@ namespace SIMS.Controller
         public AppointmentDTO GetDTO(Appointment appointment)
         {
             return appointmentService.GetDTO(appointment);
+        }
+
+        public List<int> GetAppointmentsCountForCurrentWeek(AppointmentType type, Doctor doctor)
+        {
+            return appointmentService.GetAppointmentsCountForCurrentWeek(type, doctor);
+        }
+
+        public List<Appointment> GetUpcommingAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentService.GetUpcommingAppointmentsByDoctor(doctor);
+        }
+
+        public List<AppointmentDTO> GetDTOFromList(List<Appointment> list)
+        {
+            return appointmentService.GetDTOFromList(list);
+        }
+
+        public List<Appointment> GetUnrecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            return appointmentService.GetUnrecordedAppointmentsByDoctorList(doctor);
+        }
+
+        public List<Appointment> GetRecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            return appointmentService.GetRecordedAppointmentsByDoctorList(doctor);
+        }
+
+        public List<Appointment> GetFutureAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentService.GetFutureAppointmentsByDoctor(doctor);
         }
     }
 }

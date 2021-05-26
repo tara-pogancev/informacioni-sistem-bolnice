@@ -21,14 +21,14 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for AnamnezaTrening.xaml
     /// </summary>
-    public partial class AnamnezaCreate : Window
+    public partial class AnamnesisCreate : Window
     {
         private Appointment appointment;
         private AppointmentDTO appointmentDTO;
         private AppointmentController appointmentController = new AppointmentController();
         private AnamnesisController anamnesisController = new AnamnesisController();
 
-        public AnamnezaCreate(Appointment appointment)
+        public AnamnesisCreate(Appointment appointment)
         {
             InitializeComponent();
 

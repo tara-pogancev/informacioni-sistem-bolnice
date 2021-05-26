@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.DTO;
 
 namespace SIMS.LekarGUI
 {
@@ -24,13 +25,15 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class SurgeryCreate : Window
     {
-        private List<Doctor> doctors;
+        private List<DoctorDTO> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
 
         private DoctorController doctorController = new DoctorController();
         private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+        private RoomController roomController = new RoomController();
 
         public SurgeryCreate(Patient patient)
         {
@@ -63,9 +66,9 @@ namespace SIMS.LekarGUI
         private void InitDoctor()
         {
             int index = 0;
-            foreach (Doctor l in doctors)
+            foreach (Doctor doctor in doctorController.GetAllDoctors())
             {
-                if (l.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
+                if (doctor.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
                 {
                     break;
                 }
@@ -76,21 +79,16 @@ namespace SIMS.LekarGUI
 
         private void InitComboBoxes()
         {
-            IDoctorRepository storageL = new DoctorFileRepository();
-            doctors = storageL.GetAll();
-
-            PatientFileRepository storageP = new PatientFileRepository();
-            patients = storageP.GetAll();
-
-            RoomFileRepository roomR = new RoomFileRepository();
-            rooms = roomR.GetAll();
+            doctors = doctorController.GetDTOFromList(doctorController.GetAllDoctors());
+            patients = patientController.GetAllPatients();
+            rooms = roomController.GetAllRooms();
 
             doctorCombo.ItemsSource = doctors;
             patientCombo.ItemsSource = patients;
             roomCombo.ItemsSource = rooms;
 
-            List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
-            trajanjeLista.ItemsSource = trajanjeVrednosti;
+            List<String> durationValues = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            durationValuesList.ItemsSource = durationValues;
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
@@ -102,7 +100,7 @@ namespace SIMS.LekarGUI
             else
             {
                 Appointment surgery = CreateSurgery();
-                Doctor doctor = doctors[doctorCombo.SelectedIndex];
+                Doctor doctor = GetSelectedDoctor();
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!doctorController.CheckIfFree(doctor, surgery))
@@ -115,6 +113,12 @@ namespace SIMS.LekarGUI
                 }
             }
 
+        }
+
+        private Doctor GetSelectedDoctor()
+        {
+            DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
+            return doctorController.GetDoctor(dto.Jmbg);
         }
 
         private void SaveSurgery(Appointment surgery)
@@ -132,16 +136,16 @@ namespace SIMS.LekarGUI
             SetSurgeryDuration(surgery);
             surgery.Room = rooms[roomCombo.SelectedIndex];
             surgery.Patient = patients[patientCombo.SelectedIndex];
-            surgery.Doctor = doctors[doctorCombo.SelectedIndex];
+            surgery.Doctor = GetSelectedDoctor();
             surgery.Type = AppointmentType.surgery;
             return surgery;
         }
 
         private void SetSurgeryDuration(Appointment surgery)
         {
-            if (trajanjeLista.SelectedIndex == 0)
+            if (durationValuesList.SelectedIndex == 0)
                 surgery.Duration = 30;
-            else if (trajanjeLista.SelectedIndex == 1)
+            else if (durationValuesList.SelectedIndex == 1)
                 surgery.Duration = 60;
             else
                 surgery.Duration = 90;
@@ -154,6 +158,8 @@ namespace SIMS.LekarGUI
             return time;
         }
 
+
+        //TODO
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (doctorCombo.SelectedItem != null)

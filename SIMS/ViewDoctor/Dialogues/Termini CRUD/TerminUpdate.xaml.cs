@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.DTO;
 
 namespace SIMS.LekarGUI
 {
@@ -15,13 +16,16 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class AppointmentUpdate : Window
     {
-        private List<Doctor> doctors;
+        private List<DoctorDTO> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
         Appointment appointment;
 
         private DoctorController doctorController = new DoctorController();
+        private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+        private RoomController roomController = new RoomController();
 
         public AppointmentUpdate(Appointment appointment)
         {
@@ -35,17 +39,12 @@ namespace SIMS.LekarGUI
 
         private void InitComboBoxes()
         {
-            IDoctorRepository storageL = new DoctorFileRepository();
-            doctors = storageL.GetAll();
+            doctors = doctorController.GetDTOFromList(doctorController.GetAllDoctors());
+            patients = patientController.GetAllPatients();
+            rooms = roomController.GetAllRooms();
 
-            PatientFileRepository storageP = new PatientFileRepository();
-            patients = storageP.GetAll();
-
-            RoomFileRepository roomR = new RoomFileRepository();
-            rooms = roomR.GetAll();
-
-            List<String> trajanjeVrednosti = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
-            trajanjeLista.ItemsSource = trajanjeVrednosti;
+            List<String> durationValues = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            durationValuesList.ItemsSource = durationValues;
 
             doctorCombo.ItemsSource = doctors;
             patientCombo.ItemsSource = patients;
@@ -62,7 +61,7 @@ namespace SIMS.LekarGUI
             else
             {
                 CreateAppointment();
-                Doctor doctor = doctors[doctorCombo.SelectedIndex];
+                Doctor doctor = GetSelectedDoctor();
 
                 if (!doctorController.CheckIfFreeUpdate(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
@@ -76,32 +75,34 @@ namespace SIMS.LekarGUI
             }
         }
 
+        private Doctor GetSelectedDoctor()
+        {
+            DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
+            return doctorController.GetDoctor(dto.Jmbg);
+        }
+
         private void SaveUpdatedAppointment()
         {
-            appointment.Doctor.Serialize = false;
-            appointment.Patient.Serialize = false;
-            appointment.Room.Serialize = false;
-
-            AppointmentFileRepository.Instance.Update(appointment);
+            appointmentController.UpdateAppointment(appointment);
             DoctorAppointmentsPage.GetInstance().RefreshView();
         }
 
         private void CreateAppointment()
         {
-            String vrijemeIDatum = datePicker.Text + " " + availableTimesList.Text;
-            DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-            appointment.StartTime = vremenskaOdrednica;
+            String dateAndTime = datePicker.Text + " " + availableTimesList.Text;
+            DateTime appointmenTtime = DateTime.Parse(dateAndTime);
+            appointment.StartTime = appointmenTtime;
             SetSelectedDuration();
             appointment.Room = rooms[roomCombo.SelectedIndex];
             appointment.Patient = patients[patientCombo.SelectedIndex];
-            appointment.Doctor = doctors[doctorCombo.SelectedIndex];
+            appointment.Doctor = GetSelectedDoctor();
         }
 
         private void SetSelectedDuration()
         {
-            if (trajanjeLista.SelectedIndex == 0)
+            if (durationValuesList.SelectedIndex == 0)
                 appointment.Duration = 30;
-            else if (trajanjeLista.SelectedIndex == 1)
+            else if (durationValuesList.SelectedIndex == 1)
                 appointment.Duration = 60;
             else
                 appointment.Duration = 90;
@@ -113,15 +114,10 @@ namespace SIMS.LekarGUI
             availableTimesList.ItemsSource = availableTimes;
 
             InitStartTime();
-
             InitDuration();
-
             InitDoctor();
-
             InitTime();
-
             InitPatient();
-
             InitRoom();
 
         }
@@ -135,11 +131,11 @@ namespace SIMS.LekarGUI
         private void InitDuration()
         {
             if (appointment.Duration == 30)
-                trajanjeLista.SelectedIndex = 0;
+                durationValuesList.SelectedIndex = 0;
             else if (appointment.Duration == 60)
-                trajanjeLista.SelectedIndex = 1;
+                durationValuesList.SelectedIndex = 1;
             else
-                trajanjeLista.SelectedIndex = 2;
+                durationValuesList.SelectedIndex = 2;
         }
 
         private void InitDoctor()
@@ -198,6 +194,7 @@ namespace SIMS.LekarGUI
             roomCombo.SelectedIndex = index;
         }
 
+        //TODO
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
