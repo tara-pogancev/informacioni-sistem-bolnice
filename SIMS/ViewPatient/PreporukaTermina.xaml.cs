@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
-using SIMS.Service;
+using SIMS.Service.RecommendationAppointmentService;
 
 namespace SIMS.PacijentGUI
 {

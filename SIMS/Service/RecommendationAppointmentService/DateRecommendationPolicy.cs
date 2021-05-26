@@ -4,20 +4,20 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 
-namespace SIMS.Service
+namespace SIMS.Service.RecommendationAppointmentService
 {
     class DateRecommendationPolicy
     {
         DateTime startDate;
         DateTime endDate;
-        String doctorID;
-        String patientID;
-        List<RecommendedAppointment> recommendedAppointementsDrafts;
+        string doctorID;
+        string patientID;
+        List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
-        
-        public DateRecommendationPolicy(DateTime startDate, DateTime endDate, String patientID) 
+
+        public DateRecommendationPolicy(DateTime startDate, DateTime endDate, string patientID)
         {
-            this.recommendedAppointementsDrafts = new List<RecommendedAppointment>();
+            recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
             this.startDate = startDate;
             this.endDate = endDate;
             this.patientID = patientID;
@@ -33,7 +33,7 @@ namespace SIMS.Service
                 if (recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(termin.StartTime))
                 {
                     recommendedAppointementsDrafts[i].AvailableDoctorsID.Remove(termin.Doctor.Jmbg);
-                    
+
                 }
 
             }
@@ -44,7 +44,7 @@ namespace SIMS.Service
             RoomAvailabilityService roomAvailability = new RoomAvailabilityService();
             for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
-                if ((recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(appointment.StartTime) && appointment.Patient.Jmbg==(patientID)) || !roomAvailability.IsFreeRoom(recommendedAppointementsDrafts[i].TimeOfAppointment))
+                if (recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(appointment.StartTime) && appointment.Patient.Jmbg == patientID || !roomAvailability.IsFreeRoom(recommendedAppointementsDrafts[i].TimeOfAppointment))
                 {
                     recommendedAppointementsDrafts.RemoveAt(i);
                     i--;
@@ -67,7 +67,7 @@ namespace SIMS.Service
 
         private void RemoveAppointmentsWithoutDoctors()
         {
-            for(int i = 0; i < recommendedAppointementsDrafts.Count; i++)
+            for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
                 if (recommendedAppointementsDrafts[i].AvailableDoctorsID.Count == 0)
                 {
@@ -77,7 +77,7 @@ namespace SIMS.Service
             }
         }
 
-        public List<RecommendedAppointment> GetDateRecommendationAppointmentDraft()
+        public List<RecommendedAppointmentDraft> GetDateRecommendationAppointmentDraft()
         {
             RemoveReservedAppointments();
             return recommendedAppointementsDrafts;
