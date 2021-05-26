@@ -60,7 +60,7 @@ namespace SIMS.LekarGUI
 
         public void RefreshView()
         {
-            List<Appointment> allAppointments = appointmentController.GetAppointmentsByDoctor(doctorUser);
+            List<Appointment> allAppointments = appointmentController.GetFutureAppointmentsByDoctor(doctorUser);
             AppointmentsViewModel.Clear();
             foreach (AppointmentDTO dto in appointmentController.GetDTOFromList(allAppointments))
                 AppointmentsViewModel.Add(dto);

@@ -18,6 +18,8 @@ using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorSurveyRepo;
 using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.AnamnesisRepository;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -28,8 +30,12 @@ namespace SIMS.LekarGUI
     {
         private static Doctor doctorUser;
 
-        public ObservableCollection<Appointment> AnamnesisViewModel { get; set; }
-        public ObservableCollection<Appointment> AppointmentsViewModel { get; set; }
+        public ObservableCollection<AppointmentDTO> AnamnesisViewModel { get; set; }
+        public ObservableCollection<AppointmentDTO> AppointmentsViewModel { get; set; }
+
+        private AppointmentController appointmentController = new AppointmentController();
+        private SurgeryReportController reportController = new SurgeryReportController();
+        private AnamnesisController anamnesisController = new AnamnesisController();
 
         public AppointmentHistoryView(Doctor doctor)
         {
@@ -37,100 +43,101 @@ namespace SIMS.LekarGUI
             doctorUser = doctor;
 
             this.DataContext = this;
-            AnamnesisViewModel = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
-            AppointmentsViewModel = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
-            refreshView();
+            AnamnesisViewModel = new ObservableCollection<AppointmentDTO>();
+            AppointmentsViewModel = new ObservableCollection<AppointmentDTO>();
+            RefreshView();
         }
 
-        public void refreshView()
+        public void RefreshView()
         {
             AnamnesisViewModel.Clear();
             AppointmentsViewModel.Clear();
 
-            List<Appointment> appointments = new List<Appointment>(AppointmentFileRepository.Instance.GetDoctorAppointments(doctorUser));
-            foreach (Appointment appointment in appointments)
-            {
-                appointment.InitData();
+            foreach (AppointmentDTO dto in GetRecotdedDTO())
+                AnamnesisViewModel.Add(dto);
 
-                if (appointment.GetIfRecorded() == true)
-                    AnamnesisViewModel.Add(appointment);
+            foreach (AppointmentDTO dto in GetUnrecordedDTO())
+                AppointmentsViewModel.Add(dto);
+        }
 
-                else if (appointment.GetIfPast() == true)
-                {
-                    AppointmentsViewModel.Add(appointment);
-                }
-            }
+        private List<AppointmentDTO> GetRecotdedDTO()
+        {
+            return appointmentController.GetDTOFromList(appointmentController.GetRecordedAppointmentsByDoctorList(doctorUser));
+        }
+
+        private List<AppointmentDTO> GetUnrecordedDTO()
+        {
+            return appointmentController.GetDTOFromList(appointmentController.GetUnrecordedAppointmentsByDoctorList(doctorUser));
         }
 
         private void ButtonReadReport(object sender, RoutedEventArgs e)
         {
             if (dataGridReports.SelectedItem != null)
             {
-                Appointment appointnment = (Appointment)dataGridReports.SelectedItem;
+                Appointment appointnment = GetSelectedReport();
 
                 if (appointnment.Type == AppointmentType.examination)
-                {
                     ShowAppointmentAnamnesis(appointnment);
-                }
+
                 else
-                {
                     ShowSurgeryReport(appointnment);
-                }
             }
         }
 
-        private static void ShowSurgeryReport(Appointment appointnment)
+        private Appointment GetSelectedReport()
         {
-            SurgeryReport report = SurgeryReportFileRepository.Instance.FindById(appointnment.AppointmentID);
+            AppointmentDTO dto = (AppointmentDTO)dataGridReports.SelectedItem;
+            return appointmentController.GetAppointment(dto.AppointmentID);
+        }
+
+        private Appointment GetSelectedAppointment()
+        {
+            AppointmentDTO dto = (AppointmentDTO)dataGridAppointments.SelectedItem;
+            return appointmentController.GetAppointment(dto.AppointmentID);
+        }
+
+        private void ShowSurgeryReport(Appointment appointnment)
+        {
+            SurgeryReport report = reportController.GetReport(appointnment.AppointmentID);
             if (report != null)
-            {
-                SurgeryReportRead a = new SurgeryReportRead(report);
-                a.Show();
-            }
+                new SurgeryReportRead(report).Show();
         }
 
-        private static void ShowAppointmentAnamnesis(Appointment appointnment)
+        private void ShowAppointmentAnamnesis(Appointment appointnment)
         {
-            Anamnesis anamnesis = AnamnesisFileRepository.Instance.FindById(appointnment.AppointmentID);
+            Anamnesis anamnesis = anamnesisController.GetAnamnesis(appointnment.AppointmentID);
             if (anamnesis != null)
-            {
-                AnamnesisRead a = new AnamnesisRead(anamnesis);
-                a.Show();
-            }
+                new AnamnesisRead(anamnesis).Show();
         }
 
         private void ButtonWriteReport(object sender, RoutedEventArgs e)
         {
             if (dataGridAppointments.SelectedItem != null)
             {
-                Appointment appointment = (Appointment)dataGridAppointments.SelectedItem;
+                Appointment appointment = GetSelectedAppointment();
 
                 if (appointment.Type == AppointmentType.examination)
-                {
                     WriteAnamnesis();
-                }
+                
                 else
-                {
                     WriteSurgeryReport();
-                }
+                
             }
         }
 
         private void WriteSurgeryReport()
         {
-            SurgeryReportCreate o = new SurgeryReportCreate((Appointment)dataGridAppointments.SelectedItem);
-            o.ShowDialog();
-            refreshView();
+            new SurgeryReportCreate(GetSelectedAppointment()).ShowDialog();
+            RefreshView();
         }
 
         private void WriteAnamnesis()
         {
-            AnamnesisCreate a = new AnamnesisCreate((Appointment)dataGridAppointments.SelectedItem);
-            a.ShowDialog();
-            refreshView();
+            new AnamnesisCreate(GetSelectedAppointment()).ShowDialog();
+            RefreshView();
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }

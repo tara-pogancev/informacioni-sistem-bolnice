@@ -189,6 +189,46 @@ namespace SIMS.Service
             return appointmentRepository.GetAppointmentsCountForCurrentWeek(type, doctor);
         }
 
+        public List<Appointment> GetRecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+
+            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            {
+                if (appointment.GetIfRecorded())
+                    retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
+        public List<Appointment> GetUnrecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+
+            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            {
+                if (!appointment.GetIfRecorded() && appointment.GetIfPast())
+                    retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
+        public List<Appointment> GetFutureAppointmentsByDoctor(Doctor doctor)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+
+            foreach(Appointment appointment in GetAllAppointments())
+            {
+                if (!appointment.GetIfPast() && appointment.Doctor.Jmbg == doctor.Jmbg)
+                    retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
+
 
     }
 }

@@ -110,5 +110,20 @@ namespace SIMS.Controller
         {
             return appointmentService.GetDTOFromList(list);
         }
+
+        public List<Appointment> GetUnrecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            return appointmentService.GetUnrecordedAppointmentsByDoctorList(doctor);
+        }
+
+        public List<Appointment> GetRecordedAppointmentsByDoctorList(Doctor doctor)
+        {
+            return appointmentService.GetRecordedAppointmentsByDoctorList(doctor);
+        }
+
+        public List<Appointment> GetFutureAppointmentsByDoctor(Doctor doctor)
+        {
+            return appointmentService.GetFutureAppointmentsByDoctor(doctor);
+        }
     }
 }

@@ -116,7 +116,7 @@ namespace SIMS.Model
 
         public bool GetIfPast()
         {
-            return (GetEndTime() > DateTime.Now);
+            return (GetEndTime() < DateTime.Now);
         }
 
         public String GetAppointmentDate() 
@@ -143,7 +143,7 @@ namespace SIMS.Model
 
         public bool GetIfCurrent()
         {
-            return (this.StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
+            return (StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
         }
 
         public bool GetIfRecorded()
