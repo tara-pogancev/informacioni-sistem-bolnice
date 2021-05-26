@@ -13,6 +13,7 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Model;
 using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {
@@ -22,18 +23,20 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     public partial class AnamnesisRead : Window
     {
         private Anamnesis anamnesis;
+        private PatientController patientController = new PatientController();
 
         public AnamnesisRead(Anamnesis anamnesisPar)
         {
             InitializeComponent();
             anamnesis = anamnesisPar;
             anamnesis.GetAppointment().InitData();
+            Patient patient = patientController.GetPatient(anamnesis.GetAppointment().Patient.Jmbg);
 
             LabelDoctor.Content = "Doktor: " + anamnesis.GetAppointment().GetDoctorName();
             LabelDate.Content = "Datum pregleda: " + anamnesis.GetAppointment().GetAppointmentDate();
 
-            LabelPatient.Content = "Pacijent: " + anamnesis.GetAppointment().GetPatientName();
-            LabelPatientDateOfBirth.Content = "Datum rođenja: " + anamnesis.GetAppointment().Patient.GetDateOfBirthString();
+            LabelPatient.Content = "Pacijent: " + patient.FullName;
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + patient.GetDateOfBirthString();
 
             GenerateText(anamnesis);
         }

@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Recepti_i_terapije;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 {
@@ -21,10 +22,12 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     public partial class ActionsAfterReport : Window
     {
         private Patient patient;
+        private PatientController patientController = new PatientController();
 
-        public ActionsAfterReport(Patient patient)
+
+        public ActionsAfterReport(Patient patientPar)
         {
-            this.patient = patient;
+            this.patient = patientController.GetPatient(patientPar.Jmbg);
             InitializeComponent();
         }
 
@@ -33,45 +36,40 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             this.Close();
         }
 
-        private void PrikazProfila(object sender, RoutedEventArgs e)
+        private void ShowPatientRecordCheck(object sender, RoutedEventArgs e)
         {
             DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
             this.Close();
         }
 
-        private void IzdavanjeRecepta(object sender, RoutedEventArgs e)
+        private void WriteReceipt(object sender, RoutedEventArgs e)
         {
-            var window = new DoctorWriteReceipt(patient);
-            window.ShowDialog();
+            new DoctorWriteReceipt(patient).ShowDialog();
         }
 
-        private void PisajneUputa(object sender, RoutedEventArgs e)
+        private void WriteRefferal(object sender, RoutedEventArgs e)
         {
-            var window = new WriteReferral(patient);
-            window.ShowDialog();
+            new WriteReferral(patient).ShowDialog();
         }
 
-        private void ZakazivajneOperacije(object sender, RoutedEventArgs e)
+        private void CreateSurgery(object sender, RoutedEventArgs e)
         {
-            var window = new SurgeryCreate(patient);
-            window.ShowDialog();
+            new SurgeryCreate(patient).ShowDialog();
         }
 
-        private void PisanjeTerapije(object sender, RoutedEventArgs e)
+        private void WriteTherapy(object sender, RoutedEventArgs e)
         {
             //TODO
         }
 
-        private void ZakazivanjePregleda(object sender, RoutedEventArgs e)
+        private void CreateAppointment(object sender, RoutedEventArgs e)
         {
-            var window = new AppointmentCreate(patient);
-            window.ShowDialog();
+            new AppointmentCreate(patient).ShowDialog();
         }
 
-        private void HitnaOperacija(object sender, RoutedEventArgs e)
+        private void UrgentSurgery(object sender, RoutedEventArgs e)
         {
-            var window = new HitnaOperacijaCreate(patient);
-            window.ShowDialog();
+            new UrgentSurgeryCreate(patient).ShowDialog();
         }
     }
 }

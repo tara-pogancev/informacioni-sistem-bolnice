@@ -8,11 +8,13 @@ namespace SIMS.Service
 {
     public class AppointmentService
     {
-        private IAppointmentRepository appointmentRepository;
+        private IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
+        private DoctorService doctorService = new DoctorService();
+        private RoomService roomService = new RoomService();
 
         public AppointmentService()
         {
-            appointmentRepository = new AppointmentFileRepository();            
+            
         }
 
         public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
@@ -228,7 +230,74 @@ namespace SIMS.Service
             return retVal;
         }
 
+        public List<DateTime> GetNearPotentialAppointments()
+        {
+            DateTime currentTime = DateTime.Now;
 
+            List<String> availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            List<String> availableDates = new List<String>();
+            for (int i = 0; i < 10; i++)
+            {
+                DateTime currentDate = DateTime.Today.AddDays(i);
+                availableDates.Add(currentDate.ToString("dd.MM.yyyy."));
+            }
+
+            List<DateTime> potentialAppointmentTimeList = new List<DateTime>();
+            foreach (String date in availableDates)
+                foreach (String time in availableTimes)
+                {
+                    String dateAndTime = date + " " + time;
+                    DateTime appointmentTime = DateTime.Parse(dateAndTime);
+                    if (appointmentTime >= currentTime)
+                        potentialAppointmentTimeList.Add(appointmentTime);
+                }
+
+            return potentialAppointmentTimeList;
+        }
+
+        public List<Appointment> SortAppointmentsByTimeA(List<Appointment> appointments)
+        {
+            for (int i = 0; i < appointments.Count; i++)
+                for (int j = 0; j < appointments.Count; j++)
+                    if (appointments[i].StartTime < appointments[j].StartTime)
+                    {
+                        var temp = appointments[i];
+                        appointments[i] = appointments[j];
+                        appointments[j] = temp;
+                    }
+
+            return appointments;
+        }
+
+        public List<Appointment> GetAvailableAppointmentsForAllDoctors(Specialization specialization, int duration, Patient patient)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+
+            foreach (Doctor doctor in doctorService.ReadBySpecialization(specialization))
+            {
+                List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments();
+                int counterByDoctor = 0;
+
+                foreach (DateTime appTime in potentialAppointmentTimeList)
+                {
+                    //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    Room room = roomService.GetAllRooms()[0];
+
+                    Appointment appointment = new Appointment(appTime, duration, AppointmentType.surgery, doctor, patient, room);
+                    if (doctorService.CheckIfFree(doctor, appointment))
+                    {
+                        counterByDoctor++;
+                        retVal.Add(appointment);
+                    }
+
+                    if (counterByDoctor >= 5)
+                        break;
+                }
+
+            }
+
+            return retVal;
+        }
 
     }
 }

@@ -17,6 +17,9 @@ namespace SIMS.Model
    public class Appointment : INotifyPropertyChanged
    {
         private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+        private DoctorController doctorController = new DoctorController();
+        private RoomController roomController = new RoomController();
 
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
@@ -137,9 +140,9 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Patient = new PatientFileRepository().FindById(Patient.Jmbg);
-            Room = new RoomFileRepository().FindById(Room.Number);
-            Doctor = new DoctorFileRepository().FindById(Doctor.Jmbg);
+            Patient = patientController.GetPatient(Patient.Jmbg);
+            Room = roomController.GetRoom(Room.Number);
+            Doctor = doctorController.GetDoctor(Doctor.Jmbg);
         }
 
         private static string GenerateID()
@@ -166,6 +169,12 @@ namespace SIMS.Model
         public String GetDoctorName()
         {
             return Doctor.FullName;
+        }
+
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get => GetDoctorName() + ", " + GetAppointmentTime() + " " + GetAppointmentDate();
         }
 
     }

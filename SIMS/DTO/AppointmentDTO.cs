@@ -55,10 +55,5 @@ namespace SIMS.DTO
         {
             get => Doctor.FullName;
         }
-
-        public String AppointmentFullInfo
-        {
-            get => DoctorName + ", " + AppointmentTime + " " + AppointmentDate;
-        }
     }
 }

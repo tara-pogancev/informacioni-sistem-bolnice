@@ -116,14 +116,17 @@ namespace SIMS.Controller
             return appointmentService.GetUnrecordedAppointmentsByDoctorList(doctor);
         }
 
-        public List<Appointment> GetRecordedAppointmentsByDoctorList(Doctor doctor)
-        {
-            return appointmentService.GetRecordedAppointmentsByDoctorList(doctor);
-        }
+        public List<Appointment> GetRecordedAppointmentsByDoctorList(Doctor doctor) => appointmentService.GetRecordedAppointmentsByDoctorList(doctor);
 
-        public List<Appointment> GetFutureAppointmentsByDoctor(Doctor doctor)
-        {
-            return appointmentService.GetFutureAppointmentsByDoctor(doctor);
-        }
+        public List<Appointment> GetFutureAppointmentsByDoctor(Doctor doctor) => appointmentService.GetFutureAppointmentsByDoctor(doctor);
+
+        public List<DateTime> GetNearPotentialAppointments() => appointmentService.GetNearPotentialAppointments();
+
+        public List<Appointment> SortAppointmentsByTimeA(List<Appointment> appointments) => appointmentService.SortAppointmentsByTimeA(appointments);
+
+        public List<Appointment> GetAvailableAppointmentsForAllDoctors(Specialization specialization, int duration, Patient patient) 
+            => appointmentService.GetAvailableAppointmentsForAllDoctors(specialization, duration, patient);
+
+
     }
 }

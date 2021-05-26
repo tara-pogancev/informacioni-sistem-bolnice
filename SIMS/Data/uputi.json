@@ -1,42 +1,197 @@
 {
   "141352DD0521": {
     "Doctor": {
-      "Jmbg": "4848555021548"
+      "VacationDays": 0,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4848555021548",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "Patient": {
-      "Jmbg": "4865453131"
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": null,
+      "Guest": false,
+      "Allergens": null,
+      "DateOfBirth": "0001-01-01T00:00:00",
+      "HronicalDiseases": null,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4865453131",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "RefferalDate": "2021-05-05T00:00:00+02:00",
     "RefferalKey": "141352DD0521"
   },
   "142357DD0521": {
     "Doctor": {
-      "Jmbg": "4848555021548"
+      "VacationDays": 0,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4848555021548",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "Patient": {
-      "Jmbg": "4865453131"
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": null,
+      "Guest": false,
+      "Allergens": null,
+      "DateOfBirth": "0001-01-01T00:00:00",
+      "HronicalDiseases": null,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4865453131",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "RefferalDate": "2021-05-05T00:00:00+02:00",
     "RefferalKey": "142357DD0521"
   },
   "235434DD0521": {
     "Doctor": {
-      "Jmbg": "045210805048"
+      "VacationDays": 0,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "045210805048",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "Patient": {
-      "Jmbg": "4865453131"
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": null,
+      "Guest": false,
+      "Allergens": null,
+      "DateOfBirth": "0001-01-01T00:00:00",
+      "HronicalDiseases": null,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4865453131",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "RefferalDate": "2021-05-06T00:00:00+02:00",
     "RefferalKey": "235434DD0521"
   },
   "005557DD0521": {
     "Doctor": {
-      "Jmbg": "4848555021548"
+      "VacationDays": 0,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "4848555021548",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "Patient": {
-      "Jmbg": "12645323206"
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": null,
+      "Guest": false,
+      "Allergens": null,
+      "DateOfBirth": "0001-01-01T00:00:00",
+      "HronicalDiseases": null,
+      "Name": null,
+      "LastName": null,
+      "Jmbg": "12645323206",
+      "Username": null,
+      "Password": null,
+      "Email": null,
+      "Phone": null,
+      "Address": null,
+      "Serialize": true
     },
     "RefferalDate": "2021-05-07T00:00:00+02:00",
     "RefferalKey": "005557DD0521"
+  },
+  "142611DD0521": {
+    "Doctor": {
+      "VacationDays": 18,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "Name": "Cloud",
+      "LastName": "Strife",
+      "Jmbg": "22157484654211",
+      "Username": "cloud",
+      "Password": "l",
+      "Email": "fluffy@clouds.com",
+      "Phone": "0640005481",
+      "Address": {
+        "City": {
+          "Name": "Nibelheim",
+          "PostalCode": 33654,
+          "Country": {
+            "Name": "Gaia"
+          }
+        },
+        "Street": "Main Town Square",
+        "Number": "5"
+      },
+      "Serialize": true
+    },
+    "Patient": {
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": "123456",
+      "Guest": false,
+      "Allergens": [],
+      "DateOfBirth": "1977-12-12T00:00:00",
+      "HronicalDiseases": [],
+      "Name": "Petar",
+      "LastName": "Petrović",
+      "Jmbg": "12121977802342",
+      "Username": "pacijent2",
+      "Password": "p",
+      "Email": "petarpetrovic@gmail.com",
+      "Phone": "061 234567",
+      "Address": null,
+      "Serialize": true
+    },
+    "RefferalDate": "2021-05-26T00:00:00+02:00",
+    "RefferalKey": "142611DD0521"
   }
 }

@@ -13,6 +13,8 @@ using System.Windows.Shapes;
 using SIMS.LekarGUI.Dialogues.Recepti_i_terapije;
 using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
+using SIMS.Controller;
+using SIMS.LekarGUI.Dialogues.Termini_CRUD;
 
 namespace SIMS.LekarGUI
 {
@@ -25,6 +27,8 @@ namespace SIMS.LekarGUI
 
         public static PatientRecordCheck instance;
 
+        private PatientController patientController = new PatientController();
+
         public static PatientRecordCheck GetInstance(Patient patient)
         {
             instance = new PatientRecordCheck(patient);
@@ -36,11 +40,10 @@ namespace SIMS.LekarGUI
             return instance;
         }
 
-        public PatientRecordCheck(Patient patient)
+        public PatientRecordCheck(Patient patientPar)
         {
             InitializeComponent();
-
-            this.patient = patient;
+            patient = patientController.GetPatient(patientPar.Jmbg);
 
             LabelNameTop.Content = this.patient.FullName;
             LabelName.Content = this.patient.FullName;
@@ -57,7 +60,7 @@ namespace SIMS.LekarGUI
 
             LabelBloodType.Content = "Krvna grupa: " + this.patient.GetBloodTypeString();
             LabelAllergens.Content = "Alergeni: " + this.patient.GetAllergenListString();
-            LabelHronical.Content = "Hronične bolesti: " + this.patient.GetHronicalDiseases;
+            LabelHronical.Content = "Hronične bolesti: " + this.patient.GetHronicalDiseases();
 
         }
 
@@ -73,7 +76,8 @@ namespace SIMS.LekarGUI
 
         private void ButtonHospitalize(object sender, RoutedEventArgs e)
         {
-            //TODO
+            //TODO DEBUG
+            new ActionsAfterReport(patient).Show();
         }
 
         private void ButtonPatientView(object sender, MouseButtonEventArgs e)

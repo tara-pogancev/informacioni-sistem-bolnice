@@ -15,6 +15,8 @@ namespace SIMS.Service
 
         }
 
+        public Room GetRoom(String key) => roomRepository.FindById(key);
+
         public List<Room> GetAllRooms() => roomRepository.GetAll();
 
         public void CreateOrUpdate(Room room)
