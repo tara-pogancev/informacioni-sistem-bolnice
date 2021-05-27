@@ -29,8 +29,8 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0" Background="#2a3042">
-                                <TextBlock Text="Sekretarijat" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
-                                <TextBlock Text="{Binding VremeString}" HorizontalAlignment="Right" Margin="0,0,40,0" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding Author}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                                <TextBlock Text="{Binding VaryingTimeString}" HorizontalAlignment="Right" Margin="0,0,40,0" VerticalAlignment="Center" Foreground="White"/>
                                 <Button Click="Update_Click" Height="15" Width="15" Margin="5,5,20,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
                                     <materialDesign:PackIcon Kind="Edit" Height="12" Width="12" HorizontalAlignment="Right" Foreground="White"/>
                                 </Button>
@@ -41,7 +41,7 @@
                                 <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
                             </Grid>
 
-                            <TextBlock Text="{Binding Tekst}" Grid.Row="1" TextWrapping="Wrap" Background="#2a3042" Foreground="White"/>
+                            <TextBlock Text="{Binding Content}" Grid.Row="1" TextWrapping="Wrap" Background="#2a3042" Foreground="White"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
