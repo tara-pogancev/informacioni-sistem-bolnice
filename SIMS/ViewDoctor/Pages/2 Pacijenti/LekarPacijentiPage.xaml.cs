@@ -77,7 +77,7 @@ namespace SIMS.LekarGUI
             if (dataGridPatients.SelectedItem != null)
             {
                 Patient patient = GetSelectedPatient();
-                new DoctorWriteRecript(patient).ShowDialog();                
+                new DoctorWriteReceipt(patient).ShowDialog();                
             }
         }
 

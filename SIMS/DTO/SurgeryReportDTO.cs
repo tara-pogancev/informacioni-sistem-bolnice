@@ -14,7 +14,7 @@ namespace SIMS.DTO
         public String ReportID { get; set; }
         public String DateOfSurgery { get => Surgery.GetAppointmentDate(); }
         public String SurgeryName { get => Report.SurgeryName; }
-        public String DoctorName { get; set; }
+        public String DoctorName { get => Surgery.Doctor.FullName; }
         public Appointment Surgery { get; set; }
         public SurgeryReport Report { get; set; }
 
@@ -22,8 +22,8 @@ namespace SIMS.DTO
         {
             ReportID = report.ReportID;
             Surgery = appointmentController.GetAppointment(ReportID);
-            Report = surgeryReportController.GetReport(ReportID);
             Surgery.InitData();
+            Report = surgeryReportController.GetReport(ReportID);
         }
     }
 }

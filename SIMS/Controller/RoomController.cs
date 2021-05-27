@@ -17,6 +17,8 @@ namespace SIMS.Controller
 
         public List<Room> GetAllRooms() => roomService.GetAllRooms();
 
+        public Room GetRoom(String key) => roomService.GetRoom(key);
+
         public void CreateOrUpdate(Room room)
         {
             roomService.CreateOrUpdate(room);

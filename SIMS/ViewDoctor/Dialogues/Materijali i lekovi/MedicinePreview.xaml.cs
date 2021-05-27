@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -21,15 +22,21 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     {
         private Medication medicine;
 
-        public MedicinePreview(Medication medicine)
+        private MedicineController medicineController = new MedicineController();
+
+        public MedicinePreview(Medication medicinePar)
         {
             InitializeComponent();
-            medicine = MedicationFileRepository.Instance.FindById(medicine.MedicineID);
-
-            this.medicine = medicine;
+            medicine = medicineController.GetMedicine(medicinePar.MedicineID);
 
             MedicineNameLabel.Content = medicine.MedicineName;
 
+            InitializeLabels();
+
+        }
+
+        private void InitializeLabels()
+        {
             MedicineComponents.Inlines.Add(new Run("Sastojci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             MedicineComponents.Inlines.Add("   ");
             MedicineComponents.Inlines.Add(medicine.GetComponentsList());
@@ -37,12 +44,11 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             MedicineSubstitute.Inlines.Add(new Run("Zamenski lek:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
             MedicineSubstitute.Inlines.Add("   ");
             MedicineSubstitute.Inlines.Add(GetSubstituteName(medicine));
-
         }
 
         private String GetSubstituteName(Medication medicine)
         {
-            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return medicineController.GetMedicine(medicine.IDSubstitution).MedicineName;
         }
 
         private void ButtonCloseWindow(object sender, RoutedEventArgs e)

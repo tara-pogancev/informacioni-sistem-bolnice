@@ -34,12 +34,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Content="Izdavanje recepta" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="IzdavanjeRecepta"/>
-            <Button Grid.Row="1" Grid.Column="1" Content="Pisanje uputa" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="PisajneUputa"/>
-            <Button Grid.Row="0" Grid.Column="2" Content="Zakazivanje operacije" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="ZakazivajneOperacije"/>
-            <Button Grid.Row="1" Grid.Column="0" Content="Prikaz profila" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160"  Click="PrikazProfila"/>
-            <Button Grid.Row="0" Grid.Column="1" Content="Zakazivanje pregleda" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="ZakazivanjePregleda"/>
-            <Button Grid.Row="1" Grid.Column="2" Content="Hitna operacija" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="HitnaOperacija"/>
+            <Button Grid.Row="0" Grid.Column="0" Content="Izdavanje recepta" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="WriteReceipt"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="Pisanje uputa" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="WriteRefferal"/>
+            <Button Grid.Row="0" Grid.Column="2" Content="Zakazivanje operacije" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="CreateSurgery"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="Prikaz profila" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160"  Click="ShowPatientRecordCheck"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Zakazivanje pregleda" Style="{StaticResource GreenButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="CreateAppointment"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="Hitna operacija" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Height="50" Width="160" Click="UrgentSurgery"/>
             
         </Grid>
 

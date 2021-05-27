@@ -29,7 +29,7 @@
         <Label Grid.Row="0" Content="Dostupni lekovi" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
 
-        <DataGrid Grid.Row="1" x:Name="DataGridMedicine" ItemsSource="{Binding Path = MedicineView}" MouseDoubleClick="PreviewSellectedMedicine" Margin="40,10,40,10">
+        <DataGrid Grid.Row="1" x:Name="DataGridMedicine" ItemsSource="{Binding Path = MedicineViewModel}" MouseDoubleClick="PreviewSellectedMedicine" Margin="40,10,40,10">
 
             <DataGrid.Columns>
 

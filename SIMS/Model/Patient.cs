@@ -184,10 +184,8 @@ namespace SIMS.Model
             return false;
         }
 
-        public string GetHronicalDiseases
+        public string GetHronicalDiseases()
         {
-            get
-            {
                 string hronBolestiString = "";
                 if (HronicalDiseases.Count == 0 || HronicalDiseases.Contains(""))
                     return "Nema";
@@ -195,7 +193,6 @@ namespace SIMS.Model
                 foreach (string a in HronicalDiseases)
                     hronBolestiString += a + ", ";
                 return hronBolestiString.Remove(hronBolestiString.Length - 2);
-            }
         }
 
        
@@ -203,34 +200,42 @@ namespace SIMS.Model
         {
             return Serialize;
         }
+
         public bool ShouldSerializePatientGender()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeGetHronicalDiseases()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeDateOfBirth()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeAllergens()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeGuest()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeLbo()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeIsBanned()
         {
             return Serialize;
         }
+
         public bool ShouldSerializeHronicalDiseases()
         {
             return Serialize;
