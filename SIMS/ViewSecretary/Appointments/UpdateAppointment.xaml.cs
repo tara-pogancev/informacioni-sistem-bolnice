@@ -7,9 +7,9 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class IzmeniTerminPage : Page
+    public partial class UpdateAppointment : Page
     {
         private List<Doctor> _doctors;
         private List<Patient> _patients;
@@ -17,7 +17,7 @@ namespace SIMS.ViewSecretary
         private List<string> _freeAppointments;
         private Appointment _appointment;
 
-        public IzmeniTerminPage(Appointment appointment)
+        public UpdateAppointment(Appointment appointment)
         {
             InitializeComponent();
             _appointment = appointment;
@@ -50,9 +50,9 @@ namespace SIMS.ViewSecretary
             if (IsAppointmentValid())
             {
                 AppointmentFileRepository.Instance.Update(_appointment);
-                SekretarTerminiPage.GetInstance().RefreshView();
+                ViewAppointments.GetInstance().RefreshView();
 
-                NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+                NavigationService.Navigate(ViewAppointments.GetInstance());
             }
         }
 
@@ -186,7 +186,7 @@ namespace SIMS.ViewSecretary
 
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+            NavigationService.Navigate(ViewAppointments.GetInstance());
         }
     }
 }

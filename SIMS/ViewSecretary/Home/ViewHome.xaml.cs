@@ -2,24 +2,24 @@
 using SIMS.Repositories.SecretaryRepo;
 using System.Windows.Controls;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Home
 {
-    public partial class SekretarHomePage : Page
+    public partial class ViewHome : Page
     {
-        private static SekretarHomePage _instance = null;
+        private static ViewHome _instance = null;
 
-        public static SekretarHomePage GetInstance()
+        public static ViewHome GetInstance()
         {
             return _instance;
         }
-        public static SekretarHomePage GetInstance(Secretary secretary)
+        public static ViewHome GetInstance(Secretary secretary)
         {
             if (_instance == null)
-                _instance = new SekretarHomePage(secretary);
+                _instance = new ViewHome(secretary);
             return _instance;
         }
 
-        private SekretarHomePage(Secretary secretary)
+        private ViewHome(Secretary secretary)
         {
             InitializeComponent();
             welcomeText.Text = "Dobrodosli,\n" + secretary.FullName;

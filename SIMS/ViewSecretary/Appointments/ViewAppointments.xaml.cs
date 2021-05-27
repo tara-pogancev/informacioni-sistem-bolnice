@@ -6,22 +6,22 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class SekretarTerminiPage : Page
+    public partial class ViewAppointments : Page
     {
-        private static SekretarTerminiPage _instance = null;
+        private static ViewAppointments _instance = null;
 
         private ObservableCollection<Appointment> _appointmentsForView;
 
-        public static SekretarTerminiPage GetInstance()
+        public static ViewAppointments GetInstance()
         {
             if (_instance == null)
-                _instance = new SekretarTerminiPage();
+                _instance = new ViewAppointments();
             return _instance;
         }
 
-        public SekretarTerminiPage()
+        public ViewAppointments()
         {
             InitializeComponent();
 
@@ -45,19 +45,19 @@ namespace SIMS.ViewSecretary
 
         private void AddExamination_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DodajPregledPage());
+            this.NavigationService.Navigate(new AddExamination());
         }
 
         private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DodajOperacijuPage());
+            this.NavigationService.Navigate(new AddOperation());
         }
 
         private void UpdateAppointment_Click(object sender, RoutedEventArgs e)
         {
             if (appointmentsTable.SelectedItem != null)
             {
-                this.NavigationService.Navigate(new IzmeniTerminPage((Appointment)appointmentsTable.SelectedItem));
+                this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsTable.SelectedItem));
             }
 
         }
@@ -81,12 +81,12 @@ namespace SIMS.ViewSecretary
 
         private void AddUrgentExamination_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new HitanPregledPage());
+            this.NavigationService.Navigate(new AddUrgentExamination());
         }
 
         private void AddUrgentOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new HitnaOperacijaPage());
+            this.NavigationService.Navigate(new AddUrgentOperation());
         }
 
         public void RemoveInstance()

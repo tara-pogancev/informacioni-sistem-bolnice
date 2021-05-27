@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.ViewSecretary;
 
 namespace SIMS
 {
@@ -80,7 +81,7 @@ namespace SIMS
             Secretary sekretar = SecretaryFileRepository.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Password))
             {
-                    SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
+                ViewSecretary.ViewSecretary sekretarUI = ViewSecretary.ViewSecretary.GetInstance(sekretar);
                     sekretarUI.Show();
                     this.Close();
                     return;

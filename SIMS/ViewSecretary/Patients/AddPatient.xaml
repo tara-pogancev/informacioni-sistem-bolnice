@@ -1,9 +1,9 @@
-﻿<Page x:Class="SIMS.ViewSecretary.DodajPacijentaPage"
+﻿<Page x:Class="SIMS.ViewSecretary.Patients.AddPatient"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.Repositories.SecretaryRepo"
+      xmlns:local="clr-namespace:SIMS.Model"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
@@ -13,7 +13,7 @@
     <Page.Resources>
         <ObjectDataProvider x:Key="PolFromEnum" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="local:Pol"/>
+                <x:Type TypeName="local:SexType"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Page.Resources>

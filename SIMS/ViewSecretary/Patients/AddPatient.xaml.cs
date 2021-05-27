@@ -8,12 +8,12 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Patients
 {
-    public partial class DodajPacijentaPage : Page
+    public partial class AddPatient : Page
     {
         private ObservableCollection<Allergen> _allergens;
-        public DodajPacijentaPage()
+        public AddPatient()
         {
             InitializeComponent();
 
@@ -28,9 +28,9 @@ namespace SIMS.ViewSecretary
         {
             Patient pacijent = CreatePatientFromUserInput();
             PatientFileRepository.Instance.Save(pacijent);
-            SekretarPacijentiPage.GetInstance().RefreshView();
+            ViewPatients.GetInstance().RefreshView();
 
-            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            NavigationService.Navigate(ViewPatients.GetInstance());
         }
 
         private Patient CreatePatientFromUserInput()
@@ -64,7 +64,7 @@ namespace SIMS.ViewSecretary
 
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            NavigationService.Navigate(ViewPatients.GetInstance());
         }
 
         public static BloodType GetEnumKrvneGrupe(string s)

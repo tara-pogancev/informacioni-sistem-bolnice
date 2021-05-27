@@ -4,36 +4,25 @@ using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.ViewSecretary.Patients;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Appointments
 {
-    /// <summary>
-    /// Interaction logic for HitanPregledPage.xaml
-    /// </summary>
-    public partial class HitanPregledPage : Page
+    public partial class AddUrgentOperation : Page
     {
         private List<string> SpecializationList;
         private List<Specialization> SpecializationEnumList;
         private List<string> DurationList = new List<string>() { "30 minuta", "60 minuta", "90 minuta" };
         private ObservableCollection<Patient> PatientList;
-
         private DoctorController doctorController = new DoctorController();
 
         private ObservableCollection<Appointment> AvailableAppointments;
-
-        public HitanPregledPage()
+        public AddUrgentOperation()
         {
             InitializeComponent();
 
@@ -43,9 +32,9 @@ namespace SIMS.ViewSecretary
             AvailableAppointments = new ObservableCollection<Appointment>();
             AvailableComboBox.DataContext = AvailableAppointments;
             SpecializationList = DoctorFileRepository.Instance.GetAvailableSpecializationString();
-            //SpecializationList.Remove("Lekar opšte prakse");
+            SpecializationList.Remove("Lekar opšte prakse");
             SpecializationEnumList = DoctorFileRepository.Instance.GetAvailableSpecialization();
-            //SpecializationEnumList.Remove(Specijalizacija.OpstaPraksa);
+            SpecializationEnumList.Remove(Specialization.OpstaPraksa);
             PatientList = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
 
             SpecializationComboBox.ItemsSource = SpecializationList;
@@ -86,21 +75,21 @@ namespace SIMS.ViewSecretary
 
                 SendNotification(selectedApp, false);
 
-                SekretarTerminiPage.GetInstance().RefreshView();
+                ViewAppointments.GetInstance().RefreshView();
 
-                this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
-                MessageBox.Show("Hitan pregled uspesno zakazan!");
+                this.NavigationService.Navigate(ViewAppointments.GetInstance());
+                MessageBox.Show("Hitna operacija uspesno zakazana!");
             }
         }
 
         private void Button_Quit(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+            this.NavigationService.Navigate(ViewAppointments.GetInstance());
         }
 
         private void Button_Guest(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new DodajGostaPage());
+            this.NavigationService.Navigate(new AddGuestPatient());
             NavigationService.Navigated += NavigationService_Navigated;
         }
 
@@ -124,7 +113,7 @@ namespace SIMS.ViewSecretary
             else
             {
                 Notification notification = new Notification("Sekretarijat", DateTime.Now,
-                ("Zakazan hitan pregled [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
+                ("Zakazana hitna operacija [" + selectedApp.GetAppointmentDate() + " " + selectedApp.GetAppointmentTime() + ", " + selectedApp.Room.Number + "] za pacijenta "
                 + selectedApp.GetPatientName() + ", vodeći lekar " + selectedApp.GetDoctorName() + "."), target);
                 NotificationFileRepository.Instance.Save(notification);
             }
@@ -150,7 +139,7 @@ namespace SIMS.ViewSecretary
 
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
-                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.examination, null, (Patient)PatientComboBox.SelectedItem, null);
+                Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.surgery, null, (Patient)PatientComboBox.SelectedItem, null);
                 List<Appointment> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
                 if (allAppointments.Count == 1)
                 {
@@ -184,6 +173,7 @@ namespace SIMS.ViewSecretary
             foreach (Doctor doctor in DoctorFileRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
                 List<DateTime> potentialAppointmentTimeList = GetNearPotentialAppointments(numberOfDays);
+                //int counterByDoctor = 0;
 
                 foreach (DateTime appTime in potentialAppointmentTimeList)
                 {
@@ -193,13 +183,15 @@ namespace SIMS.ViewSecretary
                     allAppointments.Add(appointment);
                     if (doctorController.CheckIfFree(doctor, appointment) && appointment.StartTime >= appointmentValues.StartTime)
                     {
+                        //counterByDoctor++;
                         retVal.Add(appointment);
                         goto Exit;
                     }
 
+                    /*if (counterByDoctor >= 5)
+                        break;*/
                 }
             }
-
         Exit:
             if (retVal.Count == 0)
                 return allAppointments;

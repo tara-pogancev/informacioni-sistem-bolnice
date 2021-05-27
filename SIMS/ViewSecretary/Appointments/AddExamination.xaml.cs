@@ -7,15 +7,15 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class DodajPregledPage : Page
+    public partial class AddExamination : Page
     {
         private List<Doctor> _doctors;
         private List<Patient> _patients;
         private List<Room> _rooms;
 
-        public DodajPregledPage()
+        public AddExamination()
         {
             InitializeComponent();
 
@@ -44,9 +44,9 @@ namespace SIMS.ViewSecretary
             if (IsAppointmentValid(appointment))
             {
                 AppointmentFileRepository.Instance.Save(appointment);
-                SekretarTerminiPage.GetInstance().RefreshView();
+                ViewAppointments.GetInstance().RefreshView();
 
-                NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+                NavigationService.Navigate(ViewAppointments.GetInstance());
             }
         }
 
@@ -106,7 +106,7 @@ namespace SIMS.ViewSecretary
 
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SekretarTerminiPage.GetInstance());
+            NavigationService.Navigate(ViewAppointments.GetInstance());
         }
     }
 }

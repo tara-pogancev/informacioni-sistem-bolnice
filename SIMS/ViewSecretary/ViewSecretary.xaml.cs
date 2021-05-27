@@ -1,33 +1,35 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using SIMS.ViewSecretary;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using SIMS.Model;
+using SIMS.ViewSecretary.Appointments;
+using SIMS.ViewSecretary.Home;
+using SIMS.ViewSecretary.Notifications;
+using SIMS.ViewSecretary.Patients;
 
-namespace SIMS
+namespace SIMS.ViewSecretary
 {
-    public partial class SekretarUI : Window
+    public partial class ViewSecretary : Window
     {
-        private static SekretarUI _instance = null;
+        private static ViewSecretary _instance = null;
         private Secretary _secretary;
 
-        public static SekretarUI GetInstance(Secretary secretary)
+        public static ViewSecretary GetInstance(Secretary secretary)
         {
             if (_instance == null)
-                _instance = new SekretarUI(secretary);
+                _instance = new ViewSecretary(secretary);
             return _instance;
         }
 
-        private SekretarUI(Secretary secretary)
+        private ViewSecretary(Secretary secretary)
         {
             InitializeComponent();
 
             _secretary = secretary;
             UsernameLabel.Content = _secretary.FullName;
 
-            MainFrame.Content = SekretarHomePage.GetInstance(_secretary);
+            MainFrame.Content = ViewHome.GetInstance(_secretary);
         }
 
 
@@ -46,7 +48,7 @@ namespace SIMS
                 invokeProv.Invoke();
             }
 
-            MainFrame.Content = new SekretarObavestenjaPage(_secretary);
+            MainFrame.Content = new ViewNotifications(_secretary);
         }
 
         private void Theme_Click(object sender, RoutedEventArgs e)
@@ -69,12 +71,12 @@ namespace SIMS
             new MainWindow().Show();
             _instance = null;
 
-            if (SekretarHomePage.GetInstance() != null)
-                SekretarHomePage.GetInstance().RemoveInstance();
-            if (SekretarPacijentiPage.GetInstance() != null)
-                SekretarPacijentiPage.GetInstance().RemoveInstance();
-            if (SekretarTerminiPage.GetInstance() != null)
-                SekretarTerminiPage.GetInstance().RemoveInstance();
+            if (ViewHome.GetInstance() != null)
+                ViewHome.GetInstance().RemoveInstance();
+            if (ViewPatients.GetInstance() != null)
+                ViewPatients.GetInstance().RemoveInstance();
+            if (ViewAppointments.GetInstance() != null)
+                ViewAppointments.GetInstance().RemoveInstance();
 
             this.Close();
         }
@@ -91,27 +93,27 @@ namespace SIMS
             {
                 case "ItemHome":
                     invokeProv.Invoke();
-                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    MainFrame.Content = ViewHome.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemPatients":
                     invokeProv.Invoke();
-                    MainFrame.Content = SekretarPacijentiPage.GetInstance();
+                    MainFrame.Content = ViewPatients.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemAppointments":
                     invokeProv.Invoke();
-                    MainFrame.Content = SekretarTerminiPage.GetInstance();
+                    MainFrame.Content = ViewAppointments.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemReport":
                     invokeProv.Invoke();
-                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    MainFrame.Content = ViewHome.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemAccount":
                     invokeProv.Invoke();
-                    MainFrame.Content = SekretarHomePage.GetInstance();
+                    MainFrame.Content = ViewHome.GetInstance();
                     ListViewMenu.SelectedItem = null;
                     break;
             }

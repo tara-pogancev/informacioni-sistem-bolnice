@@ -5,20 +5,20 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Patients
 {
-    public partial class SekretarPacijentiPage : Page
+    public partial class ViewPatients : Page
     {
         private ObservableCollection<Patient> _patients;
-        private static SekretarPacijentiPage _instance = null;
+        private static ViewPatients _instance = null;
 
-        public static SekretarPacijentiPage GetInstance()
+        public static ViewPatients GetInstance()
         {
             if (_instance == null)
-                _instance = new SekretarPacijentiPage();
+                _instance = new ViewPatients();
             return _instance;
         }
-        private SekretarPacijentiPage()
+        private ViewPatients()
         {
             InitializeComponent();
 
@@ -28,12 +28,12 @@ namespace SIMS.ViewSecretary
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DodajPacijentaPage());
+            NavigationService.Navigate(new AddPatient());
         }
 
         private void AddGuest_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DodajGostaPage());
+            NavigationService.Navigate(new AddGuestPatient());
         }
 
         private void UpdatePatient_Click(object sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ namespace SIMS.ViewSecretary
             }
             else
             {
-                NavigationService.Navigate(new IzmeniPacijentaPage((Patient)patientsView.SelectedItem));
+                NavigationService.Navigate(new UpdatePatient((Patient)patientsView.SelectedItem));
             }
         }
 

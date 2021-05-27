@@ -8,12 +8,12 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Patients
 {
-    public partial class IzmeniPacijentaPage : Page
+    public partial class UpdatePatient : Page
     {
         private ObservableCollection<Allergen> _allergens;
-        public IzmeniPacijentaPage(Patient patient)
+        public UpdatePatient(Patient patient)
         {
             InitializeComponent();
 
@@ -89,9 +89,9 @@ namespace SIMS.ViewSecretary
         {
             Patient pacijent = UpdatePatientFromUserInput();
             PatientFileRepository.Instance.Update(pacijent);
-            SekretarPacijentiPage.GetInstance().RefreshView();
+            ViewPatients.GetInstance().RefreshView();
 
-            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            NavigationService.Navigate(ViewPatients.GetInstance());
         }
 
         private Patient UpdatePatientFromUserInput()
@@ -106,7 +106,7 @@ namespace SIMS.ViewSecretary
             }
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 
-            Patient pacijent = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, post_broj, new Country(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), DodajPacijentaPage.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
+            Patient pacijent = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, post_broj, new Country(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), AddPatient.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
             return pacijent;
         }
 
@@ -127,7 +127,7 @@ namespace SIMS.ViewSecretary
 
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(SekretarPacijentiPage.GetInstance());
+            NavigationService.Navigate(ViewPatients.GetInstance());
         }
     }
 }

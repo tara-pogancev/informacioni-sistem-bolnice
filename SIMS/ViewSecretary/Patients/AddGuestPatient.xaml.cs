@@ -3,11 +3,11 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 
-namespace SIMS.ViewSecretary
+namespace SIMS.ViewSecretary.Patients
 {
-    public partial class DodajGostaPage : Page
+    public partial class AddGuestPatient : Page
     {
-        public DodajGostaPage()
+        public AddGuestPatient()
         {
             InitializeComponent();
         }
@@ -16,7 +16,7 @@ namespace SIMS.ViewSecretary
         {
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text);
             PatientFileRepository.Instance.Save(patient);
-            SekretarPacijentiPage.GetInstance().RefreshView();
+            ViewPatients.GetInstance().RefreshView();
 
             NavigationService.GoBack();
         }
