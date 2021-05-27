@@ -44,7 +44,7 @@ namespace SIMS.Service.RecommendationAppointmentService
             RoomAvailabilityService roomAvailabilityService = new RoomAvailabilityService();
             for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
-                if (recommendedAppointementsDrafts[i].TimeOfAppointment == appointment.StartTime || !roomAvailabilityService.IsFreeRoom(recommendedAppointementsDrafts[i].TimeOfAppointment))
+                if (recommendedAppointementsDrafts[i].TimeOfAppointment == appointment.StartTime || !roomAvailabilityService.IsFreeRoomExists(recommendedAppointementsDrafts[i].TimeOfAppointment))
                     recommendedAppointementsDrafts.RemoveAt(i);
             }
         }
