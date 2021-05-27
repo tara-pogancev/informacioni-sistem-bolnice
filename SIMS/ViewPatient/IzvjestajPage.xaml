@@ -21,8 +21,8 @@
                 <ColumnDefinition Width="*"/>
 
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Image Margin="15" Source="/src/logo_glow.jpg" ></Image>
+            <Grid Grid.Column="0" Background="#ebb134">
+                <Image Margin="15" Source="/src/logo_title.png" ></Image>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -33,7 +33,7 @@
                 <Label FontSize="30" HorizontalAlignment="Center" Margin="5">Izvještaj o uzimanju terapije</Label>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Label FontSize="18">Ime i prezime:</Label>
                             <Label  FontSize="18" Name="ImeIPrezime" Content="Marko Markovic"></Label>
@@ -54,28 +54,121 @@
         </Grid>
 
 
-        <Grid Grid.Row="1">
-            <StackPanel>
-                <syncfusion:SfSchedule ItemsSource = "{Binding Meetings}" WorkEndHour="30" ScheduleType="Week" x:Name="schedule" ShowNonWorkingHours="False" TimeInterval="OneHour" IntervalHeight="28" FirstDayOfWeek="Monday" WorkStartHour="6" Height="350" TimeMode="TwentyFourHours" Foreground="#FF01C38D" Margin="0,0,0,100"  >
+        <Grid Grid.Row="1" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Ponedeljak:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
                     
-                    <syncfusion:SfSchedule.AppointmentMapping>
-                        <syncfusion:ScheduleAppointmentMapping
-			                AppointmentBackgroundMapping="#0384fc"
-			                EndTimeMapping="To"
-			                StartTimeMapping="From"
-			                SubjectMapping="EventName" 
-			                AllDayMapping="AllDay"/>
-                    </syncfusion:SfSchedule.AppointmentMapping>
-                    <syncfusion:SfSchedule.DataContext>
-                        ada
-                    </syncfusion:SfSchedule.DataContext>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Utorak:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
 
-                </syncfusion:SfSchedule>
-                <TextBlock FontSize="22" Margin="20" FontWeight="Bold" TextWrapping="Wrap">
-                    Napomena: Svrha izvještaja je da dobijete informativne podatke o terapiji. Izvještaj se ne može iskoristiti za uzimanje lijekova u apoteci.
-                </TextBlock>
-            </StackPanel>
-            
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Srijeda:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Četvrtak:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Petak:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Subota:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="6">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Nedelja:</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
+                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                    </StackPanel>
+
+                </StackPanel>
+            </Grid>
+
 
         </Grid>
     </Grid>

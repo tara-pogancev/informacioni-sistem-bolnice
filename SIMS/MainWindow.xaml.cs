@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS
 {
@@ -58,6 +59,8 @@ namespace SIMS
                     o.Show();
                     return;
                 }
+
+                HomePageViewModel homePageViewModel = new HomePageViewModel(pacijent);
                 PocetnaStranica pocetnaStranica=PocetnaStranica.getInstance();
                 pocetnaStranica.Pacijent = pacijent;
                 pocetnaStranica.kreirajAnketu();

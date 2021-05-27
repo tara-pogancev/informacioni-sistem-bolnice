@@ -1,9 +1,6 @@
-﻿using SIMS.PacijentGUI.ViewModel;
-using Syncfusion.UI.Xaml.Schedule;
+﻿using SIMS.ViewPatient.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,26 +12,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS.PacijentGUI
+namespace SIMS.ViewPatient
 {
     /// <summary>
-    /// Interaction logic for IzvjestajPage.xaml
+    /// Interaction logic for PrikazRecepta.xaml
     /// </summary>
-    public partial class IzvjestajPage : Page
+    public partial class PrikazRecepta : Page
     {
-        
-        public IzvjestajPage()
+        private RecipeViewModel recipe = new RecipeViewModel();
+        public PrikazRecepta(RecipeViewModel recipeViewModel)
         {
-            
             InitializeComponent();
-            
-
-
-
+            recipe = recipeViewModel;
+            this.DataContext = recipe;
         }
-
-        
-
     }
 }
-

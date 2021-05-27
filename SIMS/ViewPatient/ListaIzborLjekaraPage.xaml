@@ -39,7 +39,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="0" Width="60" Name="Odaberi" Background="Firebrick"  Content="Odaberi">
+                                <Button Padding="0" Width="60" Name="Odaberi" Background="#FF01C38D"  Content="Odaberi">
                                     <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click" >
                                             <i:InvokeCommandAction Command="{Binding Path=DataContext.ChoseDoctorCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
@@ -52,7 +52,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="0" Width="60" Background="Firebrick" Name="Detalji" Content="Detalji">
+                                <Button Padding="0" Width="60"  Name="Detalji" Content="Detalji">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click" >
                                             <i:InvokeCommandAction Command="{Binding Path=DataContext.DatailsDoctorCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>

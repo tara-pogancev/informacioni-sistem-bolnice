@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Service;
+using SIMS.ViewPatient;
 
 namespace SIMS.PacijentGUI
 {
@@ -131,6 +132,9 @@ namespace SIMS.PacijentGUI
                     break;
                 case 5:
                     frame.Navigate(new IstorijaPregleda());
+                    break;
+                case 6:
+                    frame.Navigate(new ReceptiIzvjestaji());
                     break;
                 default:
                     break;

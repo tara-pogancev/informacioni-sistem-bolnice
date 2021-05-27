@@ -9,6 +9,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
     public class ViewModel : INotifyPropertyChanged
         {
+            
             [field: NonSerialized]
             public event PropertyChangedEventHandler PropertyChanged;
 

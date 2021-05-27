@@ -19,7 +19,10 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#FF323D52">
+    <Grid >
+        <Grid.Background>
+            #FF323D52
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="400"/>
@@ -30,8 +33,8 @@
                 <RowDefinition Height="275"/>
                 <RowDefinition Height="275"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#FF323D52" Margin="25">
-                <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0" x:Name="zakaziTermin">
+            <Grid Grid.Row="0"  Margin="25">
+                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0" x:Name="zakaziTermin">
                     <StackPanel Orientation="Vertical">
                         <Image Source="/src/doctor.png"/>
                         <TextBlock HorizontalAlignment="Center" Foreground="Black">Zakaži termin</TextBlock>
@@ -39,7 +42,7 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
-                <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0" Name="Profil" Click="Profil_Click">
+                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0" Name="Profil" Click="Profil_Click">
                     <StackPanel Orientation="Vertical">
 
                         <Image Source="/src/profile1.png"/>
@@ -53,8 +56,8 @@
                 <RowDefinition Height="275"/>
                 <RowDefinition Height="275"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#FF323D52" Margin="25">
-                <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0">
+            <Grid Grid.Row="0"  Margin="20">
+                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0">
                     <StackPanel Orientation="Vertical">
 
                         <Image Source="/src/pilulePrave.png"/>
@@ -63,7 +66,7 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
-                <Button Width="150" Height="150" Background="#01C38D" BorderThickness="0">
+                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0">
                     <StackPanel Orientation="Vertical">
 
                         <Image Source="/src/notice.png"/>
