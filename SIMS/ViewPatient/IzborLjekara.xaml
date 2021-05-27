@@ -51,9 +51,9 @@
                             <Label FontSize="17" FontWeight="Bold">Ocjena:</Label>
                             <Label FontSize="17" Content="{Binding Grade}"></Label>
                         </StackPanel>
-                        <StackPanel>
-                            <Button Margin="70" Width="100" Height="30" Name="Izmijeni" Click="Izmijeni_Click">Promijeni doktora</Button>
-                        </StackPanel>
+                        
+                           <Button Margin="70" Width="120" Height="50" Padding="0" Name="Izmijeni" Click="Izmijeni_Click" >Promijeni ljekara</Button>
+                        
                     </StackPanel>
                 </Border>
             </Grid>

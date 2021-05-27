@@ -94,14 +94,14 @@ namespace SIMS.PacijentGUI.ViewModel
            
             HospitalSurvey hospitalSurvey = new HospitalSurvey();
             hospitalSurvey.IdVlasnika = PocetnaStranica.getInstance().Pacijent.Jmbg;
-            hospitalSurvey.IdAnkete = hospitalSurvey.DatumKreiranjaAnkete + hospitalSurvey.IdVlasnika;
-            hospitalSurvey.Komentar = comment;
-            hospitalSurvey.OdgovoriNaPitanja.Add("pitanje1", questionOneAnswer);
-            hospitalSurvey.OdgovoriNaPitanja.Add("pitanje2", questionTwoAnswer);
-            hospitalSurvey.OdgovoriNaPitanja.Add("pitanje3", QuestionThreeAnswer);
-            hospitalSurvey.OdgovoriNaPitanja.Add("pitanje4", questionFourAnswer);
-            hospitalSurvey.OdgovoriNaPitanja.Add("pitanje5", questionFiveAnswer);
-            hospitalSurvey.TrenutniBrojPregleda = brojZavrsenihPRegleda();
+            hospitalSurvey.SurveyID = hospitalSurvey.SubmissionDate + hospitalSurvey.IdVlasnika;
+            hospitalSurvey.Comment = comment;
+            hospitalSurvey.Answers.Add("pitanje1", questionOneAnswer);
+            hospitalSurvey.Answers.Add("pitanje2", questionTwoAnswer);
+            hospitalSurvey.Answers.Add("pitanje3", QuestionThreeAnswer);
+            hospitalSurvey.Answers.Add("pitanje4", questionFourAnswer);
+            hospitalSurvey.Answers.Add("pitanje5", questionFiveAnswer);
+            hospitalSurvey.NumberOfCheckups = brojZavrsenihPRegleda();
             new HospitalSurveyFileRepository().Save(hospitalSurvey);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
             PocetnaStranica.getInstance().frame.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);

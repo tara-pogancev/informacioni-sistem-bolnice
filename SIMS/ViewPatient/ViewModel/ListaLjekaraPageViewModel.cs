@@ -7,6 +7,8 @@ using System.Text;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Commands;
+using SIMS.ViewPatient;
+using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
@@ -56,7 +58,8 @@ namespace SIMS.PacijentGUI.ViewModel
 
         public void Execute_DetailsDoctrCommand(object obj)
         {
-
+            DoctorDetailsViewModel doctorDetailsViewModel = new DoctorDetailsViewModel(SelectedDoctor);
+            PocetnaStranica.getInstance().frame.Content = new DetaljiODoktoru(doctorDetailsViewModel);
         }
 
         #endregion

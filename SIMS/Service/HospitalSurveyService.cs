@@ -52,11 +52,11 @@ namespace SIMS.Service
 
         private bool IsThreeMonthsPassed(HospitalSurvey hospitalSurvey)
         {
-            return hospitalSurvey.DatumKreiranjaAnkete.AddMonths(3)<DateTime.Now;
+            return hospitalSurvey.SubmissionDate.AddMonths(3)<DateTime.Now;
         }
         private bool IsFiveAppointmentsPassed(HospitalSurvey hospitalSurvey,Patient patient)
         {
-            return Math.Abs(hospitalSurvey.TrenutniBrojPregleda - new AppointmentService().GetNumberOfFinishedAppointments(patient)) > 5;
+            return Math.Abs(hospitalSurvey.NumberOfCheckups - new AppointmentService().GetNumberOfFinishedAppointments(patient)) > 5;
         }
     }
 }

@@ -178,5 +178,45 @@
     },
     "InitialTime": "2021-05-20T09:30:00",
     "AppointmentID": "210526101051907774"
+  },
+  "210527122520305053": {
+    "StartTime": "2021-05-25T09:30:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-25T09:30:00",
+    "AppointmentID": "210527122520305053"
+  },
+  "210527122555404171": {
+    "StartTime": "2021-05-01T09:30:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "InventoryAmounts": {},
+      "Number": "1",
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-01T09:30:00",
+    "AppointmentID": "210527122555404171"
   }
 }

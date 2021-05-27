@@ -7,27 +7,27 @@ namespace SIMS.Model
 {
     public class Survey
     {
-        protected String idAnkete;
-        protected String komentar;
-        protected DateTime datumKreiranjaAnkete;
-        protected String idVlasnika;
+        protected String surveyID;
+        protected String comment;
+        protected DateTime submissionDate;
+        protected String ownerID;
 
-        public string IdAnkete { get => idAnkete; set => idAnkete = value; }
+        public string SurveyID { get => surveyID; set => surveyID = value; }
         
-        public string Komentar { get => komentar; set => komentar = value; }
-        public DateTime DatumKreiranjaAnkete { get => datumKreiranjaAnkete; set => datumKreiranjaAnkete = value; }
-        public string IdVlasnika { get => idVlasnika; set => idVlasnika = value; }
+        public string Comment { get => comment; set => comment = value; }
+        public DateTime SubmissionDate { get => submissionDate; set => submissionDate = value; }
+        public string IdVlasnika { get => ownerID; set => ownerID = value; }
 
         public Survey() {
-            datumKreiranjaAnkete = DateTime.Now;
+            submissionDate = DateTime.Now;
         }
 
         public Survey(String komentar,String idVlasnika)
         {
            
-            this.komentar = komentar;
-            this.idVlasnika = idVlasnika;
-            datumKreiranjaAnkete = DateTime.Now;
+            this.comment = komentar;
+            this.ownerID = idVlasnika;
+            submissionDate = DateTime.Now;
 
         }
 
