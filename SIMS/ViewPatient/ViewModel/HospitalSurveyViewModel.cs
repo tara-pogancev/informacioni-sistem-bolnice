@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
-    class HospitalSurveyViewModel:ViewModel
+    class HospitalSurveyViewModel:ViewModelPatient
     {
 
         #region fields

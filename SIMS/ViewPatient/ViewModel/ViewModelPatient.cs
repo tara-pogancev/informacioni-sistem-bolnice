@@ -7,7 +7,7 @@ using System.Text;
 namespace SIMS.PacijentGUI.ViewModel
 {
 
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModelPatient : INotifyPropertyChanged
         {
             
             [field: NonSerialized]

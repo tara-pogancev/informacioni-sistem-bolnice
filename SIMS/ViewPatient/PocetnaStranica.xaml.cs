@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.ViewPatient;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 
 namespace SIMS.PacijentGUI
 {
@@ -24,6 +27,8 @@ namespace SIMS.PacijentGUI
     public partial class PocetnaStranica : Window
     {
         private Patient patient;
+        [DllImport("User32.dll")]
+        private static extern bool SetCursorPos(double X, double Y);
         private static PocetnaStranica instance=null;
         public static PocetnaStranica getInstance()
         {
@@ -155,5 +160,45 @@ namespace SIMS.PacijentGUI
         {
             frame.Navigate( new AnketaBolnicePage());
         }
+
+        private void DemoMode_Click(object sender, RoutedEventArgs e)
+        {
+            //zakazivanje termina
+            MessageBox.Show("Ulazak u demo mod");
+            //Zakazi.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+
+            
+            
+                Zakazi.Focus();
+                ListViewMenu.SelectedIndex = 1;
+                ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
+                zakazivanje.Pacijent = patient;
+
+                Task.Delay(2000).ContinueWith(_ =>
+                {
+                    Application.Current.Dispatcher.Invoke(
+                   System.Windows.Threading.DispatcherPriority.Normal,
+                   new Action(
+                     delegate ()
+                     {
+
+                         frame.Content = zakazivanje;
+                     }
+                    ));
+                });
+                Zakazivanje zakazivanjeTermina = new Zakazivanje(PocetnaStranica.getInstance().Pacijent);
+                zakazivanje.Zakazivanje1.Children.Add(zakazivanjeTermina);
+                zakazivanjeTermina.ZakaziTerminDemo();
+            
+            
+           
+            
+
+            
+
+
+        }
+
+        
     }
 }

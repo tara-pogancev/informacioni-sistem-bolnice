@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
-    public class ScheduledAppointmentsViewModel
+    public class ScheduledAppointmentsViewModel:ViewModelPatient
     {
         public ObservableCollection<Appointment> PatientAppointments { get; set; }
         private Patient patient;

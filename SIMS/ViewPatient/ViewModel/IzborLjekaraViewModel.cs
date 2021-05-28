@@ -7,7 +7,7 @@ using SIMS.Model;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
-    public class IzborLjekaraViewModel : ViewModel
+    public class IzborLjekaraViewModel : ViewModelPatient
     {
         # region fields
 

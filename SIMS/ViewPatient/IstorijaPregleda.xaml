@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:SIMS.PacijentGUI"
       xmlns:cvt="clr-namespace:SIMS.ViewConverters"
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
@@ -22,9 +23,42 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="#FF323D52">
-        <DataGrid x:Name="terminiTabela" ItemsSource="{Binding PastAppointments, Mode=TwoWay}" IsReadOnly="True" 
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox  x:Name="SearchBox" materialDesign:HintAssist.Hint="Pretraga termina"   KeyUp="SearchBox_KeyUp" Margin="50" HorizontalAlignment="Left" Width="350" Height="26" FontFamily="Candara" FontSize="18" Foreground="White" FontWeight="Bold">
+               
+                    <TextBox.Style>
+                        
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Pretraga..." Foreground="White" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                              
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="#323D52" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                
+
+               
+            </StackPanel>
+            <DataGrid x:Name="terminiTabela" ItemsSource="{Binding PastAppointments, Mode=OneWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
-                  Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" SelectedItem="{Binding SelectedAppointment}" >
+                  Height="350" Margin="0,0,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" SelectedItem="{Binding SelectedAppointment}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Doktor" Binding="{Binding Doctor,Converter={cvt:UserFullNameConverter}}"/>
                 <DataGridTextColumn Header="Datum" Binding="{Binding StartTime, StringFormat=dd.MM.yyyy.}" />
@@ -59,5 +93,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </StackPanel>
     </Grid>
 </Page>

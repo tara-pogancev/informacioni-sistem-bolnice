@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.Model;
+using System.Threading.Tasks;
 
 namespace SIMS.PacijentGUI
 {
@@ -121,8 +122,139 @@ namespace SIMS.PacijentGUI
             
         }
 
+        internal void ZakaziTerminDemo()
+        {
+            
+
+            
+            Task.Delay(1000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     ListaDoktora.SelectedIndex = 1;
+                     ListaDoktora.Focus();
+
+                     Task.Delay(2000).ContinueWith(_ =>
+                     {
+                         Application.Current.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                          delegate ()
+                          {
+                              OdabirDatuma.IsDropDownOpen = true;
+                              Task.Delay(1000).ContinueWith(_ =>
+                              {
+                                  Application.Current.Dispatcher.Invoke(
+                                 System.Windows.Threading.DispatcherPriority.Normal,
+                                 new Action(
+                                   delegate ()
+                                   {
+
+                                       OdabirDatuma.SelectedDate = DateTime.Now.AddDays(3);
+                                       Task.Delay(1000).ContinueWith(_ =>
+                                       {
+                                           Application.Current.Dispatcher.Invoke(
+                                          System.Windows.Threading.DispatcherPriority.Normal,
+                                          new Action(
+                                            delegate ()
+                                            {
+
+                                                OdabirDatuma.IsDropDownOpen = false;
+                                                Task.Delay(1500).ContinueWith(_ =>
+                                                {
+                                                    Application.Current.Dispatcher.Invoke(
+                                                   System.Windows.Threading.DispatcherPriority.Normal,
+                                                   new Action(
+                                                     delegate ()
+                                                     {
+                                                         terminiLista.IsDropDownOpen = true;
+                                                         terminiLista.Focus();
+                                                         Task.Delay(1500).ContinueWith(_ =>
+                                                         {
+                                                             Application.Current.Dispatcher.Invoke(
+                                                            System.Windows.Threading.DispatcherPriority.Normal,
+                                                            new Action(
+                                                              delegate ()
+                                                              {
+                                                                  terminiLista.SelectedIndex = 1;
+                                                                  terminiLista.IsDropDownOpen = false;
+                                                                  Task.Delay(1500).ContinueWith(_ =>
+                                                                  {
+                                                                      Application.Current.Dispatcher.Invoke(
+                                                                     System.Windows.Threading.DispatcherPriority.Normal,
+                                                                     new Action(
+                                                                       delegate ()
+                                                                       {
+                                                                           ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+                                                                           obavjestenje.TekstObavjestenja.Text = "Termin je uspjesno zakazan";
+                                                                           obavjestenje.Show();
+                                                                           Task.Delay(1000).ContinueWith(_ =>
+                                                                           {
+                                                                               Application.Current.Dispatcher.Invoke(
+                                                                              System.Windows.Threading.DispatcherPriority.Normal,
+                                                                              new Action(
+                                                                                delegate ()
+                                                                                {
+
+                                                                                    obavjestenje.Close();
+                                                                                    Task.Delay(1000).ContinueWith(_ =>
+                                                                                    {
+                                                                                        Application.Current.Dispatcher.Invoke(
+                                                                                       System.Windows.Threading.DispatcherPriority.Normal,
+                                                                                       new Action(
+                                                                                         delegate ()
+                                                                                         {
+                                                                                             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
+                                                                                             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
+                                                                                             PocetnaStranica.getInstance().frame.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
+
+                                                                                         }
+                                                                                        ));
+                                                                                    });
+                                                                                   
+
+                                                                                }
+                                                                               ));
+                                                                           });
+                                                                           
+
+                                                                       }
+                                                                      ));
+                                                                  });
+
+                                                              }
+                                                             ));
+                                                         });
+
+
+
+                                                     }
+                                                    ));
+                                                });
+                                            }
+                                           ));
+                                       });
+                                   }
+                                  ));
+                              });
+
+
+                          }
+                         ));
+                     });
+                 }
+                ));
+            });
+
+            
+         
+
+            
+           
+        }
         
-
-
     }
 }

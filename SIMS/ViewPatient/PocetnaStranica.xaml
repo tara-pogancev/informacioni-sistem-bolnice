@@ -64,7 +64,7 @@
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Anketa"  Click="Anketa_Click" ToolTip="Anketa"  Visibility="Collapsed">
                                     <materialDesign:PackIcon Kind="FileQuestion" Width="40" Height="30"/>
                                 </Button>
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" Click="Zvonce_Click" >
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" Click="DemoMode_Click" >
                                     <materialDesign:PackIcon Kind="AcademicCap" Width="40" Height="30"/>
                                 </Button>
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" Click="Zvonce_Click">
@@ -108,7 +108,7 @@
                                     </StackPanel>
                                 </ListViewItem>
 
-                                <ListViewItem Height="60">
+                                <ListViewItem Height="60" Name="Zakazi">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="MedicalBag"  Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
                                         <TextBlock Text="Zakaži termin" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>

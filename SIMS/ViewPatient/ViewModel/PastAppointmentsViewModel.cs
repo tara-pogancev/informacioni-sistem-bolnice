@@ -1,7 +1,9 @@
 ﻿using SIMS.Commands;
 using SIMS.Controller;
+using SIMS.Filters;
 using SIMS.Model;
 using SIMS.PacijentGUI;
+using SIMS.PacijentGUI.ViewModel;
 using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
@@ -11,24 +13,33 @@ using System.Windows.Navigation;
 
 namespace SIMS.ViewPatient.ViewModel
 {
-    class PastAppointmentsViewModel
+    public class PastAppointmentsViewModel:ViewModelPatient
     {
         private NavigationService navService;
-        public ObservableCollection<Appointment> PastAppointments { get; set; }
+        private ObservableCollection<Appointment> pastAppointments;
         private Patient patient;
         public RelayCommand GradeAppointmentCommand { get; set; }
         public RelayCommand DetailsAppointmentCommand { get; set; }
         public Appointment SelectedAppointment { get; set; }
+        public RelayCommand SearchCommand { get; set; }
+       
 
+        public ObservableCollection<Appointment> PastAppointments
+        {
+            get { return pastAppointments; }
+            set { pastAppointments = value; OnPropertyChanged("pastAppointments"); }
+        }
 
         public PastAppointmentsViewModel(NavigationService navService,Patient patient)
         {
             this.navService = navService;
             this.patient = patient;
-            PastAppointments = new ObservableCollection<Appointment>(new AppointmentController().GetPastAppointmentsForPatient(patient));
+            pastAppointments = new ObservableCollection<Appointment>(new AppointmentController().GetPastAppointmentsForPatient(patient));
             LoadDoctors();
             GradeAppointmentCommand = new RelayCommand(Execute_GradeAppointmentCommand,CanExecute_GradeAppointmentCommand);
             DetailsAppointmentCommand = new RelayCommand(Execute_DetailsAppointmentCommand, CanExecute_DetailsAppointmentCommand);
+            SearchCommand = new RelayCommand(Execute_SearchCommand, CanExecute_SearchCommand);
+            
 
         }
 
@@ -53,6 +64,16 @@ namespace SIMS.ViewPatient.ViewModel
             Appointment appointment = new AppointmentController().GetAppointment(SelectedAppointment.AppointmentID);
             appointment.Doctor = new DoctorController().GetDoctor(appointment.Doctor.Jmbg);
             navService.Navigate(new OcijeniPregled(appointment));
+        }
+        public bool CanExecute_SearchCommand(object obj)
+        {
+            return true;
+        }
+
+        public void Execute_SearchCommand(object obj)
+        {
+
+            
         }
         public bool CanExecute_DetailsAppointmentCommand(object obj)
         {
