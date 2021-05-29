@@ -18,19 +18,17 @@
 
     <Grid>
         <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">
-            <DataGrid x:Name="patientsView" ItemsSource="{Binding pacijenti}" IsReadOnly="True" 
+            <DataGrid x:Name="patientsView" ItemsSource="{Binding _patients}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Adresa" Binding="{Binding Adresa}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Alergeni" Binding="{Binding GetAlergeniString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Adresa" Binding="{Binding AddressString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                     <DataGridTextColumn Header="Lbo" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Gost}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Guest}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -1,12 +1,9 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.AppointmentRepo;
-using SIMS.Repositories.DoctorRepo;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.DTO;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -15,6 +12,9 @@ namespace SIMS.ViewSecretary.Appointments
         private static ViewAppointments _instance = null;
 
         private ObservableCollection<AppointmentDTO> _appointmentsForView;
+        private AppointmentController appointmentController = new AppointmentController();
+        private DoctorController doctorController = new DoctorController();
+        private PatientController patientController = new PatientController();
 
         public static ViewAppointments GetInstance()
         {
@@ -36,7 +36,7 @@ namespace SIMS.ViewSecretary.Appointments
         public void RefreshView()
         {
             _appointmentsForView.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(AppointmentFileRepository.Instance.GetAll());
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
             GetPatientAndDoctorData(appointments);
             SortAppointments(appointments);
             foreach (Appointment appointment in appointments)
@@ -73,7 +73,7 @@ namespace SIMS.ViewSecretary.Appointments
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
-                    AppointmentFileRepository.Instance.Delete(toDelete.AppointmentID);
+                    appointmentController.DeleteAppointment(toDelete);
 
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
@@ -101,8 +101,8 @@ namespace SIMS.ViewSecretary.Appointments
         {
             foreach (Appointment appointment in appointments)
             {
-                appointment.Patient = PatientFileRepository.Instance.FindById(appointment.Patient.Jmbg);
-                appointment.Doctor = DoctorFileRepository.Instance.FindById(appointment.Doctor.Jmbg);
+                appointment.Patient = patientController.GetPatient(appointment.Patient.Jmbg);
+                appointment.Doctor = doctorController.ReadUserByUsername(appointment.Doctor.Jmbg);
             }
         }
 
