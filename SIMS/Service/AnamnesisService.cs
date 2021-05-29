@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.Repositories.SecretaryRepo;
@@ -50,6 +51,20 @@ namespace SIMS.Service
                     retVal.Add(anamnesis);
 
             }
+
+            return retVal;
+        }
+
+        public AnamnesisDTO GetDTO(Anamnesis anamnesis)
+        {
+            return new AnamnesisDTO(anamnesis);
+        }
+
+        public List<AnamnesisDTO> GetDTOFromList(List<Anamnesis> list)
+        {
+            List<AnamnesisDTO> retVal = new List<AnamnesisDTO>();
+            foreach (Anamnesis anamnesis in list)
+                retVal.Add(GetDTO(anamnesis));
 
             return retVal;
         }

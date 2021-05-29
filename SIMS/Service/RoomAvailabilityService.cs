@@ -37,7 +37,7 @@ namespace SIMS.Service
         {
             for (int i = 0; i < examRooms.Count; i++)
             {
-                if (examRooms[i].Number == number)
+                if (examRooms[i].Number == number || examRooms[i].Available==false)
                 {
                     examRooms.RemoveAt(i);
                     i--;
@@ -45,7 +45,7 @@ namespace SIMS.Service
             }
         }
 
-        public bool IsFreeRoom(DateTime appointmentTime)
+        public bool IsFreeRoomExists(DateTime appointmentTime)
         {
             return GetAvailableRooms(appointmentTime).Count != 0;
         }

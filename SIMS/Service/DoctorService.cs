@@ -10,12 +10,22 @@ namespace SIMS.Service
 {
     class DoctorService
     {
-        private IDoctorRepository doctorRepository; 
+        private IDoctorRepository doctorRepository = new DoctorFileRepository(); 
 
         public DoctorService()
         {
-            doctorRepository = new DoctorFileRepository();
+
         }
+
+        public List<Doctor> GetAllDoctors() => doctorRepository.GetAll();
+
+        public void UpdateDoctor(Doctor doctor) => doctorRepository.Update(doctor);
+
+        public void DeleteDoctor(Doctor doctor) => doctorRepository.Delete(doctor.Jmbg);
+
+        public void SaveDoctor(Doctor doctor) => doctorRepository.Save(doctor);
+
+        public Doctor GetDoctor(String key) => doctorRepository.FindById(key);
 
         public List<Specialization> GetAvailableSpecialization()
         {
@@ -110,6 +120,20 @@ namespace SIMS.Service
             {
                 doctor.Grade = Grades / counter;
             }
+        }
+
+        public DoctorDTO GetDTO (Doctor doctor)
+        {
+            return new DoctorDTO(doctor);
+        }
+
+        public List<DoctorDTO> GetDTOFromList (List<Doctor> list)
+        {
+            List<DoctorDTO> retVal = new List<DoctorDTO>();
+            foreach (Doctor doctor in list)
+                retVal.Add(GetDTO(doctor));
+
+            return retVal;
         }
 
     }

@@ -11,7 +11,7 @@ namespace SIMS.Model
     {
         protected override string getKey(HospitalSurvey entity)
         {
-            return entity.IdAnkete;
+            return entity.SurveyID;
         }
 
         protected override string getPath()

@@ -5,18 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Service
+namespace SIMS.Service.RecommendationAppointmentService
 {
     class RecommendationService
     {
         private TypeOfRecommendation type;
-        private String doctorID;
+        private string doctorID;
         private DateTime startDate;
         private DateTime endDate;
         List<Appointment> recommendedAppointments;
-        private String patientID;
+        private string patientID;
 
-        public RecommendationService(TypeOfRecommendation type,String doctorID,DateTime startDate,DateTime endDate,String patientID )
+        public RecommendationService(TypeOfRecommendation type, string doctorID, DateTime startDate, DateTime endDate, string patientID)
         {
             this.type = type;
             this.doctorID = doctorID;
@@ -30,7 +30,7 @@ namespace SIMS.Service
         {
             if (type == TypeOfRecommendation.DoctorRecommendation)
             {
-                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(startDate, endDate, doctorID,patientID);
+                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(startDate, endDate, doctorID, patientID);
 
                 FillRecommendedAppointments(doctorPolicy.GetDoctorRecommendationDraft());
             }
@@ -41,15 +41,15 @@ namespace SIMS.Service
             return recommendedAppointments;
         }
 
-        private void FillRecommendedAppointments(List<RecommendedAppointment> recommendedAppointmentsDraft)
+        private void FillRecommendedAppointments(List<RecommendedAppointmentDraft> recommendedAppointmentsDraft)
         {
             IDoctorRepository doctorRepository = new DoctorFileRepository();
             IPatientRepository patientRepository = new PatientFileRepository();
             RoomAvailabilityService roomService = new RoomAvailabilityService();
             int counterOfAppointment = 0;
-            foreach(var appointment in recommendedAppointmentsDraft)
+            foreach (var appointment in recommendedAppointmentsDraft)
             {
-               
+
                 if (type == TypeOfRecommendation.DoctorRecommendation)
                 {
                     recommendedAppointments.Add(new Appointment(appointment.TimeOfAppointment,
@@ -68,16 +68,16 @@ namespace SIMS.Service
                                                             patientRepository.FindById(patientID),
                                                             roomService.GetAvailableRooms(appointment.TimeOfAppointment)[0]));
                 }
-                
+
                 counterOfAppointment++;
                 if (counterOfAppointment == 5)
                 {
                     break;
                 }
-                
+
             }
 
-            
+
         }
     }
 }

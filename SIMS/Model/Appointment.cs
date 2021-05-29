@@ -10,11 +10,17 @@ using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.ComponentModel;
+using SIMS.Controller;
 
 namespace SIMS.Model
 {
    public class Appointment : INotifyPropertyChanged
    {
+        private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+        private DoctorController doctorController = new DoctorController();
+        private RoomController roomController = new RoomController();
+
         public DateTime StartTime { get; set; }
         public int Duration { get; set; }
         public AppointmentType Type { get; set; }
@@ -59,6 +65,9 @@ namespace SIMS.Model
 
         public Appointment(Appointment anamnesisAppointment)
         {
+            anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
+            anamnesisAppointment.InitData();
+
             StartTime = anamnesisAppointment.StartTime;
             InitialTime = anamnesisAppointment.InitialTime;
             Duration = anamnesisAppointment.Duration;
@@ -67,7 +76,7 @@ namespace SIMS.Model
             Patient = anamnesisAppointment.Patient;
             Room = anamnesisAppointment.Room;
             AppointmentID = anamnesisAppointment.AppointmentID;
-            Serialize = true;
+            Serialize = anamnesisAppointment.Serialize;
         }
 
         public bool ShouldSerializeInitialTime()
@@ -114,9 +123,9 @@ namespace SIMS.Model
             return StartTime.AddMinutes(Duration);
         }
 
-        public bool IsPast()
+        public bool GetIfPast()
         {
-            return (GetEndTime() > DateTime.Now);
+            return (GetEndTime() < DateTime.Now);
         }
 
         public String GetAppointmentDate() 
@@ -131,9 +140,9 @@ namespace SIMS.Model
 
         public void InitData()
         {
-            Patient = new PatientFileRepository().FindById(Patient.Jmbg);
-            Room = new RoomFileRepository().FindById(Room.Number);
-            Doctor = new DoctorFileRepository().FindById(Doctor.Jmbg);
+            Patient = patientController.GetPatient(Patient.Jmbg);
+            Room = roomController.GetRoom(Room.Number);
+            Doctor = doctorController.GetDoctor(Doctor.Jmbg);
         }
 
         private static string GenerateID()
@@ -143,7 +152,7 @@ namespace SIMS.Model
 
         public bool GetIfCurrent()
         {
-            return (this.StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
+            return (StartTime <= DateTime.Now && GetEndTime() >= DateTime.Now);
         }
 
         public bool GetIfRecorded()
@@ -160,6 +169,12 @@ namespace SIMS.Model
         public String GetDoctorName()
         {
             return Doctor.FullName;
+        }
+
+        [JsonIgnore]
+        public String AppointmentFullInfo
+        {
+            get => GetDoctorName() + ", " + GetAppointmentTime() + " " + GetAppointmentDate();
         }
 
     }

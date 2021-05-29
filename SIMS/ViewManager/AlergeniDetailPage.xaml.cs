@@ -27,7 +27,7 @@ namespace SIMS.UpravnikGUI
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            allergen = allergenController.FindById(ID);
+            allergen = allergenController.GetAllergen(ID);
             InitializeComponent();
 
             NazivText.Text = allergen.Name;

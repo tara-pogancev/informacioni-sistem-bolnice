@@ -53,12 +53,7 @@ namespace SIMS.DTO
 
         public String DoctorName
         {
-            get => (Doctor.FullName);
-        }
-
-        public String AppointmentFullInfo
-        {
-            get => DoctorName + ", " + AppointmentTime + " " + AppointmentDate;
+            get => Doctor.FullName;
         }
     }
 }

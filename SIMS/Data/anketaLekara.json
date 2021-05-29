@@ -1,25 +1,7 @@
 {
-  "210503114833": {
-    "Appointment": null,
-    "Grade": 0,
-    "DoctorId": null,
-    "IdAnkete": "210503114833",
-    "Komentar": "",
-    "DatumKreiranjaAnkete": "2021-05-04T21:08:57.9956485+02:00",
-    "IdVlasnika": "4865453131"
-  },
-  "210521021119": {
-    "Appointment": null,
-    "Grade": 0,
-    "DoctorId": "045210805048",
-    "IdAnkete": "210521021119",
-    "Komentar": "Najbolji lekar",
-    "DatumKreiranjaAnkete": "2021-05-21T19:58:33.3728003+02:00",
-    "IdVlasnika": "12121977802342"
-  },
-  "210524062232283865": {
+  "12121977802342": {
     "Appointment": {
-      "StartTime": "2021-05-11T08:00:00",
+      "StartTime": "2021-05-26T10:00:00",
       "Duration": 30,
       "Type": 0,
       "Doctor": {
@@ -47,44 +29,213 @@
         "Serialize": true
       },
       "Patient": {
-        "PatientGender": 0,
-        "BloodType": 0,
-        "IsBanned": false,
-        "Lbo": "123",
-        "Guest": false,
-        "Allergens": [
-          "a2",
-          "a7"
-        ],
-        "DateOfBirth": "1999-03-05T00:00:00",
-        "HronicalDiseases": [],
-        "GetHronicalDiseases": "Nema",
-        "Name": "Đorđe",
-        "LastName": "Krsmanović",
-        "Jmbg": "4865453131",
-        "Username": "pacijent",
-        "Password": "p",
-        "Email": "djordje1499@gmail.com",
-        "Phone": "0645568131",
-        "Address": null,
-        "Serialize": true
+        "Jmbg": "12121977802342",
+        "Serialize": false
       },
       "Room": {
-        "RenovationStart": null,
-        "RenovationEnd": null,
         "InventoryAmounts": {},
-        "RoomType": 0,
         "Number": "1",
-        "Available": true,
-        "Serialize": true
+        "Serialize": false
       },
-      "AppointmentID": "210524062232283865"
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210525112532139847"
     },
     "Grade": 5,
     "DoctorId": "045210805048",
-    "IdAnkete": "210524062232283865",
-    "Komentar": "",
-    "DatumKreiranjaAnkete": "2021-05-24T08:12:09.7077861+02:00",
+    "SurveyID": "12121977802342",
+    "Comment": "Dobra je ",
+    "SubmissionDate": "2021-05-27T12:37:03.9193967+02:00",
+    "IdVlasnika": null
+  },
+  "210525112532139847": {
+    "Appointment": {
+      "StartTime": "2021-05-26T10:00:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "12121977802342",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210525112532139847"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "SurveyID": "210525112532139847",
+    "Comment": "Najbolji lekar u bolnici",
+    "SubmissionDate": "2021-05-27T15:35:00.5274448+02:00",
+    "IdVlasnika": "12121977802342"
+  },
+  "210526083057470805": {
+    "Appointment": {
+      "StartTime": "2021-05-19T09:30:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "12121977802342",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210526083057470805"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "SurveyID": "210526083057470805",
+    "Comment": "adad",
+    "SubmissionDate": "2021-05-27T15:51:28.1875086+02:00",
+    "IdVlasnika": "12121977802342"
+  },
+  "210527122520305053": {
+    "Appointment": {
+      "StartTime": "2021-05-25T09:30:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "12121977802342",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210527122520305053"
+    },
+    "Grade": 3,
+    "DoctorId": "045210805048",
+    "SurveyID": "210527122520305053",
+    "Comment": "adadmakdlakdmlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllladadmakdlakdmlllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllladadmakdlakdmllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+    "SubmissionDate": "2021-05-27T15:52:01.7755292+02:00",
+    "IdVlasnika": "12121977802342"
+  },
+  "210525105929653208": {
+    "Appointment": {
+      "StartTime": "2021-05-27T10:00:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "4865453131",
+        "Serialize": false
+      },
+      "Room": {
+        "InventoryAmounts": {},
+        "Number": "1",
+        "Serialize": false
+      },
+      "AppointmentID": "210525105929653208"
+    },
+    "Grade": 5,
+    "DoctorId": "045210805048",
+    "SurveyID": "210525105929653208",
+    "Comment": "Dobra,dobra",
+    "SubmissionDate": "2021-05-27T20:15:18.7611801+02:00",
     "IdVlasnika": "4865453131"
   }
 }

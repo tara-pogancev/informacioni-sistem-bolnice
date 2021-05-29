@@ -14,6 +14,7 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.AllergenRepo;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -24,13 +25,16 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     {
         private Medication medicine;
 
-        public ObservableCollection<AlergenDTO> NewComponentsView { get; set; }
-        public ObservableCollection<AlergenDTO> CurrentComponentsView { get; set; }
+        public ObservableCollection<Allergen> NewComponentsView { get; set; }
+        public ObservableCollection<Allergen> CurrentComponentsView { get; set; }
         public List<Medication> MedicineSubstitutionList { get; set; }
 
-        public MedicineEdit(Medication medicine)
+        private MedicineController medicineController = new MedicineController();
+        private AllergenController allergenController = new AllergenController();
+
+        public MedicineEdit(Medication medicinePar)
         {
-            this.medicine = medicine;
+            medicine = medicineController.GetMedicine(medicinePar.MedicineID);
 
             InitializeComponent();
             DataContext = this;
@@ -39,17 +43,17 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             MedicineNameLabel.Content = "Izmena: " + medicine.MedicineName;
             CurrentSubstitute.Content = "Trenutna zamena: " + GetSubstituteName(medicine);
 
-            NewComponentsView = new ObservableCollection<AlergenDTO>();
-            CurrentComponentsView = new ObservableCollection<AlergenDTO>();
-            MedicineSubstitutionList = new List<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
+            NewComponentsView = new ObservableCollection<Allergen>();
+            CurrentComponentsView = new ObservableCollection<Allergen>();
+            MedicineSubstitutionList = new List<Medication>(medicineController.GetApprovedMedicine());
 
             RefreshView();
 
         }
 
-        private static String GetSubstituteName(Medication medicine)
+        private String GetSubstituteName(Medication medicine)
         {
-            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return medicineController.GetMedicine(medicine.IDSubstitution).MedicineName;
         }
 
         public void RefreshView()
@@ -57,17 +61,17 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             NewComponentsView.Clear();
             CurrentComponentsView.Clear();
 
-            AlergenDTO component = new AlergenDTO();
-            foreach (AlergenDTO viewItem in component.GetAllAlergenList(medicine))
+            List<Allergen> allAllergens = new List<Allergen>(allergenController.GetAll());
+            foreach (Allergen viewItem in allAllergens)
             {
-                if (viewItem.IsIncludedInMedicine == true)
+                if (medicine.IncludesAllergen(viewItem))
                     CurrentComponentsView.Add(viewItem);
                 else NewComponentsView.Add(viewItem);
             }
 
         }
 
-        public List<AlergenDTO> GetSelectedComponents()
+        public List<Allergen> GetSelectedComponents()
         {
             if (TabbedPanel.SelectedIndex == 0)
                 return GetAddedComponents();
@@ -75,26 +79,26 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                 return GetRemovedComponents();
         }
 
-        private List<AlergenDTO> GetAddedComponents()
+        private List<Allergen> GetAddedComponents()
         {
-            List<AlergenDTO> selectedItems = new List<AlergenDTO>();
+            List<Allergen> selectedItems = new List<Allergen>();
 
-            foreach (var currentAlergen in DataGridAddNew.SelectedItems)
+            foreach (Allergen currentAlergen in DataGridAddNew.SelectedItems)
             {
-                AlergenDTO data = currentAlergen as AlergenDTO;
+                Allergen data = currentAlergen as Allergen;
                 selectedItems.Add(data);
             }
 
             return selectedItems;
         }
 
-        private List<AlergenDTO> GetRemovedComponents()
+        private List<Allergen> GetRemovedComponents()
         {
-            List<AlergenDTO> selectedItems = new List<AlergenDTO>();
+            List<Allergen> selectedItems = new List<Allergen>();
 
-            foreach (var currentAlergen in DataGridComponents.SelectedItems)
+            foreach (Allergen currentAlergen in DataGridComponents.SelectedItems)
             {
-                AlergenDTO data = currentAlergen as AlergenDTO;
+                Allergen data = currentAlergen as Allergen;
                 selectedItems.Add(data);
             }
 
@@ -105,7 +109,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
             SetSubstituteMedicine();
-            MedicationFileRepository.Instance.Update(medicine);
+            medicineController.UpdateMedicine(medicine);
 
             this.Close();
             MessageBox.Show("Lek uspešno izmenjen!");
@@ -118,8 +122,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void RemoveElements(object sender, RoutedEventArgs e)
         {
-            foreach (AlergenDTO component in GetSelectedComponents())
-                medicine.Components.Remove(AllergenFileRepository.Instance.FindById(component.AlergenID));
+            foreach (Allergen component in GetSelectedComponents())
+                medicine.RemoveComponent(component);
 
             RefreshView();
         }
@@ -135,8 +139,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void AddElements(object sender, RoutedEventArgs e)
         {
-            foreach (AlergenDTO component in GetSelectedComponents())
-                medicine.Components.Add(AllergenFileRepository.Instance.FindById(component.AlergenID));
+            foreach (Allergen component in GetSelectedComponents())
+                medicine.Components.Add(allergenController.GetAllergen(component.ID));
 
             RefreshView();
         }
@@ -145,7 +149,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (e.Source is TabControl)
             {
-                if (/*RemoveButton.Visibility == Visibility.Visible*/ TabbedPanel.SelectedIndex == 0)
+                if (TabbedPanel.SelectedIndex == 0)
                 {
                     //Switched to first
                     RemoveButton.Visibility = Visibility.Hidden;

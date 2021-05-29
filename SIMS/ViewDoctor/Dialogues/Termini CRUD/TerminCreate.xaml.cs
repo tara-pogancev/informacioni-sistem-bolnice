@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.DTO;
 
 namespace SIMS.LekarGUI
 {
@@ -25,12 +26,15 @@ namespace SIMS.LekarGUI
     /// </summary>
     public partial class AppointmentCreate : Window
     {
-        private List<Doctor> doctors;
+        private List<DoctorDTO> doctors;
         private List<Patient> patients;
         private List<Room> rooms;
         private List<String> availableTimes;
 
         private DoctorController doctorController = new DoctorController();
+        private AppointmentController appointmentController = new AppointmentController();
+        private PatientController patientController = new PatientController();
+        private RoomController roomController = new RoomController();
 
         public AppointmentCreate(Patient patient)
         {
@@ -53,37 +57,27 @@ namespace SIMS.LekarGUI
         private void InitializeComponents()
         {
             InitializeComponent();
-
             InitComboBoxes();
-
             InitCurrentDoctorUser();
         }
 
         private void InitCurrentDoctorUser()
         {
             int index = 0;
-            foreach (Doctor l in doctors)
+            foreach (Doctor doctor in doctorController.GetAllDoctors())
             {
-                if (l.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
-                {
+                if (doctor.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
                     break;
-                }
                 index++;
             }
-
             doctorCombo.SelectedIndex = index;
         }
 
         private void InitComboBoxes()
         {
-            DoctorFileRepository storageL = new DoctorFileRepository();
-            doctors = storageL.GetAll();
-
-            PatientFileRepository storageP = new PatientFileRepository();
-            patients = storageP.GetAll();
-
-            RoomFileRepository roomR = new RoomFileRepository();
-            rooms = roomR.GetAll();
+            doctors = doctorController.GetDTOFromList(doctorController.GetAllDoctors());
+            patients = patientController.GetAllPatients();
+            rooms = roomController.GetAllRooms();
 
             doctorCombo.ItemsSource = doctors;
             patientCombo.ItemsSource = patients;
@@ -103,7 +97,7 @@ namespace SIMS.LekarGUI
             {
                 Appointment appointment = new Appointment();
                 CreateAppointment(appointment);
-                Doctor doctor = doctors[doctorCombo.SelectedIndex];
+                Doctor doctor = GetSelectedDoctor();
 
                 //PROVERA DOSTUPNOSTI LEKARA
                 if (!doctorController.CheckIfFree(doctor, appointment))
@@ -113,9 +107,16 @@ namespace SIMS.LekarGUI
                 {
                     SaveAppointment(appointment);
                     this.Close();
+                    MessageBox.Show("Termin uspešno zakazan.");
                 }
 
             }
+        }
+
+        private Doctor GetSelectedDoctor()
+        {
+            DoctorDTO dto = doctors[doctorCombo.SelectedIndex];
+            return doctorController.GetDoctor(dto.Jmbg);
         }
 
         private void CreateAppointment(Appointment termin)
@@ -141,22 +142,19 @@ namespace SIMS.LekarGUI
                 termin.Duration = 90;
         }
 
-        private static void SaveAppointment(Appointment termin)
+        private void SaveAppointment(Appointment appointment)
         {
-            termin.Doctor.Serialize = false;
-            termin.Patient.Serialize = false;
-            termin.Room.Serialize = false;
-
-            AppointmentFileRepository.Instance.Save(termin);
+            appointmentController.SaveAppointment(appointment);
             DoctorAppointmentsPage.GetInstance().RefreshView();
         }
 
+        //TODO
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (doctorCombo.SelectedItem != null)
             {
                 Doctor doctor = doctors[doctorCombo.SelectedIndex];
-                List<Appointment> doktoroviTermini = new List<Appointment>();
+                List<Appointment> doctorTimes = new List<Appointment>();
                 availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
                 timePicker.ItemsSource = availableTimes;

@@ -1,4 +1,4 @@
-﻿<Page x:Class="SIMS.LekarGUI.Pages.LDBAktivanTermin"
+﻿<Page x:Class="SIMS.LekarGUI.Pages.LDBActiveAppointment"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,7 +13,7 @@
         <Rectangle Grid.Column="1" RadiusX="5" RadiusY="5" Fill="#FF38455D"/>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
             <Label Content="Pregled u toku!" FontFamily="Candara" FontSize="35" Foreground="#FF6BD8BB" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,20"/>
-            <Button Content="EVIDENTIRAJ" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Width="160" Height="50" FontSize="22" Click="Evidentiraj_Button"/>
+            <Button Content="EVIDENTIRAJ" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}" Width="160" Height="50" FontSize="22" Click="ButtonRecord"/>
 
         </StackPanel>
 

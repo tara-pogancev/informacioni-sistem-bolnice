@@ -32,8 +32,8 @@
         <Label Grid.Row="0" Content="Izdavanje uputa" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
-            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
-            <Label Content="Datum izdavanja uputa: 30/03/2021" Name="LabelDatum" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Pacijent: Milan Marković" Name="LabelPatientName" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
+            <Label Content="Datum izdavanja uputa: 30/03/2021" Name="LabelDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Background="{x:Null}" Foreground="#FFC1C1C1"/>
         </StackPanel>
 
         <Rectangle Grid.Row="2" Width="400" RadiusX="5" RadiusY="5" Fill="#FF3A475F"/>
@@ -55,7 +55,7 @@
 
             <ComboBox x:Name="SpecijalizationComboBox" DisplayMemberPath="SpecializationName" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite specijalizaciju pre biranja doktora." SelectionChanged="SpecializationChanged"/>
             <ComboBox x:Name="DoctorComboBox" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="200" FontSize="14" FontFamily="Candara" ToolTip="Odaberite doktora" 
-                      DisplayMemberPath="ImePrezime" ItemsSource="{Binding DoctorList}" SelectedItem="{Binding DoctorList}"/>
+                      DisplayMemberPath="FullName" ItemsSource="{Binding DoctorList}" SelectedItem="{Binding DoctorList}"/>
 
             <Border Grid.Row="0" Grid.RowSpan="3" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 

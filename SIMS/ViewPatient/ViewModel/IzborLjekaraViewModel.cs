@@ -7,7 +7,7 @@ using SIMS.Model;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
-    public class IzborLjekaraViewModel : ViewModel
+    public class IzborLjekaraViewModel : ViewModelPatient
     {
         # region fields
 
@@ -22,6 +22,8 @@ namespace SIMS.PacijentGUI.ViewModel
         private String grade;
 
         private String phoneNumber;
+
+      
 
         public String NameSurname {
             get { return nameSurname; }
@@ -72,6 +74,29 @@ namespace SIMS.PacijentGUI.ViewModel
 
         #endregion
 
+        #region actions
+        public bool CanExecute_ChoseDoctorCommand(object obj)
+        {
+            return true;
+        }
+
+        public void Execute_ChoseDoctrCommand(object obj)
+        {
+            patient.ChosenDoctor = chosenDoctor;
+        }
+
+        public bool CanExecute_DetailsDoctorCommand(object obj)
+        {
+            return true;
+        }
+
+        public void Execute_DetailsDoctrCommand(object obj)
+        {
+
+        }
+
+        #endregion
+
         #region constructors
 
         public IzborLjekaraViewModel(Patient patient)
@@ -81,6 +106,7 @@ namespace SIMS.PacijentGUI.ViewModel
             this.PhoneNumber = "221-537";
             this.grade = "5";
             this.date = "22.3.1970.";
+            
         }
 
         #endregion

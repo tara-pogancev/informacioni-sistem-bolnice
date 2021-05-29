@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 {
@@ -22,24 +23,28 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
     /// </summary>
     public partial class WriteReferral : Window
     {
-        public ObservableCollection<Doctor> DoctorList { get; set; }
+        public ObservableCollection<DoctorDTO> DoctorList { get; set; }
         public Specialization SellectedSpecialization { get; set; }
         public List<SpecializationDTO> AvailableSpecialization { get; set; }
 
+        private ReferralController referralController = new ReferralController();
+        private DoctorController doctorController = new DoctorController();
+        private NotificationController notificationController = new NotificationController();
+        private PatientController patientController = new PatientController();
+
         private Patient patient;
 
-        public WriteReferral(Patient patient)
+        public WriteReferral(Patient patientPar)
         {
-            this.patient = patient;
+            patient = patientController.GetPatient(patientPar.Jmbg);
 
             InitializeComponent();
-
             DataContext = this;
 
-            LabelPacijent.Content = "Pacijent: " + patient.FullName;
-            LabelDatum.Content = "Datum: " + DateTime.Today.ToString("dd.MM.yyyy.");
+            LabelPatientName.Content = "Pacijent: " + patient.FullName;
+            LabelDate.Content = "Datum: " + DateTime.Today.ToString("dd.MM.yyyy.");
 
-            DoctorList = new ObservableCollection<Doctor>();
+            DoctorList = new ObservableCollection<DoctorDTO>();
             InitSpecialization();
             SpecijalizationComboBox.ItemsSource = AvailableSpecialization;
             DoctorComboBox.ItemsSource = DoctorList;
@@ -50,7 +55,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         {
             AvailableSpecialization = new List<SpecializationDTO>();
 
-            foreach (Doctor doctor in DoctorFileRepository.Instance.GetAll())
+            foreach (Doctor doctor in doctorController.GetAllDoctors())
             {
                 SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.DoctorSpecialization);
 
@@ -61,29 +66,35 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void SpecializationChanged(object sender, SelectionChangedEventArgs e)
         {
-            SellectedSpecialization = GetSellectedSpecialization();
+            SellectedSpecialization = GetSelectedSpecialization();
             RefreshDoctorList(SellectedSpecialization);
         }
 
         private void RefreshDoctorList(Specialization specialization)
         {
-            DoctorList = new ObservableCollection<Doctor>();
-            foreach (Doctor doctor in DoctorFileRepository.Instance.GetAll())
+            DoctorList = new ObservableCollection<DoctorDTO>();
+            foreach (Doctor doctor in doctorController.GetAllDoctors())
             {
                 if (doctor.DoctorSpecialization.Equals(specialization))
                 {
-                    DoctorList.Add(doctor);
+                    DoctorList.Add(doctorController.GetDTO(doctor));
                 }
             }
 
             DoctorComboBox.ItemsSource = DoctorList;
         }
 
-        private Specialization GetSellectedSpecialization()
+        private Specialization GetSelectedSpecialization()
         {
             int idx = SpecijalizationComboBox.SelectedIndex;
             return AvailableSpecialization[idx].Specialization;
         }            
+
+        private Doctor GetSelectedDoctor()
+        {
+            DoctorDTO dto = (DoctorDTO)DoctorComboBox.SelectedItem;
+            return doctorController.GetDoctor(dto.Jmbg);
+        }
 
         private void AcceptButton(object sender, RoutedEventArgs e)
         {
@@ -92,7 +103,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
                 CreateRefferal();
                 this.Close();
 
-                SendNotifications((Doctor)DoctorComboBox.SelectedItem);
+                SendNotifications(GetSelectedDoctor());
 
                 MessageBox.Show("Uput uspešno kreiran!");
             }
@@ -105,19 +116,19 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void CreateRefferal()
         {
-            Doctor doctor = (Doctor)DoctorComboBox.SelectedItem;
-            Referral refferal = new Referral(doctor, patient);
-            ReferralFileRepository.Instance.Save(refferal);
+            Doctor doctor = GetSelectedDoctor();
+            Referral referral = new Referral(doctor, patient);
+            referralController.SaveReferral(referral);
         }
 
         private void SendNotifications(Doctor doctor)
         {
             String author = DoctorUI.GetInstance().GetUser().FullName;
             List<String> target = new List<string>();
-            target.Add(this.patient.Jmbg);
+            target.Add(patient.Jmbg);
 
             Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.FullName + ". Pogledajte ga na svom profilu."), target);
-            NotificationFileRepository.Instance.Save(notification);
+            notificationController.SaveNotification(notification);
         }
     }
 }

@@ -84,7 +84,7 @@
                 <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="availableTimesList" ItemsSource="{Binding termini}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="trajanjeLista" ItemsSource="{Binding trajanje}"
+                <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="durationValuesList" ItemsSource="{Binding trajanje}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <Button Grid.Row="8" Grid.RowSpan="2" Content="IZMENI" Click="ButtonAccept"

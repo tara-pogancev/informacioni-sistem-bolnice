@@ -43,7 +43,7 @@ namespace SIMS.ViewSecretary.Patients
             sexComboBox.SelectedIndex = (int)patient.PatientGender;
             bloodGroupComboBox.SelectedIndex = (int)patient.BloodType;
             birthDateTextBox.Text = patient.DateOfBirth.ToString("dd.MM.yyyy.");
-            chronicPainsTextBox.Text = patient.GetHronicalDiseases;
+            chronicPainsTextBox.Text = patient.GetHronicalDiseases();
         }
 
         private void FillAllergenFields(Patient patient)

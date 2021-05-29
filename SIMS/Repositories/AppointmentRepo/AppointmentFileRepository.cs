@@ -60,23 +60,21 @@ namespace SIMS.Repositories.AppointmentRepo
             return;
         }
 
-       
-
-        private int getAppointmentsCountByDate(DateTime date, AppointmentType tip, Doctor l)
+        private int GetAppointmentsCountByDate(DateTime date, AppointmentType type, Doctor doctor)
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(l))
+            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
             {
                 DateTime day = t.StartTime.Date;
-                if (t.Type == tip && day == date)
+                if (t.Type == type && day == date)
                     retVal.Add(t);
             }
 
             return retVal.Count;
         }
 
-        public List<int> GetAppointmentsCountForCurrentWeek(AppointmentType tip, Doctor l)
+        public List<int> GetAppointmentsCountForCurrentWeek(AppointmentType type, Doctor doctor)
         {
             List<int> retVal = new List<int>();
             DateTime startOfWeek = GetStartOfWeek();
@@ -84,7 +82,7 @@ namespace SIMS.Repositories.AppointmentRepo
             for (int i = 0; i < 7; i++)
             {
                 DateTime dayOfWeek = startOfWeek.AddDays(i);
-                retVal.Add(getAppointmentsCountByDate(dayOfWeek, tip, l));
+                retVal.Add(GetAppointmentsCountByDate(dayOfWeek, type, doctor));
             }
 
             return retVal;

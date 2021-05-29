@@ -9,9 +9,23 @@ namespace SIMS.Repositories.DoctorSurveyRepo
 {
     class DoctorSurveyFileRepository : GenericFileRepository<string, DoctorSurvey, DoctorSurveyFileRepository>,IDoctorSurveyRepository
     {
+        public List<DoctorSurvey> GetSurveysForDoctor(Doctor doctor)
+        {
+            List<DoctorSurvey> surveys = GetAll();
+            for (int i = 0; i < surveys.Count; i++)
+            {
+                if (surveys[i].DoctorId != doctor.Jmbg)
+                {
+                    surveys.RemoveAt(i);
+                    i--;
+                }
+            }
+            return surveys;
+        }
+
         protected override string getKey(DoctorSurvey entity)
         {
-            return entity.IdAnkete;
+            return entity.SurveyID;
         }
 
         protected override string getPath()

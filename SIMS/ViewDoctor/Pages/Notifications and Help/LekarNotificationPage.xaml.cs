@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -24,39 +25,42 @@ namespace SIMS.LekarGUI
 
     public partial class LekarNotificationPage : Page
     {
-        private Doctor lekarUser;
+        private Doctor doctorUser;
+        private ObservableCollection<Notification> notificationViewModel;
 
-        private ObservableCollection<Notification> obavestenjeView;
+        private NotificationController notificationController = new NotificationController();
 
         public LekarNotificationPage()
         {
             InitializeComponent();
 
-            lekarUser = DoctorUI.GetInstance().GetUser();
+            doctorUser = DoctorUI.GetInstance().GetUser();
 
-            List<Notification> listaObavestenja = NotificationFileRepository.Instance.ReadPastNotificationsByUser(lekarUser.Jmbg);
-            listaObavestenja.Reverse();
-            obavestenjeView = new ObservableCollection<Notification>(listaObavestenja);
+            InitializeNotificationsList();
 
-            viewerObavestenja.ItemsSource = listaObavestenja;
-
+            notificationViewer.ItemsSource = notificationViewModel;
         }
 
-        private void Button_Odobravanje(object sender, RoutedEventArgs e)
+        private void InitializeNotificationsList()
         {
-            MedicineApproval m = new MedicineApproval();
-            m.Show();
+            List<Notification> notificationList = notificationController.ReadPastNotificationsByUser(doctorUser.Jmbg);
+            notificationList.Reverse();
+            notificationViewModel = new ObservableCollection<Notification>(notificationList);
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonMedicineApproval(object sender, RoutedEventArgs e)
+        {
+            new MedicineApproval().Show();
+        }
+
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }
 
-        private void Button_Lekovi(object sender, RoutedEventArgs e)
+        private void ButtonViewMedicineList(object sender, RoutedEventArgs e)
         {
-            AvailableMedicineView window = new AvailableMedicineView();
-            window.Show();
+            new AvailableMedicineView().Show();
         }
     }
 }

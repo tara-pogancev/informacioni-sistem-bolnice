@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {
@@ -18,15 +19,19 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// </summary>
     public partial class SurgeryReportRead : Window
     {
+        private PatientController patientController = new PatientController();
+
         public SurgeryReportRead(SurgeryReport report)
         {
             InitializeComponent();
+            report.GetSurgery().InitData();
+            Patient patient = patientController.GetPatient(report.GetSurgery().Patient.Jmbg);
 
             LabelDoctor.Content = "Doktor: " + report.GetSurgery().GetDoctorName();
             LabelDate.Content = "Datum operacije: " + report.GetSurgery().GetAppointmentDate();
 
-            LabelPacijent.Content = "Pacijent: " + report.GetSurgery().GetPatientName();
-            LabelBirthDate.Content = "Datum rođenja: " + report.GetSurgery().Patient.GetDateOfBirthString();
+            LabelPacijent.Content = "Pacijent: " + patient.FullName;
+            LabelBirthDate.Content = "Datum rođenja: " + patient.GetDateOfBirthString();
 
             LabelRoom.Content = "Prostorija: " + report.GetSurgery().Room.Number;
 

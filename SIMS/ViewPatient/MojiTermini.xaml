@@ -5,6 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:model="clr-namespace:SIMS.Repositories.SecretaryRepo" 
       mc:Ignorable="d" 
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+
       d:DesignHeight="550" d:DesignWidth="800"
       Title="MojiTermini">
     <Page.Resources>
@@ -18,26 +21,38 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Background="#FF323D52">
-        <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Termini, Mode=TwoWay}" IsReadOnly="True" 
+        <DataGrid x:Name="terminiTabela" ItemsSource="{Binding PatientAppointments, Mode=TwoWay}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
-                  Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" >
+                  Height="350" Margin="0,80,0,0" VerticalAlignment="Top" Width="700" BorderBrush="Black" SelectedItem="{Binding SelectedItem}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Doktor" Binding="{Binding Doctor.FullName}"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" />
-                <DataGridTextColumn Header="Vrijeme" Binding="{Binding AppointmentTime}" />
+                <DataGridTextColumn Header="Doktor" Binding="{Binding Doctor,Converter={cvt:UserFullNameConverter}}"/>
+                <DataGridTextColumn Header="Datum" Binding="{Binding StartTime, StringFormat=dd.MM.yyyy.}" />
+                <DataGridTextColumn Header="Vrijeme" Binding="{Binding StartTime, StringFormat=HH:mm}" />
                 <DataGridTextColumn Header="Prostorija" Binding="{Binding Room.Number}" />
-                <DataGridTextColumn Header="Vrsta" Binding="{Binding TypeString}" />
+                <DataGridTextColumn Header="Vrsta" Binding="{Binding Type,Converter={cvt:AppointmentTypeConverter}}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Width="60" Name="Izmijeni" Click="Izmijeni_Click">Izmijeni</Button>
+                            <Button Padding="0" Width="60" Name="Izmijeni"   Content="Izmijeni">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click" >
+                                        <i:InvokeCommandAction Command="{Binding Path=DataContext.EditAppointmentCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Width="60" Background="Firebrick" Name="Obrisi" Click="Obrisi_Click">Obrisi</Button>
+                            <Button Padding="0" Width="60" Background="Firebrick" Name="Obrisi"  Content="Obrisi">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click" >
+                                        <i:InvokeCommandAction Command="{Binding Path=DataContext.DeleteAppointmentCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

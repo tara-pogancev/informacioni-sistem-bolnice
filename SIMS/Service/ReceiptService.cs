@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 
@@ -28,6 +29,20 @@ namespace SIMS.Service
         public List<Receipt> ReadByPatient(Patient patient)
         {
             return receiptRepository.ReadByPatient(patient);
+        }
+
+        public ReceiptDTO GetDTO(Receipt receipt)
+        {
+            return new ReceiptDTO(receipt);
+        }
+
+        public List<ReceiptDTO> GetDTOFromList(List<Receipt> list)
+        {
+            List<ReceiptDTO> retVal = new List<ReceiptDTO>();
+            foreach (Receipt receipt in list)
+                retVal.Add(GetDTO(receipt));
+
+            return retVal;
         }
     }
 }

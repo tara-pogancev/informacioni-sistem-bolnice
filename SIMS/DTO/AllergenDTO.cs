@@ -7,30 +7,30 @@ using SIMS.Model;
 
 namespace SIMS.DTO
 {
-    public class AlergenDTO
+    public class AllergenDTO
     {
         public string AlergenID { get; set; }
         public string AlergenNaziv { get; set; }
         public Boolean IsIncludedInMedicine { get; set; }
 
-        public AlergenDTO()
+        public AllergenDTO()
         {
 
         }
 
-        public AlergenDTO(Allergen alergen, Medication medicine)
+        public AllergenDTO(Allergen alergen, Medication medicine)
         {
             AlergenID = alergen.ID;
             AlergenNaziv = alergen.Name;
-            IsIncludedInMedicine = medicine.Components.Contains(alergen);
+            IsIncludedInMedicine = medicine.IncludesAllergen(alergen);
         }
 
-        public List<AlergenDTO> GetAllAlergenList(Medication medicine)
+        public List<AllergenDTO> GetAllAlergenList(Medication medicine)
         {
-            List<AlergenDTO> retVal = new List<AlergenDTO>();
+            List<AllergenDTO> retVal = new List<AllergenDTO>();
 
             foreach (Allergen currentAlergen in AllergenFileRepository.Instance.GetAll())
-                retVal.Add(new AlergenDTO(currentAlergen, medicine));
+                retVal.Add(new AllergenDTO(currentAlergen, medicine));
 
             return retVal;
         }

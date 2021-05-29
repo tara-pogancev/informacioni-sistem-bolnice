@@ -18,11 +18,11 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
     /// <summary>
     /// Interaction logic for OperacijaCreate.xaml
     /// </summary>
-    public partial class OperacijaIzvestajCreate : Window
+    public partial class SurgeryReportCreate : Window
     {
         private Appointment operation;
 
-        public OperacijaIzvestajCreate(Appointment operationPar)
+        public SurgeryReportCreate(Appointment operationPar)
         {
             InitializeComponent();
             operation = operationPar;
@@ -39,7 +39,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
         private void Button_Accept(object sender, RoutedEventArgs e)
         {
-            if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
+            if (ValidateForm())
             {
                 Patient patient = operation.Patient;
 
@@ -48,15 +48,19 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
                 this.Close();
                 DoctorUI.GetInstance().ChangeTab(3);
-                var window = new ActionsAfterReport(patient);
-                window.Show();
+                new ActionsAfterReport(patient).ShowDialog();
 
-
-            } else
+            }
+            else
             {
                 MessageBox.Show("Molimo popunite sva polja!");
-            }       
+            }
 
+        }
+
+        private bool ValidateForm()
+        {
+            return (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""));
         }
     }
 }

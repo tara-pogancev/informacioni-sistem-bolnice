@@ -35,7 +35,7 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="DataGridMedicine" ItemsSource="{Binding Path = MedicineView}" MouseDoubleClick="PreviewSellectedMedicine">
+            <DataGrid x:Name="DataGridMedicine" ItemsSource="{Binding Path = MedicineViewModel}" MouseDoubleClick="PreviewSellectedMedicine">
 
                 <DataGrid.Columns>
 

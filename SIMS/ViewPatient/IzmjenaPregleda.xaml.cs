@@ -217,7 +217,7 @@ namespace SIMS.PacijentGUI
             RoomAvailabilityService roomAvailabilityService = new RoomAvailabilityService();
             DateTime zakazanoVrijemeIzmjenjenogTermina = DateTime.Parse(OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
             
-            if (roomAvailabilityService.IsFreeRoom(zakazanoVrijemeIzmjenjenogTermina) == false)
+            if (roomAvailabilityService.IsFreeRoomExists(zakazanoVrijemeIzmjenjenogTermina) == false)
             {
                 IspisiUpozorenje();
             }

@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\pozadina.jpg" />
+    <None Remove="src\pozadina3.png" />
     <None Remove="ViewDoctor\logo_h_small.png" />
     <None Remove="ViewDoctor\notification.png" />
     <None Remove="ViewDoctor\profile.png" />
@@ -85,6 +87,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\Illustrations\reading_on_a_chair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\pozadina3.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\view.png" />
