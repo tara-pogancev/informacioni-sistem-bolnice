@@ -4,8 +4,9 @@ using SIMS.Repositories.HospitalSurveyRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Model;
 
-namespace SIMS.Model
+namespace SIMS.Repositories.HospitalSurveyRepo
 {
     class HospitalSurveyFileRepository : GenericFileRepository<string, HospitalSurvey, HospitalSurveyFileRepository>,IHospitalSurveyRepository
     {

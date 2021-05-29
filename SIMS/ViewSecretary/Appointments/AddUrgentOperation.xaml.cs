@@ -10,6 +10,9 @@ using System.Windows.Navigation;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.ViewSecretary.Patients;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.NotificationRepo;
+using SIMS.Repositories.RoomRepo;
 
 namespace SIMS.ViewSecretary.Appointments
 {

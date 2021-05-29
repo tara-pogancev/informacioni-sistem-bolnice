@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.ViewSecretary.Patients
 {

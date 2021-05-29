@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.Model;
 using System.Threading.Tasks;
+using SIMS.Repositories.RoomRepo;
 
 namespace SIMS.PacijentGUI
 {

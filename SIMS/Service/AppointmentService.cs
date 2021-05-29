@@ -1,5 +1,6 @@
 ﻿using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.AppointmentLogRepo;
 using SIMS.Repositories.AppointmentRepo;
 using System;
 using System.Collections.Generic;

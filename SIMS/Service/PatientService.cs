@@ -1,5 +1,6 @@
 ﻿using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,6 @@ namespace SIMS.Service
 
         public Patient GetPatient(String patientKey) => patientRepositry.FindById(patientKey);
 
-        public List<Patient> GetAllPatients()
-        {
-            return patientRepositry.GetAll();
-        }
         public PatientDTO GetDTO(Patient patient)
         {
             return new PatientDTO(patient);

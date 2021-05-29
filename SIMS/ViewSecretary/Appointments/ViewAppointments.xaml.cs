@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.DTO;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.ViewSecretary.Appointments
 {

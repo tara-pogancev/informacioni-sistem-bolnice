@@ -11,6 +11,9 @@ using SIMS.Model;
 using SIMS.Controller;
 using SIMS.ViewSecretary.Patients;
 using SIMS.DTO;
+using SIMS.Repositories.RoomRepo;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.NotificationRepo;
 
 namespace SIMS.ViewSecretary.Appointments
 {

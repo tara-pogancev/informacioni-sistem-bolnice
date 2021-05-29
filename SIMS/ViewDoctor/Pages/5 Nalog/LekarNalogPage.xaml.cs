@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.LekarGUI
 {

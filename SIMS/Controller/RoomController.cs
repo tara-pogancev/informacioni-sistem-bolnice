@@ -33,10 +33,5 @@ namespace SIMS.Controller
         {
             roomService.Update(room);
         }
-
-        public List<Room> GetAllRooms()
-        {
-            return roomService.GetAllRooms();
-        }
     }
 }

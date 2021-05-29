@@ -3,7 +3,7 @@ using SIMS.Repositories.DoctorRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.Model
 {

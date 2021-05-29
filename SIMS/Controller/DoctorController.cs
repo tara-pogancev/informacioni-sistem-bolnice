@@ -67,14 +67,10 @@ namespace SIMS.Controller
             doctorService.RecalulateGrade(doctor);
         }
 
-        public List<Doctor> GetAllDoctors()
-        {
-            return doctorService.GetAllDoctors();
-        }
-
         public List<DoctorDTO> GetAllDoctorsDTO()
         {
             return doctorService.GetAllDoctorsDTO();
+        }
         public DoctorDTO GetDTO(Doctor doctor)
         {
             return doctorService.GetDTO(doctor);

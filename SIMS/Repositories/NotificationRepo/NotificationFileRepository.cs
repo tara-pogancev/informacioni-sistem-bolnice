@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.NotificationRepo
 {
     public class NotificationFileRepository : GenericFileRepository<string, Notification, NotificationFileRepository>,INotificationRepository
     {

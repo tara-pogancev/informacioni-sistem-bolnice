@@ -6,6 +6,9 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.Repositories.NotificationRepo;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.ManagerRepo;
 
 namespace SIMS.ViewSecretary.Notifications
 {

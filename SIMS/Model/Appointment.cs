@@ -11,6 +11,7 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.ComponentModel;
 using SIMS.Controller;
+using SIMS.Repositories.SurgeryReportRepo;
 
 namespace SIMS.Model
 {

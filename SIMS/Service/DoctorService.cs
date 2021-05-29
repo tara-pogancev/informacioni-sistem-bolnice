@@ -67,11 +67,6 @@ namespace SIMS.Service
             return true;
         }
 
-        public List<Doctor> GetAllDoctors()
-        {
-            return doctorRepository.GetAll();
-        }
-
         public List<DoctorDTO> GetAllDoctorsDTO()
         {
             List<Doctor> doctors = doctorRepository.GetAll();

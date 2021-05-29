@@ -1,4 +1,5 @@
 ﻿using SIMS.Model;
+using SIMS.Repositories.RoomRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -32,11 +33,6 @@ namespace SIMS.Service
         public void Update(Room room)
         {
             roomRepository.Update(room);
-        }
-
-        public List<Room> GetAllRooms()
-        {
-            return roomRepository.GetAll();
         }
     }
 }

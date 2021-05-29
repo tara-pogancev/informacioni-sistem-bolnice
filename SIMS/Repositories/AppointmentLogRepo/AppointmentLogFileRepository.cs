@@ -1,10 +1,11 @@
-﻿using SIMS.Repositories.AppointmentLogRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.AppointmentLogRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Model
+namespace SIMS.Repositories.AppointmentLogRepo
 {
     class AppointmentLogFileRepository : GenericFileRepository<string, AppointmentLog, AppointmentLogFileRepository>,IAppointmentLogRepository
     {

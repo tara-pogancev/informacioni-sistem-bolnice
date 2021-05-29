@@ -5,7 +5,7 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.Daemon.PremestajOpreme;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.RoomInventoryRepo
 {
     class RoomInventoryFileRepository : GenericFileRepository<string, RoomInventory, RoomInventoryFileRepository>,IRoomInventoryRepository
     {

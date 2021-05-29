@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
+using SIMS.Repositories.InventoryMovingCommandRepo;
+using SIMS.Repositories.RoomInventoryRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.InventoryRepo
 {
     public class InventoryFileRepository : GenericFileRepository<string, Inventory, InventoryFileRepository>,IInventoryRepository
     {

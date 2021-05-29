@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.PatientRepo
 {
     interface IPatientRepository:IGenericRepository<Patient,String>
     {

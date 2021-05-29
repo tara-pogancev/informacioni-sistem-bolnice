@@ -10,7 +10,7 @@ using System.IO;
 using System.Text.Json;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.ManagerRepo
 {
     public class ManagerFileRepository : GenericFileRepository<string, Manager, ManagerFileRepository>,IManagerRepository
     {

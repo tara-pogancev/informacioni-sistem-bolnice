@@ -1,5 +1,6 @@
 ﻿using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
+using SIMS.Repositories.RoomRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.ReceiptRepo;
 using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.Service

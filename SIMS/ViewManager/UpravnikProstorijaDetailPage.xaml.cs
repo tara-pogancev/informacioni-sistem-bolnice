@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Controller;
 using SIMS.Model;
+using SIMS.Repositories.RoomRepo;
 using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.UpravnikGUI

@@ -10,19 +10,19 @@ using SIMS.ViewSecretary.Patients;
 
 namespace SIMS.ViewSecretary
 {
-    public partial class ViewSecretary : Window
+    public partial class SecretaryUI : Window
     {
-        private static ViewSecretary _instance = null;
+        private static SecretaryUI _instance = null;
         private Secretary _secretary;
 
-        public static ViewSecretary GetInstance(Secretary secretary)
+        public static SecretaryUI GetInstance(Secretary secretary)
         {
             if (_instance == null)
-                _instance = new ViewSecretary(secretary);
+                _instance = new SecretaryUI(secretary);
             return _instance;
         }
 
-        private ViewSecretary(Secretary secretary)
+        private SecretaryUI(Secretary secretary)
         {
             InitializeComponent();
 
