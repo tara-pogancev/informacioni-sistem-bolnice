@@ -62,7 +62,7 @@
                 <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
-                    <ComboBox  Margin="30,0,0,0" x:Name="PatientComboBox" SelectionChanged="PatientChange" DisplayMemberPath="ImePrezime"
+                    <ComboBox  Margin="30,0,0,0" x:Name="PatientComboBox" SelectionChanged="PatientChange" DisplayMemberPath="FullName"
                         Width="220" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
                     <Button Height="30" Width="30" Margin="10, 0, 0, 0" Click="Button_Guest">
                         <materialDesign:PackIcon Kind="AddBold"/>

@@ -24,12 +24,12 @@
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Termin" Binding="{Binding Type}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Lekar" Binding="{Binding GetDoctorName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Pacijent" Binding="{Binding GetPatientName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding GetAppointmentDate}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Početak" Binding="{Binding GetAppointmentTime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Prostorija" Binding="{Binding Room}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Termin" Binding="{Binding AppointmentTypeString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Lekar" Binding="{Binding DoctorName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Početak" Binding="{Binding AppointmentTime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Prostorija" Binding="{Binding RoomNumber}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
 

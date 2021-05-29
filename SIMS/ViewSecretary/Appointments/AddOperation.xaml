@@ -64,10 +64,10 @@
                 <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientsComboBox"  DisplayMemberPath="ImePrezime" SelectedValuePath="ImePrezime" 
+                <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientsComboBox"  DisplayMemberPath="FullName" SelectedValuePath="FullName" 
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Broj" SelectedValuePath="Broj" 
+                <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Number" SelectedValuePath="Number" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" SelectedDateChanged="DatePicker_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
@@ -81,7 +81,7 @@
                 <StackPanel Grid.Row="8" Grid.RowSpan="2" Orientation="Horizontal">
                     <Button Grid.Row="8" Grid.RowSpan="2" Content="ODUSTANI" Click="Quit_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button  Content="ZAKAŽI" Click="AddExamination_Click" Width="100"
+                    <Button  Content="ZAKAŽI" Click="AddOperation_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 

@@ -23,6 +23,9 @@ namespace SIMS.Service
 
         public Patient GetPatient(String patientKey) => patientRepositry.FindById(patientKey);
 
-
+        public List<Patient> GetAllPatients()
+        {
+            return patientRepositry.GetAll();
+        }
     }
 }

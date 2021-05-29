@@ -1,17 +1,16 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.AppointmentRepo;
-using SIMS.Repositories.DoctorRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Appointments
 {
     public partial class AddOperation : Page
     {
-        private List<Doctor> _doctors;
+        private List<DoctorDTO> _doctors;
         private List<Patient> _patients;
         private List<Room> _rooms;
 
@@ -19,10 +18,13 @@ namespace SIMS.ViewSecretary.Appointments
         {
             InitializeComponent();
 
-            _doctors = DoctorFileRepository.Instance.GetAll();
-            _patients = PatientFileRepository.Instance.GetAll();
+            DoctorController doctorController = new DoctorController();
+            PatientController patientController = new PatientController();
+            RoomController roomController = new RoomController();
 
-            _rooms = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
+            _doctors = doctorController.GetAllDoctorsDTO();
+            _patients = patientController.GetAllPatients();
+            _rooms = roomController.GetAllRooms();
 
             doctorsComboBox.ItemsSource = _doctors;
             patientsComboBox.ItemsSource = _patients;
@@ -32,7 +34,7 @@ namespace SIMS.ViewSecretary.Appointments
             durationComboBox.ItemsSource = duration;
         }
 
-        private void AddExamination_Click(object sender, RoutedEventArgs e)
+        private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
             if (doctorsComboBox.SelectedItem == null || datePicker.SelectedDate == null || appointmentsComboBox.SelectedItem == null)
             {
@@ -43,7 +45,8 @@ namespace SIMS.ViewSecretary.Appointments
             Appointment appointment = CreateAppointmentFromUserInput();
             if (IsAppointmentValid(appointment))
             {
-                AppointmentFileRepository.Instance.Save(appointment);
+                AppointmentController appointmentController = new AppointmentController();
+                appointmentController.SaveAppointment(appointment);
                 ViewAppointments.GetInstance().RefreshView();
 
                 NavigationService.Navigate(ViewAppointments.GetInstance());
@@ -75,7 +78,8 @@ namespace SIMS.ViewSecretary.Appointments
 
         private bool IsAppointmentValid(Appointment appointment)
         {
-            List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
+            AppointmentController appointmentController = new AppointmentController();
+            List<Appointment> appointments = appointmentController.GetAllAppointments();
             foreach (Appointment a in appointments)
             {
                 if (a.GetEndTime() > appointment.StartTime && a.StartTime < appointment.GetEndTime())

@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.DoctorRepo;
 using SIMS.Repositories.DoctorSurveyRepo;
@@ -54,6 +55,22 @@ namespace SIMS.Service
             }
 
             return true;
+        }
+
+        public List<Doctor> GetAllDoctors()
+        {
+            return doctorRepository.GetAll();
+        }
+
+        public List<DoctorDTO> GetAllDoctorsDTO()
+        {
+            List<Doctor> doctors = doctorRepository.GetAll();
+            List<DoctorDTO> doctorsDTO = new List<DoctorDTO>();
+            foreach(Doctor doctor in doctors)
+            {
+                doctorsDTO.Add(new DoctorDTO(doctor));
+            }
+            return doctorsDTO;
         }
 
         //Salje izmenjen termin ali njega ignorise prilikom provere

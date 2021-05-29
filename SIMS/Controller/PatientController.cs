@@ -23,5 +23,10 @@ namespace SIMS.Controller
 
         public Patient GetPatient(String patientKey) => patientService.GetPatient(patientKey);
 
+        public List<Patient> GetAllPatients()
+        {
+            return patientService.GetAllPatients();
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.DTO;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -12,7 +13,7 @@ namespace SIMS.ViewSecretary.Appointments
     {
         private static ViewAppointments _instance = null;
 
-        private ObservableCollection<Appointment> _appointmentsForView;
+        private ObservableCollection<AppointmentDTO> _appointmentsForView;
 
         public static ViewAppointments GetInstance()
         {
@@ -26,7 +27,7 @@ namespace SIMS.ViewSecretary.Appointments
             InitializeComponent();
 
             this.DataContext = this;
-            _appointmentsForView = new ObservableCollection<Appointment>();
+            _appointmentsForView = new ObservableCollection<AppointmentDTO>();
             appointmentsTable.ItemsSource = _appointmentsForView;
             RefreshView();
         }
@@ -39,7 +40,7 @@ namespace SIMS.ViewSecretary.Appointments
             SortAppointments(appointments);
             foreach (Appointment appointment in appointments)
             {
-                _appointmentsForView.Add(appointment);
+                _appointmentsForView.Add(new AppointmentDTO(appointment));
             }
         }
 
@@ -72,6 +73,7 @@ namespace SIMS.ViewSecretary.Appointments
                 {
                     Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
                     AppointmentFileRepository.Instance.Delete(toDelete.AppointmentID);
+
                     MessageBox.Show("Termin je uspešno otkazan!");
                     RefreshView();
                 }

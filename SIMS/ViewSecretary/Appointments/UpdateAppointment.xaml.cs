@@ -1,17 +1,16 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.AppointmentRepo;
-using SIMS.Repositories.DoctorRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Appointments
 {
     public partial class UpdateAppointment : Page
     {
-        private List<Doctor> _doctors;
+        private List<DoctorDTO> _doctors; 
         private List<Patient> _patients;
         private List<Room> _rooms;
         private List<string> _freeAppointments;
@@ -22,9 +21,13 @@ namespace SIMS.ViewSecretary.Appointments
             InitializeComponent();
             _appointment = appointment;
 
-            _doctors = DoctorFileRepository.Instance.GetAll();
-            _patients = PatientFileRepository.Instance.GetAll();
-            _rooms = new List<Room>(RoomFileRepository.Instance.ReadAll().Values);
+            DoctorController doctorController = new DoctorController();
+            PatientController patientController = new PatientController();
+            RoomController roomController = new RoomController();
+
+            _doctors = doctorController.GetAllDoctorsDTO();
+            _patients = patientController.GetAllPatients();
+            _rooms = roomController.GetAllRooms();
             _freeAppointments = new List<string>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
             doctorsComboBox.ItemsSource = _doctors;
@@ -38,7 +41,7 @@ namespace SIMS.ViewSecretary.Appointments
             SetValuesForSelectedAppointment();
         }
 
-        private void AddExamination_Click(object sender, RoutedEventArgs e)
+        private void UpdateExamination_Click(object sender, RoutedEventArgs e)
         {
             if (doctorsComboBox.SelectedItem == null || datePicker.SelectedDate == null || appointmentsComboBox.SelectedItem == null)
             {
@@ -49,7 +52,8 @@ namespace SIMS.ViewSecretary.Appointments
             UpdateAppointmentFromUserInput();
             if (IsAppointmentValid())
             {
-                AppointmentFileRepository.Instance.Update(_appointment);
+                AppointmentController appointmentController = new AppointmentController();
+                appointmentController.UpdateAppointment(_appointment);
                 ViewAppointments.GetInstance().RefreshView();
 
                 NavigationService.Navigate(ViewAppointments.GetInstance());
@@ -77,7 +81,8 @@ namespace SIMS.ViewSecretary.Appointments
 
         private bool IsAppointmentValid()
         {
-            List<Appointment> appointments = AppointmentFileRepository.Instance.GetAll();
+            AppointmentController appointmentController = new AppointmentController();
+            List<Appointment> appointments = appointmentController.GetAllAppointments();
             foreach (Appointment a in appointments)
             {
                 if (a.GetEndTime() > _appointment.StartTime && a.StartTime < _appointment.GetEndTime() && !a.AppointmentID.Equals(_appointment.AppointmentID))

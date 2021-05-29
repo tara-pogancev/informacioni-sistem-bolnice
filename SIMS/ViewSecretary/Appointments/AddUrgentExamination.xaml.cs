@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.ViewSecretary.Patients;
+using SIMS.DTO;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -22,7 +23,9 @@ namespace SIMS.ViewSecretary.Appointments
 
         private DoctorController doctorController = new DoctorController();
 
-        private ObservableCollection<Appointment> AvailableAppointments;
+        private ObservableCollection<AppointmentDTO> AvailableAppointments;
+        //private ObservableCollection<AppointmentDTO> AvailableAppointmentsDTO;
+
 
         public AddUrgentExamination()
         {
@@ -31,7 +34,7 @@ namespace SIMS.ViewSecretary.Appointments
             DataContext = this;
             DurationComboBox.SelectedIndex = 0;
 
-            AvailableAppointments = new ObservableCollection<Appointment>();
+            AvailableAppointments = new ObservableCollection<AppointmentDTO>();
             AvailableComboBox.DataContext = AvailableAppointments;
             SpecializationList = DoctorFileRepository.Instance.GetAvailableSpecializationString();
             //SpecializationList.Remove("Lekar opšte prakse");
@@ -142,7 +145,7 @@ namespace SIMS.ViewSecretary.Appointments
             if (PatientComboBox.SelectedItem != null && DurationComboBox.SelectedItem != null && SpecializationComboBox.SelectedItem != null)
             {
                 Appointment appointmentValues = new Appointment(DateTime.MinValue, GetSelectedDuration(), AppointmentType.examination, null, (Patient)PatientComboBox.SelectedItem, null);
-                List<Appointment> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
+                List<AppointmentDTO> allAppointments = GetAvailableAppointmentsForAllDoctors(appointmentValues, 2);
                 if (allAppointments.Count == 1)
                 {
                     zakaziButton.Content = "ZAKAŽI";
@@ -154,7 +157,7 @@ namespace SIMS.ViewSecretary.Appointments
                     zakaziButton.Content = "POMERI I\nZAKAŽI";
                     SortAppointments(allAppointments);
 
-                    foreach (Appointment app in allAppointments)
+                    foreach (AppointmentDTO app in allAppointments)
                     {
                         app.InitData();
                         AvailableAppointments.Add(app);
@@ -167,10 +170,10 @@ namespace SIMS.ViewSecretary.Appointments
             AvailableComboBox.ItemsSource = AvailableAppointments;
         }
 
-        private List<Appointment> GetAvailableAppointmentsForAllDoctors(Appointment appointmentValues, int numberOfDays)
+        private List<AppointmentDTO> GetAvailableAppointmentsForAllDoctors(Appointment appointmentValues, int numberOfDays)
         {
-            List<Appointment> retVal = new List<Appointment>();
-            List<Appointment> allAppointments = new List<Appointment>();
+            List<AppointmentDTO> retVal = new List<AppointmentDTO>();
+            List<AppointmentDTO> allAppointments = new List<AppointmentDTO>();
 
             foreach (Doctor doctor in DoctorFileRepository.Instance.ReadBySpecialization(GetSelectedSpecialization()))
             {
@@ -180,7 +183,7 @@ namespace SIMS.ViewSecretary.Appointments
                 {
                     //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                    Appointment appointment = new Appointment(appTime, appointmentValues.Duration, appointmentValues.Type, doctor, appointmentValues.Patient, RoomFileRepository.Instance.GetAll()[0]);
+                    AppointmentDTO appointment = new AppointmentDTO(new Appointment(appTime, appointmentValues.Duration, appointmentValues.Type, doctor, appointmentValues.Patient, RoomFileRepository.Instance.GetAll()[0]));
                     allAppointments.Add(appointment);
                     if (doctorController.CheckIfFree(doctor, appointment) && appointment.StartTime >= appointmentValues.StartTime)
                     {
@@ -198,7 +201,7 @@ namespace SIMS.ViewSecretary.Appointments
                 return retVal;
         }
 
-        private void SortAppointments(List<Appointment> appointments)
+        private void SortAppointments(List<AppointmentDTO> appointments)
         {
             for (int i = 0; i < appointments.Count - 1; i++)
                 for (int j = 0; j < appointments.Count - i - 1; j++)
@@ -254,7 +257,7 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void MoveAppointmentToNearestDate(Appointment appointment)
         {
-            List<Appointment> appointments = GetAvailableAppointmentsForAllDoctors(appointment, 10);
+            List<AppointmentDTO> appointments = GetAvailableAppointmentsForAllDoctors(appointment, 10);
             AppointmentFileRepository.Instance.Delete(appointment.AppointmentID);
             AppointmentFileRepository.Instance.Save(appointments[0]);
             SendNotification(appointments[0], true);

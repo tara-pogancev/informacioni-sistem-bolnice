@@ -23,5 +23,10 @@ namespace SIMS.Service
         {
             roomRepository.Update(room);
         }
+
+        public List<Room> GetAllRooms()
+        {
+            return roomRepository.GetAll();
+        }
     }
 }
