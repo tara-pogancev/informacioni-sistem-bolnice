@@ -10,6 +10,7 @@ namespace SIMS.Service
     public class AllergenService
     {
         private IAllergenRepository allergenRepostitory = new AllergenFileRepository();
+
         public void CreateOrUpdate(Allergen allergen)
         {
             allergenRepostitory.CreateOrUpdate(allergen);

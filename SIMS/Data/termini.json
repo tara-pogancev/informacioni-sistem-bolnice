@@ -12,8 +12,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "3",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-25T09:00:00",
@@ -32,8 +32,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-27T10:00:00",
@@ -52,8 +52,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-27T10:30:00",
@@ -72,8 +72,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-28T11:00:00",
@@ -92,8 +92,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-26T09:30:00",
@@ -112,8 +112,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-19T09:30:00",
@@ -132,8 +132,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-28T08:00:00",
@@ -152,8 +152,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-20T09:30:00",
@@ -172,8 +172,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-25T09:30:00",
@@ -192,8 +192,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-01T09:30:00",
@@ -212,8 +212,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-28T09:00:00",
@@ -232,8 +232,8 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-28T10:00:00",
@@ -252,11 +252,31 @@
       "Serialize": false
     },
     "Room": {
-      "InventoryAmounts": {},
       "Number": "1",
+      "InventoryAmounts": {},
       "Serialize": false
     },
     "InitialTime": "2021-05-28T10:30:00",
     "AppointmentID": "210528111604437439"
+  },
+  "210530042320983652": {
+    "StartTime": "2021-04-27T09:30:00",
+    "Duration": 60,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-04-27T09:30:00",
+    "AppointmentID": "210530042320983652"
   }
 }
