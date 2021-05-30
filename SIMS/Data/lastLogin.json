@@ -1,1 +1,26 @@
-{}
+{
+  "045210805048": {
+    "VacationDays": 15,
+    "Grade": 0.0,
+    "DoctorSpecialization": 2,
+    "Name": "Tara",
+    "LastName": "Pogančev",
+    "Jmbg": "045210805048",
+    "Username": "l",
+    "Password": "l",
+    "Email": "tarapogancev@gmail.com",
+    "Phone": "629998425",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
+    },
+    "Serialize": true
+  }
+}

@@ -13,6 +13,8 @@ namespace SIMS.Model
     {
         public DateTime? RenovationStart { get; set; }
         public DateTime? RenovationEnd { get; set; }
+        public RoomType RoomType { get; set; }
+        public string Number { get; set; }
         public Dictionary<string, int> InventoryAmounts
         {
             get; set;
@@ -61,8 +63,6 @@ namespace SIMS.Model
             }
         }
         
-        public RoomType RoomType { get; set; }
-        public string Number { get; set; }
         public bool Available {
             get
             {

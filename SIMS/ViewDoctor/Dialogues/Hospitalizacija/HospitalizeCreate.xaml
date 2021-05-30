@@ -4,9 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Hospitalizacija"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="HospitalizeCreate" Height="450" Width="800">
-    <Grid>
-        
+        Title="Hospitalizovanje pacijenta" Height="500" Width="500">
+
+    <Window.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="#FF323D52">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Hospitalizacija" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
+            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoktor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
+            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+        </StackPanel>
+
+        <Rectangle Grid.Row="2" Width="400" RadiusX="5" RadiusY="5" Fill="#FF3A475F"/>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+           
+            <Label Content="Početni datum:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Krajnji datum:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            
+            <DatePicker Name="StartDate" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" VerticalAlignment="Center"/>
+            <DatePicker Name="EndDate" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="2" Grid.Column="2" Margin="30,0,0,0" x:Name="roomCombo"  DisplayMemberPath="Number"  SelectedValuePath="Number" 
+                     Width="200" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+
+            <Border Grid.Row="0" Grid.RowSpan="5" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
+
+        </Grid>
+
+        <Button Grid.Row="3" Content="POTVRDI" Click="ButtonAccept" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="275,17,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
+
+
     </Grid>
 </Window>

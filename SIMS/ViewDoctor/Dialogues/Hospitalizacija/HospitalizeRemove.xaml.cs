@@ -21,5 +21,15 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
         {
             InitializeComponent();
         }
+
+        private void CancelMessage(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AcceptMessage(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

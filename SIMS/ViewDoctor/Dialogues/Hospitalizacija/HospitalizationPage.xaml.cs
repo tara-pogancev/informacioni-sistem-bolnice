@@ -8,23 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
+namespace SIMS.ViewDoctor.Dialogues.Hospitalizacija
 {
     /// <summary>
-    /// Interaction logic for HospitalizeCreate.xaml
+    /// Interaction logic for HospitalizationPage.xaml
     /// </summary>
-    public partial class HospitalizeCreate : Window
+    public partial class HospitalizationPage : Page
     {
-        public HospitalizeCreate()
+        public HospitalizationPage()
         {
             InitializeComponent();
-        }
-
-        private void ButtonAccept(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

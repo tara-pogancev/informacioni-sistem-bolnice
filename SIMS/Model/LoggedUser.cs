@@ -51,8 +51,8 @@ namespace SIMS.Model
         {
             get
             {
-                return "Novi Sad, Despota Stefana 7";
-                //return this.Address.Street + " " + this.Address.Number + ", " + this.Address.City.Name;
+                //return "Novi Sad, Despota Stefana 7";
+                return this.Address.Street + " " + this.Address.Number + ", " + this.Address.City.Name;
             }
         }
 
