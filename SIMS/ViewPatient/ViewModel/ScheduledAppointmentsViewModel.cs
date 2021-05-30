@@ -13,6 +13,7 @@ namespace SIMS.PacijentGUI.ViewModel
         public ObservableCollection<Appointment> PatientAppointments { get; set; }
         private Patient patient;
         private AppointmentController appointmentController;
+        private ScheduleAppointmentControler scheduleAppointmentControler;
         public RelayCommand DeleteAppointmentCommand { get; set; }
         public RelayCommand EditAppointmentCommand { get; set; }
         public Appointment SelectedItem { get; set; }
@@ -21,7 +22,8 @@ namespace SIMS.PacijentGUI.ViewModel
         {
             this.patient = patient;
             appointmentController = new AppointmentController();
-            PatientAppointments=new ObservableCollection<Appointment>(appointmentController.GetFutureAppointments(patient));
+            scheduleAppointmentControler = new ScheduleAppointmentControler();
+            PatientAppointments=new ObservableCollection<Appointment>(new PatientAppointmentController().GetFutureAppointments(patient));
             DeleteAppointmentCommand = new RelayCommand(Execute_DeleteAppointmentCommand,CanExecute_DeleteAppointmentCommand);
             EditAppointmentCommand = new RelayCommand(Execute_EditAppointmentCommand, CanExecute_EditAppointmentCommand);
             LoadPatientAndDoctorData();
@@ -46,7 +48,7 @@ namespace SIMS.PacijentGUI.ViewModel
             {
                 Appointment appointment = GetOriginalAppointment();
                 appointment.Patient = patient;
-                appointmentController.CancelAppointment(appointment);
+                scheduleAppointmentControler.CancelAppointment(appointment);
                 RemoveFromView(appointment);
                 
             }

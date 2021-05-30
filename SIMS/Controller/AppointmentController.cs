@@ -7,19 +7,24 @@ using System.Text;
 
 namespace SIMS.Controller
 {
+   
+
     public class AppointmentController
     {
         private AppointmentService appointmentService;
-        private ScheduleAppointmentService scheduleAppointmentService;
+        
+       
+
 
         public AppointmentController()
         {
             appointmentService = new AppointmentService();
-            scheduleAppointmentService = new ScheduleAppointmentService();
+            
         }
 
+        
 
-       
+
         public List<Appointment> GetAllAppointments()
         {
             return appointmentService.GetAllAppointments();
@@ -45,19 +50,7 @@ namespace SIMS.Controller
             return appointmentService.GetAppointment(key);
         }
 
-        public List<Appointment> GetPatientAppointments(Patient patient) => appointmentService.GetPatientAppointments(patient);
-
-        public List<Appointment> GetDoctorAppointments(Doctor doctor) => appointmentService.GetDoctorAppointments(doctor);
-
-        public List<String> GetAvailableTimeOfAppointment(Doctor doctor, String date, Patient patient)
-        {
-            return scheduleAppointmentService.GetAvailableTimeOfAppointment(doctor, date, patient);
-        }
-
-        public bool ScheduleAppointment(Doctor doctor, DateTime date, Patient patient)
-        {
-            return scheduleAppointmentService.ScheduleAppointment(doctor, date, patient);
-        }
+       
 
         public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
         {
@@ -74,30 +67,11 @@ namespace SIMS.Controller
             return appointmentService.GetRecordedAppointmentsByDoctor(doctor);
         }
 
-        public int GetNumberOfFinishedAppointments(Patient patient)
-        {
-            return appointmentService.GetNumberOfFinishedAppointments(patient);
-        }
+        
 
-        public List<Appointment> GetPastAppointmentsForPatient(Patient patient)
-        {
-            return appointmentService.GetPastAppointmentsForPatient(patient);
-        }
+        
 
-        public List<Appointment> GetFutureAppointments(Patient patient)
-        {
-            return appointmentService.GetFutureAppointments(patient);
-        }
-
-        public void CancelAppointment(Appointment appointment)
-        {
-            scheduleAppointmentService.CancelAppointment(appointment);
-        }
-
-        public void ChangeAppointment(Appointment appointment)
-        {
-            scheduleAppointmentService.ChangeAppointment(appointment);
-        }
+        
 
         public AppointmentDTO GetDTO(Appointment appointment)
         {

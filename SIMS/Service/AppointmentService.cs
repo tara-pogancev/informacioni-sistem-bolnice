@@ -14,12 +14,14 @@ namespace SIMS.Service
         private RoomService roomService = new RoomService();
         
 
+
         public AppointmentService()
         {
             
         }
 
-        
+       
+
 
         public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
 
@@ -31,9 +33,9 @@ namespace SIMS.Service
 
         public Appointment GetAppointment(String key) => appointmentRepository.FindById(key);
 
-        public List<Appointment> GetPatientAppointments(Patient pacijent)=> appointmentRepository.GetPatientAppointments(pacijent);
+        
 
-        public List<Appointment> GetDoctorAppointments(Doctor doctor)=> appointmentRepository.GetDoctorAppointments(doctor);
+      
         public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
         {
             return appointmentRepository.GetDoctorAppointments(doctor);
@@ -65,35 +67,7 @@ namespace SIMS.Service
             return recorded;
         }
 
-        public int GetNumberOfFinishedAppointments(Patient patient)
-        {
-            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
-            int finishedAppointmentCounter = 0;
-            foreach (Appointment appointment in scheduledAppointments)
-            {
-                if (appointment.GetIfPast())
-                {
-                    finishedAppointmentCounter++;
-                }
-            }
-            return finishedAppointmentCounter;
-        }
 
-        
-
-        public List<Appointment> GetPastAppointmentsForPatient(Patient patient){
-            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
-             for (int i = 0; i < scheduledAppointments.Count; i++)
-            {
-                if (!scheduledAppointments[i].GetIfPast() || scheduledAppointments[i].Patient.Jmbg!=patient.Jmbg)
-                {
-                    scheduledAppointments.RemoveAt(i);
-                    i--;
-                }
-            }
-            return scheduledAppointments;
-
-        }
         public List<AppointmentDTO> GetDTOFromList(List<Appointment> list)
         {
             List<AppointmentDTO> retVal = new List<AppointmentDTO>();
@@ -120,19 +94,7 @@ namespace SIMS.Service
         }
 
 
-        public List<Appointment> GetFutureAppointments(Patient patient)
-        {
-            List<Appointment> scheduledAppointments = appointmentRepository.GetPatientAppointments(patient);
-            for (int i = 0; i < scheduledAppointments.Count; i++)
-            {
-                if (scheduledAppointments[i].GetIfPast())
-                {
-                    scheduledAppointments.RemoveAt(i);
-                    i--;
-                }
-            }
-            return scheduledAppointments;
-        }
+        
 
         
 

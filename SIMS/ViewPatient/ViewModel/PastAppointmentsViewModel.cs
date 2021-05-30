@@ -35,7 +35,7 @@ namespace SIMS.ViewPatient.ViewModel
         {
             this.navService = navService;
             this.patient = patient;
-            pastAppointments = new ObservableCollection<Appointment>(new AppointmentController().GetPastAppointmentsForPatient(patient));
+            pastAppointments = new ObservableCollection<Appointment>(new PatientAppointmentController().GetPastAppointmentsForPatient(patient));
             LoadDoctors();
             GradeAppointmentCommand = new RelayCommand(Execute_GradeAppointmentCommand,CanExecute_GradeAppointmentCommand);
             DetailsAppointmentCommand = new RelayCommand(Execute_DetailsAppointmentCommand, CanExecute_DetailsAppointmentCommand);
