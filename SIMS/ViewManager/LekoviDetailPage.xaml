@@ -23,6 +23,10 @@
                 <Label Content="ID zamenskog leka" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
                 <TextBox x:Name="ZamenaText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
             </Grid>
+            <Grid>
+                <Label Content="Status" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <TextBox x:Name="ApprovalText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500" IsEnabled="False"/>
+            </Grid>
             <Grid >
                 <Label Content="Alergeni" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
             </Grid>

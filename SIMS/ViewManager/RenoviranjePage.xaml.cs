@@ -27,6 +27,8 @@ namespace SIMS.UpravnikGUI
         {
             InitializeComponent();
             room = RoomFileRepository.Instance.FindById(BrojProstorije);
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
             if (room.RenovationStart != null && room.RenovationEnd != null)
             {
                 Pocetak.SelectedDate = room.RenovationStart;
@@ -42,8 +44,25 @@ namespace SIMS.UpravnikGUI
                 room.RenovationEnd = Kraj.SelectedDate;
                 roomController.Update(room);
             }
-            UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
-            UpravnikWindow.Instance.SetLabel("Prostorije");
+
+            if ((bool)NotMerge.IsChecked)
+            {
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
+                UpravnikWindow.Instance.SetLabel("Prostorije");
+            }
+
+            else if ((bool)NewRoom.IsChecked)
+            {
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage());
+                UpravnikWindow.Instance.SetLabel("Nova prostorija nastala renoviranjem prostorije " + room.Number);
+            }
+
+            else if ((bool)MergeInto.IsChecked)
+            {
+                roomController.MergeRooms(RoomNumberTextBox.Text, room.Number);
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
+                UpravnikWindow.Instance.SetLabel("Prostorije");
+            }
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -59,6 +78,24 @@ namespace SIMS.UpravnikGUI
             roomController.Update(room);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
+        }
+
+        private void NotMerge_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
+        }
+
+        private void MergeInto_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Visible;
+            RoomNumberTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
         }
     }
 }

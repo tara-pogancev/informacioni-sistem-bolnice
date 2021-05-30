@@ -8,7 +8,7 @@ namespace SIMS.Controller
 {
     class RoomController
     {
-        RoomService roomService = new RoomService();
+        private readonly RoomService roomService = new RoomService();
         public void CreateOrUpdate(Room room)
         {
             roomService.CreateOrUpdate(room);
@@ -17,10 +17,14 @@ namespace SIMS.Controller
         {
             roomService.Delete(Number);
         }
-
         public void Update(Room room)
         {
             roomService.Update(room);
+        }
+
+        public void MergeRooms(string room1, string room2)
+        {
+            roomService.MergeRooms(room1, room2);
         }
     }
 }
