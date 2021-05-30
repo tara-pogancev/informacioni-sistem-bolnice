@@ -66,7 +66,7 @@ namespace SIMS.Model
 
         public Appointment(Appointment anamnesisAppointment)
         {
-            anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
+            //anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
             anamnesisAppointment.InitData();
 
             StartTime = anamnesisAppointment.StartTime;

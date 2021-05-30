@@ -1,14 +1,10 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.DoctorRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
-using SIMS.Repositories.NotificationRepo;
-using SIMS.Repositories.PatientRepo;
-using SIMS.Repositories.ManagerRepo;
 
 namespace SIMS.ViewSecretary.Notifications
 {
@@ -20,7 +16,9 @@ namespace SIMS.ViewSecretary.Notifications
         private List<Doctor> _doctors;
         private List<Secretary> _secretaries;
         private List<Manager> _directors;
-        ObservableCollection<NotificationRole> _rolesOfUsers;
+        private ObservableCollection<NotificationRole> _rolesOfUsers;
+
+        private NotificationController notificationController = new NotificationController();
 
         private const int NumberOfRoleGroups = 5;
         public ViewNotifications(Secretary secretary)
@@ -28,14 +26,20 @@ namespace SIMS.ViewSecretary.Notifications
             InitializeComponent();
             _secretary = secretary;
 
-            List<Notification> notificationsForReversing = NotificationFileRepository.Instance.ReadByUser(secretary.Jmbg);
+            PatientController patientController = new PatientController();
+            DoctorController doctorController = new DoctorController();
+            SecretaryController secretaryController = new SecretaryController();
+            ManagerController managerController = new ManagerController();
+
+            List<Notification> notificationsForReversing = notificationController.ReadByUser(secretary.Jmbg);
+
             notificationsForReversing.Reverse();
 
             _notifications = new ObservableCollection<Notification>(notificationsForReversing);
-            _patients = PatientFileRepository.Instance.GetAll();
-            _doctors = DoctorFileRepository.Instance.GetAll();
-            _secretaries = SecretaryFileRepository.Instance.GetAll();
-            _directors = ManagerFileRepository.Instance.GetAll();
+            _patients = patientController.GetAllPatients();
+            _doctors = doctorController.GetAllDoctors();
+            _secretaries = secretaryController.GetAllSecretaries();
+            _directors = managerController.GetAllManagers();
 
             notificationViewer.ItemsSource = _notifications;
 
@@ -95,10 +99,10 @@ namespace SIMS.ViewSecretary.Notifications
             List<string> targets = CreateNotificationTargetsFromUserInput();
 
 
-            Notification obavestenje = new Notification("Sekretarijat", DateTime.Now, notificationTextBox.Text.Trim(), targets);
-            NotificationFileRepository.Instance.Save(obavestenje);
+            Notification notification = new Notification("Sekretarijat", DateTime.Now, notificationTextBox.Text.Trim(), targets);
+            notificationController.SaveNotification(notification);
 
-            _notifications.Insert(0, obavestenje);
+            _notifications.Insert(0, notification);
 
             notificationTextBox.Text = "Ovde mozete uneti vase obavestenje.";
             rolesComboBox.SelectedItems.Clear();
@@ -142,7 +146,7 @@ namespace SIMS.ViewSecretary.Notifications
                 }
             }
             _notifications.Remove(toDelete);
-            NotificationFileRepository.Instance.Delete(toDelete.ID);
+            notificationController.DeleteNotification(toDelete.ID);
 
         }
 

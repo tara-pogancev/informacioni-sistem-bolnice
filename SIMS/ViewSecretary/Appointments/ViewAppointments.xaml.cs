@@ -102,7 +102,7 @@ namespace SIMS.ViewSecretary.Appointments
             foreach (Appointment appointment in appointments)
             {
                 appointment.Patient = patientController.GetPatient(appointment.Patient.Jmbg);
-                appointment.Doctor = doctorController.ReadUserByUsername(appointment.Doctor.Jmbg);
+                appointment.Doctor = doctorController.GetDoctor(appointment.Doctor.Jmbg);
             }
         }
 

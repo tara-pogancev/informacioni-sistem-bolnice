@@ -1,19 +1,19 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.AllergenRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Patients
 {
     public partial class UpdatePatient : Page
     {
         private ObservableCollection<Allergen> _allergens;
+        private PatientController patientController = new PatientController();
+        private AllergenController allergenController = new AllergenController();
         public UpdatePatient(Patient patient)
         {
             InitializeComponent();
@@ -49,10 +49,10 @@ namespace SIMS.ViewSecretary.Patients
 
         private void FillAllergenFields(Patient patient)
         {
-            _allergens = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
+            _allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
-            allergensComboBox.DisplayMemberPath = "Naziv";
+            allergensComboBox.DisplayMemberPath = "Name";
             allergensComboBox.SelectedMemberPath = "ID";
 
             foreach (var allergen in patient.Allergens)
@@ -61,7 +61,7 @@ namespace SIMS.ViewSecretary.Patients
                 {
                     if (allergen.ID == a.ID)
                     {
-                        allergensComboBox.SelectedItems.Add(a.Name);
+                        allergensComboBox.SelectedItems.Add(a);
                         break;
                     }
                 }
@@ -88,8 +88,8 @@ namespace SIMS.ViewSecretary.Patients
 
         private void UpdatePatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient pacijent = UpdatePatientFromUserInput();
-            PatientFileRepository.Instance.Update(pacijent);
+            Patient patient = UpdatePatientFromUserInput();
+            patientController.UpdatePatient(patient);
             ViewPatients.GetInstance().RefreshView();
 
             NavigationService.Navigate(ViewPatients.GetInstance());

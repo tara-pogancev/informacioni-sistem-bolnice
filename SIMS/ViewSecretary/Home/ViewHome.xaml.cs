@@ -1,5 +1,4 @@
 ﻿using SIMS.Model;
-using SIMS.Repositories.SecretaryRepo;
 using System.Windows.Controls;
 
 namespace SIMS.ViewSecretary.Home

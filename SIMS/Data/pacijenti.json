@@ -39,7 +39,17 @@
     "Password": "p",
     "Email": "djordje1499@gmail.com",
     "Phone": "0645568131",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
+    },
     "Serialize": true
   },
   "12645323206": {
@@ -82,7 +92,17 @@
     "Password": "p",
     "Email": "email.miha@gmail.com",
     "Phone": "06250",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
+    },
     "Serialize": true
   },
   "12121977802342": {
@@ -125,7 +145,17 @@
     "Password": "p",
     "Email": "petarpetrovic@gmail.com",
     "Phone": "061 234567",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
+    },
     "Serialize": true
   },
   "1445857": {
@@ -168,7 +198,17 @@
     "Password": "p",
     "Email": "milena@gmail.com",
     "Phone": "061 2345857",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21400,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Bulevar Despota Stefana",
+      "Number": "7"
+    },
     "Serialize": true
   }
 }

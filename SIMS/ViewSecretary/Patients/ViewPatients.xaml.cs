@@ -1,10 +1,9 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
-using SIMS.Repositories.PatientRepo;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Patients
 {
@@ -12,6 +11,8 @@ namespace SIMS.ViewSecretary.Patients
     {
         private ObservableCollection<Patient> _patients;
         private static ViewPatients _instance = null;
+
+        private PatientController patientController = new PatientController();
 
         public static ViewPatients GetInstance()
         {
@@ -23,7 +24,7 @@ namespace SIMS.ViewSecretary.Patients
         {
             InitializeComponent();
 
-            _patients = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
+            _patients = new ObservableCollection<Patient>(patientController.GetAllPatients());
             patientsView.ItemsSource = _patients;
         }
 
@@ -58,7 +59,7 @@ namespace SIMS.ViewSecretary.Patients
             else
             {
                 Patient toDelete = (Patient)patientsView.SelectedItem;
-                PatientFileRepository.Instance.Delete(toDelete.Jmbg);
+                patientController.DeletePatient(toDelete.Jmbg);
                 RefreshView();
             }
         }
@@ -66,7 +67,7 @@ namespace SIMS.ViewSecretary.Patients
         public void RefreshView()
         {
             _patients.Clear();
-            List<Patient> pacijentiAll = PatientFileRepository.Instance.GetAll();
+            List<Patient> pacijentiAll = patientController.GetAllPatients();
             foreach (Patient p in pacijentiAll)
                 _patients.Add(p);
 
