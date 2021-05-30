@@ -4,6 +4,7 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service
 {
@@ -56,7 +57,7 @@ namespace SIMS.Service
         }
         private bool IsFiveAppointmentsPassed(HospitalSurvey hospitalSurvey,Patient patient)
         {
-            return Math.Abs(hospitalSurvey.NumberOfCheckups - new AppointmentService().GetNumberOfFinishedAppointments(patient)) > 5;
+            return Math.Abs(hospitalSurvey.NumberOfCheckups - new PatientAppointmentsService().GetNumberOfFinishedAppointments(patient)) > 5;
         }
     }
 }

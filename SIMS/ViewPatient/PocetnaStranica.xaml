@@ -68,8 +68,9 @@
                                     <materialDesign:PackIcon Kind="AcademicCap" Width="40" Height="30"/>
                                 </Button>
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" Click="Zvonce_Click">
-                                    <materialDesign:PackIcon Kind="BellOutline" Width="40" Height="30" />
+                                    <materialDesign:PackIcon Kind="Bell" Width="40" Height="27" />
                                 </Button>
+                                
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Profil" Click="Profil_Click">
                                     <materialDesign:PackIcon Kind="User" Width="40" Height="30"/>
                                 </Button>

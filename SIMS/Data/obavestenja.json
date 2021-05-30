@@ -8,18 +8,9 @@
       "0603850721311",
       "064865071221",
       "All"
-    ]
-  },
-  "Sekretarijat210525174346027694": {
-    "Author": "Sekretarijat",
-    "Time": "2021-05-25T17:43:46.0276943+02:00",
-    "Content": "Tehnički sam upravo hakovala sekretara.",
-    "ID": "Sekretarijat210525174346027694",
-    "Target": [
-      "0603850721311",
-      "064865071221",
-      "All"
-    ]
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
   },
   "Sekretarijat210525174353591857": {
     "Author": "Sekretarijat",
@@ -30,7 +21,9 @@
       "0603850721311",
       "064865071221",
       "All"
-    ]
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
   },
   "Recept210526113345476609": {
     "Author": "Recept",
@@ -39,7 +32,9 @@
     "ID": "Recept210526113345476609",
     "Target": [
       "12645323206"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526133118944868": {
     "Author": "Tara Pogančev",
@@ -48,7 +43,9 @@
     "ID": "Tara Pogančev210526133118944868",
     "Target": [
       "1403000710321"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526142611057899": {
     "Author": "Tara Pogančev",
@@ -57,7 +54,9 @@
     "ID": "Tara Pogančev210526142611057899",
     "Target": [
       "12121977802342"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526144619425625": {
     "Author": "Tara Pogančev",
@@ -67,7 +66,9 @@
     "Target": [
       "12121977802342",
       "045210805048"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526150434171165": {
     "Author": "Tara Pogančev",
@@ -77,24 +78,78 @@
     "Target": [
       "1445857",
       "045210805048"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
-  "Tara Pogančev210530192842650179": {
-    "Author": "Tara Pogančev",
-    "Time": "2021-05-30T19:28:42.6501793+02:00",
-    "Content": "Otpisni list hospitalizacije: Nekadašnji hitovi u kombinaciji sa današnjim popularnim izvođačima.",
-    "ID": "Tara Pogančev210530192842650179",
+  "Sekretarijat210528200125536501": {
+    "Author": "Sekretarijat",
+    "Time": "2021-05-28T20:01:25.5365013+02:00",
+    "Content": "Tehnički sam upravo hakovala sekretara.",
+    "ID": "Sekretarijat210528200125536501",
     "Target": [
-      "12121977802342"
-    ]
+      "0603850721311",
+      "064865071221",
+      "0603850721311",
+      "064865071221",
+      "All"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
   },
-  "Tara Pogančev210530194211548684": {
-    "Author": "Tara Pogančev",
-    "Time": "2021-05-30T19:42:11.5486841+02:00",
-    "Content": "Otpisni list hospitalizacije: Loro non sanno di che parlo Voi siete sporchi, fra', di fango Giallo di siga fra le dita Io con la siga camminando Scusami, ma ci credo tanto Che posso fare questo salto E anche se la strada è in salita Per questo ora mi sto allenando E buonasera, signore e signori, fuori gli attori Vi conviene toccarvi i coglioni Vi conviene stare zitti e buoni Qui la gente è strana, tipo spacciatori",
-    "ID": "Tara Pogančev210530194211548684",
+  "Podsjetnik210530120100000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T12:01:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530120100000000",
     "Target": [
-      "12121977802342"
-    ]
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530170500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:05:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530170500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530171000000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:10:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530171000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530171500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:15:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530171500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Zakazan termin210530113000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-30T11:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210530113000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
   }
 }

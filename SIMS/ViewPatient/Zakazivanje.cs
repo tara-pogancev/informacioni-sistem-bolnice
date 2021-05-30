@@ -18,6 +18,9 @@ using SIMS.Service;
 using SIMS.Model;
 using System.Threading.Tasks;
 using SIMS.Repositories.RoomRepo;
+using SIMS.Controller;
+using SIMS.Enumerations;
+using SIMS.Service.AppointmentServices;
 
 namespace SIMS.PacijentGUI
 {
@@ -33,6 +36,8 @@ namespace SIMS.PacijentGUI
         Boolean doktorSelektovan;
         List<Room> slobodneProstorije;
         AppointmentService appointmentService;
+
+        private ScheduleAppointmentService scheduleAppointmentService;
         public Zakazivanje(Patient p)
         {
             InitializeComponent();
@@ -46,7 +51,8 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
             doktorSelektovan = false;
             appointmentService = new AppointmentService();
-            
+            scheduleAppointmentService = new ScheduleAppointmentService();
+
         }
 
         public List<Doctor> Lekari { get => lekari; set => lekari = value; }
@@ -74,7 +80,7 @@ namespace SIMS.PacijentGUI
             termin.Doctor = lekari[ListaDoktora.SelectedIndex];
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum); 
-            if (appointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent) == false)
+            if (scheduleAppointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent) == false)
             {
                 MessageBox.Show("Ne postoji slobodna prostorija");
                 dostupniTermini.Remove(terminiLista.Text);
@@ -83,6 +89,10 @@ namespace SIMS.PacijentGUI
             {
                 MessageBox.Show("Termin je uspjesno zakazan");
             }
+            List<String> targets = new List<string>();
+            targets.Add(pacijent.Jmbg);
+            Notification notification = new Notification("Zakazan termin",vremenskaOdrednica.AddDays(-1),"Imate zakazan termin",targets, false, NotificationType.AppointmentAllert);
+            new NotificationController().SaveNotification(notification);
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
              
@@ -101,7 +111,7 @@ namespace SIMS.PacijentGUI
                
                 Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
                 String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
-                dostupniTermini = new ObservableCollection<string>(appointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
+                dostupniTermini = new ObservableCollection<string>(scheduleAppointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
                 terminiLista.ItemsSource = dostupniTermini;
                 
             }

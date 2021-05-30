@@ -30,6 +30,7 @@ namespace SIMS.LekarGUI
 
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
+        private DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
 
         public ObservableCollection<AppointmentDTO> AppointmentsViewModel { get; set; }
 
@@ -60,9 +61,9 @@ namespace SIMS.LekarGUI
 
         public void RefreshView()
         {
-            List<Appointment> allAppointments = appointmentController.GetFutureAppointmentsByDoctor(doctorUser);
+            List<Appointment> allAppointments = doctorAppointmentController.GetFutureAppointmentsByDoctor(doctorUser);
             AppointmentsViewModel.Clear();
-            foreach (AppointmentDTO dto in appointmentController.GetDTOFromList(allAppointments))
+            foreach (AppointmentDTO dto in doctorAppointmentController.GetDTOFromList(allAppointments))
                 AppointmentsViewModel.Add(dto);
         }
 

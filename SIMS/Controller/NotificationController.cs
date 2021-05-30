@@ -22,6 +22,8 @@ namespace SIMS.Controller
 
         public Notification GetNotification(String key) => notificationService.GetNotification(key);
 
+        public void SaveOrUpdate(Notification notification) => notificationService.SaveOrUpdate(notification);
+
         public List<Notification> ReadByUser(String userID)
         {
             return notificationService.ReadByUser(userID);
@@ -32,6 +34,9 @@ namespace SIMS.Controller
             return notificationService.ReadPastNotificationsByUser(userID);
         }
 
+        public bool ExistsUnreadNotification(String userID) => notificationService.ExistsUnreadNotification(userID);
+
+        public void NotificationOpened(String userID) => notificationService.NotificationOpened(userID);
 
     }
 }

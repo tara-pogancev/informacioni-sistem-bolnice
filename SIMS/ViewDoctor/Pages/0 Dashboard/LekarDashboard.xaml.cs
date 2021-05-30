@@ -27,6 +27,7 @@ namespace SIMS.LekarGUI
     {
         private static Doctor doctorUser;
         private AppointmentController appointmentController = new AppointmentController();
+        private DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
 
         public DoctorDashboard(Doctor doctor)
         {
@@ -49,7 +50,7 @@ namespace SIMS.LekarGUI
 
         public void SetActiveAppointment()
         {
-            Appointment currentAppointment = appointmentController.CheckIfActiveAppointment(doctorUser);
+            Appointment currentAppointment = doctorAppointmentController.CheckIfActiveAppointment(doctorUser);
 
             if (currentAppointment == null)
                 AktivniTermin.Content = LDBNemaTermin.GetInstance();
@@ -69,8 +70,8 @@ namespace SIMS.LekarGUI
 
         private void RefreshGraphs1()
         {
-            int recorded = appointmentController.GetRecordedAppointmentsByDoctor(doctorUser);
-            int total = appointmentController.GetAppointmentsByDoctor(doctorUser).Count;
+            int recorded = doctorAppointmentController.GetRecordedAppointmentsByDoctor(doctorUser);
+            int total = doctorAppointmentController.GetAppointmentsByDoctor(doctorUser).Count;
 
             GraphEvidentirani.To = total;
             GraphEvidentirani.Value = recorded;
@@ -83,14 +84,14 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(appointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.examination, doctorUser)),
+                    Values = new ChartValues<int>(doctorAppointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.examination, doctorUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
 
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(appointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.surgery, doctorUser)),
+                    Values = new ChartValues<int>(doctorAppointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.surgery, doctorUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
 
                 }

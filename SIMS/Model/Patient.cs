@@ -134,7 +134,7 @@ namespace SIMS.Model
                 return allergensString.Remove(allergensString.Length - 2); 
         }
 
-        public bool Unvailable(Appointment appointment)
+        public bool Unavailable(Appointment appointment)
         {
             return appointment.Patient.Jmbg == this.Jmbg;
         }

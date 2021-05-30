@@ -33,6 +33,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         private DoctorController doctorController = new DoctorController();
         private PatientController patientController = new PatientController();
         private AppointmentController appointmentController = new AppointmentController();
+        private DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
         private NotificationController notificationController = new NotificationController();
 
         public UrgentSurgeryCreate(Patient patientPar)
@@ -139,8 +140,8 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             if (ValidateForm())
             {
                 List<Appointment> allAppointments = 
-                    appointmentController.GetAvailableAppointmentsForAllDoctors(GetSelectedSpecialization(), GetSelectedDuration(), patient);
-                allAppointments = appointmentController.SortAppointmentsByTimeA(allAppointments);
+                    doctorAppointmentController.GetAvailableAppointmentsForAllDoctors(GetSelectedSpecialization(), GetSelectedDuration(), patient);
+                allAppointments = doctorAppointmentController.SortAppointmentsByTimeA(allAppointments);
 
                 foreach (Appointment app in allAppointments)
                 {

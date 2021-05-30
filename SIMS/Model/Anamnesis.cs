@@ -29,13 +29,16 @@ namespace SIMS.Model
         public String SocioEpiData { get; set; }
         public DateTime AnamnesisDate { get; set; }
         public String AnamnesisID { get; set; }
+        private bool serialize;
 
         [JsonIgnore]
         public Appointment AnamnesisAppointment { get; set; }
+        public bool Serialize { get => serialize; set => serialize = value; }
 
         public Anamnesis()
         {
             AnamnesisDate = DateTime.Today;
+            serialize = true;
         }
 
         public Anamnesis(Appointment appointment, String mainIssues, String currentAnamnesis, String generalOccurrences, String respiratorySystem, String cardioSystem,
@@ -57,6 +60,7 @@ namespace SIMS.Model
             PastDiseases = pastDiseases;
             FamilyData = familyData;
             SocioEpiData = socioEpiData;
+            serialize = true;
 
             SetDefaultEmptyFields();
         }
@@ -81,7 +85,7 @@ namespace SIMS.Model
             PastDiseases = anamnesis.PastDiseases;
             FamilyData = anamnesis.FamilyData;
             SocioEpiData = anamnesis.SocioEpiData;
-
+            serialize = true;
             SetDefaultEmptyFields();
         }
 
@@ -108,5 +112,20 @@ namespace SIMS.Model
             AnamnesisAppointment = GetAppointment();
             AnamnesisAppointment.InitData();
         }
+
+        public bool ShouldSerializeMainIssues() { return serialize; }
+        public bool ShouldSerializeCurrentAnamnesis() { return serialize; }
+        public bool ShouldSerializeGeneralOccurrences() { return serialize; }
+        public bool ShouldSerializeRespiratorySystem() { return serialize; }
+        public bool ShouldSerializeCardioSystem() { return serialize; }
+        public bool ShouldSerializeDigestiveSystem() { return serialize; }
+        public bool ShouldSerializeUroGenitalSystem() { return serialize; }
+        public bool ShouldSerializeLocomotorSystem() { return serialize; }
+        public bool ShouldSerializeNervousSystem() { return serialize; }
+        public bool ShouldSerializePastDiseases() { return serialize; }
+        public bool ShouldSerializeFamilyData() { return serialize; }
+        public bool ShouldSerializeSocioEpiData() { return serialize; }
+        public bool ShouldSerializeAnamnesisDate() { return serialize; }
+        
     }
 }
