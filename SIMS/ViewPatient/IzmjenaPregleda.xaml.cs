@@ -190,8 +190,7 @@ namespace SIMS.PacijentGUI
             OdabraniTerminZaIzmjenu.StartTime = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text);
             OdabraniTerminZaIzmjenu.Room = slobodneProstorije[0];
             new AppointmentService().UpdateAppointment(OdabraniTerminZaIzmjenu);
-            new AppointmentLogController().Save(new AppointmentLog(OdabraniTerminZaIzmjenu.AppointmentID+DateTime.Now.ToString("dd.mm.yyyy.hh.MM.ss."),OdabraniTerminZaIzmjenu.AppointmentID,pacijent.ID,DateTime.Now,SurgeryType.Izmjena));
-            
+           
         }
        
 
