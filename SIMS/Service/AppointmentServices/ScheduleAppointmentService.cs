@@ -1,15 +1,14 @@
-﻿using SIMS.Model;
-using SIMS.Repositories.AppointmentRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using SIMS.Model;
+using SIMS.Repositories.AppointmentRepo;
 
-namespace SIMS.Service
+namespace SIMS.Service.AppointmentServices
 {
     public class ScheduleAppointmentService
     {
-        private AppointmentService appointmentService;
-        private IAppointmentRepository appointmentRepository;
+        private AppointmentService appointmentService=new AppointmentService();
+        private IAppointmentRepository appointmentRepository=new AppointmentFileRepository();
 
         public ScheduleAppointmentService()
         {

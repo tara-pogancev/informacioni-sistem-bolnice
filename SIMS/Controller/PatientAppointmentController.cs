@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using SIMS.Model;
 using SIMS.Service;
+using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Controller
 {

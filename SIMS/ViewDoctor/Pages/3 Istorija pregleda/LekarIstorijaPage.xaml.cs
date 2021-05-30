@@ -36,6 +36,7 @@ namespace SIMS.LekarGUI
         private AppointmentController appointmentController = new AppointmentController();
         private SurgeryReportController reportController = new SurgeryReportController();
         private AnamnesisController anamnesisController = new AnamnesisController();
+        private DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
 
         public AppointmentHistoryView(Doctor doctor)
         {
@@ -62,12 +63,12 @@ namespace SIMS.LekarGUI
 
         private List<AppointmentDTO> GetRecotdedDTO()
         {
-            return appointmentController.GetDTOFromList(appointmentController.GetRecordedAppointmentsByDoctorList(doctorUser));
+            return doctorAppointmentController.GetDTOFromList(doctorAppointmentController.GetRecordedAppointmentsByDoctorList(doctorUser));
         }
 
         private List<AppointmentDTO> GetUnrecordedDTO()
         {
-            return appointmentController.GetDTOFromList(appointmentController.GetUnrecordedAppointmentsByDoctorList(doctorUser));
+            return doctorAppointmentController.GetDTOFromList(doctorAppointmentController.GetUnrecordedAppointmentsByDoctorList(doctorUser));
         }
 
         private void ButtonReadReport(object sender, RoutedEventArgs e)

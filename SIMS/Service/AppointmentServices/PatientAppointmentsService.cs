@@ -2,7 +2,7 @@
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 
-namespace SIMS.Service
+namespace SIMS.Service.AppointmentServices
 {
     public class PatientAppointmentsService
     {

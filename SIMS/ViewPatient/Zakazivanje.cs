@@ -18,6 +18,7 @@ using SIMS.Service;
 using SIMS.Model;
 using System.Threading.Tasks;
 using SIMS.Enumerations;
+using SIMS.Service.AppointmentServices;
 
 namespace SIMS.PacijentGUI
 {
@@ -48,7 +49,8 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
             doktorSelektovan = false;
             appointmentService = new AppointmentService();
-            
+            scheduleAppointmentService = new ScheduleAppointmentService();
+
         }
 
         public List<Doctor> Lekari { get => lekari; set => lekari = value; }
@@ -87,7 +89,7 @@ namespace SIMS.PacijentGUI
             }
             List<String> targets = new List<string>();
             targets.Add(pacijent.Jmbg);
-            Notification notification = new Notification("Zakazan termin", termin.StartTime.AddDays(-1),"Imate zakazan termin",targets, false, NotificationType.AppointmentAllert);
+            Notification notification = new Notification("Zakazan termin",vremenskaOdrednica.AddDays(-1),"Imate zakazan termin",targets, false, NotificationType.AppointmentAllert);
             
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));

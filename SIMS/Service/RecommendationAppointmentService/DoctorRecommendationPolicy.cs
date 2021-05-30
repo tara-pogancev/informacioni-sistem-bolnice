@@ -2,6 +2,7 @@
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
+using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {

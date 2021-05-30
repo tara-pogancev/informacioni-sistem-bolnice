@@ -1,51 +1,30 @@
-﻿using SIMS.DTO;
+﻿using System;
+using System.Collections.Generic;
+using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
-using System;
-using System.Collections.Generic;
 
-namespace SIMS.Service
+namespace SIMS.Service.AppointmentServices
 {
-    
-    public class AppointmentService 
+    public class DoctorAppointmentService
     {
-        private IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
-        private DoctorService doctorService = new DoctorService();
+        private IAppointmentRepository appointmentRepository;
         private RoomService roomService = new RoomService();
-        
+        private DoctorService doctorService = new DoctorService();
 
-
-        public AppointmentService()
+        public DoctorAppointmentService()
         {
-            
+            appointmentRepository = new AppointmentFileRepository();
         }
 
-       
 
-
-        public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
-
-        public void UpdateAppointment(Appointment appointment) => appointmentRepository.Update(appointment);
-
-        public void DeleteAppointment(Appointment appointment) => appointmentRepository.Delete(appointment.AppointmentID);
-
-        public void SaveAppointment(Appointment appointment) => appointmentRepository.Save(appointment);
-
-        public Appointment GetAppointment(String key) => appointmentRepository.FindById(key);
-
-        
-
-      
         public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
         {
             return appointmentRepository.GetDoctorAppointments(doctor);
         }
-
-        
-
         public Appointment CheckIfActiveAppointment(Doctor doctor)
         {
-            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            foreach (Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))
             {
                 if (appointment.GetIfCurrent() && appointment.GetIfRecorded() == false)
                 {
@@ -60,13 +39,12 @@ namespace SIMS.Service
         {
             int recorded = 0;
 
-            foreach (Appointment t in GetAppointmentsByDoctor(doctor))
+            foreach (Appointment t in appointmentRepository.GetDoctorAppointments(doctor))
                 if (t.GetIfRecorded())
                     recorded++;
 
             return recorded;
         }
-
 
         public List<AppointmentDTO> GetDTOFromList(List<Appointment> list)
         {
@@ -84,7 +62,7 @@ namespace SIMS.Service
         public List<Appointment> GetUpcommingAppointmentsByDoctor(Doctor doctor)
         {
             List<Appointment> retVal = new List<Appointment>();
-            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            foreach (Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))
             {
                 if (!appointment.GetIfPast() && !appointment.GetIfRecorded())
                     retVal.Add(appointment);
@@ -92,11 +70,6 @@ namespace SIMS.Service
 
             return retVal;
         }
-
-
-        
-
-        
 
         public AppointmentDTO GetDTO(Appointment appointment)
         {
@@ -112,7 +85,7 @@ namespace SIMS.Service
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            foreach (Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))
             {
                 if (appointment.GetIfRecorded())
                     retVal.Add(appointment);
@@ -125,7 +98,7 @@ namespace SIMS.Service
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            foreach (Appointment appointment in GetAppointmentsByDoctor(doctor))
+            foreach (Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))
             {
                 if (!appointment.GetIfRecorded() && appointment.GetIfPast())
                     retVal.Add(appointment);
@@ -138,7 +111,7 @@ namespace SIMS.Service
         {
             List<Appointment> retVal = new List<Appointment>();
 
-            foreach(Appointment appointment in GetAllAppointments())
+            foreach(Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))
             {
                 if (!appointment.GetIfPast() && appointment.Doctor.Jmbg == doctor.Jmbg)
                     retVal.Add(appointment);
@@ -161,13 +134,13 @@ namespace SIMS.Service
 
             List<DateTime> potentialAppointmentTimeList = new List<DateTime>();
             foreach (String date in availableDates)
-                foreach (String time in availableTimes)
-                {
-                    String dateAndTime = date + " " + time;
-                    DateTime appointmentTime = DateTime.Parse(dateAndTime);
-                    if (appointmentTime >= currentTime)
-                        potentialAppointmentTimeList.Add(appointmentTime);
-                }
+            foreach (String time in availableTimes)
+            {
+                String dateAndTime = date + " " + time;
+                DateTime appointmentTime = DateTime.Parse(dateAndTime);
+                if (appointmentTime >= currentTime)
+                    potentialAppointmentTimeList.Add(appointmentTime);
+            }
 
             return potentialAppointmentTimeList;
         }
@@ -175,13 +148,13 @@ namespace SIMS.Service
         public List<Appointment> SortAppointmentsByTimeA(List<Appointment> appointments)
         {
             for (int i = 0; i < appointments.Count; i++)
-                for (int j = 0; j < appointments.Count; j++)
-                    if (appointments[i].StartTime < appointments[j].StartTime)
-                    {
-                        var temp = appointments[i];
-                        appointments[i] = appointments[j];
-                        appointments[j] = temp;
-                    }
+            for (int j = 0; j < appointments.Count; j++)
+                if (appointments[i].StartTime < appointments[j].StartTime)
+                {
+                    var temp = appointments[i];
+                    appointments[i] = appointments[j];
+                    appointments[j] = temp;
+                }
 
             return appointments;
         }
@@ -215,6 +188,5 @@ namespace SIMS.Service
 
             return retVal;
         }
-
     }
 }
