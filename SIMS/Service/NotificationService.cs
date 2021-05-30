@@ -56,6 +56,7 @@ namespace SIMS.Service
             {
 
                 notification.CheckStatus = true;
+                new NotificationService().UpdateNotification(notification);
             }
         }
 

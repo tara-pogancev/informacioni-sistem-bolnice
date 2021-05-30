@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.Model;
 using System.Threading.Tasks;
+using SIMS.Controller;
 using SIMS.Enumerations;
 using SIMS.Service.AppointmentServices;
 
@@ -90,7 +91,7 @@ namespace SIMS.PacijentGUI
             List<String> targets = new List<string>();
             targets.Add(pacijent.Jmbg);
             Notification notification = new Notification("Zakazan termin",vremenskaOdrednica.AddDays(-1),"Imate zakazan termin",targets, false, NotificationType.AppointmentAllert);
-            
+            new NotificationController().SaveNotification(notification);
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
              

@@ -9,7 +9,7 @@
       "064865071221",
       "All"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Sekretarijat210525174353591857": {
@@ -22,7 +22,7 @@
       "064865071221",
       "All"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Recept210526113345476609": {
@@ -94,7 +94,7 @@
       "064865071221",
       "All"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Podsjetnik210530120100000000": {
@@ -105,7 +105,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 3
   },
   "Podsjetnik210530170500000000": {
@@ -116,7 +116,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 3
   },
   "Podsjetnik210530171000000000": {
@@ -127,7 +127,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 3
   },
   "Podsjetnik210530171500000000": {
@@ -138,7 +138,18 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 3
+  },
+  "Zakazan termin210530113000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-30T11:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210530113000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
   }
 }
