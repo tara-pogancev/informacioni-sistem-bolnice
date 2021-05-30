@@ -28,7 +28,7 @@
 
         <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
 
-            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="Button_Home"/>
+            <Image Source="/src/home.png" Width="20" Margin="0,0,5,0" Cursor="Hand" PreviewMouseDown="ButtonHome"/>
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Istorija pregleda" Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
 
@@ -54,9 +54,9 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Termin" Binding="{Binding AppointmentTypeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientName}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                 </DataGrid.Columns>
 
@@ -72,9 +72,9 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Termin" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Pacijent" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Termin" Binding="{Binding AppointmentTypeString}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientName}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                 </DataGrid.Columns>
 

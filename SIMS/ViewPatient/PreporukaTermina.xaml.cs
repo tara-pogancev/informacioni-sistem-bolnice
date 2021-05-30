@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
-using SIMS.Service;
+using SIMS.Service.RecommendationAppointmentService;
 
 namespace SIMS.PacijentGUI
 {
@@ -61,155 +61,18 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
         }
 
-        private void filtrirajTermine()
+        private void preporuka()
         {
-            DateTime datum1 = (DateTime)PocetniDatum.SelectedDate;
-            DateTime datum2 = (DateTime)KrajnjiDatum.SelectedDate;
-            TimeSpan ts = new TimeSpan(8, 0, 0);
-            TimeSpan ts1 = new TimeSpan(9, 0, 0);
-            TimeSpan ts2 = new TimeSpan(10, 0, 0);
-            while (datum1 <= datum2)
-            {
 
-   
-                TerminZaPreporuku terminZaPreporuku1 = new TerminZaPreporuku(datum1 + ts);
-                TerminZaPreporuku terminZaPreporuku2 = new TerminZaPreporuku(datum1 + ts1);
-                TerminZaPreporuku terminZaPreporuku3 = new TerminZaPreporuku(datum1 + ts2);
-                terminZaPreporuku.Add(terminZaPreporuku1);
-                terminZaPreporuku.Add(terminZaPreporuku2);
-                terminZaPreporuku.Add(terminZaPreporuku3);
-                datum1 = datum1.AddDays(1);
-            }
-        }
-
-        private void izbaciZauzeteTermine(Appointment termin)
-        {
-            for(int i= 0;i < terminZaPreporuku.Count;i++)
-            {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime) && termin.Doctor.Jmbg.Equals(lekari[ListaDoktora.SelectedIndex].Jmbg))
-                {
-                    terminZaPreporuku.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
-        private void preporukaZaDoktora()
-        {
             if (lekarChecked.IsChecked == true)
             {
                 RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DoctorRecommendation, lekari[ListaDoktora.SelectedIndex].Jmbg, (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
                 preporuceniTermini = recommendationService.GetRecommendedAppointments();
-                /*foreach (Appointment ter in termini)
-                {
-                    izbaciZauzeteTermine(ter);
-                }*/
-            }
-            else if(datumChecked.IsChecked==true)
-            {
-               
-
-            }
-            /* for (int i = 0; i < terminZaPreporuku.Count; i++)
-             {
-                 Appointment termin = new Appointment();
-                 termin.StartTime = terminZaPreporuku[i].Vrijeme;
-                 termin.InitialTime = termin.StartTime;
-                 termin.Duration = 30;
-                 termin.Type = AppointmentType.examination;
-                 termin.Doctor = lekari[ListaDoktora.SelectedIndex];
-                 termin.Patient = PocetnaStranica.getInstance().Pacijent;
-                 termin.Room = new Room("1",RoomType.zaPreglede);
-                 termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
-                 preporuceniTermini.Add(termin);
-                 if (i == 4)
-                 {
-                     break;
-                 } 
-             }*/
-        }
-
-        private void izbaciZauzeteDoktore(Appointment termin)
-        {
-
-            for (int i = 0; i < terminZaPreporuku.Count; i++)
-            {
-                
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime))
-                {
-                    terminZaPreporuku[i].IdLekara.Remove(termin.Doctor.Jmbg);
-                    break;
-                }
-                
-            }
-        }
-        private void izbaciPacijentoveTermine(Appointment termin)
-        {
-            for (int i = 0; i < terminZaPreporuku.Count; i++)
-            {
-                if (terminZaPreporuku[i].Vrijeme.Equals(termin.StartTime) && termin.Patient.Jmbg.Equals(PocetnaStranica.getInstance().Pacijent.Jmbg))
-                {
-                    terminZaPreporuku.RemoveAt(i);
-                    i--;
-                }
-            }
-        }
-        private void preporukaZaDatum()
-        {
-
-            RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DateRecommendation, "", (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
-            preporuceniTermini = recommendationService.GetRecommendedAppointments();
-            System.Console.WriteLine("Preporuka za datum");
-           /* if (datumChecked.IsChecked == true)
-            {
-                for (int i= 0; i<termini.Count;i++)
-                {
-                    
-                    izbaciZauzeteDoktore(termini[i]);
-                    izbaciPacijentoveTermine(termini[i]);
-                    
-                }
-            }
-            
-            int brojacPreporucenihTermina = 0;
-            for (int i = 0; i < terminZaPreporuku.Count; i++)
-            {
-                if (terminZaPreporuku[i].IdLekara.Count == 0)
-                {
-                    continue;
-                }
-
-                brojacPreporucenihTermina++;
-                Appointment termin = new Appointment();
-                termin.StartTime = terminZaPreporuku[i].Vrijeme;
-                termin.InitialTime = termin.StartTime;
-                termin.Duration = 30;
-                termin.Type = AppointmentType.examination;
-                String idLekara =terminZaPreporuku[i].IdLekara[ i % terminZaPreporuku[i].IdLekara.Count];
-                termin.Doctor = new DoctorFileRepository().FindById(idLekara);
-                termin.Patient = PocetnaStranica.getInstance().Pacijent;
-                termin.Room = new Room("1",RoomType.zaPreglede);
-                termin.AppointmentID = DateTime.Now.ToString("yyMMddhhmmss");
-                preporuceniTermini.Add(termin);
-                if (brojacPreporucenihTermina == 5)
-                    return;
-
-
-             
-            }*/
-        }
-
-        private void preporuka()
-        {
-
-            filtrirajTermine();
-            
-            if (lekarChecked.IsChecked == true)
-            {
-                preporukaZaDoktora();
             }
             else
             {
-                preporukaZaDatum();
+                RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DateRecommendation, "", (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
+                preporuceniTermini = recommendationService.GetRecommendedAppointments();
             }
 
             

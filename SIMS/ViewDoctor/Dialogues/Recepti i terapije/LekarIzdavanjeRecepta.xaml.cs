@@ -11,18 +11,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for LekarIzdavanjeRecepta.xaml
     /// </summary>
-    public partial class DoctorWriteReciept : Window
+    public partial class DoctorWriteReceipt : Window
     {
         private Patient patient;
         private Doctor doctor = DoctorUI.GetInstance().GetUser();
 
-        public DoctorWriteReciept(Patient patient)
+        private NotificationController notificationController = new NotificationController();
+        private ReceiptController receiptController = new ReceiptController();
+        private MedicineController medicineController = new MedicineController();
+
+        public DoctorWriteReceipt(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
@@ -31,35 +36,36 @@ namespace SIMS.LekarGUI
             LabelPatient.Content = "Pacijent: " + this.patient.FullName;
             LabelReceiptDate.Content = "Datum: " + DateTime.Today.ToString("MM.dd.yyyy.");
 
-            List<Medication> availableMedicine = new List<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
+            List<Medication> availableMedicine = new List<Medication>(medicineController.GetApprovedMedicine());
             MedicineComboBox.ItemsSource = availableMedicine;
 
         }
 
         private void AcceptReceipt(object sender, RoutedEventArgs e)
         {
-            if (MedicineComboBox.SelectedItem == null || AmountText.Text.Equals("") || DiagnosisText.Text.Equals(""))
+            if (ValidateForm())
                 MessageBox.Show("Greška! Molimo popunite sva polja.");
 
             else if (patient.IsAlergic(GetSelectedMedicine()))
             {
                 Medication l = GetSelectedMedicine();
-                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ". Da li ste sigurni da želite da izdate lek " + l.MedicineName +"?", "Upozorenje!",
+                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ".", "Upozorenje!",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    this.WriteReceipt();
-                }
+                        WriteReceipt();
             }
             else
-            {
-                this.WriteReceipt();
-            } 
-                
+                WriteReceipt();
+
+        }
+
+        private bool ValidateForm()
+        {
+            return MedicineComboBox.SelectedItem == null || AmountText.Text.Equals("") || DiagnosisText.Text.Equals("");
         }
 
         private String GetSubstitutionName(Medication medicine)
         {
-            return MedicationFileRepository.Instance.FindById(medicine.IDSubstitution).MedicineName;
+            return medicineController.GetMedicine(medicine.IDSubstitution).MedicineName;
         }
 
         private void WriteReceipt()
@@ -78,7 +84,7 @@ namespace SIMS.LekarGUI
             Receipt receipt = new Receipt(doctor, patient, medicine.MedicineName,
                 AmountText.Text, DiagnosisText.Text);
 
-            ReceiptFileRepository.Instance.Save(receipt);
+            receiptController.SaveReceipt(receipt);
         }
 
         private Medication GetSelectedMedicine()
@@ -89,7 +95,7 @@ namespace SIMS.LekarGUI
         private void SendNotification(Medication medicine)
         {
             Notification notification = new Notification("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
-            NotificationFileRepository.Instance.Save(notification);
+            notificationController.SaveNotification(notification);
         }
     }
 }

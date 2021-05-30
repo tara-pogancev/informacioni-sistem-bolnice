@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.Model;
+using System.Threading.Tasks;
+using SIMS.Repositories.RoomRepo;
 
 namespace SIMS.PacijentGUI
 {
@@ -81,19 +83,9 @@ namespace SIMS.PacijentGUI
             {
                 MessageBox.Show("Termin je uspjesno zakazan");
             }
-            /* appointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent);
-             termin.PocetnoVreme = vremenskaOdrednica;
-             termin.InicijalnoVrijeme = vremenskaOdrednica;
-             termin.VremeTrajanja = 30;
-             termin.Pacijent = pacijent;
-             termin.Prostorija = slobodneProstorije[0];
-             MessageBox.Show("Termin je uspjesno zakazan");
-             termin.Lekar.Serijalizuj = false;
-             termin.Pacijent.Serijalizuj = false;
-             termin.Prostorija.Serialize = false;*/
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
              ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
-             //AppointmentFileRepository.Instance.Save(termin);
+             
         }
 
         private void ListaDoktora_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -106,35 +98,7 @@ namespace SIMS.PacijentGUI
         {
             if (doktorSelektovan)
             {
-                /*Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
-                //List<Appointment> nedostupniTermini = new List<Appointment>();
-
-                dostupniTermini = new ObservableCollection<string>( new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
-                
-                List<Appointment> sviTermini = new AppointmentFileRepository().GetAll();
-                if (slobodneProstorije.Count == 0)
-                {
-                    dostupniTermini.Clear();
-                    terminiLista.ItemsSource = dostupniTermini;
-                    return;
-                }
-                terminiLista.ItemsSource = dostupniTermini;
-                foreach (Appointment termin in sviTermini)
-                {
-                    if ((termin.Lekar.Jmbg.Equals(lek.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy").Equals(termin.PocetnoVreme.ToString("dd.MM.yyyy")))
-                    || (termin.Pacijent.Jmbg.Equals(pacijent.Jmbg) && OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy").Equals(termin.PocetnoVreme.ToString("dd.MM.yyyy"))))
-                    {
-                        nedostupniTermini.Add(termin);
-                    }
-                    
-                    
-                }
-
-                foreach (Appointment termin in nedostupniTermini)
-                {
-                    dostupniTermini.Remove(termin.Vrijeme);
-                }*/
-
+               
                 Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
                 String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
                 dostupniTermini = new ObservableCollection<string>(appointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
@@ -155,37 +119,143 @@ namespace SIMS.PacijentGUI
                 return;
             }
 
-            /*DateTime zakazanoVrijeme =DateTime.Parse( OdabirDatuma.SelectedDate.Value.Date.ToString("dd.MM.yyyy. ") + terminiLista.SelectedItem);
-            foreach(Appointment termin in new AppointmentFileRepository().GetAll())
-            {
-                if (termin.PocetnoVreme.Equals(zakazanoVrijeme))
-                {
-                    izbaciProstoriju(termin.Prostorija.Number);
-                }
-            }
-            if (slobodneProstorije.Count == 0)
-            {
-                MessageBox.Show("Trenutno ne postoji slobodna ordinacija za ovaj termin. Milimo Vas izaberite neki drugi termin!");
-                dostupniTermini.RemoveAt(terminiLista.SelectedIndex);
-                terminiLista.ItemsSource = dostupniTermini;
-                terminiLista.SelectedIndex = -1;
-            }*/
+            
             
         }
 
-        private void izbaciProstoriju(String brojProstorije)
+        internal void ZakaziTerminDemo()
         {
-            for (int j = 0; j < slobodneProstorije.Count; j++)
-            {
-                if (slobodneProstorije[j].Number == brojProstorije)
-                {
-                    slobodneProstorije.RemoveAt(j);
-                    j--;
-                }
-            }
             
+
+            
+            Task.Delay(1000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     ListaDoktora.SelectedIndex = 1;
+                     ListaDoktora.Focus();
+
+                     Task.Delay(2000).ContinueWith(_ =>
+                     {
+                         Application.Current.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                          delegate ()
+                          {
+                              OdabirDatuma.IsDropDownOpen = true;
+                              Task.Delay(1000).ContinueWith(_ =>
+                              {
+                                  Application.Current.Dispatcher.Invoke(
+                                 System.Windows.Threading.DispatcherPriority.Normal,
+                                 new Action(
+                                   delegate ()
+                                   {
+
+                                       OdabirDatuma.SelectedDate = DateTime.Now.AddDays(3);
+                                       Task.Delay(1000).ContinueWith(_ =>
+                                       {
+                                           Application.Current.Dispatcher.Invoke(
+                                          System.Windows.Threading.DispatcherPriority.Normal,
+                                          new Action(
+                                            delegate ()
+                                            {
+
+                                                OdabirDatuma.IsDropDownOpen = false;
+                                                Task.Delay(1500).ContinueWith(_ =>
+                                                {
+                                                    Application.Current.Dispatcher.Invoke(
+                                                   System.Windows.Threading.DispatcherPriority.Normal,
+                                                   new Action(
+                                                     delegate ()
+                                                     {
+                                                         terminiLista.IsDropDownOpen = true;
+                                                         terminiLista.Focus();
+                                                         Task.Delay(1500).ContinueWith(_ =>
+                                                         {
+                                                             Application.Current.Dispatcher.Invoke(
+                                                            System.Windows.Threading.DispatcherPriority.Normal,
+                                                            new Action(
+                                                              delegate ()
+                                                              {
+                                                                  terminiLista.SelectedIndex = 1;
+                                                                  terminiLista.IsDropDownOpen = false;
+                                                                  Task.Delay(1500).ContinueWith(_ =>
+                                                                  {
+                                                                      Application.Current.Dispatcher.Invoke(
+                                                                     System.Windows.Threading.DispatcherPriority.Normal,
+                                                                     new Action(
+                                                                       delegate ()
+                                                                       {
+                                                                           ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+                                                                           obavjestenje.TekstObavjestenja.Text = "Termin je uspjesno zakazan";
+                                                                           obavjestenje.Show();
+                                                                           Task.Delay(1000).ContinueWith(_ =>
+                                                                           {
+                                                                               Application.Current.Dispatcher.Invoke(
+                                                                              System.Windows.Threading.DispatcherPriority.Normal,
+                                                                              new Action(
+                                                                                delegate ()
+                                                                                {
+
+                                                                                    obavjestenje.Close();
+                                                                                    Task.Delay(1000).ContinueWith(_ =>
+                                                                                    {
+                                                                                        Application.Current.Dispatcher.Invoke(
+                                                                                       System.Windows.Threading.DispatcherPriority.Normal,
+                                                                                       new Action(
+                                                                                         delegate ()
+                                                                                         {
+                                                                                             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
+                                                                                             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
+                                                                                             PocetnaStranica.getInstance().frame.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
+
+                                                                                         }
+                                                                                        ));
+                                                                                    });
+                                                                                   
+
+                                                                                }
+                                                                               ));
+                                                                           });
+                                                                           
+
+                                                                       }
+                                                                      ));
+                                                                  });
+
+                                                              }
+                                                             ));
+                                                         });
+
+
+
+                                                     }
+                                                    ));
+                                                });
+                                            }
+                                           ));
+                                       });
+                                   }
+                                  ));
+                              });
+
+
+                          }
+                         ));
+                     });
+                 }
+                ));
+            });
+
+            
+         
+
+            
+           
         }
-
-
+        
     }
 }

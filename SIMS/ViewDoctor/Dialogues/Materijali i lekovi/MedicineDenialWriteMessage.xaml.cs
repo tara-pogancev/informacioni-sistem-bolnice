@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -19,6 +20,9 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicineDenialWriteMessage : Window
     {
+        private NotificationController notificationController = new NotificationController();
+        private ManagerController managerController = new ManagerController();
+
         public MedicineDenialWriteMessage()
         {
             InitializeComponent();
@@ -28,33 +32,29 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (MessageBox.Show("Da li ste sigurni da želite da otkažete pisanje poruke?", "Otkaži pisanje?",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                this.Close();
-            }
+                        this.Close();
         }
 
         private void AcceptMessage(object sender, RoutedEventArgs e)
         {
             String notificationAuthor = DoctorUI.GetInstance().GetUser().FullName;
             String notificationText = NotificationTextBox.Text;
-            List<String> notificationTarget = getUpravnikKeys();
+            List<String> notificationTarget = GetManagerID();
 
             Notification notification = new Notification(notificationAuthor, DateTime.Now, notificationText, notificationTarget);
-            NotificationFileRepository.Instance.Save(notification);
+            notificationController.SaveNotification(notification);
 
             this.Close();
             MessageBox.Show("Poruka uspešno poslata!");
             
         }
 
-        private List<String> getUpravnikKeys()
+        private List<String> GetManagerID()
         {
             List<String> retVal = new List<String>();
 
-            foreach(Manager upravnik in ManagerFileRepository.Instance.GetAll())
-            {
-                retVal.Add(upravnik.Jmbg);
-            }
+            foreach(Manager manager in managerController.GetAllManagers())
+                retVal.Add(manager.Jmbg);
 
             return retVal;
         } 

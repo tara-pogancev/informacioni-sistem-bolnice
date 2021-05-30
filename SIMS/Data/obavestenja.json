@@ -1,0 +1,82 @@
+{
+  "Sekretarijat210525174335169603": {
+    "Author": "Sekretarijat",
+    "Time": "2021-05-25T17:43:35.1696035+02:00",
+    "Content": "I tako se probudim rano ujutru i shvatim da više nema obaveštenja.",
+    "ID": "Sekretarijat210525174335169603",
+    "Target": [
+      "0603850721311",
+      "064865071221",
+      "All"
+    ]
+  },
+  "Sekretarijat210525174346027694": {
+    "Author": "Sekretarijat",
+    "Time": "2021-05-25T17:43:46.0276943+02:00",
+    "Content": "Tehnički sam upravo hakovala sekretara.",
+    "ID": "Sekretarijat210525174346027694",
+    "Target": [
+      "0603850721311",
+      "064865071221",
+      "All"
+    ]
+  },
+  "Sekretarijat210525174353591857": {
+    "Author": "Sekretarijat",
+    "Time": "2021-05-25T17:43:53.5918578+02:00",
+    "Content": "Hahhaa nešto ne radi",
+    "ID": "Sekretarijat210525174353591857",
+    "Target": [
+      "0603850721311",
+      "064865071221",
+      "All"
+    ]
+  },
+  "Recept210526113345476609": {
+    "Author": "Recept",
+    "Time": "2021-05-26T11:33:45.4766096+02:00",
+    "Content": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210526113345476609",
+    "Target": [
+      "12645323206"
+    ]
+  },
+  "Tara Pogančev210526133118944868": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-26T13:31:18.9448682+02:00",
+    "Content": "Lose napisan lek.",
+    "ID": "Tara Pogančev210526133118944868",
+    "Target": [
+      "1403000710321"
+    ]
+  },
+  "Tara Pogančev210526142611057899": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-26T14:26:11.0578996+02:00",
+    "Content": "Izdat uput za pregled kod lekara Cloud Strife. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210526142611057899",
+    "Target": [
+      "12121977802342"
+    ]
+  },
+  "Tara Pogančev210526144619425625": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-26T14:46:19.4256254+02:00",
+    "Content": "Zakazana hitna operacija [26.05.2021. 15:30, 1] za pacijenta Petar Petrović, vodeći lekar Tara Pogančev.",
+    "ID": "Tara Pogančev210526144619425625",
+    "Target": [
+      "12121977802342",
+      "045210805048"
+    ]
+  },
+  "Tara Pogančev210526150434171165": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-26T15:04:34.1711658+02:00",
+    "Content": "Zakazana hitna operacija [26.05.2021. 16:00, 1] za pacijenta Milena Zorić, vodeći lekar Tara Pogančev.",
+    "ID": "Tara Pogančev210526150434171165",
+    "Target": [
+      "1445857",
+      "045210805048"
+    ]
+  }
+}

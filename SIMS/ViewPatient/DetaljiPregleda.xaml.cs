@@ -25,12 +25,13 @@ namespace SIMS.PacijentGUI
         private Anamnesis anamneza;
         public DetaljiPregleda(Anamnesis anamneza)
         {
+            
             InitializeComponent();
-
             this.anamneza = anamneza;
+            ucitajPodatke();
             this.DataContext = this;
 
-            ucitajPodatke();
+            
             if (anamneza.MainIssues != null)
             {
                 GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });

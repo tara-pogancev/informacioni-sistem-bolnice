@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -20,15 +21,15 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class AvailableMedicineView : Window
     {
-        public ObservableCollection<Medication> MedicineView { get; set; }
+        public ObservableCollection<Medication> MedicineViewModel { get; set; }
+        private MedicineController medicineController = new MedicineController();
 
         public AvailableMedicineView()
         {
             InitializeComponent();
-
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Medication>(MedicationFileRepository.Instance.GetApprovedMedicine());
+            MedicineViewModel = new ObservableCollection<Medication>(medicineController.GetApprovedMedicine());
 
         }
         
@@ -41,9 +42,13 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (DataGridMedicine.SelectedItem != null)
             {
-                MedicinePreview window = new MedicinePreview((Medication)DataGridMedicine.SelectedItem);
-                window.Show();
+                new MedicinePreview(GetSelectedMedicine()).Show();
             }
+        }
+
+        private Medication GetSelectedMedicine()
+        {
+            return (Medication)DataGridMedicine.SelectedItem;
         }
 
         private void ReadMedicine(object sender, RoutedEventArgs e)
@@ -55,17 +60,6 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             PreviewSellectedMedicine();
         }
-
-        /*
-         * <DataGridTemplateColumn Width="40">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="/src/view.png" Cursor="Hand" MouseDown="PreviewSellectedMedicineGrid" HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-        */
-
 
     }
 }

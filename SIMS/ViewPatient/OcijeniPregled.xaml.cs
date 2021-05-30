@@ -39,10 +39,10 @@ namespace SIMS.PacijentGUI
 
         private void Posalji_Click(object sender, RoutedEventArgs e)
         {
-            anketaLekara.Komentar = KomentarPregleda.Text;
+            anketaLekara.Comment = KomentarPregleda.Text;
             anketaLekara.Grade = BasicRatingBar.Value;
             anketaLekara.Appointment.Serialize = false;
-            anketaLekara.IdAnkete = anketaLekara.Appointment.AppointmentID;
+            anketaLekara.SurveyID = anketaLekara.Appointment.AppointmentID;
             anketaLekara.IdVlasnika = anketaLekara.Appointment.Patient.Jmbg;
             anketaLekara.DoctorId = anketaLekara.Appointment.Doctor.Jmbg;
             new DoctorSurveyFileRepository().Save(anketaLekara);

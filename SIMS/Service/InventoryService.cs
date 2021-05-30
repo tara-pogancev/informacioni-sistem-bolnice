@@ -1,6 +1,7 @@
 ﻿using SIMS.Daemon.PremestajOpreme;
 using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.InventoryRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;

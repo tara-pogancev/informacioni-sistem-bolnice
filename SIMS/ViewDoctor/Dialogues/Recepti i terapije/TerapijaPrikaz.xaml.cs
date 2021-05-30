@@ -15,9 +15,9 @@ namespace SIMS.LekarGUI.Dialogues.Recepti_i_terapije
     /// <summary>
     /// Interaction logic for TerapijaPrikaz.xaml
     /// </summary>
-    public partial class TerapijaPrikaz : Window
+    public partial class TherapyView : Window
     {
-        public TerapijaPrikaz()
+        public TherapyView()
         {
             InitializeComponent();
         }

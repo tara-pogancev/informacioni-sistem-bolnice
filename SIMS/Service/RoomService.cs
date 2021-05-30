@@ -1,6 +1,7 @@
 ﻿using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.InventoryMovingCommandRepo;
+using SIMS.Repositories.RoomRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace SIMS.Service
         private readonly IInventoryMovingCommandRepository inventoryMovingCommandRepository = new InventoryMovingCommandFileRepository();
         private readonly IRoomInventoryRepository roomInventoryRepository = new RoomInventoryFileRepository();
         private readonly IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
+		
+        public Room GetRoom(String key) => roomRepository.FindById(key);
+		
+        public List<Room> GetAllRooms() => roomRepository.GetAll();
+		
         public void CreateOrUpdate(Room room)
         {
             roomRepository.CreateOrUpdate(room);

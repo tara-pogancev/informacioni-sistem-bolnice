@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.RoomInventoryRepo
 {
     interface IRoomInventoryRepository:IGenericRepository<RoomInventory,String>
     {

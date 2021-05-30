@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
@@ -24,24 +26,20 @@ namespace SIMS.LekarGUI
     {
         public static DoctorPatientViewPage instance;
 
-        private static Doctor doctorUser;
 
         private const String defaultSearchText = "Pretraži...";
 
-        public ObservableCollection<Patient> PatientViewModel { get; set; }
+        public ObservableCollection<PatientDTO> PatientViewModel { get; set; }
 
-        public static DoctorPatientViewPage GetInstance(Doctor l)
-        {
-            if (instance == null)
-            {
-                doctorUser = l;
-                instance = new DoctorPatientViewPage();
-            }
-            return instance;
-        }
+        private PatientController patientController = new PatientController();
+
 
         public static DoctorPatientViewPage GetInstance()
         {
+            if (instance == null)
+            {
+                instance = new DoctorPatientViewPage();
+            }
             return instance;
         }
 
@@ -50,7 +48,7 @@ namespace SIMS.LekarGUI
             InitializeComponent();
 
             this.DataContext = this;
-            PatientViewModel = new ObservableCollection<Patient>(PatientFileRepository.Instance.GetAll());
+            PatientViewModel = new ObservableCollection<PatientDTO>(AllPatientsDTO());
 
         }
 
@@ -59,12 +57,18 @@ namespace SIMS.LekarGUI
             instance = null;
         }
 
+        private Patient GetSelectedPatient()
+        {
+            PatientDTO dto = (PatientDTO)dataGridPatients.SelectedItem;
+            return patientController.GetPatient(dto.Jmbg);
+        }
+
         private void ButtonAppointment(object sender, RoutedEventArgs e)
         {
             if (dataGridPatients.SelectedItem != null)
             {
-                Patient patient = (Patient)dataGridPatients.SelectedItem;
-                DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(patient);
+                Patient patient = GetSelectedPatient();
+                DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
             }
         }
 
@@ -72,9 +76,8 @@ namespace SIMS.LekarGUI
         {
             if (dataGridPatients.SelectedItem != null)
             {
-                Patient patient = (Patient)dataGridPatients.SelectedItem;
-                DoctorWriteReciept reciept = new DoctorWriteReciept(patient);
-                reciept.ShowDialog();
+                Patient patient = GetSelectedPatient();
+                new DoctorWriteReceipt(patient).ShowDialog();                
             }
         }
 
@@ -106,12 +109,9 @@ namespace SIMS.LekarGUI
             String searchText = searchBox.Text;
 
             if (searchText == "" || searchText == defaultSearchText)
-            {
-                resetView();
-            } else
-            {
+                ResetView();
+            else
                 FilterView(searchText);
-            }
 
         }
 
@@ -120,19 +120,14 @@ namespace SIMS.LekarGUI
             String searchText = searchBox.Text;
 
             if (searchText == "")
-            {
                 searchBox.Text = defaultSearchText;
-            }
         }
 
-        private void resetView()
+        private void ResetView()
         {
             PatientViewModel.Clear();
-
-            foreach(Patient patient in PatientFileRepository.Instance.GetAll())
-            {
-                PatientViewModel.Add(patient);
-            }
+            foreach (PatientDTO dto in AllPatientsDTO())
+                PatientViewModel.Add(dto);
         }
 
         private void FilterView(String filter)
@@ -140,18 +135,23 @@ namespace SIMS.LekarGUI
             PatientViewModel.Clear();
             filter = filter.ToUpper();
 
-            foreach (Patient patient in PatientFileRepository.Instance.GetAll())
+            foreach (PatientDTO dto in AllPatientsDTO())
             {
-                if ((patient.Jmbg.ToUpper()).Contains(filter) || (patient.FullName.ToUpper()).Contains(filter))
-                    PatientViewModel.Add(patient);
+                if ((dto.Jmbg.ToUpper()).Contains(filter) || (dto.FullName.ToUpper()).Contains(filter))
+                    PatientViewModel.Add(dto);
             }
+        }
+
+        private List<PatientDTO> AllPatientsDTO()
+        {
+            return patientController.GetDTOFromList(patientController.GetAllPatients());
         }
 
         private void ButtonReferral(object sender, RoutedEventArgs e)
         {
             if (dataGridPatients.SelectedItem != null)
             {
-                Patient p = (Patient)dataGridPatients.SelectedItem;
+                Patient p = GetSelectedPatient();
                 new WriteReferral(p).ShowDialog();
             }
         }

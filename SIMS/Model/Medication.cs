@@ -44,7 +44,7 @@ namespace SIMS.Model
                 return "Nije navedeno";
 
             foreach (var a in Components)
-                componentsString += a.Name;
+                componentsString += a.Name + ", ";
             return componentsString.Remove(componentsString.Length - 2);
         }
 
@@ -58,7 +58,30 @@ namespace SIMS.Model
                 else if (ApprovalStatus == MedicineApprovalStatus.Waiting)
                     return "Na čekanju";
                 else return "Odbijen";
+            }
+        }
 
+        public Boolean IncludesAllergen(Allergen allergen) 
+        {
+            foreach(Allergen currentAllergen in Components)
+            {
+                if (currentAllergen.ID == allergen.ID)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public void RemoveComponent(Allergen allergen)
+        {
+            for (int i = 0; i < Components.Count; i++)
+            {
+                Allergen currentComponent = Components[i];
+                if (currentComponent.ID == allergen.ID)
+                {
+                    Components.Remove(currentComponent);
+                    i--;
+                }
             }
         }
     }

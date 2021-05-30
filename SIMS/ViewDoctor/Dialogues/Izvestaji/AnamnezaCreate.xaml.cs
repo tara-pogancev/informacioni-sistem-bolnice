@@ -21,30 +21,28 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for AnamnezaTrening.xaml
     /// </summary>
-    public partial class AnamnezaCreate : Window
+    public partial class AnamnesisCreate : Window
     {
         private Appointment appointment;
-        private AppointmentDTO appointmentDTO;
         private AppointmentController appointmentController = new AppointmentController();
         private AnamnesisController anamnesisController = new AnamnesisController();
 
-        public AnamnezaCreate(Appointment appointment)
+        public AnamnesisCreate(Appointment appointment)
         {
             InitializeComponent();
 
             this.appointment = appointment;
-            appointmentDTO = appointmentController.GetDTO(appointment);
 
-            LabelDoctor.Content = "Doktor: " + appointmentDTO.DoctorName;
-            LabelDate.Content = appointmentDTO.AppointmentTypeAndDate;
+            LabelDoctor.Content = "Doktor: " + appointment.GetDoctorName();
+            LabelDate.Content = "Datum pregleda: " + appointment.GetAppointmentDate();
 
-            LabelPatient.Content = "Pacijent: " + appointmentDTO.PatientName;
-            LabelPatientDateOfBirth.Content = "Datum rođenja: " + appointmentDTO.Patient.GetDateOfBirthString();
+            LabelPatient.Content = "Pacijent: " + appointment.GetPatientName();
+            LabelPatientDateOfBirth.Content = "Datum rođenja: " + appointment.Patient.GetDateOfBirthString();
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
-            if (txt1.Text.Equals("") || txt2.Text.Equals("") || txt3.Text.Equals(""))
+            if (ValidateForm())
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
             else
             {
@@ -57,10 +55,14 @@ namespace SIMS.LekarGUI
 
                 this.Close();
                 DoctorUI.GetInstance().ChangeTab(3);
-                var window = new ActionsAfterReport(patient);
-                window.Show();
+                new ActionsAfterReport(patient).ShowDialog();
 
             }
+        }
+
+        private bool ValidateForm()
+        {
+            return txt1.Text.Equals("") || txt2.Text.Equals("") || txt3.Text.Equals("");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SIMS.Service;
 using SIMS.Model;
+using SIMS.DTO;
 
 namespace SIMS.Controller
 {
@@ -13,6 +14,16 @@ namespace SIMS.Controller
         {
             doctorService = new DoctorService();
         }
+
+        public List<Doctor> GetAllDoctors() => doctorService.GetAllDoctors();
+
+        public void UpdateDoctor(Doctor doctor) => doctorService.UpdateDoctor(doctor);
+
+        public void DeleteDoctor(Doctor doctor) => doctorService.DeleteDoctor(doctor);
+
+        public void SaveDoctor(Doctor doctor) => doctorService.SaveDoctor(doctor);
+
+        public Doctor GetDoctor(String key) => doctorService.GetDoctor(key);
 
         public List<Specialization> GetAvailableSpecialization()
         {
@@ -54,6 +65,20 @@ namespace SIMS.Controller
         public void RecalulateGrade(Doctor doctor)
         {
             doctorService.RecalulateGrade(doctor);
+        }
+
+        public List<DoctorDTO> GetAllDoctorsDTO()
+        {
+            return doctorService.GetAllDoctorsDTO();
+        }
+        public DoctorDTO GetDTO(Doctor doctor)
+        {
+            return doctorService.GetDTO(doctor);
+        }
+
+        public List<DoctorDTO> GetDTOFromList(List<Doctor> list)
+        {
+            return doctorService.GetDTOFromList(list);
         }
 
     }

@@ -17,6 +17,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.ViewSecretary;
+using SIMS.Controller;
+using SIMS.ViewPatient.ViewModel;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.ManagerRepo;
 
 namespace SIMS
 {
@@ -25,16 +30,26 @@ namespace SIMS
     /// </summary>
     public partial class MainWindow : Window
     {
+        private LastLoginController loginController = new LastLoginController();
+
         public MainWindow()
         {
             InitializeComponent();
-        }
 
+            if (loginController.CheckForLastLogged())
+                Login();
+
+        }
 
         private void Login()
         {
             String user = username.Text;
             String pass = password.Password;
+
+            if (loginController.CheckForLastLogged())
+            {
+                SetupLastLoggedUser(out user, out pass);
+            }
 
             //impelemntacija za pacijenta
             Patient pacijent = PatientFileRepository.Instance.ReadUser(user);
@@ -47,6 +62,8 @@ namespace SIMS
                     o.Show();
                     return;
                 }
+
+                HomePageViewModel homePageViewModel = new HomePageViewModel(pacijent);
                 PocetnaStranica pocetnaStranica=PocetnaStranica.getInstance();
                 pocetnaStranica.Pacijent = pacijent;
                 pocetnaStranica.kreirajAnketu();
@@ -56,13 +73,11 @@ namespace SIMS
                 return;
             }
 
-
             //impelemntacija za upravnika
             Manager upravnik = ManagerFileRepository.Instance.ReadUser(user);
             if (upravnik != null && pass.Equals(upravnik.Password))
             {
-                UpravnikWindow.Instance.Show();
-                this.Close();
+                ManagerLogin();
                 return;
             }
 
@@ -70,9 +85,7 @@ namespace SIMS
             Doctor lekar = DoctorFileRepository.Instance.ReadUser(user);
             if (lekar != null && pass.Equals(lekar.Password))
             {
-                DoctorUI lekarUI = DoctorUI.GetInstance(lekar);
-                lekarUI.Show();
-                this.Close();
+                DoctorLogin(lekar);
                 return;
             }
 
@@ -80,54 +93,79 @@ namespace SIMS
             Secretary sekretar = SecretaryFileRepository.Instance.ReadUser(user);
             if (sekretar != null && pass.Equals(sekretar.Password))
             {
-                    SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
-                    sekretarUI.Show();
-                    this.Close();
-                    return;
+                SecretaryLogin(sekretar);
+                return;
             }
-        
+
             MessageBox.Show("Pogrešno korisničko ime ili pogrešna lozinka!");
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SetupLastLoggedUser(out string user, out string pass)
+        {
+            LoggedUser lastLogged = loginController.GetLastLogged();
+            user = lastLogged.Username;
+            pass = lastLogged.Password;
+        }
+
+        private void ManagerLogin()
+        {
+            UpravnikWindow.Instance.Show();
+            this.Close();
+        }
+
+        private void DoctorLogin(Doctor lekar)
+        {
+            DoctorUI lekarUI = DoctorUI.GetInstance(lekar);
+            lekarUI.Show();
+            this.Close();
+        }
+
+        private void SecretaryLogin(Secretary sekretar)
+        {
+            SecretaryUI sekretarUI = SecretaryUI.GetInstance(sekretar);
+            sekretarUI.Show();
+            this.Close();
+        }
+
+        private void ButtonLogin(object sender, RoutedEventArgs e)
         {
             Login();
         }
 
-        public void Username_GotFocus(object sender, RoutedEventArgs e)
+        public void UsernameGotFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
-            tb.GotFocus -= Username_GotFocus;
+            tb.GotFocus -= UsernameGotFocus;
 
         }
 
-        private void Pass_GotFocus(object sender, RoutedEventArgs e)
+        private void PassGotFocus(object sender, RoutedEventArgs e)
         {
             PasswordBox pb = (PasswordBox)sender;
             pb.Password = string.Empty;
-            pb.GotFocus -= Pass_GotFocus;
+            pb.GotFocus -= PassGotFocus;
         }
 
-        private void Username_LostFocus(object sender, RoutedEventArgs e)
+        private void UsernameLostFocus(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
             if (tb.Text == string.Empty)
             {
                 tb.Text = "Username";
             }
-            tb.GotFocus -= Username_GotFocus;
+            tb.GotFocus -= UsernameGotFocus;
         }
 
-        private void Pass_LostFocus(object sender, RoutedEventArgs e)
+        private void PassLostFocus(object sender, RoutedEventArgs e)
         {
             PasswordBox pb = (PasswordBox)sender;
             if (pb.Password == string.Empty)
             {
                 pb.Password = "jenova";
             }
-            pb.GotFocus -= Pass_GotFocus;
+            pb.GotFocus -= PassGotFocus;
         }
 
         private void OnKeyDownHandler(object sender, KeyEventArgs e)

@@ -27,28 +27,13 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
-            this.schedule.AllowEditing = false;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("sr-SR");
-            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("sr-SR");
-            this.DataContext = PatientTherapyViewModel.Instance;
+            
 
 
 
         }
 
-        private void Schedule_AppointmentEditorOpening(object sender, AppointmentEditorOpeningEventArgs e)
-        {
-            //To handle the default appointment editior window by setting the e.Cancel value as true.
-            e.Cancel = true;
-            if (e.Appointment != null)
-            {
-                //Display the custom appointment editor window to edit the appointment
-            }
-            else
-            {
-                //Display the custom appointment editor window to add new appointment
-            }
-        }
+        
 
     }
 }

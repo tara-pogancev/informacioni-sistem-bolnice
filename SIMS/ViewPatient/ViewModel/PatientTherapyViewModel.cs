@@ -31,7 +31,7 @@ namespace SIMS.PacijentGUI.ViewModel
         public bool AllDay { get; set; }
     }
 
-    public class PatientTherapyViewModel:ViewModel
+    public class PatientTherapyViewModel:ViewModelPatient
     {
         public ObservableCollection<Meeting> Meetings { get; set; }
         List<string> eventNameCollection;
@@ -59,7 +59,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
         #endregion
 
-        private PatientTherapyViewModel()
+        public PatientTherapyViewModel()
         {
             
             Meetings = new ObservableCollection<Meeting>();

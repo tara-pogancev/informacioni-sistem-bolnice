@@ -25,5 +25,7 @@ namespace SIMS.Service
         public void SaveDoctorSurvey(DoctorSurvey doctorSurvey)=>doctorSurveyRepository.Save(doctorSurvey);
 
         public DoctorSurvey GetDoctorSurvey(String key) => doctorSurveyRepository.FindById(key);
+
+        public List<DoctorSurvey> GetSurveysForDocutr(Doctor doctor) => doctorSurveyRepository.GetSurveysForDoctor(doctor);
     }
 }

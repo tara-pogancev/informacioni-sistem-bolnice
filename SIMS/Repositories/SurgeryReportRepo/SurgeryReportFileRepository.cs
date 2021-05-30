@@ -1,16 +1,17 @@
-﻿using SIMS.Repositories.SecretaryRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.SurgeryReportRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Model
+namespace SIMS.Repositories.SurgeryReportRepo
 {
     public class SurgeryReportFileRepository : GenericFileRepository<string, SurgeryReport, SurgeryReportFileRepository>,ISurgeryReportRepository
     {
         protected override string getKey(SurgeryReport entity)
         {
-            return entity.OperacijaKey;
+            return entity.ReportID;
         }
 
         protected override string getPath()
@@ -23,15 +24,13 @@ namespace SIMS.Model
             throw new NotImplementedException();
         }
 
-        public List<SurgeryReport> ReadByPatient(Patient p)
+        public List<SurgeryReport> ReadByPatient(Patient patient)
         {
             List<SurgeryReport> retVal = new List<SurgeryReport>();
 
             foreach (SurgeryReport a in this.GetAll())
             {
-                a.InitData();
-
-                if (a.Operacija.Patient.Jmbg == p.Jmbg)
+                if (a.GetSurgery().Patient.Jmbg == patient.Jmbg)
                     retVal.Add(a);
             }
 

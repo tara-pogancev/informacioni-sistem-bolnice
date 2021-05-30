@@ -16,77 +16,64 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for LekarDashboard.xaml
     /// </summary>
-    public partial class LekarDashboard : Page
+    public partial class DoctorDashboard : Page
     {
-        private static Doctor lekarUser;
+        private static Doctor doctorUser;
+        private AppointmentController appointmentController = new AppointmentController();
 
-        public LekarDashboard(Doctor l)
+        public DoctorDashboard(Doctor doctor)
         {
-            lekarUser = l;
-
+            doctorUser = doctor;
             InitializeComponent();
 
             this.DataContext = this;
 
-            WelcomeMSG.Content = lekarUser.Name + ", dobro došli!";
-            refresh();
+            WelcomeMSG.Content = doctorUser.Name + ", dobro došli!";
+            Refresh();
 
         }
 
-        public void refresh()
+        public void Refresh()
         {
-            setAktivanTermin();
+            SetActiveAppointment();
             RefreshGraphs1();
             RefreshGraphs2();
         }
 
-        public void setAktivanTermin()
+        public void SetActiveAppointment()
         {
-            //TODO uraditi varijaciju
-            List<Appointment> termini = AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser);
+            Appointment currentAppointment = appointmentController.CheckIfActiveAppointment(doctorUser);
 
-            foreach (Appointment t in termini)
-            {
-                if (t.GetIfCurrent() && t.GetIfRecorded() == false)
-                {
-                    AktivniTermin.Content = LDBAktivanTermin.GetInstance(t);
-                    return;
-                }
-            }
+            if (currentAppointment == null)
+                AktivniTermin.Content = LDBNemaTermin.GetInstance();
+            else AktivniTermin.Content = LDBActiveAppointment.GetInstance(currentAppointment);
 
-            AktivniTermin.Content = LDBNemaTermin.GetInstance();
         }
 
-        private void Button_Termini(object sender, RoutedEventArgs e)
+        private void ButtonAppointments(object sender, RoutedEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(1);
         }
 
-        private void Button_Hitno(object sender, RoutedEventArgs e)
+        private void ButtonNotifications(object sender, RoutedEventArgs e)
         {
-            //TODO
+            DoctorUI.GetInstance().ChangeTab(6);
         }
 
         private void RefreshGraphs1()
         {
-            List<Appointment> termini = AppointmentFileRepository.Instance.GetDoctorAppointments(lekarUser);
+            int recorded = appointmentController.GetRecordedAppointmentsByDoctor(doctorUser);
+            int total = appointmentController.GetAppointmentsByDoctor(doctorUser).Count;
 
-            int evidentirani = 0;
-            int ukupno = termini.Count;
-
-            foreach (Appointment t in termini)
-                if (t.GetIfRecorded())
-                    evidentirani++;
-
-            GraphEvidentirani.To = ukupno;
-            GraphEvidentirani.Value = evidentirani;
-
+            GraphEvidentirani.To = total;
+            GraphEvidentirani.Value = recorded;
         }
 
         private void RefreshGraphs2()
@@ -96,14 +83,14 @@ namespace SIMS.LekarGUI
                 new LineSeries
                 {
                     Title = "Pregledi",
-                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.examination, lekarUser)),
+                    Values = new ChartValues<int>(appointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.examination, doctorUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(87,214,180))
 
         },
                 new LineSeries
                 {
                     Title = "Operacije",
-                    Values = new ChartValues<int>(AppointmentFileRepository.Instance.GetAppointmentsCountForCurrentWeek(AppointmentType.surgery, lekarUser)),
+                    Values = new ChartValues<int>(appointmentController.GetAppointmentsCountForCurrentWeek(AppointmentType.surgery, doctorUser)),
                     Stroke = new SolidColorBrush(Color.FromRgb(226,104,104))
 
                 }
@@ -114,7 +101,6 @@ namespace SIMS.LekarGUI
             DataContext = this;
 
         }
-
 
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }

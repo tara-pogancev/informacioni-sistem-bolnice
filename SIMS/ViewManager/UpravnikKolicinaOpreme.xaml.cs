@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.Repositories.RoomInventoryRepo;
 
 namespace SIMS.UpravnikGUI
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
+using SIMS.Repositories.RoomInventoryRepo;
 using SIMS.Repositories.SecretaryRepo;
 
 namespace SIMS.Model

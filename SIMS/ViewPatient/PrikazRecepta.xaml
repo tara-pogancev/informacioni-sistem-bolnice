@@ -1,0 +1,53 @@
+﻿<Page x:Class="SIMS.ViewPatient.PrikazRecepta"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.ViewPatient"
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="500"
+      Title="PrikazRecepta">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Content="{Binding Receipt.MedicineName}"></Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label FontSize="17" Content="Doktor:"></Label>
+                 <Label  FontSize="17" Content="{Binding Receipt.Doctor,Converter={cvt:UserFullNameConverter}}"></Label>
+            </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label FontSize="17">Datum:</Label>
+                    <Label FontSize="17" Content="{Binding Receipt.Date,StringFormat=dd.MM.yyyy.}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label FontSize="17">Kolicina leka:</Label>
+                    <Label FontSize="17" Content="{Binding Receipt.Amount}"/>
+                </StackPanel>
+                <Label Content="Detalji:" FontSize="18" HorizontalAlignment="Center"></Label>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Border BorderThickness="1" BorderBrush="Black" CornerRadius="35" Margin="15">
+                <TextBlock Margin="15" Text="{Binding Receipt.Diagnosis}" Foreground="White" TextWrapping="Wrap"></TextBlock>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

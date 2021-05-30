@@ -6,7 +6,7 @@ using SIMS.Daemon;
 using SIMS.Daemon.PremestajOpreme;
 using SIMS.Repositories.InventoryMovingCommandRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.InventoryMovingCommandRepo
 {
     class InventoryMovingCommandFileRepository : GenericFileRepository<string, InventoryMovingCommand, InventoryMovingCommandFileRepository>,IInventoryMovingCommandRepository
     {

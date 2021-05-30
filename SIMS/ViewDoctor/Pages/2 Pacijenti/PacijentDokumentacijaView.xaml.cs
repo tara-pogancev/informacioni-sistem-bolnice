@@ -15,137 +15,140 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
 using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
+using SIMS.DTO;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI
 {
     /// <summary>
     /// Interaction logic for PacijentKartonView.xaml
     /// </summary>
-    public partial class PacijentDokumentacijaView : Page
+    public partial class PatientDocumentationView : Page
     {
-        private Patient pacijentProfile;
+        private Patient patient;
 
-        public ObservableCollection<Anamnesis> PregledView { get; set; }
-        public ObservableCollection<SurgeryReport> OperacijaIzvestajView { get; set; }
-        public ObservableCollection<Receipt> ReceptView { get; set; }
+        public ObservableCollection<AnamnesisDTO> AnamnesisViewModel { get; set; }
+        public ObservableCollection<SurgeryReportDTO> SurgeryReportViewModel { get; set; }
+        public ObservableCollection<ReceiptDTO> ReceiptViewModel { get; set; }
 
+        private AnamnesisController anamnesisController = new AnamnesisController();
+        private SurgeryReportController surgeryReportController = new SurgeryReportController();
+        private ReceiptController receiptController = new ReceiptController();
 
-        public PacijentDokumentacijaView(Patient p)
+        public PatientDocumentationView(Patient patient)
         {
             InitializeComponent();
 
-            pacijentProfile = p;
-
+            this.patient = patient;
             this.DataContext = this;
-            initializeData();
+            InitializeData();
 
-            Ime_Top.Content = pacijentProfile.FullName;
-            Label_Ime.Content = pacijentProfile.FullName;
+            LabelNameTop.Content = this.patient.FullName;
+            LabelName.Content = this.patient.FullName;
 
         }
 
-        private void initializeData()
+        private void InitializeData()
         {
-            PregledView = new ObservableCollection<Anamnesis>(AnamnesisFileRepository.Instance.ReadByPatient(pacijentProfile));
-            ReceptView = new ObservableCollection<Receipt>(ReceiptFileRepository.Instance.ReadByPatient(pacijentProfile));
-            OperacijaIzvestajView = new ObservableCollection<SurgeryReport>(SurgeryReportFileRepository.Instance.ReadByPatient(pacijentProfile));
-
-            foreach (Anamnesis anamneza in PregledView)
-            {
-                anamneza.InitData();
-            }
-
-            foreach (Receipt recept in ReceptView)
-            {
-                recept.InitData();
-            }
-
-            foreach (SurgeryReport operacijaIzvestaj in OperacijaIzvestajView)
-            {
-                operacijaIzvestaj.InitData();
-            }
-
+            AnamnesisViewModel = new ObservableCollection<AnamnesisDTO>(anamnesisController.GetDTOFromList(anamnesisController.GetAnamnesisByPatient(patient)));
+            ReceiptViewModel = new ObservableCollection<ReceiptDTO>(receiptController.GetDTOFromList(receiptController.ReadByPatient(patient)));
+            SurgeryReportViewModel = new ObservableCollection<SurgeryReportDTO>(surgeryReportController.GetDTOFromList(surgeryReportController.ReadByPatient(patient)));
         }
 
-        private void Button_Pacijenti(object sender, MouseButtonEventArgs e)
+        private void ButtonPatientsView(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(2);
         }
 
-        private void Button_Home(object sender, MouseButtonEventArgs e)
+        private void ButtonHome(object sender, MouseButtonEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(0);
         }
 
-        private void Button_PacijentKarton(object sender, MouseButtonEventArgs e)
+        private void ButtonPatientHealthRecord(object sender, MouseButtonEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PacijentKartonView.GetInstance(pacijentProfile);
+            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
         }
 
-        private void Button_Pročitaj(object sender, RoutedEventArgs e)
+        private void ButtonRead(object sender, RoutedEventArgs e)
         {
             if (TabbedPanel.SelectedIndex == 0)
             {
-                ReadPregled();
+                ReadAnamnesis();
             }
             else if (TabbedPanel.SelectedIndex == 1)
             {
-                ReadOperacija();
+                ReadSurgeryReport();
             }
             else if (TabbedPanel.SelectedIndex == 2)
             {
-                ReadRecept();
+                ReadReceipt();
             }
         }
 
-        private void Button_GenerisanjeIzvestaja(object sender, RoutedEventArgs e)
+        private void ButtonGenerateReportFile(object sender, RoutedEventArgs e)
         {
             //TODO
         }
 
-        private void Button_ViewRecept(object sender, MouseButtonEventArgs e)
+        private void ButtonViewReceipt(object sender, MouseButtonEventArgs e)
         {
-            ReadRecept();
+            ReadReceipt();
         }
 
         private void Button_ViewPregled(object sender, MouseButtonEventArgs e)
         {
-            ReadPregled();
+            ReadAnamnesis();
         }
 
-        private void ReadRecept()
+        private void ButtonReadSurgeryReport(object sender, MouseButtonEventArgs e)
         {
-            if (dataGridRecepti.SelectedItem != null)
+            ReadSurgeryReport();
+        }
+
+        private void ReadReceipt()
+        {
+            if (dataGridReceipts.SelectedItem != null)
             {
-                Receipt sellectedRecept = (Receipt)dataGridRecepti.SelectedItem;
-                PrikazRecepta window = new PrikazRecepta(sellectedRecept);
-                window.Show();
+                Receipt selectedReceipt = GetSelectedReceipt();
+                new PrikazRecepta(selectedReceipt).Show();
             }
         }
 
-        private void ReadPregled()
+        private void ReadAnamnesis()
         {
-            if (dataGridPregledi.SelectedItem != null)
+            if (dataGridAnamnesis.SelectedItem != null)
             {
-                Anamnesis sellectedAnamneza = (Anamnesis)dataGridPregledi.SelectedItem;
-                AnamnesisRead window = new AnamnesisRead(sellectedAnamneza);
-                window.Show();
+                Anamnesis selectedAnamnesis = GetSelectedAnamnesis();
+                new AnamnesisRead(selectedAnamnesis).Show();
             }
         }
 
-        private void ReadOperacija()
+        private void ReadSurgeryReport()
         {
-            if (dataGridOperacije.SelectedItem != null)
+            if (dataGridSurgery.SelectedItem != null)
             {
-                SurgeryReport sellectedIzvestaj = (SurgeryReport)dataGridOperacije.SelectedItem;
-                SurgeryReportRead window = new SurgeryReportRead(sellectedIzvestaj);
-                window.Show();
+                SurgeryReport selectedReport = GetSelectedReport();
+                new SurgeryReportRead(selectedReport).Show();
             }
         }
 
-        private void Button_ViewOperacija(object sender, MouseButtonEventArgs e)
+        private Anamnesis GetSelectedAnamnesis()
         {
-            ReadOperacija();
+            AnamnesisDTO dto = (AnamnesisDTO)dataGridAnamnesis.SelectedItem;
+            return anamnesisController.GetAnamnesis(dto.AnamnesisID);
+        }
+
+        private Receipt GetSelectedReceipt()
+        {
+            ReceiptDTO dto = (ReceiptDTO)dataGridReceipts.SelectedItem;
+            return receiptController.GetReceipt(dto.Receipt.RecieptID);
+        }
+
+        private SurgeryReport GetSelectedReport()
+        {
+            SurgeryReportDTO dto = (SurgeryReportDTO)dataGridSurgery.SelectedItem;
+            return surgeryReportController.GetReport(dto.ReportID);
         }
     }
 }

@@ -5,13 +5,33 @@
     "IsBanned": false,
     "Lbo": "123",
     "Guest": false,
-    "Allergens": [
-      "a2",
-      "a7"
-    ],
+    "Allergens": [],
     "DateOfBirth": "1999-03-05T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Đorđe",
     "LastName": "Krsmanović",
     "Jmbg": "4865453131",
@@ -28,12 +48,33 @@
     "IsBanned": true,
     "Lbo": "45645",
     "Guest": false,
-    "Allergens": [
-      ""
-    ],
+    "Allergens": [],
     "DateOfBirth": "1999-03-05T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Miha",
     "LastName": "Mihajlo",
     "Jmbg": "12645323206",
@@ -50,12 +91,33 @@
     "IsBanned": false,
     "Lbo": "123456",
     "Guest": false,
-    "Allergens": [
-      "a1"
-    ],
+    "Allergens": [],
     "DateOfBirth": "1977-12-12T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Petar",
     "LastName": "Petrović",
     "Jmbg": "12121977802342",
@@ -66,16 +128,39 @@
     "Address": null,
     "Serialize": true
   },
-  "121": {
+  "1445857": {
     "PatientGender": 1,
     "BloodType": 3,
     "IsBanned": false,
-    "Lbo": "123456",
+    "Lbo": "1558446",
     "Guest": false,
     "Allergens": [],
     "DateOfBirth": "1985-11-10T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Milena",
     "LastName": "Zorić",
     "Jmbg": "1445857",

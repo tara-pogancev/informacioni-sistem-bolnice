@@ -13,46 +13,45 @@ using System.Windows.Shapes;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.LekarGUI.Dialogues.Izvestaji;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Pages
 {
     /// <summary>
     /// Interaction logic for LDBAktivanTermin.xaml
     /// </summary>
-    public partial class LDBAktivanTermin : Page
+    public partial class LDBActiveAppointment : Page
     {
-        public static LDBAktivanTermin instance;
-        private static Appointment aktivanTermin;
+        public static LDBActiveAppointment instance;
+        private static Appointment activeAppointment;
 
-        public static LDBAktivanTermin GetInstance(Appointment t)
+        public static LDBActiveAppointment GetInstance(Appointment appointment)
         {
             if (instance == null)
             {
-                instance = new LDBAktivanTermin();
-                aktivanTermin = t;
+                instance = new LDBActiveAppointment();
+                activeAppointment = appointment;
             }
             return instance;
         }
 
-        public LDBAktivanTermin()
+        public LDBActiveAppointment()
         {
             InitializeComponent();
         }
 
-        private void Evidentiraj_Button(object sender, RoutedEventArgs e)
+        private void ButtonRecord(object sender, RoutedEventArgs e)
         {
             DoctorUI.GetInstance().ChangeTab(3);
+            ShowRecordDialog();
+        }
 
-            if (aktivanTermin.Type == AppointmentType.examination)
-            {
-                AnamnezaCreate a = new AnamnezaCreate(aktivanTermin);
-                a.ShowDialog();
-            }
+        private static void ShowRecordDialog()
+        {
+            if (activeAppointment.Type == AppointmentType.examination)
+                new AnamnesisCreate(activeAppointment).ShowDialog();
             else
-            {
-                OperacijaIzvestajCreate o = new OperacijaIzvestajCreate(aktivanTermin);
-                o.ShowDialog();
-            }
+                new SurgeryReportCreate(activeAppointment).ShowDialog();
         }
     }
 }

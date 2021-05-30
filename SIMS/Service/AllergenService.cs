@@ -1,4 +1,5 @@
-﻿using SIMS.Model;
+﻿using SIMS.DTO;
+using SIMS.Model;
 using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;

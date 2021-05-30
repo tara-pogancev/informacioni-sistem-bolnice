@@ -28,7 +28,7 @@ namespace SIMS.Model
         }
 
         [JsonIgnore]
-        public string VremeStringDetailed
+        public string DateAndTimeString
         {
             get
             {
@@ -37,13 +37,13 @@ namespace SIMS.Model
         }
 
         [JsonIgnore]
-        public String AutorUppercase
+        public String AuthorUppercase
         {
             get { return Author.ToUpper(); }
         }
 
-
-        public String VremeString
+        [JsonIgnore]
+        public String VaryingTimeString
         {
             get 
             {
@@ -54,17 +54,17 @@ namespace SIMS.Model
             }
         }
 
-        public bool ContainsTarget(string key)
+        public bool ContainsTarget(string target)
         {
             foreach (string s in Target)
             {
-                if (s.Equals(key))
+                if (s.Equals(target))
                     return true;
             }
             return false;
         }
 
-        public Boolean IsPast()
+        public Boolean GetIfPast()
         {
             DateTime currentTime = DateTime.Now;
             if (currentTime >= Time)

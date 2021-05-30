@@ -6,13 +6,18 @@ using System.Text;
 
 namespace SIMS.Controller
 {
-    class RoomController
+    public class RoomController
     {
         private readonly RoomService roomService = new RoomService();
+
+        public List<Room> GetAllRooms() => roomService.GetAllRooms();
+
+        public Room GetRoom(String key) => roomService.GetRoom(key);
         public void CreateOrUpdate(Room room)
         {
             roomService.CreateOrUpdate(room);
         }
+
         public void Delete(string Number)
         {
             roomService.Delete(Number);

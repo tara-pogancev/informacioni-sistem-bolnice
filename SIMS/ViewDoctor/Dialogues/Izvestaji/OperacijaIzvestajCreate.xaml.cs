@@ -12,17 +12,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Repositories.SurgeryReportRepo;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {
     /// <summary>
     /// Interaction logic for OperacijaCreate.xaml
     /// </summary>
-    public partial class OperacijaIzvestajCreate : Window
+    public partial class SurgeryReportCreate : Window
     {
         private Appointment operation;
 
-        public OperacijaIzvestajCreate(Appointment operationPar)
+        public SurgeryReportCreate(Appointment operationPar)
         {
             InitializeComponent();
             operation = operationPar;
@@ -39,27 +40,28 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
         private void Button_Accept(object sender, RoutedEventArgs e)
         {
-            if (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""))
+            if (ValidateForm())
             {
                 Patient patient = operation.Patient;
 
-                SurgeryReport o = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
-                o.Operacija.Doctor.Serialize = false;
-                o.Operacija.Patient.Serialize = false;
-                o.Operacija.Serialize = false;
-                SurgeryReportFileRepository.Instance.Save(o);
+                SurgeryReport report = new SurgeryReport(operation, OperationName.Text, OperationDescription.Text);
+                SurgeryReportFileRepository.Instance.Save(report);
 
                 this.Close();
                 DoctorUI.GetInstance().ChangeTab(3);
-                var window = new ActionsAfterReport(patient);
-                window.Show();
+                new ActionsAfterReport(patient).ShowDialog();
 
-
-            } else
+            }
+            else
             {
                 MessageBox.Show("Molimo popunite sva polja!");
-            }       
+            }
 
+        }
+
+        private bool ValidateForm()
+        {
+            return (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""));
         }
     }
 }

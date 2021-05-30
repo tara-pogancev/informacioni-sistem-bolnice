@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.ReferralRepo;
+using SIMS.Model;
 
-namespace SIMS.Model
+namespace SIMS.Repositories.ReferralRepo
 {
     public class ReferralFileRepository : GenericFileRepository<string, Referral, ReferralFileRepository>,IReferralRepository
     {

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 {
@@ -20,8 +21,10 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     /// </summary>
     public partial class MedicineApproval : Window
     {
-        public ObservableCollection<Medication> MedicineView { get; set; }
+        public ObservableCollection<Medication> MedicineViewModel { get; set; }
         public List<Medication> MedicineChanges { get; set; }
+
+        private MedicineController medicineController = new MedicineController();
 
         public MedicineApproval()
         {
@@ -29,37 +32,31 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             DataContext = this;
 
-            MedicineView = new ObservableCollection<Medication>();
-            MedicineChanges = new List<Medication>(MedicationFileRepository.Instance.GetMedicineWaitingForApproval());
+            MedicineViewModel = new ObservableCollection<Medication>();
+            MedicineChanges = new List<Medication>(medicineController.GetMedicineWaitingForApproval());
             refresh();
 
         }
 
         private void refresh()
         {
-            MedicineView.Clear();
+            MedicineViewModel.Clear();
             foreach (Medication medicine in MedicineChanges)
-            {
-                MedicineView.Add(medicine);
-            }
+                MedicineViewModel.Add(medicine);
         }
 
         private void ApproveSellecetedMedicine(object sender, RoutedEventArgs e)
         {
-            foreach (Medication medicine in getSellectedItems())
-            {
+            foreach (Medication medicine in GetSellectedItems())
                 medicine.ApprovalStatus = MedicineApprovalStatus.Accepted;
-            }
 
             refresh();
         }
 
         private void RejectSellecetedMedicine(object sender, RoutedEventArgs e)
         {
-            foreach (Medication medicine in getSellectedItems())
-            {
+            foreach (Medication medicine in GetSellectedItems())
                 medicine.ApprovalStatus = MedicineApprovalStatus.Denied;
-            }
 
             refresh();
         }
@@ -67,33 +64,22 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         private void PreviewSellectedMedicine()
         {
             if (DataGridMedicine.SelectedItem != null)
-            {
-                MedicinePreview window = new MedicinePreview((Medication)DataGridMedicine.SelectedItem);
-                window.Show();
-            }
+                new MedicinePreview((Medication)DataGridMedicine.SelectedItem).Show();
         }
 
         private void AcceptChanges(object sender, RoutedEventArgs e)
         {
-            foreach (Medication medicine in MedicineView)
-            {
-                MedicationFileRepository.Instance.Update(medicine);
-            }
+            foreach (Medication medicine in MedicineViewModel)
+                medicineController.UpdateMedicine(medicine);
 
             if (CheckIfMedicineRejected())
-            {
                 if (MessageBox.Show("Promene uspešno sačuvane! Da li želite da napišete poruku o odbijenim lekovima?", "Napisati poruku?",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    var window = new MedicineDenialWriteMessage();
-                    window.Show();
-                }
-            }
+                        new MedicineDenialWriteMessage().Show();      
+            
             else
-            {
                 MessageBox.Show("Izmene uspešno sačuvane!");
-            }
-
+            
             this.Close();
         }
 
@@ -107,29 +93,23 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             PreviewSellectedMedicine();
         }
 
-        private List<Medication> getSellectedItems()
+        private List<Medication> GetSellectedItems()
         {
             var selectedItems = new List<Medication>();
 
             foreach (Medication currentMedicine in DataGridMedicine.ItemsSource)
-            {
                 if (((CheckBox)checkedMedicine.GetCellContent(currentMedicine)).IsChecked == true)
-                {
                     selectedItems.Add(currentMedicine);
-                }
-            }
-
+            
             return selectedItems;
         }
 
         private Boolean CheckIfMedicineRejected()
         {
-            foreach (Medication medicine in MedicineView)
-            {
+            foreach (Medication medicine in MedicineViewModel)
                 if (medicine.ApprovalStatus == MedicineApprovalStatus.Denied)
                     return true;
-            }
-
+            
             return false;
         }
 

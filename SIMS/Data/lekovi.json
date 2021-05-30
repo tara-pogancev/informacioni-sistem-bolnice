@@ -2,42 +2,44 @@
   "l1": {
     "MedicineID": "l1",
     "MedicineName": "Katopil",
-    "Components": [
-      "a3",
-      "a5"
-    ],
+    "Components": [],
     "IDSubstitution": "l4",
     "ApprovalStatus": 2
   },
   "l2": {
     "MedicineID": "l2",
     "MedicineName": "Brufen 200",
-    "Components": [
-      "a6",
-      "a1"
-    ],
+    "Components": [],
     "IDSubstitution": "l6",
-    "ApprovalStatus": 0
+    "ApprovalStatus": 2
   },
   "l3": {
     "MedicineID": "l3",
     "MedicineName": "Prilenap",
     "Components": [
-      "a6",
-      "a10"
+      {
+        "ID": "a2",
+        "Name": "Laktoza",
+        "Serialize": false
+      },
+      {
+        "ID": "a7",
+        "Name": "Titan-dioksid",
+        "Serialize": false
+      }
     ],
-    "IDSubstitution": "l5",
+    "IDSubstitution": "l4",
     "ApprovalStatus": 0
   },
   "l4": {
     "MedicineID": "l4",
     "MedicineName": "Vivace",
     "Components": [
-      "a2",
-      "a3",
-      "a4",
-      "a8",
-      "a9"
+      {
+        "ID": "a16",
+        "Name": "Povidon 90",
+        "Serialize": false
+      }
     ],
     "IDSubstitution": "l5",
     "ApprovalStatus": 0
@@ -46,19 +48,35 @@
     "MedicineID": "l5",
     "MedicineName": "Fervex",
     "Components": [
-      "a2"
+      {
+        "ID": "a15",
+        "Name": "Skrob",
+        "Serialize": false
+      },
+      {
+        "ID": "a11",
+        "Name": "Natrijum-laurilsulfat",
+        "Serialize": false
+      },
+      {
+        "ID": "a13",
+        "Name": "Gestoden",
+        "Serialize": false
+      },
+      {
+        "ID": "a10",
+        "Name": "Silicijum-dioksid",
+        "Serialize": false
+      }
     ],
-    "IDSubstitution": "l3",
+    "IDSubstitution": "l2",
     "ApprovalStatus": 0
   },
   "l6": {
     "MedicineID": "l6",
     "MedicineName": "Analgin",
-    "Components": [
-      "a9",
-      "a10"
-    ],
+    "Components": [],
     "IDSubstitution": "l2",
-    "ApprovalStatus": 2
+    "ApprovalStatus": 0
   }
 }
