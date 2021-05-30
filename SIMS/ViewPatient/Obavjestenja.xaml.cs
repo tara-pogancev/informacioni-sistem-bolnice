@@ -69,7 +69,7 @@ namespace SIMS.PacijentGUI
             pacijent = PocetnaStranica.getInstance().Pacijent;
             obavjestenja = new List<Notification>();
             NotificationFileRepository obavestenjaStorage = new NotificationFileRepository();
-            obavjestenja = obavestenjaStorage.ReadByUser(pacijent.Jmbg);
+            obavjestenja = obavestenjaStorage.ReadPastNotificationsByUser(pacijent.Jmbg);
             
             obavjestenja.Reverse();
             //obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);

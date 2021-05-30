@@ -8,18 +8,9 @@
       "0603850721311",
       "064865071221",
       "All"
-    ]
-  },
-  "Sekretarijat210525174346027694": {
-    "Author": "Sekretarijat",
-    "Time": "2021-05-25T17:43:46.0276943+02:00",
-    "Content": "Tehnički sam upravo hakovala sekretara.",
-    "ID": "Sekretarijat210525174346027694",
-    "Target": [
-      "0603850721311",
-      "064865071221",
-      "All"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Sekretarijat210525174353591857": {
     "Author": "Sekretarijat",
@@ -30,7 +21,9 @@
       "0603850721311",
       "064865071221",
       "All"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Recept210526113345476609": {
     "Author": "Recept",
@@ -39,7 +32,9 @@
     "ID": "Recept210526113345476609",
     "Target": [
       "12645323206"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526133118944868": {
     "Author": "Tara Pogančev",
@@ -48,7 +43,9 @@
     "ID": "Tara Pogančev210526133118944868",
     "Target": [
       "1403000710321"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526142611057899": {
     "Author": "Tara Pogančev",
@@ -57,7 +54,9 @@
     "ID": "Tara Pogančev210526142611057899",
     "Target": [
       "12121977802342"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526144619425625": {
     "Author": "Tara Pogančev",
@@ -67,7 +66,9 @@
     "Target": [
       "12121977802342",
       "045210805048"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   },
   "Tara Pogančev210526150434171165": {
     "Author": "Tara Pogančev",
@@ -77,6 +78,67 @@
     "Target": [
       "1445857",
       "045210805048"
-    ]
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Sekretarijat210528200125536501": {
+    "Author": "Sekretarijat",
+    "Time": "2021-05-28T20:01:25.5365013+02:00",
+    "Content": "Tehnički sam upravo hakovala sekretara.",
+    "ID": "Sekretarijat210528200125536501",
+    "Target": [
+      "0603850721311",
+      "064865071221",
+      "0603850721311",
+      "064865071221",
+      "All"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Podsjetnik210530120100000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T12:01:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530120100000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530170500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:05:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530170500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530171000000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:10:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530171000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 3
+  },
+  "Podsjetnik210530171500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-30T17:15:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210530171500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 3
   }
 }

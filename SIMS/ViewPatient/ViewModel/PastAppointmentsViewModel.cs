@@ -22,6 +22,7 @@ namespace SIMS.ViewPatient.ViewModel
         public RelayCommand DetailsAppointmentCommand { get; set; }
         public Appointment SelectedAppointment { get; set; }
         public RelayCommand SearchCommand { get; set; }
+        public RelayCommand OpenNoteCommand { get; set; }
        
 
         public ObservableCollection<Appointment> PastAppointments
@@ -39,7 +40,7 @@ namespace SIMS.ViewPatient.ViewModel
             GradeAppointmentCommand = new RelayCommand(Execute_GradeAppointmentCommand,CanExecute_GradeAppointmentCommand);
             DetailsAppointmentCommand = new RelayCommand(Execute_DetailsAppointmentCommand, CanExecute_DetailsAppointmentCommand);
             SearchCommand = new RelayCommand(Execute_SearchCommand, CanExecute_SearchCommand);
-            
+            OpenNoteCommand = new RelayCommand(Execute_OpenNoteCommand, CanExecute_OpenNoteCommand);
 
         }
 
@@ -51,6 +52,18 @@ namespace SIMS.ViewPatient.ViewModel
             {
                 PastAppointments[i].Doctor = lekarStorage.FindById(PastAppointments[i].Doctor.Jmbg);
             }
+        }
+
+        public bool CanExecute_OpenNoteCommand(object obj)
+        {
+            return true;
+        }
+
+        public void Execute_OpenNoteCommand(object obj)
+        {
+            NoteController noteController = new NoteController();
+            NoteViewModel noteVM = new NoteViewModel(SelectedAppointment.AppointmentID);
+            PocetnaStranica.getInstance().frame.Content = new BeleskaPage(noteVM);
         }
 
         public bool CanExecute_GradeAppointmentCommand(object obj)
@@ -83,8 +96,6 @@ namespace SIMS.ViewPatient.ViewModel
         public void Execute_DetailsAppointmentCommand(object obj)
         {
 
-            
-            
             Anamnesis anamneza=new AnamnesisController().GetAnamnesis(SelectedAppointment.AppointmentID);
             if (anamneza == null)
             {

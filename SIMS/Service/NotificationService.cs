@@ -22,6 +22,8 @@ namespace SIMS.Service
 
         public Notification GetNotification(String key) => notificationRepository.FindById(key);
 
+        public void SaveOrUpdate(Notification notification) => notificationRepository.CreateOrUpdate(notification);
+
         public List<Notification> ReadByUser(String userID)
         {
             return notificationRepository.ReadByUser(userID);
@@ -30,6 +32,31 @@ namespace SIMS.Service
         public List<Notification> ReadPastNotificationsByUser(String userID)
         {
             return notificationRepository.ReadPastNotificationsByUser(userID);
+        }
+
+        public bool ExistsUnreadNotification(String userID)
+        {
+            List<Notification> notifications = notificationRepository.ReadPastNotificationsByUser(userID);
+            notifications.Reverse();
+            foreach(var notification in notifications)
+            {
+                if (notification.CheckStatus == false)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void NotificationOpened(String userID)
+        {
+            List<Notification> notifications = notificationRepository.ReadPastNotificationsByUser(userID);
+            foreach (var notification in notifications)
+            {
+
+                notification.CheckStatus = true;
+            }
         }
 
     }

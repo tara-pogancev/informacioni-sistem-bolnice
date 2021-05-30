@@ -14,7 +14,7 @@ using SIMS.Controller;
 
 namespace SIMS.Model
 {
-   public class Appointment : INotifyPropertyChanged
+   public class Appointment 
    {
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
@@ -33,15 +33,9 @@ namespace SIMS.Model
         [JsonIgnore]
         public bool Serialize { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
 
-        public void OnPropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
+       
 
         public Appointment(DateTime startTime, int duration, AppointmentType type, Doctor doctor, Patient patient, Room room)
         {

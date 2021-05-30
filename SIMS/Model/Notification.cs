@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SIMS.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,9 @@ namespace SIMS.Model
         public DateTime Time { get; set; }
         public string Content { get; set; }
         public string ID { get; set; }
-        public List<string> Target { get; set; } 
+        public List<string> Target { get; set; }
+        public bool CheckStatus { get; set; }
+        public  NotificationType NotificationType { get; set; }
 
         public Notification()
         {
@@ -25,6 +28,16 @@ namespace SIMS.Model
             Content = content;
             ID = author+time.ToString("yyMMddHHmmssffffff");
             Target = target;
+        }
+        public Notification(string author, DateTime time, string content, List<string> target,bool checkStatus,NotificationType notificationType)
+        {
+            Author = author;
+            Time = time;
+            Content = content;
+            ID = author + time.ToString("yyMMddHHmmssffffff");
+            Target = target;
+            this.CheckStatus = checkStatus;
+            this.NotificationType = notificationType;
         }
 
         [JsonIgnore]

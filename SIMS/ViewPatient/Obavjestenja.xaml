@@ -64,8 +64,8 @@
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <Grid Grid.Row="0">
-                                        <Label Content="{Binding Obavestenje.AutorUppercase}" Name="Autor"  Style="{StaticResource BoldLabel}" FontSize="20" Foreground="White" Margin="30,15,0,0"/>
-                                        <Label Content="{Binding Obavestenje.VremeString}" HorizontalAlignment="Right"  Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White"  Margin="15"/>
+                                        <Label Content="{Binding Obavestenje.Author}" Name="Autor"  Style="{StaticResource BoldLabel}" FontSize="20" Foreground="White" Margin="30,15,0,0"/>
+                                        <Label Content="{Binding Obavestenje.VaryingTimeString}" HorizontalAlignment="Right"  Style="{StaticResource BoldLabel}" FontSize="16" Foreground="White"  Margin="15"/>
                                     </Grid>
                                         <Grid Grid.Row="1">
                                             <TextBlock Grid.Row="1" Text="{Binding Obavestenje.Content}" TextWrapping="Wrap" Margin="50,15,35,15" Style="{StaticResource DarkTextBlock}"/>

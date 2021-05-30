@@ -18,6 +18,7 @@ using SIMS.ViewPatient;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
 {
@@ -68,33 +69,21 @@ namespace SIMS.PacijentGUI
         }
         private void notifikacijaZaTermine()
         {
+        
             while (true)
             {
-                if (postojeTermini())
+                if (new NotificationController().ExistsUnreadNotification(Pacijent.Jmbg))
                 {
                     this.Dispatcher.Invoke(() => {
-                        ObavjestenjeOTerminu obavjestenjeOTerminu = new ObavjestenjeOTerminu();
-                        obavjestenjeOTerminu.ShowDialog();
+                        Zvonce.Foreground = Brushes.Yellow;
+                        
                     });
                 }
-                Thread.Sleep(1000 * 60 * 60);
+                Thread.Sleep(1000 * 60 * 1);
             }
         }
 
-        private bool postojeTermini()
-        {
-            List<Appointment> zakazaniTermini = new AppointmentFileRepository().GetPatientAppointments(patient);
-            foreach(Appointment termin in zakazaniTermini)
-            {
-                if (DateTime.Now <= termin.StartTime && DateTime.Now.AddMinutes(60)>=termin.StartTime)
-                {
-                    return true;
-                }
-
-            }
-            return false;
-
-        }
+        
 
        
         public Patient Pacijent { get => patient; set => patient = value; }
@@ -111,6 +100,8 @@ namespace SIMS.PacijentGUI
         private void Zvonce_Click(object sender, RoutedEventArgs e)
         {
             frame.Navigate( new Obavjestenja());
+            Zvonce.Foreground = Brushes.Gray;
+            new NotificationController().NotificationOpened(patient.Jmbg);
         }
 
         private void ListViewMenu_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

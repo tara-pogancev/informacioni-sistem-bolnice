@@ -28,7 +28,7 @@ namespace SIMS.Repositories.SecretaryRepo
 
             for (int i=0;i<retVal.Count;i++)
             {
-                if (!(retVal[i].Target[0].Equals("All") || retVal[i].ContainsTarget(key)))
+                if (!(retVal[i].ContainsTarget("All") || retVal[i].ContainsTarget(key)))
                 {
                     retVal.RemoveAt(i);
                     i--;
