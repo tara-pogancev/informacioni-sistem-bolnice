@@ -10,10 +10,12 @@ namespace SIMS.Controller
     public class AppointmentController
     {
         private AppointmentService appointmentService;
+        private ScheduleAppointmentService scheduleAppointmentService;
 
         public AppointmentController()
         {
             appointmentService = new AppointmentService();
+            scheduleAppointmentService = new ScheduleAppointmentService();
         }
 
 
@@ -49,12 +51,12 @@ namespace SIMS.Controller
 
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor, String date, Patient patient)
         {
-            return appointmentService.GetAvailableTimeOfAppointment(doctor, date, patient);
+            return scheduleAppointmentService.GetAvailableTimeOfAppointment(doctor, date, patient);
         }
 
         public bool ScheduleAppointment(Doctor doctor, DateTime date, Patient patient)
         {
-            return appointmentService.ScheduleAppointment(doctor, date, patient);
+            return scheduleAppointmentService.ScheduleAppointment(doctor, date, patient);
         }
 
         public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
@@ -89,12 +91,12 @@ namespace SIMS.Controller
 
         public void CancelAppointment(Appointment appointment)
         {
-            appointmentService.CancelAppointment(appointment);
+            scheduleAppointmentService.CancelAppointment(appointment);
         }
 
         public void ChangeAppointment(Appointment appointment)
         {
-            appointmentService.ChangeAppointment(appointment);
+            scheduleAppointmentService.ChangeAppointment(appointment);
         }
 
         public AppointmentDTO GetDTO(Appointment appointment)

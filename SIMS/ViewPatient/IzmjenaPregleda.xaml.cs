@@ -76,7 +76,7 @@ namespace SIMS.PacijentGUI
         {
             Doctor chosenDoctor = (Doctor)Doktori.SelectedItem;
             String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
-            dostupniTermini = new ObservableCollection<string>(new AppointmentService().GetAvailableTimeOfAppointment(chosenDoctor, chosenDate, pacijent));
+            dostupniTermini = new ObservableCollection<string>(new ScheduleAppointmentService().GetAvailableTimeOfAppointment(chosenDoctor, chosenDate, pacijent));
             terminiLista.ItemsSource = dostupniTermini;
         }
 

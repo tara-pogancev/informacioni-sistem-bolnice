@@ -33,6 +33,8 @@ namespace SIMS.PacijentGUI
         Boolean doktorSelektovan;
         List<Room> slobodneProstorije;
         AppointmentService appointmentService;
+
+        private ScheduleAppointmentService scheduleAppointmentService;
         public Zakazivanje(Patient p)
         {
             InitializeComponent();
@@ -74,7 +76,7 @@ namespace SIMS.PacijentGUI
             termin.Doctor = lekari[ListaDoktora.SelectedIndex];
             String vrijemeIDatum = OdabirDatuma.Text + " " + terminiLista.Text;
             DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum); 
-            if (appointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent) == false)
+            if (scheduleAppointmentService.ScheduleAppointment(lekari[ListaDoktora.SelectedIndex], vremenskaOdrednica, pacijent) == false)
             {
                 MessageBox.Show("Ne postoji slobodna prostorija");
                 dostupniTermini.Remove(terminiLista.Text);
@@ -105,7 +107,7 @@ namespace SIMS.PacijentGUI
                
                 Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
                 String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
-                dostupniTermini = new ObservableCollection<string>(appointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
+                dostupniTermini = new ObservableCollection<string>(scheduleAppointmentService.GetAvailableTimeOfAppointment(chosenDoctor,chosenDate,pacijent));
                 terminiLista.ItemsSource = dostupniTermini;
                 
             }
