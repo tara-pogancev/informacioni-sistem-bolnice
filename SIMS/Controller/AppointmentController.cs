@@ -12,16 +12,12 @@ namespace SIMS.Controller
 
     public class AppointmentController
     {
-        private AppointmentService appointmentService;
-        
-
+        private AppointmentService appointmentService;       
 
         public AppointmentController()
         {
-            appointmentService = new AppointmentService();
-            
-        }
-        
+            appointmentService = new AppointmentService();            
+        }        
 
 
         public List<Appointment> GetAllAppointments()

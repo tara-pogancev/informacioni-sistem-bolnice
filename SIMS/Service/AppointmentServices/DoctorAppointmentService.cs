@@ -8,20 +8,15 @@ namespace SIMS.Service.AppointmentServices
 {
     public class DoctorAppointmentService
     {
-        private IAppointmentRepository appointmentRepository;
+        private IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
         private RoomService roomService = new RoomService();
         private DoctorService doctorService = new DoctorService();
-
-        public DoctorAppointmentService()
-        {
-            appointmentRepository = new AppointmentFileRepository();
-        }
-
 
         public List<Appointment> GetAppointmentsByDoctor(Doctor doctor)
         {
             return appointmentRepository.GetDoctorAppointments(doctor);
         }
+
         public Appointment CheckIfActiveAppointment(Doctor doctor)
         {
             foreach (Appointment appointment in appointmentRepository.GetDoctorAppointments(doctor))

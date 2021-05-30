@@ -10,7 +10,6 @@ namespace SIMS.Service.AppointmentServices
     {
         private IAppointmentRepository appointmentRepository = new AppointmentFileRepository();
         
-        
         private readonly DoctorAppointmentService doctorAppointmentService;
 
 
@@ -18,8 +17,6 @@ namespace SIMS.Service.AppointmentServices
         {
             
         }
-
-       
 
         public List<Appointment> GetAllAppointments() => appointmentRepository.GetAll();
 

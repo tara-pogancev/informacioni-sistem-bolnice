@@ -33,10 +33,7 @@ namespace SIMS.Model
         
         [JsonIgnore]
         public bool Serialize { get; set; }
-
-        
-
-       
+                
 
         public Appointment(DateTime startTime, int duration, AppointmentType type, Doctor doctor, Patient patient, Room room)
         {

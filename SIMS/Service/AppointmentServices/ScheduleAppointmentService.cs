@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SIMS.Model;
+using SIMS.Repositories.AppointmentLogRepo;
 using SIMS.Repositories.AppointmentRepo;
 
 namespace SIMS.Service.AppointmentServices

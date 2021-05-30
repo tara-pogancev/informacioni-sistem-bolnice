@@ -239,9 +239,6 @@ namespace SIMS.PacijentGUI
                                                               }
                                                              ));
                                                          });
-
-
-
                                                      }
                                                     ));
                                                 });
@@ -251,20 +248,13 @@ namespace SIMS.PacijentGUI
                                    }
                                   ));
                               });
-
-
                           }
                          ));
                      });
                  }
                 ));
             });
-
-            
-         
-
-            
-           
+                       
         }
         
     }

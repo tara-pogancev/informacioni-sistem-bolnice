@@ -193,10 +193,7 @@ namespace SIMS.PacijentGUI
             OdabraniTerminZaIzmjenu.Room = slobodneProstorije[0];
             new AppointmentService().UpdateAppointment(OdabraniTerminZaIzmjenu);
             
-        }
-       
-
-    
+        }       
 
         private void Odbaci_Click(object sender, RoutedEventArgs e)
         {

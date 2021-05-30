@@ -135,7 +135,7 @@ namespace SIMS
                     }
                 case 1:
                     {
-                        SellectedTab.Content = DoctorAppointmentsPage.GetInstance(doctorUser);
+                        SellectedTab.Content = DoctorAppointmentsPage.GetInstance();
                         ResetActiveButtons();
                         B1.Fill = sellectedTab;
                         break;
@@ -149,21 +149,21 @@ namespace SIMS
                     }
                 case 3:
                     {
-                        SellectedTab.Content = new AppointmentHistoryView(doctorUser);
+                        SellectedTab.Content = new AppointmentHistoryView();
                         ResetActiveButtons();
                         B3.Fill = sellectedTab;
                         break;
                     }
                 case 4:
                     {
-                        SellectedTab.Content = LekarEvidencijaPage.GetInstance(doctorUser);
+                        SellectedTab.Content = DoctorInverntoyPage.GetInstance();
                         ResetActiveButtons();
                         B4.Fill = sellectedTab;
                         break;
                     }
                 case 5:
                     {
-                        SellectedTab.Content = DoctorAccountPage.GetInstance(doctorUser);
+                        SellectedTab.Content = DoctorAccountPage.GetInstance();
                         ResetActiveButtons();
                         B5.Fill = sellectedTab;
                         break;
@@ -226,8 +226,8 @@ namespace SIMS
 
         private static void RemoveAllInstances()
         {
-            if (LekarEvidencijaPage.GetInstance() != null)
-                LekarEvidencijaPage.GetInstance().RemoveInstance();
+            if (DoctorInverntoyPage.GetInstance() != null)
+                DoctorInverntoyPage.GetInstance().RemoveInstance();
 
             if (DoctorPatientViewPage.GetInstance() != null)
                 DoctorPatientViewPage.GetInstance().RemoveInstance();

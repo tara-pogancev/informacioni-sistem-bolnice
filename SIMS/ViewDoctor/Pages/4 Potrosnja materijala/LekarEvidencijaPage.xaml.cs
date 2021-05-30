@@ -19,29 +19,22 @@ namespace SIMS.LekarGUI
     /// <summary>
     /// Interaction logic for LekarEvidencijaPage.xaml
     /// </summary>
-    public partial class LekarEvidencijaPage : Page
+    public partial class DoctorInverntoyPage : Page
     {
-        public static LekarEvidencijaPage instance;
+        public static DoctorInverntoyPage instance;
 
-        private static Doctor lekarUser;
+        private static Doctor doctorUser = DoctorUI.GetInstance().GetUser();
 
-        public static LekarEvidencijaPage GetInstance(Doctor l)
+        public static DoctorInverntoyPage GetInstance()
         {
             if (instance == null)
             {
-                lekarUser = l;
-                instance = new LekarEvidencijaPage();
+                instance = new DoctorInverntoyPage();
             }
             return instance;
         }
 
-        public static LekarEvidencijaPage GetInstance()
-        {
-            return instance;
-        }
-
-
-        public LekarEvidencijaPage()
+        public DoctorInverntoyPage()
         {
             InitializeComponent();
         }

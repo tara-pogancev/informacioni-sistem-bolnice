@@ -38,10 +38,10 @@ namespace SIMS.LekarGUI
         private AnamnesisController anamnesisController = new AnamnesisController();
         private DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
 
-        public AppointmentHistoryView(Doctor doctor)
+        public AppointmentHistoryView()
         {
             InitializeComponent();
-            doctorUser = doctor;
+            doctorUser = DoctorUI.GetInstance().GetUser();
 
             this.DataContext = this;
             AnamnesisViewModel = new ObservableCollection<AppointmentDTO>();

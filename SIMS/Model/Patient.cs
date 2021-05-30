@@ -174,12 +174,14 @@ namespace SIMS.Model
                 return null;
         }
 
-        public bool IsAlergic(Medication lek)
+        public bool IsAlergic(Medication medicine)
         {
-            foreach (var a in this.Allergens)
+            foreach (Allergen a in Allergens)
             {
-                if (lek.Components.Contains(a))
-                    return true;
+                //if (lek.Components.Contains(a))
+                foreach (Allergen component in medicine.Components)
+                    if (component.ID == a.ID)
+                        return true;
             }
             return false;
         }

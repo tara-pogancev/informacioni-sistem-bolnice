@@ -5,9 +5,14 @@
     "IsBanned": false,
     "Lbo": "123",
     "Guest": false,
-    "Allergens": [],
+    "Allergens": [
+      {
+        "ID": "a2",
+        "Name": "Laktoza",
+        "Serialize": false
+      }],
     "DateOfBirth": "1999-03-05T00:00:00",
-    "HronicalDiseases": [],
+    "HronicalDiseases": ["Astma"],
     "ChosenDoctor": {
       "VacationDays": 15,
       "Grade": 0.0,
@@ -47,7 +52,7 @@
           "Name": "Srbija"
         }
       },
-      "Street": "Sajlovo XXI",
+      "Street": "Stara Planina",
       "Number": "45"
     },
     "Serialize": true
@@ -100,8 +105,8 @@
           "Name": "Srbija"
         }
       },
-      "Street": "Sajlovo XXI",
-      "Number": "45"
+      "Street": "JA",
+      "Number": "133"
     },
     "Serialize": true
   },
@@ -148,13 +153,13 @@
     "Address": {
       "City": {
         "Name": "Novi Sad",
-        "PostalCode": 21000,
+        "PostalCode": 20000,
         "Country": {
           "Name": "Srbija"
         }
       },
-      "Street": "Sajlovo XXI",
-      "Number": "45"
+      "Street": "Ribarska",
+      "Number": "8b"
     },
     "Serialize": true
   },
@@ -181,7 +186,7 @@
       "Address": {
         "City": {
           "Name": "Novi Sad",
-          "PostalCode": 21400,
+          "PostalCode": 21000,
           "Country": {
             "Name": "Srbija"
           }
@@ -201,13 +206,13 @@
     "Address": {
       "City": {
         "Name": "Novi Sad",
-        "PostalCode": 21000,
+        "PostalCode": 20000,
         "Country": {
           "Name": "Srbija"
         }
       },
-      "Street": "Sajlovo XXI",
-      "Number": "45"
+      "Street": "Petrovaradin",
+      "Number": "88"
     },
     "Serialize": true
   }

@@ -27,21 +27,15 @@ namespace SIMS.LekarGUI
     {
         public static DoctorAccountPage instance;
 
-        private static Doctor doctorUser;
+        private static Doctor doctorUser = DoctorUI.GetInstance().GetUser();
         private LastLoginController loginController = new LastLoginController();
-
-        public static DoctorAccountPage GetInstance(Doctor doctor)
-        {
-            if (instance == null)
-            {
-                doctorUser = doctor;
-                instance = new DoctorAccountPage();
-            }
-            return instance;
-        }
 
         public static DoctorAccountPage GetInstance()
         {
+            if (instance == null)
+            {
+                instance = new DoctorAccountPage();
+            }
             return instance;
         }
 

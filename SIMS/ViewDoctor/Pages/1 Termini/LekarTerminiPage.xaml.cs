@@ -34,18 +34,13 @@ namespace SIMS.LekarGUI
 
         public ObservableCollection<AppointmentDTO> AppointmentsViewModel { get; set; }
 
-        public static DoctorAppointmentsPage GetInstance(Doctor doctor)
+        public static DoctorAppointmentsPage GetInstance()
         {
             if (instance == null)
             {
-                doctorUser = doctor;
+                doctorUser = DoctorUI.GetInstance().GetUser();
                 instance = new DoctorAppointmentsPage();
             }
-            return instance;
-        }
-
-        public static DoctorAppointmentsPage GetInstance()
-        {
             return instance;
         }
 
