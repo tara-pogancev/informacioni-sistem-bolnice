@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SIMS.Repositories
 {
-    interface IGenericRepository<T,ID>
+    public interface IGenericRepository<T,ID>
     {
         List<T> GetAll();
         void Update(T entity);

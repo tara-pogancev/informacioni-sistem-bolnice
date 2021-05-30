@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Repositories.RoomRepo;
+using SIMS.Exceptions;
 
 namespace SIMS.UpravnikGUI
 {
@@ -39,13 +40,30 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                ScheduleRenovation();
+            }
+            catch (RenovationAppointmentOverlapException)
+            {
+                MessageBox.Show("Termini renoviranja se poklapaju sa zakazanim pregledima!");
+                return;
+            }
+            MergeRoomsSelection();
+        }
+
+        private void ScheduleRenovation()
+        {
             if (Pocetak.SelectedDate != null && Kraj.SelectedDate != null)
             {
                 room.RenovationStart = Pocetak.SelectedDate;
                 room.RenovationEnd = Kraj.SelectedDate;
-                roomController.Update(room);
+                roomController.Renovate(room);
             }
+        }
 
+        private void MergeRoomsSelection()
+        {
             if ((bool)NotMerge.IsChecked)
             {
                 UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());

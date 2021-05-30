@@ -6,7 +6,7 @@ using SIMS.Model;
 
 namespace SIMS.Repositories.RoomInventoryRepo
 {
-    interface IRoomInventoryRepository:IGenericRepository<RoomInventory,String>
+    public interface IRoomInventoryRepository:IGenericRepository<RoomInventory,String>
     {
         RoomInventory ReadNoConsistifying(string brojProstorije, string idInventara);
         RoomInventory Read(string brojProstorije, string idInventara);

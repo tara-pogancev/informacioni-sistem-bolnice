@@ -92,7 +92,6 @@ namespace SIMS.UpravnikGUI
             lek.MedicineID = IDText.Text;
             lek.MedicineName = NazivText.Text;
             lek.IDSubstitution = ZamenaText.Text;
-
             lek.Components.Clear();
             foreach(Sastojak sastojak in Sastojci)
             {

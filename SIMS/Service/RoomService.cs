@@ -1,6 +1,8 @@
-﻿using SIMS.Model;
+﻿using SIMS.Exceptions;
+using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.InventoryMovingCommandRepo;
+using SIMS.Repositories.RoomInventoryRepo;
 using SIMS.Repositories.RoomRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
@@ -32,6 +34,27 @@ namespace SIMS.Service
 
         public void Update(Room room)
         {
+            roomRepository.Update(room);
+        }
+
+        private bool RenovationAppointmentOverlapped(Room room, Appointment appointment)
+        {
+            bool sameRoom = room.Number == appointment.Room.Number;
+            bool startOverlap = room.RenovationStart > appointment.StartTime && room.RenovationStart < appointment.GetEndTime();
+            bool endOverlap = room.RenovationEnd > appointment.StartTime && room.RenovationStart < appointment.GetEndTime();
+
+            return !sameRoom || startOverlap || endOverlap;
+        }
+
+        public void Renovate(Room room)
+        {
+            foreach (var appointment in appointmentRepository.GetAll())
+            {
+                if (RenovationAppointmentOverlapped(room, appointment))
+                {
+                    throw new RenovationAppointmentOverlapException();
+                }
+            }
             roomRepository.Update(room);
         }
 
