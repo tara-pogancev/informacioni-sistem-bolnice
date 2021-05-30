@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Model;
+using SIMS.Controller;
+using SIMS.ViewDoctor.Pages;
 
 namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
 {
@@ -17,14 +20,59 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
     /// </summary>
     public partial class HospitalizeCreate : Window
     {
-        public HospitalizeCreate()
+        private Patient patient;
+        private Doctor doctor = DoctorUI.GetInstance().GetUser();
+        private HospitalizationController hospitalizationController = new HospitalizationController();
+        private RoomController roomController = new RoomController();
+        private List<Room> rooms;
+
+        public HospitalizeCreate(Patient patientPar)
         {
             InitializeComponent();
+            patient = patientPar;
+
+            LabelDoctor.Content = "Doktor: " + doctor.FullName;
+            LabelPatient.Content = "Pacijent: " + patient.FullName;
+
+            rooms = roomController.GetAllRooms();
+            roomCombo.ItemsSource = rooms;
+
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            if (ValidateForm())
+            {
+                if (StartDate.SelectedDate > EndDate.SelectedDate)
+                    MessageBox.Show("Početni datum ne sme biti nakon krajnjeg!");
+                else
+                {
+                    CreateHospitalization();
+                    this.Close();
+                    DoctorUI.GetInstance().SellectedTab.Content = new PatientHospitalizationPage(patient);
+                    MessageBox.Show("Pacijent uspešno hospitalizovan!");
+                }
+            }
+            else
+                MessageBox.Show("Molimo popunite sva polja!");
+        }
 
+        private bool ValidateForm()
+        {
+            return StartDate.SelectedDate != null && EndDate.SelectedDate != null && roomCombo.SelectedItem != null;
+        }
+
+        private void CreateHospitalization()
+        {
+            Room room = GetSelectedRoom();
+            Hospitalization hospitalization = new Hospitalization(patient, doctor,
+                (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate, room);
+            hospitalizationController.SaveHospitalization(hospitalization);
+        }
+
+        private Room GetSelectedRoom()
+        {
+            return (Room)roomCombo.SelectedItem;
         }
     }
 }

@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Column="0" Orientation="Vertical" Margin="20">
             <Label Content="HOSPITALIZACIJA" Style="{StaticResource DefaultLabelS}" FontSize="20"/>
-            <Label Name="HospitalBedLabel" Content="Prostorija: 54B" Style="{StaticResource DefaultLabelS}" FontFamily="Cambera" FontSize="16"/>
+            <Label Name="HospitalRoomLabel" Content="Prostorija: 54B" Style="{StaticResource DefaultLabelS}" FontFamily="Cambera" FontSize="16"/>
         </StackPanel>
 
 

@@ -25,7 +25,7 @@
             <Label Name="LabelDate" Content="Datum: 30.01.2021." Style="{StaticResource DefaultLabelS}"/>
         </StackPanel>
 
-        <TextBox Grid.Row="2" Text="Unesite belešku o boravku ovde..." Name="NotificationTextBox" Margin="40,10,40,10" Style="{StaticResource TextBoxDark}" ToolTip="Molimo unesite propratnu poruku koja će biti dostavljena upravniku Bolnice. Ovo polje je obavezno."/>
+        <TextBox Grid.Row="2" Text="Unesite belešku o boravku ovde..." Name="NotificationTextBox" Margin="40,10,40,10" Style="{StaticResource TextBoxDark}" TextWrapping="Wrap" ToolTip="Molimo unesite propratnu poruku koja će biti dostavljena upravniku Bolnice. Ovo polje je obavezno."/>
 
         <StackPanel Orientation="Horizontal" Margin="40,0,40,0" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Row="3">
 

@@ -29,8 +29,8 @@
         <Label Grid.Row="0" Content="Produžetak boravka" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
-            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoktor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
-            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
+            <Label Content="Pacijent: Milan Marković" Name="LabelPatient" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
         </StackPanel>
 
         <Rectangle Grid.Row="2" Width="400" RadiusX="5" RadiusY="5" Fill="#FF3A475F"/>

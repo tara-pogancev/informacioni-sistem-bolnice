@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,10 @@ namespace SIMS.ViewDoctor.Dialogues.Hospitalizacija
     /// </summary>
     public partial class HospitalizationPage : Page
     {
-        public HospitalizationPage()
+        public HospitalizationPage(Hospitalization hospitalization)
         {
             InitializeComponent();
+            HospitalRoomLabel.Content = "Prostorija: " + hospitalization.Room.Number;
         }
     }
 }

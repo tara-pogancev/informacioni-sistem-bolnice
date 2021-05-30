@@ -27,7 +27,7 @@ namespace SIMS.Service
 
         public Boolean GetIfPatientHospitalzied(Patient patient)
         {
-            foreach (Hospitalization hospitalization in GetCurrentHospitalizations())
+            foreach (Hospitalization hospitalization in GetAllHospitalizations())
             {
                 if (hospitalization.Patient.Jmbg == patient.Jmbg)
                     return true;
@@ -36,21 +36,9 @@ namespace SIMS.Service
             return false;
         }
 
-        public List<Hospitalization> GetCurrentHospitalizations()
-        {
-            List<Hospitalization> retVal = new List<Hospitalization>();
-
-            foreach (Hospitalization hospitalization in GetAllHospitalizations())
-            {
-                if (hospitalization.StartDate <= DateTime.Today && hospitalization.EndDate >= DateTime.Today)
-                    retVal.Add(hospitalization);
-            }
-                return retVal;
-        }
-
         public Hospitalization GetPatientCurrentHospitalization(Patient patient)
         {
-            foreach (Hospitalization hospitalization in GetCurrentHospitalizations())
+            foreach (Hospitalization hospitalization in GetAllHospitalizations())
             {
                 if (hospitalization.Patient.Jmbg == patient.Jmbg)
                     return hospitalization;

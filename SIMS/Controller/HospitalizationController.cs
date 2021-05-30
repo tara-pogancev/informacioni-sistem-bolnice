@@ -27,8 +27,6 @@ namespace SIMS.Controller
 
         public Boolean GetIfPatientHospitalzied(Patient patient) => hospitalizationService.GetIfPatientHospitalzied(patient);
 
-        public List<Hospitalization> GetCurrentHospitalizations() => hospitalizationService.GetCurrentHospitalizations();
-
         public Hospitalization GetPatientCurrentHospitalization(Patient patient) => hospitalizationService.GetPatientCurrentHospitalization(patient);
 
     }

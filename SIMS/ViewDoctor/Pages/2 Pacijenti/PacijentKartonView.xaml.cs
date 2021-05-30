@@ -15,6 +15,9 @@ using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
 using SIMS.Controller;
 using SIMS.LekarGUI.Dialogues.Termini_CRUD;
+using SIMS.ViewDoctor.Dialogues.Hospitalizacija;
+using SIMS.ViewDoctor.Pages;
+using SIMS.LekarGUI.Dialogues.Hospitalizacija;
 
 namespace SIMS.LekarGUI
 {
@@ -24,6 +27,7 @@ namespace SIMS.LekarGUI
     public partial class PatientRecordCheck : Page
     {
         private Patient patient;
+        private HospitalizationController hospitalizationController = new HospitalizationController();
 
         public static PatientRecordCheck instance;
 
@@ -62,6 +66,11 @@ namespace SIMS.LekarGUI
             LabelAllergens.Content = "Alergeni: " + this.patient.GetAllergenListString();
             LabelHronical.Content = "Hronične bolesti: " + this.patient.GetHronicalDiseases();
 
+            if (hospitalizationController.GetIfPatientHospitalzied(patient))
+            {
+                HospitalizationFrame.Content = new HospitalizationPage(hospitalizationController.GetPatientCurrentHospitalization(patient));
+            }
+
         }
 
         private void ButtonWriteReceipt(object sender, RoutedEventArgs e)
@@ -76,8 +85,10 @@ namespace SIMS.LekarGUI
 
         private void ButtonHospitalize(object sender, RoutedEventArgs e)
         {
-            //TODO DEBUG
-            new ActionsAfterReport(patient).Show();
+            if (hospitalizationController.GetIfPatientHospitalzied(patient))
+                DoctorUI.GetInstance().SellectedTab.Content = new PatientHospitalizationPage(patient);
+            else
+                new HospitalizeCreate(patient).ShowDialog();
         }
 
         private void ButtonPatientView(object sender, MouseButtonEventArgs e)

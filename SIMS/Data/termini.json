@@ -278,5 +278,67 @@
     },
     "InitialTime": "2021-04-27T09:30:00",
     "AppointmentID": "210530042320983652"
+  },
+  "210530073532445638": {
+    "StartTime": "2021-06-03T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-03T09:00:00",
+    "AppointmentID": "210530073532445638"
+  },
+  "210530073539382991": {
+    "StartTime": "2021-06-06T08:30:00",
+    "Duration": 60,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-06T08:30:00",
+    "AppointmentID": "210530073539382991"
+  },
+  "210530073546846682": {
+    "StartTime": "2021-05-31T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "NameAndSpecialization": "Tara Pogančev, Internista",
+      "SpecializationString": "Internista",
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-31T09:00:00",
+    "AppointmentID": "210530073546846682"
   }
 }
