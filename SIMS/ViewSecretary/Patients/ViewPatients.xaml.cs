@@ -50,6 +50,21 @@ namespace SIMS.ViewSecretary.Patients
             }
         }
 
+        private void UnblockPatient_Click(object sender, RoutedEventArgs e)
+        {
+            if (patientsView.SelectedItem == null)
+            {
+                MessageBox.Show("Morate izabrati pacijenta za odblokiranje.", "Pacijent nije izabran");
+            }
+            else
+            {
+                Patient toUnblock = (Patient)patientsView.SelectedItem;
+                toUnblock.IsBanned = false;
+                patientController.UpdatePatient(toUnblock);
+                MessageBox.Show("Pacijent je uspesno odblokiran.", "Pacijent odblokiran");
+            }
+        }
+
         private void DeletePatient_Click(object sender, RoutedEventArgs e)
         {
             if (patientsView.SelectedItem == null)
