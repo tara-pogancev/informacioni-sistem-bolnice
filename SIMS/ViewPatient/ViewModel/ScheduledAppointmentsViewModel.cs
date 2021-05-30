@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
@@ -49,6 +50,7 @@ namespace SIMS.PacijentGUI.ViewModel
                 Appointment appointment = GetOriginalAppointment();
                 appointment.Patient = patient;
                 scheduleAppointmentControler.CancelAppointment(appointment);
+                new AppointmentLogController().Save(new AppointmentLog(appointment.AppointmentID+DateTime.Now.ToString("dd.MM.yyyy. hh:mm:ss"),appointment.AppointmentID,HomePageViewModel.patient.Jmbg,DateTime.Now,SurgeryType.Brisanje));
                 RemoveFromView(appointment);
                 
             }

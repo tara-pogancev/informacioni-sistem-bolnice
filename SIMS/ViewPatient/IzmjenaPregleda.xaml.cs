@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Controller;
 using SIMS.Service;
 using SIMS.Service.AppointmentServices;
 
@@ -42,8 +43,6 @@ namespace SIMS.PacijentGUI
         public IzmjenaPregleda(Appointment termin)
         {
             InitializeComponent();
-            
-           
             lekari = new DoctorFileRepository().GetAll();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             doktorSelektovan = false;
@@ -191,6 +190,7 @@ namespace SIMS.PacijentGUI
             OdabraniTerminZaIzmjenu.StartTime = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text);
             OdabraniTerminZaIzmjenu.Room = slobodneProstorije[0];
             new AppointmentService().UpdateAppointment(OdabraniTerminZaIzmjenu);
+            new AppointmentLogController().Save(new AppointmentLog(OdabraniTerminZaIzmjenu.AppointmentID+DateTime.Now.ToString("dd.mm.yyyy.hh.MM.ss."),OdabraniTerminZaIzmjenu.AppointmentID,pacijent.ID,DateTime.Now,SurgeryType.Izmjena));
             
         }
        
