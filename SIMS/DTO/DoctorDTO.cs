@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Newtonsoft.Json;
 using SIMS.Model;
 
 namespace SIMS.DTO
 {
     public class DoctorDTO : Doctor
     {
+        [JsonIgnore]
         public String NameAndSpecialization { get { return FullName + ", " + SpecializationString; } }
 
+        [JsonIgnore]
         public String SpecializationString
         {
             get
@@ -45,16 +46,6 @@ namespace SIMS.DTO
         public DoctorDTO(Doctor doctor) : base(doctor)
         {
 
-        }
-
-        public bool ShouldSerializeNameAndSpecialization()
-        {
-            return Serialize;
-        }
-
-        public bool ShouldSerializeSpecializationString()
-        {
-            return Serialize;
         }
 
     }
