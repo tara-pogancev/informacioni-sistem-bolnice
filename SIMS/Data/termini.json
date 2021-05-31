@@ -184,8 +184,6 @@
     "Duration": 60,
     "Type": 0,
     "Doctor": {
-      "NameAndSpecialization": "Tara Pogančev, Internista",
-      "SpecializationString": "Internista",
       "Jmbg": "045210805048",
       "Serialize": false
     },
@@ -200,5 +198,25 @@
     },
     "InitialTime": "2021-04-30T09:00:00",
     "AppointmentID": "210530094918224237"
+  },
+  "210531090515103666": {
+    "StartTime": "2021-05-31T12:00:00",
+    "Duration": 60,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "4848555021548",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "1",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-05-31T12:00:00",
+    "AppointmentID": "210531090515103666"
   }
 }

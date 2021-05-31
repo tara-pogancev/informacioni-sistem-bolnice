@@ -263,5 +263,28 @@
     ],
     "CheckStatus": false,
     "NotificationType": 0
+  },
+  "Tara Pogančev210531090429709443": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-31T09:04:29.709443+02:00",
+    "Content": "Izdat uput za pregled kod lekara Cloud Strife. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210531090429709443",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210531090517102357": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-31T09:05:17.1023578+02:00",
+    "Content": "Zakazana hitna operacija [31.05.2021. 12:00, 1] za pacijenta Petar Petrović, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210531090517102357",
+    "Target": [
+      "12121977802342",
+      "4848555021548"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }
