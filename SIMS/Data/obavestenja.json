@@ -239,7 +239,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Recept210530220004356424": {
@@ -250,7 +250,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Recept210530220313740192": {
@@ -261,7 +261,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Tara Pogančev210531090429709443": {
@@ -286,5 +286,49 @@
     ],
     "CheckStatus": false,
     "NotificationType": 0
+  },
+  "Zakazan termin210601090000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-01T09:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210601090000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210519093000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-19T09:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210519093000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Zakazan termin210519100000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-19T10:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210519100000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Podsjetnik210531092700000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-31T09:27:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210531092700000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
   }
 }

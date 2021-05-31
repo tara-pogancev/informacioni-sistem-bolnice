@@ -10,13 +10,17 @@
         "ID": "a2",
         "Name": "Laktoza",
         "Serialize": false
-      }],
+      }
+    ],
     "DateOfBirth": "1999-03-05T00:00:00",
-    "HronicalDiseases": ["Astma"],
+    "HronicalDiseases": [
+      "Astma"
+    ],
     "ChosenDoctor": {
       "VacationDays": 15,
       "Grade": 0.0,
       "DoctorSpecialization": 2,
+      "VacationPeriods": [],
       "Name": "Tara",
       "LastName": "Pogančev",
       "Jmbg": "045210805048",
@@ -52,8 +56,8 @@
           "Name": "Srbija"
         }
       },
-      "Street": "Stara Planina",
-      "Number": "45"
+      "Street": "Stara",
+      "Number": "Planina,"
     },
     "Serialize": true
   },
@@ -70,6 +74,7 @@
       "VacationDays": 15,
       "Grade": 0.0,
       "DoctorSpecialization": 2,
+      "VacationPeriods": [],
       "Name": "Tara",
       "LastName": "Pogančev",
       "Jmbg": "045210805048",
@@ -123,6 +128,7 @@
       "VacationDays": 15,
       "Grade": 0.0,
       "DoctorSpecialization": 2,
+      "VacationPeriods": [],
       "Name": "Tara",
       "LastName": "Pogančev",
       "Jmbg": "045210805048",
@@ -176,6 +182,7 @@
       "VacationDays": 15,
       "Grade": 0.0,
       "DoctorSpecialization": 2,
+      "VacationPeriods": [],
       "Name": "Tara",
       "LastName": "Pogančev",
       "Jmbg": "045210805048",

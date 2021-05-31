@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Enumerations;
 using SIMS.Model;
 using SIMS.Repositories.NotificationRepo;
 
@@ -47,9 +48,19 @@ namespace SIMS.PacijentGUI
                 {
                     return "/src/sekretar.png";
                 }
-                else
+                else if (obavestenje.NotificationType==NotificationType.Receipt)
                 {
                     return "/src/reports.png";
+                }else if (obavestenje.NotificationType == NotificationType.NoteReminder)
+                {
+                    return "/src/PhotoReminder.png";
+                }else if (obavestenje.NotificationType == NotificationType.AppointmentAllert)
+                {
+                    return "/src/doctor.png";
+                }
+                else
+                {
+                    return "/src/sekretar.png";
                 }
             }
 

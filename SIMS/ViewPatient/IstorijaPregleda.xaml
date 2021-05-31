@@ -94,7 +94,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="0" Width="60"  Name="Beleška" Content="Detalji">
+                                <Button Padding="0" Width="60"  Name="Beleška" Content="Beleška">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click" >
                                             <i:InvokeCommandAction Command="{Binding Path=DataContext.OpenNoteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
