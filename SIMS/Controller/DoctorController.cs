@@ -81,5 +81,10 @@ namespace SIMS.Controller
             return doctorService.GetDTOFromList(list);
         }
 
+        public bool OnVacation(Doctor doctor, DateTime dateTime)
+        {
+            return doctorService.OnVacation(doctor, dateTime);
+        }
+
     }
 }

@@ -7,6 +7,7 @@ using SIMS.ViewSecretary.Appointments;
 using SIMS.ViewSecretary.Home;
 using SIMS.ViewSecretary.Notifications;
 using SIMS.ViewSecretary.Patients;
+using SIMS.ViewSecretary.Doctors;
 
 namespace SIMS.ViewSecretary
 {
@@ -99,6 +100,11 @@ namespace SIMS.ViewSecretary
                 case "ItemPatients":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewPatients.GetInstance();
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemDoctors":
+                    invokeProv.Invoke();
+                    MainFrame.Content = new DoctorVacations();
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemAppointments":
