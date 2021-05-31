@@ -11,28 +11,21 @@ namespace SIMS.Service.RecommendationAppointmentService
 {
     class RecommendationService
     {
-        private TypeOfRecommendation type;
-        private string doctorID;
-        private DateTime startDate;
-        private DateTime endDate;
+        
         List<Appointment> recommendedAppointments;
-        private string patientID;
+ 
         private RecommendedAppointmentDTO recommendedAppointmentDto;
 
         public RecommendationService(RecommendedAppointmentDTO recommendedAppointmentDto)
         {
             this.recommendedAppointmentDto=recommendedAppointmentDto;
-            this.type = recommendedAppointmentDto.Type;
-            this.doctorID = recommendedAppointmentDto.DoctorID;
-            this.startDate = recommendedAppointmentDto.StartDate;
-            this.endDate =recommendedAppointmentDto.EndDate;
-            this.patientID =recommendedAppointmentDto.PatientID;
+            
             recommendedAppointments = new List<Appointment>();
         }
 
         public List<Appointment> GetRecommendedAppointments()
         {
-            if (type == TypeOfRecommendation.DoctorRecommendation)
+            if (recommendedAppointmentDto.Type == TypeOfRecommendation.DoctorRecommendation)
             {
                 DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(recommendedAppointmentDto);
 
@@ -40,7 +33,7 @@ namespace SIMS.Service.RecommendationAppointmentService
             }
             else
             {
-                DateRecommendationPolicy dateRecommendationPolicy = new DateRecommendationPolicy(startDate, endDate, patientID);
+                DateRecommendationPolicy dateRecommendationPolicy = new DateRecommendationPolicy(recommendedAppointmentDto.StartDate, recommendedAppointmentDto.EndDate, recommendedAppointmentDto.PatientID);
                 FillRecommendedAppointments(dateRecommendationPolicy.GetDateRecommendationAppointmentDraft());
             }
             return recommendedAppointments;
@@ -55,13 +48,13 @@ namespace SIMS.Service.RecommendationAppointmentService
             foreach (var appointment in recommendedAppointmentsDraft)
             {
 
-                if (type == TypeOfRecommendation.DoctorRecommendation)
+                if (recommendedAppointmentDto.Type == TypeOfRecommendation.DoctorRecommendation)
                 {
                     recommendedAppointments.Add(new Appointment(appointment.TimeOfAppointment,
                                                             30,
                                                             AppointmentType.examination,
-                                                            doctorRepository.FindById(doctorID),
-                                                            patientRepository.FindById(patientID),
+                                                            doctorRepository.FindById(recommendedAppointmentDto.DoctorID),
+                                                            patientRepository.FindById(recommendedAppointmentDto.PatientID),
                                                             roomService.GetAvailableRooms(appointment.TimeOfAppointment)[0]));
                 }
                 else
@@ -70,7 +63,7 @@ namespace SIMS.Service.RecommendationAppointmentService
                                                             30,
                                                             AppointmentType.examination,
                                                             doctorRepository.FindById(appointment.AvailableDoctorsID[0]),
-                                                            patientRepository.FindById(patientID),
+                                                            patientRepository.FindById(recommendedAppointmentDto.PatientID),
                                                             roomService.GetAvailableRooms(appointment.TimeOfAppointment)[0]));
                 }
 
