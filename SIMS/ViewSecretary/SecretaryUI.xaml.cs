@@ -124,5 +124,21 @@ namespace SIMS.ViewSecretary
                     break;
             }
         }
+
+        private void MainFrame_PageChanged(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            if (typeof(ViewPatients).IsInstanceOfType(MainFrame.Content))
+            {
+                ButtonSearch.Visibility = Visibility.Visible;
+            }
+            else if (typeof(ViewAppointments).IsInstanceOfType(MainFrame.Content))
+            {
+                ButtonSearch.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ButtonSearch.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
