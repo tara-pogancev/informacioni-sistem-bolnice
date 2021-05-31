@@ -59,6 +59,16 @@ namespace SIMS.ViewSecretary.Patients
             else
             {
                 Patient toUnblock = (Patient)patientsView.SelectedItem;
+                if (toUnblock.Guest == true)
+                {
+                    MessageBox.Show("Odabrani pacijent nema nalog.", "Pacijent bez naloga");
+                    return;
+                }
+                else if (toUnblock.IsBanned == false)
+                {
+                    MessageBox.Show("Odabrani pacijent nije banovan.", "Pacijent nije banovan");
+                    return;
+                }
                 toUnblock.IsBanned = false;
                 patientController.UpdatePatient(toUnblock);
                 MessageBox.Show("Pacijent je uspesno odblokiran.", "Pacijent odblokiran");

@@ -32,6 +32,8 @@ namespace SIMS.ViewSecretary.Doctors
                     int.TryParse(vacationDaysTextBox.Text, out int vacationDays);
                     doctor.VacationDays = vacationDays;
                     doctorController.UpdateDoctor(doctor);
+                    MessageBox.Show("Uspesno izmenjen broj slobodnih dana.", "Izmenjeni slobodni dani");
+
                     NavigationService.Navigate(ViewHome.GetInstance());
                 }
                 else
@@ -50,6 +52,8 @@ namespace SIMS.ViewSecretary.Doctors
                 doctor.VacationPeriods.Add(vacationPeriod);
                 doctor.VacationDays -= (vacationPeriod.EndTime - vacationPeriod.StartTime).Days;
                 doctorController.UpdateDoctor(doctor);
+
+                MessageBox.Show("Uspesno kreiran odmor za doktora", "Kreiran odmor za doktora");
 
                 NavigationService.Navigate(ViewHome.GetInstance());
             }
