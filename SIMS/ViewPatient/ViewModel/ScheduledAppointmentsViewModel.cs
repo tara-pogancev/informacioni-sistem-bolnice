@@ -90,9 +90,10 @@ namespace SIMS.PacijentGUI.ViewModel
 
         private void RemoveFromView(Appointment appointment)
         {
+
             for (int i = 0; i < PatientAppointments.Count; i++)
             {
-                if (PatientAppointments[i].AppointmentID == SelectedItem.AppointmentID)
+                if (PatientAppointments[i].AppointmentID == appointment.AppointmentID)
                 {
                     PatientAppointments.RemoveAt(i);
 
