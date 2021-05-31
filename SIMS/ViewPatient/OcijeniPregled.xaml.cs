@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
 {
@@ -45,7 +46,7 @@ namespace SIMS.PacijentGUI
             anketaLekara.SurveyID = anketaLekara.Appointment.AppointmentID;
             anketaLekara.IdVlasnika = anketaLekara.Appointment.Patient.Jmbg;
             anketaLekara.DoctorId = anketaLekara.Appointment.Doctor.Jmbg;
-            new DoctorSurveyFileRepository().Save(anketaLekara);
+            new DoctorSurveyController().SaveDoctorSurvey(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().frame.Content=new IstorijaPregleda());
         }
     }

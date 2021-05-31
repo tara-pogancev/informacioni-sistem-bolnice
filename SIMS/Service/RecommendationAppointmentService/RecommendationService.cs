@@ -5,6 +5,7 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.DTO;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
@@ -16,14 +17,16 @@ namespace SIMS.Service.RecommendationAppointmentService
         private DateTime endDate;
         List<Appointment> recommendedAppointments;
         private string patientID;
+        private RecommendedAppointmentDTO recommendedAppointmentDto;
 
-        public RecommendationService(TypeOfRecommendation type, string doctorID, DateTime startDate, DateTime endDate, string patientID)
+        public RecommendationService(RecommendedAppointmentDTO recommendedAppointmentDto)
         {
-            this.type = type;
-            this.doctorID = doctorID;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.patientID = patientID;
+            this.recommendedAppointmentDto=recommendedAppointmentDto;
+            this.type = recommendedAppointmentDto.Type;
+            this.doctorID = recommendedAppointmentDto.DoctorID;
+            this.startDate = recommendedAppointmentDto.StartDate;
+            this.endDate =recommendedAppointmentDto.EndDate;
+            this.patientID =recommendedAppointmentDto.PatientID;
             recommendedAppointments = new List<Appointment>();
         }
 
@@ -31,13 +34,14 @@ namespace SIMS.Service.RecommendationAppointmentService
         {
             if (type == TypeOfRecommendation.DoctorRecommendation)
             {
-                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(startDate, endDate, doctorID, patientID);
+                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(recommendedAppointmentDto);
 
                 FillRecommendedAppointments(doctorPolicy.GetDoctorRecommendationDraft());
             }
             else
             {
-                FillRecommendedAppointments(new DateRecommendationPolicy(startDate, endDate, patientID).GetDateRecommendationAppointmentDraft());
+                DateRecommendationPolicy dateRecommendationPolicy = new DateRecommendationPolicy(startDate, endDate, patientID);
+                FillRecommendedAppointments(dateRecommendationPolicy.GetDateRecommendationAppointmentDraft());
             }
             return recommendedAppointments;
         }
