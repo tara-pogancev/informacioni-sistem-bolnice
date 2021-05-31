@@ -53,6 +53,7 @@ namespace SIMS.UpravnikGUI
             IDText.Text = lek.MedicineID;
             NazivText.Text = lek.MedicineName;
             ZamenaText.Text = lek.IDSubstitution;
+            ApprovalText.Text = lek.ApprovalStatusString;
 
             IDText.IsEnabled = false;
 
@@ -73,6 +74,9 @@ namespace SIMS.UpravnikGUI
             {
                 Sastojci.Add(new Sastojak(alergen));
             }
+
+            ApprovalText.Text = "Na čekanju";
+
             tabelaSastojaka.ItemsSource = Sastojci;
         }
 
@@ -88,7 +92,6 @@ namespace SIMS.UpravnikGUI
             lek.MedicineID = IDText.Text;
             lek.MedicineName = NazivText.Text;
             lek.IDSubstitution = ZamenaText.Text;
-
             lek.Components.Clear();
             foreach(Sastojak sastojak in Sastojci)
             {
@@ -97,6 +100,8 @@ namespace SIMS.UpravnikGUI
                     lek.Components.Add(sastojak.Alergen);
                 }
             }
+
+            lek.ApprovalStatus = MedicineApprovalStatus.Waiting;
 
             MedicationFileRepository.Instance.CreateOrUpdate(lek);
             UpravnikWindow.Instance.SetContent(new LekoviPage());

@@ -47,9 +47,10 @@
             <DataGrid x:Name="tabelaLekovi" Margin="20, 20"  IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding MedicineID}" Width="70"/>
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding MedicineName}"/>
-                </DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MedicineID}" Width="60"/>
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding MedicineName}" Width="100"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding ApprovalStatusString}"/>
+                    </DataGrid.Columns>
             </DataGrid>
             <Grid>
                 <Button Content="Dodaj" Width="110" Height="30" Background="Green" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,20" Click ="DodajLek_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
