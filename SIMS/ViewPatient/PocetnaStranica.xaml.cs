@@ -28,8 +28,7 @@ namespace SIMS.PacijentGUI
     public partial class PocetnaStranica : Window
     {
         private Patient patient;
-        [DllImport("User32.dll")]
-        private static extern bool SetCursorPos(double X, double Y);
+        
         private static PocetnaStranica instance=null;
         public static PocetnaStranica getInstance()
         {
@@ -51,7 +50,7 @@ namespace SIMS.PacijentGUI
         public void kreirajAnketu()
         {
            
-            if (new HospitalSurveyService().ShowSurveyToPatient(patient))
+            if (new HospitalSurveyController().ShowSurveyToPatient(patient))
             {
                 Anketa.Visibility = Visibility.Visible;
             }

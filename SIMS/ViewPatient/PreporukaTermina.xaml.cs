@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Service.RecommendationAppointmentService;
 
@@ -66,12 +67,22 @@ namespace SIMS.PacijentGUI
 
             if (lekarChecked.IsChecked == true)
             {
-                RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DoctorRecommendation, lekari[ListaDoktora.SelectedIndex].Jmbg, (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
+                RecommendedAppointmentDTO recommendedAppointmentDto = new RecommendedAppointmentDTO(
+                    TypeOfRecommendation.DoctorRecommendation, lekari[ListaDoktora.SelectedIndex].Jmbg,
+                    (DateTime) PocetniDatum.SelectedDate, (DateTime) KrajnjiDatum.SelectedDate,
+                    PocetnaStranica.getInstance().Pacijent.Jmbg);
+
+                RecommendationService recommendationService = new RecommendationService(recommendedAppointmentDto);
                 preporuceniTermini = recommendationService.GetRecommendedAppointments();
             }
             else
             {
-                RecommendationService recommendationService = new RecommendationService(TypeOfRecommendation.DateRecommendation, "", (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate, PocetnaStranica.getInstance().Pacijent.Jmbg);
+                RecommendedAppointmentDTO recommendedAppointmentDto = new RecommendedAppointmentDTO(
+                    TypeOfRecommendation.DoctorRecommendation, "",
+                    (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
+                    PocetnaStranica.getInstance().Pacijent.Jmbg);
+
+                RecommendationService recommendationService = new RecommendationService(recommendedAppointmentDto);
                 preporuceniTermini = recommendationService.GetRecommendedAppointments();
             }
 

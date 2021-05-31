@@ -2,6 +2,7 @@
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
+using SIMS.DTO;
 using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
@@ -16,13 +17,13 @@ namespace SIMS.Service.RecommendationAppointmentService
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
 
-        public DoctorRecommendationPolicy(DateTime startDate, DateTime endDate, string doctorID, string patientID)
+        public DoctorRecommendationPolicy(RecommendedAppointmentDTO recommendedAppointmentDto)
         {
             recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.doctorID = doctorID;
-            this.patientID = patientID;
+            this.startDate = recommendedAppointmentDto.StartDate;
+            this.endDate =recommendedAppointmentDto.EndDate;
+            this.doctorID =recommendedAppointmentDto.DoctorID;
+            this.patientID = recommendedAppointmentDto.PatientID;
             recommendedAppointementsDrafts = new RecommendedAppointmentFactory(startDate, endDate).getRecommendedAppointmentDrafts();
 
         }

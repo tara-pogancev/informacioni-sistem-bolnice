@@ -12,7 +12,6 @@ namespace SIMS.PacijentGUI.ViewModel
     {
         public ObservableCollection<Appointment> PatientAppointments { get; set; }
         private Patient patient;
-        private AppointmentController appointmentController;
         private ScheduleAppointmentControler scheduleAppointmentControler;
         public RelayCommand DeleteAppointmentCommand { get; set; }
         public RelayCommand EditAppointmentCommand { get; set; }
@@ -21,7 +20,6 @@ namespace SIMS.PacijentGUI.ViewModel
         public ScheduledAppointmentsViewModel(Patient patient)
         {
             this.patient = patient;
-            appointmentController = new AppointmentController();
             scheduleAppointmentControler = new ScheduleAppointmentControler();
             PatientAppointments=new ObservableCollection<Appointment>(new PatientAppointmentController().GetFutureAppointments(patient));
             DeleteAppointmentCommand = new RelayCommand(Execute_DeleteAppointmentCommand,CanExecute_DeleteAppointmentCommand);
@@ -92,9 +90,10 @@ namespace SIMS.PacijentGUI.ViewModel
 
         private void RemoveFromView(Appointment appointment)
         {
+
             for (int i = 0; i < PatientAppointments.Count; i++)
             {
-                if (PatientAppointments[i].AppointmentID == SelectedItem.AppointmentID)
+                if (PatientAppointments[i].AppointmentID == appointment.AppointmentID)
                 {
                     PatientAppointments.RemoveAt(i);
 
@@ -117,7 +116,7 @@ namespace SIMS.PacijentGUI.ViewModel
         #endregion
 
 
-        #region constructor
+        #region helper_functions
         private void banUser()
         {
             ObavjestenjeOTerminu o = new ObavjestenjeOTerminu();
