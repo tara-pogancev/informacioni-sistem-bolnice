@@ -11,7 +11,6 @@ namespace SIMS.Service.RecommendationAppointmentService
     {
         DateTime startDate;
         DateTime endDate;
-        string doctorID;
         string patientID;
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
