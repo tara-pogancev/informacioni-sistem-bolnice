@@ -47,5 +47,15 @@ namespace SIMS.DTO
 
         }
 
+        public bool ShouldSerializeNameAndSpecialization()
+        {
+            return Serialize;
+        }
+
+        public bool ShouldSerializeSpecializationString()
+        {
+            return Serialize;
+        }
+
     }
 }

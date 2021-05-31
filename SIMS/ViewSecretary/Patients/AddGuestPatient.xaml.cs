@@ -1,13 +1,14 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using SIMS.Controller;
 using SIMS.Model;
-using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.ViewSecretary.Patients
 {
     public partial class AddGuestPatient : Page
     {
+        private PatientController patientController = new PatientController();
+
         public AddGuestPatient()
         {
             InitializeComponent();
@@ -16,7 +17,7 @@ namespace SIMS.ViewSecretary.Patients
         private void AddGuest_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text);
-            PatientFileRepository.Instance.Save(patient);
+            patientController.SavePatient(patient);
             ViewPatients.GetInstance().RefreshView();
 
             NavigationService.GoBack();

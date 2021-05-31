@@ -1,15 +1,11 @@
-﻿using SIMS.Repositories.SecretaryRepo;
-using SIMS.Repositories.DoctorRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using SIMS.Controller;
 using SIMS.Model;
-using SIMS.Repositories.PatientRepo;
-using SIMS.Repositories.ManagerRepo;
-using SIMS.Repositories.NotificationRepo;
 
 namespace SIMS.ViewSecretary.Notifications
 {
@@ -32,10 +28,15 @@ namespace SIMS.ViewSecretary.Notifications
             _notifications = notifications;
             _notification = notification;
 
-            _patients = PatientFileRepository.Instance.GetAll();
-            _doctors = DoctorFileRepository.Instance.GetAll();
-            _secretaries = SecretaryFileRepository.Instance.GetAll();
-            _directors = ManagerFileRepository.Instance.GetAll();
+            PatientController patientController = new PatientController();
+            DoctorController doctorController = new DoctorController();
+            SecretaryController secretaryController = new SecretaryController();
+            ManagerController managerController = new ManagerController();
+
+            _patients = patientController.GetAllPatients();
+            _doctors = doctorController.GetAllDoctors();
+            _secretaries = secretaryController.GetAllSecretaries();
+            _directors = managerController.GetAllManagers();
 
             SetRolesForNotificationTargets();
 
@@ -107,6 +108,8 @@ namespace SIMS.ViewSecretary.Notifications
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
+            NotificationController notificationController = new NotificationController();
+
             if (rolesComboBox.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Oznacite bar jednu ulogu.", "Nema uloge");
@@ -115,10 +118,10 @@ namespace SIMS.ViewSecretary.Notifications
             List<string> targets = UpdateNotificationTargets();
             
             _notifications.Remove(_notification);
-            NotificationFileRepository.Instance.Delete(_notification.ID);
+            notificationController.DeleteNotification(_notification.ID);
 
             _notification = new Notification("Sekretarijat", DateTime.Now, obavestenjeTextBox.Text.Trim(), targets);
-            NotificationFileRepository.Instance.Save(_notification);
+            notificationController.SaveNotification(_notification);
 
             NavigationService.Navigate(new ViewNotifications(_secretary));
         }

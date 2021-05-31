@@ -14,11 +14,12 @@ namespace SIMS.ViewSecretary.Appointments
         private List<Patient> _patients;
         private List<Room> _rooms;
 
+        private DoctorController doctorController = new DoctorController();
+
         public AddOperation()
         {
             InitializeComponent();
 
-            DoctorController doctorController = new DoctorController();
             PatientController patientController = new PatientController();
             RoomController roomController = new RoomController();
 
@@ -80,6 +81,11 @@ namespace SIMS.ViewSecretary.Appointments
         {
             AppointmentController appointmentController = new AppointmentController();
             List<Appointment> appointments = appointmentController.GetAllAppointments();
+            if (doctorController.OnVacation(appointment.Doctor, appointment.StartTime))
+            {
+                MessageBox.Show("Lekar je na odmoru u navedenom terminu.", "Lekar na odmoru");
+                return false;
+            }
             foreach (Appointment a in appointments)
             {
                 if (a.GetEndTime() > appointment.StartTime && a.StartTime < appointment.GetEndTime())

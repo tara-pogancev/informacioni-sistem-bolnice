@@ -62,6 +62,7 @@ namespace SIMS.Model
             get
             {
                 return this.Address.Street + " " + this.Address.Number;
+                //return "Despota Stefana 7";
             }
         }
 

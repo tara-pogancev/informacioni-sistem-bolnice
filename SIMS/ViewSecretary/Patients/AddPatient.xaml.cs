@@ -1,34 +1,34 @@
-﻿using SIMS.Repositories.SecretaryRepo;
+﻿using SIMS.Controller;
 using SIMS.Model;
-using SIMS.Repositories.AllergenRepo;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using SIMS.Repositories.PatientRepo;
 
 namespace SIMS.ViewSecretary.Patients
 {
     public partial class AddPatient : Page
     {
         private ObservableCollection<Allergen> _allergens;
+        private PatientController patientController = new PatientController();
+        private AllergenController allergenController = new AllergenController();
         public AddPatient()
         {
             InitializeComponent();
 
-            _allergens = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
+            _allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
-            allergensComboBox.DisplayMemberPath = "Naziv";
+            allergensComboBox.DisplayMemberPath = "Name";
             allergensComboBox.SelectedMemberPath = "ID";
         }
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient pacijent = CreatePatientFromUserInput();
-            PatientFileRepository.Instance.Save(pacijent);
+            Patient patient = CreatePatientFromUserInput();
+            patientController.SavePatient(patient);
             ViewPatients.GetInstance().RefreshView();
 
             NavigationService.Navigate(ViewPatients.GetInstance());
