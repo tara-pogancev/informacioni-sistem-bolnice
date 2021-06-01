@@ -9,7 +9,7 @@ namespace SIMS.ViewSecretary.Patients
 {
     public partial class ViewPatients : Page
     {
-        private ObservableCollection<Patient> _patients;
+        public ObservableCollection<Patient> _patients { get; }
         private static ViewPatients _instance = null;
 
         private PatientController patientController = new PatientController();
@@ -95,7 +95,7 @@ namespace SIMS.ViewSecretary.Patients
             List<Patient> pacijentiAll = patientController.GetAllPatients();
             foreach (Patient p in pacijentiAll)
                 _patients.Add(p);
-
+            patientsView.ItemsSource = _patients;
         }
 
         public void RemoveInstance()

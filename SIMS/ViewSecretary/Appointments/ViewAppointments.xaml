@@ -20,7 +20,7 @@
     <Grid>
         <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">
 
-            <DataGrid x:Name="appointmentsTable" ItemsSource="{Binding terminiView}" IsReadOnly="True" 
+            <DataGrid x:Name="appointmentsView" ItemsSource="{Binding appointmentsView}" IsReadOnly="True" 
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>

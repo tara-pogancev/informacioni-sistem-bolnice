@@ -11,7 +11,7 @@ namespace SIMS.ViewSecretary.Appointments
     {
         private static ViewAppointments _instance = null;
 
-        private ObservableCollection<AppointmentDTO> _appointmentsForView;
+        public ObservableCollection<AppointmentDTO> _appointmentsForView { get; }
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private PatientController patientController = new PatientController();
@@ -29,7 +29,7 @@ namespace SIMS.ViewSecretary.Appointments
 
             this.DataContext = this;
             _appointmentsForView = new ObservableCollection<AppointmentDTO>();
-            appointmentsTable.ItemsSource = _appointmentsForView;
+            appointmentsView.ItemsSource = _appointmentsForView;
             RefreshView();
         }
 
@@ -43,6 +43,7 @@ namespace SIMS.ViewSecretary.Appointments
             {
                 _appointmentsForView.Add(new AppointmentDTO(appointment));
             }
+            appointmentsView.ItemsSource = _appointmentsForView;
         }
 
         private void AddExamination_Click(object sender, RoutedEventArgs e)
@@ -57,22 +58,22 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void UpdateAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (appointmentsTable.SelectedItem != null)
+            if (appointmentsView.SelectedItem != null)
             {
-                this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsTable.SelectedItem));
+                this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsView.SelectedItem));
             }
 
         }
 
         private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (appointmentsTable.SelectedItem != null)
+            if (appointmentsView.SelectedItem != null)
             {
 
                 if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
                 "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
+                    Appointment toDelete = (Appointment)appointmentsView.SelectedItem;
                     appointmentController.DeleteAppointment(toDelete);
 
                     MessageBox.Show("Termin je uspešno otkazan!");

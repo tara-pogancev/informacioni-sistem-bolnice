@@ -12,7 +12,7 @@ namespace SIMS.ViewSecretary.Notifications
     public partial class UpdateNotification : Page
     {
         private Secretary _secretary;
-        private ObservableCollection<Notification> _notifications;
+        public ObservableCollection<Notification> _notifications { get; }
         private Notification _notification;
         private List<Patient> _patients;
         private List<Doctor> _doctors;
