@@ -69,5 +69,16 @@ namespace SIMS.Service
             return retVal;
         }
 
+        public List<Anamnesis> GetListForPatientByDate(Patient patient, DateTime startDate, DateTime endDate)
+        {
+            List<Anamnesis> retVal = new List<Anamnesis>();
+
+            foreach (Anamnesis anamnesis in GetAnamnesisByPatient(patient))
+                if (anamnesis.AnamnesisDate >= startDate && anamnesis.AnamnesisDate <= endDate)
+                    retVal.Add(anamnesis);
+            
+            return retVal;
+        }
+
     }
 }

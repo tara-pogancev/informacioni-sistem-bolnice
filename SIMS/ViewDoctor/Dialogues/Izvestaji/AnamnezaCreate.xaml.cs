@@ -27,11 +27,12 @@ namespace SIMS.LekarGUI
         private AppointmentController appointmentController = new AppointmentController();
         private AnamnesisController anamnesisController = new AnamnesisController();
 
-        public AnamnesisCreate(Appointment appointment)
+        public AnamnesisCreate(Appointment appointmentPar)
         {
             InitializeComponent();
 
-            this.appointment = appointment;
+            appointment = appointmentPar;
+            appointment.InitData();
 
             LabelDoctor.Content = "Doktor: " + appointment.GetDoctorName();
             LabelDate.Content = "Datum pregleda: " + appointment.GetAppointmentDate();

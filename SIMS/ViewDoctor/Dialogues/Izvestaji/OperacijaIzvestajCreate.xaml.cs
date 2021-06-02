@@ -27,6 +27,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             InitializeComponent();
             operation = operationPar;
+            operation.InitData();
 
             LabelDoctor.Content = "Doktor: " + operation.GetDoctorName();
             LabelDate.Content = "Datum operacije: " + operation.GetAppointmentDate();
