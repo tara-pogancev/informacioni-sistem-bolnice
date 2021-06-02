@@ -5,8 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izmena_naloga"
         mc:Ignorable="d"
-        Title="AccountPreferences" Height="450" Width="800">
-    <Grid>
+         ResizeMode="CanMinimize"
+        Title="Izmena podataka" Height="740" Width="500"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Candara"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="#FF323D52">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Izmena podataka" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+
+        <Rectangle Grid.Row="1" Width="400" RadiusX="5" RadiusY="5" Fill="#FF3A475F"/>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="1.5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+            <Label Content="Prezime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
+            <Label Content="Korisničko ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="Mejl adresa:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="Telefon:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="Adresa:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center"/>
+
+            <TextBox x:Name="NameBox" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="LastNameBox" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="UsernameBox" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="EmailBox" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="PhoneBox" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="AddressBox" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Height="30" Width="250" Margin="20,0,20,0" VerticalContentAlignment="Center"/>
+
+            <Button Content="Promena lozinke" Grid.Row="6" Click="ButtonPasswordChange" Grid.ColumnSpan="2" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" />
+
+            <Border Grid.Row="0" Grid.RowSpan="6" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
+
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2">
         
+        <Button Grid.Row="2" Content="OTKAŽI" Click="ButtonDecline" HorizontalAlignment="Left" VerticalAlignment="Top"
+        Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}" Margin="0,0,20,0"/>
+
+        <Button Grid.Row="2" Content="POTVRDI" Click="ButtonAccept" HorizontalAlignment="Left" VerticalAlignment="Top"
+         Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="4" VerticalAlignment="Bottom">
+            <Rectangle Fill="#CB5252" RadiusX="10" RadiusY="10" Width="250"/>
+            <Rectangle Fill="#CB5252" Height="10" Width="250" VerticalAlignment="Bottom"/>
+            <Label Content="FOR DEMO PURPOSES ONLY" Style="{StaticResource DefaultLabelS}" HorizontalAlignment="Center" Foreground="Black" FontFamily="Canbera Bold"/>
+        </Grid>
+
     </Grid>
+    
 </Window>

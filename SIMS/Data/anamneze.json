@@ -83,5 +83,22 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210530094918224237",
     "Serialize": true
+  },
+  "210531092343979838": {
+    "MainIssues": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "CurrentAnamnesis": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "GeneralOccurrences": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "RespiratorySystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "CardioSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "DigestiveSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "UroGenitalSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "LocomotorSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "NervousSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "PastDiseases": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "FamilyData": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "SocioEpiData": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+    "AnamnesisDate": "2021-06-02T00:00:00+02:00",
+    "AnamnesisID": "210531092343979838",
+    "Serialize": true
   }
 }
