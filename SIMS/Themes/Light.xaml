@@ -3,8 +3,8 @@
     <SolidColorBrush x:Key="BackgroundColorPage" Color="White"/>
     <SolidColorBrush x:Key="ForegroundColorMain" Color="White"/>
     <SolidColorBrush x:Key="BackgroundColorMenu" Color="#FF4ED14E"/>
-    <SolidColorBrush x:Key="ForegroundColorMenuItem" Color="#FF45F421"/>
-    <SolidColorBrush x:Key="BackgroundColorMenuItem" Color="White"/>
+    <SolidColorBrush x:Key="ForegroundColorMenuItem" Color="#03360f"/>
+    <SolidColorBrush x:Key="BackgroundColorMenuItem" Color="#FFDDE8DD"/>
     <SolidColorBrush x:Key="BackgroundColorStatusBar" Color="#FF039003"/>
 
     <SolidColorBrush x:Key="ForegroundColorPageText" Color="Black"/>
@@ -15,7 +15,7 @@
     <SolidColorBrush x:Key="BackgroundDataGrid" Color="White"/>
     <SolidColorBrush x:Key="BorderBrushDataGrid" Color="#FF15F607"/>
 
-    <SolidColorBrush x:Key="NotificationBoxColor" Color="#FF43CA4A"/>
+    <SolidColorBrush x:Key="NotificationBoxColor" Color="#FF106E15"/>
     <SolidColorBrush x:Key="NotificationBorderColor" Color="White"/>
 
     <SolidColorBrush x:Key="MouseOverButtonColor" Color="#FF49BA3D"/>

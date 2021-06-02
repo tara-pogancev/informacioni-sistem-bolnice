@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using SIMS.Filters;
 using System;
 using SIMS.Controller;
+using System.Windows.Media.Imaging;
 
 namespace SIMS.ViewSecretary
 {
@@ -42,11 +43,13 @@ namespace SIMS.ViewSecretary
             {
                 app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
                 ButtonTheme.Content = FindResource("MoonImage");
+                LogoImage.Source = new BitmapImage(new Uri("/src/logo.png", UriKind.Relative));
             }
             else
             {
                 app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
                 ButtonTheme.Content = FindResource("SunImage");
+                LogoImage.Source = new BitmapImage(new Uri("/src/logo_standalone_light.png", UriKind.Relative));
             }
             if (_secretary.Language.Equals("SR"))
             {
@@ -127,11 +130,13 @@ namespace SIMS.ViewSecretary
             {
                 app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
                 ButtonTheme.Content = FindResource("SunImage");
+                LogoImage.Source = new BitmapImage(new Uri("/src/logo_standalone_light.png", UriKind.Relative));
             }
             else
             {
                 app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
                 ButtonTheme.Content = FindResource("MoonImage");
+                LogoImage.Source = new BitmapImage(new Uri("/src/logo.png", UriKind.Relative));
             }
         }
 
