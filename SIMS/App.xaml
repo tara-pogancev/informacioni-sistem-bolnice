@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:SIMS"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <ResourceDictionary>
         <!--Label style-->
         <Style TargetType="Label" x:Key="DefaultLabel">
             <Setter Property="TextElement.FontFamily" Value="Candara Light"/>
@@ -312,5 +312,16 @@
 
         <!--Date Picker-->
 
+        <!-- Themes -->
+        
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Name="ThemeDictionary">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="Themes/Dark.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

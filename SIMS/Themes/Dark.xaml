@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="BackgroundColorMain" Color="#323D52"/>
+    <SolidColorBrush x:Key="ForegroundColorMain" Color="#FF7F85A2"/>
+    <SolidColorBrush x:Key="BackgroundColorMenu" Color="#1B233A"/>
+    <SolidColorBrush x:Key="ForegroundColorMenuItem" Color="#FF5C99D6"/>
+    <SolidColorBrush x:Key="BackgroundColorMenuItem" Color="#232936"/>
+    <SolidColorBrush x:Key="BackgroundColorStatusBar" Color="#191E29"/> 
+</ResourceDictionary>

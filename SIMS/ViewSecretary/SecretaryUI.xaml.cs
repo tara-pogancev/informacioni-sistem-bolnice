@@ -10,6 +10,7 @@ using SIMS.ViewSecretary.Patients;
 using SIMS.ViewSecretary.Doctors;
 using System.Windows.Media.Animation;
 using SIMS.Filters;
+using System;
 
 namespace SIMS.ViewSecretary
 {
@@ -96,7 +97,18 @@ namespace SIMS.ViewSecretary
 
         private void Theme_Click(object sender, RoutedEventArgs e)
         {
-            ButtonTheme.Content = ButtonTheme.Content == FindResource("MoonImage") ? FindResource("SunImage") : FindResource("MoonImage");
+            App app = (App)Application.Current;
+
+            if (ButtonTheme.Content == FindResource("MoonImage"))
+            {
+                app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
+                ButtonTheme.Content = FindResource("SunImage");
+            }
+            else
+            {
+                app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
+                ButtonTheme.Content = FindResource("MoonImage");
+            }
         }
 
         private void Language_Click(object sender, RoutedEventArgs e)
