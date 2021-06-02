@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarHomePage">
 
-    <Grid Background="#323D52">
-        <TextBlock x:Name="welcomeText" Text="Dobrodosli" FontSize="35" Foreground="#FF7F85A2" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
+    <Grid Background="{DynamicResource BackgroundColorPage}">
+        <TextBlock x:Name="welcomeText" Text="Dobrodosli" FontSize="35" Foreground="{DynamicResource ForegroundColorPageText}" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
     </Grid>
 </Page>

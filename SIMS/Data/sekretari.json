@@ -1,6 +1,8 @@
-﻿{
+{
   "0603850721311": {
     "VacationDays": 18,
+    "Theme": "Light",
+    "Language": "SR",
     "Name": "Ivan",
     "LastName": "Stanić",
     "Jmbg": "0603850721311",
@@ -19,10 +21,12 @@
       "Street": "Bolmanska",
       "Number": "112"
     },
-    "FullName": "Ivan Stanić"
+    "Serialize": true
   },
   "064865071221": {
     "VacationDays": 23,
+    "Theme": "Dark",
+    "Language": "SR",
     "Name": "Mladen",
     "LastName": "Zorić",
     "Jmbg": "064865071221",
@@ -41,6 +45,6 @@
       "Street": "Otona Županića",
       "Number": "48"
     },
-    "FullName": "Mladen Zorić"
+    "Serialize": true
   }
 }

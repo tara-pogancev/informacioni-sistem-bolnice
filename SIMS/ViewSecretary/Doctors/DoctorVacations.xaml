@@ -10,13 +10,13 @@
 
     <Page.Resources>
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundColorPageText}"/>
             <Setter Property="FontFamily" Value="Candara"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FF323D52">
+    <Grid Background="{DynamicResource BackgroundColorPage}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
             <ColumnDefinition/>
@@ -53,7 +53,7 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                 <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
                      SelectionChanged="DoctorChanged" Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
@@ -72,7 +72,7 @@
                 </StackPanel>
 
                 <Grid Margin="-120,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Dodavanje novog odmora" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+                    <Label Content="Dodavanje novog odmora" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

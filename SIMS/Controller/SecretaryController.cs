@@ -17,5 +17,10 @@ namespace SIMS.Controller
         {
             return secretaryService.GetAllSecretaries();
         }
+
+        public void UpdateSecretary(Secretary secretary)
+        {
+            secretaryService.UpdateSecretary(secretary);
+        }
     }
 }

@@ -11,6 +11,7 @@ using SIMS.ViewSecretary.Doctors;
 using System.Windows.Media.Animation;
 using SIMS.Filters;
 using System;
+using SIMS.Controller;
 
 namespace SIMS.ViewSecretary
 {
@@ -18,6 +19,8 @@ namespace SIMS.ViewSecretary
     {
         private static SecretaryUI _instance = null;
         private Secretary _secretary;
+
+        private SecretaryController secretaryController = new SecretaryController();
 
         public static SecretaryUI GetInstance(Secretary secretary)
         {
@@ -32,6 +35,27 @@ namespace SIMS.ViewSecretary
 
             _secretary = secretary;
             UsernameLabel.Content = _secretary.FullName;
+
+            App app = (App)Application.Current;
+
+            if (_secretary.Theme.Equals("Dark"))
+            {
+                app.ChangeTheme(new Uri("Themes/Dark.xaml", UriKind.Relative));
+                ButtonTheme.Content = FindResource("MoonImage");
+            }
+            else
+            {
+                app.ChangeTheme(new Uri("Themes/Light.xaml", UriKind.Relative));
+                ButtonTheme.Content = FindResource("SunImage");
+            }
+            if (_secretary.Language.Equals("SR"))
+            {
+                ButtonLanguage.Content = "SR";
+            }
+            else
+            {
+                ButtonLanguage.Content = "EN";
+            }
 
             MainFrame.Content = ViewHome.GetInstance(_secretary);
         }
@@ -50,7 +74,7 @@ namespace SIMS.ViewSecretary
                 closeSearchStoryboard.Begin();
                 SearchTextBox.Focus();
             }
-            else if (SearchTextBox.Width == 150)
+            else if (SearchTextBox.Width == 270)
             {
                 Storyboard closeSearchStoryboard = Resources["CloseSearch"] as Storyboard;
                 closeSearchStoryboard.Begin();
@@ -133,6 +157,23 @@ namespace SIMS.ViewSecretary
             if (ViewAppointments.GetInstance() != null)
                 ViewAppointments.GetInstance().RemoveInstance();
 
+            if (ButtonTheme.Content == FindResource("MoonImage"))
+            {
+                _secretary.Theme = "Dark";
+            }
+            else
+            {
+                _secretary.Theme = "Light";
+            }
+            if (ButtonLanguage.Content.Equals("SR"))
+            {
+                _secretary.Language = "SR";
+            }
+            else
+            {
+                _secretary.Language = "EN";
+            }
+            secretaryController.UpdateSecretary(_secretary);
             this.Close();
         }
 
@@ -181,7 +222,7 @@ namespace SIMS.ViewSecretary
 
         private void MainFrame_PageChanged(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            if (SearchTextBox.Width == 150)
+            if (SearchTextBox.Width == 270)
             {
                 Storyboard closeSearchStoryboard = Resources["CloseSearch"] as Storyboard;
                 closeSearchStoryboard.Begin();

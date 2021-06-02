@@ -10,9 +10,11 @@
     <Page.Resources>
 
         <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
-            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
-            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
-            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+            <Setter Property="Background" Value="{DynamicResource BackgroundDataGrid}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushDataGrid}" />
+            <Setter Property="CellStyle" Value="{DynamicResource DataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{DynamicResource DataGridRow}"/>
         </Style>
 
     </Page.Resources>
@@ -36,7 +38,7 @@
         </Grid>
 
 
-        <Grid Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
+        <Grid Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="{DynamicResource BackgroundButtonBar}">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

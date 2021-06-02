@@ -8,7 +8,7 @@
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajGostaPage">
 
-    <Grid Background="#FF323D52">
+    <Grid Background="{DynamicResource BackgroundColorPage}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition/>
@@ -24,9 +24,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Content="Ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Prezime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Jmbg:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="Ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+            <Label Content="Prezime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+            <Label Content="Jmbg:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -40,7 +40,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                 <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                 <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
@@ -52,7 +52,7 @@
                 </StackPanel>
 
                 <Grid Margin="-110,-20,0,0" Grid.RowSpan="2">
-                    <Label Content="Dodavanje gostujeceg pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="30" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                    <Label Content="Dodavanje gostujeceg pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="30" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

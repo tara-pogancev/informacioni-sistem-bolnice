@@ -28,14 +28,14 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="#2a3042">
+                            <Grid Grid.Row="0" Background="{DynamicResource NotificationBoxColor}">
                                 <TextBlock Text="{Binding Author}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
                                 <TextBlock Text="{Binding VaryingTimeString}" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White"/>
 
-                                <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
+                                <Border BorderBrush="{DynamicResource NotificationBorderColor}" BorderThickness="0,0,0,1"/>
                             </Grid>
 
-                            <TextBlock Text="{Binding Content}" Grid.Row="1" TextWrapping="Wrap" Background="#2a3042" Foreground="White"/>
+                            <TextBlock Text="{Binding Content}" Grid.Row="1" TextWrapping="Wrap" Background="{DynamicResource NotificationBoxColor}" Foreground="White"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -46,7 +46,7 @@
 
         <TextBox x:Name="obavestenjeTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
 
-        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
+        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="{DynamicResource BackgroundButtonBar}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
