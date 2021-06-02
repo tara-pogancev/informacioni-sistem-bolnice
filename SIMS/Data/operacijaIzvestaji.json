@@ -1,14 +1,8 @@
 {
-  "210525110704740454": {
-    "DateOfReport": "2021-05-26T00:00:00+02:00",
-    "ReportID": "210525110704740454",
-    "SurgeryName": "Operacija na otvorenom srcu",
-    "SurgeryDescription": "4 Curaga Successfully used"
-  },
-  "210526014330036715": {
-    "DateOfReport": "2021-05-26T00:00:00+02:00",
-    "ReportID": "210526014330036715",
-    "SurgeryName": "Sono fuori di testa, ma diverso da loro",
-    "SurgeryDescription": "E tu sei fuori di testa, ma diversa da loro"
+  "210530094011157140": {
+    "DateOfReport": "2021-05-30T00:00:00+02:00",
+    "ReportID": "210530094011157140",
+    "SurgeryName": "Lorem",
+    "SurgeryDescription": "Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum Ipsum "
   }
 }

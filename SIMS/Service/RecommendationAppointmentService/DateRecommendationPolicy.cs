@@ -11,7 +11,6 @@ namespace SIMS.Service.RecommendationAppointmentService
     {
         DateTime startDate;
         DateTime endDate;
-        string doctorID;
         string patientID;
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
@@ -25,15 +24,15 @@ namespace SIMS.Service.RecommendationAppointmentService
             recommendedAppointementsDrafts = new RecommendedAppointmentFactory(startDate, endDate).getRecommendedAppointmentDrafts();
         }
 
-        private void RemoveBusyDoctors(Appointment termin)
+        private void RemoveBusyDoctors(Appointment appointment)
         {
 
             for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
 
-                if (recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(termin.StartTime))
+                if (recommendedAppointementsDrafts[i].TimeOfAppointment.Equals(appointment.StartTime))
                 {
-                    recommendedAppointementsDrafts[i].AvailableDoctorsID.Remove(termin.Doctor.Jmbg);
+                    recommendedAppointementsDrafts[i].AvailableDoctorsID.Remove(appointment.Doctor.Jmbg);
 
                 }
 

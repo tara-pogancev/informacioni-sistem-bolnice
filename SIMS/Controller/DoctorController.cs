@@ -67,6 +67,10 @@ namespace SIMS.Controller
             doctorService.RecalulateGrade(doctor);
         }
 
+        public List<DoctorDTO> GetAllDoctorsDTO()
+        {
+            return doctorService.GetAllDoctorsDTO();
+        }
         public DoctorDTO GetDTO(Doctor doctor)
         {
             return doctorService.GetDTO(doctor);
@@ -75,6 +79,11 @@ namespace SIMS.Controller
         public List<DoctorDTO> GetDTOFromList(List<Doctor> list)
         {
             return doctorService.GetDTOFromList(list);
+        }
+
+        public bool OnVacation(Doctor doctor, DateTime dateTime)
+        {
+            return doctorService.OnVacation(doctor, dateTime);
         }
 
     }

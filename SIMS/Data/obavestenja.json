@@ -151,5 +151,206 @@
     ],
     "CheckStatus": true,
     "NotificationType": 1
+  },
+  "Recept210530214143645147": {
+    "Author": "Recept",
+    "Time": "2021-05-30T21:41:43.6451478+02:00",
+    "Content": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530214143645147",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210530214217302620": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-30T21:42:17.3026204+02:00",
+    "Content": "Otpisni list hospitalizacije: Beleska beleska",
+    "ID": "Tara Pogančev210530214217302620",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210530214310475280": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-30T21:43:10.4752802+02:00",
+    "Content": "Zakazana hitna operacija [31.05.2021. 09:00, 1] za pacijenta Miha Mihajlo, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210530214310475280",
+    "Target": [
+      "12645323206",
+      "4848555021548"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210530214728232480": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-30T21:47:28.2324804+02:00",
+    "Content": "Zakazana hitna operacija [31.05.2021. 09:00, 1] za pacijenta Petar Petrović, vodeći lekar Tara Pogančev.",
+    "ID": "Tara Pogančev210530214728232480",
+    "Target": [
+      "12121977802342",
+      "045210805048"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210530214734740004": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-30T21:47:34.7400041+02:00",
+    "Content": "Izdat uput za pregled kod lekara Zack Fair. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210530214734740004",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Recept210530215353206946": {
+    "Author": "Recept",
+    "Time": "2021-05-30T21:53:53.2069468+02:00",
+    "Content": "Prepisan recept za lek: Analgin. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530215353206946",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Recept210530215420261299": {
+    "Author": "Recept",
+    "Time": "2021-05-30T21:54:20.2612993+02:00",
+    "Content": "Prepisan recept za lek: Analgin. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530215420261299",
+    "Target": [
+      "1445857"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Recept210530215950516627": {
+    "Author": "Recept",
+    "Time": "2021-05-30T21:59:50.5166275+02:00",
+    "Content": "Prepisan recept za lek: Prilenap. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530215950516627",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
+  },
+  "Recept210530220004356424": {
+    "Author": "Recept",
+    "Time": "2021-05-30T22:00:04.3564244+02:00",
+    "Content": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530220004356424",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
+  },
+  "Recept210530220313740192": {
+    "Author": "Recept",
+    "Time": "2021-05-30T22:03:13.7401921+02:00",
+    "Content": "Prepisan recept za lek: Vivace. Pogledajte recept na svom profilu.",
+    "ID": "Recept210530220313740192",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210531090429709443": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-31T09:04:29.709443+02:00",
+    "Content": "Izdat uput za pregled kod lekara Cloud Strife. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210531090429709443",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210531090517102357": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-05-31T09:05:17.1023578+02:00",
+    "Content": "Zakazana hitna operacija [31.05.2021. 12:00, 1] za pacijenta Petar Petrović, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210531090517102357",
+    "Target": [
+      "12121977802342",
+      "4848555021548"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Zakazan termin210601090000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-01T09:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210601090000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210519093000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-19T09:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210519093000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Zakazan termin210519100000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-05-19T10:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210519100000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Podsjetnik210531092700000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-05-31T09:27:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210531092700000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Zakazan termin210602090000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-02T09:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210602090000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210602083000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-02T08:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210602083000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
   }
 }

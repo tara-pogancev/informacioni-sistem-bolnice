@@ -1,4 +1,5 @@
 ﻿using SIMS.Model;
+using SIMS.Repositories.NotificationRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;

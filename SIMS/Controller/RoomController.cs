@@ -8,17 +8,11 @@ namespace SIMS.Controller
 {
     public class RoomController
     {
-        RoomService roomService = new RoomService();
-
-        public RoomController()
-        {
-
-        }
+        private readonly RoomService roomService = new RoomService();
 
         public List<Room> GetAllRooms() => roomService.GetAllRooms();
 
         public Room GetRoom(String key) => roomService.GetRoom(key);
-
         public void CreateOrUpdate(Room room)
         {
             roomService.CreateOrUpdate(room);
@@ -28,10 +22,19 @@ namespace SIMS.Controller
         {
             roomService.Delete(Number);
         }
-
         public void Update(Room room)
         {
             roomService.Update(room);
+        }
+
+        public void MergeRooms(string room1, string room2)
+        {
+            roomService.MergeRooms(room1, room2);
+        }
+
+        public void Renovate(Room room)
+        {
+            roomService.Renovate(room);
         }
     }
 }

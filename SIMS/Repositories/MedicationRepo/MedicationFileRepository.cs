@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.MedicationRepo
 {
     class MedicationFileRepository : GenericFileRepository<string, Medication, MedicationFileRepository>,IMedicationRepository
     {

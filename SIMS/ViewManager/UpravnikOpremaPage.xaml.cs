@@ -15,6 +15,7 @@ using SIMS.Repositories.SecretaryRepo;
 using SIMS.Filters;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.Repositories.InventoryRepo;
 
 namespace SIMS.UpravnikGUI
 {

@@ -1,42 +1,40 @@
 ﻿using SIMS.Model;
 using SIMS.Repositories.DoctorRepo;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.DTO;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
     class RecommendationService
     {
-        private TypeOfRecommendation type;
-        private string doctorID;
-        private DateTime startDate;
-        private DateTime endDate;
+        
         List<Appointment> recommendedAppointments;
-        private string patientID;
+ 
+        private RecommendedAppointmentDTO recommendedAppointmentDto;
 
-        public RecommendationService(TypeOfRecommendation type, string doctorID, DateTime startDate, DateTime endDate, string patientID)
+        public RecommendationService(RecommendedAppointmentDTO recommendedAppointmentDto)
         {
-            this.type = type;
-            this.doctorID = doctorID;
-            this.startDate = startDate;
-            this.endDate = endDate;
-            this.patientID = patientID;
+            this.recommendedAppointmentDto=recommendedAppointmentDto;
+            
             recommendedAppointments = new List<Appointment>();
         }
 
         public List<Appointment> GetRecommendedAppointments()
         {
-            if (type == TypeOfRecommendation.DoctorRecommendation)
+            if (recommendedAppointmentDto.Type == TypeOfRecommendation.DoctorRecommendation)
             {
-                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(startDate, endDate, doctorID, patientID);
+                DoctorRecommendationPolicy doctorPolicy = new DoctorRecommendationPolicy(recommendedAppointmentDto);
 
                 FillRecommendedAppointments(doctorPolicy.GetDoctorRecommendationDraft());
             }
             else
             {
-                FillRecommendedAppointments(new DateRecommendationPolicy(startDate, endDate, patientID).GetDateRecommendationAppointmentDraft());
+                DateRecommendationPolicy dateRecommendationPolicy = new DateRecommendationPolicy(recommendedAppointmentDto.StartDate, recommendedAppointmentDto.EndDate, recommendedAppointmentDto.PatientID);
+                FillRecommendedAppointments(dateRecommendationPolicy.GetDateRecommendationAppointmentDraft());
             }
             return recommendedAppointments;
         }
@@ -50,13 +48,13 @@ namespace SIMS.Service.RecommendationAppointmentService
             foreach (var appointment in recommendedAppointmentsDraft)
             {
 
-                if (type == TypeOfRecommendation.DoctorRecommendation)
+                if (recommendedAppointmentDto.Type == TypeOfRecommendation.DoctorRecommendation)
                 {
                     recommendedAppointments.Add(new Appointment(appointment.TimeOfAppointment,
                                                             30,
                                                             AppointmentType.examination,
-                                                            doctorRepository.FindById(doctorID),
-                                                            patientRepository.FindById(patientID),
+                                                            doctorRepository.FindById(recommendedAppointmentDto.DoctorID),
+                                                            patientRepository.FindById(recommendedAppointmentDto.PatientID),
                                                             roomService.GetAvailableRooms(appointment.TimeOfAppointment)[0]));
                 }
                 else
@@ -65,7 +63,7 @@ namespace SIMS.Service.RecommendationAppointmentService
                                                             30,
                                                             AppointmentType.examination,
                                                             doctorRepository.FindById(appointment.AvailableDoctorsID[0]),
-                                                            patientRepository.FindById(patientID),
+                                                            patientRepository.FindById(recommendedAppointmentDto.PatientID),
                                                             roomService.GetAvailableRooms(appointment.TimeOfAppointment)[0]));
                 }
 

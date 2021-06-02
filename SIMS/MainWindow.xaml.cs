@@ -17,8 +17,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.ViewSecretary;
 using SIMS.Controller;
 using SIMS.ViewPatient.ViewModel;
+using SIMS.Repositories.PatientRepo;
+using SIMS.Repositories.ManagerRepo;
 
 namespace SIMS
 {
@@ -120,7 +123,7 @@ namespace SIMS
 
         private void SecretaryLogin(Secretary sekretar)
         {
-            SekretarUI sekretarUI = SekretarUI.GetInstance(sekretar);
+            SecretaryUI sekretarUI = SecretaryUI.GetInstance(sekretar);
             sekretarUI.Show();
             this.Close();
         }

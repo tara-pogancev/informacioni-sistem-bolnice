@@ -39,7 +39,8 @@ namespace SIMS.Repositories.LastLoginRepo
         }
 
         protected override void ShouldSerialize(LoggedUser entity)
-        {            
+        {
+            entity.Serialize = true;
         }
     }
 }

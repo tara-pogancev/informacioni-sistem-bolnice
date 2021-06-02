@@ -1,80 +1,92 @@
 {
-  "210429091946": {
+  "210530094142": {
     "MedicineName": "Vivace",
-    "Amount": "50 mg",
-    "Diagnosis": "Temperatura",
-    "ReceptID": "210429091946",
+    "Amount": "50mg",
+    "Diagnosis": "Nepoznata",
+    "RecieptID": "210530094142",
     "Doctor": {
-      "Jmbg": "045210805048"
+      "Jmbg": "045210805048",
+      "Serialize": false
     },
     "Patient": {
-      "Jmbg": "4865453131"
+      "Jmbg": "12121977802342",
+      "Serialize": false
     },
-    "Date": "2021-04-29T00:00:00+02:00"
+    "Date": "2021-05-30T00:00:00+02:00"
   },
-  "210429093023": {
-    "MedicineName": "Katopil",
-    "Amount": "15 ml",
-    "Diagnosis": "/",
-    "ReceptID": "210429093023",
+  "210530095352": {
+    "MedicineName": "Analgin",
+    "Amount": "80",
+    "Diagnosis": "Pellentesque in justo",
+    "RecieptID": "210530095352",
     "Doctor": {
-      "Jmbg": "045210805048"
+      "Jmbg": "045210805048",
+      "Serialize": false
     },
     "Patient": {
-      "Jmbg": "4865453131"
+      "Jmbg": "12121977802342",
+      "Serialize": false
     },
-    "Date": "2021-04-29T00:00:00+02:00"
+    "Date": "2021-05-30T00:00:00+02:00"
   },
-  "210504121035": {
+  "210530095419": {
+    "MedicineName": "Analgin",
+    "Amount": "130",
+    "Diagnosis": "Proin porta mauris",
+    "RecieptID": "210530095419",
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "1445857",
+      "Serialize": false
+    },
+    "Date": "2021-05-30T00:00:00+02:00"
+  },
+  "210530095949": {
     "MedicineName": "Prilenap",
-    "Amount": "55 ml",
-    "Diagnosis": "Bolovi",
-    "ReceptID": "210504121035",
+    "Amount": "60",
+    "Diagnosis": "Cras ut quam urna",
+    "RecieptID": "210530095949",
     "Doctor": {
-      "Jmbg": "4865453131"
+      "Jmbg": "045210805048",
+      "Serialize": false
     },
     "Patient": {
-      "Jmbg": "2484848556"
+      "Jmbg": "4865453131",
+      "Serialize": false
     },
-    "Date": "2021-05-04T00:00:00+02:00"
+    "Date": "2021-05-30T00:00:00+02:00"
   },
-  "210508122801": {
-    "MedicineName": "Prilenap",
-    "Amount": "/",
-    "Diagnosis": "/",
-    "ReceptID": "210508122801",
+  "210530100003": {
+    "MedicineName": "Vivace",
+    "Amount": "85",
+    "Diagnosis": "Nulla scelerisque ullamcorper fermentum",
+    "RecieptID": "210530100003",
     "Doctor": {
-      "Jmbg": "045210805048"
+      "Jmbg": "045210805048",
+      "Serialize": false
     },
     "Patient": {
-      "Jmbg": "12645323206"
+      "Jmbg": "4865453131",
+      "Serialize": false
     },
-    "Date": "2021-05-08T00:00:00+02:00"
+    "Date": "2021-05-30T00:00:00+02:00"
   },
-  "210508122835": {
-    "MedicineName": "Fervex",
-    "Amount": "/",
-    "Diagnosis": "/",
-    "ReceptID": "210508122835",
+  "210530100312": {
+    "MedicineName": "Vivace",
+    "Amount": "80",
+    "Diagnosis": "Sed in tortor sem.",
+    "RecieptID": "210530100312",
     "Doctor": {
-      "Jmbg": "045210805048"
+      "Jmbg": "045210805048",
+      "Serialize": false
     },
     "Patient": {
-      "Jmbg": "4484552102"
+      "Jmbg": "4865453131",
+      "Serialize": false
     },
-    "Date": "2021-05-08T00:00:00+02:00"
-  },
-  "210508031317": {
-    "MedicineName": "Fervex",
-    "Amount": "85 ml",
-    "Diagnosis": "Prehlada",
-    "ReceptID": "210508031317",
-    "Doctor": {
-      "Jmbg": "045210805048"
-    },
-    "Patient": {
-      "Jmbg": "12645323206"
-    },
-    "Date": "2021-05-08T00:00:00+02:00"
+    "Date": "2021-05-30T00:00:00+02:00"
   }
 }

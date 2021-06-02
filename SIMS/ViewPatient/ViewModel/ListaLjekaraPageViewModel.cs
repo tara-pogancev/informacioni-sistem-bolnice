@@ -24,8 +24,8 @@ namespace SIMS.PacijentGUI.ViewModel
 
         public ListaLjekaraPageViewModel()
         {
-            IDoctorRepository doctorRepository = new DoctorFileRepository();
-            Doctors = new ObservableCollection<Doctor>(doctorRepository.GetAll());
+           
+            Doctors = new ObservableCollection<Doctor>(doctorController.GetAllDoctors());
             ChoseDoctorCommand = new RelayCommand(Execute_ChoseDoctrCommand, CanExecute_ChoseDoctorCommand);
             DatailsDoctorCommand = new RelayCommand(Execute_DetailsDoctrCommand, CanExecute_DetailsDoctorCommand);
             patient = PocetnaStranica.getInstance().Pacijent;

@@ -1,6 +1,7 @@
 ﻿using SIMS.Daemon.PremestajOpreme;
 using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.InventoryRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;
@@ -13,20 +14,20 @@ namespace SIMS.Service
         IInventoryRepository inventoryRepository = new InventoryFileRepository();
         public void MoveInventory(MovingInventoryDTO dto)
         {
-            int amountToBeMoved = int.Parse(dto.amountToBeMoved);
+            int amountToBeMoved = int.Parse(dto.AmountToBeMoved);
 
             DateTime timeOfExecution;
 
-            if (dto.executionTime == null)
+            if (dto.ExecutionTime == null)
             {
                 timeOfExecution = DateTime.Now;
             }
             else
             {
-                timeOfExecution = (DateTime)dto.executionTime;
+                timeOfExecution = (DateTime)dto.ExecutionTime;
             }
 
-            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, dto.sourceRoomNumber, dto.destinationRoomNumber, dto.inventoryID, amountToBeMoved));
+            InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, dto.SourceRoomNumber, dto.DestinationRoomNumber, dto.InventoryID, amountToBeMoved));
 
         }
 

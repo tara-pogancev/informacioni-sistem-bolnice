@@ -11,6 +11,7 @@ using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.ComponentModel;
 using SIMS.Controller;
+using SIMS.Repositories.SurgeryReportRepo;
 
 namespace SIMS.Model
 {
@@ -32,10 +33,7 @@ namespace SIMS.Model
         
         [JsonIgnore]
         public bool Serialize { get; set; }
-
-        
-
-       
+                
 
         public Appointment(DateTime startTime, int duration, AppointmentType type, Doctor doctor, Patient patient, Room room)
         {
@@ -59,7 +57,7 @@ namespace SIMS.Model
 
         public Appointment(Appointment anamnesisAppointment)
         {
-            anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
+            //anamnesisAppointment = appointmentController.GetAppointment(anamnesisAppointment.AppointmentID);
             anamnesisAppointment.InitData();
 
             StartTime = anamnesisAppointment.StartTime;

@@ -10,7 +10,7 @@ namespace SIMS.Service
 {
     class DoctorService
     {
-        private IDoctorRepository doctorRepository = new DoctorFileRepository(); 
+        private IDoctorRepository doctorRepository = new DoctorFileRepository();
 
         public DoctorService()
         {
@@ -67,6 +67,17 @@ namespace SIMS.Service
             return true;
         }
 
+        public List<DoctorDTO> GetAllDoctorsDTO()
+        {
+            List<Doctor> doctors = doctorRepository.GetAll();
+            List<DoctorDTO> doctorsDTO = new List<DoctorDTO>();
+            foreach (Doctor doctor in doctors)
+            {
+                doctorsDTO.Add(new DoctorDTO(doctor));
+            }
+            return doctorsDTO;
+        }
+
         //Salje izmenjen termin ali njega ignorise prilikom provere
         public Boolean CheckIfFreeUpdate(Doctor doctor, Appointment newAppointment)
         {
@@ -74,7 +85,7 @@ namespace SIMS.Service
             {
                 if (t.AppointmentID != newAppointment.AppointmentID)
                 {
-                    if ((newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime()) || 
+                    if ((newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime()) ||
                         (newAppointment.StartTime >= t.StartTime && newAppointment.StartTime < t.GetEndTime()))
                         return false;
                 }
@@ -106,18 +117,30 @@ namespace SIMS.Service
             }
         }
 
-        public DoctorDTO GetDTO (Doctor doctor)
+        public DoctorDTO GetDTO(Doctor doctor)
         {
             return new DoctorDTO(doctor);
         }
 
-        public List<DoctorDTO> GetDTOFromList (List<Doctor> list)
+        public List<DoctorDTO> GetDTOFromList(List<Doctor> list)
         {
             List<DoctorDTO> retVal = new List<DoctorDTO>();
             foreach (Doctor doctor in list)
                 retVal.Add(GetDTO(doctor));
 
             return retVal;
+        }
+
+        public bool OnVacation(Doctor doctor, DateTime dateTime)
+        {
+            foreach (VacationPeriod vacationPeriod in doctor.VacationPeriods)
+            {
+                if (dateTime.Date >= vacationPeriod.StartTime.Date && dateTime.Date < vacationPeriod.EndTime.Date)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

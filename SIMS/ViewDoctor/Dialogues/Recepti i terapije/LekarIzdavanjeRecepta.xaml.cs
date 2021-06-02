@@ -49,9 +49,7 @@ namespace SIMS.LekarGUI
             else if (patient.IsAlergic(GetSelectedMedicine()))
             {
                 Medication l = GetSelectedMedicine();
-                if (MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ".", "Upozorenje!",
-                    MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        WriteReceipt();
+                MessageBox.Show("Pacijent je alergičan na odabran lek! Preporučena zamena po mogućnosti je: " + GetSubstitutionName(l) + ".", "Upozorenje!");
             }
             else
                 WriteReceipt();

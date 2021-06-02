@@ -17,6 +17,8 @@ namespace SIMS.Model
         public double Grade { get; set; }
         public Specialization DoctorSpecialization { get; set; }
 
+        public List<VacationPeriod> VacationPeriods { get; set; }
+
         public Doctor()
         {
             Grade = 0.0;
@@ -29,6 +31,7 @@ namespace SIMS.Model
             VacationDays = vacationDays;
             DoctorSpecialization = specialization;
             Grade = 0.0;
+            VacationPeriods = new List<VacationPeriod>();
         }
 
         public Doctor(Doctor doctor)
@@ -45,6 +48,7 @@ namespace SIMS.Model
             VacationDays = doctor.VacationDays;
             DoctorSpecialization = doctor.DoctorSpecialization;
             Grade = doctor.Grade;
+            VacationPeriods = doctor.VacationPeriods;
         }
 
         // Prebaciti u servis klasu?
@@ -64,6 +68,11 @@ namespace SIMS.Model
         }
 
         public bool ShouldSerializeGrade()
+        {
+            return Serialize;
+        }
+
+        public bool ShouldSerializeVacationPeriods()
         {
             return Serialize;
         }

@@ -34,5 +34,20 @@ namespace SIMS.PacijentGUI
         {
             PocetnaStranica.getInstance().frame.Content=new KorisnickiProfil();
         }
+
+        private void ZakaziTermin_OnClick(object sender, RoutedEventArgs e)
+        {
+            PocetnaStranica.getInstance().frame.Content = ZakazivanjeTermina.getInstance();
+        }
+
+        private void Terapija_OnClick(object sender, RoutedEventArgs e)
+        {
+            PocetnaStranica.getInstance().frame.Content = new TerapijaPacijentaView();
+        }
+
+        private void Obavjestenja_OnClick(object sender, RoutedEventArgs e)
+        {
+            PocetnaStranica.getInstance().frame.Content = new Obavjestenja();
+        }
     }
 }

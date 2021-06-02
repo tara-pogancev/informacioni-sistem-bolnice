@@ -8,8 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\Illustrations\bed_sleep.png" />
+    <None Remove="src\Illustrations\moon.png" />
+    <None Remove="src\Illustrations\sleep.png" />
+    <None Remove="src\PhotoReminder.png" />
     <None Remove="src\pozadina.jpg" />
     <None Remove="src\pozadina3.png" />
+    <None Remove="src\reminder.png" />
+    <None Remove="src\reminderP.png" />
     <None Remove="ViewDoctor\logo_h_small.png" />
     <None Remove="ViewDoctor\notification.png" />
     <None Remove="ViewDoctor\profile.png" />
@@ -80,13 +86,22 @@
     <Resource Include="src\CoffeeBreak\Page5.png" />
     <Resource Include="src\CoffeeBreak\Page6.png" />
     <Resource Include="src\CoffeeBreak\Page7.png" />
+    <Resource Include="src\Illustrations\bed_sleep.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\Illustrations\man_reading_a_book.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\Illustrations\man_reading_dark_hair.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="src\Illustrations\moon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="src\Illustrations\reading_on_a_chair.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="src\PhotoReminder.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="src\pozadina3.png">

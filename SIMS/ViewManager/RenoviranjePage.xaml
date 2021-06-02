@@ -14,12 +14,25 @@
             <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Pocetak" HorizontalAlignment="Left"/>
             <Label  Content="Kraj renoviranja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
             <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Kraj" HorizontalAlignment="Left" />
+            <StackPanel  Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Label  Content="Bez spajanja" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <RadioButton x:Name="NotMerge" GroupName="Merge" Margin="10,10" IsChecked="True" Click="NotMerge_Click" Height="16"></RadioButton>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Label  Content="Spoji sa prostorijom" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <RadioButton GroupName="Merge" x:Name="MergeInto" Margin="10,10"  Click="MergeInto_Click" Height="16"></RadioButton>
+                <Label  x:Name="RoomNumberLabel" Content="Broj prostorije" Margin="80,10,10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <TextBox x:Name="RoomNumberTextBox" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="50"/>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal" FlowDirection="LeftToRight">
+                <Label  Content="Napravi novu prostoriju" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
+                <RadioButton  GroupName="Merge" x:Name="NewRoom" Margin="10,10" Click="New_Click" Height="16"></RadioButton>
+            </StackPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button x:Name="Odustani" Content="Odustani"  Margin="20,20" Width="110" Height="35" Background="DarkRed" Click="Odustani_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
             <Button Content="Ok"  Margin="20,20" Width="110" Height="35" Background="Green" Click="Ok_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
             <Button x:Name="Otkaz" Content="Otkaži renoviranje"  Margin="20,20" Width="180" Height="35" Background="DarkRed" Click="Otkaz_Click"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
-
         </StackPanel>
 
     </Grid>

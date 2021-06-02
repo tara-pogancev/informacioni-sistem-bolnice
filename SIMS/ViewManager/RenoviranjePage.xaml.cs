@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.Repositories.RoomRepo;
+using SIMS.Exceptions;
 
 namespace SIMS.UpravnikGUI
 {
@@ -27,6 +29,8 @@ namespace SIMS.UpravnikGUI
         {
             InitializeComponent();
             room = RoomFileRepository.Instance.FindById(BrojProstorije);
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
             if (room.RenovationStart != null && room.RenovationEnd != null)
             {
                 Pocetak.SelectedDate = room.RenovationStart;
@@ -36,14 +40,48 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                ScheduleRenovation();
+            }
+            catch (RenovationAppointmentOverlapException)
+            {
+                MessageBox.Show("Termini renoviranja se poklapaju sa zakazanim pregledima!");
+                return;
+            }
+            MergeRoomsSelection();
+        }
+
+        private void ScheduleRenovation()
+        {
             if (Pocetak.SelectedDate != null && Kraj.SelectedDate != null)
             {
                 room.RenovationStart = Pocetak.SelectedDate;
                 room.RenovationEnd = Kraj.SelectedDate;
-                roomController.Update(room);
+                roomController.Renovate(room);
             }
-            UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
-            UpravnikWindow.Instance.SetLabel("Prostorije");
+        }
+
+        private void MergeRoomsSelection()
+        {
+            if ((bool)NotMerge.IsChecked)
+            {
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
+                UpravnikWindow.Instance.SetLabel("Prostorije");
+            }
+
+            else if ((bool)NewRoom.IsChecked)
+            {
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage());
+                UpravnikWindow.Instance.SetLabel("Nova prostorija nastala renoviranjem prostorije " + room.Number);
+            }
+
+            else if ((bool)MergeInto.IsChecked)
+            {
+                roomController.MergeRooms(RoomNumberTextBox.Text, room.Number);
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
+                UpravnikWindow.Instance.SetLabel("Prostorije");
+            }
         }
 
         private void Odustani_Click(object sender, RoutedEventArgs e)
@@ -59,6 +97,24 @@ namespace SIMS.UpravnikGUI
             roomController.Update(room);
             UpravnikWindow.Instance.SetContent(new UpravnikProstorijePage());
             UpravnikWindow.Instance.SetLabel("Prostorije");
+        }
+
+        private void NotMerge_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
+        }
+
+        private void MergeInto_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Visible;
+            RoomNumberTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void New_Click(object sender, RoutedEventArgs e)
+        {
+            RoomNumberLabel.Visibility = Visibility.Hidden;
+            RoomNumberTextBox.Visibility = Visibility.Hidden;
         }
     }
 }

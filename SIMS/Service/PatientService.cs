@@ -1,5 +1,6 @@
 ﻿using SIMS.DTO;
 using SIMS.Model;
+using SIMS.Repositories.PatientRepo;
 using SIMS.Repositories.SecretaryRepo;
 using System;
 using System.Collections.Generic;

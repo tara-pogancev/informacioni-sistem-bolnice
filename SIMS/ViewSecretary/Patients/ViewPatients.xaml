@@ -1,0 +1,180 @@
+﻿<Page x:Class="SIMS.ViewSecretary.Patients.ViewPatients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="430"
+      Title="SekretarPacijentiPage">
+
+    <Page.Resources>
+        <Style TargetType="DataGrid" BasedOn="{StaticResource DarkDataGrid}">
+            <Setter Property="CellStyle" Value="{StaticResource DarkDataGridCell}"/>
+            <Setter Property="ColumnHeaderStyle" Value="{StaticResource DarkDataGridHeader}"/>
+            <Setter Property="RowStyle" Value="{StaticResource DarkDataGridRow}"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid Margin="0,0,0,0" VerticalAlignment="Top" Height="650">
+            <DataGrid x:Name="patientsView" ItemsSource="{Binding _patients}" IsReadOnly="True" 
+                                    SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
+                                    DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Adresa" Binding="{Binding AddressString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Lbo" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Guest}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+
+        <Grid Margin="0,0,0,0" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button Content="Dodaj"  Margin="0,0,0,0" FontSize="14" Click="AddPatient_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" 
+                                                       HorizontalAlignment="Center"/>
+
+                            </Border>
+
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Button Content="Dodaj gosta"  Margin="0,0,0,0" FontSize="14" Click="AddGuest_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button Content="Izmeni"  Margin="0,0,0,0" FontSize="14" Click="UpdatePatient_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Content="Odblokiraj"  Margin="0,0,0,0" FontSize="14" Click="UnblockPatient_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF57D6B4"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF33A486"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <Button Content="Obrisi"  Margin="0,0,0,0" FontSize="14" Click="DeletePatient_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFE26868"/>
+                            <Setter Property="TextElement.FontFamily" Value="Candara"/>
+                            <Setter Property="TextBlock.Foreground" Value="#000000"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFCB5252"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="60" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,7 +1,9 @@
-﻿{
+{
   "045210805048": {
     "VacationDays": 15,
+    "Grade": 0.0,
     "DoctorSpecialization": 2,
+    "VacationPeriods": [],
     "Name": "Tara",
     "LastName": "Pogančev",
     "Jmbg": "045210805048",
@@ -20,12 +22,13 @@
       "Street": "Bulevar Despota Stefana",
       "Number": "7"
     },
-    "FullName": "Tara Pogancev"
+    "Serialize": true
   },
-
   "4848555021548": {
     "VacationDays": 20,
+    "Grade": 0.0,
     "DoctorSpecialization": 4,
+    "VacationPeriods": [],
     "Name": "Zack",
     "LastName": "Fair",
     "Jmbg": "4848555021548",
@@ -44,12 +47,13 @@
       "Street": "Shinra Inc",
       "Number": "Floor 75"
     },
-    "FullName": "MilanMarkovic"
+    "Serialize": true
   },
-
   "22157484654211": {
     "VacationDays": 18,
+    "Grade": 0.0,
     "DoctorSpecialization": 0,
+    "VacationPeriods": [],
     "Name": "Cloud",
     "LastName": "Strife",
     "Jmbg": "22157484654211",
@@ -68,6 +72,6 @@
       "Street": "Main Town Square",
       "Number": "5"
     },
-    "FullName": "Cloud Strife"
+    "Serialize": true
   }
 }

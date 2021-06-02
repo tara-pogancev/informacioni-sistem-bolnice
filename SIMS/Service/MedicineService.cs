@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using SIMS.Model;
 using SIMS.DTO;
+using SIMS.Repositories.MedicationRepo;
 
 namespace SIMS.Service
 {

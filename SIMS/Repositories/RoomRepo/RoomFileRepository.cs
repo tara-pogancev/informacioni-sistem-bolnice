@@ -5,8 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using SIMS.Model;
+using SIMS.Repositories.RoomInventoryRepo;
+using SIMS.Repositories.InventoryMovingCommandRepo;
 
-namespace SIMS.Repositories.SecretaryRepo
+namespace SIMS.Repositories.RoomRepo
 {
     public class RoomFileRepository : GenericFileRepository<string, Room, RoomFileRepository>,IRoomRepository
     {

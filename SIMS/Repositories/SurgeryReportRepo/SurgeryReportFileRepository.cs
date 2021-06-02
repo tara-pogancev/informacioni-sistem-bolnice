@@ -1,10 +1,11 @@
-﻿using SIMS.Repositories.SecretaryRepo;
+﻿using SIMS.Model;
+using SIMS.Repositories.SecretaryRepo;
 using SIMS.Repositories.SurgeryReportRepo;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIMS.Model
+namespace SIMS.Repositories.SurgeryReportRepo
 {
     public class SurgeryReportFileRepository : GenericFileRepository<string, SurgeryReport, SurgeryReportFileRepository>,ISurgeryReportRepository
     {

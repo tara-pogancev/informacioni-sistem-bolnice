@@ -5,10 +5,42 @@
     "IsBanned": false,
     "Lbo": "123",
     "Guest": false,
-    "Allergens": [],
+    "Allergens": [
+      {
+        "ID": "a2",
+        "Name": "Laktoza",
+        "Serialize": false
+      }
+    ],
     "DateOfBirth": "1999-03-05T00:00:00",
-    "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "HronicalDiseases": [
+      "Astma"
+    ],
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "VacationPeriods": [],
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Đorđe",
     "LastName": "Krsmanović",
     "Jmbg": "4865453131",
@@ -16,7 +48,17 @@
     "Password": "p",
     "Email": "djordje1499@gmail.com",
     "Phone": "0645568131",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21000,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Stara",
+      "Number": "Planina,"
+    },
     "Serialize": true
   },
   "12645323206": {
@@ -28,7 +70,31 @@
     "Allergens": [],
     "DateOfBirth": "1999-03-05T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "VacationPeriods": [],
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Miha",
     "LastName": "Mihajlo",
     "Jmbg": "12645323206",
@@ -36,7 +102,17 @@
     "Password": "p",
     "Email": "email.miha@gmail.com",
     "Phone": "06250",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 21000,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "JA",
+      "Number": "133"
+    },
     "Serialize": true
   },
   "12121977802342": {
@@ -48,7 +124,31 @@
     "Allergens": [],
     "DateOfBirth": "1977-12-12T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "VacationPeriods": [],
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21400,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Petar",
     "LastName": "Petrović",
     "Jmbg": "12121977802342",
@@ -56,7 +156,17 @@
     "Password": "p",
     "Email": "petarpetrovic@gmail.com",
     "Phone": "061 234567",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 20000,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Ribarska",
+      "Number": "8b"
+    },
     "Serialize": true
   },
   "1445857": {
@@ -68,7 +178,31 @@
     "Allergens": [],
     "DateOfBirth": "1985-11-10T00:00:00",
     "HronicalDiseases": [],
-    "GetHronicalDiseases": "Nema",
+    "ChosenDoctor": {
+      "VacationDays": 15,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "VacationPeriods": [],
+      "Name": "Tara",
+      "LastName": "Pogančev",
+      "Jmbg": "045210805048",
+      "Username": "l",
+      "Password": "l",
+      "Email": "tarapogancev@gmail.com",
+      "Phone": "629998425",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 21000,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Bulevar Despota Stefana",
+        "Number": "7"
+      },
+      "Serialize": true
+    },
     "Name": "Milena",
     "LastName": "Zorić",
     "Jmbg": "1445857",
@@ -76,7 +210,17 @@
     "Password": "p",
     "Email": "milena@gmail.com",
     "Phone": "061 2345857",
-    "Address": null,
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 20000,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Petrovaradin",
+      "Number": "88"
+    },
     "Serialize": true
   }
 }

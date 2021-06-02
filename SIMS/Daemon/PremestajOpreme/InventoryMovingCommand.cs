@@ -5,6 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Windows;
 using SIMS.Model;
+using SIMS.Repositories.RoomInventoryRepo;
 
 namespace SIMS.Daemon.PremestajOpreme
 {

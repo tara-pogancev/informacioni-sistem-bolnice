@@ -1,0 +1,28 @@
+﻿<Page x:Class="SIMS.ViewDoctor.Dialogues.Hospitalizacija.HospitalizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.ViewDoctor.Dialogues.Hospitalizacija"
+      mc:Ignorable="d" 
+      d:DesignHeight="100" d:DesignWidth="340"
+      Title="HospitalizationPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle RadiusX="30" RadiusY="30" Grid.ColumnSpan="2" Fill="#FF3A475F"/>
+
+        <Image Grid.Column="1" Source="../../../src/Illustrations/moon.png" Margin="10"/>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="20">
+            <Label Content="HOSPITALIZACIJA" Style="{StaticResource DefaultLabelS}" FontSize="20"/>
+            <Label Name="HospitalRoomLabel" Content="Prostorija: 54B" Style="{StaticResource DefaultLabelS}" FontFamily="Cambera" FontSize="16"/>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

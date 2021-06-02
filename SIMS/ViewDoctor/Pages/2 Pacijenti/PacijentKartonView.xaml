@@ -84,7 +84,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Vertical" Margin="40,0,0,0" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" Margin="40,20,0,0" VerticalAlignment="Center">
 
                     <Label Content="Krvna grupa: B+" Name="LabelBloodType" HorizontalAlignment="Left" Padding="5,0,5,5" />
                     <Label Content="Alergeni: Polen, Prašina" Name="LabelAllergens" HorizontalAlignment="Left" Padding="5,0,5,5"/>
@@ -92,7 +92,7 @@
 
                 </StackPanel>
 
-                <Frame x:Name="HospitalizacijaFrame" Grid.Column="2"/>
+                <Frame x:Name="HospitalizationFrame" Grid.Column="2" Margin="10,20,0,0"/>
 
             </Grid>
 

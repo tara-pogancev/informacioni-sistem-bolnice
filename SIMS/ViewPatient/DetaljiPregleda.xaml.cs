@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
 {
@@ -102,8 +103,8 @@ namespace SIMS.PacijentGUI
 
         private void ucitajPodatke()
         {
-            anamneza.AnamnesisAppointment = new AppointmentFileRepository().FindById(anamneza.AnamnesisAppointment.AppointmentID);
-            anamneza.AnamnesisAppointment.Doctor = new DoctorFileRepository().FindById(anamneza.AnamnesisAppointment.Doctor.Jmbg);
+            anamneza.AnamnesisAppointment = new AppointmentController().GetAppointment(anamneza.AnamnesisAppointment.AppointmentID);
+            anamneza.AnamnesisAppointment.Doctor = new DoctorController().GetDoctor(anamneza.AnamnesisAppointment.Doctor.Jmbg);
             anamneza.AnamnesisAppointment.Patient = PocetnaStranica.getInstance().Pacijent;
         }
 
