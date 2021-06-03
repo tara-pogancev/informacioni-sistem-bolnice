@@ -144,6 +144,9 @@
   <data name="Appointment" xml:space="preserve">
     <value>Termin</value>
   </data>
+  <data name="AppointmentCanceledMessage" xml:space="preserve">
+    <value>Termin je uspešno otkazan.</value>
+  </data>
   <data name="AppointmentDateColon" xml:space="preserve">
     <value>Datum termina:</value>
   </data>
@@ -168,6 +171,21 @@
   <data name="ChooseAppointmentColon" xml:space="preserve">
     <value>Odaberite termin:</value>
   </data>
+  <data name="ChooseAppointmentToCancelMessage" xml:space="preserve">
+    <value>Izaberite termin za otkazivanje.</value>
+  </data>
+  <data name="ChooseAppointmentToUpdateMessage" xml:space="preserve">
+    <value>Izaberite termin za izmenu.</value>
+  </data>
+  <data name="ChoosePatientToDeleteMessage" xml:space="preserve">
+    <value>Izaberite pacijenta za brisanje.</value>
+  </data>
+  <data name="ChoosePatientToUnblockMessage" xml:space="preserve">
+    <value>Izaberite pacijenta za odblokiranje.</value>
+  </data>
+  <data name="ChoosePatientToUpdateMessage" xml:space="preserve">
+    <value>Izaberite pacijenta za izmenu.</value>
+  </data>
   <data name="ChronicPainsColon" xml:space="preserve">
     <value>Hronične bolesti:</value>
   </data>
@@ -189,8 +207,14 @@
   <data name="DoctorColon" xml:space="preserve">
     <value>Lekar:</value>
   </data>
+  <data name="DoctorOnVacationMessage" xml:space="preserve">
+    <value>Lekar je na odmoru u navedenom terminu.</value>
+  </data>
   <data name="DoctorsListItem" xml:space="preserve">
     <value>Lekari</value>
+  </data>
+  <data name="DoctorUnavailableMessage" xml:space="preserve">
+    <value>Lekar je zauzet u navedenom terminu.</value>
   </data>
   <data name="DurationColon" xml:space="preserve">
     <value>Vreme trajanja:</value>
@@ -206,6 +230,9 @@
   </data>
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Zakazivanje pregleda</value>
+  </data>
+  <data name="FillFieldsMessage" xml:space="preserve">
+    <value>Molimo popunite sva polja.</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Ime i prezime</value>
@@ -255,11 +282,23 @@
   <data name="PatientColon" xml:space="preserve">
     <value>Pacijent:</value>
   </data>
+  <data name="PatientDeletedMessage" xml:space="preserve">
+    <value>Pacijent je uspešno obrisan.</value>
+  </data>
+  <data name="PatientNotBannedMessage" xml:space="preserve">
+    <value>Odabrani pacijent nije banovan.</value>
+  </data>
   <data name="PatientsListItem" xml:space="preserve">
     <value>Pacijenti</value>
   </data>
+  <data name="PatientUnblockedMessage" xml:space="preserve">
+    <value>Pacijent je uspesno odblokiran.</value>
+  </data>
   <data name="PatientUpdate" xml:space="preserve">
     <value>Ažuriranje pacijenta</value>
+  </data>
+  <data name="PatientWithoutAccountMessage" xml:space="preserve">
+    <value>Odabrani pacijent nema nalog.</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Broj telefona</value>
@@ -282,6 +321,9 @@
   <data name="RoomColon" xml:space="preserve">
     <value>Prostorija:</value>
   </data>
+  <data name="RoomUnavailableMessage" xml:space="preserve">
+    <value>Prostorija je zauzeta u navedenom terminu.</value>
+  </data>
   <data name="ScheduleCaps" xml:space="preserve">
     <value>ZAKAŽI</value>
   </data>
@@ -290,6 +332,9 @@
   </data>
   <data name="ScheduleSurgery" xml:space="preserve">
     <value>Zakaži operaciju</value>
+  </data>
+  <data name="SelectRoleMessage" xml:space="preserve">
+    <value>Označite bar jednu ulogu.</value>
   </data>
   <data name="SexColon" xml:space="preserve">
     <value>Pol:</value>
@@ -324,11 +369,17 @@
   <data name="UrgentExamination" xml:space="preserve">
     <value>Hitan pregled</value>
   </data>
+  <data name="UrgentExaminationScheduledMessage" xml:space="preserve">
+    <value>Hitan pregled uspešno zakazan.</value>
+  </data>
   <data name="UrgentExaminationScheduling" xml:space="preserve">
     <value>Zakazivanje hitnog pregleda</value>
   </data>
   <data name="UrgentSurgery" xml:space="preserve">
     <value>Hitna operacija</value>
+  </data>
+  <data name="UrgentSurgeryScheduledMessage" xml:space="preserve">
+    <value>Hitna operacija uspešno zakazana.</value>
   </data>
   <data name="UrgentSurgeryScheduling" xml:space="preserve">
     <value>Zakazivanje hitne operacije</value>
@@ -336,8 +387,14 @@
   <data name="UsernameColon" xml:space="preserve">
     <value>Korisničko ime:</value>
   </data>
+  <data name="VacationCreatedMessage" xml:space="preserve">
+    <value>Uspešno kreiran odmor za lekara.</value>
+  </data>
   <data name="VacationDaysColon" xml:space="preserve">
     <value>Slobodni dani:</value>
+  </data>
+  <data name="VacationDaysUpdatedMessage" xml:space="preserve">
+    <value>Uspešno izmenjen broj slobodnih dana.</value>
   </data>
   <data name="VacationEndColon" xml:space="preserve">
     <value>Kraj odmora:</value>

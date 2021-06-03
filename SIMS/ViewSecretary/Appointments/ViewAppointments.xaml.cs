@@ -62,6 +62,10 @@ namespace SIMS.ViewSecretary.Appointments
             {
                 this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsView.SelectedItem));
             }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["ChooseAppointmentToUpdateMessage"]);
+            }
 
         }
 
@@ -69,17 +73,15 @@ namespace SIMS.ViewSecretary.Appointments
         {
             if (appointmentsView.SelectedItem != null)
             {
+                Appointment toDelete = (Appointment)appointmentsView.SelectedItem;
+                appointmentController.DeleteAppointment(toDelete);
 
-                if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
-                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    Appointment toDelete = (Appointment)appointmentsView.SelectedItem;
-                    appointmentController.DeleteAppointment(toDelete);
-
-                    MessageBox.Show("Termin je uspešno otkazan!");
-                    RefreshView();
-                }
-
+                CustomMessageBox.Show(TranslationSource.Instance["AppointmentCanceledMessage"]);
+                RefreshView();
+            }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["ChooseAppointmentToCancelMessage"]);
             }
         }
 

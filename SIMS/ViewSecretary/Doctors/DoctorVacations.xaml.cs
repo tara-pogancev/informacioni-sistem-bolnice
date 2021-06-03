@@ -32,13 +32,13 @@ namespace SIMS.ViewSecretary.Doctors
                     int.TryParse(vacationDaysTextBox.Text, out int vacationDays);
                     doctor.VacationDays = vacationDays;
                     doctorController.UpdateDoctor(doctor);
-                    MessageBox.Show("Uspesno izmenjen broj slobodnih dana.", "Izmenjeni slobodni dani");
+                    CustomMessageBox.Show(TranslationSource.Instance["VacationDaysUpdatedMessage"]);
 
                     NavigationService.Navigate(ViewHome.GetInstance());
                 }
                 else
                 {
-                    MessageBox.Show("Molimo popunite sva polja!");
+                    CustomMessageBox.Show(TranslationSource.Instance["FillFieldsMessage"]);
                     return;
                 }
             }
@@ -53,7 +53,7 @@ namespace SIMS.ViewSecretary.Doctors
                 doctor.VacationDays -= (vacationPeriod.EndTime - vacationPeriod.StartTime).Days;
                 doctorController.UpdateDoctor(doctor);
 
-                MessageBox.Show("Uspesno kreiran odmor za doktora", "Kreiran odmor za doktora");
+                CustomMessageBox.Show(TranslationSource.Instance["VacationCreatedMessage"]);
 
                 NavigationService.Navigate(ViewHome.GetInstance());
             }

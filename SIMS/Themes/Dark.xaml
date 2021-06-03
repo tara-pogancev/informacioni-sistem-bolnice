@@ -22,6 +22,10 @@
 
     <SolidColorBrush x:Key="MouseOverButtonColor" Color="#FF141923"/>
 
+    <SolidColorBrush x:Key="MessageBoxBackground" Color="#FF2D3749"/>
+    <SolidColorBrush x:Key="MessageBoxButtonBackground" Color="#FF20283F"/>
+    <SolidColorBrush x:Key="MouseOverMessageBoxButton" Color="#FF11182C"/>
+
     <!--Data grids-->
     <Style TargetType="DataGrid" x:Key="DarkDataGrid">
         <Setter Property="FontFamily" Value="Candara"/>

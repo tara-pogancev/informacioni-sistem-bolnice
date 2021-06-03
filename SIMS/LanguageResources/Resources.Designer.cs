@@ -142,6 +142,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment is canceled successfully..
+        /// </summary>
+        internal static string AppointmentCanceledMessage {
+            get {
+                return ResourceManager.GetString("AppointmentCanceledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointment Date:.
         /// </summary>
         internal static string AppointmentDateColon {
@@ -214,6 +223,51 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose appointment to cancel..
+        /// </summary>
+        internal static string ChooseAppointmentToCancelMessage {
+            get {
+                return ResourceManager.GetString("ChooseAppointmentToCancelMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose appointment to update..
+        /// </summary>
+        internal static string ChooseAppointmentToUpdateMessage {
+            get {
+                return ResourceManager.GetString("ChooseAppointmentToUpdateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose patient to delete..
+        /// </summary>
+        internal static string ChoosePatientToDeleteMessage {
+            get {
+                return ResourceManager.GetString("ChoosePatientToDeleteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose patient to unblock..
+        /// </summary>
+        internal static string ChoosePatientToUnblockMessage {
+            get {
+                return ResourceManager.GetString("ChoosePatientToUnblockMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose patient to update..
+        /// </summary>
+        internal static string ChoosePatientToUpdateMessage {
+            get {
+                return ResourceManager.GetString("ChoosePatientToUpdateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chronic Pains:.
         /// </summary>
         internal static string ChronicPainsColon {
@@ -277,11 +331,29 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doctor is on vacation at the specified time..
+        /// </summary>
+        internal static string DoctorOnVacationMessage {
+            get {
+                return ResourceManager.GetString("DoctorOnVacationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Doctors.
         /// </summary>
         internal static string DoctorsListItem {
             get {
                 return ResourceManager.GetString("DoctorsListItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctor is unavailable at the specified time..
+        /// </summary>
+        internal static string DoctorUnavailableMessage {
+            get {
+                return ResourceManager.GetString("DoctorUnavailableMessage", resourceCulture);
             }
         }
         
@@ -327,6 +399,15 @@ namespace SIMS.LanguageResources {
         internal static string ExaminationScheduling {
             get {
                 return ResourceManager.GetString("ExaminationScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill in all fields..
+        /// </summary>
+        internal static string FillFieldsMessage {
+            get {
+                return ResourceManager.GetString("FillFieldsMessage", resourceCulture);
             }
         }
         
@@ -475,6 +556,24 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patient is deleted successfully..
+        /// </summary>
+        internal static string PatientDeletedMessage {
+            get {
+                return ResourceManager.GetString("PatientDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patient is not banned..
+        /// </summary>
+        internal static string PatientNotBannedMessage {
+            get {
+                return ResourceManager.GetString("PatientNotBannedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients.
         /// </summary>
         internal static string PatientsListItem {
@@ -484,11 +583,29 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patient is unblocked successfully..
+        /// </summary>
+        internal static string PatientUnblockedMessage {
+            get {
+                return ResourceManager.GetString("PatientUnblockedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patient Update.
         /// </summary>
         internal static string PatientUpdate {
             get {
                 return ResourceManager.GetString("PatientUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patient does not have account..
+        /// </summary>
+        internal static string PatientWithoutAccountMessage {
+            get {
+                return ResourceManager.GetString("PatientWithoutAccountMessage", resourceCulture);
             }
         }
         
@@ -556,6 +673,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Room is unavailable at the specified time..
+        /// </summary>
+        internal static string RoomUnavailableMessage {
+            get {
+                return ResourceManager.GetString("RoomUnavailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SCHEDULE.
         /// </summary>
         internal static string ScheduleCaps {
@@ -579,6 +705,15 @@ namespace SIMS.LanguageResources {
         internal static string ScheduleSurgery {
             get {
                 return ResourceManager.GetString("ScheduleSurgery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select at least one role..
+        /// </summary>
+        internal static string SelectRoleMessage {
+            get {
+                return ResourceManager.GetString("SelectRoleMessage", resourceCulture);
             }
         }
         
@@ -682,6 +817,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Urgent examination is scheduled successfully..
+        /// </summary>
+        internal static string UrgentExaminationScheduledMessage {
+            get {
+                return ResourceManager.GetString("UrgentExaminationScheduledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Urgent Examination Scheduling.
         /// </summary>
         internal static string UrgentExaminationScheduling {
@@ -696,6 +840,15 @@ namespace SIMS.LanguageResources {
         internal static string UrgentSurgery {
             get {
                 return ResourceManager.GetString("UrgentSurgery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Urgent surgery is scheduled successfully..
+        /// </summary>
+        internal static string UrgentSurgeryScheduledMessage {
+            get {
+                return ResourceManager.GetString("UrgentSurgeryScheduledMessage", resourceCulture);
             }
         }
         
@@ -718,11 +871,29 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vacation for doctor is created successfully..
+        /// </summary>
+        internal static string VacationCreatedMessage {
+            get {
+                return ResourceManager.GetString("VacationCreatedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vacation Days:.
         /// </summary>
         internal static string VacationDaysColon {
             get {
                 return ResourceManager.GetString("VacationDaysColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of vacation days is updated successfully..
+        /// </summary>
+        internal static string VacationDaysUpdatedMessage {
+            get {
+                return ResourceManager.GetString("VacationDaysUpdatedMessage", resourceCulture);
             }
         }
         

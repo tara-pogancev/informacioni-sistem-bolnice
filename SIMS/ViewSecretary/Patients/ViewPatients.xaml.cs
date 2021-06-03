@@ -42,7 +42,7 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za izmenu.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToUpdateMessage"]);
             }
             else
             {
@@ -54,24 +54,24 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za odblokiranje.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToUnblockMessage"]);
             }
             else
             {
                 Patient toUnblock = (Patient)patientsView.SelectedItem;
                 if (toUnblock.Guest == true)
                 {
-                    MessageBox.Show("Odabrani pacijent nema nalog.", "Pacijent bez naloga");
+                    CustomMessageBox.Show(TranslationSource.Instance["PatientWithoutAccountMessage"]);
                     return;
                 }
                 else if (toUnblock.IsBanned == false)
                 {
-                    MessageBox.Show("Odabrani pacijent nije banovan.", "Pacijent nije banovan");
+                    CustomMessageBox.Show(TranslationSource.Instance["PatientNotBannedMessage"]);
                     return;
                 }
                 toUnblock.IsBanned = false;
                 patientController.UpdatePatient(toUnblock);
-                MessageBox.Show("Pacijent je uspesno odblokiran.", "Pacijent odblokiran");
+                CustomMessageBox.Show(TranslationSource.Instance["PatientUnblockedMessage"]);
             }
         }
 
@@ -79,12 +79,13 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za brisanje.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToDeleteMessage"]);
             }
             else
             {
                 Patient toDelete = (Patient)patientsView.SelectedItem;
                 patientController.DeletePatient(toDelete.Jmbg);
+                CustomMessageBox.Show(TranslationSource.Instance["PatientDeletedMessage"]);
                 RefreshView();
             }
         }

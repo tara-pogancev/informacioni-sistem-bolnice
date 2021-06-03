@@ -144,6 +144,9 @@
   <data name="Appointment" xml:space="preserve">
     <value>Appointment</value>
   </data>
+  <data name="AppointmentCanceledMessage" xml:space="preserve">
+    <value>Appointment is canceled successfully.</value>
+  </data>
   <data name="AppointmentDateColon" xml:space="preserve">
     <value>Appointment Date:</value>
   </data>
@@ -168,6 +171,21 @@
   <data name="ChooseAppointmentColon" xml:space="preserve">
     <value>Choose Appointment:</value>
   </data>
+  <data name="ChooseAppointmentToCancelMessage" xml:space="preserve">
+    <value>Choose appointment to cancel.</value>
+  </data>
+  <data name="ChooseAppointmentToUpdateMessage" xml:space="preserve">
+    <value>Choose appointment to update.</value>
+  </data>
+  <data name="ChoosePatientToDeleteMessage" xml:space="preserve">
+    <value>Choose patient to delete.</value>
+  </data>
+  <data name="ChoosePatientToUnblockMessage" xml:space="preserve">
+    <value>Choose patient to unblock.</value>
+  </data>
+  <data name="ChoosePatientToUpdateMessage" xml:space="preserve">
+    <value>Choose patient to update.</value>
+  </data>
   <data name="ChronicPainsColon" xml:space="preserve">
     <value>Chronic Pains:</value>
   </data>
@@ -189,8 +207,14 @@
   <data name="DoctorColon" xml:space="preserve">
     <value>Doctor:</value>
   </data>
+  <data name="DoctorOnVacationMessage" xml:space="preserve">
+    <value>Doctor is on vacation at the specified time.</value>
+  </data>
   <data name="DoctorsListItem" xml:space="preserve">
     <value>Doctors</value>
+  </data>
+  <data name="DoctorUnavailableMessage" xml:space="preserve">
+    <value>Doctor is unavailable at the specified time.</value>
   </data>
   <data name="DurationColon" xml:space="preserve">
     <value>Duration:</value>
@@ -206,6 +230,9 @@
   </data>
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Examination Scheduling</value>
+  </data>
+  <data name="FillFieldsMessage" xml:space="preserve">
+    <value>Please fill in all fields.</value>
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>
@@ -255,11 +282,23 @@
   <data name="PatientColon" xml:space="preserve">
     <value>Patient:</value>
   </data>
+  <data name="PatientDeletedMessage" xml:space="preserve">
+    <value>Patient is deleted successfully.</value>
+  </data>
+  <data name="PatientNotBannedMessage" xml:space="preserve">
+    <value>Patient is not banned.</value>
+  </data>
   <data name="PatientsListItem" xml:space="preserve">
     <value>Patients</value>
   </data>
+  <data name="PatientUnblockedMessage" xml:space="preserve">
+    <value>Patient is unblocked successfully.</value>
+  </data>
   <data name="PatientUpdate" xml:space="preserve">
     <value>Patient Update</value>
+  </data>
+  <data name="PatientWithoutAccountMessage" xml:space="preserve">
+    <value>Patient does not have account.</value>
   </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
@@ -282,6 +321,9 @@
   <data name="RoomColon" xml:space="preserve">
     <value>Room:</value>
   </data>
+  <data name="RoomUnavailableMessage" xml:space="preserve">
+    <value>Room is unavailable at the specified time.</value>
+  </data>
   <data name="ScheduleCaps" xml:space="preserve">
     <value>SCHEDULE</value>
   </data>
@@ -290,6 +332,9 @@
   </data>
   <data name="ScheduleSurgery" xml:space="preserve">
     <value>Schedule Surgery</value>
+  </data>
+  <data name="SelectRoleMessage" xml:space="preserve">
+    <value>Select at least one role.</value>
   </data>
   <data name="SexColon" xml:space="preserve">
     <value>Sex:</value>
@@ -324,11 +369,17 @@
   <data name="UrgentExamination" xml:space="preserve">
     <value>Urgent Examination</value>
   </data>
+  <data name="UrgentExaminationScheduledMessage" xml:space="preserve">
+    <value>Urgent examination is scheduled successfully.</value>
+  </data>
   <data name="UrgentExaminationScheduling" xml:space="preserve">
     <value>Urgent Examination Scheduling</value>
   </data>
   <data name="UrgentSurgery" xml:space="preserve">
     <value>Urgent Surgery</value>
+  </data>
+  <data name="UrgentSurgeryScheduledMessage" xml:space="preserve">
+    <value>Urgent surgery is scheduled successfully.</value>
   </data>
   <data name="UrgentSurgeryScheduling" xml:space="preserve">
     <value>Urgent Surgery Scheduling</value>
@@ -336,8 +387,14 @@
   <data name="UsernameColon" xml:space="preserve">
     <value>Username:</value>
   </data>
+  <data name="VacationCreatedMessage" xml:space="preserve">
+    <value>Vacation for doctor is created successfully.</value>
+  </data>
   <data name="VacationDaysColon" xml:space="preserve">
     <value>Vacation Days:</value>
+  </data>
+  <data name="VacationDaysUpdatedMessage" xml:space="preserve">
+    <value>Number of vacation days is updated successfully.</value>
   </data>
   <data name="VacationEndColon" xml:space="preserve">
     <value>Vacation End:</value>

@@ -93,7 +93,7 @@ namespace SIMS.ViewSecretary.Notifications
         {
             if (rolesComboBox.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Oznacite bar jednu ulogu.", "Nema uloge");
+                CustomMessageBox.Show(TranslationSource.Instance["SelectRoleMessage"]);
                 return;
             }
             List<string> targets = CreateNotificationTargetsFromUserInput();

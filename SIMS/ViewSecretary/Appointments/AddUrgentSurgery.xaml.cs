@@ -82,7 +82,7 @@ namespace SIMS.ViewSecretary.Appointments
                 ViewAppointments.GetInstance().RefreshView();
 
                 this.NavigationService.Navigate(ViewAppointments.GetInstance());
-                MessageBox.Show("Hitna operacija uspesno zakazana!");
+                CustomMessageBox.Show(TranslationSource.Instance["UrgentSurgeryScheduledMessage"]);
             }
         }
 
