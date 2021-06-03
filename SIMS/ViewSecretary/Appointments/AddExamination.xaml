@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajPregledPage">
@@ -36,12 +37,12 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
-            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
-            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
-            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DoctorColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc PatientColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc RoomColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc ExaminationDateColon}" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc StartTimeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DurationColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -79,14 +80,14 @@
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <StackPanel Grid.Row="8" Grid.RowSpan="2" Orientation="Horizontal">
-                    <Button Grid.Row="8" Grid.RowSpan="2" Content="ODUSTANI" Click="Quit_Click" Width="100"
+                    <Button Grid.Row="8" Grid.RowSpan="2" Content="{ns:Loc QuitCaps}" Click="Quit_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button  Content="ZAKAŽI" Click="AddExamination_Click" Width="100"
+                    <Button  Content="{ns:Loc ScheduleCaps}" Click="AddExamination_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
-                <Grid Margin="-100,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Zakazivanje pregleda" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
+                <Grid Margin="-120,0,0,0" Grid.RowSpan="2">
+                    <Label Content="{ns:Loc ExaminationScheduling}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

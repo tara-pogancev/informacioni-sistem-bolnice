@@ -60,6 +60,7 @@ namespace SIMS.ViewSecretary
                 ButtonLanguage.Content = "EN";
             }
 
+            app.ChangeLanguage((string)ButtonLanguage.Content);
             MainFrame.Content = ViewHome.GetInstance(_secretary);
         }
 
@@ -142,7 +143,18 @@ namespace SIMS.ViewSecretary
 
         private void Language_Click(object sender, RoutedEventArgs e)
         {
-            ButtonLanguage.Content = (ButtonLanguage.Content.Equals("SR")) ? "EN" : "SR";
+            var app = (App)Application.Current;
+
+            if (ButtonLanguage.Content.Equals("SR"))
+            {
+                ButtonLanguage.Content = "EN";
+            }
+            else
+            {
+                ButtonLanguage.Content = "SR";
+            }
+
+            app.ChangeLanguage((string)ButtonLanguage.Content);
         }
 
         private void CloseMenu_Click(object sender, RoutedEventArgs e)

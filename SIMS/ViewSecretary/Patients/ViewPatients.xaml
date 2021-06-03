@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarPacijentiPage">
@@ -24,13 +25,13 @@
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime i prezime" Binding="{Binding FullName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Jmbg" Binding="{Binding Jmbg}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Telefon" Binding="{Binding Phone}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Adresa" Binding="{Binding AddressString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Lbo" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridCheckBoxColumn Header="Gost" Binding="{Binding Guest}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc FullName}" Binding="{Binding FullName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Jmbg}" Binding="{Binding Jmbg}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Email}" Binding="{Binding Email}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc PhoneNumber}" Binding="{Binding Phone}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Adress}" Binding="{Binding AddressString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Lbo}" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="{ns:Loc Guest}" Binding="{Binding Guest}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -46,7 +47,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Button Content="Dodaj"  Margin="0,0,0,0" FontSize="14" Click="AddPatient_Click">
+                <Button Content="{ns:Loc Add}"  Margin="0,0,0,0" FontSize="14" Click="AddPatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -75,7 +76,7 @@
             </Grid>
 
             <Grid Grid.Column="1">
-                <Button Content="Dodaj gosta"  Margin="0,0,0,0" FontSize="14" Click="AddGuest_Click">
+                <Button Content="{ns:Loc AddGuest}"  Margin="0,0,0,0" FontSize="14" Click="AddGuest_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -101,7 +102,7 @@
             </Grid>
 
             <Grid Grid.Column="2">
-                <Button Content="Izmeni"  Margin="0,0,0,0" FontSize="14" Click="UpdatePatient_Click">
+                <Button Content="{ns:Loc Update}"  Margin="0,0,0,0" FontSize="14" Click="UpdatePatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -127,7 +128,7 @@
             </Grid>
 
             <Grid Grid.Column="3">
-                <Button Content="Odblokiraj"  Margin="0,0,0,0" FontSize="14" Click="UnblockPatient_Click">
+                <Button Content="{ns:Loc Unblock}"  Margin="0,0,0,0" FontSize="14" Click="UnblockPatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -153,7 +154,7 @@
             </Grid>
 
             <Grid Grid.Column="4">
-                <Button Content="Obrisi"  Margin="0,0,0,0" FontSize="14" Click="DeletePatient_Click">
+                <Button Content="{ns:Loc Delete}"  Margin="0,0,0,0" FontSize="14" Click="DeletePatient_Click">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FFE26868"/>

@@ -53,7 +53,7 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddOperation());
+            this.NavigationService.Navigate(new AddSurgery());
         }
 
         private void UpdateAppointment_Click(object sender, RoutedEventArgs e)
@@ -90,7 +90,7 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void AddUrgentOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddUrgentOperation());
+            this.NavigationService.Navigate(new AddUrgentSurgery());
         }
 
         public void RemoveInstance()

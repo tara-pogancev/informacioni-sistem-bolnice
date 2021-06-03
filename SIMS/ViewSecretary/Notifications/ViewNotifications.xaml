@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary" 
+      xmlns:ns="clr-namespace:SIMS"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
@@ -50,10 +51,10 @@
 
         <xceet:CheckComboBox x:Name="rolesComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
 
-        <TextBox x:Name="notificationTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
+        <TextBox x:Name="notificationTextBox" Grid.Row="2" Text="{ns:Loc NotificationDefaultText}" Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
 
         <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="{DynamicResource BackgroundButtonBar}">
-            <Button Content="DODAJ" FontSize="14" Click="AddNotification_Click">
+            <Button Content="{ns:Loc AddCaps}" FontSize="14" Click="AddNotification_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#FF57D6B4"/>

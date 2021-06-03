@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary.Doctors"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DoctorVacations">
@@ -34,10 +35,10 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
-            <Label Content="Slobodni dani:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="Pocetak odmora:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="Kraj odmora:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DoctorColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationDaysColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationStartColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationEndColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -65,14 +66,14 @@
                 <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
                 
                 <StackPanel Grid.Row="6" Grid.RowSpan="2" Orientation="Horizontal">
-                    <Button Content="ODUSTANI" Click="Quit_Click" Width="100"
+                    <Button Content="{ns:Loc QuitCaps}" Click="Quit_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button Content="DODAJ" Click="AddVacation_Click" Width="100"
+                    <Button Content="{ns:Loc AddCaps}" Click="AddVacation_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
                 <Grid Margin="-120,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Dodavanje novog odmora" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
+                    <Label Content="{ns:Loc NewVacationAdding}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

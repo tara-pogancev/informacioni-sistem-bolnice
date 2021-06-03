@@ -8,7 +8,7 @@ using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class AddOperation : Page
+    public partial class AddSurgery : Page
     {
         private List<DoctorDTO> _doctors;
         private List<Patient> _patients;
@@ -16,7 +16,7 @@ namespace SIMS.ViewSecretary.Appointments
 
         private DoctorController doctorController = new DoctorController();
 
-        public AddOperation()
+        public AddSurgery()
         {
             InitializeComponent();
 
@@ -35,7 +35,7 @@ namespace SIMS.ViewSecretary.Appointments
             durationComboBox.ItemsSource = duration;
         }
 
-        private void AddOperation_Click(object sender, RoutedEventArgs e)
+        private void AddSurgery_Click(object sender, RoutedEventArgs e)
         {
             if (doctorsComboBox.SelectedItem == null || datePicker.SelectedDate == null || appointmentsComboBox.SelectedItem == null)
             {

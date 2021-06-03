@@ -23,5 +23,17 @@ namespace SIMS
             ThemeDictionary.MergedDictionaries.Clear();
             ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
         }
+
+        public void ChangeLanguage(string currLang)
+        {
+            if (currLang.Equals("EN"))
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            }
+            else
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
+            }
+        }
     }
 }

@@ -4,11 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarHomePage">
 
     <Grid Background="{DynamicResource BackgroundColorPage}">
-        <TextBlock x:Name="welcomeText" Text="Dobrodosli" FontSize="35" Foreground="{DynamicResource ForegroundColorPageText}" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
+        <TextBlock x:Name="welcomeText" Text="{ns:Loc WelcomeHomePage}" FontSize="35" Foreground="{DynamicResource ForegroundColorPageText}" HorizontalAlignment="Center" Margin="70" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
+        <TextBlock x:Name="secretaryNameText" Text="Welcome" FontSize="35" Foreground="{DynamicResource ForegroundColorPageText}" HorizontalAlignment="Center" Margin="120" Width="300" TextWrapping="Wrap" TextAlignment="Center" />
     </Grid>
 </Page>

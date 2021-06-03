@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="IzmeniTerminPage">
@@ -18,7 +19,7 @@
 
     <Grid Background="{DynamicResource BackgroundColorPage}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="140"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -36,12 +37,12 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Prostorija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Datum pregleda:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Početno vreme:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="{ns:Loc DoctorColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc PatientColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc RoomColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc AppointmentDateColon}" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc StartTimeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DurationColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -62,31 +63,31 @@
                 <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                 <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
-                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                     Width="250" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="patientsComboBox"  DisplayMemberPath="FullName" SelectedValuePath="FullName" 
-                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                     Width="250" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Number" SelectedValuePath="Number" 
-                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                     Width="250" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="250" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
 
                 <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="appointmentsComboBox" ItemsSource="{Binding termini}"
-                    Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                    Width="250" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="7" Margin="30,0,0,0" x:Name="durationComboBox" ItemsSource="{Binding trajanje}"
-                    Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                    Width="250" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <StackPanel Grid.Row="8" Grid.RowSpan="2" Orientation="Horizontal">
-                    <Button Grid.Row="8" Grid.RowSpan="2" Content="ODUSTANI" Click="Quit_Click" Width="100"
+                    <Button Grid.Row="8" Grid.RowSpan="2" Content="{ns:Loc QuitCaps}" Click="Quit_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button  Content="IZMENI" Click="UpdateExamination_Click" Width="100"
+                    <Button  Content="{ns:Loc UpdateCaps}" Click="UpdateExamination_Click" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
-                <Grid Margin="-100,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Uređivanje termina" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
+                <Grid Margin="-140,0,0,0" Grid.RowSpan="2">
+                    <Label Content="{ns:Loc AppointmentUpdate}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

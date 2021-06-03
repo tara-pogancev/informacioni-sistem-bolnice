@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
@@ -51,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Otkazi" Grid.Column="0"  Margin="0,0,0,0" FontSize="14" Click="Quit_Click">
+            <Button Content="{ns:Loc CancelCaps}" Grid.Column="0"  Margin="0,0,0,0" FontSize="14" Click="Quit_Click">
 
                 <Button.Style>
                     <Style TargetType="Button">
@@ -75,8 +76,8 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            
-            <Button Content="Izmeni" Grid.Column="1" Margin="0,0,0,0" FontSize="14" Click="Update_Click">
+
+            <Button Content="{ns:Loc AddCaps}" Grid.Column="1" Margin="0,0,0,0" FontSize="14" Click="Update_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#FF57D6B4"/>

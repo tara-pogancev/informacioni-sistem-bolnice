@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="SekretarTerminiPage">
@@ -26,12 +27,12 @@
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Termin" Binding="{Binding AppointmentTypeString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Lekar" Binding="{Binding DoctorName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Pacijent" Binding="{Binding PatientName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding AppointmentDate}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Početak" Binding="{Binding AppointmentTime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Prostorija" Binding="{Binding RoomNumber}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Appointment}" Binding="{Binding AppointmentTypeString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Doctor}" Binding="{Binding DoctorName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Patient}" Binding="{Binding PatientName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Date}" Binding="{Binding AppointmentDate}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc StartTime}" Binding="{Binding AppointmentTime}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Room}" Binding="{Binding RoomNumber}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -51,8 +52,8 @@
 
             <Grid Grid.Column="0">
 
-                <Button Content=" Zakazi &#xa;pregled"  Margin="0,0,0,0" 
-                            FontSize="14" Click="AddExamination_Click">
+                <Button Margin="0,0,0,0" FontSize="13" Click="AddExamination_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc ScheduleExamination}" TextAlignment="Center"/>
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -70,7 +71,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -78,16 +79,13 @@
 
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
-
             </Grid>
 
             <Grid Grid.Column="1">
-
-                <Button Content="   Zakazi &#xa; operaciju"  Margin="0,0,0,0" 
-                            FontSize="14" Click="AddOperation_Click">
-
+                <Button Margin="0,0,0,0" FontSize="13" Click="AddOperation_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc ScheduleSurgery}" TextAlignment="Center"/>
+                    
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -104,7 +102,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -119,9 +117,9 @@
 
             <Grid Grid.Column="2">
 
-                <Button Content="  Hitan &#xa;pregled"  Margin="0,0,0,0" 
-                            FontSize="14" Click="AddUrgentExamination_Click">
-
+                <Button Margin="0,0,0,0" FontSize="12" Click="AddUrgentExamination_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc UrgentExamination}" TextAlignment="Center"/>
+                    
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -138,7 +136,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -153,9 +151,9 @@
 
             <Grid Grid.Column="3">
 
-                <Button Content="   Hitna &#xa;operacija"  Margin="0,0,0,0" 
-                            FontSize="14" Click="AddUrgentOperation_Click">
-
+                <Button Margin="0,0,0,0" FontSize="13" Click="AddUrgentOperation_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc UrgentSurgery}" TextAlignment="Center"/>
+                    
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -172,7 +170,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="70" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -187,9 +185,9 @@
 
             <Grid Grid.Column="4">
 
-                <Button Content=" Izmeni &#xa; termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="UpdateAppointment_Click">
-
+                <Button Margin="0,0,0,0" FontSize="12" Click="UpdateAppointment_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc UpdateAppointment}" TextAlignment="Center"/>
+                    
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FF57D6B4"/>
@@ -206,7 +204,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="72" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
 
@@ -221,9 +219,9 @@
 
             <Grid Grid.Column="5">
 
-                <Button Content=" Otkazi &#xa; termin"  Margin="0,0,0,0" 
-                            FontSize="14" Click="DeleteAppointment_Click">
-
+                <Button Margin="0,0,0,0" FontSize="12" Click="DeleteAppointment_Click">
+                    <TextBlock TextWrapping="Wrap" Text="{ns:Loc CancelAppointment}" TextAlignment="Center"/>
+                    
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#FFE26868"/>
@@ -240,7 +238,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border Width="65" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <Border Width="72" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" 
                                                        HorizontalAlignment="Center"/>
                             </Border>
