@@ -772,6 +772,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unblock.
         /// </summary>
         internal static string Unblock {

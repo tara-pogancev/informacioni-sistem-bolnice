@@ -354,6 +354,9 @@
   <data name="SurgeryScheduling" xml:space="preserve">
     <value>Zakazivanje operacije</value>
   </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tip</value>
+  </data>
   <data name="Unblock" xml:space="preserve">
     <value>Odblokiraj</value>
   </data>
