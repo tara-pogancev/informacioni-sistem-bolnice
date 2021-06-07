@@ -61,5 +61,11 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             this.Close();
             new MedicineEdit(medicine).ShowDialog();
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+        }
     }
 }

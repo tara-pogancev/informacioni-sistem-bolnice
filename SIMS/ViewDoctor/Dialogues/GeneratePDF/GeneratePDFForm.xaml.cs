@@ -37,6 +37,11 @@ namespace SIMS.ViewDoctor.Dialogues.GeneratePDF
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            Accept();
+        }
+
+        private void Accept()
+        {
             if (ValidateForm())
             {
                 new PDFReport(patient, GetStartDate(), GetEndDate());
@@ -60,6 +65,14 @@ namespace SIMS.ViewDoctor.Dialogues.GeneratePDF
         private bool ValidateForm()
         {
             return StartDate.SelectedDate <= EndDate.SelectedDate;
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                Accept();
         }
     }
 }

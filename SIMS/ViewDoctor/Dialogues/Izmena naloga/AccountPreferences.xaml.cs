@@ -45,5 +45,13 @@ namespace SIMS.LekarGUI.Dialogues.Izmena_naloga
         {
             new ChangePassword().ShowDialog();
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                Close();
+        }
     }
 }

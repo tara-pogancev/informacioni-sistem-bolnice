@@ -65,6 +65,11 @@ namespace SIMS.LekarGUI
 
         private void ButtonAppointment(object sender, RoutedEventArgs e)
         {
+            DoShowPatientPage();
+        }
+
+        private void DoShowPatientPage()
+        {
             if (dataGridPatients.SelectedItem != null)
             {
                 Patient patient = GetSelectedPatient();
@@ -154,6 +159,12 @@ namespace SIMS.LekarGUI
                 Patient p = GetSelectedPatient();
                 new WriteReferral(p).ShowDialog();
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+                DoShowPatientPage();
         }
     }
 }

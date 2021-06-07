@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izmena_naloga"
         mc:Ignorable="d"
-         ResizeMode="CanMinimize"
+        ResizeMode="CanMinimize"
+        KeyDown="WindowKeyListener"
         Title="Izmena podataka" Height="740" Width="500"
         WindowStartupLocation="CenterScreen">
     

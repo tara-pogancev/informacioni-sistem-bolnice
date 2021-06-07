@@ -61,5 +61,13 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             PreviewSellectedMedicine();
         }
 
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                PreviewSellectedMedicine();
+        }
+
     }
 }

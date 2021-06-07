@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izvestaji"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
         Title="Izveštaj o operaciji" Height="600" Width="550">
     <Window.Resources>
 

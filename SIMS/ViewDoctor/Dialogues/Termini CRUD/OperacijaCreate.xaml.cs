@@ -93,6 +93,12 @@ namespace SIMS.LekarGUI
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoCreateSurgery();
+
+        }
+
+        private void DoCreateSurgery()
+        {
             //TODO: Odraditi sve provere
 
             if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || timeStringList.SelectedItem == null)
@@ -112,7 +118,6 @@ namespace SIMS.LekarGUI
                     this.Close();
                 }
             }
-
         }
 
         private Doctor GetSelectedDoctor()
@@ -170,6 +175,14 @@ namespace SIMS.LekarGUI
                 timeStringList.ItemsSource = availableTimes;
 
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateSurgery();
         }
 
     }

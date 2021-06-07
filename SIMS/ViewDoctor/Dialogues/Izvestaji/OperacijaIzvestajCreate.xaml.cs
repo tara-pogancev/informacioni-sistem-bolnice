@@ -41,6 +41,12 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
 
         private void Button_Accept(object sender, RoutedEventArgs e)
         {
+            DoCreateSurgeryReport();
+
+        }
+
+        private void DoCreateSurgeryReport()
+        {
             if (ValidateForm())
             {
                 Patient patient = operation.Patient;
@@ -57,12 +63,19 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
             {
                 MessageBox.Show("Molimo popunite sva polja!");
             }
-
         }
 
         private bool ValidateForm()
         {
             return (!OperationName.Text.Equals("") && !OperationDescription.Text.Equals(""));
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateSurgeryReport();
         }
     }
 }

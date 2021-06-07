@@ -24,9 +24,23 @@ namespace SIMS.LekarGUI.Dialogues.Recepti_i_terapije
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoCreateTherapy();
+        }
+
+        private void DoCreateTherapy()
+        {
             this.Close();
-            //MessageBox.Show("Terapija uspešno kreirana!");
+            MessageBox.Show("Terapija uspešno kreirana!");
             new TherapyView().Show();
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateTherapy();
+        }
+
     }
 }

@@ -69,17 +69,22 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void AcceptChanges(object sender, RoutedEventArgs e)
         {
+            DoAcceptChanges();
+        }
+
+        private void DoAcceptChanges()
+        {
             foreach (Medication medicine in MedicineViewModel)
                 medicineController.UpdateMedicine(medicine);
 
             if (CheckIfMedicineRejected())
                 if (MessageBox.Show("Promene uspešno sačuvane! Da li želite da napišete poruku o odbijenim lekovima?", "Napisati poruku?",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        new MedicineDenialWriteMessage().Show();      
-            
-            else
-                MessageBox.Show("Izmene uspešno sačuvane!");
-            
+                    new MedicineDenialWriteMessage().Show();
+
+                else
+                    MessageBox.Show("Izmene uspešno sačuvane!");
+
             this.Close();
         }
 
@@ -111,6 +116,14 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                     return true;
             
             return false;
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoAcceptChanges();
         }
 
     }

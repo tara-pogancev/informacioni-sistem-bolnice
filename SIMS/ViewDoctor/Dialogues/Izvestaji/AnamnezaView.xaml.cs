@@ -98,5 +98,11 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             this.Close();
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+        }
     }
 }

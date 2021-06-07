@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.ViewDoctor.Dialogues.GeneratePDF"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        KeyDown="WindowKeyListener"
         Title="Generisanje izveštaja" Height="410" Width="500">
 
     <Window.Resources>

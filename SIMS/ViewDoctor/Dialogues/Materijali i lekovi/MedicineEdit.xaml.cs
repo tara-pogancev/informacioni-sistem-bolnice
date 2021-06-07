@@ -108,6 +108,11 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void ButtonEditMedicine(object sender, RoutedEventArgs e)
         {
+            DoApplyChanges();
+        }
+
+        private void DoApplyChanges()
+        {
             SetSubstituteMedicine();
             medicineController.UpdateMedicine(medicine);
 
@@ -168,6 +173,14 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                 }
 
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoApplyChanges();
         }
     }
 }

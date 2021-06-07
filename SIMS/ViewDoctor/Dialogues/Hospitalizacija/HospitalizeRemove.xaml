@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Hospitalizacija"
         mc:Ignorable="d"
-               WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
+        KeyDown="WindowKeyListener"
         Title="Pisanje otpisnog lista" Height="450" Width="550">
 
     <Grid Background="#FF323D52">

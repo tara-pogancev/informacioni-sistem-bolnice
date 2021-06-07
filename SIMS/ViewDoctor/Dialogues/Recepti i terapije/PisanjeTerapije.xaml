@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Recepti_i_terapije"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
         Title="Pisanje terapije" Height="630" Width="500">
 
     <Window.Resources>
