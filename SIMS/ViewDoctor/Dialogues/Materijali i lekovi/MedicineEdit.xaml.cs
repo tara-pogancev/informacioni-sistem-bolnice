@@ -179,7 +179,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
         {
             if (e.Key == Key.Escape)
                 Close();
-            else if (e.Key == Key.Return)
+            else if (e.Key == Key.Space)
                 DoApplyChanges();
         }
     }
