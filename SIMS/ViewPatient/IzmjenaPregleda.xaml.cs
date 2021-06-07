@@ -140,7 +140,7 @@ namespace SIMS.PacijentGUI
         bool ValidirajPopunjenostPolja()
         {
             return (Doktori.SelectedItem == null || OdabirDatuma.SelectedDate == null) ||
-                   terminiLista.SelectedItem == null;
+                   terminiLista.Text =="";
         }
 
         bool ValidirajUneseniDatum()

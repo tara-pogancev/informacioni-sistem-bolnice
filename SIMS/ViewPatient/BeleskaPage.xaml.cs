@@ -25,6 +25,7 @@ namespace SIMS.ViewPatient
             this.noteViewModel = noteViewModel;
             InitializeComponent();
             this.DataContext = noteViewModel;
+            DatePicker.DisplayDateStart = DateTime.Now.AddDays(1);
         }
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)

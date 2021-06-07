@@ -53,6 +53,11 @@ namespace SIMS.PacijentGUI
             appointmentService = new AppointmentService();
             scheduleAppointmentControler = new ScheduleAppointmentControler();
 
+            OdabirDatuma.DisplayDateStart = DateTime.Now.AddDays(1);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,DateTime.Now);
+            OdabirDatuma.BlackoutDates.Add(cdr);
+
+
         }
 
         public List<Doctor> Lekari { get => lekari; set => lekari = value; }

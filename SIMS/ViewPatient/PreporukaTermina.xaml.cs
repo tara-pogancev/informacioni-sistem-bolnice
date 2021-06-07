@@ -58,7 +58,15 @@ namespace SIMS.PacijentGUI
             preporuceniTermini = new List<Appointment>();
             //ListaDoktora.IsHitTestVisible = false;
             terminZaPreporuku = new List<TerminZaPreporuku>();
-        
+
+            PocetniDatum.DisplayDateStart = DateTime.Now.AddDays(1);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Now);
+            PocetniDatum.BlackoutDates.Add(cdr);
+
+            KrajnjiDatum.DisplayDateStart = DateTime.Now.AddDays(1);
+            
+            KrajnjiDatum.BlackoutDates.Add(cdr);
+
             lekari = new DoctorFileRepository().GetAll();
             this.DataContext = this;
         }
