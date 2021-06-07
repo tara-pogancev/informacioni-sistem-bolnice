@@ -60,7 +60,6 @@ namespace SIMS.LekarGUI
         private void DoUpdateAppointment()
         {
             //Izmena pregleda
-            //TODO: Odraditi sve provere
 
             if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || availableTimesList.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
@@ -72,10 +71,14 @@ namespace SIMS.LekarGUI
                 if (!doctorController.CheckIfFreeUpdate(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
+                else if (!appointment.Room.GetIfFreeForAppointmentUpdate(appointment))
+                    MessageBox.Show("Odabrana soba nije dostupna u datom terminu.", "Upozorenje!");
+
                 else
                 {
                     SaveUpdatedAppointment();
                     this.Close();
+                    MessageBox.Show("Termin uspešno izmenjen.");
                 }
 
             }

@@ -378,5 +378,105 @@
     },
     "InitialTime": "2021-06-16T09:00:00",
     "AppointmentID": "210607111756234698"
+  },
+  "210608121150980490": {
+    "StartTime": "2021-06-13T13:30:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "22157484654211",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "1",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-13T13:30:00",
+    "AppointmentID": "210608121150980490"
+  },
+  "210608122133807726": {
+    "StartTime": "2021-06-05T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-05T09:00:00",
+    "AppointmentID": "210608122133807726"
+  },
+  "210608122142222044": {
+    "StartTime": "2021-07-03T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-07-03T09:00:00",
+    "AppointmentID": "210608122142222044"
+  },
+  "210608122150402082": {
+    "StartTime": "2021-07-03T10:00:00",
+    "Duration": 90,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-12T10:00:00",
+    "AppointmentID": "210608122150402082"
+  },
+  "210608124439702963": {
+    "StartTime": "2021-06-08T08:30:00",
+    "Duration": 30,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "4848555021548",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "1",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-08T08:30:00",
+    "AppointmentID": "210608124439702963"
   }
 }

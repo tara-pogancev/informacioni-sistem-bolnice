@@ -100,5 +100,39 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210531092343979838",
     "Serialize": true
+  },
+  "210530093946280467": {
+    "MainIssues": "Oshiete oshiete yo sono shikumi wo",
+    "CurrentAnamnesis": "Boku no naka ni dare ga iru no?",
+    "GeneralOccurrences": "Boku no naka ni dare ga iru no?",
+    "RespiratorySystem": "Boku no naka ni dare ga iru no?",
+    "CardioSystem": "papapa papapapa papapa pa p ap a",
+    "DigestiveSystem": "Kowareta boku nante sa iki wo tomete",
+    "UroGenitalSystem": "Hodokenai mou hodokenai yo shinjitsu sae",
+    "LocomotorSystem": "Freeze",
+    "NervousSystem": "Hodokenai mou hodokenai yo shinjitsu sae",
+    "PastDiseases": "Anata wo mitsukete",
+    "FamilyData": "Yureta yuganda sekai ni dan dan",
+    "SocioEpiData": "Boku wa sukitootte mienaku natte",
+    "AnamnesisDate": "2021-06-08T00:00:00+02:00",
+    "AnamnesisID": "210530093946280467",
+    "Serialize": true
+  },
+  "210531013908941698": {
+    "MainIssues": "Legend shall speak of sacrifice at world's end.",
+    "CurrentAnamnesis": "The wind sails over the water's surface, quietly but surely.",
+    "GeneralOccurrences": "Even if the morrow is barren of promises, nothing shall forestall my return.",
+    "RespiratorySystem": "/",
+    "CardioSystem": "/",
+    "DigestiveSystem": "/",
+    "UroGenitalSystem": "/",
+    "LocomotorSystem": "/",
+    "NervousSystem": "/",
+    "PastDiseases": "/",
+    "FamilyData": "/",
+    "SocioEpiData": "Noć mi te duguje. :( ",
+    "AnamnesisDate": "2021-06-08T00:00:00+02:00",
+    "AnamnesisID": "210531013908941698",
+    "Serialize": true
   }
 }

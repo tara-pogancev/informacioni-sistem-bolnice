@@ -352,5 +352,17 @@
     ],
     "CheckStatus": false,
     "NotificationType": 1
+  },
+  "Tara Pogančev210608004442814669": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-08T00:44:42.8146698+02:00",
+    "Content": "Zakazana hitna operacija [08.06.2021. 08:30, 1] za pacijenta Đorđe Krsmanović, vodeći lekar Zack Fair.",
+    "ID": "Tara Pogančev210608004442814669",
+    "Target": [
+      "4865453131",
+      "4848555021548"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }
