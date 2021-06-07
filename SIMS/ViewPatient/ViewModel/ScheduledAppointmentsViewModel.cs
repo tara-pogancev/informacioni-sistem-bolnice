@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS.PacijentGUI.ViewModel
@@ -49,7 +50,8 @@ namespace SIMS.PacijentGUI.ViewModel
                 appointment.Patient = patient;
                 scheduleAppointmentControler.CancelAppointment(appointment);
                 RemoveFromView(appointment);
-                
+                MessageBox.Show("Termin je otkazan");
+
             }
             
         }

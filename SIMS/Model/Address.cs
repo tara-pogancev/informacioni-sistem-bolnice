@@ -10,6 +10,7 @@ namespace SIMS.Model
 
         public Address()
         {
+            City = new City();
         }
 
         public Address(string street, string number, City city)

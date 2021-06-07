@@ -85,7 +85,13 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
-            <Button Margin="15,57,15,241">Nazad</Button>
+            <Button Margin="15,57,15,241" Content="Nazad">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click" >
+                        <i:InvokeCommandAction Command="{Binding Path=DataContext.RejectCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </Grid>
     </Grid>
 </Page>

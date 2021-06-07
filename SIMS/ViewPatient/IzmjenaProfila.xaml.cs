@@ -24,6 +24,7 @@ namespace SIMS.PacijentGUI
     public partial class IzmjenaProfila : Page
     {
         private Patient pacijent;
+        private int _noOfErrorsOnScreen = 0;
         private String alergeni;
         public IzmjenaProfila()
         {
@@ -80,10 +81,22 @@ namespace SIMS.PacijentGUI
             pacijent.Username = KorisnickoImeBox.Text;
             pacijent.Password = LozinkaBox.Text;
             pacijent.Phone = BrojTelefonaBox.Text;
-            pacijent.Address.Street= AdresaBox.Text.Split(" ")[0];
-            pacijent.Address.Number = AdresaBox.Text.Split(" ")[1];
+            pacijent.Address.Street= AdresaBox.Text.Split(",")[0];
+            pacijent.Address.Number = AdresaBox.Text.Split(",")[1];
+            pacijent.Address.City.Name = AdresaBox.Text.Split(",")[2];
             new PatientController().UpdatePatient(pacijent);
             NavigationService.GoBack();
+
+        }
+
+        private void Save_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+
+            Potvrdi.IsEnabled = _noOfErrorsOnScreen > 0 ? false : true;
 
         }
     }

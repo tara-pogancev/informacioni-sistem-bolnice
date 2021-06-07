@@ -1,7 +1,7 @@
 {
   "045210805048": {
     "VacationDays": 15,
-    "Grade": 0.0,
+    "Grade": 4.6,
     "DoctorSpecialization": 2,
     "VacationPeriods": [],
     "Name": "Tara",
@@ -26,7 +26,7 @@
   },
   "4848555021548": {
     "VacationDays": 20,
-    "Grade": 0.0,
+    "Grade": 5.0,
     "DoctorSpecialization": 4,
     "VacationPeriods": [],
     "Name": "Zack",

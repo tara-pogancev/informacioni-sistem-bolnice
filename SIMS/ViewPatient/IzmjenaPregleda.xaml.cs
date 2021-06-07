@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -32,12 +33,13 @@ namespace SIMS.PacijentGUI
 
         private List<Doctor> lekari;
         private ObservableCollection<String> dostupniTermini;
-        public String Vrijeme { get; set; }
+        public String Vrijeme { get; set;}
         public Appointment OdabraniTerminZaIzmjenu { get; set; }
         Boolean doktorSelektovan;
         Patient pacijent;
         List<Room> slobodneProstorije;
         Doctor izabraniLekar;
+        public bool firstOpen;
         
         
         
@@ -52,6 +54,7 @@ namespace SIMS.PacijentGUI
             OdabraniTerminZaIzmjenu = termin;
             izabraniLekar = termin.Doctor;
             slobodneProstorije = new RoomFileRepository().UcitajProstorijeZaPreglede();
+            firstOpen = true;
             
 
             Doktori.ItemsSource = lekari;
@@ -60,7 +63,7 @@ namespace SIMS.PacijentGUI
             this.DataContext = this;
             terminiLista.ItemsSource = dostupniTermini;
             Vrijeme = OdabraniTerminZaIzmjenu.GetAppointmentTime();
-            Vrijeme = "";
+            //Vrijeme = "";
         }
 
         private void BlokirajDatumeNaKalendaru()
@@ -102,8 +105,17 @@ namespace SIMS.PacijentGUI
             {
                 izabraniLekar = (Doctor)Doktori.SelectedItem;
                 IzbacivanjeNedostupnihTermina();
-                terminiLista.SelectedIndex = -1;
-                Vrijeme = "";
+                
+                if (firstOpen == false)
+                {
+                    terminiLista.Text= "";
+                    terminiLista.SelectedIndex = -1;
+                }
+                else
+                {
+                    firstOpen = false;
+                }
+                
             }
         }
 
@@ -112,8 +124,15 @@ namespace SIMS.PacijentGUI
             if (doktorSelektovan)
             {
                 IzbacivanjeNedostupnihTermina();
-                terminiLista.SelectedIndex = -1;
-                Vrijeme = "";
+                if (firstOpen == false)
+                {
+                    terminiLista.Text= "";
+                    terminiLista.SelectedIndex = -1;
+                }
+                else
+                {
+                    firstOpen = false;
+                }
             }
 
         }
@@ -134,7 +153,18 @@ namespace SIMS.PacijentGUI
         {
             if (ValidirajPopunjenostPolja())
             {
-                MessageBox.Show("Molimo popunite sva polja!");
+                Poruka.Visibility = Visibility.Visible;
+                Task.Delay(3000).ContinueWith(_ =>
+                {
+                    Application.Current.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                            delegate ()
+                            {
+                                Poruka.Visibility = Visibility.Collapsed;
+                            }
+                        ));
+                });
                 return false;
             }
             if (ValidirajUneseniDatum())

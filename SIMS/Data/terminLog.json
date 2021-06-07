@@ -254,5 +254,13 @@
     "DateOfChange": "2021-05-31T13:47:05.3225807+02:00",
     "SurgeryType": 0,
     "Expired": false
+  },
+  "2106021035493876954865453131060007": {
+    "AppointmentLogID": "2106021035493876954865453131060007",
+    "AppointmentID": "210602103549387695",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-07T18:00:07.7461509+02:00",
+    "SurgeryType": 0,
+    "Expired": false
   }
 }

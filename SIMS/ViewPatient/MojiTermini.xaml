@@ -46,7 +46,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Padding="0" Width="60" Background="Firebrick" Name="Obrisi"  Content="Obrisi">
+                            <Button Padding="0" Width="60" Background="Firebrick" Name="Obrisi"  Content="Otkaži">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click" >
                                         <i:InvokeCommandAction Command="{Binding Path=DataContext.DeleteAppointmentCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>

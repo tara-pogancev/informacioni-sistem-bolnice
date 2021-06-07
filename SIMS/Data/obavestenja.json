@@ -295,7 +295,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210519093000000000": {
@@ -339,7 +339,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210602083000000000": {
@@ -347,6 +347,39 @@
     "Time": "2021-06-02T08:30:00",
     "Content": "Imate zakazan termin",
     "ID": "Zakazan termin210602083000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Zakazan termin210608083000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-08T08:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210608083000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210609080000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-09T08:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210609080000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210608090000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-08T09:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210608090000000000",
     "Target": [
       "4865453131"
     ],

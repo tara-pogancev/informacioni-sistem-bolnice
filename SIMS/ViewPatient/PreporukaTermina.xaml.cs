@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Service.RecommendationAppointmentService;
+using System.Threading.Tasks;
 
 namespace SIMS.PacijentGUI
 {
@@ -91,27 +92,43 @@ namespace SIMS.PacijentGUI
         public Patient Pacijent { get => pacijent; set => pacijent = value; }
         public List<Doctor> Lekari { get => lekari; set => lekari = value; }
 
+        private void ispisiPoruku(String text)
+        {
+            Poruka.Visibility = Visibility.Visible;
+            Poruka.Content = text;
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+                    System.Windows.Threading.DispatcherPriority.Normal,
+                    new Action(
+                        delegate ()
+                        {
+                            Poruka.Visibility = Visibility.Collapsed;
+                        }
+                    ));
+            });
+        }
         private bool validiraj()
         {
             if (PocetniDatum.SelectedDate == null || KrajnjiDatum.SelectedDate == null )
             {
-                MessageBox.Show("Molimo vas da popunite sva polja");
+                ispisiPoruku("Sva polja trebaju biti popunjena");
                 return false;
             }
             if (PocetniDatum.SelectedDate.Value > KrajnjiDatum.SelectedDate.Value)
             {
-                MessageBox.Show("Pocetni datum treba da bude manji od krajnjeg datuma");
+                ispisiPoruku("Pocetni datum treba biti manji od krajnjeg");
                 return false;
             }
             
             if (lekarChecked.IsChecked==false && datumChecked.IsChecked == false)
             {
-                MessageBox.Show("Molimo vas da popunite vas prioritet");
+                ispisiPoruku("Molimo Vas da izaberete prioritet");
                 return false;
             }
             if (lekarChecked.IsChecked==true && ListaDoktora.SelectedItem == null)
             {
-                MessageBox.Show("Potrebno je da izaberete prioritetnog doktora");
+                ispisiPoruku("Potrebno je da izaberete prioritetnog doktora");
                 return false;
             }
             return true;
@@ -132,10 +149,20 @@ namespace SIMS.PacijentGUI
         private void PocetniDatum_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             DateTime oznaceniDatum = (DateTime)PocetniDatum.SelectedDate;
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,oznaceniDatum );
-            CalendarDateRange cdr1 = new CalendarDateRange(oznaceniDatum.AddDays(7), DateTime.MaxValue);
-            KrajnjiDatum.BlackoutDates.Add(cdr);
-            KrajnjiDatum.BlackoutDates.Add(cdr1);
+            if (oznaceniDatum > KrajnjiDatum.SelectedDate)
+            {
+                PocetniDatum.BorderBrush = Brushes.Red;
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(PocetniDatum, "Datum mora biti manji od krajnjeg");
+                
+            }
+            else
+            {
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(PocetniDatum, "");
+                PocetniDatum.BorderBrush = Brushes.DarkGray;
+                KrajnjiDatum.BorderBrush = Brushes.DarkGray;
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(KrajnjiDatum, "");
+            }
+            
         }
 
         private void datumChecked_Checked(object sender, RoutedEventArgs e)
@@ -151,10 +178,19 @@ namespace SIMS.PacijentGUI
 
         private void KrajnjiDatum_CalendarOpened(object sender, RoutedEventArgs e)
         {
-            if (PocetniDatum.SelectedDate == null)
+            if (PocetniDatum.SelectedDate > KrajnjiDatum.SelectedDate)
             {
-                MessageBox.Show("Potrebno je da izaberete pocetni datum");
+                KrajnjiDatum.BorderBrush = Brushes.Red;
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(KrajnjiDatum,"Datum mora biti veći od početnog");
+                MaterialDesignThemes.Wpf.HintAssist.SetBackground(KrajnjiDatum, Brushes.Red);
                 return;
+            }
+            else
+            {
+                KrajnjiDatum.BorderBrush = Brushes.DarkGray;
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(KrajnjiDatum, "");
+                PocetniDatum.BorderBrush = Brushes.DarkGray;
+                MaterialDesignThemes.Wpf.HintAssist.SetHelperText(PocetniDatum, "");
             }
         }
     }

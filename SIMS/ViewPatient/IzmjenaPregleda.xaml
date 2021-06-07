@@ -29,9 +29,9 @@
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical" Margin="64,90,136,10" RenderTransformOrigin="0.471,0.499">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
-                    <Label FontSize="20"  >Lekar:</Label>
+                    <Label FontSize="20"  >Ljekar:</Label>
                     <ComboBox FontSize="17" Margin="30,0,0,0" x:Name="Doktori" ItemsSource="{Binding lekari}" DisplayMemberPath="FullName" Text="{Binding OdabraniTerminZaIzmjenu.Doctor.FullName, Mode=OneTime}"
-                       SelectedValuePath="ImePrezime" Width="150" MaxDropDownHeight="150" SelectionChanged="Doktori_SelectionChanged" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"></ComboBox>
+                       SelectedValuePath="FullName" Width="150" MaxDropDownHeight="150" SelectionChanged="Doktori_SelectionChanged" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"></ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,70" >
                     <Label FontSize="20">Datum</Label>
@@ -47,9 +47,10 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="40,80,0,0">
-                    <Button Margin="0,0,0,0" x:Name="Potvrdi" Click="Potvrdi_Click"  Background="#FF57D6B4">Potvrdi</Button>
-                    <Button Margin="50,0,0,0" Click="Odbaci_Click" Background="#FFE26868">Odbaci</Button>
+                    <Button Margin="0,0,0,0" x:Name="Potvrdi" Click="Potvrdi_Click"  Background="#01C38D">Potvrdi</Button>
+                    <Button Margin="50,0,0,0" Click="Odbaci_Click" Background="Firebrick">Odbaci</Button>
                 </StackPanel>
+                <Label HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="Red" FontSize="15" Name="Poruka" Visibility="Collapsed">Sva polja trebaju biti popunjena</Label>
             </StackPanel>
 
 

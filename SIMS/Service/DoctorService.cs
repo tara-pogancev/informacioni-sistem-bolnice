@@ -115,6 +115,8 @@ namespace SIMS.Service
             {
                 doctor.Grade = Grades / counter;
             }
+
+            new DoctorService().UpdateDoctor(doctor);
         }
 
         public DoctorDTO GetDTO(Doctor doctor)
