@@ -1,0 +1,29 @@
+﻿<Page x:Class="SIMS.ViewManager.Izvestaj"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.ViewManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="100" d:DesignWidth="250 "
+      Title="Izvestaj">
+
+
+    <Grid Background="white">
+        <StackPanel>
+            <Label HorizontalAlignment="Center">Izveštaj o zauzetosti prostorija za period</Label>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Content="{Binding pocetakIntervala}"/>
+                <Label>-</Label>
+                <Label Content="{Binding krajIntervala}"/>
+            </StackPanel>
+            <DataGrid FontSize="5" x:Name="tabelaOpreme"  Margin="10,10" ItemsSource="{Binding Renovations}" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                   <DataGridTextColumn Header="Broj prostorije" Binding="{Binding Number}" x:Name="bp" Width="60"/>
+                    <DataGridTextColumn Header="Početak renovacije" Binding="{Binding RenovationStart}" x:Name="pr" Width="85"/>
+                    <DataGridTextColumn Header="Kraj renovacije" Binding="{Binding RenovationEnd}" x:Name="kr" Width="85"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

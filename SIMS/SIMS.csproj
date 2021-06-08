@@ -16,6 +16,7 @@
     <None Remove="src\pozadina3.png" />
     <None Remove="src\reminder.png" />
     <None Remove="src\reminderP.png" />
+    <None Remove="src\tutorial\tutorial.mp4" />
     <None Remove="ViewDoctor\logo_h_small.png" />
     <None Remove="ViewDoctor\notification.png" />
     <None Remove="ViewDoctor\profile.png" />
@@ -107,6 +108,7 @@
     <Resource Include="src\pozadina3.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <EmbeddedResource Include="src\tutorial\tutorial.mp4" />
     <Resource Include="src\view.png" />
   </ItemGroup>
 

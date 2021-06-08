@@ -15,6 +15,7 @@ using SIMS.Daemon.PremestajOpreme;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.DTO;
+using SIMS.ViewManager.ViewModel;
 
 namespace SIMS.UpravnikGUI
 {
@@ -23,38 +24,10 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class UpravnikPremestiOpremu : Page
     {
-        private InventoryController inventoryController = new InventoryController();
-        private UpravnikInventarProstorijePage ParentPage;
-        private string BrojProstorije;
-        private Inventory Oprema;
         public UpravnikPremestiOpremu(UpravnikInventarProstorijePage ParentPage, string BrojProstorije, Inventory Oprema)
         {
-            this.ParentPage = ParentPage;
-            this.BrojProstorije = BrojProstorije;
-            this.Oprema = Oprema;
+            this.DataContext = new PremestiOpremuPageViewModel(ParentPage, BrojProstorije, Oprema);
             InitializeComponent();
-
-            if (Oprema.Type != InventoryType.statička)
-            {
-                DatumPicker.Visibility = Visibility.Hidden;
-                DatumLabel.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void Odustani_Click(object sender, RoutedEventArgs e)
-        {
-            UpravnikWindow.Instance.SetContent(ParentPage);
-            UpravnikWindow.Instance.SetLabel("Prostorija " + BrojProstorije);
-        }
-
-        private void Ok_Click(object sender, RoutedEventArgs e)
-        {
-            inventoryController.MoveInventory(new MovingInventoryDTO(BrojProstorije, BrojPremestanja.Text, Kolicina.Text, DatumPicker.SelectedDate, Oprema.ID));
-
-            ParentPage.Update();
-
-            UpravnikWindow.Instance.SetContent(ParentPage);
-            UpravnikWindow.Instance.SetLabel("Prostorija " + BrojProstorije);
         }
     }
 }
