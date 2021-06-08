@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Termini_CRUD"
         WindowStartupLocation="CenterOwner"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
         Title="Odaberite aktivnost" Height="450" Width="700">
 
     <Grid Background="#FF323D52">

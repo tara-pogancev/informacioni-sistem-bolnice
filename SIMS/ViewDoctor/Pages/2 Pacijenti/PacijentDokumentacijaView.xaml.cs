@@ -17,6 +17,7 @@ using SIMS.Model;
 using SIMS.Repositories.AnamnesisRepository;
 using SIMS.DTO;
 using SIMS.Controller;
+using SIMS.ViewDoctor.Dialogues.GeneratePDF;
 
 namespace SIMS.LekarGUI
 {
@@ -67,7 +68,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonPatientHealthRecord(object sender, MouseButtonEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
         }
 
         private void ButtonRead(object sender, RoutedEventArgs e)
@@ -88,7 +89,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonGenerateReportFile(object sender, RoutedEventArgs e)
         {
-            //TODO
+            new GeneratePDFForm(patient).ShowDialog();
         }
 
         private void ButtonViewReceipt(object sender, MouseButtonEventArgs e)

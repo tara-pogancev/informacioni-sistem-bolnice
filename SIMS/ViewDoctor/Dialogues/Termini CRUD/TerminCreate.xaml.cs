@@ -89,8 +89,11 @@ namespace SIMS.LekarGUI
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
-            //TODO: Odraditi sve provere
+            DoCreateAppointment();
+        }
 
+        private void DoCreateAppointment()
+        {
             if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || timePicker.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
             else
@@ -103,13 +106,16 @@ namespace SIMS.LekarGUI
                 if (!doctorController.CheckIfFree(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
+                //PROVERA DOSTUPNOSTI SOBE
+                else if (!appointment.Room.GetIfFreeForAppointment(appointment))
+                    MessageBox.Show("Odabrana soba nije dostupna u datom terminu.", "Upozorenje!");
+
                 else
                 {
                     SaveAppointment(appointment);
                     this.Close();
                     MessageBox.Show("Termin uspešno zakazan.");
-                }
-
+                }                
             }
         }
 
@@ -160,6 +166,14 @@ namespace SIMS.LekarGUI
                 timePicker.ItemsSource = availableTimes;
 
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateAppointment();
         }
     }
 }

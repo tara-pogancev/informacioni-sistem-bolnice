@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
+        KeyDown="WindowKeyListener"
         WindowStartupLocation="CenterScreen"
         Title="Prikaz recepta" Height="480" Width="500">
 

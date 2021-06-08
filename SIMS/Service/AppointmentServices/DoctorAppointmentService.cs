@@ -66,6 +66,32 @@ namespace SIMS.Service.AppointmentServices
             return retVal;
         }
 
+        public List<Appointment> GetUpcommingAppointmentsByRoom(Room room)
+        {
+            List<Appointment> retVal = new List<Appointment>();
+            foreach (Appointment appointment in appointmentRepository.GetAll())
+            {
+                if (!appointment.GetIfPast() && !appointment.GetIfRecorded())
+                    if (appointment.Room.Number.Equals(room.Number))
+                        retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
+
+        public List<Appointment> GetUpcommingAppointments()
+        {
+            List<Appointment> retVal = new List<Appointment>();
+            foreach (Appointment appointment in appointmentRepository.GetAll())
+            {
+                if (!appointment.GetIfPast() && !appointment.GetIfRecorded())
+                    retVal.Add(appointment);
+            }
+
+            return retVal;
+        }
+
         public AppointmentDTO GetDTO(Appointment appointment)
         {
             return new AppointmentDTO(appointment);
@@ -165,18 +191,29 @@ namespace SIMS.Service.AppointmentServices
 
                 foreach (DateTime appTime in potentialAppointmentTimeList)
                 {
-                    //TODO: Promeniti prostoriju!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    Room room = roomService.GetAllRooms()[0];
+                    Appointment appointment = new Appointment(appTime, duration, AppointmentType.surgery, doctor, patient, null);
 
-                    Appointment appointment = new Appointment(appTime, duration, AppointmentType.surgery, doctor, patient, room);
-                    if (doctorService.CheckIfFree(doctor, appointment))
-                    {
-                        counterByDoctor++;
-                        retVal.Add(appointment);
+                   foreach (Room roomNew in roomService.GetAllRooms())
+                   {
+                       if (roomNew.GetIfFreeForAppointment(appointment))
+                       {
+                            appointment.Room = roomNew;
+                            break;
+                       }
+                   }
+
+                    if (appointment.Room != null) {
+
+                        if (doctorService.CheckIfFree(doctor, appointment))
+                        {
+                            counterByDoctor++;
+                            retVal.Add(appointment);
+                        }
+
+                        if (counterByDoctor >= 5)
+                            break;
                     }
 
-                    if (counterByDoctor >= 5)
-                        break;
                 }
 
             }

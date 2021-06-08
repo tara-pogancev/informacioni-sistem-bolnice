@@ -22,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="55"/>
             <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Margin="40,0,0,0" VerticalAlignment="Center">
@@ -44,8 +45,8 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Materijal" Binding="{Binding GetVrsta}" Width="*"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="Količina" Binding="{Binding ImePacijenta}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Materijal" Binding="{Binding Material}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="Količina" Binding="{Binding Amount}" Width="*"  DataGridColumn.CanUserResize="False"/>
 
                 </DataGrid.Columns>
 
@@ -60,7 +61,7 @@
 
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="18">
                     <Label Content="ODABERITE PROSTORIJU" Style="{StaticResource BoldLabel}" FontSize="24"/>
-                    <ComboBox Style="{StaticResource DarkComboBox}" Margin="20,20,20,50"/>
+                    <ComboBox Name="RoomCombo" Style="{StaticResource DarkComboBox}" Margin="20,20,20,50"/>
 
                     <Button Content="Potrošnja materijala" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"
                             Click="ButtonMaterialConsumption" VerticalAlignment="Bottom"/>
@@ -70,6 +71,13 @@
             </Grid>
 
         </Grid>
+
+        <Grid Grid.Row="4" VerticalAlignment="Bottom">
+            <Rectangle Fill="#CB5252" RadiusX="10" RadiusY="10" Width="250"/>
+            <Rectangle Fill="#CB5252" Height="10" Width="250" VerticalAlignment="Bottom"/>
+            <Label Content="FOR DEMO PURPOSES ONLY" Style="{StaticResource DefaultLabelS}" HorizontalAlignment="Center" Foreground="Black" FontFamily="Canbera Bold"/>
+        </Grid>
+
 
     </Grid>
 </Page>

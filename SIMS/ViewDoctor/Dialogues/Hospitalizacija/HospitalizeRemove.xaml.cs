@@ -44,6 +44,11 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
 
         private void AcceptMessage(object sender, RoutedEventArgs e)
         {
+            DoRemoveHospitalization();
+        }
+
+        private void DoRemoveHospitalization()
+        {
             if (NotificationTextBox.Text != "")
             {
                 WriteNotification();
@@ -54,7 +59,6 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
             }
             else
                 MessageBox.Show("Molimo popunite poruku otpisnog lista.");
-
         }
 
         private void WriteNotification()
@@ -65,6 +69,14 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
             String content = "Otpisni list hospitalizacije: " + NotificationTextBox.Text;
             Notification notification = new Notification(author, DateTime.Now, content, target);
             notificationController.SaveNotification(notification);
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoRemoveHospitalization();
         }
     }
 }

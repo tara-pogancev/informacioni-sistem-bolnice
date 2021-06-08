@@ -11,7 +11,6 @@ namespace SIMS.Commands
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
 
-
         #region Constructors
         public RelayCommand(Action<object> execute) : this(execute, null) { }
 

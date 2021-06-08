@@ -16,5 +16,41 @@
       "Serialize": false
     },
     "HospitalizationID": "30052021194309"
+  },
+  "08062021111759": {
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "LeadDoctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "StartDate": "2021-06-18T00:00:00",
+    "EndDate": "2021-06-26T00:00:00",
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "HospitalizationID": "08062021111759"
+  },
+  "08062021114432": {
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "LeadDoctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "StartDate": "2021-06-19T00:00:00",
+    "EndDate": "2021-06-25T00:00:00",
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "HospitalizationID": "08062021114432"
   }
 }

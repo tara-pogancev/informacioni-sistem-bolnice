@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.DTO;
+using System.Windows.Input;
 
 namespace SIMS.LekarGUI
 {
@@ -53,8 +54,12 @@ namespace SIMS.LekarGUI
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoUpdateAppointment();
+        }
+
+        private void DoUpdateAppointment()
+        {
             //Izmena pregleda
-            //TODO: Odraditi sve provere
 
             if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || availableTimesList.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
@@ -66,10 +71,14 @@ namespace SIMS.LekarGUI
                 if (!doctorController.CheckIfFreeUpdate(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
+                else if (!appointment.Room.GetIfFreeForAppointmentUpdate(appointment))
+                    MessageBox.Show("Odabrana soba nije dostupna u datom terminu.", "Upozorenje!");
+
                 else
                 {
                     SaveUpdatedAppointment();
                     this.Close();
+                    MessageBox.Show("Termin uspešno izmenjen.");
                 }
 
             }
@@ -198,6 +207,14 @@ namespace SIMS.LekarGUI
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoUpdateAppointment();
         }
 
     }

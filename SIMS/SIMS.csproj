@@ -204,8 +204,4 @@
     </Page>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewDoctor\ViewModel\" />
-  </ItemGroup>
-
 </Project>

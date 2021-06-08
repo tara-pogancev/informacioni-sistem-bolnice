@@ -84,6 +84,11 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoUrgentSurgery();
+        }
+
+        private void DoUrgentSurgery()
+        {
             if (ValidateForm())
             {
                 Appointment selecetdAppointment = GetSelecetdAppointment();
@@ -152,6 +157,14 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             }
 
             AvailableComboBox.ItemsSource = AvailableAppointments;
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoUrgentSurgery();
         }
 
     }

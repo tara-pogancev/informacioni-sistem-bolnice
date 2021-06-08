@@ -9,28 +9,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Model;
+using SIMS.ViewDoctor.Dialogues.GeneratePDF.ViewModel;
 
-namespace SIMS.LekarGUI.Dialogues.Recepti_i_terapije
+namespace SIMS.ViewDoctor.Dialogues.GeneratePDF
 {
     /// <summary>
-    /// Interaction logic for TerapijaPrikaz.xaml
+    /// Interaction logic for GeneratePDFForm.xaml
     /// </summary>
-    public partial class TherapyView : Window
+    public partial class GeneratePDFForm : Window
     {
-        public TherapyView()
+        public GeneratePDFForm(Patient patient)
         {
             InitializeComponent();
-        }
-
-        private void Button_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            DataContext = new GeneratePDFViewModel(patient);
         }
 
         private void WindowKeyListener(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
                 Close();
+            //else if (e.Key == Key.Return)
+                //Accept();
         }
     }
 }

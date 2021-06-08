@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
+        KeyDown="WindowKeyListener"
         Title="Potrošnja materijala" Height="420" Width="400">
 
     <Grid Background="#FF323D52">
@@ -14,7 +15,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="1.2*"/>
-            <RowDefinition/>            
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <Label Content="Potrošnja materijala" Style="{StaticResource DefaultLabel}" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
@@ -33,6 +35,12 @@
         </StackPanel>
 
         <Button Grid.Row="3" Content="Potvrdi" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="AcceptButton"/>
+
+        <Grid Grid.Row="4" VerticalAlignment="Bottom">
+            <Rectangle Fill="#CB5252" RadiusX="10" RadiusY="10" Width="250"/>
+            <Rectangle Fill="#CB5252" Height="10" Width="250" VerticalAlignment="Bottom"/>
+            <Label Content="FOR DEMO PURPOSES ONLY" Style="{StaticResource DefaultLabelS}" HorizontalAlignment="Center" Foreground="Black" FontFamily="Canbera Bold"/>
+        </Grid>
 
 
     </Grid>

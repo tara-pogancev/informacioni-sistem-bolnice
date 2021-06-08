@@ -33,11 +33,11 @@
 
             <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Center">
 
-                <Label Content="Tara Pogančev" Style="{StaticResource BoldLabel}" Margin="5"/>
-                <Label Content="Korisničko ime: tarapogancev7" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Mejl adresa: tara.lekar@gmail.com" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Telefon: +3815548521" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Adresa: Puškinova 17, Novi Sad" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Tara Pogančev" Name="LabelName" Style="{StaticResource BoldLabel}" Margin="5"/>
+                <Label Content="Korisničko ime: tarapogancev7" Name="LabelUsername" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Mejl adresa: tara.lekar@gmail.com" Name="LabelEmail" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Telefon: +3815548521" Name="LabelPhone" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Adresa: Puškinova 17, Novi Sad" Name="LabelAddress" Style="{StaticResource DefaultLabel}"/>
 
             </StackPanel>
 

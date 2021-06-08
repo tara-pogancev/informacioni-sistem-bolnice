@@ -22,9 +22,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
         private double grade;
 
-        private String phoneNumber;
-
-      
+        private String phoneNumber;      
 
         public String NameSurname {
             get { return nameSurname; }

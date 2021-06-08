@@ -38,7 +38,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ShowPatientRecordCheck(object sender, RoutedEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
             this.Close();
         }
 
@@ -57,11 +57,6 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             new SurgeryCreate(patient).ShowDialog();
         }
 
-        private void WriteTherapy(object sender, RoutedEventArgs e)
-        {
-            //TODO
-        }
-
         private void CreateAppointment(object sender, RoutedEventArgs e)
         {
             new AppointmentCreate(patient).ShowDialog();
@@ -70,6 +65,12 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
         private void UrgentSurgery(object sender, RoutedEventArgs e)
         {
             new UrgentSurgeryCreate(patient).ShowDialog();
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }

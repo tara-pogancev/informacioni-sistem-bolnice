@@ -114,13 +114,25 @@ namespace SIMS.LekarGUI
 
         private void EventPatientRecord(object sender, MouseButtonEventArgs e)
         {
+            DoShowPatientRecord();
+        }
+
+        private void DoShowPatientRecord()
+        {
             if (dataGridAppointments.SelectedItem != null)
             {
                 Appointment sellectedAppointment = GetSellectedAppointment();
                 Patient sellectedPatient = patientController.GetPatient(sellectedAppointment.Patient.Jmbg);
 
-                DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(sellectedPatient);
+                DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(sellectedPatient);
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+                DoShowPatientRecord();
+
         }
     }
 }

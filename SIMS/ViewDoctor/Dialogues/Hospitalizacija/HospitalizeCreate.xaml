@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Hospitalizacija"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        KeyDown="WindowKeyListener"
         Title="Hospitalizovanje pacijenta" Height="500" Width="500">
 
     <Window.Resources>

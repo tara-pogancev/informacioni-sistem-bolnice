@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
+        KeyDown="WindowKeyListener"
         WindowStartupLocation="CenterScreen"
         Title="Evidentiraj pregled" Height="810" Width="800">
 
