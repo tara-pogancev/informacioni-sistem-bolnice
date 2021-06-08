@@ -53,6 +53,11 @@ namespace SIMS.PacijentGUI
             appointmentService = new AppointmentService();
             scheduleAppointmentControler = new ScheduleAppointmentControler();
 
+            OdabirDatuma.DisplayDateStart = DateTime.Now.AddDays(1);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue,DateTime.Now);
+            OdabirDatuma.BlackoutDates.Add(cdr);
+
+
         }
 
         public List<Doctor> Lekari { get => lekari; set => lekari = value; }
@@ -64,7 +69,19 @@ namespace SIMS.PacijentGUI
         {
             if (ListaDoktora.SelectedItem == null || OdabirDatuma.SelectedDate == null || terminiLista.SelectedItem == null)
             {
-                MessageBox.Show("Molimo popunite sva polja!");
+                Poruka.Visibility = Visibility.Visible;
+                Task.Delay(3000).ContinueWith(_ =>
+                {
+                    Application.Current.Dispatcher.Invoke(
+                        System.Windows.Threading.DispatcherPriority.Normal,
+                        new Action(
+                            delegate ()
+                            {
+                                Poruka.Visibility = Visibility.Collapsed;
+                            }
+                        ));
+                });
+                
                 return false;
             }
            
@@ -87,14 +104,17 @@ namespace SIMS.PacijentGUI
             }
             else
             {
-                MessageBox.Show("Termin je uspjesno zakazan");
+                ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+                obavjestenje.TekstObavjestenja.Text = "Termin je uspješno zakazan";
+                obavjestenje.ShowDialog();
+                List<String> targets = new List<string>();
+                targets.Add(pacijent.Jmbg);
+                Notification notification = new Notification("Zakazan termin", vremenskaOdrednica.AddDays(-1), "Imate zakazan termin", targets, false, NotificationType.AppointmentAllert);
+                new NotificationController().SaveNotification(notification);
+                ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
+                ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
             }
-            List<String> targets = new List<string>();
-            targets.Add(pacijent.Jmbg);
-            Notification notification = new Notification("Zakazan termin",vremenskaOdrednica.AddDays(-1),"Imate zakazan termin",targets, false, NotificationType.AppointmentAllert);
-            new NotificationController().SaveNotification(notification);
-             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Clear();
-             ZakazivanjeTermina.getInstance().Zakazivanje1.Children.Add(new Zakazivanje(pacijent));
+            
              
         }
 

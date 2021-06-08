@@ -30,6 +30,7 @@ namespace SIMS.ViewPatient.ViewModel
             Time = "";
             DateReal = DateTime.Now;
             ConfirmCommand = new RelayCommand(Execute_ConfirmCommand, Can_Execute_ConfirmCommand);
+            RejectCommand = new RelayCommand(ExecuteRejectCommand, canExecuteRejectCommand);
             noteController = new NoteController();
             
             LoadNote(id);
@@ -86,6 +87,16 @@ namespace SIMS.ViewPatient.ViewModel
         }
 
         public bool Can_Execute_ConfirmCommand(Object obj)
+        {
+            return true;
+        }
+
+        public void ExecuteRejectCommand(Object obj)
+        {
+            PocetnaStranica.getInstance().frame.Content = new IstorijaPregleda();
+        }
+
+        public bool canExecuteRejectCommand(Object obj)
         {
             return true;
         }

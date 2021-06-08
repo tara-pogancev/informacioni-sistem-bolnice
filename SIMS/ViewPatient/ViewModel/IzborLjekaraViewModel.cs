@@ -3,6 +3,7 @@ using SIMS.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Controller;
 using SIMS.Model;
 
 namespace SIMS.PacijentGUI.ViewModel
@@ -19,7 +20,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
         private String date;
 
-        private String grade;
+        private double grade;
 
         private String phoneNumber;
 
@@ -62,7 +63,7 @@ namespace SIMS.PacijentGUI.ViewModel
             }
         }
         
-        public String Grade
+        public double Grade
         {
             get { return grade; }
             set
@@ -102,11 +103,13 @@ namespace SIMS.PacijentGUI.ViewModel
         public IzborLjekaraViewModel(Patient patient)
         {
             this.patient = patient;
-            this.nameSurname = "Tara Pogancev";
+            Doctor doctor = patient.ChosenDoctor;
+            this.nameSurname = doctor.FullName;
             this.PhoneNumber = "221-537";
-            this.grade = "5";
-            this.date = "22.3.1970.";
-            
+            new DoctorController().RecalulateGrade(doctor);
+            this.grade = doctor.Grade;
+            this.date = "13.2.1975.";
+
         }
 
         #endregion

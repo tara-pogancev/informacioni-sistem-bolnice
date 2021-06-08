@@ -29,11 +29,12 @@ namespace SIMS.Service.RecommendationAppointmentService
 
         public void CreateAllPossibleRecommendedAppointments()
         {
-
-            while (startDate <= endDate)
+            int performanceConstraint = 0;
+            while (startDate <= endDate && performanceConstraint<5)
             {
                 CreateStartTimeOfAppointment();
                 startDate = startDate.AddDays(1);
+                performanceConstraint++;
             }
         }
 

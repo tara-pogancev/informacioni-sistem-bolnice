@@ -4,8 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:local1="clr-namespace:SIMS.PacijentGUI.ViewModel" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
       mc:Ignorable="d" 
-      d:DesignHeight="1000" d:DesignWidth="850"
+      d:DesignHeight="1100" d:DesignWidth="850"
       Title="IzvjestajPage">
 
     <Grid Margin="40">
@@ -36,11 +37,11 @@
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Label FontSize="18">Ime i prezime:</Label>
-                            <Label  FontSize="18" Name="ImeIPrezime" Content="Marko Markovic"></Label>
+                            <Label  FontSize="18" Name="ImeIPrezime" Content="{Binding Patient,Converter={cvt:UserFullNameConverter}}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label FontSize="18">Datum:</Label>
-                            <Label  FontSize="18" Name="Datum" Content="19.5.2021"></Label>
+                            <Label  FontSize="18" Name="Datum" Content="{Binding FirstDate}"></Label>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label FontSize="18">Namjena:</Label>
@@ -62,33 +63,41 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
                 
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Ponedeljak:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                    <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FirstDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray"> - </Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FirstDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
                         <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
-                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu na svakih 8 sati.</Label>
                     </StackPanel>
                     
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Utorak:</Label>
-                    <StackPanel Orientation="Horizontal">
-                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
-                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SecondDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SecondDate}"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
-                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
+                        <Label FontWeight="Bold" FontSize="15" Content="12:00:"></Label>
+                        <Label FontSize="15">Vitamin C: Tabletu rastopiti u čaši vode..</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="20:00:"></Label>
+                        <Label FontSize="15">Lek za grlo: Popiti jednu tabletu na svakih 8 sati.</Label>
                     </StackPanel>
 
                 </StackPanel>
@@ -96,10 +105,14 @@
 
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Srijeda:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding ThirdDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding ThirdDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
-                        <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
+                        <Label FontWeight="Bold" FontSize="15" Content="08:00:"></Label>
+                        <Label FontSize="15">Sinoderm: Dobro utrljati kremu na ranu.</Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
@@ -111,7 +124,11 @@
 
             <Grid Grid.Row="3">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Četvrtak:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FourthDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FourthDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
                         <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
@@ -126,7 +143,11 @@
 
             <Grid Grid.Row="4">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Petak:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FifthDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding FifthDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
                         <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
@@ -141,7 +162,11 @@
 
             <Grid Grid.Row="5">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Subota:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SixthDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SixthDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
                         <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
@@ -156,7 +181,11 @@
 
             <Grid Grid.Row="6">
                 <StackPanel Orientation="Vertical">
-                    <Label FontSize="15" FontWeight="Bold" Background="Gray">Nedelja:</Label>
+                    <StackPanel Orientation="Horizontal" Background="Gray">
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SeventhDay}"></Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray">-</Label>
+                        <Label FontSize="15" FontWeight="Bold" Background="Gray" Content="{Binding SeventhDate}"></Label>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label FontWeight="Bold" FontSize="15" Content="13:00:"></Label>
                         <Label FontSize="15">Lek za pritisak: Popiti jednu tabletu posle obroka.</Label>
@@ -165,6 +194,11 @@
                         <Label FontWeight="Bold" FontSize="15" Content="18:00:"></Label>
                         <Label FontSize="15">Lek za grlo: Popiti jednu tabletu svakih 8 sati.</Label>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" FontSize="15" Content="22:00:"></Label>
+                        <Label FontSize="15">Paracetamol: Popiti jednu tabletu  ukoliko temperatura bude veća od 38 stepeni.</Label>
+                    </StackPanel>
+
 
                 </StackPanel>
             </Grid>

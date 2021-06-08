@@ -19,35 +19,36 @@
     </UserControl.Resources>
     <Grid Background="#FF323D52">
         <!--<materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">-->
-            <StackPanel x:Name="glavni">
-                <Label FontSize="15" Content="Izaberite doktora" Margin="270,10,0,0" Foreground="#01C38D"/>
-                <Border BorderThickness="1" BorderBrush="Black"  Width="250" Height="100" CornerRadius="15">
-                    <ListView Width="250"  Height="100" Foreground="#01C38D" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemsSource="{Binding Lekari}" DisplayMemberPath="FullName" Name="ListaDoktora" SelectionChanged="ListaDoktora_SelectionChanged">
+        <StackPanel x:Name="glavni">
+            <Label FontSize="15" Content="Izaberite ljekara" Margin="170,10,0,0" Foreground="White"/>
+            <Border BorderThickness="1" BorderBrush="Black"  Width="250" Height="100" CornerRadius="15">
+                <ListView Width="250"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Lekari}" DisplayMemberPath="FullName" Name="ListaDoktora" SelectionChanged="ListaDoktora_SelectionChanged">
 
-                    </ListView>
-                </Border>
+                </ListView>
+            </Border>
 
-                <DatePicker FontSize="15"  Foreground="#01C38D"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum"  Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
+            <DatePicker FontSize="15"  Foreground="White"  Height="40" materialDesign:HintAssist.Hint="Izaberite datum"  Width="250" Margin="10,21,10,18" Name="OdabirDatuma" SelectedDateChanged="OdabirDatuma_SelectedDateChanged" />
 
-                <ComboBox 
+            <ComboBox 
                     x:Name="terminiLista" ItemsSource="{Binding DostupniTermini}"
                         Style="{StaticResource MaterialDesignOutlinedComboBox}"
                         MaxDropDownHeight="150"
                         materialDesign:HintAssist.Hint="Raspolozivi termini"
-                        Foreground="#01C38D"
+                        Foreground="White"
                         Width="250" IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
                         SelectionChanged="ComboBox_SelectionChanged"
                      />
 
 
-                <StackPanel Orientation="Horizontal" Margin="40" Width="400">
-                    <Button Width="250" Background="#01C38D" Margin="78,30,0,0"  Name="Potvrdi" Click="Potvrdi_Click" >Potvrdi</Button>
-                    
-                </StackPanel>
+            
+            <Button Width="250" Background="#01C38D"  x:Name="Potvrdi" Click="Potvrdi_Click" Content="Potvrdi" RenderTransformOrigin="0.504,1.973"  Margin="0,60,0,0"/>
+            <StackPanel Orientation="Vertical" Margin="40" Width="400">
+                <TextBlock HorizontalAlignment="Center" Visibility="Collapsed" Foreground="#ed4e39" Name="Poruka" FontSize="14"> Sva polja trebaju biti popunjena</TextBlock>
 
             </StackPanel>
+        </StackPanel>
 
-       <!-- </materialDesign:TransitioningContent> -->
-            
+        <!-- </materialDesign:TransitioningContent> -->
+
     </Grid>
 </UserControl>

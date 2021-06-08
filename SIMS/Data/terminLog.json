@@ -253,6 +253,78 @@
     "PatientID": "4865453131",
     "DateOfChange": "2021-05-31T13:47:05.3225807+02:00",
     "SurgeryType": 0,
+    "Expired": true
+  },
+  "2106021035493876954865453131060007": {
+    "AppointmentLogID": "2106021035493876954865453131060007",
+    "AppointmentID": "210602103549387695",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-07T18:00:07.7461509+02:00",
+    "SurgeryType": 0,
+    "Expired": true
+  },
+  "2106070652292780924865453131085233": {
+    "AppointmentLogID": "2106070652292780924865453131085233",
+    "AppointmentID": "210607065229278092",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-08T08:52:33.6078168+02:00",
+    "SurgeryType": 0,
+    "Expired": true
+  },
+  "2106080850376445114865453131085735": {
+    "AppointmentLogID": "2106080850376445114865453131085735",
+    "AppointmentID": "210608085037644511",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-08T08:57:35.0015221+02:00",
+    "SurgeryType": 0,
+    "Expired": true
+  },
+  "2106021038120123424865453131090118": {
+    "AppointmentLogID": "2106021038120123424865453131090118",
+    "AppointmentID": "210602103812012342",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-08T09:01:18.3163623+02:00",
+    "SurgeryType": 0,
+    "Expired": true
+  },
+  "2105300939224304751445857093511": {
+    "AppointmentLogID": "2105300939224304751445857093511",
+    "AppointmentID": "210530093922430475",
+    "PatientID": "1445857",
+    "DateOfChange": "2021-06-08T09:35:11.9546388+02:00",
+    "SurgeryType": 0,
+    "Expired": false
+  },
+  "2106080904498242981445857093757": {
+    "AppointmentLogID": "2106080904498242981445857093757",
+    "AppointmentID": "210608090449824298",
+    "PatientID": "1445857",
+    "DateOfChange": "2021-06-08T09:37:57.3944692+02:00",
+    "SurgeryType": 0,
+    "Expired": false
+  },
+  "2106080934476695881445857094735": {
+    "AppointmentLogID": "2106080934476695881445857094735",
+    "AppointmentID": "210608093447669588",
+    "PatientID": "1445857",
+    "DateOfChange": "2021-06-08T09:47:35.7470785+02:00",
+    "SurgeryType": 0,
+    "Expired": false
+  },
+  "2106021038120123424865453131102907": {
+    "AppointmentLogID": "2106021038120123424865453131102907",
+    "AppointmentID": "210602103812012342",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-08T10:29:07.7554054+02:00",
+    "SurgeryType": 0,
+    "Expired": false
+  },
+  "2106021038120123424865453131104218": {
+    "AppointmentLogID": "2106021038120123424865453131104218",
+    "AppointmentID": "210602103812012342",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-08T10:42:18.3721364+02:00",
+    "SurgeryType": 0,
     "Expired": false
   }
 }

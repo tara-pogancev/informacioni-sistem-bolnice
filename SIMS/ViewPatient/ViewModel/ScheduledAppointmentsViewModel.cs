@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
+using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS.PacijentGUI.ViewModel
 {
@@ -48,7 +50,10 @@ namespace SIMS.PacijentGUI.ViewModel
                 appointment.Patient = patient;
                 scheduleAppointmentControler.CancelAppointment(appointment);
                 RemoveFromView(appointment);
-                
+                ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+                obavjestenje.TekstObavjestenja.Text = "Termin je otkazan";
+                obavjestenje.ShowDialog();
+
             }
             
         }
@@ -68,7 +73,7 @@ namespace SIMS.PacijentGUI.ViewModel
             {
                 Appointment appointment = GetOriginalAppointment();
                 appointment.Patient = patient;
-
+                scheduleAppointmentControler.ChangeAppointment(appointment);
                 IzmjenaPregleda izmjenaPregleda = new IzmjenaPregleda(appointment);
                 PocetnaStranica poc = PocetnaStranica.getInstance();
                 poc.frame.Content = izmjenaPregleda;
