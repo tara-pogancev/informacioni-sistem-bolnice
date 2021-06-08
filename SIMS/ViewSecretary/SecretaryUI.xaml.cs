@@ -13,6 +13,7 @@ using SIMS.Filters;
 using System;
 using SIMS.Controller;
 using System.Windows.Media.Imaging;
+using SIMS.ViewSecretary.Report;
 
 namespace SIMS.ViewSecretary
 {
@@ -34,6 +35,11 @@ namespace SIMS.ViewSecretary
             if (_instance == null)
                 _instance = new SecretaryUI(secretary);
             return _instance;
+        }
+
+        public Secretary GetSecretary()
+        {
+            return _secretary;
         }
 
         private SecretaryUI(Secretary secretary)
@@ -244,7 +250,7 @@ namespace SIMS.ViewSecretary
                     break;
                 case "ItemReport":
                     invokeProv.Invoke();
-                    MainFrame.Content = ViewHome.GetInstance();
+                    MainFrame.Content = new ViewReport();
                     Caption.Content = TranslationSource.Instance["ReportListItem"];
                     _caption = "ReportListItem";
                     ListViewMenu.SelectedItem = null;

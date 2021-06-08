@@ -198,6 +198,9 @@
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="DateColon" xml:space="preserve">
+    <value>Date: </value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -225,6 +228,9 @@
   <data name="EmailColon" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="EndTimeColon" xml:space="preserve">
+    <value>End Time:</value>
+  </data>
   <data name="ExaminationDateColon" xml:space="preserve">
     <value>Examination Date:</value>
   </data>
@@ -236,6 +242,9 @@
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>
+  </data>
+  <data name="GenerateCaps" xml:space="preserve">
+    <value>GENERATE</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Guest</value>
@@ -324,6 +333,15 @@
   <data name="RoomColon" xml:space="preserve">
     <value>Room:</value>
   </data>
+  <data name="RoomNotOccupied" xml:space="preserve">
+    <value>The room is not occupied during the specified period.</value>
+  </data>
+  <data name="RoomNumberColon" xml:space="preserve">
+    <value>Room Number: </value>
+  </data>
+  <data name="RoomOccupancyReport" xml:space="preserve">
+    <value>Room Occupancy Report</value>
+  </data>
   <data name="RoomUnavailableMessage" xml:space="preserve">
     <value>Room is unavailable at the specified time.</value>
   </data>
@@ -335,6 +353,9 @@
   </data>
   <data name="ScheduleSurgery" xml:space="preserve">
     <value>Schedule Surgery</value>
+  </data>
+  <data name="SecretaryColon" xml:space="preserve">
+    <value>Secretary: </value>
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Select at least one role.</value>

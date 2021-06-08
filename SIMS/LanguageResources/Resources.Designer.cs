@@ -304,6 +304,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date: .
+        /// </summary>
+        internal static string DateColon {
+            get {
+                return ResourceManager.GetString("DateColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         internal static string Delete {
@@ -385,6 +394,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End Time:.
+        /// </summary>
+        internal static string EndTimeColon {
+            get {
+                return ResourceManager.GetString("EndTimeColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Examination Date:.
         /// </summary>
         internal static string ExaminationDateColon {
@@ -417,6 +435,15 @@ namespace SIMS.LanguageResources {
         internal static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GENERATE.
+        /// </summary>
+        internal static string GenerateCaps {
+            get {
+                return ResourceManager.GetString("GenerateCaps", resourceCulture);
             }
         }
         
@@ -682,6 +709,33 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The room is not occupied during the specified period..
+        /// </summary>
+        internal static string RoomNotOccupied {
+            get {
+                return ResourceManager.GetString("RoomNotOccupied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Number: .
+        /// </summary>
+        internal static string RoomNumberColon {
+            get {
+                return ResourceManager.GetString("RoomNumberColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Room Occupancy Report.
+        /// </summary>
+        internal static string RoomOccupancyReport {
+            get {
+                return ResourceManager.GetString("RoomOccupancyReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Room is unavailable at the specified time..
         /// </summary>
         internal static string RoomUnavailableMessage {
@@ -714,6 +768,15 @@ namespace SIMS.LanguageResources {
         internal static string ScheduleSurgery {
             get {
                 return ResourceManager.GetString("ScheduleSurgery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secretary: .
+        /// </summary>
+        internal static string SecretaryColon {
+            get {
+                return ResourceManager.GetString("SecretaryColon", resourceCulture);
             }
         }
         

@@ -76,6 +76,7 @@ namespace SIMS.ViewSecretary.ViewModel
                     doctorController.UpdateDoctor(doctor);
                     CustomMessageBox.Show(TranslationSource.Instance["VacationDaysUpdatedMessage"]);
 
+                    SecretaryUI.GetInstance().Caption.Content = TranslationSource.Instance["HomePageListItem"];
                     SecretaryUI.GetInstance().MainFrame.NavigationService.Navigate(ViewHome.GetInstance());
                 }
                 else
@@ -97,6 +98,7 @@ namespace SIMS.ViewSecretary.ViewModel
 
                 CustomMessageBox.Show(TranslationSource.Instance["VacationCreatedMessage"]);
 
+                SecretaryUI.GetInstance().Caption.Content = TranslationSource.Instance["HomePageListItem"];
                 SecretaryUI.GetInstance().MainFrame.NavigationService.Navigate(ViewHome.GetInstance());
             }
         }
@@ -117,6 +119,7 @@ namespace SIMS.ViewSecretary.ViewModel
 
         private void Execute_QuitCommand(object obj)
         {
+            SecretaryUI.GetInstance().Caption.Content = TranslationSource.Instance["HomePageListItem"];
             SecretaryUI.GetInstance().MainFrame.NavigationService.Navigate(ViewHome.GetInstance());
         }
 

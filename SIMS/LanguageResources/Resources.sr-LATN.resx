@@ -198,6 +198,9 @@
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
   </data>
+  <data name="DateColon" xml:space="preserve">
+    <value>Datum: </value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Izbriši</value>
   </data>
@@ -225,6 +228,9 @@
   <data name="EmailColon" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="EndTimeColon" xml:space="preserve">
+    <value>Vreme završetka:</value>
+  </data>
   <data name="ExaminationDateColon" xml:space="preserve">
     <value>Datum pregleda:</value>
   </data>
@@ -236,6 +242,9 @@
   </data>
   <data name="FullName" xml:space="preserve">
     <value>Ime i prezime</value>
+  </data>
+  <data name="GenerateCaps" xml:space="preserve">
+    <value>GENERIŠI</value>
   </data>
   <data name="Guest" xml:space="preserve">
     <value>Gost</value>
@@ -324,6 +333,15 @@
   <data name="RoomColon" xml:space="preserve">
     <value>Prostorija:</value>
   </data>
+  <data name="RoomNotOccupied" xml:space="preserve">
+    <value>Prostorija nije zauzeta u navedenom periodu.</value>
+  </data>
+  <data name="RoomNumberColon" xml:space="preserve">
+    <value>Broj prostorije: </value>
+  </data>
+  <data name="RoomOccupancyReport" xml:space="preserve">
+    <value>Izveštaj o zauzetosti prostorija</value>
+  </data>
   <data name="RoomUnavailableMessage" xml:space="preserve">
     <value>Prostorija je zauzeta u navedenom terminu.</value>
   </data>
@@ -335,6 +353,9 @@
   </data>
   <data name="ScheduleSurgery" xml:space="preserve">
     <value>Zakaži operaciju</value>
+  </data>
+  <data name="SecretaryColon" xml:space="preserve">
+    <value>Sekretar: </value>
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Označite bar jednu ulogu.</value>
