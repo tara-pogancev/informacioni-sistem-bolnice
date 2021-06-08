@@ -20,6 +20,8 @@ namespace SIMS.ViewPatient
     public partial class BeleskaPage : Page
     {
         NoteViewModel noteViewModel;
+        private int _noOfErrorsOnScreen;
+
         public BeleskaPage(NoteViewModel noteViewModel)
         {
             this.noteViewModel = noteViewModel;
@@ -40,6 +42,17 @@ namespace SIMS.ViewPatient
                 DatePicker.Visibility = Visibility.Collapsed;
                 TimePicker.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void Save_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+
+            Potvrdi.IsEnabled = _noOfErrorsOnScreen > 0 ? false : true;
+
         }
     }
 }

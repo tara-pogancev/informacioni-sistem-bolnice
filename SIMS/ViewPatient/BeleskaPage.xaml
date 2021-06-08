@@ -6,6 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       xmlns:local="clr-namespace:SIMS.ViewPatient"
+      xmlns:validationRules="clr-namespace:SIMS.ViewPatient.ValidationRules" xmlns:viewmodel="clr-namespace:SIMS.ViewPatient.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:NoteViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
       Title="BeleskaPage">
@@ -35,12 +36,28 @@
         <Grid Grid.Row="0" Grid.Column="1" Margin="15,22">
         <StackPanel Height="330" VerticalAlignment="Top">
             
-            <Border x:Name="Naslov" materialDesign:HintAssist.Hint="Naslov" Background="#4e6082" CornerRadius="10"  BorderBrush="Black" BorderThickness="2" Margin="15,10,15,0" Height="40">
-                <TextBox Margin="2" FontSize="18" Text="{Binding Title}" ></TextBox>
+            <Border x:Name="Naslov" materialDesign:HintAssist.Hint="Naslov" Background="#4e6082" CornerRadius="10"  BorderBrush="Black" BorderThickness="2" Margin="15,10,15,0" Height="40" >
+                    <TextBox Margin="2" FontSize="18"  Validation.Error="Save_Error">
+                    <TextBox.Text>
+                            <Binding Path="Title" Mode="TwoWay"  NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True" >
+                            <Binding.ValidationRules>
+                                <validationRules:NoEmptyRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    </TextBox>
             </Border>
             
             <Border x:Name="Sadrzaj"  Background="#4e6082" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Margin="15,20,15,0" Height="150">
-                <TextBox Margin="15" materialDesign:HintAssist.Hint="Sadržaj" TextWrapping="Wrap" FontSize="14" Text="{Binding Content}"></TextBox>
+                    <TextBox Margin="15"  Validation.Error="Save_Error" materialDesign:HintAssist.Hint="Sadržaj" TextWrapping="Wrap" FontSize="14">
+                    <TextBox.Text>
+                            <Binding Path="Content" Mode="TwoWay" NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True">
+                            <Binding.ValidationRules>
+                                <validationRules:NoEmptyRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    </TextBox>
             </Border>
             <StackPanel Orientation="Horizontal" Margin="15,25,0,0" HorizontalAlignment="Center">
                 <Viewbox Height="40">
@@ -67,8 +84,9 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Width="100" Content="Potvrdi">
+            <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,10">
+                <Button Width="100" Name="Potvrdi" Content="Potvrdi">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click" >
                             <i:InvokeCommandAction Command="{Binding Path=DataContext.ConfirmCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
@@ -82,7 +100,11 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
+                
             </StackPanel>
+                <Label HorizontalAlignment="Center" Margin="15" FontSize="15" Foreground="Red" Visibility="{Binding Vidljivost}">Popunite sva polja</Label>
+            </StackPanel>
+
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0">
             <Button Margin="15,57,15,241" Content="Nazad">

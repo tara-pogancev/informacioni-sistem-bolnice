@@ -28,17 +28,63 @@
     "RemindDate": "2021-05-30T16:22:00"
   },
   "210531092343979838": {
-    "Title": "Hitno",
+    "Title": "H",
     "Content": "Lijek mi ne odgovara",
-    "Anamnesis": null,
+    "Anamnesis": {
+      "MainIssues": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "CurrentAnamnesis": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "GeneralOccurrences": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "RespiratorySystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "CardioSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "DigestiveSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "UroGenitalSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "LocomotorSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "NervousSystem": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "PastDiseases": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "FamilyData": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "SocioEpiData": "ＢＯＪＡＣＫＷＡＶＥ.ｓａｄ",
+      "AnamnesisDate": "2021-06-02T00:00:00+02:00",
+      "AnamnesisID": "210531092343979838",
+      "Serialize": true
+    },
     "NoteID": "210531092343979838",
-    "RemindDate": "2021-06-07T19:03:00"
+    "RemindDate": "0001-01-01T00:00:00"
   },
   "210531092245594374": {
-    "Title": null,
-    "Content": null,
+    "Title": "a",
+    "Content": "a",
     "Anamnesis": null,
     "NoteID": "210531092245594374",
-    "RemindDate": "2021-06-08T12:06:00"
+    "RemindDate": "2021-06-08T21:44:00"
+  },
+  "210531013908941698": {
+    "Title": "Naslov",
+    "Content": "Sadrzaj",
+    "Anamnesis": {
+      "MainIssues": "Legend shall speak of sacrifice at world's end.",
+      "CurrentAnamnesis": "The wind sails over the water's surface, quietly but surely.",
+      "GeneralOccurrences": "Even if the morrow is barren of promises, nothing shall forestall my return.",
+      "RespiratorySystem": "/",
+      "CardioSystem": "/",
+      "DigestiveSystem": "/",
+      "UroGenitalSystem": "/",
+      "LocomotorSystem": "/",
+      "NervousSystem": "/",
+      "PastDiseases": "/",
+      "FamilyData": "/",
+      "SocioEpiData": "Noć mi te duguje. :( ",
+      "AnamnesisDate": "2021-06-08T00:00:00+02:00",
+      "AnamnesisID": "210531013908941698",
+      "Serialize": true
+    },
+    "NoteID": "210531013908941698",
+    "RemindDate": "2021-06-08T22:31:00"
+  },
+  "210531010316017284": {
+    "Title": "A",
+    "Content": "M",
+    "Anamnesis": null,
+    "NoteID": "210531010316017284",
+    "RemindDate": "2021-06-10T22:13:00"
   }
 }

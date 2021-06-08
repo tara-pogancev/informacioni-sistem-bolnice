@@ -383,7 +383,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210607083000000000": {
@@ -461,7 +461,7 @@
       "4865453131",
       "4848555021548"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Recept210608114946653327": {
@@ -474,5 +474,93 @@
     ],
     "CheckStatus": false,
     "NotificationType": 0
+  },
+  "Zakazan termin210609100000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-09T10:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210609100000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Podsjetnik010101000000000000": {
+    "Author": "Podsjetnik",
+    "Time": "0001-01-01T00:00:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik010101000000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210608120600000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T12:06:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608120600000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210608212500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T21:25:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608212500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210608214400000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T21:44:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608214400000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210608221300000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T22:13:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608221300000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210608223100000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T22:31:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608223100000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
+  },
+  "Podsjetnik210610221300000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-10T22:13:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210610221300000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 3
   }
 }

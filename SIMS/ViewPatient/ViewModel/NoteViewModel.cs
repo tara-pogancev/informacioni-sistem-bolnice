@@ -7,6 +7,7 @@ using SIMS.PacijentGUI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace SIMS.ViewPatient.ViewModel
 {
@@ -14,25 +15,65 @@ namespace SIMS.ViewPatient.ViewModel
     {
         public String Title{get;set;}
         public DateTime DateReal { get; set; }
-        public String Content { get; set; }
-        public String Date { get; set; }
-        public String Time { get; set; }
+        private String content;
+        private String date;
+        private String time;
         public bool Checked { get; set; }
         public RelayCommand ConfirmCommand { get; set; }
         public RelayCommand RejectCommand { get; set; }
         NoteController noteController;
+        private Visibility vidljivost;
         String noteId;
+
+        public String Content
+        {
+            get { return content; }
+            set
+            {
+                content = value;
+                OnPropertyChanged();
+            }
+        }
+        public String Date
+        {
+            get { return date; }
+            set
+            {
+                date = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public String Time
+        {
+            get { return time; }
+            set
+            {
+                time = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Visibility Vidljivost
+        {
+            get { return vidljivost; }
+            set
+            {
+                vidljivost = value;
+                OnPropertyChanged();
+            }
+        }
 
         public NoteViewModel(String id)
         {
             noteId = id;
-            Date = "";
-            Time = "";
+            date = "";
+            time = "";
             DateReal = DateTime.Now;
             ConfirmCommand = new RelayCommand(Execute_ConfirmCommand, Can_Execute_ConfirmCommand);
             RejectCommand = new RelayCommand(ExecuteRejectCommand, canExecuteRejectCommand);
             noteController = new NoteController();
-            
+            vidljivost = Visibility.Collapsed;
             LoadNote(id);
             
         }
@@ -66,7 +107,7 @@ namespace SIMS.ViewPatient.ViewModel
         {
             AnamnesisController anamnesisController = new AnamnesisController();
             Note note;
-            if (Date.Length==0 && Time.Length==0)
+            if (Checked==false)
             {
 
                 note = new Note(Title, Content, anamnesisController.GetAnamnesis(noteId), noteId);
@@ -88,7 +129,37 @@ namespace SIMS.ViewPatient.ViewModel
 
         public bool Can_Execute_ConfirmCommand(Object obj)
         {
-            return true;
+            bool ret = true;
+            if (Content == null || Title == null )
+            {
+                Vidljivost = Visibility.Visible;
+                return false;
+
+            }
+            if ((Content != null && Title != null))
+            {
+                if (Content.Length == 0 || Title.Length == 0)
+                {
+                    Vidljivost = Visibility.Visible;
+                    ret = false;
+                }
+                    
+                
+            }
+            if (Checked==true && (Date==null || Time==null))
+            {
+                Vidljivost = Visibility.Visible;
+                return false;
+            }
+
+            if (Checked == true && (Date.Length == 0 || Time.Length == 0))
+            {
+                Vidljivost = Visibility.Visible;
+                return false;
+            }
+            
+
+            return ret;
         }
 
         public void ExecuteRejectCommand(Object obj)
