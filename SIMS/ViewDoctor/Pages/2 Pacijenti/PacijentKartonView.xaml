@@ -31,7 +31,7 @@
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20"/>
             <Label Content="Pacijenti" Style="{StaticResource BoldLabel}" FontSize="20" Cursor="Hand" Margin="5,0,0,0" PreviewMouseDown="ButtonPatientView"/>
             <Label Content=" / " Style="{StaticResource BoldLabel}" FontSize="20" Margin="5,0,0,0"/>
-            <Label Content="Sonja Nedeljković" Style="{StaticResource BoldLabel}" Name="LabelNameTop" FontSize="20" Margin="5,0,0,0"/>
+            <Label Content="{Binding LabelFullName}" Style="{StaticResource BoldLabel}" Name="LabelNameTop" FontSize="20" Margin="5,0,0,0"/>
 
         </StackPanel>
 
@@ -44,7 +44,7 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Content="Sonja Nedeljković" Name="LabelName" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Foreground="#FF57D6B4" FontWeight="DemiBold"/>
+            <Label Grid.Row="0" Content="{Binding LabelFullName}" Name="LabelName" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="34" Foreground="#FF57D6B4" FontWeight="DemiBold"/>
 
             <Rectangle Grid.Row="1" RadiusX="30" RadiusY="30" Fill="#FF3A475F" Margin="70,0,70,0"/>
 
@@ -57,18 +57,18 @@
 
                 <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center" Margin="100,0,0,0">
 
-                    <Label Content="Pol: Ženski" Name="LabelGender" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
-                    <Label Content="Datum rođenja: 15.04.1995." Name="LabelDateOfBirth" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
-                    <Label Content="JMBG: 1548004568401" Name="LabelJMBG" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
-                    <Label Content="LBO: 488445543" Name="LabelLBO" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelGender}" Name="LabelGender" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelDateOfBirth}" Name="LabelDateOfBirth" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelJMBG}" Name="LabelJMBG" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelLBO}" Name="LabelLBO" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
 
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="30,0,90,0">
 
-                    <Label Content="Broj telefona: 06548541544" Name="LabelPhone" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
-                    <Label Content="Email: sonjan8@gmail.com" Name="LabelEmail" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
-                    <Label Content="Adresa: Dunavska 7, Novi Sad" Name="LabelAddress" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelPhone}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelEmail}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
+                    <Label Content="{Binding LabelAddress}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1"/>
 
                 </StackPanel>
 
@@ -86,9 +86,9 @@
 
                 <StackPanel Orientation="Vertical" Margin="40,20,0,0" VerticalAlignment="Center">
 
-                    <Label Content="Krvna grupa: B+" Name="LabelBloodType" HorizontalAlignment="Left" Padding="5,0,5,5" />
-                    <Label Content="Alergeni: Polen, Prašina" Name="LabelAllergens" HorizontalAlignment="Left" Padding="5,0,5,5"/>
-                    <Label Content="Hronične bolesti: Nema" Name="LabelHronical" HorizontalAlignment="Left" Padding="5,0,5,5"/>
+                    <Label Content="{Binding LabelBloodType}" Name="LabelBloodType" HorizontalAlignment="Left" Padding="5,0,5,5" />
+                    <Label Content="{Binding LabelAllergens}" Name="LabelAllergens" HorizontalAlignment="Left" Padding="5,0,5,5"/>
+                    <Label Content="{Binding LabelHronical}" Name="LabelHronical" HorizontalAlignment="Left" Padding="5,0,5,5"/>
 
                 </StackPanel>
 
@@ -107,16 +107,16 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button Grid.Column="0" Content="Izdavajne recepta" Click="ButtonWriteReceipt" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Button Grid.Column="0" Content="Izdavajne recepta" Command="{Binding WriteReceipt}" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"/>
 
-                <Button Grid.Column="1" Content="Pisanje terapije" Click="ButtonTherapy" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Button Grid.Column="1" Content="Pisanje terapije" Command="{Binding WriteTherapy}" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
-                <Button Grid.Column="3" Content="Pregled dokumentacije" Click="ButtonDocumentation" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Button Grid.Column="3" Content="Pregled dokumentacije" Command="{Binding ViewDocumentation}" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource GreenButton}" Template="{StaticResource BasicButtonLong}"/>
 
-                <Button Grid.Column="4" Content="Hospitalizacija" Click="ButtonHospitalize" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <Button Grid.Column="4" Content="Hospitalizacija" Command="{Binding Hospitalization}" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
             </Grid>

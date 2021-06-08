@@ -463,5 +463,16 @@
     ],
     "CheckStatus": false,
     "NotificationType": 0
+  },
+  "Recept210608114946653327": {
+    "Author": "Recept",
+    "Time": "2021-06-08T11:49:46.6533277+02:00",
+    "Content": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210608114946653327",
+    "Target": [
+      "1445857"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }

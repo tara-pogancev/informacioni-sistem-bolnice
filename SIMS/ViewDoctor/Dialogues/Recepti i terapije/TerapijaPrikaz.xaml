@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Recepti_i_terapije"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         KeyDown="WindowKeyListener"
-        Title="TerapijaPrikaz" Height="630" Width="550">
+        Title="TerapijaPrikaz" Height="670" Width="550">
     
     <Window.Resources>
 
@@ -33,9 +34,10 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Pisanje terapije" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+        <Label Grid.Row="0" Content="Prikaz terapije" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
             <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoktor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
@@ -79,6 +81,11 @@
         <Button Grid.Row="3" Content="Zatvori" Click="Button_Close" HorizontalAlignment="Right" VerticalAlignment="Top"
             Margin="0,17,50,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
+        <Grid Grid.Row="4" VerticalAlignment="Bottom">
+            <Rectangle Fill="#CB5252" RadiusX="10" RadiusY="10" Width="250"/>
+            <Rectangle Fill="#CB5252" Height="10" Width="250" VerticalAlignment="Bottom"/>
+            <Label Content="FOR DEMO PURPOSES ONLY" Style="{StaticResource DefaultLabelS}" HorizontalAlignment="Center" Foreground="Black" FontFamily="Canbera Bold"/>
+        </Grid>
 
     </Grid>
 </Window>

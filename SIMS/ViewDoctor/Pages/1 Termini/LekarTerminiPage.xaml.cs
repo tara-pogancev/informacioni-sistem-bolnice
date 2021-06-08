@@ -124,7 +124,7 @@ namespace SIMS.LekarGUI
                 Appointment sellectedAppointment = GetSellectedAppointment();
                 Patient sellectedPatient = patientController.GetPatient(sellectedAppointment.Patient.Jmbg);
 
-                DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(sellectedPatient);
+                DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(sellectedPatient);
             }
         }
 

@@ -47,8 +47,9 @@ namespace SIMS.Service
 
             foreach (Anamnesis anamnesis in anamnesisRepository.GetAll())
             {
-                if (anamnesis.GetAppointment().Patient.Jmbg == patient.Jmbg)
-                    retVal.Add(anamnesis);
+                if (anamnesis.GetAppointment() != null)
+                    if (anamnesis.GetAppointment().Patient.Jmbg == patient.Jmbg)
+                        retVal.Add(anamnesis);
 
             }
 

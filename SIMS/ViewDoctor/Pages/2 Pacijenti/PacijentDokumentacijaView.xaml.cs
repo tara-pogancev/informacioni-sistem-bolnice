@@ -68,7 +68,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonPatientHealthRecord(object sender, MouseButtonEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
         }
 
         private void ButtonRead(object sender, RoutedEventArgs e)

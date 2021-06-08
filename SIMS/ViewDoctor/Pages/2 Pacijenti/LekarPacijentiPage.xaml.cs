@@ -73,7 +73,7 @@ namespace SIMS.LekarGUI
             if (dataGridPatients.SelectedItem != null)
             {
                 Patient patient = GetSelectedPatient();
-                DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+                DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
             }
         }
 

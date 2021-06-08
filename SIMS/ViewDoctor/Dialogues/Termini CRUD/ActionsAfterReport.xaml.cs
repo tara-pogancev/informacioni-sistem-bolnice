@@ -38,7 +38,7 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void ShowPatientRecordCheck(object sender, RoutedEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
             this.Close();
         }
 

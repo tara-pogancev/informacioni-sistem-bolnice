@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         KeyDown="WindowKeyListener"
-        Title="Generisanje izveštaja" Height="410" Width="500">
+        Title="Generisanje izveštaja" Height="410" Width="500"
+        Name="Window">
 
     <Window.Resources>
 
@@ -33,11 +34,11 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Doktor: " HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
-                <Label Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+                <Label Content="{Binding LabelDoctorName}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Pacijent: " HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
-                <Label Name="LabelPatient" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+                <Label Content="{Binding LabelPatientName}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
             </StackPanel>
         </StackPanel>
 
@@ -57,14 +58,14 @@
             <Label Content="Krajnji datum:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
             <Label Content="Početni datum:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"/>
 
-            <DatePicker Name="StartDate" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" VerticalAlignment="Center" Width="200"/>
-            <DatePicker Name="EndDate" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" VerticalAlignment="Center" Width="200"/>
+            <DatePicker SelectedDate="{Binding StartDate}" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" VerticalAlignment="Center" Width="200" FirstDayOfWeek="Monday"/>
+            <DatePicker SelectedDate="{Binding EndDate}" Grid.Column="1" Grid.Row="1" Margin="30,0,0,0" VerticalAlignment="Center" Width="200" FirstDayOfWeek="Monday"/>
 
             <Border Grid.Row="0" Grid.RowSpan="2" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 
         </Grid>
 
-        <Button Grid.Row="3" Content="POTVRDI" Click="ButtonAccept" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button Grid.Row="3" Content="POTVRDI" Command="{Binding AcceptCommand}" CommandParameter="{Binding ElementName=Window}" HorizontalAlignment="Left" VerticalAlignment="Top"
             Margin="275,17,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
 
     </Grid>
