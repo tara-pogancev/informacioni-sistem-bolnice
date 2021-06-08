@@ -1,7 +1,7 @@
 {
   "045210805048": {
     "VacationDays": 15,
-    "Grade": 0.0,
+    "Grade": 4.6,
     "DoctorSpecialization": 2,
     "VacationPeriods": [],
     "Name": "Tara",
@@ -14,7 +14,7 @@
     "Address": {
       "City": {
         "Name": "Novi Sad",
-        "PostalCode": 21400,
+        "PostalCode": 21000,
         "Country": {
           "Name": "Srbija"
         }
