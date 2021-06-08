@@ -16,7 +16,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
 
 {
-    public class Meeting
+    public class Therapy
     {
         public string EventName { get; set; }
         public String Consumption { get; set; }
@@ -33,7 +33,7 @@ namespace SIMS.PacijentGUI.ViewModel
 
     public class PatientTherapyViewModel:ViewModelPatient
     {
-        public ObservableCollection<Meeting> Meetings { get; set; }
+        public ObservableCollection<Therapy> Meetings { get; set; }
         List<string> eventNameCollection;
         List<Brush> colorCollection;
         List<string> use;
@@ -62,7 +62,7 @@ namespace SIMS.PacijentGUI.ViewModel
         public PatientTherapyViewModel()
         {
             
-            Meetings = new ObservableCollection<Meeting>();
+            Meetings = new ObservableCollection<Therapy>();
             CreateEventNameCollection();
             CreateColorCollection();
             CreateQuantityCollection();
@@ -106,29 +106,29 @@ namespace SIMS.PacijentGUI.ViewModel
                 {
                     for (int AdditionalAppointmentIndex = 0; AdditionalAppointmentIndex < 3; AdditionalAppointmentIndex++)
                     {
-                        Meeting meeting = new Meeting();
+                        Therapy therapy = new Therapy();
                         int hour = (randomTime.Next((int)randomTimeCollection[AdditionalAppointmentIndex].X, (int)randomTimeCollection[AdditionalAppointmentIndex].Y));
-                        meeting.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
-                        meeting.To = (meeting.From.AddHours(1));
+                        therapy.From = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
+                        therapy.To = (therapy.From.AddHours(1));
                         int k = randomTime.Next(9);
-                        meeting.EventName = eventNameCollection[k];
-                        meeting.Consumption = use[k];
-                        meeting.Color = colorCollection[randomTime.Next(9)];
+                        therapy.EventName = eventNameCollection[k];
+                        therapy.Consumption = use[k];
+                        therapy.Color = colorCollection[randomTime.Next(9)];
                         
-                        Meetings.Add(meeting);
+                        Meetings.Add(therapy);
                     }
                 }
                 else
                 {
-                    Meeting meeting = new Meeting();
-                    meeting.From = new DateTime(date.Year, date.Month, date.Day, randomTime.Next(9, 11), 0, 0);
-                    meeting.To = (meeting.From.AddHours(1));
+                    Therapy therapy = new Therapy();
+                    therapy.From = new DateTime(date.Year, date.Month, date.Day, randomTime.Next(9, 11), 0, 0);
+                    therapy.To = (therapy.From.AddHours(1));
 
                     int k = randomTime.Next(9);
-                    meeting.EventName = eventNameCollection[k];
-                    meeting.Consumption = use[k];
-                    meeting.Color = colorCollection[randomTime.Next(9)];
-                    Meetings.Add(meeting);
+                    therapy.EventName = eventNameCollection[k];
+                    therapy.Consumption = use[k];
+                    therapy.Color = colorCollection[randomTime.Next(9)];
+                    Meetings.Add(therapy);
                 }
             }
         }

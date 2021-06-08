@@ -383,7 +383,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210607083000000000": {
@@ -451,5 +451,16 @@
     ],
     "CheckStatus": false,
     "NotificationType": 1
+  },
+  "Podsjetnik210608120600000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-08T12:06:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210608120600000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
   }
 }

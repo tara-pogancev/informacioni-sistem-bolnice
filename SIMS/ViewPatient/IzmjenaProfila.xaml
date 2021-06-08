@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:SIMS.ViewPatient"
       mc:Ignorable="d" 
       xmlns:cvt="clr-namespace:SIMS.ViewConverters"
+      xmlns:validationRules="clr-namespace:SIMS.ViewPatient.ValidationRules"
       d:DesignHeight="550" d:DesignWidth="800"
       Title="IzmjenaProfila">
     <Page.Resources>
@@ -88,7 +89,7 @@
                                                 <TextBox.Text>
                                                     <Binding Path="Pacijent.Email"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
                                                         <Binding.ValidationRules>
-                                                            <local1:MailRule />
+                                                            <validationRules:MailRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                             </TextBox.Text>
@@ -105,7 +106,7 @@
                                                 <TextBox.Text>
                                                     <Binding Path="Pacijent.Username"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
                                                         <Binding.ValidationRules>
-                                                            <local1:NoEmptyRule />
+                                                            <validationRules:NoEmptyRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </TextBox.Text>
@@ -124,7 +125,7 @@
                                                 <TextBox.Text>
                                                     <Binding Path="Pacijent.Password"  NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged">
                                                         <Binding.ValidationRules>
-                                                            <local1:NoEmptyRule />
+                                                            <validationRules:NoEmptyRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </TextBox.Text>
@@ -142,7 +143,7 @@
                                                 <TextBox.Text>
                                                     <Binding Path="Pacijent.Phone"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
                                                         <Binding.ValidationRules>
-                                                            <local1:OnlyNumversRule />
+                                                            <validationRules:OnlyNumversRule />
                                                         </Binding.ValidationRules>
                                                     </Binding>
                                                 </TextBox.Text>
@@ -161,7 +162,7 @@
                                                 <TextBox.Text>
                                                     <Binding Path="Pacijent.Address" Mode="TwoWay" Converter="{cvt:AddressConverter}" NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
                                                         <Binding.ValidationRules>
-                                                            <local1:AddressRule/>
+                                                            <validationRules:AddressRule/>
                                                             
                                                         </Binding.ValidationRules>
                                                     </Binding>

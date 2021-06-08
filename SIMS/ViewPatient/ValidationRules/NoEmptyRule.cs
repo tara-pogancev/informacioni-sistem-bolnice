@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
-
-namespace SIMS.ViewPatient
+namespace SIMS.ViewPatient.ValidationRules
 {
     class NoEmptyRule : ValidationRule
     {
