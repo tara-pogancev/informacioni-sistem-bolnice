@@ -270,6 +270,9 @@
   <data name="NotificationDefaultText" xml:space="preserve">
     <value>You can input your notification here.</value>
   </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
   <data name="PasswordColon" xml:space="preserve">
     <value>Password:</value>
   </data>

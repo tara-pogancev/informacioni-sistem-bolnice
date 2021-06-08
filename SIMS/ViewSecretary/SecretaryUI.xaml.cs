@@ -20,6 +20,7 @@ namespace SIMS.ViewSecretary
     {
         private static SecretaryUI _instance = null;
         private Secretary _secretary;
+        private string _caption;
 
         private SecretaryController secretaryController = new SecretaryController();
 
@@ -40,7 +41,6 @@ namespace SIMS.ViewSecretary
             InitializeComponent();
 
             _secretary = secretary;
-            UsernameLabel.Content = _secretary.FullName;
 
             App app = (App)Application.Current;
 
@@ -66,6 +66,8 @@ namespace SIMS.ViewSecretary
             }
 
             app.ChangeLanguage((string)ButtonLanguage.Content);
+            Caption.Content = TranslationSource.Instance["HomePageListItem"];
+            _caption = "HomePageListItem";
             MainFrame.Content = ViewHome.GetInstance(_secretary);
         }
 
@@ -126,6 +128,8 @@ namespace SIMS.ViewSecretary
             }
 
             MainFrame.Content = new ViewNotifications(_secretary);
+            Caption.Content = TranslationSource.Instance["Notifications"];
+            _caption = "Notifications";
         }
 
         private void Theme_Click(object sender, RoutedEventArgs e)
@@ -160,6 +164,7 @@ namespace SIMS.ViewSecretary
             }
 
             app.ChangeLanguage((string)ButtonLanguage.Content);
+            Caption.Content = TranslationSource.Instance[_caption];
         }
 
         private void CloseMenu_Click(object sender, RoutedEventArgs e)
@@ -212,31 +217,43 @@ namespace SIMS.ViewSecretary
                 case "ItemHome":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewHome.GetInstance();
+                    Caption.Content = TranslationSource.Instance["HomePageListItem"];
+                    _caption = "HomePageListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemPatients":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewPatients.GetInstance();
+                    Caption.Content = TranslationSource.Instance["PatientsListItem"];
+                    _caption = "PatientsListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemDoctors":
                     invokeProv.Invoke();
                     MainFrame.Content = new DoctorVacations();
+                    Caption.Content = TranslationSource.Instance["DoctorsListItem"];
+                    _caption = "DoctorsListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemAppointments":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewAppointments.GetInstance();
+                    Caption.Content = TranslationSource.Instance["AppointmentsListItem"];
+                    _caption = "AppointmentsListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemReport":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewHome.GetInstance();
+                    Caption.Content = TranslationSource.Instance["ReportListItem"];
+                    _caption = "ReportListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
                 case "ItemAccount":
                     invokeProv.Invoke();
                     MainFrame.Content = ViewHome.GetInstance();
+                    Caption.Content = TranslationSource.Instance["AccountListItem"];
+                    _caption = "AccountListItem";
                     ListViewMenu.SelectedItem = null;
                     break;
             }

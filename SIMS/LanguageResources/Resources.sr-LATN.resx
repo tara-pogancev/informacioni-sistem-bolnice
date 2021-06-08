@@ -270,6 +270,9 @@
   <data name="NotificationDefaultText" xml:space="preserve">
     <value>Ovde mozete uneti vase obavestenje.</value>
   </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Obaveštenja</value>
+  </data>
   <data name="PasswordColon" xml:space="preserve">
     <value>Lozinka:</value>
   </data>
