@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
       xmlns:ns="clr-namespace:SIMS"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajGostaPage">
@@ -43,13 +44,13 @@
 
                 <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
-                <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="{Binding Name}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="{Binding LastName}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="{Binding Jmbg}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
 
                 <StackPanel Grid.Row="5"  Grid.RowSpan="2" Orientation="Horizontal" Margin="0, 140, 0, 0">
-                    <Button Content="{ns:Loc CancelCaps}" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                    <Button Content="{ns:Loc AddCaps}" Click="AddGuest_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="{ns:Loc CancelCaps}" Command="{Binding QuitCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="{ns:Loc AddCaps}" Command="{Binding AddGuestCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                 </StackPanel>
 
                 <Grid Margin="-110,-20,0,0" Grid.RowSpan="2">

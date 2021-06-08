@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.ViewSecretary.ViewModel;
 
 namespace SIMS.ViewSecretary.Patients
 {
@@ -107,7 +108,7 @@ namespace SIMS.ViewSecretary.Patients
             }
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 
-            Patient pacijent = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, post_broj, new Country(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), AddPatient.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
+            Patient pacijent = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, post_broj, new Country(countryTextBox.Text))), lboTextBox.Text, (bool)guestCheckBox.IsChecked, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), AddPatientViewModel.GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
             return pacijent;
         }
 

@@ -23,6 +23,11 @@ namespace SIMS.ViewSecretary
 
         private SecretaryController secretaryController = new SecretaryController();
 
+        public static SecretaryUI GetInstance()
+        {
+            return _instance;
+        }
+
         public static SecretaryUI GetInstance(Secretary secretary)
         {
             if (_instance == null)

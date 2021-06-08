@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace SIMS.ViewSecretary.ViewModel
 {
-    class ViewModelSecretary : INotifyPropertyChanged
+    public class ViewModelSecretary : INotifyPropertyChanged
     {
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;

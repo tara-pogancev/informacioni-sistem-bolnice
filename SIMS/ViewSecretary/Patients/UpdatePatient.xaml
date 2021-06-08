@@ -131,7 +131,7 @@
 
                     <StackPanel Grid.Row="20"  Grid.RowSpan="2" Orientation="Horizontal">
                         <Button Content="{ns:Loc CancelCaps}" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                        <Button Content="{ns:Loc AddCaps}" Click="UpdatePatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                        <Button Content="{ns:Loc UpdateCaps}" Click="UpdatePatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                     </StackPanel>
 
                     <Grid Margin="-100,-20,0,0" Grid.RowSpan="2">
