@@ -562,5 +562,27 @@
     ],
     "CheckStatus": false,
     "NotificationType": 3
+  },
+  "Recept210608224435591984": {
+    "Author": "Recept",
+    "Time": "2021-06-08T22:44:35.5919842+02:00",
+    "Content": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210608224435591984",
+    "Target": [
+      "12645323206"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210608224911729309": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-08T22:49:11.7293098+02:00",
+    "Content": "Otpisni list hospitalizacije: Unesite belešku o boravku ovde... auhh",
+    "ID": "Tara Pogančev210608224911729309",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }

@@ -133,8 +133,9 @@ namespace SIMS.LekarGUI
 
         private void InitStartTime()
         {
-            datePicker.DisplayDate = appointment.StartTime;
-            datePicker.Text = appointment.StartTime.ToString("dd.MM.yyyy.");
+            //datePicker.DisplayDate = appointment.StartTime;
+            //datePicker.Text = appointment.StartTime.ToString("dd.MM.yyyy.");
+            datePicker.SelectedDate = appointment.StartTime;
         }
 
         private void InitDuration()

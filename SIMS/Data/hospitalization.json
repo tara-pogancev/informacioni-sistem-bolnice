@@ -35,7 +35,7 @@
     },
     "HospitalizationID": "08062021111759"
   },
-  "08062021114432": {
+  "08062021224931": {
     "Patient": {
       "Jmbg": "12121977802342",
       "Serialize": false
@@ -44,13 +44,13 @@
       "Jmbg": "045210805048",
       "Serialize": false
     },
-    "StartDate": "2021-06-19T00:00:00",
-    "EndDate": "2021-06-25T00:00:00",
+    "StartDate": "2021-06-18T00:00:00",
+    "EndDate": "2021-07-02T00:00:00",
     "Room": {
       "Number": "2",
       "InventoryAmounts": {},
       "Serialize": false
     },
-    "HospitalizationID": "08062021114432"
+    "HospitalizationID": "08062021224931"
   }
 }
