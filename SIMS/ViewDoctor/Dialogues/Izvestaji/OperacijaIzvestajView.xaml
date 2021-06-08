@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izvestaji"
         mc:Ignorable="d"
         KeyDown="WindowKeyListener"
-        Title="Izveštaj o operaciji" Height="600" Width="550">
+        Title="Izveštaj o operaciji" Height="600" Width="550"
+        Name ="Window">
     <Window.Resources>
 
         <Style TargetType="Label">
@@ -37,13 +38,13 @@
         <Label Grid.Row="0" Content="Izveštaj o operaciji" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="32" Margin="0,40,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="70,0,0,0">
-            <Label Content="Doktor: Lucrecia Crescent" Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
-            <Label Content="Datum operacije: 13.04.2020." Name="LabelDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
+            <Label Content="{Binding DoctorName}" Name="LabelDoctor" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0"  Foreground="#FFC1C1C1"/>
+            <Label Content="{Binding SurgeryDate}" Name="LabelDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
 
-            <Label Content="Pacijent: Milan Marković" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
-            <Label Content="Datum rođenja: 18.16.1998." Name="LabelBirthDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
+            <Label Content="{Binding PatientName}" Name="LabelPacijent" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+            <Label Content="{Binding PatientDateOfBirth}" Name="LabelBirthDate" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,10" Foreground="#FFC1C1C1"/>
 
-            <Label Content="Prostorija: 488B" Name="LabelRoom" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
+            <Label Content="{Binding RoomNumber}" Name="LabelRoom" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,0,5,0" Foreground="#FFC1C1C1"/>
 
         </StackPanel>
 
@@ -64,15 +65,15 @@
             <Label Content="Naziv operacije:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
             <Label Content="Napomene:" HorizontalAlignment="Right" Margin="10,20,10,0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top"/>
 
-            <Label Name="OperationName" Content="Naziv operacije" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="245" FontSize="14" FontFamily="Candara"/>
-            <TextBlock Name="OperationDescription" Text ="Detaljan opis operacije..." Grid.Column="1" Grid.Row="1" Margin="30,20,0,0" Height="auto" Padding="5,0,10,0" Width="auto" FontSize="14" FontFamily="Candara" TextWrapping="Wrap"/>
+            <Label Name="OperationName" Content="{Binding SurgeryName}" Grid.Column="1" Grid.Row="0" Margin="30,0,0,0" Height="30" VerticalContentAlignment="Center" Padding="5,0,10,0" Width="245" FontSize="14" FontFamily="Candara"/>
+            <TextBlock Name="OperationDescription" Text="{Binding SurgeryDescription}" Grid.Column="1" Grid.Row="1" Margin="30,20,0,0" Height="auto" Padding="5,0,10,0" Width="auto" FontSize="14" FontFamily="Candara" TextWrapping="Wrap"/>
 
             <Border Grid.Row="0" Grid.RowSpan="5" BorderThickness="0,0,1,0" BorderBrush="#FF292C3B"/>
 
         </Grid>
 
 
-        <Button Grid.Row="3" Content="Zatvori" Click="Button_Close" HorizontalAlignment="Right" VerticalAlignment="Top"
+        <Button Grid.Row="3" Content="Zatvori" Command="{Binding CloseCommand}" CommandParameter="{Binding ElementName=Window}" HorizontalAlignment="Right" VerticalAlignment="Top"
             Margin="0,17,50,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
 
 

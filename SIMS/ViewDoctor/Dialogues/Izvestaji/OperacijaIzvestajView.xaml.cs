@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SIMS.Controller;
+using SIMS.ViewDoctor.Dialogues.Izvestaji.ViewModel;
 
 namespace SIMS.LekarGUI.Dialogues.Izvestaji
 {
@@ -24,26 +25,7 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         public SurgeryReportRead(SurgeryReport report)
         {
             InitializeComponent();
-            Appointment appointment = report.GetSurgery();
-            appointment.InitData();
-            Patient patient = patientController.GetPatient(appointment.Patient.Jmbg);
-
-            LabelDoctor.Content = "Doktor: " + appointment.GetDoctorName();
-            LabelDate.Content = "Datum operacije: " + appointment.GetAppointmentDate();
-
-            LabelPacijent.Content = "Pacijent: " + patient.FullName;
-            LabelBirthDate.Content = "Datum rođenja: " + patient.GetDateOfBirthString();
-
-            LabelRoom.Content = "Prostorija: " + appointment.Room.Number;
-
-            OperationName.Content = report.SurgeryName;
-            OperationDescription.Text = report.SurgeryDescription;
-
-        }
-
-        private void Button_Close(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            DataContext = new ReadSurgeryReportViewModel(report);
         }
 
         private void WindowKeyListener(object sender, KeyEventArgs e)
