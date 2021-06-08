@@ -79,7 +79,7 @@
       "1445857",
       "045210805048"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Sekretarijat210528200125536501": {
@@ -228,7 +228,7 @@
     "Target": [
       "1445857"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Recept210530215950516627": {
@@ -361,7 +361,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210609080000000000": {
@@ -407,5 +407,49 @@
     ],
     "CheckStatus": true,
     "NotificationType": 3
+  },
+  "Zakazan termin210608080000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-08T08:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210608080000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 1
+  },
+  "Zakazan termin210616080000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-16T08:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210616080000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210608110000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-08T11:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210608110000000000",
+    "Target": [
+      "1445857"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210614080000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-14T08:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210614080000000000",
+    "Target": [
+      "1445857"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
   }
 }

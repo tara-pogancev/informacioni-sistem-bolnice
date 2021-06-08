@@ -14,7 +14,7 @@
     "Address": {
       "City": {
         "Name": "Novi Sad",
-        "PostalCode": 21400,
+        "PostalCode": 21000,
         "Country": {
           "Name": "Srbija"
         }
@@ -71,6 +71,56 @@
       },
       "Street": "Main Town Square",
       "Number": "5"
+    },
+    "Serialize": true
+  },
+  "484855502123": {
+    "VacationDays": 20,
+    "Grade": 0.0,
+    "DoctorSpecialization": 0,
+    "VacationPeriods": [],
+    "Name": "Katarina",
+    "LastName": "Gavrić",
+    "Jmbg": "484855502123",
+    "Username": "katarina",
+    "Password": "l",
+    "Email": "zackfair@zdravo.com",
+    "Phone": "0698547521",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 23300,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Alekse Šantića",
+      "Number": "75"
+    },
+    "Serialize": true
+  },
+  "4848512502123": {
+    "VacationDays": 20,
+    "Grade": 0.0,
+    "DoctorSpecialization": 0,
+    "VacationPeriods": [],
+    "Name": "Marija",
+    "LastName": "Radović",
+    "Jmbg": "4848512502123",
+    "Username": "marija",
+    "Password": "l",
+    "Email": "zackfair@zdravo.com",
+    "Phone": "0698547521",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 23300,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Gogoljeva",
+      "Number": "10"
     },
     "Serialize": true
   }

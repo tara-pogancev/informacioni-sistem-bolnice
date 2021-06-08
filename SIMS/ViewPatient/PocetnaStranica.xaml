@@ -64,14 +64,14 @@
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Anketa"  Click="Anketa_Click" ToolTip="Anketa"  Visibility="Collapsed">
                                     <materialDesign:PackIcon Kind="FileQuestion" Width="40" Height="30"/>
                                 </Button>
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" Click="DemoMode_Click" >
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" ToolTip="Demo mod"  Click="DemoMode_Click" >
                                     <materialDesign:PackIcon Kind="AcademicCap" Width="40" Height="30"/>
                                 </Button>
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" Click="Zvonce_Click">
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" ToolTip="Obavještenja"  Click="Zvonce_Click">
                                     <materialDesign:PackIcon Kind="Bell" Width="40" Height="27" />
                                 </Button>
                                 
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Profil" Click="Profil_Click">
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Profil" ToolTip="Profil" Click="Profil_Click">
                                     <materialDesign:PackIcon Kind="User" Width="40" Height="30"/>
                                 </Button>
                                 

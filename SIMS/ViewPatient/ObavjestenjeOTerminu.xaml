@@ -22,7 +22,7 @@
         <StackPanel>
 
 
-            <Label HorizontalAlignment="Center" FontSize="20" FontWeight="SemiBold">
+            <Label HorizontalAlignment="Center" FontSize="20" Name="Naslov" FontWeight="SemiBold">
                 Obavještenje
             </Label>
             <TextBlock Margin="30" FontSize="15" Name="TekstObavjestenja" Text=" Poštovani, danas imate zakazan termin. Za više detalja pogledajte sekciju Moji Termini!"  TextWrapping="Wrap" Foreground="White">

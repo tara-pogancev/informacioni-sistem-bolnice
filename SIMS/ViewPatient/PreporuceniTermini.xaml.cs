@@ -53,7 +53,10 @@ namespace SIMS.PacijentGUI
             AppointmentController appointmentController = new AppointmentController();
             appointmentController.SaveAppointment(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
-            
+            ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+            obavjestenje.TekstObavjestenja.Text = "Termin je uspješno zakazan";
+            obavjestenje.ShowDialog();
+
         }
     }
 }

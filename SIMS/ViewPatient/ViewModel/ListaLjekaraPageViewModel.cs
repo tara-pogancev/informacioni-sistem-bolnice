@@ -53,7 +53,9 @@ namespace SIMS.PacijentGUI.ViewModel
         public void Execute_ChoseDoctrCommand(object obj)
         {
             patient.ChosenDoctor = SelectedDoctor;
-            MessageBox.Show("Izabrani ljekar je promjenjen");
+            ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+            obavjestenje.TekstObavjestenja.Text = "Izabrani ljekar je promjenjen";
+            obavjestenje.ShowDialog();
         }
 
         public bool CanExecute_DetailsDoctorCommand(object obj)

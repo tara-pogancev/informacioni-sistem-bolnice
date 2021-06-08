@@ -104,7 +104,9 @@ namespace SIMS.PacijentGUI
             }
             else
             {
-                MessageBox.Show("Termin je uspjesno zakazan");
+                ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+                obavjestenje.TekstObavjestenja.Text = "Termin je uspješno zakazan";
+                obavjestenje.ShowDialog();
                 List<String> targets = new List<string>();
                 targets.Add(pacijent.Jmbg);
                 Notification notification = new Notification("Zakazan termin", vremenskaOdrednica.AddDays(-1), "Imate zakazan termin", targets, false, NotificationType.AppointmentAllert);

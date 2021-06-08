@@ -34,7 +34,7 @@
                 <RowDefinition Height="275"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0"  Margin="25">
-                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0" x:Name="zakaziTermin" Click="ZakaziTermin_OnClick">
+                <Button Width="180" Height="180" Background="#01C38D" BorderThickness="0" x:Name="zakaziTermin" Click="ZakaziTermin_OnClick" >
                     <StackPanel Orientation="Vertical">
                         <Image Source="/src/doctor.png"/>
                         <TextBlock HorizontalAlignment="Center" Foreground="Black">Zakaži termin</TextBlock>

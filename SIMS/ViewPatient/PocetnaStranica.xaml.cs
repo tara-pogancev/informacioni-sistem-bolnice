@@ -154,12 +154,15 @@ namespace SIMS.PacijentGUI
         private void DemoMode_Click(object sender, RoutedEventArgs e)
         {
             //zakazivanje termina
-            MessageBox.Show("Ulazak u demo mod");
+            ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+            obavjestenje.Naslov.Content = "Ulazak u demo mod";
+            obavjestenje.TekstObavjestenja.Text = "Radi boljeg iskustva u korišćenju aplikacije ne prekidajte demo do povratka na početni ekran.";
+            obavjestenje.ShowDialog();
             //Zakazi.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
 
-            
-            
-                Zakazi.Focus();
+
+
+            Zakazi.Focus();
                 ListViewMenu.SelectedIndex = 1;
                 ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
                 zakazivanje.Pacijent = patient;

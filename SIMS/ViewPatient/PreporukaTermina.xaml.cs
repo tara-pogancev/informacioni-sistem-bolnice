@@ -87,7 +87,7 @@ namespace SIMS.PacijentGUI
             else
             {
                 RecommendedAppointmentDTO recommendedAppointmentDto = new RecommendedAppointmentDTO(
-                    TypeOfRecommendation.DoctorRecommendation, "",
+                    TypeOfRecommendation.DateRecommendation, "",
                     (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
                     PocetnaStranica.getInstance().Pacijent.Jmbg);
 
