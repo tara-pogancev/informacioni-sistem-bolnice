@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
@@ -158,7 +159,7 @@ namespace SIMS.Service.AppointmentServices
             foreach (String time in availableTimes)
             {
                 String dateAndTime = date + " " + time;
-                DateTime appointmentTime = DateTime.Parse(dateAndTime);
+                DateTime appointmentTime = DateTime.ParseExact(dateAndTime, "dd.MM.yyyy. HH:mm", CultureInfo.InvariantCulture);
                 if (appointmentTime >= currentTime)
                     potentialAppointmentTimeList.Add(appointmentTime);
             }
