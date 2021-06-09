@@ -39,9 +39,19 @@
         "ID": "a16",
         "Name": "Povidon 90",
         "Serialize": false
+      },
+      {
+        "ID": "a3",
+        "Name": "Ambrozija",
+        "Serialize": false
+      },
+      {
+        "ID": "a6",
+        "Name": "Ibuprofen",
+        "Serialize": false
       }
     ],
-    "IDSubstitution": "l5",
+    "IDSubstitution": "l3",
     "ApprovalStatus": 0
   },
   "l5": {
