@@ -243,6 +243,9 @@
   <data name="FullName" xml:space="preserve">
     <value>Full Name</value>
   </data>
+  <data name="FullNameColon" xml:space="preserve">
+    <value>Full Name:</value>
+  </data>
   <data name="GenerateCaps" xml:space="preserve">
     <value>GENERATE</value>
   </data>
@@ -374,6 +377,9 @@
   </data>
   <data name="SecretaryColon" xml:space="preserve">
     <value>Secretary: </value>
+  </data>
+  <data name="SecretarysAccount" xml:space="preserve">
+    <value>Secretary's Account</value>
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Select at least one role.</value>

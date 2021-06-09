@@ -243,6 +243,9 @@
   <data name="FullName" xml:space="preserve">
     <value>Ime i prezime</value>
   </data>
+  <data name="FullNameColon" xml:space="preserve">
+    <value>Ime i prezime:</value>
+  </data>
   <data name="GenerateCaps" xml:space="preserve">
     <value>GENERIŠI</value>
   </data>
@@ -374,6 +377,9 @@
   </data>
   <data name="SecretaryColon" xml:space="preserve">
     <value>Sekretar: </value>
+  </data>
+  <data name="SecretarysAccount" xml:space="preserve">
+    <value>Sekretarov nalog</value>
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Označite bar jednu ulogu.</value>

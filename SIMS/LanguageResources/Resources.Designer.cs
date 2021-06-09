@@ -439,6 +439,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full Name:.
+        /// </summary>
+        internal static string FullNameColon {
+            get {
+                return ResourceManager.GetString("FullNameColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GENERATE.
         /// </summary>
         internal static string GenerateCaps {
@@ -831,6 +840,15 @@ namespace SIMS.LanguageResources {
         internal static string SecretaryColon {
             get {
                 return ResourceManager.GetString("SecretaryColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secretary&apos;s Account.
+        /// </summary>
+        internal static string SecretarysAccount {
+            get {
+                return ResourceManager.GetString("SecretarysAccount", resourceCulture);
             }
         }
         
