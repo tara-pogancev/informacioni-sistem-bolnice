@@ -650,5 +650,40 @@
     ],
     "CheckStatus": true,
     "NotificationType": 3
+  },
+  "Tara Pogančev210609105739435968": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-09T10:57:39.4359682+02:00",
+    "Content": "Zakazana hitna operacija [09.06.2021. 12:00, 1] za pacijenta Petar Petrović, vodeći lekar Tara Pogančev.",
+    "ID": "Tara Pogančev210609105739435968",
+    "Target": [
+      "12121977802342",
+      "045210805048"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210609105809831071": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-09T10:58:09.8310711+02:00",
+    "Content": "Zakazana hitna operacija [09.06.2021. 13:00, 1] za pacijenta Petar Petrović, vodeći lekar Tara Pogančev.",
+    "ID": "Tara Pogančev210609105809831071",
+    "Target": [
+      "12121977802342",
+      "045210805048"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Zakazan termin210615080000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-15T08:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210615080000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
   }
 }

@@ -15,6 +15,13 @@
     "AnamnesisDate": "2021-05-30T00:00:00+02:00",
     "AnamnesisID": "210530094003223266",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210530094003223266"
     },
     "Serialize": true
@@ -35,6 +42,13 @@
     "AnamnesisDate": "2021-05-31T00:00:00+02:00",
     "AnamnesisID": "210530093955463001",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210530093955463001"
     },
     "Serialize": true
@@ -55,6 +69,13 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210530094907923508",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210530094907923508"
     },
     "Serialize": true
@@ -75,6 +96,13 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210602081514756383",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210602081514756383"
     },
     "Serialize": true
@@ -95,6 +123,13 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210530094918224237",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210530094918224237"
     },
     "Serialize": true
@@ -115,6 +150,13 @@
     "AnamnesisDate": "2021-06-02T00:00:00+02:00",
     "AnamnesisID": "210531092343979838",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210531092343979838"
     },
     "Serialize": true
@@ -135,6 +177,13 @@
     "AnamnesisDate": "2021-06-08T00:00:00+02:00",
     "AnamnesisID": "210530093946280467",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210530093946280467"
     },
     "Serialize": true
@@ -155,6 +204,13 @@
     "AnamnesisDate": "2021-06-08T00:00:00+02:00",
     "AnamnesisID": "210531013908941698",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210531013908941698"
     },
     "Serialize": true
@@ -175,6 +231,13 @@
     "AnamnesisDate": "2021-06-09T00:00:00+02:00",
     "AnamnesisID": "210531010316017284",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210531010316017284"
     },
     "Serialize": true
@@ -195,7 +258,34 @@
     "AnamnesisDate": "2021-06-09T00:00:00+02:00",
     "AnamnesisID": "210531092245594374",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210531092245594374"
+    },
+    "Serialize": true
+  },
+  "210608122133807726": {
+    "MainIssues": "a",
+    "CurrentAnamnesis": "a",
+    "GeneralOccurrences": "a",
+    "RespiratorySystem": "/",
+    "CardioSystem": "/",
+    "DigestiveSystem": "/",
+    "UroGenitalSystem": "/",
+    "LocomotorSystem": "/",
+    "NervousSystem": "/",
+    "PastDiseases": "/",
+    "FamilyData": "/",
+    "SocioEpiData": "/",
+    "AnamnesisDate": "2021-06-09T00:00:00+02:00",
+    "AnamnesisID": "210608122133807726",
+    "AnamnesisAppointment": {
+      "AppointmentID": "210608122133807726"
     },
     "Serialize": true
   }
