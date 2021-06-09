@@ -1,9 +1,10 @@
-﻿<Page x:Class="SIMS.ViewSecretary.Appointments.AddUrgentOperation"
+﻿<Page x:Class="SIMS.ViewSecretary.Appointments.AddUrgentSurgery"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
@@ -12,17 +13,17 @@
     <Page.Resources>
 
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundColorPageText}"/>
             <Setter Property="FontFamily" Value="Candara"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
 
     </Page.Resources>
 
-    <Grid Background="#FF323D52">
+    <Grid Background="{DynamicResource BackgroundColorPage}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -39,10 +40,10 @@
 
             </Grid.RowDefinitions>
 
-            <Label Content="Pacijent:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
-            <Label Content="Specijalizacija:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="Vreme trajanja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="Odaberite termin:" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc PatientColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc SpecializationColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DurationColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc ChooseAppointmentColon}" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -59,37 +60,37 @@
 
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <ComboBox  Margin="30,0,0,0" x:Name="PatientComboBox" SelectionChanged="PatientChange" DisplayMemberPath="FullName"
-                        Width="220" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                        Width="200" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
                     <Button Height="30" Width="30" Margin="10, 0, 0, 0" Click="Button_Guest">
                         <materialDesign:PackIcon Kind="AddBold"/>
                     </Button>
                 </StackPanel>
 
                 <ComboBox Grid.Row="3" Margin="30,0,0,0" x:Name="SpecializationComboBox" SelectionChanged="SpecializationChange"
-                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                     Width="240" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="DurationComboBox" SelectionChanged="DurationChange"
-                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                     Width="240" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
                 <ComboBox Grid.Row="5" Margin="30,0,0,0" x:Name="AvailableComboBox" DisplayMemberPath="AppointmentFullInfo"
-                    Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                    Width="240" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
 
                 <StackPanel Grid.Row="6" Grid.RowSpan="2" Orientation="Horizontal" Margin="0, 70, 0, 0">
-                    <Button Content="ODUSTANI" Click="Button_Quit" Width="100" Height="50"
+                    <Button Content="{ns:Loc QuitCaps}" Click="Button_Quit" Width="100" Height="50"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button x:Name="zakaziButton" Content="ZAKAŽI" Click="Button_Accept" Width="100" Height="50"
+                    <Button x:Name="zakaziButton" Content="{ns:Loc ScheduleCaps}" Click="Button_Accept" Width="100" Height="50"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
 
-                <Grid Margin="-120,0,0,0" Grid.RowSpan="2">
+                <Grid Margin="-150,0,0,0" Grid.RowSpan="2">
 
-                    <Label Content="Zakazivanje hitne operacije" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+                    <Label Content="{ns:Loc UrgentSurgeryScheduling}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
 
                 </Grid>
             </Grid>

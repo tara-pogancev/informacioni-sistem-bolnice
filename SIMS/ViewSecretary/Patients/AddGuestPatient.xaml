@@ -4,11 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
+      xmlns:ns="clr-namespace:SIMS"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajGostaPage">
 
-    <Grid Background="#FF323D52">
+    <Grid Background="{DynamicResource BackgroundColorPage}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition/>
@@ -24,9 +26,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Content="Ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Prezime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-            <Label Content="Jmbg:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+            <Label Content="{ns:Loc NameColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+            <Label Content="{ns:Loc LastNameColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+            <Label Content="{ns:Loc JmbgColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -40,19 +42,19 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                <Border Grid.Row="2" Grid.RowSpan="3" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
-                <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
-                <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="{Binding Name}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="{Binding LastName}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
+                <TextBox x:Name="jmbgTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="{Binding Jmbg}" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
 
                 <StackPanel Grid.Row="5"  Grid.RowSpan="2" Orientation="Horizontal" Margin="0, 140, 0, 0">
-                    <Button Content="OTKAZI" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                    <Button Content="DODAJ" Click="AddGuest_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="{ns:Loc CancelCaps}" Command="{Binding QuitCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                    <Button Content="{ns:Loc AddCaps}" Command="{Binding AddGuestCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                 </StackPanel>
 
                 <Grid Margin="-110,-20,0,0" Grid.RowSpan="2">
-                    <Label Content="Dodavanje gostujeceg pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="30" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                    <Label Content="{ns:Loc AddingGuestPatient}" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="30" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

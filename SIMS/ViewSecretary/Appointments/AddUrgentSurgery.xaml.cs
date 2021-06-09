@@ -11,7 +11,7 @@ using SIMS.DTO;
 
 namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class AddUrgentOperation : Page
+    public partial class AddUrgentSurgery : Page
     {
         private List<string> SpecializationList;
         private List<Specialization> SpecializationEnumList;
@@ -26,7 +26,7 @@ namespace SIMS.ViewSecretary.Appointments
         private NotificationController notificationController = new NotificationController();
 
         private ObservableCollection<AppointmentDTO> AvailableAppointments;
-        public AddUrgentOperation()
+        public AddUrgentSurgery()
         {
             InitializeComponent();
 
@@ -82,7 +82,11 @@ namespace SIMS.ViewSecretary.Appointments
                 ViewAppointments.GetInstance().RefreshView();
 
                 this.NavigationService.Navigate(ViewAppointments.GetInstance());
-                MessageBox.Show("Hitna operacija uspesno zakazana!");
+                CustomMessageBox.Show(TranslationSource.Instance["UrgentSurgeryScheduledMessage"]);
+            }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["FillFieldsMessage"]);
             }
         }
 

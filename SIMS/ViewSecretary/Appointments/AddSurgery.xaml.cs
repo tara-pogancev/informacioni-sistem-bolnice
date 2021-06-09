@@ -8,7 +8,7 @@ using SIMS.Controller;
 
 namespace SIMS.ViewSecretary.Appointments
 {
-    public partial class AddOperation : Page
+    public partial class AddSurgery : Page
     {
         private List<DoctorDTO> _doctors;
         private List<Patient> _patients;
@@ -16,7 +16,7 @@ namespace SIMS.ViewSecretary.Appointments
 
         private DoctorController doctorController = new DoctorController();
 
-        public AddOperation()
+        public AddSurgery()
         {
             InitializeComponent();
 
@@ -35,11 +35,11 @@ namespace SIMS.ViewSecretary.Appointments
             durationComboBox.ItemsSource = duration;
         }
 
-        private void AddOperation_Click(object sender, RoutedEventArgs e)
+        private void AddSurgery_Click(object sender, RoutedEventArgs e)
         {
             if (doctorsComboBox.SelectedItem == null || datePicker.SelectedDate == null || appointmentsComboBox.SelectedItem == null)
             {
-                MessageBox.Show("Molimo popunite sva polja!");
+                CustomMessageBox.Show(TranslationSource.Instance["FillFieldsMessage"]);
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace SIMS.ViewSecretary.Appointments
             List<Appointment> appointments = appointmentController.GetAllAppointments();
             if (doctorController.OnVacation(appointment.Doctor, appointment.StartTime))
             {
-                MessageBox.Show("Lekar je na odmoru u navedenom terminu.", "Lekar na odmoru");
+                CustomMessageBox.Show(TranslationSource.Instance["DoctorOnVacationMessage"]);
                 return false;
             }
             foreach (Appointment a in appointments)
@@ -92,12 +92,12 @@ namespace SIMS.ViewSecretary.Appointments
                 {
                     if (a.Doctor.Jmbg.Equals(appointment.Doctor.Jmbg))
                     {
-                        MessageBox.Show("Lekar je zauzet u navedenom terminu.", "Zauzet termin");
+                        CustomMessageBox.Show(TranslationSource.Instance["DoctorUnavailableMessage"]);
                         return false;
                     }
                     else if (a.Room.Number.Equals(appointment.Room.Number))
                     {
-                        MessageBox.Show("Prostorija je zauzeta u navedenom terminu.", "Zauzet termin");
+                        CustomMessageBox.Show(TranslationSource.Instance["RoomUnavailableMessage"]);
                         return false;
                     }
                 }
