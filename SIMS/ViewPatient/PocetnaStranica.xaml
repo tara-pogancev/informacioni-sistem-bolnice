@@ -45,8 +45,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="1" Background="#292C3B">
-                        <Label Foreground="Wheat" FontSize="30" Margin="35,0,0,0"> Dobrodosli</Label>
-                        <Label Foreground="Wheat" FontSize="30" Margin="195,0,0,0" Content="{Binding Pacijent.Name}"/>
+                        <Label Foreground="White" FontSize="30" Margin="35,0,0,0"> Dobrodosli</Label>
+                        <Label Foreground="White" FontSize="30" Margin="195,0,0,0" Content="{Binding Pacijent.Name}"/>
 
 
                     </Grid>
@@ -75,7 +75,7 @@
                                     <materialDesign:PackIcon Kind="User" Width="40" Height="30"/>
                                 </Button>
                                 
-                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5" Name="Iskljucivanje" Click="Iskljucivanje_Click">
+                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5" Name="Iskljucivanje" ToolTip="Odjavi se" Click="Iskljucivanje_Click">
                                         <materialDesign:PackIcon Kind="Power"  Width="40" Height="30" />
                                     </Button>
 

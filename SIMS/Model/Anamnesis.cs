@@ -31,7 +31,7 @@ namespace SIMS.Model
         public String AnamnesisID { get; set; }
         private bool serialize;
 
-        [JsonIgnore]
+        
         public Appointment AnamnesisAppointment { get; set; }
         public bool Serialize { get => serialize; set => serialize = value; }
 

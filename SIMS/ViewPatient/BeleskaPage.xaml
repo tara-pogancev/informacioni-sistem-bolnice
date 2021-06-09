@@ -36,8 +36,8 @@
         <Grid Grid.Row="0" Grid.Column="1" Margin="15,22">
         <StackPanel Height="330" VerticalAlignment="Top">
             
-            <Border x:Name="Naslov" materialDesign:HintAssist.Hint="Naslov" Background="#4e6082" CornerRadius="10"  BorderBrush="Black" BorderThickness="2" Margin="15,10,15,0" Height="40" >
-                    <TextBox Margin="2" FontSize="18"  Validation.Error="Save_Error">
+            <Border x:Name="Naslov" materialDesign:HintAssist.Hint="Naslov" Background="#4e6082" CornerRadius="10"  BorderBrush="Black"  BorderThickness="2" Margin="15,10,15,0" Height="40" >
+                    <TextBox Margin="2" FontSize="18"  Validation.Error="Save_Error" Foreground="White">
                     <TextBox.Text>
                             <Binding Path="Title" Mode="TwoWay"  NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True" >
                             <Binding.ValidationRules>
@@ -49,7 +49,7 @@
             </Border>
             
             <Border x:Name="Sadrzaj"  Background="#4e6082" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Margin="15,20,15,0" Height="150">
-                    <TextBox Margin="15"  Validation.Error="Save_Error" materialDesign:HintAssist.Hint="Sadržaj" TextWrapping="Wrap" FontSize="14">
+                    <TextBox Margin="15" Foreground="White" Validation.Error="Save_Error" materialDesign:HintAssist.Hint="Sadržaj" TextWrapping="Wrap" FontSize="14" >
                     <TextBox.Text>
                             <Binding Path="Content" Mode="TwoWay" NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="True" NotifyOnTargetUpdated="True">
                             <Binding.ValidationRules>
@@ -86,14 +86,14 @@
         <Grid Grid.Row="2" Grid.Column="2">
             <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50,0,10">
-                <Button Width="100" Name="Potvrdi" Content="Potvrdi">
+                    <Button Width="100" Name="Potvrdi" Content="Potvrdi" Background="#FF01C38D">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click" >
                             <i:InvokeCommandAction Command="{Binding Path=DataContext.ConfirmCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Button>
-                <Button Width="100" Margin="100,0,0,0" Content="Otkazi" >
+                <Button Width="100" Margin="100,0,0,0" Content="Odbaci" Background="Firebrick" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click" >
                             <i:InvokeCommandAction Command="{Binding Path=DataContext.RejectCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>

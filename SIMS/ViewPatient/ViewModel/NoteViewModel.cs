@@ -69,7 +69,7 @@ namespace SIMS.ViewPatient.ViewModel
             noteId = id;
             date = "";
             time = "";
-            DateReal = DateTime.Now;
+            DateReal=DateTime.Now;
             ConfirmCommand = new RelayCommand(Execute_ConfirmCommand, Can_Execute_ConfirmCommand);
             RejectCommand = new RelayCommand(ExecuteRejectCommand, canExecuteRejectCommand);
             noteController = new NoteController();
@@ -152,7 +152,7 @@ namespace SIMS.ViewPatient.ViewModel
                 return false;
             }
 
-            if (Checked == true && (Date.Length == 0 || Time.Length == 0))
+            if (Checked == true && (DateReal==null || Time.Length == 0))
             {
                 Vidljivost = Visibility.Visible;
                 return false;

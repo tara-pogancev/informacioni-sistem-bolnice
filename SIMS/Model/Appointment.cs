@@ -76,31 +76,31 @@ namespace SIMS.Model
             return Serialize;
         }
 
-        public bool ShouldSerializeVremeTrajanja()
+        public bool ShouldSerializeStartTime()
         {
             return Serialize;
         }
         
-        public bool ShouldSerializeVrstaTermina()
+        public bool ShouldSerializeDuration()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializeLekar()
+        public bool ShouldSerializeType()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializePacijent()
+        public bool ShouldSerializeDoctor()
         {
             return Serialize;
         }
 
-        public bool ShouldSerializeProstorija()
+        public bool ShouldSerializePatient()
         {
             return Serialize;
         }
-        public bool ShouldSerializeInicijalnoVrijeme()
+        public bool ShouldSerializeRoom()
         {
             return Serialize;
         }

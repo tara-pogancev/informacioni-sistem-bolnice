@@ -283,6 +283,7 @@
         "InventoryAmounts": {},
         "Serialize": false
       },
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210531092245594374"
     },
     "Grade": 5,
@@ -290,6 +291,17 @@
     "SurveyID": "210531092245594374",
     "Comment": "Ljudina",
     "SubmissionDate": "2021-06-07T18:00:38.7759119+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210531092343979838": {
+    "Appointment": {
+      "AppointmentID": "210531092343979838"
+    },
+    "Grade": 5,
+    "DoctorId": "4848555021548",
+    "SurveyID": "210531092343979838",
+    "Comment": "Sve je u najboljem redu",
+    "SubmissionDate": "2021-06-09T08:28:15.730634+02:00",
     "IdVlasnika": "4865453131"
   }
 }

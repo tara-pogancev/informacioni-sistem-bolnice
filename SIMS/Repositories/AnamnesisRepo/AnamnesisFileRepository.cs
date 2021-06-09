@@ -41,7 +41,7 @@ namespace SIMS.Repositories.AnamnesisRepository
 
         protected override void ShouldSerialize(Anamnesis entity)
         {
-            //ne treba logika za serijalizaciju
+            entity.AnamnesisAppointment.Serialize = false;
         }
     }
 }

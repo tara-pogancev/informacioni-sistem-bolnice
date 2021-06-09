@@ -18,26 +18,26 @@
     ],
     "ChosenDoctor": {
       "VacationDays": 20,
-      "Grade": 5.0,
-      "DoctorSpecialization": 4,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
       "VacationPeriods": [],
-      "Name": "Zack",
-      "LastName": "Fair",
-      "Jmbg": "4848555021548",
-      "Username": "zack",
+      "Name": "Katarina",
+      "LastName": "Gavrić",
+      "Jmbg": "484855502123",
+      "Username": "katarina",
       "Password": "l",
       "Email": "zackfair@zdravo.com",
       "Phone": "0698547521",
       "Address": {
         "City": {
-          "Name": "Midgar",
-          "PostalCode": 99888,
+          "Name": "Novi Sad",
+          "PostalCode": 23300,
           "Country": {
-            "Name": "Gaia"
+            "Name": "Srbija"
           }
         },
-        "Street": "Shinra Inc",
-        "Number": "Floor 75"
+        "Street": "Alekse Šantića",
+        "Number": "75"
       },
       "Serialize": true
     },
@@ -46,7 +46,7 @@
     "Jmbg": "4865453131",
     "Username": "pacijent",
     "Password": "p",
-    "Email": "djordje1499@gmail.com",
+    "Email": "djordje1499@gmal.com",
     "Phone": "0645569530",
     "Address": {
       "City": {
