@@ -4,6 +4,7 @@ using SIMS.ViewSecretary.Report;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
@@ -28,8 +29,22 @@ namespace SIMS.ViewSecretary.ViewModel
             SelectedDateTextEnd = SelectedDateEnd.ToString();
         }
 
+        private bool IsValid()
+        {
+            if (SelectedDateEnd.Date <= SelectedDateStart.Date)
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["InvalidDatesMessage"]);
+                return false;
+            }
+            return true;
+        }
+
         private void Execute_GenerateReportCommand(object obj)
         {
+            if (!IsValid())
+            {
+                return;
+            }
             PrintDialog printDialog = new PrintDialog();
             ReportToGenerate rtg = new ReportToGenerate(SelectedDateStart, SelectedDateEnd);
             /*rtg.ReportScroll.ScrollToTop();

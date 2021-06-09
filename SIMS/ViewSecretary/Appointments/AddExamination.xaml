@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary"
       xmlns:ns="clr-namespace:SIMS"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DodajPregledPage">
@@ -71,7 +72,7 @@
                 <ComboBox Grid.Row="4" Margin="30,0,0,0" x:Name="roomsComboBox"  DisplayMemberPath="Number"  SelectedValuePath="Number" 
                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
 
-                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" SelectedDateChanged="DatePicker_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="datePicker" VerticalAlignment="Center" Width="260" SelectedDateChanged="DatePicker_SelectedDateChanged" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
 
                 <ComboBox Grid.Row="6" Margin="30,0,0,0" x:Name="appointmentsComboBox" ItemsSource="{Binding dostupniTermini}"
                     Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>

@@ -255,11 +255,26 @@
   <data name="HomePageListItem" xml:space="preserve">
     <value>Home Page</value>
   </data>
+  <data name="IncorrectDateFormatMessage" xml:space="preserve">
+    <value>Incorrect date format. (dd.MM.yyyy.)</value>
+  </data>
+  <data name="IncorrectEmailFormatMessage" xml:space="preserve">
+    <value>Incorrect email address format.</value>
+  </data>
+  <data name="IncorrectPhoneNumberFormatMessage" xml:space="preserve">
+    <value>Incorrect phone number format.</value>
+  </data>
+  <data name="InvalidDatesMessage" xml:space="preserve">
+    <value>End date must be greater then start date.</value>
+  </data>
   <data name="Jmbg" xml:space="preserve">
     <value>Jmbg</value>
   </data>
   <data name="JmbgColon" xml:space="preserve">
     <value>Jmbg:</value>
+  </data>
+  <data name="JmbgNumberMessage" xml:space="preserve">
+    <value>Jmbg must have exactly 13 digits.</value>
   </data>
   <data name="LastNameColon" xml:space="preserve">
     <value>Last Name:</value>
@@ -269,6 +284,9 @@
   </data>
   <data name="LboColon" xml:space="preserve">
     <value>Lbo:</value>
+  </data>
+  <data name="LboNumberMessage" xml:space="preserve">
+    <value>Lbo must consist of digits.</value>
   </data>
   <data name="NameColon" xml:space="preserve">
     <value>Name:</value>
@@ -425,6 +443,9 @@
   </data>
   <data name="VacationEndColon" xml:space="preserve">
     <value>Vacation End:</value>
+  </data>
+  <data name="VacationNotNumberMessage" xml:space="preserve">
+    <value>Number of vacation days is not number.</value>
   </data>
   <data name="VacationStartColon" xml:space="preserve">
     <value>Vacation Start:</value>

@@ -86,6 +86,10 @@ namespace SIMS.ViewSecretary.Appointments
                 this.NavigationService.Navigate(ViewAppointments.GetInstance());
                 CustomMessageBox.Show(TranslationSource.Instance["UrgentExaminationScheduledMessage"]);
             }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["FillFieldsMessage"]);
+            }
         }
 
         private void Button_Quit(object sender, RoutedEventArgs e)

@@ -255,11 +255,26 @@
   <data name="HomePageListItem" xml:space="preserve">
     <value>Početna stranica</value>
   </data>
+  <data name="IncorrectDateFormatMessage" xml:space="preserve">
+    <value>Neispravan format datuma. (dd.MM.yyyy.)</value>
+  </data>
+  <data name="IncorrectEmailFormatMessage" xml:space="preserve">
+    <value>Neispravan format email adrese.</value>
+  </data>
+  <data name="IncorrectPhoneNumberFormatMessage" xml:space="preserve">
+    <value>Neispravan format broja telefona.</value>
+  </data>
+  <data name="InvalidDatesMessage" xml:space="preserve">
+    <value>Krajnji datum mora biti veći od početnog datuma.</value>
+  </data>
   <data name="Jmbg" xml:space="preserve">
     <value>Jmbg</value>
   </data>
   <data name="JmbgColon" xml:space="preserve">
     <value>Jmbg:</value>
+  </data>
+  <data name="JmbgNumberMessage" xml:space="preserve">
+    <value>Jmbg mora imati tačno 13 cifara.</value>
   </data>
   <data name="LastNameColon" xml:space="preserve">
     <value>Prezime:</value>
@@ -269,6 +284,9 @@
   </data>
   <data name="LboColon" xml:space="preserve">
     <value>Lbo:</value>
+  </data>
+  <data name="LboNumberMessage" xml:space="preserve">
+    <value>Lbo se mora sastojati iz cifara.</value>
   </data>
   <data name="NameColon" xml:space="preserve">
     <value>Ime:</value>
@@ -425,6 +443,9 @@
   </data>
   <data name="VacationEndColon" xml:space="preserve">
     <value>Kraj odmora:</value>
+  </data>
+  <data name="VacationNotNumberMessage" xml:space="preserve">
+    <value>Broj slobodnih dana nije broj.</value>
   </data>
   <data name="VacationStartColon" xml:space="preserve">
     <value>Početak odmora:</value>

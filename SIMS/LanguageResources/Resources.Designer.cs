@@ -475,6 +475,42 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect date format. (dd.MM.yyyy.).
+        /// </summary>
+        internal static string IncorrectDateFormatMessage {
+            get {
+                return ResourceManager.GetString("IncorrectDateFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect email address format..
+        /// </summary>
+        internal static string IncorrectEmailFormatMessage {
+            get {
+                return ResourceManager.GetString("IncorrectEmailFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect phone number format..
+        /// </summary>
+        internal static string IncorrectPhoneNumberFormatMessage {
+            get {
+                return ResourceManager.GetString("IncorrectPhoneNumberFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date must be greater then start date..
+        /// </summary>
+        internal static string InvalidDatesMessage {
+            get {
+                return ResourceManager.GetString("InvalidDatesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Jmbg.
         /// </summary>
         internal static string Jmbg {
@@ -489,6 +525,15 @@ namespace SIMS.LanguageResources {
         internal static string JmbgColon {
             get {
                 return ResourceManager.GetString("JmbgColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jmbg must have exactly 13 digits..
+        /// </summary>
+        internal static string JmbgNumberMessage {
+            get {
+                return ResourceManager.GetString("JmbgNumberMessage", resourceCulture);
             }
         }
         
@@ -516,6 +561,15 @@ namespace SIMS.LanguageResources {
         internal static string LboColon {
             get {
                 return ResourceManager.GetString("LboColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lbo must consist of digits..
+        /// </summary>
+        internal static string LboNumberMessage {
+            get {
+                return ResourceManager.GetString("LboNumberMessage", resourceCulture);
             }
         }
         
@@ -984,6 +1038,15 @@ namespace SIMS.LanguageResources {
         internal static string VacationEndColon {
             get {
                 return ResourceManager.GetString("VacationEndColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of vacation days is not number..
+        /// </summary>
+        internal static string VacationNotNumberMessage {
+            get {
+                return ResourceManager.GetString("VacationNotNumberMessage", resourceCulture);
             }
         }
         

@@ -6,6 +6,7 @@ using SIMS.ViewSecretary.Home;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace SIMS.ViewSecretary.ViewModel
 {
@@ -64,12 +65,34 @@ namespace SIMS.ViewSecretary.ViewModel
             SelectedDateTextEnd = SelectedDateEnd.ToString();
         }
 
+        private bool IsValid()
+        {
+            string strRegex = @"[0-9]+$";
+
+            Regex re = new Regex(strRegex);
+            if (String.IsNullOrEmpty(VacationDays) || VacationDays.Trim().Equals("") || !re.IsMatch(VacationDays))
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["VacationNotNumberMessage"]);
+                return false;
+            }
+            if (SelectedDateEnd.Date <= SelectedDateStart.Date)
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["InvalidDatesMessage"]);
+                return false;
+            }
+            return true;
+        }
+
         private void Execute_AddVacationCommand(object obj)
         {
             if (DoctorToUpdate == null || VacationDays.Trim().Equals("") || SelectedDateStart == null || SelectedDateEnd == null)
             {
                 if (DoctorToUpdate != null && !VacationDays.Trim().Equals(""))
                 {
+                    if (!IsValid())
+                    {
+                        return;
+                    }
                     Doctor doctor = Doctors[DoctorSelectedIndex];
                     int.TryParse(VacationDays, out int vacationDays);
                     doctor.VacationDays = vacationDays;
@@ -87,6 +110,10 @@ namespace SIMS.ViewSecretary.ViewModel
             }
             else
             {
+                if (!IsValid())
+                {
+                    return;
+                }
                 Doctor doctor = Doctors[DoctorSelectedIndex];
                 VacationPeriod vacationPeriod = CreateVacationFromUserInput();
                 int.TryParse(VacationDays, out int vacationDays);

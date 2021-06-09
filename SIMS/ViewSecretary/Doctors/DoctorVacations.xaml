@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SIMS.ViewSecretary.Doctors"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:ns="clr-namespace:SIMS"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DoctorVacations">
@@ -68,9 +69,9 @@
 
                 <TextBox Grid.Row="3" Margin="30,0,0,0" x:Name="vacationDaysTextBox" Text="{Binding VacationDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="260" Height="30" HorizontalAlignment="Left" />
 
-                <DatePicker Grid.Row ="4" Height="25" SelectedDate="{Binding SelectedDateStart, Mode=TwoWay}" Text="{Binding SelectedDateTextStart, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="startDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="4" Height="25" SelectedDate="{Binding SelectedDateStart, Mode=TwoWay}" Text="{Binding SelectedDateTextStart, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="startDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
 
-                <DatePicker Grid.Row ="5" Height="25" SelectedDate="{Binding SelectedDateEnd, Mode=TwoWay}" Text="{Binding SelectedDateTextEnd, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" SelectedDate="{Binding SelectedDateEnd, Mode=TwoWay}" Text="{Binding SelectedDateTextEnd, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
                 
                 <StackPanel Grid.Row="6" Grid.RowSpan="2" Orientation="Horizontal">
                     <Button Content="{ns:Loc QuitCaps}" Command="{Binding QuitCommand}" Width="100"
