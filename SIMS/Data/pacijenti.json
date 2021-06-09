@@ -17,27 +17,27 @@
       "Astma"
     ],
     "ChosenDoctor": {
-      "VacationDays": 20,
+      "VacationDays": 18,
       "Grade": 0.0,
       "DoctorSpecialization": 0,
       "VacationPeriods": [],
-      "Name": "Katarina",
-      "LastName": "Gavrić",
-      "Jmbg": "484855502123",
-      "Username": "katarina",
+      "Name": "Cloud",
+      "LastName": "Strife",
+      "Jmbg": "22157484654211",
+      "Username": "cloud",
       "Password": "l",
-      "Email": "zackfair@zdravo.com",
-      "Phone": "0698547521",
+      "Email": "fluffy@clouds.com",
+      "Phone": "0640005481",
       "Address": {
         "City": {
-          "Name": "Novi Sad",
-          "PostalCode": 23300,
+          "Name": "Nibelheim",
+          "PostalCode": 33654,
           "Country": {
-            "Name": "Srbija"
+            "Name": "Gaia"
           }
         },
-        "Street": "Alekse Šantića",
-        "Number": "75"
+        "Street": "Main Town Square",
+        "Number": "5"
       },
       "Serialize": true
     },

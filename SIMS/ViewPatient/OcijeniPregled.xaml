@@ -26,7 +26,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Button Width="100" Height="40" Margin="25,60,25,450" RenderTransformOrigin="0.515,-3.975" Name="Nazad" Click="Nazad_OnClick">Nazad</Button>
+            <Button  Margin="15,55,15,450" RenderTransformOrigin="0.515,-3.975" Name="Nazad" Click="Nazad_OnClick">Nazad</Button>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

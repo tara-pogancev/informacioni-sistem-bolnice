@@ -19,7 +19,7 @@
     <Grid Background="#FF323D52">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="30">
-                <Button Width="150" Name="Nazad" Click="Nazad_Click">Nazad</Button>
+                <Button Width="150"  Name="Nazad" Click="Nazad_Click">Nazad</Button>
                 <Label HorizontalAlignment="Center" FontSize="20" Margin="150,0,0,0">Preporuceni termini</Label>
             </StackPanel>
             

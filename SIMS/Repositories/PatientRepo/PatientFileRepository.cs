@@ -54,6 +54,7 @@ namespace SIMS.Repositories.PatientRepo
             {
                 allergen.Serialize = false;
             }
+
         }
     }
 }
