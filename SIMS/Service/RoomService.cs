@@ -37,26 +37,6 @@ namespace SIMS.Service
             roomRepository.Update(room);
         }
 
-        private bool RenovationAppointmentOverlapped(Room room, Appointment appointment)
-        {
-            bool sameRoom = room.Number == appointment.Room.Number;
-            bool startOverlap = room.RenovationStart > appointment.StartTime && room.RenovationStart < appointment.GetEndTime();
-            bool endOverlap = room.RenovationEnd > appointment.StartTime && room.RenovationStart < appointment.GetEndTime();
-
-            return !sameRoom || startOverlap || endOverlap;
-        }
-
-        public void Renovate(Room room)
-        {
-            foreach (var appointment in appointmentRepository.GetAll())
-            {
-                if (RenovationAppointmentOverlapped(room, appointment))
-                {
-                    throw new RenovationAppointmentOverlapException();
-                }
-            }
-            roomRepository.Update(room);
-        }
 
         public void MergeRooms(string room1, string room2)
         {

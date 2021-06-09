@@ -1,66 +1,82 @@
 {
   "a1": {
     "ID": "a1",
-    "Name": "Polen"
+    "Name": "Polen",
+    "Serialize": false
   },
   "a2": {
     "ID": "a2",
-    "Name": "Laktoza"
+    "Name": "Laktoza",
+    "Serialize": false
   },
   "a3": {
     "ID": "a3",
-    "Name": "Ambrozija"
+    "Name": "Ambrozija",
+    "Serialize": false
   },
   "a4": {
     "ID": "a4",
-    "Name": "Životinjska dlaka"
+    "Name": "Životinjska dlaka",
+    "Serialize": false
   },
   "a5": {
     "ID": "a5",
-    "Name": "Prašina"
+    "Name": "Prašina",
+    "Serialize": false
   },
   "a6": {
     "ID": "a6",
-    "Name": "Ibuprofen"
+    "Name": "Ibuprofen",
+    "Serialize": false
   },
   "a7": {
     "ID": "a7",
-    "Name": "Titan-dioksid"
+    "Name": "Titan-dioksid",
+    "Serialize": false
   },
   "a8": {
     "ID": "a8",
-    "Name": "Celuloza"
+    "Name": "Celuloza",
+    "Serialize": false
   },
   "a9": {
     "ID": "a9",
-    "Name": "Monohidrat"
+    "Name": "Monohidrat",
+    "Serialize": false
   },
   "a10": {
     "ID": "a10",
-    "Name": "Silicijum-dioksid"
+    "Name": "Silicijum-dioksid",
+    "Serialize": false
   },
   "a11": {
     "ID": "a11",
-    "Name": "Natrijum-laurilsulfat"
+    "Name": "Natrijum-laurilsulfat",
+    "Serialize": false
   },
   "a12": {
     "ID": "a12",
-    "Name": "Magnezijum-stearat"
+    "Name": "Magnezijum-stearat",
+    "Serialize": false
   },
   "a13": {
     "ID": "a13",
-    "Name": "Gestoden"
+    "Name": "Gestodenas",
+    "Serialize": false
   },
   "a14": {
     "ID": "a14",
-    "Name": "Etinilestradiol"
+    "Name": "Etinilestradiol",
+    "Serialize": false
   },
   "a15": {
     "ID": "a15",
-    "Name": "Skrob"
+    "Name": "Skrob",
+    "Serialize": false
   },
   "a16": {
     "ID": "a16",
-    "Name": "Povidon 90"
+    "Name": "Povidon 90",
+    "Serialize": false
   }
 }

@@ -31,14 +31,17 @@
 
                 <Grid Grid.Row="1">
                     <StackPanel>
-                        <Button Content="Zaposleni" Width="130" Height="35" Background="#323D52"  Click ="Zaposleni_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" />
                         <Button Content="Inventar" Width="130" Height="35" Background="#323D52"  Click ="Inventar_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Prostorije" Width="130" Height="35" Background="#323D52"  Click ="Prostorije_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
-                        <Button Content="Usluge" Width="130" Height="35" Background="#323D52"  Click ="Usluge_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Lekovi" Width="130" Height="35" Background="#323D52"  Click ="Lekovi_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Alergeni" Width="130" Height="35" Background="#323D52"  Click ="Alergeni_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Width="130" Height="35" Background="#191E29"   FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Nalog" Width="130" Height="35" Background="#323D52"  Click ="Nalog_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Prijavi grešku" Width="130" Height="35" Background="#323D52"  Click ="Feedback_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Width="130" Height="35" Background="#191E29"   FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
                         <Button Content="Tutorijal" Width="130" Height="35" Background="#323D52"  Click ="Tutorijal_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Button Content="Izveštaj" Width="130" Height="35" Background="#323D52"  Click ="Izvestaj_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+
                     </StackPanel>
 
                 </Grid>
@@ -59,8 +62,8 @@
                 <Grid Grid.Row="0" Background="#292C3B">
                     <Label Name="MainLabel"  Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
                     <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal">
-                        <Button Content="Odjava"  Margin="10,0,0,0" Width="130" Height="35" Background="#323D52"  FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
-                        <Label Content="Blagoje Grgur" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  FontSize="18" FontFamily="Candara Bold"  Foreground="#FF7F85A2" Background="{x:Null}"/>
+                        <Button Content="Odjava"  Margin="10,0,0,0" Width="130" Height="35" Background="#323D52"  Click="Odjava_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand"/>
+                        <Label Name="UserLabel" FontFamily="Candara" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1" Background="#323D52">
