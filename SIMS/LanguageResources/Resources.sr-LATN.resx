@@ -357,6 +357,9 @@
   <data name="PostalCodeColon" xml:space="preserve">
     <value>Poštanski broj:</value>
   </data>
+  <data name="PostalCodeNumberMessage" xml:space="preserve">
+    <value>Poštanski broj mora biti broj.</value>
+  </data>
   <data name="QuitCaps" xml:space="preserve">
     <value>ODUSTANI</value>
   </data>

@@ -781,6 +781,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Postal code must be number..
+        /// </summary>
+        internal static string PostalCodeNumberMessage {
+            get {
+                return ResourceManager.GetString("PostalCodeNumberMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QUIT.
         /// </summary>
         internal static string QuitCaps {

@@ -357,6 +357,9 @@
   <data name="PostalCodeColon" xml:space="preserve">
     <value>Postal Code:</value>
   </data>
+  <data name="PostalCodeNumberMessage" xml:space="preserve">
+    <value>Postal code must be number.</value>
+  </data>
   <data name="QuitCaps" xml:space="preserve">
     <value>QUIT</value>
   </data>

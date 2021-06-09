@@ -153,6 +153,11 @@ namespace SIMS.ViewSecretary.ViewModel
                 CustomMessageBox.Show(TranslationSource.Instance["LboNumberMessage"]);
                 return false;
             }
+            if (!re.IsMatch(PostalCode))
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["PostalCodeNumberMessage"]);
+                return false;
+            }
             strRegex = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
             re = new Regex(strRegex);
             if (!re.IsMatch(Email))
