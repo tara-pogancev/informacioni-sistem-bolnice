@@ -150,6 +150,9 @@
   <data name="AppointmentDateColon" xml:space="preserve">
     <value>Appointment Date:</value>
   </data>
+  <data name="AppointmentDetails" xml:space="preserve">
+    <value>Appointment Details</value>
+  </data>
   <data name="AppointmentsListItem" xml:space="preserve">
     <value>Appointments</value>
   </data>
@@ -231,6 +234,9 @@
   <data name="EndTimeColon" xml:space="preserve">
     <value>End Time:</value>
   </data>
+  <data name="Examination" xml:space="preserve">
+    <value>Examination</value>
+  </data>
   <data name="ExaminationDateColon" xml:space="preserve">
     <value>Examination Date:</value>
   </data>
@@ -266,6 +272,9 @@
   </data>
   <data name="IncorrectPhoneNumberFormatMessage" xml:space="preserve">
     <value>Incorrect phone number format.</value>
+  </data>
+  <data name="InvalidDateMessage" xml:space="preserve">
+    <value>Invalid date.</value>
   </data>
   <data name="InvalidDatesMessage" xml:space="preserve">
     <value>End date must be greater then start date.</value>
@@ -303,6 +312,9 @@
   <data name="Notifications" xml:space="preserve">
     <value>Notifications</value>
   </data>
+  <data name="OkCaps" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="PasswordColon" xml:space="preserve">
     <value>Password:</value>
   </data>
@@ -317,6 +329,9 @@
   </data>
   <data name="PatientDeletedMessage" xml:space="preserve">
     <value>Patient is deleted successfully.</value>
+  </data>
+  <data name="PatientDetails" xml:space="preserve">
+    <value>Patient Details</value>
   </data>
   <data name="PatientNotBannedMessage" xml:space="preserve">
     <value>Patient is not banned.</value>
@@ -396,6 +411,9 @@
   <data name="StartTimeColon" xml:space="preserve">
     <value>Start Time:</value>
   </data>
+  <data name="Surgery" xml:space="preserve">
+    <value>Surgery</value>
+  </data>
   <data name="SurgeryDateColon" xml:space="preserve">
     <value>Surgery Date:</value>
   </data>
@@ -404,6 +422,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="TypeColon" xml:space="preserve">
+    <value>Type:</value>
   </data>
   <data name="Unblock" xml:space="preserve">
     <value>Unblock</value>

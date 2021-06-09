@@ -160,6 +160,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment Details.
+        /// </summary>
+        internal static string AppointmentDetails {
+            get {
+                return ResourceManager.GetString("AppointmentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointments.
         /// </summary>
         internal static string AppointmentsListItem {
@@ -403,6 +412,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Examination.
+        /// </summary>
+        internal static string Examination {
+            get {
+                return ResourceManager.GetString("Examination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Examination Date:.
         /// </summary>
         internal static string ExaminationDateColon {
@@ -507,6 +525,15 @@ namespace SIMS.LanguageResources {
         internal static string IncorrectPhoneNumberFormatMessage {
             get {
                 return ResourceManager.GetString("IncorrectPhoneNumberFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid date..
+        /// </summary>
+        internal static string InvalidDateMessage {
+            get {
+                return ResourceManager.GetString("InvalidDateMessage", resourceCulture);
             }
         }
         
@@ -619,6 +646,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OkCaps {
+            get {
+                return ResourceManager.GetString("OkCaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
         internal static string PasswordColon {
@@ -660,6 +696,15 @@ namespace SIMS.LanguageResources {
         internal static string PatientDeletedMessage {
             get {
                 return ResourceManager.GetString("PatientDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patient Details.
+        /// </summary>
+        internal static string PatientDetails {
+            get {
+                return ResourceManager.GetString("PatientDetails", resourceCulture);
             }
         }
         
@@ -898,6 +943,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Surgery.
+        /// </summary>
+        internal static string Surgery {
+            get {
+                return ResourceManager.GetString("Surgery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Surgery Date:.
         /// </summary>
         internal static string SurgeryDateColon {
@@ -921,6 +975,15 @@ namespace SIMS.LanguageResources {
         internal static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type:.
+        /// </summary>
+        internal static string TypeColon {
+            get {
+                return ResourceManager.GetString("TypeColon", resourceCulture);
             }
         }
         

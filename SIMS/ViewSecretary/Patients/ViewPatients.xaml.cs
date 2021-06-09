@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.Controller;
+using System.Windows.Input;
 
 namespace SIMS.ViewSecretary.Patients
 {
@@ -88,6 +89,12 @@ namespace SIMS.ViewSecretary.Patients
                 CustomMessageBox.Show(TranslationSource.Instance["PatientDeletedMessage"]);
                 RefreshView();
             }
+        }
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Patient details = (Patient)patientsView.SelectedItem;
+            NavigationService.Navigate(new PatientDetails(details));
+
         }
 
         public void RefreshView()

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.DTO;
 using SIMS.Controller;
+using System.Windows.Input;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -93,6 +94,13 @@ namespace SIMS.ViewSecretary.Appointments
         private void AddUrgentOperation_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new AddUrgentSurgery());
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Appointment details = (Appointment)appointmentsView.SelectedItem;
+            NavigationService.Navigate(new AppointmentDetails(details));
+
         }
 
         public void RemoveInstance()

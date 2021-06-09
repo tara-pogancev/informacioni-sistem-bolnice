@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="ForegroundColorMenuItem" Color="#FF5C99D6"/>
     <SolidColorBrush x:Key="BackgroundColorMenuItem" Color="#232936"/>
     <SolidColorBrush x:Key="BackgroundColorStatusBar" Color="#191E29"/>
-    
+
     <SolidColorBrush x:Key="ForegroundColorPageText" Color="White"/>
     <SolidColorBrush x:Key="BorderColor" Color="#FF292C3B"/>
 
@@ -16,7 +16,7 @@
     <SolidColorBrush x:Key="BackgroundButtonBar" Color="#1B233A"/>
     <SolidColorBrush x:Key="BackgroundDataGrid" Color="#3c4253"/>
     <SolidColorBrush x:Key="BorderBrushDataGrid" Color="#191e29"/>
-    
+
     <SolidColorBrush x:Key="NotificationBoxColor" Color="#2a3042"/>
     <SolidColorBrush x:Key="NotificationBorderColor" Color="#57D6B4"/>
 
@@ -61,7 +61,7 @@
         <Setter Property="Foreground" Value="#FFB3B3B3"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-
+        
         <Style.Triggers>
             <Trigger Property="ItemsControl.AlternationIndex" Value="0">
                 <Setter Property="Background" Value="#2a3042"/>
@@ -70,6 +70,7 @@
                 <Setter Property="Background" Value="#31384c"/>
             </Trigger>
         </Style.Triggers>
+
     </Style>
 
     <Style x:Key="DataGridCell" TargetType="{x:Type DataGridCell}">

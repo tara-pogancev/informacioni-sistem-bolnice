@@ -16,6 +16,7 @@
             <Setter Property="CellStyle" Value="{DynamicResource DataGridCell}"/>
             <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DataGridHeader}"/>
             <Setter Property="RowStyle" Value="{DynamicResource DataGridRow}"/>
+            <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
         </Style>
     </Page.Resources>
 
@@ -25,13 +26,10 @@
                                     SelectionMode="Single" AutoGenerateColumns="False" FontSize="14" FontWeight="Normal"
                                     DataGrid.CanUserResizeRows="False" VerticalScrollBarVisibility="Hidden">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{ns:Loc FullName}" Binding="{Binding FullName}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="{ns:Loc Jmbg}" Binding="{Binding Jmbg}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="{ns:Loc Email}" Binding="{Binding Email}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="{ns:Loc PhoneNumber}" Binding="{Binding Phone}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="{ns:Loc Adress}" Binding="{Binding AddressString}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridTextColumn Header="{ns:Loc Lbo}" Binding="{Binding Lbo}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
-                    <DataGridCheckBoxColumn Header="{ns:Loc Guest}" Binding="{Binding Guest}" Width="Auto"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc FullName}" Binding="{Binding FullName}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Jmbg}" Binding="{Binding Jmbg}" Width="2*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridTextColumn Header="{ns:Loc Lbo}" Binding="{Binding Lbo}" Width="*"  DataGridColumn.CanUserResize="False"/>
+                    <DataGridCheckBoxColumn Header="{ns:Loc Guest}" Binding="{Binding Guest}" Width="*"  DataGridColumn.CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

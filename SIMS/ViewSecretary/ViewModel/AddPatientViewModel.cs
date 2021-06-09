@@ -174,6 +174,15 @@ namespace SIMS.ViewSecretary.ViewModel
                 CustomMessageBox.Show(TranslationSource.Instance["IncorrectPhoneNumberFormatMessage"]);
                 return false;
             }
+            try
+            {
+                DateTime.ParseExact(BirthDate, "dd.MM.yyyy.", CultureInfo.InvariantCulture);
+            }
+            catch
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["InvalidDateMessage"]);
+                return false;
+            }
             return true;
         }
 
