@@ -231,6 +231,9 @@
   <data name="EmailColon" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="EndDateColon" xml:space="preserve">
+    <value>Datum završetka:</value>
+  </data>
   <data name="EndTimeColon" xml:space="preserve">
     <value>Vreme završetka:</value>
   </data>
@@ -311,6 +314,9 @@
   </data>
   <data name="NewVacationAdding" xml:space="preserve">
     <value>Dodavanje novog odmora</value>
+  </data>
+  <data name="NotEnoughVacationDaysMessage" xml:space="preserve">
+    <value>Izabrani lekar nema dovoljno slobodnih dana.</value>
   </data>
   <data name="NotificationDefaultText" xml:space="preserve">
     <value>Ovde možete uneti vaše obaveštenje.</value>
@@ -417,11 +423,14 @@
   <data name="SpecializationColon" xml:space="preserve">
     <value>Specijalizacija:</value>
   </data>
+  <data name="StartDateColon" xml:space="preserve">
+    <value>Datum početka:</value>
+  </data>
   <data name="StartTime" xml:space="preserve">
     <value>Početak</value>
   </data>
   <data name="StartTimeColon" xml:space="preserve">
-    <value>Početno vreme:</value>
+    <value>Vreme početka:</value>
   </data>
   <data name="Surgery" xml:space="preserve">
     <value>Operacija</value>

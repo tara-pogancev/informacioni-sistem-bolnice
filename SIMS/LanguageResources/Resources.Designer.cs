@@ -403,6 +403,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End Date:.
+        /// </summary>
+        internal static string EndDateColon {
+            get {
+                return ResourceManager.GetString("EndDateColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Time:.
         /// </summary>
         internal static string EndTimeColon {
@@ -642,6 +651,15 @@ namespace SIMS.LanguageResources {
         internal static string NewVacationAdding {
             get {
                 return ResourceManager.GetString("NewVacationAdding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chosen doctor does not have enough vacation days..
+        /// </summary>
+        internal static string NotEnoughVacationDaysMessage {
+            get {
+                return ResourceManager.GetString("NotEnoughVacationDaysMessage", resourceCulture);
             }
         }
         
@@ -957,6 +975,15 @@ namespace SIMS.LanguageResources {
         internal static string SpecializationColon {
             get {
                 return ResourceManager.GetString("SpecializationColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date:.
+        /// </summary>
+        internal static string StartDateColon {
+            get {
+                return ResourceManager.GetString("StartDateColon", resourceCulture);
             }
         }
         
