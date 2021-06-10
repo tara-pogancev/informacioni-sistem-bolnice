@@ -243,6 +243,12 @@
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Examination Scheduling</value>
   </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="FeedbackDefaultText" xml:space="preserve">
+    <value>You can input your feedback here.</value>
+  </data>
   <data name="FillFieldsMessage" xml:space="preserve">
     <value>Please fill in all fields.</value>
   </data>
@@ -401,6 +407,9 @@
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Select at least one role.</value>
+  </data>
+  <data name="SendCaps" xml:space="preserve">
+    <value>SEND</value>
   </data>
   <data name="SexColon" xml:space="preserve">
     <value>Sex:</value>

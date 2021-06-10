@@ -15,6 +15,7 @@ using SIMS.Controller;
 using System.Windows.Media.Imaging;
 using SIMS.ViewSecretary.Report;
 using SIMS.ViewSecretary.Account;
+using SIMS.ViewSecretary.Feedback;
 
 namespace SIMS.ViewSecretary
 {
@@ -261,6 +262,13 @@ namespace SIMS.ViewSecretary
                     MainFrame.Content = new ViewAccount();
                     Caption.Content = TranslationSource.Instance["AccountListItem"];
                     _caption = "AccountListItem";
+                    ListViewMenu.SelectedItem = null;
+                    break;
+                case "ItemFeedback":
+                    invokeProv.Invoke();
+                    MainFrame.Content = new ViewFeedback();
+                    Caption.Content = TranslationSource.Instance["Feedback"];
+                    _caption = "Feedback";
                     ListViewMenu.SelectedItem = null;
                     break;
             }

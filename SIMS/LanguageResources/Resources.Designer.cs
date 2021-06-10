@@ -439,6 +439,24 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feedback.
+        /// </summary>
+        internal static string Feedback {
+            get {
+                return ResourceManager.GetString("Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can input your feedback here..
+        /// </summary>
+        internal static string FeedbackDefaultText {
+            get {
+                return ResourceManager.GetString("FeedbackDefaultText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please fill in all fields..
         /// </summary>
         internal static string FillFieldsMessage {
@@ -912,6 +930,15 @@ namespace SIMS.LanguageResources {
         internal static string SelectRoleMessage {
             get {
                 return ResourceManager.GetString("SelectRoleMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SEND.
+        /// </summary>
+        internal static string SendCaps {
+            get {
+                return ResourceManager.GetString("SendCaps", resourceCulture);
             }
         }
         

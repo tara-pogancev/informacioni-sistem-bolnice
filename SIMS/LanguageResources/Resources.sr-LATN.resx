@@ -243,6 +243,12 @@
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Zakazivanje pregleda</value>
   </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Povratne informacije</value>
+  </data>
+  <data name="FeedbackDefaultText" xml:space="preserve">
+    <value>Ovde možete uneti vaše povratne informacije.</value>
+  </data>
   <data name="FillFieldsMessage" xml:space="preserve">
     <value>Molimo popunite sva polja.</value>
   </data>
@@ -307,7 +313,7 @@
     <value>Dodavanje novog odmora</value>
   </data>
   <data name="NotificationDefaultText" xml:space="preserve">
-    <value>Ovde mozete uneti vase obavestenje.</value>
+    <value>Ovde možete uneti vaše obaveštenje.</value>
   </data>
   <data name="Notifications" xml:space="preserve">
     <value>Obaveštenja</value>
@@ -401,6 +407,9 @@
   </data>
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Označite bar jednu ulogu.</value>
+  </data>
+  <data name="SendCaps" xml:space="preserve">
+    <value>POŠALJI</value>
   </data>
   <data name="SexColon" xml:space="preserve">
     <value>Pol:</value>
