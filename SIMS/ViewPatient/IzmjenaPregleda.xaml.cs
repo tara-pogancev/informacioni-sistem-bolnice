@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using SIMS.Service;
 using SIMS.Repositories.RoomRepo;
 using SIMS.Service.AppointmentServices;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
 {
@@ -78,44 +79,16 @@ namespace SIMS.PacijentGUI
         {
             Doctor chosenDoctor = (Doctor)Doktori.SelectedItem;
             String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
-            dostupniTermini = new ObservableCollection<string>(new ScheduleAppointmentService().GetAvailableTimeOfAppointment(chosenDoctor, chosenDate, pacijent));
+            dostupniTermini = new ObservableCollection<string>(new ScheduleAppointmentControler().GetAvailableTimeOfAppointment(chosenDoctor, chosenDate, pacijent));
             terminiLista.ItemsSource = dostupniTermini;
         }
 
-        private void PopuniDoktora()
-        {
-            int index = 0;
-            foreach (Doctor lekar in lekari)
-            {
-                if (lekar.Jmbg.Equals(OdabraniTerminZaIzmjenu.Doctor.Jmbg))
-                {
-                    break;
-                }
-                index++;
-            }
-            Doktori.SelectedIndex = index;
-        }
-
-        public void PopuniVrijeme()
-        {
-            int index = 0;
-            foreach (String moguceSatnice in dostupniTermini)
-            {
-                if (moguceSatnice.Equals(OdabraniTerminZaIzmjenu.GetAppointmentTime()))
-                {
-                    break;
-                }
-                index++;
-            }
-            terminiLista.SelectedIndex = index;
-        }
+        
 
         public void FillComboBoxes(Appointment termin)
         {
             OdabirDatuma.DisplayDate = termin.StartTime;
             OdabirDatuma.Text = termin.StartTime.ToString("dd.MM.yyyy.");
-            //PopuniDoktora();
-            //PopuniVrijeme();
             doktorSelektovan = true;
         }
 
@@ -191,7 +164,7 @@ namespace SIMS.PacijentGUI
             OdabraniTerminZaIzmjenu.Doctor.Jmbg = lekari[Doktori.SelectedIndex].Jmbg;
             OdabraniTerminZaIzmjenu.StartTime = DateTime.Parse(OdabirDatuma.Text + " " + terminiLista.Text);
             OdabraniTerminZaIzmjenu.Room = slobodneProstorije[0];
-            new AppointmentService().UpdateAppointment(OdabraniTerminZaIzmjenu);
+            new AppointmentController().UpdateAppointment(OdabraniTerminZaIzmjenu);
             
         }       
 

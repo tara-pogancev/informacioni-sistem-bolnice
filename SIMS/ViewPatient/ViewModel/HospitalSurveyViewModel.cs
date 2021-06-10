@@ -1,4 +1,5 @@
 ﻿using SIMS.Commands;
+using SIMS.Controller;
 using SIMS.Model;
 using SIMS.Repositories.AppointmentRepo;
 using SIMS.Repositories.HospitalSurveyRepo;
@@ -103,7 +104,7 @@ namespace SIMS.PacijentGUI.ViewModel
             hospitalSurvey.Answers.Add("pitanje4", questionFourAnswer);
             hospitalSurvey.Answers.Add("pitanje5", questionFiveAnswer);
             hospitalSurvey.NumberOfCheckups = brojZavrsenihPRegleda();
-            new HospitalSurveyFileRepository().Save(hospitalSurvey);
+            new HospitalSurveyController().SaveHospitalSurvey(hospitalSurvey);
             PocetnaStranica.getInstance().Anketa.Visibility = Visibility.Collapsed;
             PocetnaStranica.getInstance().frame.Content = new PocetniEkran(PocetnaStranica.getInstance().Pacijent);
         }

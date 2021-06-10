@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SIMS.Model;
+using SIMS.ViewManager;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -19,6 +21,8 @@ namespace SIMS.UpravnikGUI
     {
 
         private static UpravnikWindow _instance = new UpravnikWindow();
+
+        private Manager user;
         public static UpravnikWindow Instance
         {
             get
@@ -36,16 +40,17 @@ namespace SIMS.UpravnikGUI
             Sadrzaj.Content = page;
         }
 
+        public void AddUser(Manager user)
+        {
+            this.user = user;
+            UserLabel.Content = this.user.FullName;
+        }
+
         private UpravnikWindow()
         {
             InitializeComponent();
             SetContent(new UpravnikWelcomePage());
             SetLabel("Početna");
-        }
-
-        private void Zaposleni_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void Inventar_Click(object sender, RoutedEventArgs e)
@@ -60,19 +65,22 @@ namespace SIMS.UpravnikGUI
             SetLabel("Prostorije");
         }
 
-        private void Usluge_Click(object sender, RoutedEventArgs e)
+        private void Izvestaj_Click(object sender, RoutedEventArgs e)
         {
-
+            SetContent(new IzvestajPage());
+            SetLabel("Izveštaj o zauzetosti prostorija");
         }
 
         private void Nalog_Click(object sender, RoutedEventArgs e)
         {
-
+            SetContent(new NalogPage());
+            SetLabel("Podaci o nalogu");
         }
 
         private void Tutorijal_Click(object sender, RoutedEventArgs e)
         {
-
+            SetContent(new TutorialPage());
+            SetLabel("Tutorijal za promenu količine inventara");
         }
 
         private void Lekovi_Click(object sender, RoutedEventArgs e)
@@ -86,7 +94,22 @@ namespace SIMS.UpravnikGUI
             SetContent(new AlergeniPage());
             SetLabel("Alergeni");
         }
-        
+
+        private void Odjava_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Da li ste sigurni da želite da se odjavite?",
+                "Odjava", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                new MainWindow().Show();
+                this.Hide();
+            }
+        }
+
+        private void Feedback_Click(object sender, RoutedEventArgs e)
+        {
+            SetContent(new FeedbackPage());
+            SetLabel("Prijava grešaka i iskustava u vezi sa aplikacijom");
+        }
     }
 
 }

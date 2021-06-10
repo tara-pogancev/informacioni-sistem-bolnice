@@ -13,16 +13,16 @@
         <StackPanel>
             <Grid>
                 <Label Content="ID" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
-                <TextBox x:Name="IDText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
+                <TextBox x:Name="IDText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" Text="{Binding allergen.ID}" IsEnabled="{Binding idEnabled}" HorizontalAlignment="Right" Width="500"/>
             </Grid>
             <Grid>
                 <Label Content="Naziv" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}"/>
-                <TextBox x:Name="NazivText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" HorizontalAlignment="Right" Width="500"/>
+                <TextBox x:Name="NazivText" Margin="10,10" FontSize="20" FontFamily="Candara Bold" Text="{Binding allergen.Name}" HorizontalAlignment="Right" Width="500"/>
             </Grid>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button x:Name="Odustani" Content="Odustani"  Margin="20,20" Width="110" Height="35" Background="DarkRed" Click="Odustani_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
-            <Button Content="Ok"  Margin="20,20" Width="110" Height="35" Background="Green" Click="Ok_Click" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+            <Button x:Name="Odustani" Content="Odustani"  Margin="20,20" Width="110" Height="35" Background="DarkRed" Command="{Binding Path=Odustani}" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+            <Button Content="Ok"  Margin="20,20" Width="110" Height="35" Background="Green" Command="{Binding Path=Ok}" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
         </StackPanel>
 
     </Grid>

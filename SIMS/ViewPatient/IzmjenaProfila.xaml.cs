@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Controller;
 using SIMS.Model;
 using SIMS.Repositories.PatientRepo;
 
@@ -81,7 +82,7 @@ namespace SIMS.PacijentGUI
             pacijent.Phone = BrojTelefonaBox.Text;
             pacijent.Address.Street= AdresaBox.Text.Split(" ")[0];
             pacijent.Address.Number = AdresaBox.Text.Split(" ")[1];
-            new PatientFileRepository().Update(pacijent);
+            new PatientController().UpdatePatient(pacijent);
             NavigationService.GoBack();
 
         }

@@ -55,7 +55,7 @@
                         <Label Content="{Binding Anamneza.AnamnesisAppointment.Patient,Converter={cvt:UserFullNameConverter}}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label FontSize="15" Foreground="White"  FontWeight="Bold">Datum i vrijeme:</Label>
+                        <Label FontSize="15" Foreground="White"  FontWeight="Bold">Datum i time:</Label>
                         <Label Content="{Binding Anamneza.AnamnesisDate, StringFormat=dd.MM.yyyy.}" FontSize="15" Foreground="White"></Label>
                     </StackPanel>
 

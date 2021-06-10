@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.Controller;
 using SIMS.Enumerations;
 using SIMS.Model;
 using SIMS.Repositories.NotificationRepo;
@@ -80,8 +81,8 @@ namespace SIMS.PacijentGUI
             InitializeComponent();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             obavjestenja = new List<Notification>();
-            NotificationFileRepository obavestenjaStorage = new NotificationFileRepository();
-            obavjestenja = obavestenjaStorage.ReadPastNotificationsByUser(pacijent.Jmbg);
+            NotificationController obavestenjaController = new NotificationController();
+            obavjestenja = obavestenjaController.ReadPastNotificationsByUser(pacijent.Jmbg);
             
             obavjestenja.Reverse();
             //obavestenjeView = new ObservableCollection<Obavestenje>(listaObavestenja);

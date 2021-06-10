@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SIMS.Controller;
 using SIMS.Model;
 
 namespace SIMS.PacijentGUI
@@ -49,10 +50,10 @@ namespace SIMS.PacijentGUI
 
         private void Zakazi_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentFileRepository trm = new AppointmentFileRepository();
-            trm.Save(termini[PreporuceniTerminiTabela.SelectedIndex]);
+            AppointmentController appointmentController = new AppointmentController();
+            appointmentController.SaveAppointment(termini[PreporuceniTerminiTabela.SelectedIndex]);
             termini.Remove(termini[PreporuceniTerminiTabela.SelectedIndex]);
-            AppointmentFileRepository terminStorage = new AppointmentFileRepository();
+            
         }
     }
 }
