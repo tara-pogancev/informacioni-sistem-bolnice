@@ -169,5 +169,10 @@ namespace SIMS.Model
             get => GetDoctorName() + ", " + GetAppointmentTime() + " " + GetAppointmentDate();
         }
 
+        public bool SameStartTime(DateTime startTime)
+        {
+            return this.StartTime == startTime;
+        }
+
     }
 }

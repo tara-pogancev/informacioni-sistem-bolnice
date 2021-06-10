@@ -17,6 +17,7 @@ using SIMS.DTO;
 using SIMS.Model;
 using SIMS.Service.RecommendationAppointmentService;
 using System.Threading.Tasks;
+using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
 {
@@ -73,26 +74,26 @@ namespace SIMS.PacijentGUI
 
         private void preporuka()
         {
+            
 
             if (lekarChecked.IsChecked == true)
             {
-                RecommendedAppointmentDTO recommendedAppointmentDto = new RecommendedAppointmentDTO(
+                RecommendedAppointmentDTO recommendedAppointmentDTO = new RecommendedAppointmentDTO(
                     TypeOfRecommendation.DoctorRecommendation, lekari[ListaDoktora.SelectedIndex].Jmbg,
-                    (DateTime) PocetniDatum.SelectedDate, (DateTime) KrajnjiDatum.SelectedDate,
+                    (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
                     PocetnaStranica.getInstance().Pacijent.Jmbg);
-
-                RecommendationService recommendationService = new RecommendationService(recommendedAppointmentDto);
-                preporuceniTermini = recommendationService.GetRecommendedAppointments();
+                RecommendedAppointmentController recommendationController = new RecommendedAppointmentController();
+                preporuceniTermini = recommendationController.DoctorRecommendataion(recommendedAppointmentDTO);
             }
             else
             {
-                RecommendedAppointmentDTO recommendedAppointmentDto = new RecommendedAppointmentDTO(
-                    TypeOfRecommendation.DateRecommendation, "",
+                RecommendedAppointmentDTO recommendedAppointmentDTO = new RecommendedAppointmentDTO(
+                    TypeOfRecommendation.DoctorRecommendation,"",
                     (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
                     PocetnaStranica.getInstance().Pacijent.Jmbg);
-
-                RecommendationService recommendationService = new RecommendationService(recommendedAppointmentDto);
-                preporuceniTermini = recommendationService.GetRecommendedAppointments();
+                RecommendedAppointmentController recommendationController = new RecommendedAppointmentController();
+                preporuceniTermini = recommendationController.DateRecommendation(recommendedAppointmentDTO);
+                
             }
 
             

@@ -7,7 +7,7 @@ using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
-    class DoctorRecommendationPolicy
+    class DoctorRecommendationPolicy:IRecommendationStrategy
     {
 
         DateTime startDate;
@@ -46,15 +46,16 @@ namespace SIMS.Service.RecommendationAppointmentService
             RoomAvailabilityService roomAvailabilityService = new RoomAvailabilityService();
             for (int i = 0; i < recommendedAppointementsDrafts.Count; i++)
             {
-                if (recommendedAppointementsDrafts[i].TimeOfAppointment == appointment.StartTime || !roomAvailabilityService.IsFreeRoomExists(recommendedAppointementsDrafts[i].TimeOfAppointment))
+                if ( appointment.SameStartTime(recommendedAppointementsDrafts[i].TimeOfAppointment) || !roomAvailabilityService.IsFreeRoomExists(recommendedAppointementsDrafts[i].TimeOfAppointment))
                     recommendedAppointementsDrafts.RemoveAt(i);
             }
         }
 
-        public List<RecommendedAppointmentDraft> GetDoctorRecommendationDraft()
+        public List<Appointment> GetRecommendedAppointments()
         {
             RemoveReservedAppointments();
-            return recommendedAppointementsDrafts;
+            ITransformDraftToAppointment transformDraftToAppointment = new DoctorRecommendationDraftsTransformation();
+            return transformDraftToAppointment.TransformDraftToAppointment(recommendedAppointementsDrafts, patientID, doctorID);
         }
     }
 }

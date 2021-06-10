@@ -9,7 +9,7 @@ namespace SIMS.Service.RecommendationAppointmentService
     class RecommendedAppointmentFactory
     {
         List<TimeSpan> HoursOfRecommendAppointment;
-        List<RecommendedAppointmentDraft> AllPossibleRecommendation;
+        List<RecommendedAppointmentDraft> PossibleRecommendation;
         DateTime startDate;
         DateTime endDate;
 
@@ -18,16 +18,16 @@ namespace SIMS.Service.RecommendationAppointmentService
             this.startDate = startDate;
             this.endDate = endDate;
             HoursOfRecommendAppointment = new List<TimeSpan>() { new TimeSpan(8, 0, 0), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0) };
-            AllPossibleRecommendation = new List<RecommendedAppointmentDraft>();
+            PossibleRecommendation = new List<RecommendedAppointmentDraft>();
         }
 
         public List<RecommendedAppointmentDraft> getRecommendedAppointmentDrafts()
         {
             CreateAllPossibleRecommendedAppointments();
-            return AllPossibleRecommendation;
+            return PossibleRecommendation;
         }
 
-        public void CreateAllPossibleRecommendedAppointments()
+        private void CreateAllPossibleRecommendedAppointments()
         {
             int performanceConstraint = 0;
             while (startDate <= endDate && performanceConstraint<5)
@@ -43,7 +43,7 @@ namespace SIMS.Service.RecommendationAppointmentService
         {
             for (int i = 0; i < HoursOfRecommendAppointment.Count; i++)
             {
-                AllPossibleRecommendation.Add(new RecommendedAppointmentDraft(startDate + HoursOfRecommendAppointment[i]));
+                PossibleRecommendation.Add(new RecommendedAppointmentDraft(startDate + HoursOfRecommendAppointment[i]));
             }
         }
 
