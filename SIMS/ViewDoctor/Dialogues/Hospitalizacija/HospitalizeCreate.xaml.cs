@@ -41,6 +41,11 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoCreateHospitalization();
+        }
+
+        private void DoCreateHospitalization()
+        {
             if (ValidateForm())
             {
                 if (StartDate.SelectedDate > EndDate.SelectedDate)
@@ -73,6 +78,14 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
         private Room GetSelectedRoom()
         {
             return (Room)roomCombo.SelectedItem;
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateHospitalization();
         }
     }
 }

@@ -13,24 +13,6 @@
     "IDSubstitution": "l6",
     "ApprovalStatus": 2
   },
-  "l3": {
-    "MedicineID": "l3",
-    "MedicineName": "Prilenap",
-    "Components": [
-      {
-        "ID": "a2",
-        "Name": "Laktoza",
-        "Serialize": false
-      },
-      {
-        "ID": "a7",
-        "Name": "Titan-dioksid",
-        "Serialize": false
-      }
-    ],
-    "IDSubstitution": "l4",
-    "ApprovalStatus": 0
-  },
   "l4": {
     "MedicineID": "l4",
     "MedicineName": "Vivace",
@@ -39,9 +21,19 @@
         "ID": "a16",
         "Name": "Povidon 90",
         "Serialize": false
+      },
+      {
+        "ID": "a3",
+        "Name": "Ambrozija",
+        "Serialize": false
+      },
+      {
+        "ID": "a6",
+        "Name": "Ibuprofen",
+        "Serialize": false
       }
     ],
-    "IDSubstitution": "l5",
+    "IDSubstitution": "l3",
     "ApprovalStatus": 0
   },
   "l5": {

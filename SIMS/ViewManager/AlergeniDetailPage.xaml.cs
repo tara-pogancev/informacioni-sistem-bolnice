@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
+using SIMS.ViewManager.ViewModel;
 
 namespace SIMS.UpravnikGUI
 {
@@ -22,41 +23,17 @@ namespace SIMS.UpravnikGUI
     /// </summary>
     public partial class AlergeniDetailPage : Page
     {
-        Allergen allergen;
-        AllergenController allergenController = new AllergenController();
 
         public AlergeniDetailPage(string ID) //izmena postojecg alergena
         {
-            allergen = allergenController.GetAllergen(ID);
             InitializeComponent();
-
-            NazivText.Text = allergen.Name;
-            IDText.Text = allergen.ID;
-            IDText.IsEnabled = false;
+            this.DataContext = new AlergeniDetailPageViewModel(ID);
         }
 
         public AlergeniDetailPage() //nov alergen
         {
-            allergen = new Allergen();
             InitializeComponent();
-        }
-
-
-        private void Odustani_Click(object sender, RoutedEventArgs e)
-        {
-            UpravnikWindow.Instance.SetContent(new AlergeniPage());
-            UpravnikWindow.Instance.SetLabel("Alergeni");
-        }
-
-        private void Ok_Click(object sender, RoutedEventArgs e)
-        {
-            allergen.Name = NazivText.Text;
-            allergen.ID = IDText.Text;
-
-            allergenController.CreateOrUpdate(allergen);
-
-            UpravnikWindow.Instance.SetContent(new AlergeniPage());
-            UpravnikWindow.Instance.SetLabel("Alergeni");
+            this.DataContext = new AlergeniDetailPageViewModel();
         }
     }
 }

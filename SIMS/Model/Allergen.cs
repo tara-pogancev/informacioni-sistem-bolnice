@@ -11,6 +11,8 @@ namespace SIMS.Model
         public bool Serialize { get; set; }
         public Allergen()
         {
+            ID = "";
+            Name = "";
         }
 
         public Allergen(string ID, string Naziv)

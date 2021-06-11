@@ -3,8 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:SIMS.ViewPatient"
       mc:Ignorable="d" 
+      xmlns:cvt="clr-namespace:SIMS.ViewConverters"
+      xmlns:validationRules="clr-namespace:SIMS.ViewPatient.ValidationRules"
       d:DesignHeight="550" d:DesignWidth="800"
       Title="IzmjenaProfila">
     <Page.Resources>
@@ -62,6 +64,7 @@
 
                                 <StackPanel>
 
+
                                     <StackPanel Margin="70,0,40,0">
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Ime i prezime:</Label>
@@ -73,27 +76,98 @@
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Datum rođenja:</Label>
-                                            <Label FontSize="13"   Padding="0,0,0,0"   Content="{Binding Pacijent.DateString, Mode=OneTime}" VerticalAlignment="Center" Foreground="White"  />
+                                            <Label FontSize="13"   Padding="0,0,0,0"   Content="{Binding Pacijent.DateOfBirth,StringFormat=dd.MM.yyyy.,Mode=OneTime}" VerticalAlignment="Center" Foreground="White"  />
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">E-mail:</Label>
-                                            <TextBox FontSize="13" Width="200"   Padding="0,0,0,0"  Name="EmailBox"  Text="{Binding Pacijent.Email}" VerticalAlignment="Center" Foreground="White" />
+                                            <TextBox FontSize="13" Width="200"  
+                                                     Padding="0,0,0,0" 
+                                                     Name="EmailBox"
+                                                     VerticalAlignment="Center" 
+                                                     Validation.Error="Save_Error"
+                                                     Foreground="White" >  
+                                                <TextBox.Text>
+                                                    <Binding Path="Pacijent.Email"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validationRules:MailRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                            </TextBox.Text>
+                                            </TextBox>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Korisničko ime:</Label>
-                                            <TextBox FontSize="13" Width="150"   Padding="0,0,0,0" Name="KorisnickoImeBox"  Text="{Binding Pacijent.Username}" VerticalAlignment="Center" Foreground="White" />
+                                            <TextBox FontSize="13" Width="150"  
+                                                     Padding="0,0,0,0"
+                                                     Name="KorisnickoImeBox" 
+                                                     Validation.Error="Save_Error"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="White" >
+                                                <TextBox.Text>
+                                                    <Binding Path="Pacijent.Username"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validationRules:NoEmptyRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Lozinka:</Label>
-                                            <TextBox FontSize="13"  Width="200"  Padding="0,0,0,0" Name="LozinkaBox"  Text="{Binding Pacijent.Password}" VerticalAlignment="Center" Foreground="White" />
+                                            <TextBox FontSize="13" 
+                                                     Width="200" 
+                                                     Padding="0,0,0,0"
+                                                     Name="LozinkaBox" 
+                                                     Validation.Error="Save_Error"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="White" 
+                                                     AutomationProperties.IsRequiredForForm="True" >
+                                                <TextBox.Text>
+                                                    <Binding Path="Pacijent.Password"  NotifyOnValidationError="true"  UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validationRules:NoEmptyRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                                </TextBox>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Broj telefona:</Label>
-                                            <TextBox FontSize="13" Width="200"  Padding="0,0,0,0"  Name="BrojTelefonaBox"  Text="{Binding Pacijent.Phone}" VerticalAlignment="Center" Foreground="White" />
+                                            <TextBox FontSize="13" 
+                                                     Width="200" 
+                                                     Validation.Error="Save_Error"
+                                                     Padding="0,0,0,0"  
+                                                     Name="BrojTelefonaBox" 
+                                                     VerticalAlignment="Center"
+                                                     Foreground="White">
+                                                <TextBox.Text>
+                                                    <Binding Path="Pacijent.Phone"  NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validationRules:OnlyNumversRule />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                            </TextBox>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal">
                                             <Label FontSize="14">Adresa:</Label>
-                                            <TextBox FontSize="13" Width="200"  Name="AdresaBox" Padding="0,0,0,0"   Text="{Binding Pacijent.FullAddressString, Mode=OneTime}" VerticalAlignment="Center" Foreground="White" />
+                                            <TextBox FontSize="13" 
+                                                     Width="200" 
+                                                     Name="AdresaBox"
+                                                     Padding="0,0,0,0" 
+                                                     Validation.Error="Save_Error"
+                                                     VerticalAlignment="Center" 
+                                                     
+                                                     Foreground="White" >
+                                                <TextBox.Text>
+                                                    <Binding Path="Pacijent.Address" Mode="TwoWay" Converter="{cvt:AddressConverter}" NotifyOnValidationError="true" UpdateSourceTrigger="PropertyChanged">
+                                                        <Binding.ValidationRules>
+                                                            <validationRules:AddressRule/>
+                                                            
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </TextBox.Text>
+                                                </TextBox>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Margin="20">
                                             <Button Width="60" Height="25" Padding="0" Name="Potvrdi" Click="Potvrdi_Click">Potvrdi</Button>
@@ -129,7 +203,7 @@
                     <Label Margin="8" FontSize="15"   Foreground="White" FontWeight="Bold">Karton vakcinacije</Label>
                     <DataGrid Width="350" VerticalScrollBarVisibility="Auto">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="200" Header="Naziv" Binding="{Binding ImeLekara}"/>
+                            <DataGridTextColumn Width="200" Header="Naziv vakcine" Binding="{Binding ImeLekara}"/>
                             <DataGridTextColumn Header="Datum" Binding="{Binding Datum}" />
                         </DataGrid.Columns>
                     </DataGrid>

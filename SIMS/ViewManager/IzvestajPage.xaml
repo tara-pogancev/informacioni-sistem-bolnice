@@ -1,0 +1,27 @@
+﻿<Page x:Class="SIMS.ViewManager.IzvestajPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:local="clr-namespace:SIMS.ViewManager" xmlns:local1="clr-namespace:SIMS.ViewManager.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="IzvestajPage">
+    <Page.DataContext>
+        <local1:IzvestajPageViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="#323D52">
+        <StackPanel>
+            <Label  Content="Od" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}" />
+            <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Od_DatePicker"  HorizontalAlignment="Left" SelectedDate = "{Binding pocetakInvervala, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"/>
+            <Label  Content="Do" Margin="10,10" FontSize="20" FontFamily="Candara Bold"  Foreground="White" Background="{x:Null}" />
+            <DatePicker FontSize="15"   Height="40"  Width="250" Margin="10,10" Name="Do_DatePicker"  HorizontalAlignment="Left" SelectedDate = "{Binding krajIntervala, Mode=TwoWay, TargetNullValue={x:Static System:DateTime.Now}}"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="Prikaži"  Margin="20,20" Width="110" Height="35" Background="Green" Command="{Binding Path=Klik}" FontFamily="Candara" FontSize="18" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Cursor="Hand" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

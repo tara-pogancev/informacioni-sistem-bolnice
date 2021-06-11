@@ -11,7 +11,7 @@ namespace SIMS.ViewSecretary.Notifications
     public partial class ViewNotifications : Page
     {
         private Secretary _secretary;
-        private ObservableCollection<Notification> _notifications;
+        public ObservableCollection<Notification> _notifications { get; }
         private List<Patient> _patients;
         private List<Doctor> _doctors;
         private List<Secretary> _secretaries;
@@ -93,7 +93,7 @@ namespace SIMS.ViewSecretary.Notifications
         {
             if (rolesComboBox.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Oznacite bar jednu ulogu.", "Nema uloge");
+                CustomMessageBox.Show(TranslationSource.Instance["SelectRoleMessage"]);
                 return;
             }
             List<string> targets = CreateNotificationTargetsFromUserInput();
@@ -103,6 +103,7 @@ namespace SIMS.ViewSecretary.Notifications
             notificationController.SaveNotification(notification);
 
             _notifications.Insert(0, notification);
+            notificationViewer.ItemsSource = _notifications;
 
             notificationTextBox.Text = "Ovde mozete uneti vase obavestenje.";
             rolesComboBox.SelectedItems.Clear();
@@ -147,7 +148,7 @@ namespace SIMS.ViewSecretary.Notifications
             }
             _notifications.Remove(toDelete);
             notificationController.DeleteNotification(toDelete.ID);
-
+            notificationViewer.ItemsSource = _notifications;
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)

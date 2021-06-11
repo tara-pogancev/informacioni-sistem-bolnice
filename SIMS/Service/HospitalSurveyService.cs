@@ -11,10 +11,12 @@ namespace SIMS.Service
     class HospitalSurveyService
     {
         private IHospitalSurveyRepository hospitalSurveyRepository;
+       
 
         public HospitalSurveyService()
         {
             hospitalSurveyRepository = new HospitalSurveyFileRepository();
+            
         }
 
         public List<HospitalSurvey> GetAllHospitalSurveys() => hospitalSurveyRepository.GetAll();
@@ -39,25 +41,6 @@ namespace SIMS.Service
                 }
             }
             return anketeBolnice;
-        }
-
-        public bool ShowSurveyToPatient(Patient patient)
-        {
-            List<HospitalSurvey> anketeBolnice = new HospitalSurveyService().GetPatientHospitalSurveys(patient);
-            if (anketeBolnice.Count == 0 || IsFiveAppointmentsPassed(anketeBolnice[anketeBolnice.Count - 1],patient) || IsThreeMonthsPassed(anketeBolnice[anketeBolnice.Count - 1]))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool IsThreeMonthsPassed(HospitalSurvey hospitalSurvey)
-        {
-            return hospitalSurvey.SubmissionDate.AddMonths(3)<DateTime.Now;
-        }
-        private bool IsFiveAppointmentsPassed(HospitalSurvey hospitalSurvey,Patient patient)
-        {
-            return Math.Abs(hospitalSurvey.NumberOfCheckups - new PatientAppointmentsService().GetNumberOfFinishedAppointments(patient)) > 5;
         }
     }
 }

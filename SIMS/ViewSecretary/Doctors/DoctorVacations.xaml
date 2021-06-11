@@ -4,19 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary.Doctors"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:ns="clr-namespace:SIMS"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
       Title="DoctorVacations">
 
     <Page.Resources>
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundColorPageText}"/>
             <Setter Property="FontFamily" Value="Candara"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </Page.Resources>
 
-    <Grid Background="#FF323D52">
+    <Grid Background="{DynamicResource BackgroundColorPage}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="130"/>
             <ColumnDefinition/>
@@ -34,10 +37,10 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Doktor:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
-            <Label Content="Slobodni dani:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="Pocetak odmora:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="Kraj odmora:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc DoctorColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationDaysColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationStartColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc VacationEndColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -53,26 +56,32 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
-                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox"  DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
-                     SelectionChanged="DoctorChanged" Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+                <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox" ItemsSource="{Binding Doctors}" SelectedItem="{Binding DoctorToUpdate}" SelectedIndex="{Binding DoctorSelectedIndex}" DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
+                      Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding DoctorChangedCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
 
-                <TextBox Grid.Row="3" Margin="30,0,0,0" x:Name="vacationDaysTextBox" Width="260" Height="30" HorizontalAlignment="Left" />
+                <TextBox Grid.Row="3" Margin="30,0,0,0" x:Name="vacationDaysTextBox" Text="{Binding VacationDays, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="260" Height="30" HorizontalAlignment="Left" />
 
-                <DatePicker Grid.Row ="4" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="startDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="4" Height="25" SelectedDate="{Binding SelectedDateStart, Mode=TwoWay}" Text="{Binding SelectedDateTextStart, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="startDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
 
-                <DatePicker Grid.Row ="5" Height="25" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" />
+                <DatePicker Grid.Row ="5" Height="25" SelectedDate="{Binding SelectedDateEnd, Mode=TwoWay}" Text="{Binding SelectedDateTextEnd, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
                 
                 <StackPanel Grid.Row="6" Grid.RowSpan="2" Orientation="Horizontal">
-                    <Button Content="ODUSTANI" Click="Quit_Click" Width="100"
+                    <Button Content="{ns:Loc QuitCaps}" Command="{Binding QuitCommand}" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
-                    <Button Content="DODAJ" Click="AddVacation_Click" Width="100"
+                    <Button Content="{ns:Loc AddCaps}" Command="{Binding AddVacationCommand}" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>
                 </StackPanel>
 
                 <Grid Margin="-120,0,0,0" Grid.RowSpan="2">
-                    <Label Content="Dodavanje novog odmora" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="#FF57D6B4" FontWeight="ExtraLight"/>
+                    <Label Content="{ns:Loc NewVacationAdding}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                 </Grid>
             </Grid>
         </Grid>

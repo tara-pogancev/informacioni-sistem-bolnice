@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
         Title="Pregled dostupnih lekova" Height="500" Width="700">
 
     <Window.Resources>

@@ -45,8 +45,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="1" Background="#292C3B">
-                        <Label Foreground="Wheat" FontSize="30" Margin="35,0,0,0"> Dobrodosli</Label>
-                        <Label Foreground="Wheat" FontSize="30" Margin="195,0,0,0" Content="{Binding Pacijent.Name}"/>
+                        <Label Foreground="White" FontSize="30" Margin="35,0,0,0"> Dobrodosli</Label>
+                        <Label Foreground="White" FontSize="30" Margin="195,0,0,0" Content="{Binding Pacijent.Name}"/>
 
 
                     </Grid>
@@ -61,21 +61,28 @@
 
                         <Grid Grid.Row="0" >
                             <StackPanel Orientation="Horizontal" Height="50"  HorizontalAlignment="Right" Name="StackPanelLinija">
+
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="AppFeedback"  Click="AppFeedback_OnClick" ToolTip="Anketa"  Visibility="Visible">
+                                    <materialDesign:PackIcon Kind="Feedback" Width="40" Height="30"/>
+                                </Button>
+
+
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Anketa"  Click="Anketa_Click" ToolTip="Anketa"  Visibility="Collapsed">
                                     <materialDesign:PackIcon Kind="FileQuestion" Width="40" Height="30"/>
                                 </Button>
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" Click="DemoMode_Click" >
+
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" ToolTip="Demo mod"  Click="DemoMode_Click" >
                                     <materialDesign:PackIcon Kind="AcademicCap" Width="40" Height="30"/>
                                 </Button>
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" Click="Zvonce_Click">
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Zvonce" ToolTip="Obavještenja"  Click="Zvonce_Click">
                                     <materialDesign:PackIcon Kind="Bell" Width="40" Height="27" />
                                 </Button>
                                 
-                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Profil" Click="Profil_Click">
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Profil" ToolTip="Profil" Click="Profil_Click">
                                     <materialDesign:PackIcon Kind="User" Width="40" Height="30"/>
                                 </Button>
                                 
-                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5" Name="Iskljucivanje" Click="Iskljucivanje_Click">
+                                    <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Margin="5,5,5,5" Name="Iskljucivanje" ToolTip="Odjavi se" Click="Iskljucivanje_Click">
                                         <materialDesign:PackIcon Kind="Power"  Width="40" Height="30" />
                                     </Button>
 

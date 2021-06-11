@@ -77,7 +77,7 @@ namespace SIMS
             Manager upravnik = ManagerFileRepository.Instance.ReadUser(user);
             if (upravnik != null && pass.Equals(upravnik.Password))
             {
-                ManagerLogin();
+                ManagerLogin(upravnik);
                 return;
             }
 
@@ -108,9 +108,10 @@ namespace SIMS
             pass = lastLogged.Password;
         }
 
-        private void ManagerLogin()
+        private void ManagerLogin(Manager upravnik)
         {
             UpravnikWindow.Instance.Show();
+            UpravnikWindow.Instance.AddUser(upravnik);
             this.Close();
         }
 

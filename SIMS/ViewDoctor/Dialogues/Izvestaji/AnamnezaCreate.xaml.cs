@@ -27,11 +27,12 @@ namespace SIMS.LekarGUI
         private AppointmentController appointmentController = new AppointmentController();
         private AnamnesisController anamnesisController = new AnamnesisController();
 
-        public AnamnesisCreate(Appointment appointment)
+        public AnamnesisCreate(Appointment appointmentPar)
         {
             InitializeComponent();
 
-            this.appointment = appointment;
+            appointment = appointmentPar;
+            appointment.InitData();
 
             LabelDoctor.Content = "Doktor: " + appointment.GetDoctorName();
             LabelDate.Content = "Datum pregleda: " + appointment.GetAppointmentDate();
@@ -41,6 +42,11 @@ namespace SIMS.LekarGUI
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
+        {
+            DoCreateAnamnesis();
+        }
+
+        private void DoCreateAnamnesis()
         {
             if (ValidateForm())
                 MessageBox.Show("Molimo popunite sva obavezna polja!");
@@ -63,6 +69,14 @@ namespace SIMS.LekarGUI
         private bool ValidateForm()
         {
             return txt1.Text.Equals("") || txt2.Text.Equals("") || txt3.Text.Equals("");
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateAnamnesis();
         }
     }
 }

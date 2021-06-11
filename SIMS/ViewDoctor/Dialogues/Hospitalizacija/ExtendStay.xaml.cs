@@ -37,6 +37,11 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
+            DoExtendStay();
+        }
+
+        private void DoExtendStay()
+        {
             if (ValidateForm())
                 MessageBox.Show("Nije odabran validan datum. Molimo odaberite datum nakon trenutnog završnog datuma hospitalizacije.");
 
@@ -56,6 +61,14 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
             this.Close();
             MessageBox.Show("Boravak uspešno produžen!");
             DoctorUI.GetInstance().SellectedTab.Content = new PatientHospitalizationPage(hospitalization.Patient);
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoExtendStay();
         }
     }
 }

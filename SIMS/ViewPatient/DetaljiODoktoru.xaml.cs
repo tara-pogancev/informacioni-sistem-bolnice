@@ -24,5 +24,10 @@ namespace SIMS.ViewPatient
             InitializeComponent();
             this.DataContext =detailsViewModel;
         }
+
+        private void Nazad_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

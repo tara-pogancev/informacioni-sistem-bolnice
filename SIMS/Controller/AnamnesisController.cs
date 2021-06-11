@@ -46,5 +46,8 @@ namespace SIMS.Controller
             return anamnesisService.GetDTOFromList(list);
         }
 
+        public List<Anamnesis> GetListForPatientByDate(Patient patient, DateTime startDate, DateTime endDate) 
+            => anamnesisService.GetListForPatientByDate(patient, startDate, endDate);
+
     }
 }

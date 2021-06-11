@@ -24,6 +24,7 @@ namespace SIMS.UpravnikGUI
     public partial class RenoviranjePage : Page
     {
         private Room room;
+        private RoomAvailibilityController roomAvailibilityController = new RoomAvailibilityController();
         private RoomController roomController = new RoomController();
         public RenoviranjePage(string BrojProstorije)
         {
@@ -40,15 +41,8 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ScheduleRenovation();
-            }
-            catch (RenovationAppointmentOverlapException)
-            {
-                MessageBox.Show("Termini renoviranja se poklapaju sa zakazanim pregledima!");
-                return;
-            }
+            
+            ScheduleRenovation();
             MergeRoomsSelection();
         }
 
@@ -58,7 +52,7 @@ namespace SIMS.UpravnikGUI
             {
                 room.RenovationStart = Pocetak.SelectedDate;
                 room.RenovationEnd = Kraj.SelectedDate;
-                roomController.Renovate(room);
+                roomAvailibilityController.Renovate(room);
             }
         }
 

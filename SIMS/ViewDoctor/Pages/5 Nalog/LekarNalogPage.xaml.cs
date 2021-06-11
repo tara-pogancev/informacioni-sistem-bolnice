@@ -26,32 +26,21 @@ namespace SIMS.LekarGUI
 
     public partial class DoctorAccountPage : Page
     {
-        public static DoctorAccountPage instance;
-
-        private static Doctor doctorUser = DoctorUI.GetInstance().GetUser();
+        private Doctor doctorUser = DoctorUI.GetInstance().GetUser();
         private LastLoginController loginController = new LastLoginController();
-
-        public static DoctorAccountPage GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new DoctorAccountPage();
-            }
-            return instance;
-        }
 
         public DoctorAccountPage()
         {
             InitializeComponent();
+            LabelName.Content = doctorUser.FullName;
+            LabelUsername.Content = "Korisničko ime: " + doctorUser.Username;
+            LabelEmail.Content = "Mejl adresa: " + doctorUser.Email;
+            LabelPhone.Content = "Telefon: " + doctorUser.Phone;
+            LabelAddress.Content = "Adresa: " + doctorUser.AddressString;
 
             if (loginController.IsSelfLastLogged(doctorUser))
                 RememberMeCheckbox.IsChecked = true;
 
-        }
-
-        public void RemoveInstance()
-        {
-            instance = null;
         }
 
         private void Button(object sender, RoutedEventArgs e)
@@ -67,7 +56,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonChangeAccount(object sender, RoutedEventArgs e)
         {
-
+            new AccountPreferences().ShowDialog();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)

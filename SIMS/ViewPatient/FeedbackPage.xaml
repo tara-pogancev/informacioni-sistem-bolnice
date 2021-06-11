@@ -1,0 +1,62 @@
+﻿<Page x:Class="SIMS.ViewPatient.FeedbackPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS.ViewPatient"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="FeedbackPage">
+    <Page.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+    </Page.Resources>
+    <Grid Margin="15">
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Label FontSize="25" Foreground="White" HorizontalAlignment="Center" Margin="20">Ocjenite aplikaciju</Label>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontSize="18" Foreground="White" Margin="0,20,0,0" FontWeight="Bold">Ocijenite rad aplikacije:</Label>
+                        <materialDesign:RatingBar x:Name="BasicRatingBar" Value="3" Margin="5,25,0,0"  />
+                    </StackPanel>
+                    <Label Foreground="White" FontSize="15" FontWeight="Bold" Content="Vaš komentar" Margin="0,25,0,0"/>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="2">
+
+                <ScrollViewer VerticalScrollBarVisibility="Hidden"  Height="150" Name="Scroler"/>
+                <Border x:Name="debugPanel" Background="#4e6082" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Margin="0,0,20,130" >
+
+                    <TextBox x:Name="Komentar"  AcceptsReturn="True" TextWrapping="Wrap"  materialDesign:HintAssist.Hint="Unesite Vaš komentar"  Foreground="White" materialDesign:HintAssist.IsFloating="False"
+                    materialDesign:HintAssist.HintOpacity="1" materialDesign:HintAssist.Foreground="White" />
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="175,220,0,0">
+                    <Button Width="150"  Name="Posalji" Click="Posalji_OnClick">Potvrdi</Button>
+                    <Button Width="150" Margin="120,0,0,0" Name="Otkazi" Click="Otkazi_OnClick">Otkaži</Button>
+                </StackPanel>
+                
+
+
+            </Grid>
+        </Grid>
+        </Grid>
+</Page>

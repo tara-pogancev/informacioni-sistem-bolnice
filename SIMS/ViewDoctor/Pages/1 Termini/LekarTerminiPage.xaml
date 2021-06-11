@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.LekarGUI"
       mc:Ignorable="d" 
+      KeyDown="WindowKeyListener"
       d:DesignHeight="550" d:DesignWidth="840"
       Title="LekarTerminiPage">
 

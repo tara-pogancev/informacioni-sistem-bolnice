@@ -17,27 +17,27 @@
       "Astma"
     ],
     "ChosenDoctor": {
-      "VacationDays": 15,
+      "VacationDays": 18,
       "Grade": 0.0,
-      "DoctorSpecialization": 2,
+      "DoctorSpecialization": 0,
       "VacationPeriods": [],
-      "Name": "Tara",
-      "LastName": "Pogančev",
-      "Jmbg": "045210805048",
-      "Username": "l",
+      "Name": "Cloud",
+      "LastName": "Strife",
+      "Jmbg": "22157484654211",
+      "Username": "cloud",
       "Password": "l",
-      "Email": "tarapogancev@gmail.com",
-      "Phone": "629998425",
+      "Email": "fluffy@clouds.com",
+      "Phone": "0640005481",
       "Address": {
         "City": {
-          "Name": "Novi Sad",
-          "PostalCode": 21400,
+          "Name": "Nibelheim",
+          "PostalCode": 33654,
           "Country": {
-            "Name": "Srbija"
+            "Name": "Gaia"
           }
         },
-        "Street": "Bulevar Despota Stefana",
-        "Number": "7"
+        "Street": "Main Town Square",
+        "Number": "5"
       },
       "Serialize": true
     },
@@ -46,18 +46,16 @@
     "Jmbg": "4865453131",
     "Username": "pacijent",
     "Password": "p",
-    "Email": "djordje1499@gmail.com",
-    "Phone": "0645568131",
+    "Email": "djordje1499@gmal.com",
+    "Phone": "0645569530",
     "Address": {
       "City": {
         "Name": "Novi Sad",
-        "PostalCode": 21000,
-        "Country": {
-          "Name": "Srbija"
-        }
+        "PostalCode": 0,
+        "Country": null
       },
-      "Street": "Stara",
-      "Number": "Planina,"
+      "Street": "Alekse Šantića",
+      "Number": "4"
     },
     "Serialize": true
   },

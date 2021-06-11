@@ -32,9 +32,6 @@ namespace SIMS.Controller
             roomService.MergeRooms(room1, room2);
         }
 
-        public void Renovate(Room room)
-        {
-            roomService.Renovate(room);
-        }
+        
     }
 }

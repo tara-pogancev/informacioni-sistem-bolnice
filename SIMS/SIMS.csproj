@@ -18,6 +18,9 @@
     <None Remove="src\Illustrations\bed_sleep.png" />
     <None Remove="src\Illustrations\moon.png" />
     <None Remove="src\Illustrations\sleep.png" />
+    <None Remove="src\logo_light.png" />
+    <None Remove="src\logo_standalone_light.png" />
+    <None Remove="src\logo_title.png" />
     <None Remove="src\PhotoReminder.png" />
     <None Remove="src\pozadina.jpg" />
     <None Remove="src\pozadina3.png" />
@@ -59,7 +62,6 @@
     <None Remove="src\logo_glow_tr.png" />
     <None Remove="src\logo_h.png" />
     <None Remove="src\logo_h_small.png" />
-    <None Remove="src\logo_title.png" />
     <None Remove="src\max_window.png" />
     <None Remove="src\menu.png" />
     <None Remove="src\minimize.png" />
@@ -108,6 +110,9 @@
     <Resource Include="src\Illustrations\reading_on_a_chair.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="src\logo_light.png" />
+    <Resource Include="src\logo_standalone_light.png" />
+    <Resource Include="src\logo_title.png" />
     <Resource Include="src\PhotoReminder.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -161,7 +166,6 @@
     <Resource Include="src\logo_glow_tr.png" />
     <Resource Include="src\logo_h.png" />
     <Resource Include="src\logo_h_small.png" />
-    <Resource Include="src\logo_title.png" />
     <Resource Include="src\max_window.png" />
     <Resource Include="src\menu.png" />
     <Resource Include="src\minimize.png" />
@@ -209,6 +213,25 @@
     <Page Update="ViewDoctor\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewDoctor\ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="LanguageResources\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="LanguageResources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

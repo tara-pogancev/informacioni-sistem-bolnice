@@ -77,11 +77,19 @@ namespace SIMS.LekarGUI
             {
                 Appointment appointnment = GetSelectedReport();
 
-                if (appointnment.Type == AppointmentType.examination)
-                    ShowAppointmentAnamnesis(appointnment);
-
+                if (appointnment == null)
+                {
+                    MessageBox.Show("Greška prilikom otvaranja izveštaja! Molimo proverite interne fajlove.");
+                } 
                 else
-                    ShowSurgeryReport(appointnment);
+                {
+                    if (appointnment.Type == AppointmentType.examination)
+                        ShowAppointmentAnamnesis(appointnment);
+
+                    else
+                        ShowSurgeryReport(appointnment);
+                }                      
+                
             }
         }
 

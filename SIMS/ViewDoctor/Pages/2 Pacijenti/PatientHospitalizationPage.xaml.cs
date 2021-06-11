@@ -36,6 +36,7 @@ namespace SIMS.ViewDoctor.Pages
             hospitalization = hospitalizationController.GetPatientCurrentHospitalization(patient);
             hospitalization.InitData();
 
+            LabelNameTop.Content = patient.FullName;
             LabelName.Content = patient.FullName;
             LabelLeadDoctor.Content = "Glavni lekar: " +  hospitalization.LeadDoctor.FullName;
             LabelRoom.Content = "Prostorija: " + hospitalization.Room.Number;
@@ -62,7 +63,7 @@ namespace SIMS.ViewDoctor.Pages
 
         private void ButtonPatientHealthRecord(object sender, MouseButtonEventArgs e)
         {
-            DoctorUI.GetInstance().SellectedTab.Content = PatientRecordCheck.GetInstance(patient);
+            DoctorUI.GetInstance().SellectedTab.Content = new PatientRecordCheck(patient);
         }
 
         private void ButtonHome(object sender, MouseButtonEventArgs e)

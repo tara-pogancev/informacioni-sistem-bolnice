@@ -156,14 +156,14 @@ namespace SIMS
                     }
                 case 4:
                     {
-                        SellectedTab.Content = DoctorInverntoyPage.GetInstance();
+                        SellectedTab.Content = new DoctorInverntoyPage();
                         ResetActiveButtons();
                         B4.Fill = sellectedTab;
                         break;
                     }
                 case 5:
                     {
-                        SellectedTab.Content = DoctorAccountPage.GetInstance();
+                        SellectedTab.Content = new DoctorAccountPage();
                         ResetActiveButtons();
                         B5.Fill = sellectedTab;
                         break;
@@ -226,14 +226,8 @@ namespace SIMS
 
         private static void RemoveAllInstances()
         {
-            if (DoctorInverntoyPage.GetInstance() != null)
-                DoctorInverntoyPage.GetInstance().RemoveInstance();
-
             if (DoctorPatientViewPage.GetInstance() != null)
                 DoctorPatientViewPage.GetInstance().RemoveInstance();
-
-            if (DoctorAccountPage.GetInstance() != null)
-                DoctorAccountPage.GetInstance().RemoveInstance();
 
             if (DoctorAppointmentsPage.GetInstance() != null)
                 DoctorAppointmentsPage.GetInstance().RemoveInstance();

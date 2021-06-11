@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.Model"
+      xmlns:ns="clr-namespace:SIMS"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
@@ -19,7 +20,7 @@
     </Page.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
-        <Grid Background="#FF323D52">
+        <Grid Background="{DynamicResource BackgroundColorPage}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition/>
@@ -51,24 +52,24 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Prezime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Datum rodjenja:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Pol:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Krvna grupa:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Jmbg:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Korisnicko ime:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="8" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Lozinka:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="9" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Email:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="10" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Telefon:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="11" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Adresa:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="12" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Grad:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="13" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Postanski broj:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="14" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Drzava:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="15" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Lbo:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="16" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Alergeni:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="17" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Hronicne bolesti:" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="18" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
-                <Label Content="Gost:" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="19" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="White"/>
+                <Label Content="{ns:Loc NameColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc LastNameColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc BirthDateColon}" HorizontalAlignment="Right" Margin="5,0,10,0" Grid.Row="4" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc SexColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc BloodTypeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc JmbgColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc UsernameColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="8" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc PasswordColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="9" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc EmailColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="10" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc PhoneNumberColon}" HorizontalAlignment="Right" Margin="5,0,10,0" Grid.Row="11" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc AdressColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="12" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc CityColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="13" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc PostalCodeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="14" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc CountryColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="15" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc LboColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="16" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc AllergensColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="17" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc ChronicPainsColon}" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="18" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <Label Content="{ns:Loc GuestColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="19" VerticalAlignment="Center" FontSize="14" FontFamily="Candara" Foreground="{DynamicResource ForegroundColorPageText}"/>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -98,7 +99,7 @@
                         <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
 
-                    <Border Grid.Row="2" Grid.RowSpan="18" BorderThickness="1,0,0,0" BorderBrush="#FF292C3B"/>
+                    <Border Grid.Row="2" Grid.RowSpan="18" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                     <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
                     <TextBox x:Name="lastNameTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left"/>
@@ -129,12 +130,12 @@
                     <CheckBox x:Name="guestCheckBox" HorizontalAlignment="Left" Grid.Row="19" Margin="145,15,0,0" Width="260" Height="30" FontFamily="Candara" FontSize="14" Content=""/>
 
                     <StackPanel Grid.Row="20"  Grid.RowSpan="2" Orientation="Horizontal">
-                        <Button Content="OTKAZI" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
-                        <Button Content="IZMENI" Click="UpdatePatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
+                        <Button Content="{ns:Loc CancelCaps}" Click="Quit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0" Style="{StaticResource RedButton}" Template="{StaticResource BasicButton}"/>
+                        <Button Content="{ns:Loc UpdateCaps}" Click="UpdatePatient_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,20,0,0" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}"/>
                     </StackPanel>
 
                     <Grid Margin="-100,-20,0,0" Grid.RowSpan="2">
-                        <Label Content="Izmena pacijenta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="#FF01C38D" FontWeight="ExtraLight"/>
+                        <Label Content="{ns:Loc PatientUpdate}" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Candara" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
                     </Grid>
                 </Grid>
             </Grid>

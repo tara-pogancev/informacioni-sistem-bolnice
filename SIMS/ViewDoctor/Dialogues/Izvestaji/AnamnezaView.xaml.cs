@@ -29,11 +29,13 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         {
             InitializeComponent();
             anamnesis = anamnesisPar;
-            anamnesis.GetAppointment().InitData();
-            Patient patient = patientController.GetPatient(anamnesis.GetAppointment().Patient.Jmbg);
+            Appointment appointment = anamnesis.GetAppointment();
+            appointment.InitData();
 
-            LabelDoctor.Content = "Doktor: " + anamnesis.GetAppointment().GetDoctorName();
-            LabelDate.Content = "Datum pregleda: " + anamnesis.GetAppointment().GetAppointmentDate();
+            Patient patient = patientController.GetPatient(appointment.Patient.Jmbg);
+
+            LabelDoctor.Content = "Doktor: " + appointment.GetDoctorName();
+            LabelDate.Content = "Datum pregleda: " + appointment.GetAppointmentDate();
 
             LabelPatient.Content = "Pacijent: " + patient.FullName;
             LabelPatientDateOfBirth.Content = "Datum rođenja: " + patient.GetDateOfBirthString();
@@ -95,6 +97,12 @@ namespace SIMS.LekarGUI.Dialogues.Izvestaji
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }

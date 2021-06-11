@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.DTO;
 using SIMS.Controller;
+using System.Windows.Input;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -11,7 +12,7 @@ namespace SIMS.ViewSecretary.Appointments
     {
         private static ViewAppointments _instance = null;
 
-        private ObservableCollection<AppointmentDTO> _appointmentsForView;
+        public ObservableCollection<AppointmentDTO> _appointmentsForView { get; }
         private AppointmentController appointmentController = new AppointmentController();
         private DoctorController doctorController = new DoctorController();
         private PatientController patientController = new PatientController();
@@ -29,7 +30,7 @@ namespace SIMS.ViewSecretary.Appointments
 
             this.DataContext = this;
             _appointmentsForView = new ObservableCollection<AppointmentDTO>();
-            appointmentsTable.ItemsSource = _appointmentsForView;
+            appointmentsView.ItemsSource = _appointmentsForView;
             RefreshView();
         }
 
@@ -43,6 +44,7 @@ namespace SIMS.ViewSecretary.Appointments
             {
                 _appointmentsForView.Add(new AppointmentDTO(appointment));
             }
+            appointmentsView.ItemsSource = _appointmentsForView;
         }
 
         private void AddExamination_Click(object sender, RoutedEventArgs e)
@@ -52,33 +54,35 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void AddOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddOperation());
+            this.NavigationService.Navigate(new AddSurgery());
         }
 
         private void UpdateAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (appointmentsTable.SelectedItem != null)
+            if (appointmentsView.SelectedItem != null)
             {
-                this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsTable.SelectedItem));
+                this.NavigationService.Navigate(new UpdateAppointment((Appointment)appointmentsView.SelectedItem));
+            }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["ChooseAppointmentToUpdateMessage"]);
             }
 
         }
 
         private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
-            if (appointmentsTable.SelectedItem != null)
+            if (appointmentsView.SelectedItem != null)
             {
+                Appointment toDelete = (Appointment)appointmentsView.SelectedItem;
+                appointmentController.DeleteAppointment(toDelete);
 
-                if (MessageBox.Show("Da li ste sigurni da želite da otkažete termin?",
-                "Otkaži termin", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    Appointment toDelete = (Appointment)appointmentsTable.SelectedItem;
-                    appointmentController.DeleteAppointment(toDelete);
-
-                    MessageBox.Show("Termin je uspešno otkazan!");
-                    RefreshView();
-                }
-
+                CustomMessageBox.Show(TranslationSource.Instance["AppointmentCanceledMessage"]);
+                RefreshView();
+            }
+            else
+            {
+                CustomMessageBox.Show(TranslationSource.Instance["ChooseAppointmentToCancelMessage"]);
             }
         }
 
@@ -89,7 +93,14 @@ namespace SIMS.ViewSecretary.Appointments
 
         private void AddUrgentOperation_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddUrgentOperation());
+            this.NavigationService.Navigate(new AddUrgentSurgery());
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Appointment details = (Appointment)appointmentsView.SelectedItem;
+            NavigationService.Navigate(new AppointmentDetails(details));
+
         }
 
         public void RemoveInstance()

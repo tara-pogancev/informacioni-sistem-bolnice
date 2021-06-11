@@ -19,7 +19,7 @@
     <Grid Background="#FF323D52">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="30">
-                <Button Width="150" Name="Nazad" Click="Nazad_Click">Nazad</Button>
+                <Button Width="150"  Name="Nazad" Click="Nazad_Click">Nazad</Button>
                 <Label HorizontalAlignment="Center" FontSize="20" Margin="150,0,0,0">Preporuceni termini</Label>
             </StackPanel>
             
@@ -34,7 +34,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Padding="0" Width="60" Name="Zakazi" Click="Zakazi_Click">Zakazi</Button>
+                                <Button Padding="0" Width="60" Background="#FF01C38D" Name="Zakazi" Click="Zakazi_Click">Zakaži</Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

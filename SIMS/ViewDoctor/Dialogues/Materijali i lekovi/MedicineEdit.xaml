@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Materijali_i_lekovi"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
         WindowStartupLocation="CenterScreen"
         Title="Izmena leka" Height="490" Width="550">
 

@@ -80,7 +80,7 @@
             </syncfusion:SfSchedule>
         </Grid>
         <Grid Grid.Row="3">
-            <Button  Command="{Binding Path=GenerisiIzvjestajCommand}" Width="150" Height="50" Margin="300,422,300,78"  >Generiši izvještaj</Button>
+            <Button ToolTip="Generisanje izvještaja za narednih 7 dana"  Command="{Binding Path=GenerisiIzvjestajCommand}" Width="150" Height="50" Margin="300,422,300,78"  >Generiši izvještaj</Button>
         </Grid>
       
     </Grid>

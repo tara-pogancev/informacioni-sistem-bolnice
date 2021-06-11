@@ -18,6 +18,7 @@ using SIMS.ViewPatient;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
+using System.Windows.Navigation;
 using SIMS.Controller;
 
 namespace SIMS.PacijentGUI
@@ -50,7 +51,7 @@ namespace SIMS.PacijentGUI
         public void kreirajAnketu()
         {
            
-            if (new HospitalSurveyController().ShowSurveyToPatient(patient))
+            if (new HospitalSurveyVisibilityController().ShowSurveyToPatient(patient))
             {
                 Anketa.Visibility = Visibility.Visible;
             }
@@ -71,7 +72,7 @@ namespace SIMS.PacijentGUI
         
             while (true)
             {
-                if (new NotificationController().ExistsUnreadNotification(Pacijent.Jmbg))
+                if (new NotificationVisibilityController().ExistsUnreadNotification(Pacijent.Jmbg))
                 {
                     this.Dispatcher.Invoke(() => {
                         Zvonce.Foreground = Brushes.Yellow;
@@ -100,7 +101,7 @@ namespace SIMS.PacijentGUI
         {
             frame.Navigate( new Obavjestenja());
             Zvonce.Foreground = Brushes.Gray;
-            new NotificationController().NotificationOpened(patient.Jmbg);
+            new NotificationVisibilityController().NotificationOpened(patient.Jmbg);
         }
 
         private void ListViewMenu_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -154,12 +155,15 @@ namespace SIMS.PacijentGUI
         private void DemoMode_Click(object sender, RoutedEventArgs e)
         {
             //zakazivanje termina
-            MessageBox.Show("Ulazak u demo mod");
+            ObavjestenjeOTerminu obavjestenje = new ObavjestenjeOTerminu();
+            obavjestenje.Naslov.Content = "Ulazak u demo mod";
+            obavjestenje.TekstObavjestenja.Text = "Radi boljeg iskustva u korišćenju aplikacije ne prekidajte demo do povratka na početni ekran.";
+            obavjestenje.ShowDialog();
             //Zakazi.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
 
-            
-            
-                Zakazi.Focus();
+
+
+            Zakazi.Focus();
                 ListViewMenu.SelectedIndex = 1;
                 ZakazivanjeTermina zakazivanje = ZakazivanjeTermina.getInstance();
                 zakazivanje.Pacijent = patient;
@@ -180,15 +184,10 @@ namespace SIMS.PacijentGUI
                 zakazivanje.Zakazivanje1.Children.Add(zakazivanjeTermina);
                 zakazivanjeTermina.ZakaziTerminDemo();
             
-            
-           
-            
-
-            
-
-
         }
-
-        
+        private void AppFeedback_OnClick(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new FeedbackPage(patient));
+        }
     }
 }

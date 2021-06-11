@@ -30,8 +30,9 @@ namespace SIMS.Repositories.SurgeryReportRepo
 
             foreach (SurgeryReport a in this.GetAll())
             {
-                if (a.GetSurgery().Patient.Jmbg == patient.Jmbg)
-                    retVal.Add(a);
+                if (a.GetSurgery() != null)
+                    if (a.GetSurgery().Patient.Jmbg == patient.Jmbg)
+                        retVal.Add(a);
             }
 
             return retVal;

@@ -98,6 +98,12 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
         private void AcceptButton(object sender, RoutedEventArgs e)
         {
+            DoCreateReferral();
+
+        }
+
+        private void DoCreateReferral()
+        {
             if (DoctorComboBox.SelectedItem != null)
             {
                 CreateRefferal();
@@ -111,7 +117,6 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             {
                 MessageBox.Show("Molimo izaberite doktora!");
             }
-
         }
 
         private void CreateRefferal()
@@ -129,6 +134,14 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
 
             Notification notification = new Notification(author, DateTime.Now, ("Izdat uput za pregled kod lekara " + doctor.FullName + ". Pogledajte ga na svom profilu."), target);
             notificationController.SaveNotification(notification);
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateReferral();
         }
     }
 }
