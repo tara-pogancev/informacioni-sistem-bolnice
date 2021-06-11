@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewDoctor\ViewModel\**" />
+    <EmbeddedResource Remove="ViewDoctor\ViewModel\**" />
+    <None Remove="ViewDoctor\ViewModel\**" />
+    <Page Remove="ViewDoctor\ViewModel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="src\Illustrations\bed_sleep.png" />
     <None Remove="src\Illustrations\moon.png" />
     <None Remove="src\Illustrations\sleep.png" />
@@ -202,10 +209,6 @@
     <Page Update="ViewDoctor\Pages\2 Pacijenti\PacijentDokumentacijaView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewDoctor\ViewModel\" />
   </ItemGroup>
 
 </Project>

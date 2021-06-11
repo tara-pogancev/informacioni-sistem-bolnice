@@ -46,11 +46,13 @@
                 <Label Content="Zapamti me prilikom sledeće prijave." Style="{StaticResource DefaultLabelS}" Padding="0"/>
             </StackPanel>
 
+            
 
-            <StackPanel Grid.Row="2" Margin="50,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Grid.Row="2" Margin="20,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
                 <Button Content="Izmeni podatke" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="ButtonChangeAccount"/>
                 <Button Content="Odjavi se" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="LogOut" Margin="20,0,0,0"/>
-                
+                <Button Content="Ocenite aplikaciju!" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="RateApplication" Margin="20,0,0,0"/>
+
             </StackPanel>
 
             <Image Grid.RowSpan="3" Source="../../../src/Illustrations/reading_on_a_chair.png" HorizontalAlignment="Right" Margin="0,0,50,0" MaxHeight="500"/>

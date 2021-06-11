@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Repositories.PatientRepo;
+using SIMS.ViewDoctor.Dialogues.Izmena_naloga;
 
 namespace SIMS.LekarGUI
 {
@@ -82,6 +83,11 @@ namespace SIMS.LekarGUI
         private void RememberMe(object sender, RoutedEventArgs e)
         {
             loginController.SaveLoggedUser((LoggedUser)doctorUser);
+        }
+
+        private void RateApplication(object sender, RoutedEventArgs e)
+        {
+            new RateApplicationDialog().ShowDialog();
         }
     }
 }
