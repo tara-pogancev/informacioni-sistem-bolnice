@@ -14,5 +14,7 @@ namespace SIMS.Controller
         {
             roomInventoryService.Update(roomNumber, inventoryID, amountMoved);
         }
+
+        public bool GetIfAvailableBeds(Room room) => roomInventoryService.GetIfAvailableBeds(room);
     }
 }

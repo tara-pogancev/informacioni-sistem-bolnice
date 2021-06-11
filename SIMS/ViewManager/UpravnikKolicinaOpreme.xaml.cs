@@ -43,7 +43,7 @@ namespace SIMS.UpravnikGUI
             ID.IsEnabled = false;
             Naziv.IsEnabled = false;
             Tip.IsEnabled = false;
-            Kolicina.Text = RoomInventoryFileRepository.Instance.Read(BrojProstorije, Oprema.ID).Kolicina.ToString();
+            Kolicina.Text = RoomInventoryFileRepository.Instance.Read(BrojProstorije, Oprema.ID).Quantity.ToString();
         }
 
         private void Plus_Click(object sender, RoutedEventArgs e)

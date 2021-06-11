@@ -35,7 +35,7 @@ namespace SIMS.Repositories.RoomRepo
 
             foreach (var prosInv in RoomInventoryFileRepository.Instance.ReadAll().Values)
             {
-                if (prosInv.BrojProstorije == key)
+                if (prosInv.RoomNumber == key)
                 {
                     RoomInventoryFileRepository.Instance.Delete(prosInv);
                 }

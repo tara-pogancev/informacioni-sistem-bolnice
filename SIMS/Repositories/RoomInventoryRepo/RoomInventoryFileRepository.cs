@@ -11,7 +11,7 @@ namespace SIMS.Repositories.RoomInventoryRepo
     {
         protected override string getKey(RoomInventory entity)
         {
-            return entity.BrojProstorije + "_" + entity.IdInventara;
+            return entity.RoomNumber + "_" + entity.ID;
         }
 
         protected override string getPath()

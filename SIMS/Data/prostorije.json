@@ -34,5 +34,14 @@
     "InventoryAmounts": {},
     "Available": true,
     "Serialize": true
+  },
+  "32": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 2,
+    "Number": "32",
+    "InventoryAmounts": {},
+    "Available": true,
+    "Serialize": true
   }
 }

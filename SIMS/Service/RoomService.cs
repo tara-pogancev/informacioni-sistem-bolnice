@@ -21,7 +21,18 @@ namespace SIMS.Service
         public Room GetRoom(String key) => roomRepository.FindById(key);
 		
         public List<Room> GetAllRooms() => roomRepository.GetAll();
-		
+
+        public List<Room> GetAllHospitalizationRooms()
+        {
+            List<Room> retVal = new List<Room>();
+            foreach (Room room in GetAllRooms())
+                if (room.RoomType == RoomType.bolesnicka)
+                    retVal.Add(room);
+
+            return retVal;
+
+        }
+
         public void CreateOrUpdate(Room room)
         {
             roomRepository.CreateOrUpdate(room);
@@ -82,16 +93,16 @@ namespace SIMS.Service
         {
             foreach (var roomInventory in roomInventoryRepository.GetAll())
             {
-                if (roomInventory.BrojProstorije == room2)
+                if (roomInventory.RoomNumber == room2)
                 {
-                    roomInventory.Kolicina += roomInventoryRepository.Read(room1, roomInventory.IdInventara).Kolicina;
+                    roomInventory.Quantity += roomInventoryRepository.Read(room1, roomInventory.ID).Quantity;
                     roomInventoryRepository.Update(roomInventory);
                 }
             }
 
             foreach (var roomInventory in roomInventoryRepository.GetAll())
             {
-                if (roomInventory.BrojProstorije == room1)
+                if (roomInventory.RoomNumber == room1)
                 {
                     roomInventoryRepository.Delete(roomInventory);
                 }

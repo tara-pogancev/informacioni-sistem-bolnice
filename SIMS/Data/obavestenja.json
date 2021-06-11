@@ -707,5 +707,38 @@
     ],
     "CheckStatus": true,
     "NotificationType": 1
+  },
+  "Tara Pogančev210611235539113525": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-11T23:55:39.1135253+02:00",
+    "Content": "Otpisni list hospitalizacije: //",
+    "ID": "Tara Pogančev210611235539113525",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210611235547884374": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-11T23:55:47.8843748+02:00",
+    "Content": "Otpisni list hospitalizacije: //",
+    "ID": "Tara Pogančev210611235547884374",
+    "Target": [
+      "12645323206"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210611235554621298": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-11T23:55:54.6212983+02:00",
+    "Content": "Otpisni list hospitalizacije: //",
+    "ID": "Tara Pogančev210611235554621298",
+    "Target": [
+      "12121977802342"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }

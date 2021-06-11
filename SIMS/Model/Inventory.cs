@@ -36,7 +36,7 @@ namespace SIMS.Model
                 {
                     return 0;
                 }
-                return RoomInventoryFileRepository.Instance.Read(RoomNumber, ID).Kolicina;
+                return RoomInventoryFileRepository.Instance.Read(RoomNumber, ID).Quantity;
             }
         }
 

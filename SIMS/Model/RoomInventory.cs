@@ -7,9 +7,9 @@ namespace SIMS.Model
 {
     public class RoomInventory
     {
-        public string BrojProstorije { get; set; }
-        public string IdInventara { get; set; }
-        public int Kolicina { get; set; }
+        public string RoomNumber { get; set; }
+        public string ID { get; set; }
+        public int Quantity { get; set; }
 
         public RoomInventory()
         {
@@ -17,9 +17,9 @@ namespace SIMS.Model
         }
         public RoomInventory(string brojProstorije, string idInventara, int kolicina)
         {
-            this.BrojProstorije = brojProstorije;
-            this.IdInventara = idInventara;
-            this.Kolicina = kolicina;
+            this.RoomNumber = brojProstorije;
+            this.ID = idInventara;
+            this.Quantity = kolicina;
         }
     }
 }

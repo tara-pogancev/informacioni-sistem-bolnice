@@ -24,6 +24,7 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
         private Doctor doctor = DoctorUI.GetInstance().GetUser();
         private HospitalizationController hospitalizationController = new HospitalizationController();
         private RoomController roomController = new RoomController();
+        private RoomInventoryController RoomInventoryController = new RoomInventoryController(); 
         private List<Room> rooms;
 
         public HospitalizeCreate(Patient patientPar)
@@ -34,7 +35,7 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
             LabelDoctor.Content = "Doktor: " + doctor.FullName;
             LabelPatient.Content = "Pacijent: " + patient.FullName;
 
-            rooms = roomController.GetAllRooms();
+            rooms = roomController.GetAllHospitalizationRooms();
             roomCombo.ItemsSource = rooms;
 
         }
@@ -70,9 +71,15 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
         private void CreateHospitalization()
         {
             Room room = GetSelectedRoom();
-            Hospitalization hospitalization = new Hospitalization(patient, doctor,
+            if (RoomInventoryController.GetIfAvailableBeds(room))
+                MessageBox.Show("Odabrana soba nema dostupnih kreveta!");
+
+            else
+            {
+                Hospitalization hospitalization = new Hospitalization(patient, doctor,
                 (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate, room);
-            hospitalizationController.SaveHospitalization(hospitalization);
+                hospitalizationController.SaveHospitalization(hospitalization);
+            }
         }
 
         private Room GetSelectedRoom()

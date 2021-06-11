@@ -35,14 +35,14 @@ namespace SIMS.Daemon.PremestajOpreme
             RoomInventory src = RoomInventoryFileRepository.Instance.ReadNoConsistifying(SrcID, OpremaID);
             RoomInventory dst = RoomInventoryFileRepository.Instance.ReadNoConsistifying(DstID, OpremaID);
 
-            if (src.Kolicina < Delta)
+            if (src.Quantity < Delta)
             {
                 MessageBox.Show("Premeštaj opreme " + OpremaID + " iz prostorije " + SrcID + " u prostoriju " + DstID + " nije moguć zbog manjka opreme.");
                 return;
             }
 
-            src.Kolicina -= Delta;
-            dst.Kolicina += Delta;
+            src.Quantity -= Delta;
+            dst.Quantity += Delta;
 
             RoomInventoryFileRepository.Instance.Update(src);
             RoomInventoryFileRepository.Instance.Update(dst);
