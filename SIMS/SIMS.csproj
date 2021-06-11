@@ -216,10 +216,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewDoctor\ViewModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="LanguageResources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

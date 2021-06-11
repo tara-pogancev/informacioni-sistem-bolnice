@@ -8,6 +8,15 @@
     "Available": true,
     "Serialize": true
   },
+  "2": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 1,
+    "Number": "2",
+    "InventoryAmounts": {},
+    "Available": true,
+    "Serialize": true
+  },
   "3": {
     "RenovationStart": "2021-06-18T00:00:00",
     "RenovationEnd": "2021-06-19T00:00:00",

@@ -17,7 +17,7 @@ namespace SIMS.Model
             Doctor = doctor;
             Text = text;
             Rating = rating;
-            ID = DateTime.Today.ToString("ddMMyyyyHHmmss");
+            ID = DateTime.Now.ToString("ddMMyyyyHHmmss");
             Serialize = true;
         }
 
@@ -28,9 +28,6 @@ namespace SIMS.Model
         {
             return Serialize;
         }
-
-
-
 
     }
 }

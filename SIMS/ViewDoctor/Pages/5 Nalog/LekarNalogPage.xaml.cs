@@ -16,6 +16,7 @@ using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Repositories.PatientRepo;
 using SIMS.ViewDoctor.Dialogues.Izmena_naloga;
+using SIMS.LekarGUI.Dialogues.Izmena_naloga;
 
 namespace SIMS.LekarGUI
 {

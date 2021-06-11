@@ -33,15 +33,25 @@ namespace SIMS.ViewDoctor.Dialogues.Izmena_naloga
 
         private void AcceptMessage(object sender, RoutedEventArgs e)
         {
+            AcceptRatingAction();
+
+        }
+
+        private void AcceptRatingAction()
+        {
             Doctor doctor = DoctorUI.GetInstance().GetUser();
             int rating = BasicRatingBar.Value;
             String text = TextBox.Text;
 
-            if (text.Equals("") || text.Equals("Unesite poruku ovde..."))
+            if (ValidateForm(text))
                 MessageBox.Show("Molimo unesite povratnu poruku!");
             else
                 SaveNewAppRating(doctor, rating, text);
+        }
 
+        private static bool ValidateForm(string text)
+        {
+            return text.Equals("") || text.Equals("Unesite poruku ovde...");
         }
 
         private void SaveNewAppRating(Doctor doctor, int rating, string text)
@@ -49,6 +59,15 @@ namespace SIMS.ViewDoctor.Dialogues.Izmena_naloga
             DoctorAppRating appRating = new DoctorAppRating(doctor, text, rating);
             doctorAppRatingController.SaveRating(appRating);
             Close();
+            MessageBox.Show("Hvala vam na ostavljenoj recenziji aplikacije!", "Ocena poslata!");
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                AcceptRatingAction();
         }
     }
 }

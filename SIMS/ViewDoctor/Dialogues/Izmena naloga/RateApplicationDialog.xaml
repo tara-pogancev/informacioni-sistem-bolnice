@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.ViewDoctor.Dialogues.Izmena_naloga"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-         mc:Ignorable="d" 
-        Title="Ocenite aplikaciju" Height="450" Width="800">
+        mc:Ignorable="d" 
+        KeyDown="WindowKeyListener"
+        Title="Ocenite aplikaciju" Height="450" Width="600">
     
     <Window.Resources>
         <ResourceDictionary>
