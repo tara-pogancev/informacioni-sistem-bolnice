@@ -61,9 +61,16 @@
 
                         <Grid Grid.Row="0" >
                             <StackPanel Orientation="Horizontal" Height="50"  HorizontalAlignment="Right" Name="StackPanelLinija">
+
+                                <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="AppFeedback"  Click="AppFeedback_OnClick" ToolTip="Anketa"  Visibility="Visible">
+                                    <materialDesign:PackIcon Kind="Feedback" Width="40" Height="30"/>
+                                </Button>
+
+
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="Anketa"  Click="Anketa_Click" ToolTip="Anketa"  Visibility="Collapsed">
                                     <materialDesign:PackIcon Kind="FileQuestion" Width="40" Height="30"/>
                                 </Button>
+
                                 <Button  Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="Gray" Name="DemoMode" ToolTip="Demo mod"  Click="DemoMode_Click" >
                                     <materialDesign:PackIcon Kind="AcademicCap" Width="40" Height="30"/>
                                 </Button>

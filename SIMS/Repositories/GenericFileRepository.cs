@@ -114,7 +114,7 @@ namespace SIMS.Repositories
         public void CreateOrUpdate(Entity Entity)
         {
             Dictionary<KeyType, Entity> entities = ReadFile();
-
+            ShouldSerialize(Entity);
             KeyType key = getKey(Entity);
 
             entities[key] = Entity;

@@ -10,7 +10,14 @@ namespace SIMS.Service
     class NotificationService
     {
         private INotificationRepository notificationRepository = new NotificationFileRepository();
+        
 
+        public NotificationService()
+        {
+           
+        }
+
+        
         public List<Notification> GetAllNotification() => notificationRepository.GetAll();
 
         public void UpdateNotification(Notification notification) => notificationRepository.Update(notification);
@@ -34,32 +41,5 @@ namespace SIMS.Service
         {
             return notificationRepository.ReadPastNotificationsByUser(userID);
         }
-
-        public bool ExistsUnreadNotification(String userID)
-        {
-            List<Notification> notifications = notificationRepository.ReadPastNotificationsByUser(userID);
-            notifications.Reverse();
-            foreach(var notification in notifications)
-            {
-                if (notification.CheckStatus == false)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public void NotificationOpened(String userID)
-        {
-            List<Notification> notifications = notificationRepository.ReadPastNotificationsByUser(userID);
-            foreach (var notification in notifications)
-            {
-
-                notification.CheckStatus = true;
-                new NotificationService().UpdateNotification(notification);
-            }
-        }
-
     }
 }

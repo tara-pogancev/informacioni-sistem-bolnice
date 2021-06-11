@@ -39,8 +39,7 @@ namespace SIMS.Service.RecommendationAppointmentService
 
         }
 
-
-
+        
         private void DeleteFromAppointmentsDraft(Appointment appointment)
         {
             RoomAvailabilityService roomAvailabilityService = new RoomAvailabilityService();

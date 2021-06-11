@@ -27,6 +27,6 @@ namespace SIMS.Controller
 
         public List<HospitalSurvey> GetPatientHospitalSurveys(Patient pacijent) => hospitalSurveyService.GetPatientHospitalSurveys(pacijent);
 
-        public bool ShowSurveyToPatient(Patient patient) => hospitalSurveyService.ShowSurveyToPatient(patient);
+        
     }
 }

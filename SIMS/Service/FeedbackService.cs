@@ -12,7 +12,7 @@ namespace SIMS.Service
         {
             SaveFileDialog save = new SaveFileDialog
             {
-                FileName = "Feedback.txt",
+                FileName = "ApplicationFeedback.txt",
                 Filter = "Text File | *.txt"
             };
 
