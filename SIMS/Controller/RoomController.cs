@@ -34,5 +34,7 @@ namespace SIMS.Controller
 
         public List<Room> GetAllHospitalizationRooms() => roomService.GetAllHospitalizationRooms();
 
+        public List<Room> GetByType(RoomType roomType) => roomService.GetByType(roomType);
+
     }
 }

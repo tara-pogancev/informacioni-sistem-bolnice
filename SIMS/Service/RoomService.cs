@@ -108,5 +108,16 @@ namespace SIMS.Service
                 }
             }
         }
+
+        public List<Room> GetByType(RoomType roomType)
+        {
+            List<Room> retVal = new List<Room>();
+
+            foreach (Room room in GetAllRooms())
+                if (room.RoomType == roomType)
+                    retVal.Add(room);
+
+            return retVal;
+        }
     }
 }
