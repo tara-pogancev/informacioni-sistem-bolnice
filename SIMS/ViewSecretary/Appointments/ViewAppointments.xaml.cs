@@ -5,6 +5,8 @@ using SIMS.Model;
 using SIMS.DTO;
 using SIMS.Controller;
 using System.Windows.Input;
+using System.Collections.Generic;
+using SIMS.Adapters;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -17,6 +19,8 @@ namespace SIMS.ViewSecretary.Appointments
         private DoctorController doctorController = new DoctorController();
         private PatientController patientController = new PatientController();
 
+        private readonly ISortAppointments sortAppointmentsController = new SortAppointmentsDescendingController();
+             
         public static ViewAppointments GetInstance()
         {
             if (_instance == null)
@@ -37,9 +41,19 @@ namespace SIMS.ViewSecretary.Appointments
         public void RefreshView()
         {
             _appointmentsForView.Clear();
-            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>(appointmentController.GetAllAppointments());
-            GetPatientAndDoctorData(appointments);
-            SortAppointments(appointments);
+            List<Appointment> appointmentsList = appointmentController.GetAllAppointments();
+            GetPatientAndDoctorData(appointmentsList);
+            List<AppointmentDTO> appointmentDTOs = new List<AppointmentDTO>();
+            foreach(Appointment a in appointmentsList)
+            {
+                appointmentDTOs.Add(new AppointmentDTO(a));
+            }
+            sortAppointmentsController.SortAppointments(appointmentDTOs);
+            ObservableCollection<Appointment> appointments = new ObservableCollection<Appointment>();
+            foreach (Appointment a in appointmentDTOs)
+            {
+                appointments.Add(a);
+            }
             foreach (Appointment appointment in appointments)
             {
                 _appointmentsForView.Add(new AppointmentDTO(appointment));
@@ -108,7 +122,7 @@ namespace SIMS.ViewSecretary.Appointments
             _instance = null;
         }
 
-        private void GetPatientAndDoctorData(ObservableCollection<Appointment> appointments)
+        private void GetPatientAndDoctorData(List<Appointment> appointments)
         {
             foreach (Appointment appointment in appointments)
             {
@@ -117,7 +131,7 @@ namespace SIMS.ViewSecretary.Appointments
             }
         }
 
-        private void SortAppointments(ObservableCollection<Appointment> appointments)
+        /*private void SortAppointments(List<AppointmentDTO> appointments)
         {
             for (int i = 0; i < appointments.Count - 1; ++i)
             {
@@ -125,12 +139,12 @@ namespace SIMS.ViewSecretary.Appointments
                 {
                     if (appointments[j].StartTime > appointments[j + 1].StartTime)
                     {
-                        Appointment temp = appointments[j];
+                        var temp = appointments[j];
                         appointments[j] = appointments[j + 1];
                         appointments[j + 1] = temp;
                     }
                 }
             }
-        }
+        }*/
     }
 }
