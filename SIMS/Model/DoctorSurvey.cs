@@ -10,6 +10,7 @@ namespace SIMS.Model
         private Appointment appointment;
         private int grade;
         private String doctorId;
+
         public DoctorSurvey():base()
         {
         }

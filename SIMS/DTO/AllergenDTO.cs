@@ -9,8 +9,8 @@ namespace SIMS.DTO
 {
     public class AllergenDTO
     {
-        public string AlergenID { get; set; }
-        public string AlergenNaziv { get; set; }
+        public string AllergenID { get; set; }
+        public string AllergenName { get; set; }
         public Boolean IsIncludedInMedicine { get; set; }
 
         public AllergenDTO()
@@ -20,8 +20,8 @@ namespace SIMS.DTO
 
         public AllergenDTO(Allergen alergen, Medication medicine)
         {
-            AlergenID = alergen.ID;
-            AlergenNaziv = alergen.Name;
+            AllergenID = alergen.ID;
+            AllergenName = alergen.Name;
             IsIncludedInMedicine = medicine.IncludesAllergen(alergen);
         }
 

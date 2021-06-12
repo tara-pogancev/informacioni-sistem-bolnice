@@ -17,7 +17,6 @@ namespace SIMS.Model
 {
    public class Appointment 
    {
-        private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
         private DoctorController doctorController = new DoctorController();
         private RoomController roomController = new RoomController();
