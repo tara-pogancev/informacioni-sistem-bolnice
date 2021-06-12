@@ -56,7 +56,9 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaLekovi.ItemsSource = LekoviFilter.Instance.ApplyFilters(lekovi, SearchBox.Text, false);
+            LekoviFilter filter = new LekoviFilter();
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            tabelaLekovi.ItemsSource = filter.ApplyFilters(lekovi);
         }
     }
 }

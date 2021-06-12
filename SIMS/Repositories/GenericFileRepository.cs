@@ -132,8 +132,6 @@ namespace SIMS.Repositories
             RemoveReferences(key);
 
             WriteFile(entities);
-
-            
         }
 
         public void Delete(Entity entity)

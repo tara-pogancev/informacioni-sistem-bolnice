@@ -6,12 +6,8 @@ using SIMS.Model;
 
 namespace SIMS.Filters
 {
-    class InventarFilter : TableFilter<Inventory, InventarFilter>
+    class InventarFilter : TableFilter<Inventory>
     {
-        public override bool CheckBoxFilter(Inventory oprema, bool checkboxChecked)
-        {
-            return true;
-        }
 
         public override bool KeywordFilter(Inventory oprema, string keyword)
         {

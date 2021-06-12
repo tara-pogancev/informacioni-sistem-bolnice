@@ -63,7 +63,9 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaOpreme.ItemsSource = InventarFilter.Instance.ApplyFilters(inventories, SearchBox.Text, false);
+            InventarFilter filter = new InventarFilter();
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            tabelaOpreme.ItemsSource = filter.ApplyFilters(inventories);
         }
     }
 }

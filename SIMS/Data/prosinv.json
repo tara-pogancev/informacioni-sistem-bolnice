@@ -7,7 +7,7 @@
   "1_2": {
     "BrojProstorije": "1",
     "IdInventara": "2",
-    "Kolicina": 16
+    "Kolicina": 4
   },
   "1_3": {
     "BrojProstorije": "1",
@@ -22,12 +22,12 @@
   "2_1": {
     "BrojProstorije": "2",
     "IdInventara": "1",
-    "Kolicina": 2
+    "Kolicina": 3
   },
   "3_1": {
     "BrojProstorije": "3",
     "IdInventara": "1",
-    "Kolicina": 4
+    "Kolicina": 3
   },
   "3_2": {
     "BrojProstorije": "3",
@@ -41,6 +41,26 @@
   },
   "3_4": {
     "BrojProstorije": "3",
+    "IdInventara": "4",
+    "Kolicina": 0
+  },
+  "7_1": {
+    "BrojProstorije": "7",
+    "IdInventara": "1",
+    "Kolicina": 0
+  },
+  "7_2": {
+    "BrojProstorije": "7",
+    "IdInventara": "2",
+    "Kolicina": 0
+  },
+  "7_3": {
+    "BrojProstorije": "7",
+    "IdInventara": "3",
+    "Kolicina": 0
+  },
+  "7_4": {
+    "BrojProstorije": "7",
     "IdInventara": "4",
     "Kolicina": 0
   }
