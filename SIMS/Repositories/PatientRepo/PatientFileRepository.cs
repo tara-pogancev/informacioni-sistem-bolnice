@@ -49,7 +49,7 @@ namespace SIMS.Repositories.PatientRepo
 
         protected override void ShouldSerialize(Patient entity)
         {
-            entity.Serialize = true;
+            entity.ChosenDoctor.Serialize = false;
             foreach (var allergen in entity.Allergens)
             {
                 allergen.Serialize = false;

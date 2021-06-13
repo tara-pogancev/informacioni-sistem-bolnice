@@ -101,7 +101,7 @@ namespace SIMS.PacijentGUI.ViewModel
         public IzborLjekaraViewModel(Patient patient)
         {
             this.patient = patient;
-            Doctor doctor = patient.ChosenDoctor;
+            Doctor doctor =new DoctorController().GetDoctor(patient.ChosenDoctor.Jmbg);
             this.nameSurname = doctor.FullName;
             this.PhoneNumber = "221-537";
             new DoctorController().RecalulateGrade(doctor);
