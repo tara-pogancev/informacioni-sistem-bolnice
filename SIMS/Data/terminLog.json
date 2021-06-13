@@ -374,5 +374,21 @@
     "DateOfChange": "2021-06-09T11:03:02.3496612+02:00",
     "SurgeryType": 0,
     "Expired": false
+  },
+  "2106091058556422874865453131014526": {
+    "AppointmentLogID": "2106091058556422874865453131014526",
+    "AppointmentID": "210609105855642287",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-13T13:45:26.7920106+02:00",
+    "SurgeryType": 0,
+    "Expired": false
+  },
+  "2106091058556422874865453131014657": {
+    "AppointmentLogID": "2106091058556422874865453131014657",
+    "AppointmentID": "210609105855642287",
+    "PatientID": "4865453131",
+    "DateOfChange": "2021-06-13T13:46:57.0767266+02:00",
+    "SurgeryType": 0,
+    "Expired": false
   }
 }

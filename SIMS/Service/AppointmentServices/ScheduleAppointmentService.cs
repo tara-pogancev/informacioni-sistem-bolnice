@@ -33,10 +33,15 @@ namespace SIMS.Service.AppointmentServices
 
         public List<String> GetAvailableTimeOfAppointment(Doctor doctor, String date, Patient patient)
         {
-            List<String> timeOfAppointment = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            DoctorService doctorService = new DoctorService();
+            if (doctorService.OnVacation(doctor, DateTime.Parse(date)))
+            {
+                return new List<string>();
+            }
+            List <String> timeOfAppointment = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
             foreach (Appointment appointment in GetScheduledAppointmentsForDate(date))
             {
-                if (doctor.Unavailable(appointment) || patient.Unavailable(appointment))
+                if (doctor.Unavailable(appointment) || patient.Unavailable(appointment)) 
                 {
                     timeOfAppointment.Remove(appointment.GetAppointmentTime());
                 }

@@ -34,13 +34,17 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Label Content="{ns:Loc DoctorColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="2" VerticalAlignment="Center"/>
             <Label Content="{ns:Loc VacationDaysColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="3" VerticalAlignment="Center"/>
-            <Label Content="{ns:Loc VacationStartColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
-            <Label Content="{ns:Loc VacationEndColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc StartDateColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="4" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc StartTimeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="5" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc EndDateColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="6" VerticalAlignment="Center"/>
+            <Label Content="{ns:Loc EndTimeColon}" HorizontalAlignment="Right" Margin="10,0,10,0" Grid.Row="7" VerticalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -53,10 +57,12 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="4" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
+                <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
                 <ComboBox Grid.Row="2" Margin="30,0,0,0" x:Name="doctorsComboBox" ItemsSource="{Binding Doctors}" SelectedItem="{Binding DoctorToUpdate}" SelectedIndex="{Binding DoctorSelectedIndex}" DisplayMemberPath="NameAndSpecialization" SelectedValuePath="NameAndSpecialization"
                       Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}">
@@ -71,9 +77,13 @@
 
                 <DatePicker Grid.Row ="4" Height="25" SelectedDate="{Binding SelectedDateStart, Mode=TwoWay}" Text="{Binding SelectedDateTextStart, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="startDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
 
-                <DatePicker Grid.Row ="5" Height="25" SelectedDate="{Binding SelectedDateEnd, Mode=TwoWay}" Text="{Binding SelectedDateTextEnd, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
-                
-                <StackPanel Grid.Row="6" Grid.RowSpan="2" Orientation="Horizontal">
+                <ComboBox Grid.Row="5" Margin="30,0,0,0" ItemsSource="{Binding Times}" SelectedItem="{Binding SelectedTimeStart}" SelectedIndex="0" Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+
+                <DatePicker Grid.Row ="6" Height="25" SelectedDate="{Binding SelectedDateEnd, Mode=TwoWay}" Text="{Binding SelectedDateTextEnd, Mode=TwoWay}" HorizontalAlignment="Left" Margin="30,0,0,0" Name="endDatePicker" VerticalAlignment="Center" Width="260" VerticalContentAlignment="Stretch" FontFamily="Candara" FontSize="14" DisplayDateStart="{x:Static sys:DateTime.Now}" />
+
+                <ComboBox Grid.Row="7" Margin="30,0,0,0" ItemsSource="{Binding Times}" SelectedItem="{Binding SelectedTimeEnd}" SelectedIndex="0" Width="260" Height="30" HorizontalAlignment="Left" Style="{StaticResource DarkComboBox}"/>
+
+                <StackPanel Grid.Row="8" Grid.RowSpan="2" Orientation="Horizontal">
                     <Button Content="{ns:Loc QuitCaps}" Command="{Binding QuitCommand}" Width="100"
                         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
                     <Button Content="{ns:Loc AddCaps}" Command="{Binding AddVacationCommand}" Width="100"

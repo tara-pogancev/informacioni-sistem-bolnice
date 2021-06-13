@@ -47,7 +47,7 @@ namespace SIMS.PacijentGUI
         public IzmjenaPregleda(Appointment termin)
         {
             InitializeComponent();
-            lekari = new DoctorFileRepository().GetAll();
+            lekari = new DoctorController().GetDoctorsForExamination();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             doktorSelektovan = false;
             dostupniTermini = new ObservableCollection<String>(new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });

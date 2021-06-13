@@ -86,5 +86,7 @@ namespace SIMS.Controller
             return doctorService.OnVacation(doctor, dateTime);
         }
 
+        public List<Doctor> GetDoctorsForExamination() => doctorService.GetDoctorsForExamination();
+
     }
 }

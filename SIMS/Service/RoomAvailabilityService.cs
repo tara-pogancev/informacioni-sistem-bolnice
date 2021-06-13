@@ -13,6 +13,8 @@ namespace SIMS.Service
     {
         private IRoomRepository roomRepository;
         private IAppointmentRepository appointmentRepository;
+        
+
         public RoomAvailabilityService()
         {
             roomRepository = new RoomFileRepository();
