@@ -12,9 +12,17 @@ namespace SIMS.Service
     {
         private IRoomInventoryRepository roomInventoryRepository = new RoomInventoryFileRepository();
 
-        internal void Update(string roomNumber, string inventoryID, string amountMoved)
+        internal bool Update(string roomNumber, string inventoryID, string amountMoved)
         {
-            roomInventoryRepository.Update(new RoomInventory(roomNumber, inventoryID, int.Parse(amountMoved)));
+            try
+            {
+                roomInventoryRepository.Update(new RoomInventory(roomNumber, inventoryID, int.Parse(amountMoved)));
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         internal void CreateOrUpdate(RoomInventory roomInventory)
