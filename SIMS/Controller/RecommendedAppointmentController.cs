@@ -16,6 +16,17 @@ namespace SIMS.Controller
             recomendationService = new RecommendationService();
         }
 
+        public List<Appointment> GetRecommendedAppointments(RecommendedAppointmentDTO recommendedAppointmentDto)
+        {
+            if (recommendedAppointmentDto.DoctorID == null)
+            {
+                return DateRecommendation(recommendedAppointmentDto);
+            }
+            else
+            {
+                return DoctorRecommendataion(recommendedAppointmentDto);
+            }
+        }
         public List<Appointment> DateRecommendation(RecommendedAppointmentDTO recommendedAppointmentDTO)
         {
             recomendationService.SetRecommendationStrategy(new DateRecommendationStrategy(recommendedAppointmentDTO.StartDate, recommendedAppointmentDTO.EndDate, recommendedAppointmentDTO.PatientID));

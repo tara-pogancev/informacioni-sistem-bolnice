@@ -68,7 +68,7 @@ namespace SIMS.PacijentGUI
             
             KrajnjiDatum.BlackoutDates.Add(cdr);
 
-            lekari = new DoctorFileRepository().GetAll();
+            lekari = new DoctorController().GetDoctorsForExamination();
             this.DataContext = this;
         }
 
@@ -83,16 +83,16 @@ namespace SIMS.PacijentGUI
                     (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
                     PocetnaStranica.getInstance().Pacijent.Jmbg);
                 RecommendedAppointmentController recommendationController = new RecommendedAppointmentController();
-                preporuceniTermini = recommendationController.DoctorRecommendataion(recommendedAppointmentDTO);
+                preporuceniTermini = recommendationController.GetRecommendedAppointments(recommendedAppointmentDTO);
             }
             else
             {
                 RecommendedAppointmentDTO recommendedAppointmentDTO = new RecommendedAppointmentDTO(
-                    TypeOfRecommendation.DoctorRecommendation,"",
+                    TypeOfRecommendation.DoctorRecommendation,null,
                     (DateTime)PocetniDatum.SelectedDate, (DateTime)KrajnjiDatum.SelectedDate,
                     PocetnaStranica.getInstance().Pacijent.Jmbg);
                 RecommendedAppointmentController recommendationController = new RecommendedAppointmentController();
-                preporuceniTermini = recommendationController.DateRecommendation(recommendedAppointmentDTO);
+                preporuceniTermini = recommendationController.GetRecommendedAppointments(recommendedAppointmentDTO);
                 
             }
 

@@ -16,7 +16,7 @@ namespace SIMS.Service.RecommendationAppointmentService
         public RecommendedAppointmentDraft(DateTime time)
         {
             timeOfAppointment = time;
-            availableDoctorsID = new DoctorFileRepository().GetAllId();
+            availableDoctorsID = new DoctorService().GetExaminationDoctorsID();
         }
 
         public List<string> AvailableDoctorsID { get => availableDoctorsID; set => availableDoctorsID = value; }

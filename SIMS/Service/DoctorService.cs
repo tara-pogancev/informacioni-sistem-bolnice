@@ -160,5 +160,16 @@ namespace SIMS.Service
             return false;
         }
 
+        public List<string> GetExaminationDoctorsID()
+        {
+            List<String> ids = new List<String>();
+            List<Doctor> lekari = this.GetDoctorsForExamination();
+            foreach (Doctor l in lekari)
+            {
+                ids.Add(l.Jmbg);
+            }
+            return ids;
+        }
+
     }
 }

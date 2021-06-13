@@ -52,7 +52,7 @@ namespace SIMS.Service.RecommendationAppointmentService
 
         private void RemoveReservedAppointments()
         {
-            List<Appointment> scheduledAppointments = new AppointmentService().GetAllAppointments();
+            List<Appointment> scheduledAppointments = new AppointmentService().GetFutureAppointments();
             for (int i = 0; i < scheduledAppointments.Count; i++)
             {
 

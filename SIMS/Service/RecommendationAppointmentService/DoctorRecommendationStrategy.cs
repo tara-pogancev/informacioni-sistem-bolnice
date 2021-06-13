@@ -7,7 +7,7 @@ using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
-    class DoctorRecommendationPolicy:IRecommendationStrategy
+    class DoctorRecommendationStrategy:IRecommendationStrategy
     {
 
         DateTime startDate;
@@ -17,7 +17,7 @@ namespace SIMS.Service.RecommendationAppointmentService
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
 
-        public DoctorRecommendationPolicy(RecommendedAppointmentDTO recommendedAppointmentDto)
+        public DoctorRecommendationStrategy(RecommendedAppointmentDTO recommendedAppointmentDto)
         {
             recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
             this.startDate = recommendedAppointmentDto.StartDate;
@@ -31,7 +31,7 @@ namespace SIMS.Service.RecommendationAppointmentService
         private void RemoveReservedAppointments()
         {
             AppointmentService appointmentService = new AppointmentService();
-            foreach (var appointment in appointmentService.GetAllAppointments())
+            foreach (var appointment in appointmentService.GetFutureAppointments())
             {
                 if (appointment.Doctor.Jmbg == doctorID || appointment.Patient.Jmbg == patientID)
                     DeleteFromAppointmentsDraft(appointment);

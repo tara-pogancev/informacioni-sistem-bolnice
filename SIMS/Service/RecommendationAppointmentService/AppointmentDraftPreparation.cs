@@ -6,13 +6,13 @@ using System.Text;
 namespace SIMS.Service.RecommendationAppointmentService
 {
 
-    class RecommendedAppointmentFactory
+    class AppointmentDraftPreparation
     {
         List<TimeSpan> HoursOfRecommendAppointment;
         DateTime startDate;
         DateTime endDate;
 
-        public RecommendedAppointmentFactory(DateTime startDate, DateTime endDate)
+        public AppointmentDraftPreparation(DateTime startDate, DateTime endDate)
         {
             this.startDate = startDate;
             this.endDate = endDate;
