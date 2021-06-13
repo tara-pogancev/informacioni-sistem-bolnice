@@ -36,11 +36,19 @@ namespace SIMS.Service
 
         public bool GetIfAvailableBeds(Room room)
         {
+            // Vraca TRUE ukoliko data prostorija moze da primi jos jednog pacijenta, 
+            // ili FALSE ukoliko ne moze
+
             HospitalizationController hospitalizationController = new HospitalizationController();
             int takenBeds = 0;
+            int availableBeds = 0;
 
             String id = room.Number + "_5";
-            int availableBeds = roomInventoryRepository.FindById(id).Quantity; ;
+
+            if (roomInventoryRepository.FindById(id) == null)
+                return false;
+
+            availableBeds = roomInventoryRepository.FindById(id).Quantity;
             
             foreach (Hospitalization hospitalization in hospitalizationController.GetAllHospitalizations())
                 if (hospitalization.Room.Number == room.Number)

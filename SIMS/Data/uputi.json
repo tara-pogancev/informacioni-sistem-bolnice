@@ -28,7 +28,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -91,7 +96,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -154,7 +164,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -217,7 +232,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -290,7 +310,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -363,7 +388,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -446,7 +476,12 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
-        "VacationPeriods": [],
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -489,5 +524,78 @@
     },
     "RefferalDate": "2021-05-31T00:00:00+02:00",
     "RefferalKey": "090429DD0521"
+  },
+  "235235DD0621": {
+    "Doctor": {
+      "VacationDays": 14,
+      "Grade": 0.0,
+      "DoctorSpecialization": 2,
+      "VacationPeriods": [
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        }
+      ],
+      "Name": "Cloud",
+      "LastName": "Strife",
+      "Jmbg": "22157484654211",
+      "Username": "cloud",
+      "Password": "l",
+      "Email": "fluffy.clouds@gmail.com",
+      "Phone": "629998428",
+      "Address": {
+        "City": {
+          "Name": "Nibelheim",
+          "PostalCode": 21000,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Central town suqare",
+        "Number": "8"
+      },
+      "Serialize": true
+    },
+    "Patient": {
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": "123",
+      "Guest": false,
+      "Allergens": [
+        {
+          "ID": "a2",
+          "Name": "Laktoza",
+          "Serialize": false
+        }
+      ],
+      "DateOfBirth": "1999-03-05T00:00:00",
+      "HronicalDiseases": [
+        "Astma"
+      ],
+      "ChosenDoctor": {
+        "Jmbg": "4848512502123",
+        "Serialize": false
+      },
+      "Name": "Đorđe",
+      "LastName": "Krsmanović",
+      "Jmbg": "4865453131",
+      "Username": "pacijent",
+      "Password": "p",
+      "Email": "djordje1499@gmal.com",
+      "Phone": "0645569530",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 0,
+          "Country": null
+        },
+        "Street": "Alekse Šantića",
+        "Number": "4"
+      },
+      "Serialize": true
+    },
+    "RefferalDate": "2021-06-13T00:00:00+02:00",
+    "RefferalKey": "235235DD0621"
   }
 }

@@ -51,6 +51,8 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
             {
                 if (StartDate.SelectedDate > EndDate.SelectedDate)
                     MessageBox.Show("Početni datum ne sme biti nakon krajnjeg!");
+                else if (!RoomInventoryController.GetIfAvailableBeds(GetSelectedRoom()))
+                    MessageBox.Show("Odabrana soba nema dostupnih kreveta!");
                 else
                 {
                     CreateHospitalization();
@@ -71,15 +73,9 @@ namespace SIMS.LekarGUI.Dialogues.Hospitalizacija
         private void CreateHospitalization()
         {
             Room room = GetSelectedRoom();
-            if (RoomInventoryController.GetIfAvailableBeds(room))
-                MessageBox.Show("Odabrana soba nema dostupnih kreveta!");
-
-            else
-            {
-                Hospitalization hospitalization = new Hospitalization(patient, doctor,
-                (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate, room);
-                hospitalizationController.SaveHospitalization(hospitalization);
-            }
+            Hospitalization hospitalization = new Hospitalization(patient, doctor,
+            (DateTime)StartDate.SelectedDate, (DateTime)EndDate.SelectedDate, room);
+            hospitalizationController.SaveHospitalization(hospitalization);
         }
 
         private Room GetSelectedRoom()
