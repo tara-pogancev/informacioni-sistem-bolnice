@@ -27,11 +27,15 @@ namespace SIMS.ViewSecretary.Appointments
         private NotificationController notificationController = new NotificationController();
 
         private ObservableCollection<AppointmentDTO> AvailableAppointments;
-        private readonly ISortAppointments sortAppointmentsController = new SortAppointmentsAscendingController();
+        private readonly SortAppointmentsAscendingService sortAppointmentsAscendingService;
+        private readonly ISortAppointments sortAppointmentsController;
 
         public AddUrgentSurgery()
         {
             InitializeComponent();
+
+            sortAppointmentsAscendingService = new SortAppointmentsAscendingService();
+            sortAppointmentsController = new SortAppointmentsController(sortAppointmentsAscendingService);
 
             DataContext = this;
             DurationComboBox.SelectedIndex = 0;

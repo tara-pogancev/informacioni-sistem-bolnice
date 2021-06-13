@@ -19,7 +19,8 @@ namespace SIMS.ViewSecretary.Appointments
         private DoctorController doctorController = new DoctorController();
         private PatientController patientController = new PatientController();
 
-        private readonly ISortAppointments sortAppointmentsController = new SortAppointmentsDescendingController();
+        private readonly ISortAppointments sortAppointmentsDescendingService;
+        private readonly ISortAppointments sortAppointmentsController;
              
         public static ViewAppointments GetInstance()
         {
@@ -31,6 +32,9 @@ namespace SIMS.ViewSecretary.Appointments
         public ViewAppointments()
         {
             InitializeComponent();
+
+            sortAppointmentsDescendingService = new SortAppointmentsDescendingService();
+            sortAppointmentsController = new SortAppointmentsController(sortAppointmentsDescendingService);
 
             this.DataContext = this;
             _appointmentsForView = new ObservableCollection<AppointmentDTO>();
