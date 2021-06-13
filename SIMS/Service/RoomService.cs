@@ -61,16 +61,16 @@ namespace SIMS.Service
         {
             foreach (var inventoryMovingCommand in inventoryMovingCommandRepository.GetAll())
             {
-                if (inventoryMovingCommand.DstID == room1)
+                if (inventoryMovingCommand.DestinationRoomNumber == room1)
                 {
                     inventoryMovingCommandRepository.Delete(inventoryMovingCommand);
-                    inventoryMovingCommand.DstID = room2;
+                    inventoryMovingCommand.DestinationRoomNumber = room2;
                     inventoryMovingCommandRepository.Save(inventoryMovingCommand);
                 }
-                else if (inventoryMovingCommand.SrcID == room1)
+                else if (inventoryMovingCommand.SourceRoomNumber == room1)
                 {
                     inventoryMovingCommandRepository.Delete(inventoryMovingCommand);
-                    inventoryMovingCommand.SrcID = room2;
+                    inventoryMovingCommand.SourceRoomNumber = room2;
                     inventoryMovingCommandRepository.Save(inventoryMovingCommand);
                 }
             }

@@ -9,14 +9,14 @@ namespace SIMS.Service
 {
     public class AllergenService
     {
-        private IAllergenRepository allergenRepostitory = new AllergenFileRepository();
+        private IComponentRepository allergenRepostitory = new ComponentFileRepository();
 
-        public void CreateOrUpdate(Allergen allergen)
+        public void CreateOrUpdate(Component allergen)
         {
             allergenRepostitory.CreateOrUpdate(allergen);
         }
 
-        public Allergen FindById(string ID)
+        public Component FindById(string ID)
         {
             return allergenRepostitory.FindById(ID);
         }
@@ -26,7 +26,7 @@ namespace SIMS.Service
             allergenRepostitory.Delete(ID);
         }
 
-        public List<Allergen> GetAll()
+        public List<Component> GetAll()
         {
             return allergenRepostitory.GetAll();
         }

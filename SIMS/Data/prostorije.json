@@ -41,7 +41,7 @@
     "RoomType": 1,
     "Number": "12",
     "InventoryAmounts": {},
-    "Available": false,
+    "Available": true,
     "Serialize": true
   },
   "141": {
@@ -51,6 +51,24 @@
     "Number": "141",
     "InventoryAmounts": {},
     "Available": false,
+    "Serialize": true
+  },
+  "2": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 0,
+    "Number": "2",
+    "InventoryAmounts": {},
+    "Available": true,
+    "Serialize": true
+  },
+  "5": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 2,
+    "Number": "5",
+    "InventoryAmounts": {},
+    "Available": true,
     "Serialize": true
   }
 }

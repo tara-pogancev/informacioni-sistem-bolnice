@@ -6,7 +6,7 @@ namespace SIMS.Model
 {
     public class Conversion
     {
-        public static string TipProstorijeToString(RoomType tip)
+        public static string RoomTypeToString(RoomType tip)
         {
             return tip switch
             {
@@ -17,7 +17,7 @@ namespace SIMS.Model
             };
         }
 
-        public static string TipOpremeToString(InventoryType tip)
+        public static string InventoryTypeToString(InventoryType tip)
         {
             return tip switch
             {
@@ -27,7 +27,7 @@ namespace SIMS.Model
             };
         }
 
-        public static InventoryType StringToTipOpreme(string str)
+        public static InventoryType StringToInventoryType(string str)
         {
             return str switch
             {
@@ -37,7 +37,7 @@ namespace SIMS.Model
             };
         }
 
-        public static RoomType StringToTipProstorije(string str)
+        public static RoomType StringToRoomType(string str)
         {
             return str switch
             {
@@ -48,39 +48,39 @@ namespace SIMS.Model
             };
         }
 
-        public static List<string> GetTipoviProstorije()
+        public static List<string> GetRoomTypes()
         {
             List<string> tipovi = new List<string>();
             foreach (RoomType tip in Enum.GetValues(typeof(RoomType)))
             {
-                string s = TipProstorijeToString(tip);
+                string s = RoomTypeToString(tip);
                 tipovi.Add(s);
             }
             return tipovi;
         }
 
-        public static List<string> GetTipoviOpreme()
+        public static List<string> GetInventoryTypes()
         {
             List<string> tipovi = new List<string>();
             foreach (InventoryType tip in Enum.GetValues(typeof(InventoryType)))
             {
-                string s = TipOpremeToString(tip);
+                string s = InventoryTypeToString(tip);
                 tipovi.Add(s);
             }
             return tipovi;
         }
 
-        public static string DostupnostProstorijeToString(bool dostupnost)
+        public static string RoomAvailabilityToString(bool dostupnost)
         {
             return (dostupnost ? "Dostupna" : "Nedostupna");
         }
 
-        public static bool StringToDostupnostProstorije(string dostupnost)
+        public static bool StringToRoomAvailability(string dostupnost)
         {
             return dostupnost.Equals("Dostupna");
         }
 
-        public static List<string> GetDostupnostiProstorije()
+        public static List<string> GetRoomAvailabilities()
         {
             List<string> tipovi = new List<string>();
             tipovi.Add("Dostupna");

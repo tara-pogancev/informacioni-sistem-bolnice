@@ -22,7 +22,7 @@ namespace SIMS.UpravnikGUI
 
         private static UpravnikWindow _instance = new UpravnikWindow();
 
-        private Manager user;
+        public Manager user { get; private set; }
         public static UpravnikWindow Instance
         {
             get
@@ -92,7 +92,7 @@ namespace SIMS.UpravnikGUI
         private void Alergeni_Click(object sender, RoutedEventArgs e)
         {
             SetContent(new AlergeniPage());
-            SetLabel("Alergeni");
+            SetLabel("Sastojci");
         }
 
         private void Odjava_Click(object sender, RoutedEventArgs e)

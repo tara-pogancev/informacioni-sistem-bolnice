@@ -7,9 +7,9 @@ using SIMS.Model;
 
 namespace SIMS.Repositories.AllergenRepo
 {
-    class AllergenFileRepository : GenericFileRepository<string, Allergen, AllergenFileRepository>,IAllergenRepository
+    class ComponentFileRepository : GenericFileRepository<string, Component, ComponentFileRepository>,IComponentRepository
     {
-        protected override string getKey(Allergen entity)
+        protected override string getKey(Component entity)
         {
             return entity.ID;
         }
@@ -23,7 +23,7 @@ namespace SIMS.Repositories.AllergenRepo
         {
         }
 
-        protected override void ShouldSerialize(Allergen entity)
+        protected override void ShouldSerialize(Component entity)
         {
             entity.Serialize = true;
         }

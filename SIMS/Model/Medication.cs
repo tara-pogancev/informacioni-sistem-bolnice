@@ -11,18 +11,18 @@ namespace SIMS.Model
 
         public string MedicineID { get; set; }
         public string MedicineName { get; set; }
-        public List<Allergen> Components { get; set; }
+        public List<Component> Components { get; set; }
         public string IDSubstitution { get; set; }
 
         public MedicineApprovalStatus ApprovalStatus { get; set; }
 
         public Medication()
         {
-            Components = new List<Allergen>();
+            Components = new List<Component>();
             ApprovalStatus = MedicineApprovalStatus.Waiting;
         }
 
-        public Medication(string id, string name, List<Allergen> components, string iDSubstitution)
+        public Medication(string id, string name, List<Component> components, string iDSubstitution)
         {
             MedicineID = id;
             MedicineName = name;
@@ -30,7 +30,7 @@ namespace SIMS.Model
 
             foreach (var allergen in components)
             {
-                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+                allergen.Name = ComponentFileRepository.Instance.FindById(allergen.ID).Name;
             }
 
             ApprovalStatus = MedicineApprovalStatus.Waiting;
@@ -61,9 +61,9 @@ namespace SIMS.Model
             }
         }
 
-        public Boolean IncludesAllergen(Allergen allergen) 
+        public Boolean IncludesAllergen(Component allergen) 
         {
-            foreach(Allergen currentAllergen in Components)
+            foreach(Component currentAllergen in Components)
             {
                 if (currentAllergen.ID == allergen.ID)
                     return true;
@@ -72,11 +72,11 @@ namespace SIMS.Model
             return false;
         }
 
-        public void RemoveComponent(Allergen allergen)
+        public void RemoveComponent(Component allergen)
         {
             for (int i = 0; i < Components.Count; i++)
             {
-                Allergen currentComponent = Components[i];
+                Component currentComponent = Components[i];
                 if (currentComponent.ID == allergen.ID)
                 {
                     Components.Remove(currentComponent);

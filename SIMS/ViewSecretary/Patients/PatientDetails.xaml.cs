@@ -8,7 +8,7 @@ namespace SIMS.ViewSecretary.Patients
 {
     public partial class PatientDetails : Page
     {
-        private ObservableCollection<Allergen> _allergens;
+        private ObservableCollection<Component> _allergens;
         private AllergenController allergenController = new AllergenController();
         public PatientDetails(Patient patient)
         {
@@ -45,7 +45,7 @@ namespace SIMS.ViewSecretary.Patients
 
         private void FillAllergenFields(Patient patient)
         {
-            _allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
+            _allergens = new ObservableCollection<Component>(allergenController.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
             allergensComboBox.DisplayMemberPath = "Name";
@@ -53,7 +53,7 @@ namespace SIMS.ViewSecretary.Patients
 
             foreach (var allergen in patient.Allergens)
             {
-                foreach (Allergen a in _allergens)
+                foreach (Component a in _allergens)
                 {
                     if (allergen.ID == a.ID)
                     {

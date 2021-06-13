@@ -10,12 +10,12 @@ namespace SIMS.Controller
     {
         AllergenService allergenService = new AllergenService();
 
-        public void CreateOrUpdate(Allergen allergen)
+        public void CreateOrUpdate(Component allergen)
         {
             allergenService.CreateOrUpdate(allergen);
         }
 
-        public Allergen GetAllergen(string ID)
+        public Component GetAllergen(string ID)
         {
             return allergenService.FindById(ID);
         }
@@ -25,7 +25,7 @@ namespace SIMS.Controller
             allergenService.Delete(ID);
         }
 
-        public List<Allergen> GetAll()
+        public List<Component> GetAll()
         {
             return allergenService.GetAll();
         }

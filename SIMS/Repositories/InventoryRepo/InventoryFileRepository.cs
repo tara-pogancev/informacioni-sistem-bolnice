@@ -30,7 +30,7 @@ namespace SIMS.Repositories.InventoryRepo
 
             foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
             {
-                if (command.OpremaID == key)
+                if (command.InventoryID == key)
                 {
                     InventoryMovingCommandFileRepository.Instance.Delete(command);
                 }

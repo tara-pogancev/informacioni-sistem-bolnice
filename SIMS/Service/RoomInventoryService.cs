@@ -17,6 +17,15 @@ namespace SIMS.Service
             roomInventoryRepository.Update(new RoomInventory(roomNumber, inventoryID, int.Parse(amountMoved)));
         }
 
+        internal void CreateOrUpdate(RoomInventory roomInventory)
+        {
+            roomInventoryRepository.CreateOrUpdate(roomInventory);
+        }
+        internal List<RoomInventory> ReadAll()
+        {
+            return roomInventoryRepository.GetAll();
+        }
+
         public bool GetIfAvailableBeds(Room room)
         {
             HospitalizationController hospitalizationController = new HospitalizationController();
@@ -30,6 +39,30 @@ namespace SIMS.Service
                     takenBeds++;
 
             return (availableBeds > takenBeds);
+        }
+
+        public bool MoveInventory(string sourceRoomNumber, string destinationRoomNumber, string inventoryID, int amount)
+        {
+            if (sourceRoomNumber == destinationRoomNumber)
+            {
+                return true;
+            }
+
+            RoomInventory src = roomInventoryRepository.ReadNoConsistifying(sourceRoomNumber, inventoryID);
+            RoomInventory dst = roomInventoryRepository.ReadNoConsistifying(destinationRoomNumber, inventoryID);
+
+            if (src.Quantity < amount)
+            {
+                return false;
+            }
+
+            src.Quantity -= amount;
+            dst.Quantity += amount;
+
+            roomInventoryRepository.Update(src);
+            roomInventoryRepository.Update(dst);
+
+            return true;
         }
     }
 }
