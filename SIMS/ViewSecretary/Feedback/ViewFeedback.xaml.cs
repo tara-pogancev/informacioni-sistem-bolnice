@@ -2,12 +2,13 @@
 using SIMS.ViewSecretary.Home;
 using System.Windows;
 using System.Windows.Controls;
+using SIMS.Model;
 
 namespace SIMS.ViewSecretary.Feedback
 {
     public partial class ViewFeedback : Page
     {
-        private FeedbackController feedbackController = new FeedbackController();
+        private ApplicationFeedbackController feedbackController = new ApplicationFeedbackController();
 
         public ViewFeedback()
         {
@@ -21,7 +22,9 @@ namespace SIMS.ViewSecretary.Feedback
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-            feedbackController.Send(feedbackTextBox.Text);
+            //TODO: ISPRAVITI!!!
+            //ApplicationFeedback applicationFeedback = new ApplicationFeedback();
+            //feedbackController.CreateOrUpdate(feedbackTextBox.Text);
             SecretaryUI.GetInstance().Caption.Content = TranslationSource.Instance["HomePageListItem"];
             NavigationService.Navigate(ViewHome.GetInstance());
 
