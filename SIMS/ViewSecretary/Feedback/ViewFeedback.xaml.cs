@@ -9,10 +9,20 @@ namespace SIMS.ViewSecretary.Feedback
     public partial class ViewFeedback : Page
     {
         private ApplicationFeedbackController feedbackController = new ApplicationFeedbackController();
+        private Secretary secretary;
+        private ApplicationFeedback feedback;
 
-        public ViewFeedback()
+        public ViewFeedback(Secretary s)
         {
             InitializeComponent();
+
+            secretary = s;
+            feedback = new ApplicationFeedbackController().FindById(secretary.Jmbg);
+            if (feedback != null)
+            {
+                feedbackTextBox.Text = feedback.Comment;
+                ratingBar.Value = feedback.Grade;
+            }
         }
         private void Quit_Click(object sender, RoutedEventArgs e)
         {
@@ -25,6 +35,8 @@ namespace SIMS.ViewSecretary.Feedback
             //TODO: ISPRAVITI!!!
             //ApplicationFeedback applicationFeedback = new ApplicationFeedback();
             //feedbackController.CreateOrUpdate(feedbackTextBox.Text);
+            feedback = new ApplicationFeedback(feedbackTextBox.Text, secretary, ratingBar.Value);
+            new ApplicationFeedbackController().CreateOrUpdate(feedback);
             SecretaryUI.GetInstance().Caption.Content = TranslationSource.Instance["HomePageListItem"];
             NavigationService.Navigate(ViewHome.GetInstance());
 

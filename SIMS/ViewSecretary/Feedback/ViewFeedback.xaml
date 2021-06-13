@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary.Feedback"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:ns="clr-namespace:SIMS"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="430"
@@ -12,7 +13,11 @@
     <Grid Background="{DynamicResource BackgroundColorPage}">
         <StackPanel Orientation="Vertical">
             <Label Content="{ns:Loc Feedback}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="32" Margin="0,41,0,0" Foreground="{DynamicResource ForegroundColorPageTitle}" FontWeight="ExtraLight"/>
-            <TextBox x:Name="feedbackTextBox" Text="{ns:Loc FeedbackDefaultText}" Width="410" Height="300" Margin="10,50,10,70" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden" Background="#ebf0ee"/>
+            <StackPanel Orientation="Horizontal" Margin="10,50,10,20">
+                <Label Content="{ns:Loc RateApplication}" FontSize="20" Foreground="{DynamicResource ForegroundColorPageText}"/>
+                <materialDesign:RatingBar Value="5" x:Name="ratingBar" VerticalAlignment="Center" Foreground="{DynamicResource ForegroundColorPageText}"/> 
+            </StackPanel>
+            <TextBox x:Name="feedbackTextBox" Text="{ns:Loc FeedbackDefaultText}" Width="410" Height="300" Margin="10,10,10,70" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden" Background="#ebf0ee"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
                 <Button Content="{ns:Loc QuitCaps}" Click="Quit_Click" Width="100" VerticalAlignment="Top" Margin="20,20,0,0" Style="{StaticResource RedBoldButton}" Template="{StaticResource BigButton}"/>
                 <Button Content="{ns:Loc SendCaps}" Click="Send_Click" Width="100" VerticalAlignment="Top" Margin="50,20,0,0" Style="{StaticResource GreenBoldButton}" Template="{StaticResource BigButton}"/>

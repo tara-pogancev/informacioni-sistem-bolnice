@@ -835,6 +835,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rate the application:.
+        /// </summary>
+        internal static string RateApplication {
+            get {
+                return ResourceManager.GetString("RateApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report.
         /// </summary>
         internal static string ReportListItem {
