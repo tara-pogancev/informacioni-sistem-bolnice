@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SIMS.Controller;
 using SIMS.Repositories.InventoryMovingCommandRepo;
 using SIMS.Repositories.SecretaryRepo;
 
@@ -8,6 +9,8 @@ namespace SIMS.Daemon.PremestajOpreme
 {
     public class InventoryMovingQueue
     {
+        private InventoryMovingCommandController inventoryMovingCommandController = new InventoryMovingCommandController();
+
         private static InventoryMovingQueue _instance = new InventoryMovingQueue();
         public static InventoryMovingQueue Instance
         {
@@ -19,16 +22,16 @@ namespace SIMS.Daemon.PremestajOpreme
 
         public void PushCommand(InventoryMovingCommand command)
         {
-            InventoryMovingCommandFileRepository.Instance.CreateOrUpdate(command);
+            inventoryMovingCommandController.CreateOrUpdate(command);
         }
 
         public void Consistify()
         {
-            foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
+            foreach (var command in inventoryMovingCommandController.ReadAll())
             {
                 if (command.DateTime <= DateTime.Now)
                 {
-                    InventoryMovingCommandFileRepository.Instance.Delete(command);
+                    inventoryMovingCommandController.Delete(command);
                     command.Execute();
                 }
             }

@@ -16,32 +16,5 @@
     "InventoryAmounts": {},
     "Available": true,
     "Serialize": true
-  },
-  "3": {
-    "RenovationStart": "2021-06-18T00:00:00",
-    "RenovationEnd": "2021-06-19T00:00:00",
-    "RoomType": 0,
-    "Number": "3",
-    "InventoryAmounts": {},
-    "Available": true,
-    "Serialize": true
-  },
-  "5": {
-    "RenovationStart": null,
-    "RenovationEnd": null,
-    "RoomType": 1,
-    "Number": "5",
-    "InventoryAmounts": {},
-    "Available": true,
-    "Serialize": true
-  },
-  "32": {
-    "RenovationStart": null,
-    "RenovationEnd": null,
-    "RoomType": 2,
-    "Number": "32",
-    "InventoryAmounts": {},
-    "Available": true,
-    "Serialize": true
   }
 }

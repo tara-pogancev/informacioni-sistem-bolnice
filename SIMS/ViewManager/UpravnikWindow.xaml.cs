@@ -22,7 +22,7 @@ namespace SIMS.UpravnikGUI
 
         private static UpravnikWindow _instance = new UpravnikWindow();
 
-        private Manager user;
+        public Manager user { get; private set; }
         public static UpravnikWindow Instance
         {
             get

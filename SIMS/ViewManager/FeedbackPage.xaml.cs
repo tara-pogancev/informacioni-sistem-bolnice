@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIMS.Controller;
+using SIMS.Model;
+using SIMS.UpravnikGUI;
 
 namespace SIMS.ViewManager
 {
@@ -21,16 +23,42 @@ namespace SIMS.ViewManager
     /// </summary>
     public partial class FeedbackPage : Page
     {
-        //FeedbackController feedbackController = new FeedbackController();
+
+        private ApplicationFeedbackController appRatingController = new ApplicationFeedbackController();
         public FeedbackPage()
         {
             InitializeComponent();
         }
 
-        private void Posalji_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //feedbackController.Send(InputText.Text);
-            
+            AcceptRatingAction();
         }
+
+        private void AcceptRatingAction()
+        {
+            Manager manager = UpravnikWindow.Instance.user;
+            int rating = BasicRatingBar.Value;
+            String text = TextBox.Text;
+
+            if (ValidateForm(text))
+                System.Windows.MessageBox.Show("Molimo unesite povratnu poruku!");
+            else
+                SaveNewAppRating(manager, rating, text);
+        }
+
+        private static bool ValidateForm(string text)
+        {
+            return text.Equals("") || text.Equals("Unesite poruku ovde...");
+        }
+
+        private void SaveNewAppRating(Manager manager, int rating, string text)
+        {
+            ApplicationFeedback appRating = new ApplicationFeedback(text, manager, rating);
+            appRatingController.CreateOrUpdate(appRating);
+            System.Windows.MessageBox.Show("Hvala vam na ostavljenoj recenziji aplikacije!");
+        }
+
     }
 }

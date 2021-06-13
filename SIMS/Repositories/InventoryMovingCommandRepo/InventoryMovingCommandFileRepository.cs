@@ -12,7 +12,7 @@ namespace SIMS.Repositories.InventoryMovingCommandRepo
     {
         protected override string getKey(InventoryMovingCommand entity)
         {
-            return entity.OpremaID + "_" + entity.DstID + "_" + entity.SrcID + "_" + entity.DateTime;
+            return entity.InventoryID + "_" + entity.DestinationRoomNumber + "_" + entity.SourceRoomNumber + "_" + entity.DateTime;
         }
 
         protected override string getPath()

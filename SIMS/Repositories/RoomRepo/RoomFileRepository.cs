@@ -43,7 +43,7 @@ namespace SIMS.Repositories.RoomRepo
 
             foreach (var command in InventoryMovingCommandFileRepository.Instance.ReadAll().Values)
             {
-                if (command.DstID == key || command.SrcID == key)
+                if (command.DestinationRoomNumber == key || command.SourceRoomNumber == key)
                 {
                     InventoryMovingCommandFileRepository.Instance.Delete(command);
                 }

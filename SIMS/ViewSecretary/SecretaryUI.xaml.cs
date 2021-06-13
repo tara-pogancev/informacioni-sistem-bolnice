@@ -104,22 +104,30 @@ namespace SIMS.ViewSecretary
             if (typeof(ViewPatients).IsInstanceOfType(MainFrame.Content))
             {
                 ViewPatients viewPatients = (ViewPatients)MainFrame.Content;
-                viewPatients.patientsView.ItemsSource = PatientsFilter.Instance.ApplyFilters(viewPatients._patients, SearchTextBox.Text, true);
+                PatientsFilter filter = new PatientsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                viewPatients.patientsView.ItemsSource = filter.ApplyFilters(viewPatients._patients);
             }
             else if (typeof(ViewAppointments).IsInstanceOfType(MainFrame.Content))
             {
                 ViewAppointments viewAppointments = (ViewAppointments)MainFrame.Content;
-                viewAppointments.appointmentsView.ItemsSource = AppointmentsFilter.Instance.ApplyFilters(viewAppointments._appointmentsForView, SearchTextBox.Text, true);
+                AppointmentsFilter filter = new AppointmentsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                viewAppointments.appointmentsView.ItemsSource = filter.ApplyFilters(viewAppointments._appointmentsForView);
             }
             else if (typeof(ViewNotifications).IsInstanceOfType(MainFrame.Content))
             {
                 ViewNotifications viewNotifications = (ViewNotifications)MainFrame.Content;
-                viewNotifications.notificationViewer.ItemsSource = NotificationsFilter.Instance.ApplyFilters(viewNotifications._notifications, SearchTextBox.Text, true);
+                NotificationsFilter filter = new NotificationsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                viewNotifications.notificationViewer.ItemsSource = filter.ApplyFilters(viewNotifications._notifications);
             }
             else if (typeof(UpdateNotification).IsInstanceOfType(MainFrame.Content))
             {
                 UpdateNotification updateNotification = (UpdateNotification)MainFrame.Content;
-                updateNotification.notificationViewer.ItemsSource = NotificationsFilter.Instance.ApplyFilters(updateNotification._notifications, SearchTextBox.Text, true);
+                NotificationsFilter filter = new NotificationsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                updateNotification.notificationViewer.ItemsSource = filter.ApplyFilters(updateNotification._notifications);
             }
 
         }
@@ -278,28 +286,38 @@ namespace SIMS.ViewSecretary
                 ButtonSearch.Visibility = Visibility.Visible;
                 SearchTextBox.Text = "";
                 ViewPatients viewPatients = (ViewPatients)MainFrame.Content;
-                viewPatients.patientsView.ItemsSource = PatientsFilter.Instance.ApplyFilters(viewPatients._patients, SearchTextBox.Text, true);
+                PatientsFilter filter = new PatientsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                viewPatients.patientsView.ItemsSource = filter.ApplyFilters(viewPatients._patients);
             }
             else if (typeof(ViewAppointments).IsInstanceOfType(MainFrame.Content))
             {
                 ButtonSearch.Visibility = Visibility.Visible;
                 SearchTextBox.Text = "";
                 ViewAppointments viewAppointments = (ViewAppointments)MainFrame.Content;
-                viewAppointments.appointmentsView.ItemsSource = AppointmentsFilter.Instance.ApplyFilters(viewAppointments._appointmentsForView, SearchTextBox.Text, true);
+                AppointmentsFilter filter = new AppointmentsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+
+
+                viewAppointments.appointmentsView.ItemsSource = filter.ApplyFilters(viewAppointments._appointmentsForView);
             }
             else if (typeof(ViewNotifications).IsInstanceOfType(MainFrame.Content))
             {
                 ButtonSearch.Visibility = Visibility.Visible;
                 SearchTextBox.Text = "";
                 ViewNotifications viewNotifications = (ViewNotifications)MainFrame.Content;
-                viewNotifications.notificationViewer.ItemsSource = NotificationsFilter.Instance.ApplyFilters(viewNotifications._notifications, SearchTextBox.Text, true);
+                NotificationsFilter filter = new NotificationsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                viewNotifications.notificationViewer.ItemsSource = filter.ApplyFilters(viewNotifications._notifications);
             }
             else if (typeof(UpdateNotification).IsInstanceOfType(MainFrame.Content))
             {
                 ButtonSearch.Visibility = Visibility.Visible;
                 SearchTextBox.Text = "";
                 UpdateNotification updateNotification = (UpdateNotification)MainFrame.Content;
-                updateNotification.notificationViewer.ItemsSource = NotificationsFilter.Instance.ApplyFilters(updateNotification._notifications, SearchTextBox.Text, true);
+                NotificationsFilter filter = new NotificationsFilter();
+                filter.SetKeywordsFromInput(SearchTextBox.Text);
+                updateNotification.notificationViewer.ItemsSource = filter.ApplyFilters(updateNotification._notifications);
             }
             else
             {
