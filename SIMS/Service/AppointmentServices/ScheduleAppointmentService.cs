@@ -39,6 +39,7 @@ namespace SIMS.Service.AppointmentServices
                 return new List<string>();
             }
             List <String> timeOfAppointment = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+            RemoveVacationPeriod(timeOfAppointment, doctor, date);
             foreach (Appointment appointment in GetScheduledAppointmentsForDate(date))
             {
                 if (doctor.Unavailable(appointment) || patient.Unavailable(appointment)) 
@@ -47,6 +48,20 @@ namespace SIMS.Service.AppointmentServices
                 }
             }
             return timeOfAppointment;
+        }
+
+        private void RemoveVacationPeriod(List<string> timeOfAppointment, Doctor doctor, string date)
+        {
+            DoctorService doctorService = new DoctorService();
+            for (int i = 0; i < timeOfAppointment.Count; i++)
+            {
+                if (doctorService.OnVacation(doctor, DateTime.Parse(date+timeOfAppointment[i])))
+                {
+                    timeOfAppointment.RemoveAt(i);
+                    i--;
+                }
+            }
+            
         }
 
         public bool ScheduleAppointment(Doctor doctor, DateTime date, Patient patient)

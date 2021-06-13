@@ -740,5 +740,38 @@
     ],
     "CheckStatus": false,
     "NotificationType": 0
+  },
+  "Zakazan termin210615100000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-15T10:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210615100000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210615083000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-15T08:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210615083000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
+  },
+  "Zakazan termin210615120000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-15T12:00:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210615120000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
   }
 }
