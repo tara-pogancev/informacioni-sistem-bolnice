@@ -10,9 +10,9 @@ namespace SIMS.Model
         {
             return tip switch
             {
-                RoomType.zaPreglede => "Prostorija za preglede",
-                RoomType.sala => "Operaciona sala",
-                RoomType.bolesnicka => "Bolesnička soba",
+                RoomType.eximantionRoom => "Prostorija za preglede",
+                RoomType.operatingRoom => "Operaciona sala",
+                RoomType.patientRoom => "Bolesnička soba",
                 _ => "",
             };
         }
@@ -41,10 +41,10 @@ namespace SIMS.Model
         {
             return str switch
             {
-                "Prostorija za preglede" => RoomType.zaPreglede,
-                "Operaciona sala" => RoomType.sala,
-                "Bolesnička soba" => RoomType.bolesnicka,
-                _ => RoomType.bolesnicka,
+                "Prostorija za preglede" => RoomType.eximantionRoom,
+                "Operaciona sala" => RoomType.operatingRoom,
+                "Bolesnička soba" => RoomType.patientRoom,
+                _ => RoomType.patientRoom,
             };
         }
 

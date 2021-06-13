@@ -25,7 +25,7 @@ namespace SIMS.Model
         {
             InventoryAmounts = new Dictionary<string, int>();
             this.Number = "";
-            this.RoomType = RoomType.bolesnicka;
+            this.RoomType = RoomType.patientRoom;
             Serialize = true;
         }
 

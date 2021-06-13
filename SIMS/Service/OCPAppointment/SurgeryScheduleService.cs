@@ -5,18 +5,19 @@ using SIMS.Model;
 
 namespace SIMS.Service.OCPAppointment
 {
-    class ExaminationScheduleService : AppointmentScheduleAbstractService
+    class SurgeryScheduleService : AppointmentScheduleAbstractService
     {
+
         protected override void SetDuration()
         {
-            int[] durations = { 30, 60, 90 };
+            int[] durations = { 30, 60, 90, 120, 150 };
             foreach (int duration in durations)
                 this.validAppointmentDuration.Add(duration);
         }
 
         protected override void SetRoomType()
         {
-            RoomType[] types = { RoomType.eximantionRoom, RoomType.operatingRoom };
+            RoomType[] types = { RoomType.operatingRoom };
             foreach (RoomType type in types)
                 this.validRoomType.Add(type);
         }
@@ -25,6 +26,8 @@ namespace SIMS.Service.OCPAppointment
         {
             foreach (Specialization specialization in Enum.GetValues(typeof(Specialization)))
                 this.validSpecialization.Add(specialization);
+
+            this.validSpecialization.Remove(Specialization.OpstaPraksa);
         }
     }
 }

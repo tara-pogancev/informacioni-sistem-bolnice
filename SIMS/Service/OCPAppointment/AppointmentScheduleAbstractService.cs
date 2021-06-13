@@ -12,9 +12,9 @@ namespace SIMS.Service.OCPAppointment
         // OCP uočavamo u mogućnosti proširivanja za potencijalno nove tipove termina koji zahtevaju različite specijalizacije, 
         // tipove prostorija ili trajanje termina.
 
-        private List<Specialization> validSpecialization;
-        private List<int> validAppointmentDuration;
-        private List<RoomType> validRoomType;
+        protected List<Specialization> validSpecialization;
+        protected List<int> validAppointmentDuration;
+        protected List<RoomType> validRoomType;
 
         public int GetDurationFromString(String duration)
         {
@@ -69,7 +69,12 @@ namespace SIMS.Service.OCPAppointment
 
         protected abstract void SetRoomType();
 
-
+        public AppointmentScheduleAbstractService()
+        {
+            SetDuration();
+            SetRoomType();
+            SetSpecialization();
+        }
 
     }
 }

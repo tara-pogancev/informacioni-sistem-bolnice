@@ -26,7 +26,7 @@ namespace SIMS.Service
         {
             List<Room> retVal = new List<Room>();
             foreach (Room room in GetAllRooms())
-                if (room.RoomType == RoomType.bolesnicka)
+                if (room.RoomType == RoomType.patientRoom)
                     retVal.Add(room);
 
             return retVal;

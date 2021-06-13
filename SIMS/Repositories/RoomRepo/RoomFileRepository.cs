@@ -55,7 +55,7 @@ namespace SIMS.Repositories.RoomRepo
             List<Room> prostorije = GetAll();
             for (int i = 0; i < prostorije.Count; i++)
             {
-                if (prostorije[i].RoomType != RoomType.zaPreglede || prostorije[i].Available==false)
+                if (prostorije[i].RoomType != RoomType.eximantionRoom || prostorije[i].Available==false)
                 {
                     prostorije.RemoveAt(i);
                     i--;
