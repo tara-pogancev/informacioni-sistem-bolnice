@@ -7,7 +7,6 @@ namespace SIMS.Service.OCPAppointment
 {
     class SurgeryScheduleService : AppointmentScheduleAbstractService
     {
-
         protected override void SetDuration()
         {
             int[] durations = { 30, 60, 90, 120, 150 };

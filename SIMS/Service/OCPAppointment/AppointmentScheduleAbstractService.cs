@@ -34,7 +34,6 @@ namespace SIMS.Service.OCPAppointment
                 foreach (Doctor doctor in doctorService.ReadBySpecialization(specialization))
                     retVal.Add(doctor);
 
-            retVal.Sort();
             return retVal;
         }
         
@@ -71,6 +70,10 @@ namespace SIMS.Service.OCPAppointment
 
         public AppointmentScheduleAbstractService()
         {
+            validAppointmentDuration = new List<int>();
+            validRoomType = new List<RoomType>();
+            validSpecialization = new List<Specialization>();
+
             SetDuration();
             SetRoomType();
             SetSpecialization();

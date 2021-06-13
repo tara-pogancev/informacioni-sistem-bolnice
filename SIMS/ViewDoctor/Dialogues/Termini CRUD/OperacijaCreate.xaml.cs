@@ -33,7 +33,7 @@ namespace SIMS.LekarGUI
         private DoctorController doctorController = new DoctorController();
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
-        private RoomController roomController = new RoomController();
+        private SurgeryScheduleController scheduleController = new SurgeryScheduleController();
 
         public SurgeryCreate(Patient patient)
         {
@@ -57,9 +57,7 @@ namespace SIMS.LekarGUI
         private void InitializeComponents()
         {
             InitializeComponent();
-
             InitComboBoxes();
-
             InitDoctor();
         }
 
@@ -79,22 +77,21 @@ namespace SIMS.LekarGUI
 
         private void InitComboBoxes()
         {
-            doctors = doctorController.GetDTOFromList(doctorController.GetAllDoctors());
+            doctors = doctorController.GetDTOFromList(scheduleController.GetDoctorsForAppointment());
             patients = patientController.GetAllPatients();
-            rooms = roomController.GetAllRooms();
+            rooms = scheduleController.GetRoomsForAppointment();
 
             doctorCombo.ItemsSource = doctors;
             patientCombo.ItemsSource = patients;
             roomCombo.ItemsSource = rooms;
 
-            List<String> durationValues = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            List<String> durationValues = scheduleController.GetDurationList();
             durationValuesList.ItemsSource = durationValues;
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
             DoCreateSurgery();
-
         }
 
         private void DoCreateSurgery()
@@ -151,12 +148,7 @@ namespace SIMS.LekarGUI
 
         private void SetSurgeryDuration(Appointment surgery)
         {
-            if (durationValuesList.SelectedIndex == 0)
-                surgery.Duration = 30;
-            else if (durationValuesList.SelectedIndex == 1)
-                surgery.Duration = 60;
-            else
-                surgery.Duration = 90;
+            surgery.Duration = scheduleController.GetDurationFromString((String)durationValuesList.SelectedValue);
         }
 
         private DateTime GetSurgeryTime()
@@ -165,7 +157,6 @@ namespace SIMS.LekarGUI
             DateTime time = DateTime.Parse(dateAndTime);
             return time;
         }
-
 
         //TODO
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

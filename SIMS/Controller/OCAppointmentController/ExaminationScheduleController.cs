@@ -10,11 +10,6 @@ namespace SIMS.Controller
     {
         private ExaminationScheduleService scheduleService = new ExaminationScheduleService();
 
-        public ExaminationScheduleController()
-        {
-
-        }
-
         public int GetDurationFromString(String duration) => scheduleService.GetDurationFromString(duration);
 
         public List<Doctor> GetDoctorsForAppointment() => scheduleService.GetDoctorsForAppointment();
