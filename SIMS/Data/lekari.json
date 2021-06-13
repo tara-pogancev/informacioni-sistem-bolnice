@@ -75,10 +75,15 @@
     "Serialize": true
   },
   "484855502123": {
-    "VacationDays": 20,
+    "VacationDays": 13,
     "Grade": 0.0,
     "DoctorSpecialization": 0,
-    "VacationPeriods": [],
+    "VacationPeriods": [
+      {
+        "StartTime": "2021-06-13T00:00:00",
+        "EndTime": "2021-06-20T00:00:00"
+      }
+    ],
     "Name": "Katarina",
     "LastName": "Gavrić",
     "Jmbg": "484855502123",

@@ -52,6 +52,21 @@ namespace SIMS.Service
             return doctorRepository.ReadUser(username);
         }
 
+        public List<Doctor> GetDoctorsForExamination()
+        {
+            List<Doctor> doctorsForExamination = GetAllDoctors();
+            for (int i = 0; i < doctorsForExamination.Count; i++)
+            {
+                if (doctorsForExamination[i].DoctorSpecialization != Specialization.OpstaPraksa)
+                {
+                    doctorsForExamination.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return doctorsForExamination;
+        }
+
         // Salje informacije o novom terminu
         public Boolean CheckIfFree(Doctor doctor, Appointment newAppointment)
         {

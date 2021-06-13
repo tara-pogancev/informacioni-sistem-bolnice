@@ -42,9 +42,10 @@ namespace SIMS.PacijentGUI
         {
             InitializeComponent();
             DoctorFileRepository lk = new DoctorFileRepository();
+            DoctorController doctorController = new DoctorController();
             slobodneProstorije= new RoomFileRepository().UcitajProstorijeZaPreglede();
             lekari = new List<Doctor>();
-            lekari = lk.GetAll();
+            lekari = doctorController.GetDoctorsForExamination();
             pacijent = PocetnaStranica.getInstance().Pacijent;
             dostupniTermini = new ObservableCollection<string> (new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" });
             termin = new Appointment();
@@ -121,6 +122,14 @@ namespace SIMS.PacijentGUI
         private void ListaDoktora_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             doktorSelektovan = true;
+            Doctor chosenDoctor = lekari[ListaDoktora.SelectedIndex];
+            if (OdabirDatuma.SelectedDate != null)
+            {
+                String chosenDate = OdabirDatuma.SelectedDate.Value.ToString("dd.MM.yyyy.");
+                dostupniTermini = new ObservableCollection<string>(scheduleAppointmentControler.GetAvailableTimeOfAppointment(chosenDoctor, chosenDate, pacijent));
+                terminiLista.ItemsSource = dostupniTermini;
+            }
+           
 
         }
 
