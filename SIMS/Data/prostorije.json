@@ -8,11 +8,29 @@
     "Available": true,
     "Serialize": true
   },
+  "2": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 0,
+    "Number": "2",
+    "InventoryAmounts": {},
+    "Available": true,
+    "Serialize": true
+  },
   "3": {
     "RenovationStart": "2021-06-18T00:00:00",
     "RenovationEnd": "2021-06-19T00:00:00",
     "RoomType": 0,
     "Number": "3",
+    "InventoryAmounts": {},
+    "Available": true,
+    "Serialize": true
+  },
+  "5": {
+    "RenovationStart": null,
+    "RenovationEnd": null,
+    "RoomType": 0,
+    "Number": "5",
     "InventoryAmounts": {},
     "Available": true,
     "Serialize": true
