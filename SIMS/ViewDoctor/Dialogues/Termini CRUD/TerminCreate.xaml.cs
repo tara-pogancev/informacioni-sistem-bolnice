@@ -35,6 +35,7 @@ namespace SIMS.LekarGUI
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
         private ExaminationScheduleController scheduleController = new ExaminationScheduleController();
+        private ScheduleAppointmentControler scheduleAppointmentControler = new ScheduleAppointmentControler();
 
         public AppointmentCreate(Patient patient)
         {
@@ -125,17 +126,17 @@ namespace SIMS.LekarGUI
             return doctorController.GetDoctor(dto.Jmbg);
         }
 
-        private void CreateAppointment(Appointment termin)
+        private void CreateAppointment(Appointment appointment)
         {
             String dateAndTime = datePicker.Text + " " + timePicker.Text;
             DateTime timeStamp = DateTime.Parse(dateAndTime);
-            termin.StartTime = timeStamp;
-            termin.InitialTime = timeStamp;
-            SetSelectedDuration(termin);
-            termin.Room = rooms[roomCombo.SelectedIndex];
-            termin.Patient = patients[patientCombo.SelectedIndex];
-            termin.Doctor = doctors[doctorCombo.SelectedIndex];
-            termin.Type = AppointmentType.examination;
+            appointment.StartTime = timeStamp;
+            appointment.InitialTime = timeStamp;
+            SetSelectedDuration(appointment);
+            appointment.Room = rooms[roomCombo.SelectedIndex];
+            appointment.Patient = patients[patientCombo.SelectedIndex];
+            appointment.Doctor = doctors[doctorCombo.SelectedIndex];
+            appointment.Type = AppointmentType.examination;
         }
 
         private void SetSelectedDuration(Appointment appointment)
@@ -149,14 +150,15 @@ namespace SIMS.LekarGUI
             DoctorAppointmentsPage.GetInstance().RefreshView();
         }
 
-        //TODO
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (doctorCombo.SelectedItem != null)
+            if (doctorCombo.SelectedItem != null && patientCombo.SelectedItem != null)
             {
                 Doctor doctor = doctors[doctorCombo.SelectedIndex];
-                List<Appointment> doctorTimes = new List<Appointment>();
-                availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+                Patient patient = patients[patientCombo.SelectedIndex];
+                DateTime selectedDate = (DateTime)datePicker.SelectedDate; 
+                //availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
+                availableTimes = scheduleAppointmentControler.GetAvailableTimeOfAppointment(doctor, selectedDate.ToString("dd.MM.yyyy."), patient);
 
                 timePicker.ItemsSource = availableTimes;
             }
