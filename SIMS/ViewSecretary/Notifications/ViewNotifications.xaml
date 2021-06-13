@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS.ViewSecretary" 
+      xmlns:ns="clr-namespace:SIMS"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:xceet="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
@@ -28,7 +29,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Background="#2a3042">
+                            <Grid Grid.Row="0" Background="{DynamicResource NotificationBoxColor}">
                                 <TextBlock Text="{Binding Author}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
                                 <TextBlock Text="{Binding VaryingTimeString}" HorizontalAlignment="Right" Margin="0,0,40,0" VerticalAlignment="Center" Foreground="White"/>
                                 <Button Click="Update_Click" Height="15" Width="15" Margin="5,5,20,5" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent" CommandParameter="{Binding ID}">
@@ -38,10 +39,10 @@
                                     <materialDesign:PackIcon Kind="Delete" Height="12" Width="12" HorizontalAlignment="Right" Foreground="White"/>
                                 </Button>
 
-                                <Border BorderBrush="#57D6B4" BorderThickness="0,0,0,1"/>
+                                <Border BorderBrush="{DynamicResource NotificationBorderColor}" BorderThickness="0,0,0,1"/>
                             </Grid>
 
-                            <TextBlock Text="{Binding Content}" Grid.Row="1" TextWrapping="Wrap" Background="#2a3042" Foreground="White"/>
+                            <TextBlock Text="{Binding Content}" Grid.Row="1" TextWrapping="Wrap" Background="{DynamicResource NotificationBoxColor}" Foreground="White"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -50,10 +51,10 @@
 
         <xceet:CheckComboBox x:Name="rolesComboBox" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" Margin="10, 0, 0, 0" MaxDropDownHeight="100" />
 
-        <TextBox x:Name="notificationTextBox" Grid.Row="2" Text="Ovde mozete uneti vase obavestenje." Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
-        
-        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="#1B233A">
-            <Button Content="DODAJ" FontSize="14" Click="AddNotification_Click">
+        <TextBox x:Name="notificationTextBox" Grid.Row="2" Text="{ns:Loc NotificationDefaultText}" Width="430" Height="150" Margin="10" VerticalAlignment="Top" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Hidden"/>
+
+        <Grid Grid.Row="3" Width="430" Height="50" VerticalAlignment="Bottom" Background="{DynamicResource BackgroundButtonBar}">
+            <Button Content="{ns:Loc AddCaps}" FontSize="14" Click="AddNotification_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#FF57D6B4"/>

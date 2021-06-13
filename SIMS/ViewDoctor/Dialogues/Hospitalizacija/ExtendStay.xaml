@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Hospitalizacija"
         mc:Ignorable="d"
+        KeyDown="WindowKeyListener"
+        WindowStartupLocation="CenterScreen"
         Title="Produžetak boravka" Height="380" Width="500">
 
     <Window.Resources>

@@ -89,5 +89,11 @@ namespace SIMS.LekarGUI.Dialogues.CoffeeBreak
         {
             RightArrow.Source = new BitmapImage(new Uri(@"../../../src/CoffeeBreak/arrow_right.png", UriKind.Relative));
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+        }
     }
 }

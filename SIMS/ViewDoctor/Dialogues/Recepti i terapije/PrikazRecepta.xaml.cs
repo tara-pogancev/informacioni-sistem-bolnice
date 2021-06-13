@@ -39,5 +39,11 @@ namespace SIMS.LekarGUI
         {
             this.Close();
         }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+        }
     }
 }

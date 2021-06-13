@@ -26,7 +26,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Button Width="150" Height="35" Margin="25,50,25,464"> Nazad </Button>
+            <Button  Margin="15,55,15,464" Width="150">Nazad 
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click" >
+                        <i:InvokeCommandAction Command="{Binding Path=DataContext.BackCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </Grid>
         <Grid Grid.Column="1">
             <DataGrid x:Name="terminiTabela" ItemsSource="{Binding Doctors, Mode=TwoWay}" IsReadOnly="True" 

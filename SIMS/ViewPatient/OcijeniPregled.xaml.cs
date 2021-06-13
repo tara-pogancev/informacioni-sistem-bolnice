@@ -49,5 +49,10 @@ namespace SIMS.PacijentGUI
             new DoctorSurveyController().SaveDoctorSurvey(anketaLekara);
             NavigationService.Navigate(PocetnaStranica.getInstance().frame.Content=new IstorijaPregleda());
         }
+
+        private void Nazad_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

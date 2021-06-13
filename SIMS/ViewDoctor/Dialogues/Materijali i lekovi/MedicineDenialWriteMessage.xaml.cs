@@ -30,12 +30,23 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void CancelMessage(object sender, RoutedEventArgs e)
         {
+            DoCancelMessage();
+        }
+
+        private void DoCancelMessage()
+        {
             if (MessageBox.Show("Da li ste sigurni da želite da otkažete pisanje poruke?", "Otkaži pisanje?",
                     MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                        this.Close();
+                this.Close();
         }
 
         private void AcceptMessage(object sender, RoutedEventArgs e)
+        {
+            DoAcceptMessage();
+
+        }
+
+        private void DoAcceptMessage()
         {
             String notificationAuthor = DoctorUI.GetInstance().GetUser().FullName;
             String notificationText = NotificationTextBox.Text;
@@ -46,7 +57,6 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
             this.Close();
             MessageBox.Show("Poruka uspešno poslata!");
-            
         }
 
         private List<String> GetManagerID()
@@ -57,6 +67,14 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                 retVal.Add(manager.Jmbg);
 
             return retVal;
-        } 
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                DoCancelMessage();
+            else if (e.Key == Key.Return)
+                DoAcceptMessage();
+        }
     }
 }

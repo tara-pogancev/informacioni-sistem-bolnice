@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Prostorija
 
 using Newtonsoft.Json;
+using SIMS.Controller;
 using System;
 using System.Collections.Generic;
 
@@ -24,7 +25,7 @@ namespace SIMS.Model
         {
             InventoryAmounts = new Dictionary<string, int>();
             this.Number = "";
-            this.RoomType = RoomType.bolesnicka;
+            this.RoomType = RoomType.patientRoom;
             Serialize = true;
         }
 
@@ -100,6 +101,39 @@ namespace SIMS.Model
         public bool ShouldSerializeRenovationEnd()
         {
             return Serialize;
+        }
+
+        public bool GetIfFreeForAppointment(Appointment newAppointment)
+        {
+            DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
+            foreach (Appointment currentAppointment in doctorAppointmentController.GetUpcommingAppointmentsByRoom(this))
+            {
+                if (newAppointment.GetEndTime() > currentAppointment.StartTime && newAppointment.GetEndTime() <= currentAppointment.GetEndTime())
+                    return false;
+
+                if (newAppointment.StartTime >= currentAppointment.StartTime && newAppointment.StartTime < currentAppointment.GetEndTime())
+                    return false;
+            }
+
+            return true;                
+        }
+
+        public bool GetIfFreeForAppointmentUpdate(Appointment newAppointment)
+        {
+            DoctorAppointmentController doctorAppointmentController = new DoctorAppointmentController();
+            foreach (Appointment currentAppointment in doctorAppointmentController.GetUpcommingAppointmentsByRoom(this))
+            {
+                if (currentAppointment.AppointmentID != newAppointment.AppointmentID)
+                {
+                    if (newAppointment.GetEndTime() > currentAppointment.StartTime && newAppointment.GetEndTime() <= currentAppointment.GetEndTime())
+                        return false;
+
+                    if (newAppointment.StartTime >= currentAppointment.StartTime && newAppointment.StartTime < currentAppointment.GetEndTime())
+                        return false;
+                }
+            }
+
+            return true;
         }
 
     }

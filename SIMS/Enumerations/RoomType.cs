@@ -10,9 +10,9 @@ namespace SIMS.Model
 {
     public enum RoomType
     {
-        zaPreglede,
-        sala,
-        bolesnicka
+        eximantionRoom,
+        operatingRoom,
+        patientRoom
     }
     
 }

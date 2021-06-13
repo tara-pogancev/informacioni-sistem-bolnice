@@ -7,11 +7,9 @@ using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
-    class DateRecommendationPolicy
+    class DateRecommendationPolicy:IRecommendationStrategy
     {
-        DateTime startDate;
-        DateTime endDate;
-        string doctorID;
+        
         string patientID;
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
@@ -19,8 +17,7 @@ namespace SIMS.Service.RecommendationAppointmentService
         public DateRecommendationPolicy(DateTime startDate, DateTime endDate, string patientID)
         {
             recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
-            this.startDate = startDate;
-            this.endDate = endDate;
+            
             this.patientID = patientID;
             recommendedAppointementsDrafts = new RecommendedAppointmentFactory(startDate, endDate).getRecommendedAppointmentDrafts();
         }
@@ -78,10 +75,12 @@ namespace SIMS.Service.RecommendationAppointmentService
             }
         }
 
-        public List<RecommendedAppointmentDraft> GetDateRecommendationAppointmentDraft()
+        public List<Appointment> GetRecommendedAppointments()
         {
             RemoveReservedAppointments();
-            return recommendedAppointementsDrafts;
+            ITransformDraftToAppointment transformDraftToAppointment = new DateRecommendationDraftsTransformation();
+            return transformDraftToAppointment.TransformDraftToAppointment(recommendedAppointementsDrafts, patientID, "");
+           
         }
     }
 }

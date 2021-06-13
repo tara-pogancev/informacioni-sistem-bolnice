@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIMS.ViewPatient.ViewModel;
 
 namespace SIMS.PacijentGUI
 {
@@ -27,7 +28,7 @@ namespace SIMS.PacijentGUI
         {
             
             InitializeComponent();
-            
+            this.DataContext = new TherapyReportViewModel();
 
 
 

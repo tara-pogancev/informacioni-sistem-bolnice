@@ -12,7 +12,6 @@ namespace SIMS.Model
         public string Name { get; set; }
         public string ID { get; set; }
         public InventoryType Type { get; set; }
-
         public string RoomNumber { get; set; } //neophodno za bindovanje
 
         public Inventory()
@@ -21,6 +20,7 @@ namespace SIMS.Model
             ID = "";
             Type = InventoryType.statička;
         }
+
         public Inventory(string naziv, string id, InventoryType TipOpreme)
         {
             this.Name = naziv;
@@ -36,7 +36,7 @@ namespace SIMS.Model
                 {
                     return 0;
                 }
-                return RoomInventoryFileRepository.Instance.Read(RoomNumber, ID).Kolicina;
+                return RoomInventoryFileRepository.Instance.Read(RoomNumber, ID).Quantity;
             }
         }
 

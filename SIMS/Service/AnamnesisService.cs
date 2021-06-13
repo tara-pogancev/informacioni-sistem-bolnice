@@ -47,8 +47,9 @@ namespace SIMS.Service
 
             foreach (Anamnesis anamnesis in anamnesisRepository.GetAll())
             {
-                if (anamnesis.GetAppointment().Patient.Jmbg == patient.Jmbg)
-                    retVal.Add(anamnesis);
+                if (anamnesis.GetAppointment() != null)
+                    if (anamnesis.GetAppointment().Patient.Jmbg == patient.Jmbg)
+                        retVal.Add(anamnesis);
 
             }
 
@@ -66,6 +67,17 @@ namespace SIMS.Service
             foreach (Anamnesis anamnesis in list)
                 retVal.Add(GetDTO(anamnesis));
 
+            return retVal;
+        }
+
+        public List<Anamnesis> GetListForPatientByDate(Patient patient, DateTime startDate, DateTime endDate)
+        {
+            List<Anamnesis> retVal = new List<Anamnesis>();
+
+            foreach (Anamnesis anamnesis in GetAnamnesisByPatient(patient))
+                if (anamnesis.AnamnesisDate >= startDate && anamnesis.AnamnesisDate <= endDate)
+                    retVal.Add(anamnesis);
+            
             return retVal;
         }
 

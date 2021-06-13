@@ -1,5 +1,6 @@
 ﻿using SIMS.Model;
 using SIMS.Repositories.SecretaryRepo;
+using System;
 using System.Collections.Generic;
 
 namespace SIMS.Service
@@ -16,6 +17,11 @@ namespace SIMS.Service
         public List<Secretary> GetAllSecretaries()
         {
             return secretaryRepostitory.GetAll();
+        }
+
+        public void UpdateSecretary(Secretary secretary)
+        {
+            secretaryRepostitory.Update(secretary); 
         }
     }
 }

@@ -8,6 +8,7 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
+        "VacationPeriods": null,
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -33,8 +34,8 @@
         "Serialize": false
       },
       "Room": {
-        "InventoryAmounts": {},
         "Number": "1",
+        "InventoryAmounts": {},
         "Serialize": false
       },
       "InitialTime": "0001-01-01T00:00:00",
@@ -56,6 +57,7 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
+        "VacationPeriods": null,
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -81,8 +83,8 @@
         "Serialize": false
       },
       "Room": {
-        "InventoryAmounts": {},
         "Number": "1",
+        "InventoryAmounts": {},
         "Serialize": false
       },
       "InitialTime": "0001-01-01T00:00:00",
@@ -104,6 +106,7 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
+        "VacationPeriods": null,
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -129,8 +132,8 @@
         "Serialize": false
       },
       "Room": {
-        "InventoryAmounts": {},
         "Number": "1",
+        "InventoryAmounts": {},
         "Serialize": false
       },
       "InitialTime": "0001-01-01T00:00:00",
@@ -152,6 +155,7 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
+        "VacationPeriods": null,
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -177,8 +181,8 @@
         "Serialize": false
       },
       "Room": {
-        "InventoryAmounts": {},
         "Number": "1",
+        "InventoryAmounts": {},
         "Serialize": false
       },
       "InitialTime": "0001-01-01T00:00:00",
@@ -200,6 +204,7 @@
         "VacationDays": 15,
         "Grade": 0.0,
         "DoctorSpecialization": 2,
+        "VacationPeriods": null,
         "Name": "Tara",
         "LastName": "Pogančev",
         "Jmbg": "045210805048",
@@ -225,10 +230,11 @@
         "Serialize": false
       },
       "Room": {
-        "InventoryAmounts": {},
         "Number": "1",
+        "InventoryAmounts": {},
         "Serialize": false
       },
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210525105929653208"
     },
     "Grade": 5,
@@ -236,6 +242,66 @@
     "SurveyID": "210525105929653208",
     "Comment": "Dobra,dobra",
     "SubmissionDate": "2021-05-27T20:15:18.7611801+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210531092245594374": {
+    "Appointment": {
+      "StartTime": "2021-06-02T08:00:00",
+      "Duration": 30,
+      "Type": 0,
+      "Doctor": {
+        "VacationDays": 20,
+        "Grade": 0.0,
+        "DoctorSpecialization": 4,
+        "VacationPeriods": [],
+        "Name": "Zack",
+        "LastName": "Fair",
+        "Jmbg": "4848555021548",
+        "Username": "zack",
+        "Password": "l",
+        "Email": "zackfair@zdravo.com",
+        "Phone": "0698547521",
+        "Address": {
+          "City": {
+            "Name": "Midgar",
+            "PostalCode": 99888,
+            "Country": {
+              "Name": "Gaia"
+            }
+          },
+          "Street": "Shinra Inc",
+          "Number": "Floor 75"
+        },
+        "Serialize": true
+      },
+      "Patient": {
+        "Jmbg": "4865453131",
+        "Serialize": false
+      },
+      "Room": {
+        "Number": "1",
+        "InventoryAmounts": {},
+        "Serialize": false
+      },
+      "InitialTime": "0001-01-01T00:00:00",
+      "AppointmentID": "210531092245594374"
+    },
+    "Grade": 5,
+    "DoctorId": "4848555021548",
+    "SurveyID": "210531092245594374",
+    "Comment": "Ljudina",
+    "SubmissionDate": "2021-06-07T18:00:38.7759119+02:00",
+    "IdVlasnika": "4865453131"
+  },
+  "210531092343979838": {
+    "Appointment": {
+      "AppointmentID": "210531092343979838"
+    },
+    "Grade": 5,
+    "DoctorId": "4848555021548",
+    "SurveyID": "210531092343979838",
+    "Comment": "Sve je u najboljem redu",
+    "SubmissionDate": "2021-06-09T08:28:15.730634+02:00",
     "IdVlasnika": "4865453131"
   }
 }

@@ -2,6 +2,7 @@
 using SIMS.DTO;
 using SIMS.Model;
 using SIMS.ViewSecretary.Home;
+using SIMS.ViewSecretary.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -11,18 +12,19 @@ namespace SIMS.ViewSecretary.Doctors
 {
     public partial class DoctorVacations : Page
     {
-        private List<DoctorDTO> _doctors;
-        private DoctorController doctorController = new DoctorController();
+        //private List<DoctorDTO> _doctors;
+        //private DoctorController doctorController = new DoctorController();
 
         public DoctorVacations()
         {
             InitializeComponent();
+            this.DataContext = new DoctorVacationsViewModel();
 
-            _doctors = doctorController.GetAllDoctorsDTO();
-            doctorsComboBox.ItemsSource = _doctors;
+            //_doctors = doctorController.GetAllDoctorsDTO();
+            //doctorsComboBox.ItemsSource = _doctors;
         }
 
-        private void AddVacation_Click(object sender, RoutedEventArgs e)
+        /*private void AddVacation_Click(object sender, RoutedEventArgs e)
         {
             if (doctorsComboBox.SelectedItem == null || vacationDaysTextBox.Text.Trim().Equals("") || startDatePicker.SelectedDate == null || endDatePicker.SelectedDate == null)
             {
@@ -32,13 +34,13 @@ namespace SIMS.ViewSecretary.Doctors
                     int.TryParse(vacationDaysTextBox.Text, out int vacationDays);
                     doctor.VacationDays = vacationDays;
                     doctorController.UpdateDoctor(doctor);
-                    MessageBox.Show("Uspesno izmenjen broj slobodnih dana.", "Izmenjeni slobodni dani");
+                    CustomMessageBox.Show(TranslationSource.Instance["VacationDaysUpdatedMessage"]);
 
                     NavigationService.Navigate(ViewHome.GetInstance());
                 }
                 else
                 {
-                    MessageBox.Show("Molimo popunite sva polja!");
+                    CustomMessageBox.Show(TranslationSource.Instance["FillFieldsMessage"]);
                     return;
                 }
             }
@@ -53,7 +55,7 @@ namespace SIMS.ViewSecretary.Doctors
                 doctor.VacationDays -= (vacationPeriod.EndTime - vacationPeriod.StartTime).Days;
                 doctorController.UpdateDoctor(doctor);
 
-                MessageBox.Show("Uspesno kreiran odmor za doktora", "Kreiran odmor za doktora");
+                CustomMessageBox.Show(TranslationSource.Instance["VacationCreatedMessage"]);
 
                 NavigationService.Navigate(ViewHome.GetInstance());
             }
@@ -78,6 +80,6 @@ namespace SIMS.ViewSecretary.Doctors
         {
             Doctor doctor = _doctors[doctorsComboBox.SelectedIndex];
             vacationDaysTextBox.Text = doctor.VacationDays.ToString();
-        }
+        }*/
     }
 }

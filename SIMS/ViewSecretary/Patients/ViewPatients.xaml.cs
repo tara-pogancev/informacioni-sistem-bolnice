@@ -4,12 +4,13 @@ using System.Windows;
 using System.Windows.Controls;
 using SIMS.Model;
 using SIMS.Controller;
+using System.Windows.Input;
 
 namespace SIMS.ViewSecretary.Patients
 {
     public partial class ViewPatients : Page
     {
-        private ObservableCollection<Patient> _patients;
+        public ObservableCollection<Patient> _patients { get; }
         private static ViewPatients _instance = null;
 
         private PatientController patientController = new PatientController();
@@ -42,7 +43,7 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za izmenu.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToUpdateMessage"]);
             }
             else
             {
@@ -54,24 +55,24 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za odblokiranje.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToUnblockMessage"]);
             }
             else
             {
                 Patient toUnblock = (Patient)patientsView.SelectedItem;
                 if (toUnblock.Guest == true)
                 {
-                    MessageBox.Show("Odabrani pacijent nema nalog.", "Pacijent bez naloga");
+                    CustomMessageBox.Show(TranslationSource.Instance["PatientWithoutAccountMessage"]);
                     return;
                 }
                 else if (toUnblock.IsBanned == false)
                 {
-                    MessageBox.Show("Odabrani pacijent nije banovan.", "Pacijent nije banovan");
+                    CustomMessageBox.Show(TranslationSource.Instance["PatientNotBannedMessage"]);
                     return;
                 }
                 toUnblock.IsBanned = false;
                 patientController.UpdatePatient(toUnblock);
-                MessageBox.Show("Pacijent je uspesno odblokiran.", "Pacijent odblokiran");
+                CustomMessageBox.Show(TranslationSource.Instance["PatientUnblockedMessage"]);
             }
         }
 
@@ -79,14 +80,21 @@ namespace SIMS.ViewSecretary.Patients
         {
             if (patientsView.SelectedItem == null)
             {
-                MessageBox.Show("Morate izabrati pacijenta za brisanje.", "Pacijent nije izabran");
+                CustomMessageBox.Show(TranslationSource.Instance["ChoosePatientToDeleteMessage"]);
             }
             else
             {
                 Patient toDelete = (Patient)patientsView.SelectedItem;
                 patientController.DeletePatient(toDelete.Jmbg);
+                CustomMessageBox.Show(TranslationSource.Instance["PatientDeletedMessage"]);
                 RefreshView();
             }
+        }
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Patient details = (Patient)patientsView.SelectedItem;
+            NavigationService.Navigate(new PatientDetails(details));
+
         }
 
         public void RefreshView()
@@ -95,7 +103,7 @@ namespace SIMS.ViewSecretary.Patients
             List<Patient> pacijentiAll = patientController.GetAllPatients();
             foreach (Patient p in pacijentiAll)
                 _patients.Add(p);
-
+            patientsView.ItemsSource = _patients;
         }
 
         public void RemoveInstance()

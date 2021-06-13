@@ -35,21 +35,21 @@ namespace SIMS.PacijentGUI
             
             if (anamneza.MainIssues != null)
             {
-                GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                GlavneTegobe.Inlines.Add(new Run("Glavne tegobe:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 GlavneTegobe.Inlines.Add("   ");
                 GlavneTegobe.Inlines.Add(anamneza.MainIssues);
                 GlavneTegobe.TextWrapping = TextWrapping.Wrap;
-                SadasnjaAnamneza.Inlines.Add(new Run("Sadašnja anamneza:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                SadasnjaAnamneza.Inlines.Add(new Run("Sadašnja anamneza:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 SadasnjaAnamneza.Inlines.Add("   ");
                 SadasnjaAnamneza.Inlines.Add(anamneza.CurrentAnamnesis);
                 SadasnjaAnamneza.TextWrapping = TextWrapping.Wrap;
 
-                OpstePojave.Inlines.Add(new Run("Opšte pojave:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                OpstePojave.Inlines.Add(new Run("Opšte pojave:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 OpstePojave.Inlines.Add("   ");
                 OpstePojave.Inlines.Add(anamneza.GeneralOccurrences);
                 OpstePojave.TextWrapping = TextWrapping.Wrap;
 
-                RespiratorniSistem.Inlines.Add(new Run("Respiratorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                RespiratorniSistem.Inlines.Add(new Run("Respiratorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 RespiratorniSistem.Inlines.Add("   ");
                 RespiratorniSistem.Inlines.Add(anamneza.RespiratorySystem);
                 RespiratorniSistem.TextWrapping = TextWrapping.Wrap;
@@ -59,7 +59,7 @@ namespace SIMS.PacijentGUI
                 KardiovaskularniSistem.Inlines.Add(anamneza.CardioSystem);
                 KardiovaskularniSistem.TextWrapping = TextWrapping.Wrap;
 
-                DigestivniSistem.Inlines.Add(new Run("Digestivni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                DigestivniSistem.Inlines.Add(new Run("Digestivni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline , Foreground = Brushes.White });
                 DigestivniSistem.Inlines.Add("   ");
                 DigestivniSistem.Inlines.Add(anamneza.DigestiveSystem);
                 DigestivniSistem.TextWrapping = TextWrapping.Wrap;
@@ -69,43 +69,47 @@ namespace SIMS.PacijentGUI
                 UrogenitalniSistem.Inlines.Add(anamneza.UroGenitalSystem);
                 UrogenitalniSistem.TextWrapping = TextWrapping.Wrap;
 
-                LokomotorniSistem.Inlines.Add(new Run("Lokomotorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                LokomotorniSistem.Inlines.Add(new Run("Lokomotorni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 LokomotorniSistem.Inlines.Add("   ");
                 LokomotorniSistem.Inlines.Add(anamneza.LocomotorSystem);
                 LokomotorniSistem.TextWrapping = TextWrapping.Wrap;
 
-                NervniSistem.Inlines.Add(new Run("Nervni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                NervniSistem.Inlines.Add(new Run("Nervni sistem:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 NervniSistem.Inlines.Add("   ");
                 NervniSistem.Inlines.Add(anamneza.NervousSystem);
                 NervniSistem.TextWrapping = TextWrapping.Wrap;
 
-                RanijaOboljenja.Inlines.Add(new Run("Ranija oboljenja:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                RanijaOboljenja.Inlines.Add(new Run("Ranija oboljenja:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline , Foreground = Brushes.White });
                 RanijaOboljenja.Inlines.Add("   ");
                 RanijaOboljenja.Inlines.Add(anamneza.PastDiseases);
                 RanijaOboljenja.TextWrapping = TextWrapping.Wrap;
 
-                PorodicniPodaci.Inlines.Add(new Run("Porodični podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                PorodicniPodaci.Inlines.Add(new Run("Porodični podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline, Foreground = Brushes.White });
                 PorodicniPodaci.Inlines.Add("   ");
                 PorodicniPodaci.Inlines.Add(anamneza.FamilyData);
                 PorodicniPodaci.TextWrapping = TextWrapping.Wrap;
 
-                SocijalnoEpidemioloskiPodaci.Inlines.Add(new Run("Socijalno-epidemiološki podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline });
+                SocijalnoEpidemioloskiPodaci.Inlines.Add(new Run("Socijalno-epidemiološki podaci:") { FontWeight = FontWeights.Bold, TextDecorations = TextDecorations.Underline,Foreground = Brushes.White });
                 SocijalnoEpidemioloskiPodaci.Inlines.Add("   ");
                 SocijalnoEpidemioloskiPodaci.Inlines.Add(anamneza.SocioEpiData);
                 SocijalnoEpidemioloskiPodaci.TextWrapping = TextWrapping.Wrap;
             }
             else
             {
-                GlavneTegobe.Inlines.Add(new Run("Poštovani, anamneza za ovaj pregled nije napisana!") { FontWeight = FontWeights.Bold });
+                GlavneTegobe.Inlines.Add(new Run("Poštovani, anamneza za ovaj pregled nije napisana!") { FontWeight = FontWeights.Bold, Foreground=Brushes.White});
             }
 
         }
 
         private void ucitajPodatke()
         {
-            anamneza.AnamnesisAppointment = new AppointmentController().GetAppointment(anamneza.AnamnesisAppointment.AppointmentID);
-            anamneza.AnamnesisAppointment.Doctor = new DoctorController().GetDoctor(anamneza.AnamnesisAppointment.Doctor.Jmbg);
-            anamneza.AnamnesisAppointment.Patient = PocetnaStranica.getInstance().Pacijent;
+            if (anamneza.AnamnesisAppointment != null)
+            {
+                anamneza.AnamnesisAppointment = new AppointmentController().GetAppointment(anamneza.AnamnesisAppointment.AppointmentID);
+                anamneza.AnamnesisAppointment.Doctor = new DoctorController().GetDoctor(anamneza.AnamnesisAppointment.Doctor.Jmbg);
+                anamneza.AnamnesisAppointment.Patient = PocetnaStranica.getInstance().Pacijent;
+            }
+            
         }
 
         public Anamnesis Anamneza { get => anamneza; set => anamneza = value; }

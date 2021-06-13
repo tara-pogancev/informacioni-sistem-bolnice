@@ -43,6 +43,12 @@ namespace SIMS.LekarGUI
 
         private void AcceptReceipt(object sender, RoutedEventArgs e)
         {
+            DoAcceptReceipt();
+
+        }
+
+        private void DoAcceptReceipt()
+        {
             if (ValidateForm())
                 MessageBox.Show("Greška! Molimo popunite sva polja.");
 
@@ -53,7 +59,6 @@ namespace SIMS.LekarGUI
             }
             else
                 WriteReceipt();
-
         }
 
         private bool ValidateForm()
@@ -94,6 +99,14 @@ namespace SIMS.LekarGUI
         {
             Notification notification = new Notification("Recept", DateTime.Now, "Prepisan recept za lek: " + medicine.MedicineName + ". Pogledajte recept na svom profilu.", new List<string>() { patient.Jmbg });
             notificationController.SaveNotification(notification);
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoAcceptReceipt();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace SIMS.LekarGUI
         private DoctorController doctorController = new DoctorController();
         private AppointmentController appointmentController = new AppointmentController();
         private PatientController patientController = new PatientController();
-        private RoomController roomController = new RoomController();
+        private ExaminationScheduleController scheduleController = new ExaminationScheduleController();
 
         public AppointmentCreate(Patient patient)
         {
@@ -75,22 +75,25 @@ namespace SIMS.LekarGUI
 
         private void InitComboBoxes()
         {
-            doctors = doctorController.GetDTOFromList(doctorController.GetAllDoctors());
+            doctors = doctorController.GetDTOFromList(scheduleController.GetDoctorsForAppointment());
             patients = patientController.GetAllPatients();
-            rooms = roomController.GetAllRooms();
+            rooms = scheduleController.GetRoomsForAppointment();
 
             doctorCombo.ItemsSource = doctors;
             patientCombo.ItemsSource = patients;
             roomCombo.ItemsSource = rooms;
 
-            List<String> durationValues = new List<String>() { "30 minuta", "60 minuta", "90 minuta" };
+            List<String> durationValues = scheduleController.GetDurationList();
             durationValuesList.ItemsSource = durationValues;
         }
 
         private void ButtonAccept(object sender, RoutedEventArgs e)
         {
-            //TODO: Odraditi sve provere
+            DoCreateAppointment();
+        }
 
+        private void DoCreateAppointment()
+        {
             if (doctorCombo.SelectedItem == null || datePicker.SelectedDate == null || timePicker.SelectedItem == null)
                 MessageBox.Show("Molimo popunite sva polja!");
             else
@@ -103,13 +106,16 @@ namespace SIMS.LekarGUI
                 if (!doctorController.CheckIfFree(doctor, appointment))
                     MessageBox.Show("Odabrani lekar nije dostupan u datom terminu. Molimo izaberite drugi termin.", "Upozorenje!");
 
+                //PROVERA DOSTUPNOSTI SOBE
+                else if (!appointment.Room.GetIfFreeForAppointment(appointment))
+                    MessageBox.Show("Odabrana soba nije dostupna u datom terminu.", "Upozorenje!");
+
                 else
                 {
                     SaveAppointment(appointment);
                     this.Close();
                     MessageBox.Show("Termin uspešno zakazan.");
-                }
-
+                }                
             }
         }
 
@@ -121,10 +127,10 @@ namespace SIMS.LekarGUI
 
         private void CreateAppointment(Appointment termin)
         {
-            String vrijemeIDatum = datePicker.Text + " " + timePicker.Text;
-            DateTime vremenskaOdrednica = DateTime.Parse(vrijemeIDatum);
-            termin.StartTime = vremenskaOdrednica;
-            termin.InitialTime = vremenskaOdrednica;
+            String dateAndTime = datePicker.Text + " " + timePicker.Text;
+            DateTime timeStamp = DateTime.Parse(dateAndTime);
+            termin.StartTime = timeStamp;
+            termin.InitialTime = timeStamp;
             SetSelectedDuration(termin);
             termin.Room = rooms[roomCombo.SelectedIndex];
             termin.Patient = patients[patientCombo.SelectedIndex];
@@ -132,14 +138,9 @@ namespace SIMS.LekarGUI
             termin.Type = AppointmentType.examination;
         }
 
-        private void SetSelectedDuration(Appointment termin)
+        private void SetSelectedDuration(Appointment appointment)
         {
-            if (durationValuesList.SelectedIndex == 0)
-                termin.Duration = 30;
-            else if (durationValuesList.SelectedIndex == 1)
-                termin.Duration = 60;
-            else
-                termin.Duration = 90;
+            appointment.Duration = scheduleController.GetDurationFromString((String)durationValuesList.SelectedValue);
         }
 
         private void SaveAppointment(Appointment appointment)
@@ -158,8 +159,15 @@ namespace SIMS.LekarGUI
                 availableTimes = new List<String>() { "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00" };
 
                 timePicker.ItemsSource = availableTimes;
-
             }
+        }
+
+        private void WindowKeyListener(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
+            else if (e.Key == Key.Return)
+                DoCreateAppointment();
         }
     }
 }

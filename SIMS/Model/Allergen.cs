@@ -9,6 +9,7 @@ namespace SIMS.Model
         public string ID { get; set; }
         public string Name { get; set; }
         public bool Serialize { get; set; }
+
         public Allergen()
         {
             ID = "";

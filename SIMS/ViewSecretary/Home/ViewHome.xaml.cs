@@ -1,4 +1,5 @@
 ﻿using SIMS.Model;
+using System.Resources;
 using System.Windows.Controls;
 
 namespace SIMS.ViewSecretary.Home
@@ -21,7 +22,8 @@ namespace SIMS.ViewSecretary.Home
         private ViewHome(Secretary secretary)
         {
             InitializeComponent();
-            welcomeText.Text = "Dobrodosli,\n" + secretary.FullName;
+
+            secretaryNameText.Text = secretary.FullName;
         }
 
         public void RemoveInstance()

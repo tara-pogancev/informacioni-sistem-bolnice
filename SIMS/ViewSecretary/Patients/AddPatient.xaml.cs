@@ -1,5 +1,6 @@
 ﻿using SIMS.Controller;
 using SIMS.Model;
+using SIMS.ViewSecretary.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,21 +12,22 @@ namespace SIMS.ViewSecretary.Patients
 {
     public partial class AddPatient : Page
     {
-        private ObservableCollection<Allergen> _allergens;
+        /*private ObservableCollection<Allergen> _allergens;
         private PatientController patientController = new PatientController();
-        private AllergenController allergenController = new AllergenController();
+        private AllergenController allergenController = new AllergenController();*/
         public AddPatient()
         {
             InitializeComponent();
+            this.DataContext = new AddPatientViewModel();
 
-            _allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
+            /*_allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
             allergensComboBox.DisplayMemberPath = "Name";
-            allergensComboBox.SelectedMemberPath = "ID";
+            allergensComboBox.SelectedMemberPath = "ID";*/
         }
 
-        private void AddPatient_Click(object sender, RoutedEventArgs e)
+        /*private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = CreatePatientFromUserInput();
             patientController.SavePatient(patient);
@@ -40,8 +42,19 @@ namespace SIMS.ViewSecretary.Patients
             int.TryParse(postalCodeTextBox.Text, out int postalCode);
 
             List<Allergen> allergens = new List<Allergen>();
-            foreach (Allergen a in allergensComboBox.SelectedItems)
-                allergens.Add(a);
+            //foreach (Allergen a in allergensComboBox.SelectedItems)
+            //    allergens.Add(a);
+            foreach (string s in allergensComboBox.Text.Split(","))
+            {
+                foreach (Allergen a in _allergens)
+                {
+                    if (s.Equals(a.Name))
+                    {
+                        allergens.Add(a);
+                    }
+
+                }
+            }
             List<string> chronicPains = new List<string>(chronicPainsTextBox.Text.Split());
 
             Patient patient = new Patient(nameTextBox.Text, lastNameTextBox.Text, jmbgTextBox.Text, usernameTextBox.Text, passwordTextBox.Text, emailTextBox.Text, phoneNumberTextBox.Text, new Address(street, number, new City(cityTextBox.Text, postalCode, new Country(countryTextBox.Text))), lboTextBox.Text, false, allergens, DateTime.ParseExact(birthDateTextBox.Text, "dd.MM.yyyy.", CultureInfo.InvariantCulture), GetEnumKrvneGrupe((string)bloodGroupComboBox.SelectionBoxItem), (SexType)sexComboBox.SelectionBoxItem, chronicPains);
@@ -82,6 +95,6 @@ namespace SIMS.ViewSecretary.Patients
                 "AB-" => BloodType.ABn,
                 _ => BloodType.Op,
             };
-        }
+        }*/
     }
 }

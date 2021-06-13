@@ -62,7 +62,9 @@ namespace SIMS.Controller
         public List<Appointment> SortAppointmentsByTimeA(List<Appointment> appointments) => doctorAppointmentService.SortAppointmentsByTimeA(appointments);
 
         public List<Appointment> GetAvailableAppointmentsForAllDoctors(Specialization specialization, int duration, Patient patient) 
-            =>
-                doctorAppointmentService.GetAvailableAppointmentsForAllDoctors(specialization, duration, patient);
+            =>  doctorAppointmentService.GetAvailableAppointmentsForAllDoctors(specialization, duration, patient);
+
+        public List<Appointment> GetUpcommingAppointments() => doctorAppointmentService.GetUpcommingAppointments();
+        public List<Appointment> GetUpcommingAppointmentsByRoom(Room room) => doctorAppointmentService.GetUpcommingAppointmentsByRoom(room);
     }
 }

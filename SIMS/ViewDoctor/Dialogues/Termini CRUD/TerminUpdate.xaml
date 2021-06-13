@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="CanMinimize"
         Title="Uredi termin" Height="500" Width="600"
+        KeyDown="WindowKeyListener"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>

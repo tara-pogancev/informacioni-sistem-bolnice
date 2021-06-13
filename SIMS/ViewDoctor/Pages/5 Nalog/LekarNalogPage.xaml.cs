@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using SIMS.Model;
 using SIMS.Controller;
 using SIMS.Repositories.PatientRepo;
+using SIMS.ViewDoctor.Dialogues.Izmena_naloga;
+using SIMS.LekarGUI.Dialogues.Izmena_naloga;
 
 namespace SIMS.LekarGUI
 {
@@ -25,32 +27,21 @@ namespace SIMS.LekarGUI
 
     public partial class DoctorAccountPage : Page
     {
-        public static DoctorAccountPage instance;
-
-        private static Doctor doctorUser = DoctorUI.GetInstance().GetUser();
+        private Doctor doctorUser = DoctorUI.GetInstance().GetUser();
         private LastLoginController loginController = new LastLoginController();
-
-        public static DoctorAccountPage GetInstance()
-        {
-            if (instance == null)
-            {
-                instance = new DoctorAccountPage();
-            }
-            return instance;
-        }
 
         public DoctorAccountPage()
         {
             InitializeComponent();
+            LabelName.Content = doctorUser.FullName;
+            LabelUsername.Content = "Korisničko ime: " + doctorUser.Username;
+            LabelEmail.Content = "Mejl adresa: " + doctorUser.Email;
+            LabelPhone.Content = "Telefon: " + doctorUser.Phone;
+            LabelAddress.Content = "Adresa: " + doctorUser.AddressString;
 
             if (loginController.IsSelfLastLogged(doctorUser))
                 RememberMeCheckbox.IsChecked = true;
 
-        }
-
-        public void RemoveInstance()
-        {
-            instance = null;
         }
 
         private void Button(object sender, RoutedEventArgs e)
@@ -66,7 +57,7 @@ namespace SIMS.LekarGUI
 
         private void ButtonChangeAccount(object sender, RoutedEventArgs e)
         {
-
+            new AccountPreferences().ShowDialog();
         }
 
         private void LogOut(object sender, RoutedEventArgs e)
@@ -82,6 +73,11 @@ namespace SIMS.LekarGUI
         private void RememberMe(object sender, RoutedEventArgs e)
         {
             loginController.SaveLoggedUser((LoggedUser)doctorUser);
+        }
+
+        private void RateApplication(object sender, RoutedEventArgs e)
+        {
+            new RateApplicationDialog().ShowDialog();
         }
     }
 }

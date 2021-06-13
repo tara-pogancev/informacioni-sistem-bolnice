@@ -1,0 +1,22 @@
+{
+  "11062021000000": {
+    "ID": "11062021000000",
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Text": "Svaka cast!",
+    "Rating": 5,
+    "Serialize": true
+  },
+  "11062021235420": {
+    "ID": "11062021235420",
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Text": "Odlicna aplikacija! Wooow",
+    "Rating": 5,
+    "Serialize": true
+  }
+}

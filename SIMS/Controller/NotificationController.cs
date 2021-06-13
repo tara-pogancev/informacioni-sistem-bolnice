@@ -34,9 +34,7 @@ namespace SIMS.Controller
             return notificationService.ReadPastNotificationsByUser(userID);
         }
 
-        public bool ExistsUnreadNotification(String userID) => notificationService.ExistsUnreadNotification(userID);
-
-        public void NotificationOpened(String userID) => notificationService.NotificationOpened(userID);
+       
 
     }
 }

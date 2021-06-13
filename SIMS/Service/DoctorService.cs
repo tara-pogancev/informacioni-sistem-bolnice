@@ -55,12 +55,12 @@ namespace SIMS.Service
         // Salje informacije o novom terminu
         public Boolean CheckIfFree(Doctor doctor, Appointment newAppointment)
         {
-            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
+            foreach (Appointment currentAppointment in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
             {
-                if (newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime())
+                if (newAppointment.GetEndTime() > currentAppointment.StartTime && newAppointment.GetEndTime() <= currentAppointment.GetEndTime())
                     return false;
 
-                if (newAppointment.StartTime >= t.StartTime && newAppointment.StartTime < t.GetEndTime())
+                if (newAppointment.StartTime >= currentAppointment.StartTime && newAppointment.StartTime < currentAppointment.GetEndTime())
                     return false;
             }
 
@@ -81,12 +81,12 @@ namespace SIMS.Service
         //Salje izmenjen termin ali njega ignorise prilikom provere
         public Boolean CheckIfFreeUpdate(Doctor doctor, Appointment newAppointment)
         {
-            foreach (Appointment t in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
+            foreach (Appointment currentAppointment in AppointmentFileRepository.Instance.GetDoctorAppointments(doctor))
             {
-                if (t.AppointmentID != newAppointment.AppointmentID)
+                if (currentAppointment.AppointmentID != newAppointment.AppointmentID)
                 {
-                    if ((newAppointment.GetEndTime() > t.StartTime && newAppointment.GetEndTime() <= t.GetEndTime()) ||
-                        (newAppointment.StartTime >= t.StartTime && newAppointment.StartTime < t.GetEndTime()))
+                    if ((newAppointment.GetEndTime() > currentAppointment.StartTime && newAppointment.GetEndTime() <= currentAppointment.GetEndTime()) ||
+                        (newAppointment.StartTime >= currentAppointment.StartTime && newAppointment.StartTime < currentAppointment.GetEndTime()))
                         return false;
                 }
             }
@@ -115,6 +115,8 @@ namespace SIMS.Service
             {
                 doctor.Grade = Grades / counter;
             }
+
+            new DoctorService().UpdateDoctor(doctor);
         }
 
         public DoctorDTO GetDTO(Doctor doctor)

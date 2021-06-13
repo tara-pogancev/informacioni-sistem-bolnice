@@ -25,7 +25,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Button Width="100" Height="40" Margin="25,60,25,450" RenderTransformOrigin="0.515,-3.975" Name="Nazad" Click="Nazad_Click" >Nazad</Button>
+            <Button Margin="15,57,15,450" RenderTransformOrigin="0.515,-3.975" Name="Nazad" Click="Nazad_Click" >Nazad</Button> 
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -71,29 +71,29 @@
 
                     <Border x:Name="debugPanel" Background="#4e6082" CornerRadius="10" BorderBrush="Black" BorderThickness="2" Grid.Row="5" Grid.Column="6" Grid.RowSpan="2">
                     <StackPanel >
-                        <TextBlock Name="GlavneTegobe" Margin="5"  />
+                            <TextBlock Name="GlavneTegobe" Margin="5"   Foreground="White" />
 
-                        <TextBlock Name="SadasnjaAnamneza"  Margin="5"  />
+                            <TextBlock Name="SadasnjaAnamneza"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="OpstePojave"  Margin="5"  />
+                            <TextBlock Name="OpstePojave"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="RespiratorniSistem"  Margin="5"  />
+                            <TextBlock Name="RespiratorniSistem"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="KardiovaskularniSistem"  Margin="5"  />
+                            <TextBlock Name="KardiovaskularniSistem"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="DigestivniSistem"  Margin="5"  />
+                            <TextBlock Name="DigestivniSistem"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="UrogenitalniSistem"  Margin="5"  />
+                            <TextBlock Name="UrogenitalniSistem"  Margin="5" Foreground="White"  />
 
-                        <TextBlock Name="LokomotorniSistem"  Margin="5" />
+                            <TextBlock Name="LokomotorniSistem"  Margin="5" Foreground="White" />
 
-                        <TextBlock  Name="NervniSistem"  Margin="5"  />
+                            <TextBlock  Name="NervniSistem"  Margin="5" Foreground="White" />
 
-                        <TextBlock  Name="RanijaOboljenja"  Margin="5"  />
+                            <TextBlock  Name="RanijaOboljenja"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="PorodicniPodaci"  Margin="5"  />
+                            <TextBlock Name="PorodicniPodaci"  Margin="5" Foreground="White" />
 
-                        <TextBlock Name="SocijalnoEpidemioloskiPodaci"  Margin="5"  />
+                            <TextBlock Name="SocijalnoEpidemioloskiPodaci"  Margin="5" Foreground="White" />
 
 
 

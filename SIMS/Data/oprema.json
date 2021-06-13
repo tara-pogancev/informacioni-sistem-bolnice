@@ -30,5 +30,13 @@
     "RoomNumber": null,
     "Amount": 0,
     "TypeToString": "dinamička"
+  },
+  "5": {
+    "Name": "Krevet",
+    "ID": "5",
+    "Type": 0,
+    "RoomNumber": null,
+    "Amount": 0,
+    "TypeToString": "statička"
   }
 }

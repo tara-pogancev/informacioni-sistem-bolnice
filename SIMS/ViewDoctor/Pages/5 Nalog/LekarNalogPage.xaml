@@ -33,11 +33,11 @@
 
             <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Center">
 
-                <Label Content="Tara Pogančev" Style="{StaticResource BoldLabel}" Margin="5"/>
-                <Label Content="Korisničko ime: tarapogancev7" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Mejl adresa: tara.lekar@gmail.com" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Telefon: +3815548521" Style="{StaticResource DefaultLabel}"/>
-                <Label Content="Adresa: Puškinova 17, Novi Sad" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Tara Pogančev" Name="LabelName" Style="{StaticResource BoldLabel}" Margin="5"/>
+                <Label Content="Korisničko ime: tarapogancev7" Name="LabelUsername" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Mejl adresa: tara.lekar@gmail.com" Name="LabelEmail" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Telefon: +3815548521" Name="LabelPhone" Style="{StaticResource DefaultLabel}"/>
+                <Label Content="Adresa: Puškinova 17, Novi Sad" Name="LabelAddress" Style="{StaticResource DefaultLabel}"/>
 
             </StackPanel>
 
@@ -46,11 +46,13 @@
                 <Label Content="Zapamti me prilikom sledeće prijave." Style="{StaticResource DefaultLabelS}" Padding="0"/>
             </StackPanel>
 
+            
 
-            <StackPanel Grid.Row="2" Margin="50,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Grid.Row="2" Margin="20,15,15,0" Orientation="Horizontal" HorizontalAlignment="Left">
                 <Button Content="Izmeni podatke" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="ButtonChangeAccount"/>
                 <Button Content="Odjavi se" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="LogOut" Margin="20,0,0,0"/>
-                
+                <Button Content="Ocenite aplikaciju!" Style="{StaticResource GreenButton}" Template="{StaticResource BasicButton}" Click="RateApplication" Margin="20,0,0,0"/>
+
             </StackPanel>
 
             <Image Grid.RowSpan="3" Source="../../../src/Illustrations/reading_on_a_chair.png" HorizontalAlignment="Right" Margin="0,0,50,0" MaxHeight="500"/>

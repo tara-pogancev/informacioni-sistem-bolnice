@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izvestaji"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        KeyDown="WindowKeyListener"
         Title="Prikaz anamneze" Height="830" Width="800">
 
     <Window.Resources>

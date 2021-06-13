@@ -22,7 +22,7 @@ namespace SIMS.Repositories.InventoryRepo
         {
             foreach (var prosInv in RoomInventoryFileRepository.Instance.ReadAll().Values)
             {
-                if (prosInv.IdInventara == key)
+                if (prosInv.ID == key)
                 {
                     RoomInventoryFileRepository.Instance.Delete(prosInv);
                 }

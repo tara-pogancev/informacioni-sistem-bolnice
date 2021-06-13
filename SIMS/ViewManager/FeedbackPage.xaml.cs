@@ -21,7 +21,7 @@ namespace SIMS.ViewManager
     /// </summary>
     public partial class FeedbackPage : Page
     {
-        FeedbackController feedbackController = new FeedbackController();
+        //FeedbackController feedbackController = new FeedbackController();
         public FeedbackPage()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace SIMS.ViewManager
 
         private void Posalji_Click(object sender, RoutedEventArgs e)
         {
-            feedbackController.Send(InputText.Text);
+            //feedbackController.Send(InputText.Text);
             
         }
     }

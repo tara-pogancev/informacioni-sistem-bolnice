@@ -4,9 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIMS.PacijentGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewPatient="clr-namespace:SIMS.ViewPatient"
              mc:Ignorable="d"  
              d:DesignHeight="550" d:DesignWidth="600">
     <UserControl.Resources>
+       
+       
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
@@ -14,6 +17,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="InputBoxHintAssistForegorundBrush" Color="Purple"/>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Background="#FF323D52">
@@ -22,15 +27,18 @@
                 <Label HorizontalAlignment="Center" FontSize="18" Foreground="White">Izaberite datum</Label>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <DatePicker Width="150" Margin="70,0,80,0" materialDesign:HintAssist.Hint="Pocetni datum" Foreground="White" FontSize="16" Name="PocetniDatum" SelectedDateChanged="PocetniDatum_SelectedDateChanged"></DatePicker>
-                    <DatePicker Width="150" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White"  FontSize="16" Name="KrajnjiDatum" CalendarOpened="KrajnjiDatum_CalendarOpened"></DatePicker>
+                    <DatePicker  Width="160" Margin="70,0,80,0"  Foreground="White" FontSize="16" Name="PocetniDatum" SelectedDateChanged="PocetniDatum_SelectedDateChanged" materialDesign:HintAssist.Foreground="Red" materialDesign:HintAssist.Hint="Početni datum" materialDesign:HintAssist.Background="Red" >
+                        
+
+                    </DatePicker>
+                    <DatePicker Width="160" materialDesign:HintAssist.Hint="Krajnji datum" Foreground="White" FontSize="16" Name="KrajnjiDatum" SelectedDateChanged="KrajnjiDatum_CalendarOpened" materialDesign:HintAssist.Foreground="Red" materialDesign:HintAssist.Background="Red"  ></DatePicker>
                 </StackPanel>
 
                 <Label HorizontalAlignment="Center" Margin="0,30,0,0" FontSize="18" Foreground="White">Prioritet</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" >
                     <RadioButton Name="lekarChecked" FontSize="15" Checked="lekarChecked_Checked"
                   Style="{StaticResource MaterialDesignDarkRadioButton }"  Background="Aqua" Width="80"  Margin="10,0,10,20" Foreground="White">
-                        Lekar
+                        Ljekar
                     </RadioButton>
                     <RadioButton Name="datumChecked" FontSize="15" Checked="datumChecked_Checked"
                      Style="{StaticResource MaterialDesignDarkRadioButton}" Background="Aqua" Width="80" Margin="20,0,0,20" Foreground="White" >
@@ -39,16 +47,17 @@
                     </RadioButton>
                 </StackPanel>
 
-                <Label FontSize="18" Content="Izaberite doktora" Margin="208,10,0,0" Foreground="White"/>
+                <Label FontSize="18" Content="Izaberite ljekara" Margin="208,10,0,0" Foreground="White"/>
                 <Border BorderThickness="1" BorderBrush="Black"  Width="350" Height="100" CornerRadius="15" >
-                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0" Name="ListaDoktora" ItemsSource="{Binding Lekari}"  DisplayMemberPath="FullName">
+                    <ListView Width="350"  Height="100" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0" Name="ListaDoktora" ItemsSource="{Binding Lekari}"  DisplayMemberPath="FullName">
                         
                     </ListView>
                 </Border>
-                
 
-                <Button Width="150" x:Name="Trazi" Click="Trazi_Click"  Margin="40">Traži</Button>
-
+                <StackPanel Orientation="Vertical">
+                <Button Width="150" x:Name="Trazi" Click="Trazi_Click"  Margin="40,40,40,15">Traži</Button>
+                <Label Foreground="#ff2626" x:Name="Poruka"  FontSize="16" HorizontalAlignment="Center" Visibility="Collapsed"> Potrebno je da popunite sva polja</Label>
+                </StackPanel>
 
 
 

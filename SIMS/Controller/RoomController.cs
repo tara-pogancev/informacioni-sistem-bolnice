@@ -32,6 +32,9 @@ namespace SIMS.Controller
             roomService.MergeRooms(room1, room2);
         }
 
-        
+        public List<Room> GetAllHospitalizationRooms() => roomService.GetAllHospitalizationRooms();
+
+        public List<Room> GetByType(RoomType roomType) => roomService.GetByType(roomType);
+
     }
 }
