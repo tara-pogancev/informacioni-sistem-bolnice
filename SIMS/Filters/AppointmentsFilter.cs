@@ -3,13 +3,8 @@ using System;
 
 namespace SIMS.Filters
 {
-    class AppointmentsFilter : TableFilter<AppointmentDTO, AppointmentsFilter>
+    class AppointmentsFilter : TableFilter<AppointmentDTO>
     {
-        public override bool CheckBoxFilter(AppointmentDTO entity, bool checkboxChecked)
-        {
-            return true;
-        }
-
         public override bool KeywordFilter(AppointmentDTO entity, string keyword)
         {
             return entity.DoctorName.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
