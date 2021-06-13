@@ -19,7 +19,7 @@ namespace SIMS.ViewDoctor.Dialogues.Izmena_naloga
     /// </summary>
     public partial class RateApplicationDialog : Window
     {
-        private DoctorAppRatingController doctorAppRatingController = new DoctorAppRatingController();
+        private ApplicationFeedbackController doctorAppRatingController = new ApplicationFeedbackController();
 
         public RateApplicationDialog()
         {
@@ -56,8 +56,8 @@ namespace SIMS.ViewDoctor.Dialogues.Izmena_naloga
 
         private void SaveNewAppRating(Doctor doctor, int rating, string text)
         {
-            DoctorAppRating appRating = new DoctorAppRating(doctor, text, rating);
-            doctorAppRatingController.SaveRating(appRating);
+            ApplicationFeedback appRating = new ApplicationFeedback(text,doctor, rating);
+            doctorAppRatingController.CreateOrUpdate(appRating);
             Close();
             MessageBox.Show("Hvala vam na ostavljenoj recenziji aplikacije!", "Ocena poslata!");
         }

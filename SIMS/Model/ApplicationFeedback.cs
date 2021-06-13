@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Expression.Interactivity.Media;
+using Microsoft.Internal.VisualStudio.Shell;
 
 namespace SIMS.Model
 {
@@ -21,7 +22,7 @@ namespace SIMS.Model
         public ApplicationFeedback(String comment, LoggedUser loggedUser, int grade)
         {
             this.SubmissionDate=DateTime.Now;
-            this.FeedbackID = loggedUser.Jmbg;
+            this.FeedbackID = loggedUser.Jmbg+this.SubmissionDate.ToString("HH:mm:ss");
             this.Comment = comment;
             this.User = loggedUser;
             this.Grade = grade;

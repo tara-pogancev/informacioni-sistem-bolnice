@@ -582,7 +582,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 1
   },
   "Zakazan termin210610080000000000": {
@@ -716,7 +716,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Tara Pogančev210611235547884374": {
