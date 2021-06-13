@@ -18,13 +18,13 @@ namespace SIMS.Controller
 
         public List<Appointment> DateRecommendation(RecommendedAppointmentDTO recommendedAppointmentDTO)
         {
-            recomendationService.SetRecommendationStrategy(new DateRecommendationPolicy(recommendedAppointmentDTO.StartDate, recommendedAppointmentDTO.EndDate, recommendedAppointmentDTO.PatientID));
+            recomendationService.SetRecommendationStrategy(new DateRecommendationStrategy(recommendedAppointmentDTO.StartDate, recommendedAppointmentDTO.EndDate, recommendedAppointmentDTO.PatientID));
             return recomendationService.GetRecommendedAppointments();
         }
 
         public List<Appointment> DoctorRecommendataion(RecommendedAppointmentDTO recommendedAppointmentDTO)
         {
-            recomendationService.SetRecommendationStrategy(new DoctorRecommendationPolicy(recommendedAppointmentDTO));
+            recomendationService.SetRecommendationStrategy(new DoctorRecommendationStrategy(recommendedAppointmentDTO));
             return recomendationService.GetRecommendedAppointments();
         }
     }

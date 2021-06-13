@@ -7,19 +7,19 @@ using SIMS.Service.AppointmentServices;
 
 namespace SIMS.Service.RecommendationAppointmentService
 {
-    class DateRecommendationPolicy:IRecommendationStrategy
+    class DateRecommendationStrategy:IRecommendationStrategy
     {
         
         string patientID;
         List<RecommendedAppointmentDraft> recommendedAppointementsDrafts;
 
 
-        public DateRecommendationPolicy(DateTime startDate, DateTime endDate, string patientID)
+        public DateRecommendationStrategy(DateTime startDate, DateTime endDate, string patientID)
         {
             recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
             
             this.patientID = patientID;
-            recommendedAppointementsDrafts = new RecommendedAppointmentFactory(startDate, endDate).getRecommendedAppointmentDrafts();
+            recommendedAppointementsDrafts = new AppointmentDraftPreparation(startDate, endDate).getRecommendedAppointmentDrafts();
         }
 
         private void RemoveBusyDoctors(Appointment appointment)
