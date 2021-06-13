@@ -6,13 +6,8 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class ProstorijeFilter : TableFilter<Room, ProstorijeFilter>
+    class ProstorijeFilter : TableFilter<Room>
     {
-        public override bool CheckBoxFilter(Room entity, bool checkboxChecked)
-        {
-            return true;
-        }
-
         public override bool KeywordFilter(Room prostorija, string keyword)
         {
             return (prostorija.Number.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||

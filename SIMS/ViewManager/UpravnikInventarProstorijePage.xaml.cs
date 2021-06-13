@@ -38,7 +38,13 @@ namespace SIMS.UpravnikGUI
             tabelaInventara.ItemsSource = SvaOprema;
         }
 
-
+        private void SetNumber()
+        {
+            foreach (Inventory op in SvaOprema)
+            {
+                op.RoomNumber = Prostorija.Number;
+            }
+        }
         private void Premesti_Click(object sender, RoutedEventArgs e)
         {
             Inventory SelectedOprema = tabelaInventara.SelectedItem as Inventory;
@@ -75,29 +81,28 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            foreach (Inventory op in SvaOprema)
-            {
-                op.RoomNumber = Prostorija.Number;
-            }
-            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
+            SetNumber();
+            Filter();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            foreach (Inventory op in SvaOprema)
-            {
-                op.RoomNumber = Prostorija.Number;
-            }
-            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
+            SetNumber();
+            Filter();
         }
 
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            foreach (Inventory op in SvaOprema)
-            {
-                op.RoomNumber = Prostorija.Number;
-            }
-            tabelaInventara.ItemsSource = InventarProstorijeFilter.Instance.ApplyFilters(SvaOprema, SearchBox.Text, (bool)CheckBox.IsChecked);
+            SetNumber();
+            Filter();
+        }
+
+        private void Filter()
+        {
+            InventarProstorijeFilter filter = new InventarProstorijeFilter();
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            filter.CheckBoxChecked = (bool)CheckBox.IsChecked;
+            tabelaInventara.ItemsSource = filter.ApplyFilters(SvaOprema);
         }
     }
 }

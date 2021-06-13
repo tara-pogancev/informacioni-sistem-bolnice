@@ -6,43 +6,46 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    abstract class TableFilter<T, TableFilterType>
-        where TableFilterType : TableFilter<T, TableFilterType>, new()
+    abstract class TableFilter<T>
     {
+        public abstract bool KeywordFilter(T entity, string keyword);
 
-        private static TableFilterType _instance = new TableFilterType();
-        public static TableFilterType Instance
+        private string[] Keywords;
+        
+        public void SetKeywordsFromInput(string input)
         {
-            get
-            {
-                return _instance;
-            }
+            Keywords = input.Split(" ");
         }
 
-        public abstract bool KeywordFilter(T entity, string keyword);
-        public abstract bool CheckBoxFilter(T entity, bool checkboxChecked);
-        public ObservableCollection<T> ApplyFilters(ObservableCollection<T> unfiltered, string input, bool checkboxChecked)
+        public ObservableCollection<T> ApplyFilters(ObservableCollection<T> unfiltered)
         {
             ObservableCollection<T> filtered = new ObservableCollection<T>();
-            var keywords = input.Split(" ");
+
             foreach (T entity in unfiltered)
             {
-                if (!CheckBoxFilter(entity, checkboxChecked))
+                if (ShouldAddEntity(entity))
                 {
-                    goto NEXT;
+                    filtered.Add(entity);
                 }
-                foreach (string keyword in keywords)
-                {
-                    if (!KeywordFilter(entity, keyword))
-                    {
-                        goto NEXT;
-                    }
-                }
-                filtered.Add(entity);
-            NEXT:;
             }
             return filtered;
         }
 
+        protected virtual bool ShouldAddEntity(T entity)
+        {
+            return EntitySatisfiesKeywordFilter(entity);
+        }
+
+        private bool EntitySatisfiesKeywordFilter(T entity)
+        {
+            foreach (string keyword in Keywords)
+            {
+                if (!KeywordFilter(entity, keyword))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

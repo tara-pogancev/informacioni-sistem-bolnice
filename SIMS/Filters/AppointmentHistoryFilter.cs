@@ -5,12 +5,8 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class AppointmentHistoryFilter : TableFilter<Appointment, AppointmentHistoryFilter>
+    class AppointmentHistoryFilter : TableFilter<Appointment>
     {
-        public override bool CheckBoxFilter(Appointment appointment, bool checkboxChecked)
-        {
-            return true;
-        }
 
         public override bool KeywordFilter(Appointment appointment, string keyword)
         {

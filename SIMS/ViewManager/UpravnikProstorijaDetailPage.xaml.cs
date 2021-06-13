@@ -78,6 +78,34 @@ namespace SIMS.UpravnikGUI
 
         }
 
+        public UpravnikProstorijaDetailPage(DateTime? renovationStart, DateTime? renovationEnd) //nova prostorija
+        {
+            prostorija = new Room();
+            prostorija.RenovationStart = renovationStart;
+            prostorija.RenovationEnd = renovationEnd;
+
+            InitializeComponent();
+
+            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
+
+            DostupnostLabel.Visibility = Visibility.Hidden;
+            PocetakRenoviranjaLabel.Visibility = Visibility.Hidden;
+            KrajRenoviranjaLabel.Visibility = Visibility.Hidden;
+
+            DostupnostCombo.Visibility = Visibility.Hidden;
+            DostupnostCombo.IsEnabled = false;
+
+            InventarButton.Visibility = Visibility.Hidden;
+            InventarButton.IsEnabled = false;
+
+            PocetakRenoviranjaText.Visibility = Visibility.Hidden;
+            PocetakRenoviranjaText.IsEnabled = false;
+
+            KrajRenoviranjaText.Visibility = Visibility.Hidden;
+            KrajRenoviranjaText.IsEnabled = false;
+
+        }
+
         private void InventarProstorije_Click(object sender, RoutedEventArgs e)
         {
             UpravnikWindow.Instance.SetContent(Inventar);
