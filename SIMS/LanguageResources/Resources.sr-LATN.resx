@@ -231,6 +231,9 @@
   <data name="EmailColon" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="EndDateColon" xml:space="preserve">
+    <value>Datum završetka:</value>
+  </data>
   <data name="EndTimeColon" xml:space="preserve">
     <value>Vreme završetka:</value>
   </data>
@@ -242,6 +245,12 @@
   </data>
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Zakazivanje pregleda</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Povratne informacije</value>
+  </data>
+  <data name="FeedbackDefaultText" xml:space="preserve">
+    <value>Ovde možete uneti vaše povratne informacije.</value>
   </data>
   <data name="FillFieldsMessage" xml:space="preserve">
     <value>Molimo popunite sva polja.</value>
@@ -306,8 +315,11 @@
   <data name="NewVacationAdding" xml:space="preserve">
     <value>Dodavanje novog odmora</value>
   </data>
+  <data name="NotEnoughVacationDaysMessage" xml:space="preserve">
+    <value>Izabrani lekar nema dovoljno slobodnih dana.</value>
+  </data>
   <data name="NotificationDefaultText" xml:space="preserve">
-    <value>Ovde mozete uneti vase obavestenje.</value>
+    <value>Ovde možete uneti vaše obaveštenje.</value>
   </data>
   <data name="Notifications" xml:space="preserve">
     <value>Obaveštenja</value>
@@ -402,17 +414,23 @@
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Označite bar jednu ulogu.</value>
   </data>
+  <data name="SendCaps" xml:space="preserve">
+    <value>POŠALJI</value>
+  </data>
   <data name="SexColon" xml:space="preserve">
     <value>Pol:</value>
   </data>
   <data name="SpecializationColon" xml:space="preserve">
     <value>Specijalizacija:</value>
   </data>
+  <data name="StartDateColon" xml:space="preserve">
+    <value>Datum početka:</value>
+  </data>
   <data name="StartTime" xml:space="preserve">
     <value>Početak</value>
   </data>
   <data name="StartTimeColon" xml:space="preserve">
-    <value>Početno vreme:</value>
+    <value>Vreme početka:</value>
   </data>
   <data name="Surgery" xml:space="preserve">
     <value>Operacija</value>

@@ -63,7 +63,9 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaAlergeni.ItemsSource = AlergeniFilter.Instance.ApplyFilters(alergeni, SearchBox.Text, false);
+            AlergeniFilter filter = new AlergeniFilter(); 
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            tabelaAlergeni.ItemsSource = filter.ApplyFilters(alergeni);
         }
     }
 }

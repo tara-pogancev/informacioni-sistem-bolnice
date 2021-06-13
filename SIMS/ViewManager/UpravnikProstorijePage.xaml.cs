@@ -63,7 +63,9 @@ namespace SIMS.UpravnikGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            tabelaProstorije.ItemsSource = ProstorijeFilter.Instance.ApplyFilters(prostorije, SearchBox.Text, false);
+            ProstorijeFilter filter = new ProstorijeFilter();
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            tabelaProstorije.ItemsSource = filter.ApplyFilters(prostorije);
         }
 
         private void ZakaziRenoviranje_Click(object sender, RoutedEventArgs e)

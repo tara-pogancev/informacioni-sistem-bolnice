@@ -41,8 +41,16 @@ namespace SIMS.UpravnikGUI
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            
-            ScheduleRenovation();
+
+            try
+            {
+                ScheduleRenovation();
+            }
+            catch (RenovationAppointmentOverlapException)
+            {
+                MessageBox.Show("Postoje zakazani termini u datom intervalu.");
+                return;
+            }
             MergeRoomsSelection();
         }
 
@@ -66,7 +74,7 @@ namespace SIMS.UpravnikGUI
 
             else if ((bool)NewRoom.IsChecked)
             {
-                UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage());
+                UpravnikWindow.Instance.SetContent(new UpravnikProstorijaDetailPage(Pocetak.SelectedDate, Kraj.SelectedDate));
                 UpravnikWindow.Instance.SetLabel("Nova prostorija nastala renoviranjem prostorije " + room.Number);
             }
 

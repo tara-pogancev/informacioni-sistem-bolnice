@@ -403,6 +403,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End Date:.
+        /// </summary>
+        internal static string EndDateColon {
+            get {
+                return ResourceManager.GetString("EndDateColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to End Time:.
         /// </summary>
         internal static string EndTimeColon {
@@ -435,6 +444,24 @@ namespace SIMS.LanguageResources {
         internal static string ExaminationScheduling {
             get {
                 return ResourceManager.GetString("ExaminationScheduling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feedback.
+        /// </summary>
+        internal static string Feedback {
+            get {
+                return ResourceManager.GetString("Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can input your feedback here..
+        /// </summary>
+        internal static string FeedbackDefaultText {
+            get {
+                return ResourceManager.GetString("FeedbackDefaultText", resourceCulture);
             }
         }
         
@@ -624,6 +651,15 @@ namespace SIMS.LanguageResources {
         internal static string NewVacationAdding {
             get {
                 return ResourceManager.GetString("NewVacationAdding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chosen doctor does not have enough vacation days..
+        /// </summary>
+        internal static string NotEnoughVacationDaysMessage {
+            get {
+                return ResourceManager.GetString("NotEnoughVacationDaysMessage", resourceCulture);
             }
         }
         
@@ -916,6 +952,15 @@ namespace SIMS.LanguageResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SEND.
+        /// </summary>
+        internal static string SendCaps {
+            get {
+                return ResourceManager.GetString("SendCaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sex:.
         /// </summary>
         internal static string SexColon {
@@ -930,6 +975,15 @@ namespace SIMS.LanguageResources {
         internal static string SpecializationColon {
             get {
                 return ResourceManager.GetString("SpecializationColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date:.
+        /// </summary>
+        internal static string StartDateColon {
+            get {
+                return ResourceManager.GetString("StartDateColon", resourceCulture);
             }
         }
         

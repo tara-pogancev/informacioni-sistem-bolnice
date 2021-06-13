@@ -231,6 +231,9 @@
   <data name="EmailColon" xml:space="preserve">
     <value>Email:</value>
   </data>
+  <data name="EndDateColon" xml:space="preserve">
+    <value>End Date:</value>
+  </data>
   <data name="EndTimeColon" xml:space="preserve">
     <value>End Time:</value>
   </data>
@@ -242,6 +245,12 @@
   </data>
   <data name="ExaminationScheduling" xml:space="preserve">
     <value>Examination Scheduling</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="FeedbackDefaultText" xml:space="preserve">
+    <value>You can input your feedback here.</value>
   </data>
   <data name="FillFieldsMessage" xml:space="preserve">
     <value>Please fill in all fields.</value>
@@ -305,6 +314,9 @@
   </data>
   <data name="NewVacationAdding" xml:space="preserve">
     <value>New Vacation Adding</value>
+  </data>
+  <data name="NotEnoughVacationDaysMessage" xml:space="preserve">
+    <value>Chosen doctor does not have enough vacation days.</value>
   </data>
   <data name="NotificationDefaultText" xml:space="preserve">
     <value>You can input your notification here.</value>
@@ -402,11 +414,17 @@
   <data name="SelectRoleMessage" xml:space="preserve">
     <value>Select at least one role.</value>
   </data>
+  <data name="SendCaps" xml:space="preserve">
+    <value>SEND</value>
+  </data>
   <data name="SexColon" xml:space="preserve">
     <value>Sex:</value>
   </data>
   <data name="SpecializationColon" xml:space="preserve">
     <value>Specialization:</value>
+  </data>
+  <data name="StartDateColon" xml:space="preserve">
+    <value>Start Date:</value>
   </data>
   <data name="StartTime" xml:space="preserve">
     <value>Start Time</value>

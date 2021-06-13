@@ -152,7 +152,7 @@ namespace SIMS.Service
         {
             foreach (VacationPeriod vacationPeriod in doctor.VacationPeriods)
             {
-                if (dateTime.Date >= vacationPeriod.StartTime.Date && dateTime.Date < vacationPeriod.EndTime.Date)
+                if (dateTime >= vacationPeriod.StartTime && dateTime < vacationPeriod.EndTime)
                 {
                     return true;
                 }

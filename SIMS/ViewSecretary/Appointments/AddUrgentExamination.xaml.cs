@@ -8,6 +8,7 @@ using SIMS.Model;
 using SIMS.Controller;
 using SIMS.ViewSecretary.Patients;
 using SIMS.DTO;
+using SIMS.Adapters;
 
 namespace SIMS.ViewSecretary.Appointments
 {
@@ -26,11 +27,15 @@ namespace SIMS.ViewSecretary.Appointments
         private NotificationController notificationController = new NotificationController();
 
         private ObservableCollection<AppointmentDTO> AvailableAppointments;
-
+        private readonly SortAppointmentsAscendingService sortAppointmentsAscendingService;
+        private readonly ISortAppointments sortAppointmentsController;
 
         public AddUrgentExamination()
         {
             InitializeComponent();
+
+            sortAppointmentsAscendingService = new SortAppointmentsAscendingService();
+            sortAppointmentsController =  new SortAppointmentsController(sortAppointmentsAscendingService);
 
             DataContext = this;
             DurationComboBox.SelectedIndex = 0;
@@ -160,7 +165,7 @@ namespace SIMS.ViewSecretary.Appointments
                 else
                 {
                     zakaziButton.Content = "POMERI I\nZAKAŽI";
-                    SortAppointments(allAppointments);
+                    sortAppointmentsController.SortAppointments(allAppointments);
 
                     foreach (AppointmentDTO app in allAppointments)
                     {
@@ -204,18 +209,6 @@ namespace SIMS.ViewSecretary.Appointments
                 return allAppointments;
             else
                 return retVal;
-        }
-
-        private void SortAppointments(List<AppointmentDTO> appointments)
-        {
-            for (int i = 0; i < appointments.Count - 1; i++)
-                for (int j = 0; j < appointments.Count - i - 1; j++)
-                    if (appointments[j].StartTime > appointments[j + 1].StartTime)
-                    {
-                        var temp = appointments[j];
-                        appointments[j] = appointments[j + 1];
-                        appointments[j + 1] = temp;
-                    }
         }
 
         private List<DateTime> GetNearPotentialAppointments(int numberOfDays)

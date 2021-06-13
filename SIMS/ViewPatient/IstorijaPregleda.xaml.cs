@@ -37,8 +37,9 @@ namespace SIMS.PacijentGUI
 
         private void SearchBox_KeyUp(object sender, KeyEventArgs e)
         {
-            
-            terminiTabela.ItemsSource = AppointmentHistoryFilter.Instance.ApplyFilters(pst.PastAppointments, SearchBox.Text, false);
+            AppointmentHistoryFilter filter = new AppointmentHistoryFilter();
+            filter.SetKeywordsFromInput(SearchBox.Text);
+            terminiTabela.ItemsSource = filter.ApplyFilters(pst.PastAppointments);
             this.DataContext = pst;
         }
     }

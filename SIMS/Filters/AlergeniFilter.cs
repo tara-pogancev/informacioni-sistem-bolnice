@@ -6,13 +6,8 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class AlergeniFilter : TableFilter<Allergen, AlergeniFilter>
+    class AlergeniFilter : TableFilter<Allergen>
     {
-        public override bool CheckBoxFilter(Allergen alergen, bool checkboxChecked)
-        {
-            return true;
-        }
-
         public override bool KeywordFilter(Allergen alergen, string keyword)
         {
             return (alergen.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
