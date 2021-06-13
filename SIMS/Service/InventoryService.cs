@@ -12,9 +12,18 @@ namespace SIMS.Service
     class InventoryService
     {
         IInventoryRepository inventoryRepository = new InventoryFileRepository();
-        public void MoveInventory(MovingInventoryDTO dto)
+        public bool MoveInventory(MovingInventoryDTO dto)
         {
-            int amountToBeMoved = int.Parse(dto.AmountToBeMoved);
+            int amountToBeMoved;
+
+            try
+            {
+                amountToBeMoved = int.Parse(dto.AmountToBeMoved);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             DateTime timeOfExecution;
 
@@ -28,7 +37,7 @@ namespace SIMS.Service
             }
 
             InventoryMovingQueue.Instance.PushCommand(new InventoryMovingCommand(timeOfExecution, dto.SourceRoomNumber, dto.DestinationRoomNumber, dto.InventoryID, amountToBeMoved));
-
+            return true;
         }
 
         public void Delete(string ID)

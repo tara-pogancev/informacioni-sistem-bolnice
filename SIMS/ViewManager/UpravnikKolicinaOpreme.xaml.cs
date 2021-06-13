@@ -48,12 +48,24 @@ namespace SIMS.UpravnikGUI
 
         private void Plus_Click(object sender, RoutedEventArgs e)
         {
-            Kolicina.Text = (int.Parse(Kolicina.Text) + int.Parse(Delta.Text)).ToString();
+            try
+            {
+                Kolicina.Text = (int.Parse(Kolicina.Text) + int.Parse(Delta.Text)).ToString();
+            }
+            catch(Exception)
+            {
+            }
         }
 
         private void Minus_Click(object sender, RoutedEventArgs e)
         {
-            Kolicina.Text = (int.Parse(Kolicina.Text) - int.Parse(Delta.Text)).ToString();
+            try
+            {
+                Kolicina.Text = (int.Parse(Kolicina.Text) - int.Parse(Delta.Text)).ToString();
+            }
+            catch(Exception)
+            {
+            }
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
