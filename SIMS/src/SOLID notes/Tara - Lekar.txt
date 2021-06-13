@@ -1,0 +1,11 @@
+Kao SOLID princip iyabran je Open Closed Principle. Njegova upotreba dosta je srodna sa Template dizajn paternom, koga sam koristila na istom delu. 
+
+Ideja jeste da se aplikacija otvori za buduce dodate nove vrste termina, kao sto su rendgenski snimak, sistermatski pregled za decu, zubarska intervencija i sl. koji bi bili specificni po duzini svog trajanja, specijalizaciji (ili specijalizacijama) lekara koji moze da radi taj termin, i naravno tipovima prostorija u kojima se on moze izvrsiti. U tu svrhu sam napravila helper abstraktnu klasu koja sadrzi osnovne funkcionalnosti vezane za zakazivanje i uredjivanje bilo kog termina, sa metodama koje je neophodno overrajdovati, i 2 klase koje je nasledjuju (za standardni pregled i za operaciju). 
+
+OCP se ogleda u tome sto je relativno jednostavno dodati samo novi tip pregleda i nejgove logike, bez prethodno formirane baze u obliku abstraktne klase (ovde vidimo OCP putem nasledjivanja), dok se upotrebom urpavo ove logike šablona primecuje template patern, koji se usko vezuje za abstrakne klase. 
+
+U kodu je ovo implementirano kod lekarevog koda, gde se logika za zakazivanje svih termina i izmene istih oslanja na koriscene korektne klase naslednice (servisi imaju svoj folder, kontroleri takodje *ScheduleService/Controller).
+
+OCP je kroz celu aplikaciju relativno dobro ispostovan, kako se vecina logike is vodi na koriscenje interfejsa, i nasledjivanje, kako bismo olaksali dodavanje novih funkcionalnosti po potrebi.
+
+Template patern se ovde vidi u izmeni nekoliko koraka koji se menjaju u zavisnosti od vrste pregelda o kome govorimo. Konkretno, ovo su 3 funkcije setera, za liste validnih vrsta prostorije, specijalizacije lekara i trajanja termina. Ove tri funkcije esencijalne su prilikom poziva osnovnog konstruktora za Schedule klasu, dok implementacija svih ostalih metoda (koje se zapravo i pozivaju od strane klijenta -> CB aplikacije) ostaje netaknuta, i nezavisna.

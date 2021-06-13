@@ -1,0 +1,21 @@
+Generalno gledajuci Single Responsibility Principle je dobro ispostovan u nasem projektu. Kod je prije svega dobro segmentiran tako da se logika za skladistenje nalazi
+u repositorijumu dok je logika za aplikacije u servisima. Ja sam ovaj princip primjenio na svoje servise mada je i kod drugih kolega iz tima u velikoj mjeri ispostovan.
+Prilikom preporuke termina imamo klasu koja predstavlja skicu termina(RecommendedAppointmentDraft). Ona sadrzi dostupne ljekare za termin i datum termina. 
+Zatim postoji klasa koja na osnovu prosledjenog opsega datuma kreira listu svih termina.(AppointmentDraftPreparation). 
+Sada na osnovu prioriteta pretrage postoje klase za filtriranje
+ovih termina i izbacivanje zauzetih i onih koji ne zadovoljavaju uslove pretrage. To su klase DateRecommendationStrategy(prioritet vrijeme) 
+i DoctorRecommendationStrategy(prioritet doktor). Ovde je primjenjen i StrategyPattern gdje se interfejsu za preporuku termina poturaju razlicite strategije. 
+Tako da nema potrebe da se mijenja vec postojeci kod nego se samo dodaje implementacija strategije.
+ Isto tako dodate su  i klasa koje vrse formiranje pravih termina. Odnosno vrsi transformaciju skice termina u pravi 
+termin koji ima tacno odredjenog ljekara svoju prostoriju itd. Ovde je ispostovan i ocp princip gdje se koristi interfejs tako da ukoliko se budu dodavale razlicite 
+strategije za preporuku termina(preoporuka operacija...) na drugaciji nacin se moze vrsiti transformacija skice termina u pravi termin(npr na jednoj operaciji moze biti prisutno
+vise doktora pocevesi od specijalista pa do medicinskih sestara). 
+
+Isto tako servis za termine je refaktorisan tako da je umjesto da se sve operacije vezane za termine nalaze u jednoj klasi one su podjeljene u vise klasa. 
+-AppointmentService(opsti servis koji  omogucava komunikaciju aplikacije sa repositorijumom)
+-DoctorAppointmentService(u njemu se nalazi sva logika vezana za ljekara i termine)
+-PatientAppointmentService(nalazi se logika uglavnom vezana za dobavljanje pacijentovih termina)
+-ScheduleAppointmentService(nalazi se logika za zakazivanje termina izmjenu termina i dobavljanje slobodnih termina)
+
+Pored toga kod servisa za notifikacija ekstrahovana je logika za prikaz notifikacija korisniku u poseban servis
+Ista je fora odradjena i sa servisom za prikaz ankete korisniku

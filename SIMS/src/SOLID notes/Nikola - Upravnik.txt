@@ -1,0 +1,7 @@
+SOLID
+
+Liskov sustitution prinicip kaže da ako klase naslednice posmatramo kao njihove roditelje one treba tako i da se ponašaju. Priliku da demonstriram ovo našao sam u template klasi TableFilter koja filtrira kolekciju objekata (generičkog tipa) po određenom ulaznom stringu (keywords) i kroz metodu za primenu filtera vraća filtriranu kolekciju. Ideja je, naime, da klasa TableCheckBoxFilter nasledi ovu klasu i proširi njene funkcionalnosti tako što kao kriterijum filtriranja doda stanje CheckBox-a. Kada se analizira kod može da se zaključi da će TableCheckBoxFilter funkcionisati identično kao TableFilter ako se tako posmatra. Može se primetiti da je na ovaj način ispoštovan i OCP, pošto je funkcionalnost klase TableFilter proširena bez da se menjao njen izvorni kod, kao i SRP jer klasa ima samo jedan zadatak - da filtrira kolekciju.
+
+PATTERN
+
+Priliku da iskoristim Command pattern sam našao u delu koda koji rešava premeštanje opreme. Svaki premeštaj se, naime, može enkapsulirati kao komanda koja obuhvata sve potrebne podatke vezano za premeštaj, kao i logiku premeštanja. InventoryMovingCommand, dakle, sadrži podatke o premeštaju i metodu void Execute() koja izvršava komandu. Komande se čuvaju preko klase InventoryMovingQueue, a izvršavaju preko iste te klase, ali kao invoke koristi se svako čitanje stanja inventara u prostorijama.
