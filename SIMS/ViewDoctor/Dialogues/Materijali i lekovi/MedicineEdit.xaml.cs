@@ -25,8 +25,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
     {
         private Medication medicine;
 
-        public ObservableCollection<Allergen> NewComponentsView { get; set; }
-        public ObservableCollection<Allergen> CurrentComponentsView { get; set; }
+        public ObservableCollection<Component> NewComponentsView { get; set; }
+        public ObservableCollection<Component> CurrentComponentsView { get; set; }
         public List<Medication> MedicineSubstitutionList { get; set; }
 
         private MedicineController medicineController = new MedicineController();
@@ -43,8 +43,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             MedicineNameLabel.Content = "Izmena: " + medicine.MedicineName;
             CurrentSubstitute.Content = "Trenutna zamena: " + GetSubstituteName(medicine);
 
-            NewComponentsView = new ObservableCollection<Allergen>();
-            CurrentComponentsView = new ObservableCollection<Allergen>();
+            NewComponentsView = new ObservableCollection<Component>();
+            CurrentComponentsView = new ObservableCollection<Component>();
             MedicineSubstitutionList = new List<Medication>(medicineController.GetApprovedMedicine());
 
             RefreshView();
@@ -61,8 +61,8 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
             NewComponentsView.Clear();
             CurrentComponentsView.Clear();
 
-            List<Allergen> allAllergens = new List<Allergen>(allergenController.GetAll());
-            foreach (Allergen viewItem in allAllergens)
+            List<Component> allAllergens = new List<Component>(allergenController.GetAll());
+            foreach (Component viewItem in allAllergens)
             {
                 if (medicine.IncludesAllergen(viewItem))
                     CurrentComponentsView.Add(viewItem);
@@ -71,7 +71,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         }
 
-        public List<Allergen> GetSelectedComponents()
+        public List<Component> GetSelectedComponents()
         {
             if (TabbedPanel.SelectedIndex == 0)
                 return GetAddedComponents();
@@ -79,26 +79,26 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
                 return GetRemovedComponents();
         }
 
-        private List<Allergen> GetAddedComponents()
+        private List<Component> GetAddedComponents()
         {
-            List<Allergen> selectedItems = new List<Allergen>();
+            List<Component> selectedItems = new List<Component>();
 
-            foreach (Allergen currentAlergen in DataGridAddNew.SelectedItems)
+            foreach (Component currentAlergen in DataGridAddNew.SelectedItems)
             {
-                Allergen data = currentAlergen as Allergen;
+                Component data = currentAlergen as Component;
                 selectedItems.Add(data);
             }
 
             return selectedItems;
         }
 
-        private List<Allergen> GetRemovedComponents()
+        private List<Component> GetRemovedComponents()
         {
-            List<Allergen> selectedItems = new List<Allergen>();
+            List<Component> selectedItems = new List<Component>();
 
-            foreach (Allergen currentAlergen in DataGridComponents.SelectedItems)
+            foreach (Component currentAlergen in DataGridComponents.SelectedItems)
             {
-                Allergen data = currentAlergen as Allergen;
+                Component data = currentAlergen as Component;
                 selectedItems.Add(data);
             }
 
@@ -127,7 +127,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void RemoveElements(object sender, RoutedEventArgs e)
         {
-            foreach (Allergen component in GetSelectedComponents())
+            foreach (Component component in GetSelectedComponents())
                 medicine.RemoveComponent(component);
 
             RefreshView();
@@ -144,7 +144,7 @@ namespace SIMS.LekarGUI.Dialogues.Materijali_i_lekovi
 
         private void AddElements(object sender, RoutedEventArgs e)
         {
-            foreach (Allergen component in GetSelectedComponents())
+            foreach (Component component in GetSelectedComponents())
                 medicine.Components.Add(allergenController.GetAllergen(component.ID));
 
             RefreshView();

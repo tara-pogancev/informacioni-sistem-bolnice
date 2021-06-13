@@ -6,7 +6,7 @@ using SIMS.Model;
 
 namespace SIMS.Repositories.AllergenRepo
 {
-    interface IAllergenRepository:IGenericRepository<Allergen,String>
+    interface IComponentRepository:IGenericRepository<Component,String>
     {
     }
 }

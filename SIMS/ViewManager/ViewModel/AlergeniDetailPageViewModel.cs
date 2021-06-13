@@ -10,7 +10,7 @@ namespace SIMS.ViewManager.ViewModel
 {
     class AlergeniDetailPageViewModel
     {
-        public Allergen allergen { get; set; }
+        public Component allergen { get; set; }
         public bool idEnabled { get; set; }
 
         AllergenController allergenController = new AllergenController();
@@ -28,7 +28,7 @@ namespace SIMS.ViewManager.ViewModel
 
         public AlergeniDetailPageViewModel() //nov alergen
         {
-            allergen = new Allergen();
+            allergen = new Component();
             idEnabled = true;
             Ok = new RelayCommand(Executed_Ok, CanExecute_Ok);
             Odustani = new RelayCommand(Executed_Odustani, CanExecute_Odustani);

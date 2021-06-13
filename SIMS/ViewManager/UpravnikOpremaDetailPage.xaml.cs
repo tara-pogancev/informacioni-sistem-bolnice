@@ -29,7 +29,7 @@ namespace SIMS.UpravnikGUI
         {
             oprema = new Inventory();
             InitializeComponent();
-            Tip.ItemsSource = Conversion.GetTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetInventoryTypes();
         }
         public UpravnikOpremaDetailPage(string Id)
         {
@@ -38,7 +38,7 @@ namespace SIMS.UpravnikGUI
 
             ID.Text = oprema.ID;
             Naziv.Text = oprema.Name;
-            Tip.ItemsSource = Conversion.GetTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetInventoryTypes();
             Tip.SelectedItem = oprema.TypeToString;
 
             ID.IsEnabled = false;
@@ -54,7 +54,7 @@ namespace SIMS.UpravnikGUI
         {
             oprema.ID = ID.Text;
             oprema.Name = Naziv.Text;
-            oprema.Type = Conversion.StringToTipOpreme(Tip.Text);
+            oprema.Type = Conversion.StringToInventoryType(Tip.Text);
 
             inventoryController.CreateOrUpdate(oprema);
 

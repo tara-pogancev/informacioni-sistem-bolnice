@@ -35,10 +35,10 @@ namespace SIMS.UpravnikGUI
 
             BrojText.Text = prostorija.Number;
 
-            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
+            TipCombo.ItemsSource = Conversion.GetRoomTypes();
             TipCombo.SelectedItem = prostorija.TypeToString;
 
-            DostupnostCombo.ItemsSource = Conversion.GetDostupnostiProstorije();
+            DostupnostCombo.ItemsSource = Conversion.GetRoomAvailabilities();
             DostupnostCombo.SelectedItem = prostorija.AvailableToString;
 
             PocetakRenoviranjaText.Text = prostorija.RenovationStart.ToString();
@@ -58,7 +58,7 @@ namespace SIMS.UpravnikGUI
             prostorija = new Room();
             InitializeComponent();
 
-            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
+            TipCombo.ItemsSource = Conversion.GetRoomTypes();
 
             DostupnostLabel.Visibility = Visibility.Hidden;
             PocetakRenoviranjaLabel.Visibility = Visibility.Hidden;
@@ -86,7 +86,7 @@ namespace SIMS.UpravnikGUI
 
             InitializeComponent();
 
-            TipCombo.ItemsSource = Conversion.GetTipoviProstorije();
+            TipCombo.ItemsSource = Conversion.GetRoomTypes();
 
             DostupnostLabel.Visibility = Visibility.Hidden;
             PocetakRenoviranjaLabel.Visibility = Visibility.Hidden;
@@ -121,7 +121,7 @@ namespace SIMS.UpravnikGUI
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             prostorija.Number = BrojText.Text;
-            prostorija.RoomType = Conversion.StringToTipProstorije(TipCombo.Text);
+            prostorija.RoomType = Conversion.StringToRoomType(TipCombo.Text);
 
             roomController.CreateOrUpdate(prostorija);
 

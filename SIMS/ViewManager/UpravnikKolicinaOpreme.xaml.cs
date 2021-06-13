@@ -37,7 +37,7 @@ namespace SIMS.UpravnikGUI
 
             ID.Text = Oprema.ID;
             Naziv.Text = Oprema.Name;
-            Tip.ItemsSource = Conversion.GetTipoviOpreme();
+            Tip.ItemsSource = Conversion.GetInventoryTypes();
             Tip.SelectedItem = Oprema.TypeToString;
 
             ID.IsEnabled = false;

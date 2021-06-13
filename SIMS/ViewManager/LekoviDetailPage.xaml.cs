@@ -25,16 +25,16 @@ namespace SIMS.UpravnikGUI
     {
         class Sastojak
         {
-            public Allergen Alergen { get; set; }
+            public Component Alergen { get; set; }
             public bool IsChecked { get; set; }
 
-            public Sastojak(Allergen alergen)
+            public Sastojak(Component alergen)
             {
                 Alergen = alergen;
                 IsChecked = false;
             }
 
-            public Sastojak(Allergen alergen, bool isChecked)
+            public Sastojak(Component alergen, bool isChecked)
             {
                 Alergen = alergen;
                 IsChecked = isChecked;
@@ -57,7 +57,7 @@ namespace SIMS.UpravnikGUI
 
             IDText.IsEnabled = false;
 
-            foreach (Allergen alergen in AllergenFileRepository.Instance.ReadAll().Values)
+            foreach (Component alergen in ComponentFileRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen, lek.Components.Contains(alergen)));
             }
@@ -70,7 +70,7 @@ namespace SIMS.UpravnikGUI
             lek = new Medication();
             InitializeComponent();
 
-            foreach (Allergen alergen in AllergenFileRepository.Instance.ReadAll().Values)
+            foreach (Component alergen in ComponentFileRepository.Instance.ReadAll().Values)
             {
                 Sastojci.Add(new Sastojak(alergen));
             }

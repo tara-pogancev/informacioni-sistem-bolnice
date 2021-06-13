@@ -13,7 +13,7 @@ namespace SIMS.ViewSecretary.Patients
 {
     public partial class UpdatePatient : Page
     {
-        private ObservableCollection<Allergen> _allergens;
+        private ObservableCollection<Component> _allergens;
         private PatientController patientController = new PatientController();
         private AllergenController allergenController = new AllergenController();
         public UpdatePatient(Patient patient)
@@ -51,7 +51,7 @@ namespace SIMS.ViewSecretary.Patients
 
         private void FillAllergenFields(Patient patient)
         {
-            _allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
+            _allergens = new ObservableCollection<Component>(allergenController.GetAll());
 
             allergensComboBox.ItemsSource = _allergens;
             allergensComboBox.DisplayMemberPath = "Name";
@@ -59,7 +59,7 @@ namespace SIMS.ViewSecretary.Patients
 
             foreach (var allergen in patient.Allergens)
             {
-                foreach (Allergen a in _allergens)
+                foreach (Component a in _allergens)
                 {
                     if (allergen.ID == a.ID)
                     {
@@ -107,8 +107,8 @@ namespace SIMS.ViewSecretary.Patients
                 GetStreetAndNumberFromAdress(out string street, out string number);
                 int.TryParse(postalCodeTextBox.Text, out int post_broj);
 
-                List<Allergen> allergens = new List<Allergen>();
-                foreach (Allergen a in allergensComboBox.SelectedItems)
+                List<Component> allergens = new List<Component>();
+                foreach (Component a in allergensComboBox.SelectedItems)
                 {
                     allergens.Add(a);
                 }

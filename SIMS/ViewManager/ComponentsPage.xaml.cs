@@ -22,13 +22,13 @@ namespace SIMS.UpravnikGUI
 {
     public partial class AlergeniPage : Page
     {
-        private ObservableCollection<Allergen> alergeni;
+        private ObservableCollection<Component> alergeni;
         private AllergenController allergenController = new AllergenController();
 
         public AlergeniPage()
         {
             InitializeComponent();
-            alergeni = new ObservableCollection<Allergen>(AllergenFileRepository.Instance.GetAll());
+            alergeni = new ObservableCollection<Component>(ComponentFileRepository.Instance.GetAll());
             tabelaAlergeni.ItemsSource = alergeni;
         }
 
@@ -40,18 +40,18 @@ namespace SIMS.UpravnikGUI
 
         private void IzbrisiAlergen_Click(object sender, RoutedEventArgs e)
         {
-            Allergen SelectedAlergen = tabelaAlergeni.SelectedItem as Allergen;
+            Component SelectedAlergen = tabelaAlergeni.SelectedItem as Component;
 
             allergenController.Delete(SelectedAlergen.ID);
 
-            alergeni = new ObservableCollection<Allergen>(allergenController.GetAll());
+            alergeni = new ObservableCollection<Component>(allergenController.GetAll());
 
             tabelaAlergeni.ItemsSource = alergeni;
         }
 
         private void PregledajUredi_Click(object sender, RoutedEventArgs e)
         {
-            Allergen SelectedAlergen = tabelaAlergeni.SelectedItem as Allergen;
+            Component SelectedAlergen = tabelaAlergeni.SelectedItem as Component;
             if (SelectedAlergen == null)
             {
                 MessageBox.Show("Izabrati alergen.");

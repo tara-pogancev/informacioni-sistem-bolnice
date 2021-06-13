@@ -6,9 +6,9 @@ using System.Text;
 
 namespace SIMS.Filters
 {
-    class AlergeniFilter : TableFilter<Allergen>
+    class AlergeniFilter : TableFilter<Component>
     {
-        public override bool KeywordFilter(Allergen alergen, string keyword)
+        public override bool KeywordFilter(Component alergen, string keyword)
         {
             return (alergen.ID.Contains(keyword, StringComparison.InvariantCultureIgnoreCase) ||
                     alergen.Name.Contains(keyword, StringComparison.InvariantCultureIgnoreCase));

@@ -18,7 +18,7 @@ namespace SIMS.DTO
 
         }
 
-        public AllergenDTO(Allergen alergen, Medication medicine)
+        public AllergenDTO(Component alergen, Medication medicine)
         {
             AllergenID = alergen.ID;
             AllergenName = alergen.Name;
@@ -29,7 +29,7 @@ namespace SIMS.DTO
         {
             List<AllergenDTO> retVal = new List<AllergenDTO>();
 
-            foreach (Allergen currentAlergen in AllergenFileRepository.Instance.GetAll())
+            foreach (Component currentAlergen in ComponentFileRepository.Instance.GetAll())
                 retVal.Add(new AllergenDTO(currentAlergen, medicine));
 
             return retVal;

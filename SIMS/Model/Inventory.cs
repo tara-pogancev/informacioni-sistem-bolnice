@@ -44,7 +44,7 @@ namespace SIMS.Model
         {
             get
             {
-                return Conversion.TipOpremeToString(Type);
+                return Conversion.InventoryTypeToString(Type);
             }
         }
 

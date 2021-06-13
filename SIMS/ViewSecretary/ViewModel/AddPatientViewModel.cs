@@ -16,7 +16,7 @@ namespace SIMS.ViewSecretary.ViewModel
         #region Fields
         private PatientController patientController = new PatientController();
         private AllergenController allergenController = new AllergenController();
-        public ObservableCollection<Allergen> Allergens { get; set; }
+        public ObservableCollection<Component> Allergens { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string BirthDate { get; set; }
@@ -89,12 +89,12 @@ namespace SIMS.ViewSecretary.ViewModel
             GetStreetAndNumberFromAdress(out string street, out string number);
             int.TryParse(PostalCode, out int postalCode);
 
-            List<Allergen> allergens = new List<Allergen>();
+            List<Component> allergens = new List<Component>();
             /*foreach (Allergen a in allergensComboBox.SelectedItems)
                 allergens.Add(a);*/
             foreach (string s in AllergensText.Split(","))
             {
-                foreach (Allergen a in Allergens)
+                foreach (Component a in Allergens)
                 {
                     if (s.Equals(a.Name))
                     {
@@ -211,7 +211,7 @@ namespace SIMS.ViewSecretary.ViewModel
         #region Constructors
         public AddPatientViewModel()
         {
-            Allergens = new ObservableCollection<Allergen>(allergenController.GetAll());
+            Allergens = new ObservableCollection<Component>(allergenController.GetAll());
             AllergensText = "";
             ChronicPains = "";
 

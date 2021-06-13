@@ -92,7 +92,7 @@ namespace SIMS.UpravnikGUI
         private void Alergeni_Click(object sender, RoutedEventArgs e)
         {
             SetContent(new AlergeniPage());
-            SetLabel("Alergeni");
+            SetLabel("Sastojci");
         }
 
         private void Odjava_Click(object sender, RoutedEventArgs e)

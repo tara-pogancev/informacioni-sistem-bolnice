@@ -19,13 +19,13 @@ namespace SIMS.Model
         public bool IsBanned { get; set; }
         public string Lbo { get; set; }
         public bool Guest { get; set; }
-        public List<Allergen> Allergens { get; set; }
+        public List<Component> Allergens { get; set; }
         public DateTime DateOfBirth { get; set; }
         public List<string> HronicalDiseases { get; set; }
         public Doctor ChosenDoctor {get;set;}
 
 
-        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Component> allergens) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
             Lbo = lbo;
             Guest = guest;
@@ -35,12 +35,12 @@ namespace SIMS.Model
 
             foreach (var allergen in allergens)
             {
-                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+                allergen.Name = ComponentFileRepository.Instance.FindById(allergen.ID).Name;
             }
             ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
 
-        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Allergen> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
+        public Patient(string name, string lastName, string jmbg, string username, string password, string email, string phone, Address address, String lbo, Boolean guest, List<Component> allergens, DateTime dateOfBirth, BloodType bloodType, SexType gender, List<string> hronicalDiseases) : base(name, lastName, jmbg, username, password, email, phone, address)
         {
             Lbo = lbo;
             Guest = guest;
@@ -54,7 +54,7 @@ namespace SIMS.Model
 
             foreach (var allergen in Allergens)
             {
-                allergen.Name = AllergenFileRepository.Instance.FindById(allergen.ID).Name;
+                allergen.Name = ComponentFileRepository.Instance.FindById(allergen.ID).Name;
             }
             ChosenDoctor = new DoctorFileRepository().GetAll()[0];
         }
@@ -91,7 +91,7 @@ namespace SIMS.Model
         {
             Lbo = "";
             Guest = true;
-            Allergens = new List<Allergen>();
+            Allergens = new List<Component>();
             DateOfBirth = DateTime.MinValue;
             BloodType = BloodType.Op;
             PatientGender = SexType.Male;
@@ -127,9 +127,9 @@ namespace SIMS.Model
                 if (Allergens.Count == 0)
                     return "Nema";
 
-                AllergenFileRepository allergens = new AllergenFileRepository();
+                ComponentFileRepository allergens = new ComponentFileRepository();
 
-                foreach (Allergen a in Allergens)
+                foreach (Component a in Allergens)
                     allergensString += a.Name + ", ";
                 return allergensString.Remove(allergensString.Length - 2); 
         }
@@ -176,10 +176,10 @@ namespace SIMS.Model
 
         public bool IsAlergic(Medication medicine)
         {
-            foreach (Allergen a in Allergens)
+            foreach (Component a in Allergens)
             {
                 //if (lek.Components.Contains(a))
-                foreach (Allergen component in medicine.Components)
+                foreach (Component component in medicine.Components)
                     if (component.ID == a.ID)
                         return true;
             }

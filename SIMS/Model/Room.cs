@@ -51,7 +51,7 @@ namespace SIMS.Model
         {
             get
             {
-                return Conversion.DostupnostProstorijeToString(Available);
+                return Conversion.RoomAvailabilityToString(Available);
             }
         }
 
@@ -60,7 +60,7 @@ namespace SIMS.Model
         {
             get
             {
-                return Conversion.TipProstorijeToString(RoomType);
+                return Conversion.RoomTypeToString(RoomType);
             }
         }
         
