@@ -31,7 +31,9 @@
       "City": {
         "Name": "Novi Sad",
         "PostalCode": 0,
-        "Country": null
+        "Country": {
+          "Name": "Srbija"
+        }
       },
       "Street": "Alekse Šantića",
       "Number": "4"

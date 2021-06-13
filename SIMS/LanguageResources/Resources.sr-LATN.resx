@@ -375,6 +375,9 @@
   <data name="QuitCaps" xml:space="preserve">
     <value>ODUSTANI</value>
   </data>
+  <data name="RateApplication" xml:space="preserve">
+    <value>Ocenite aplikaciju:</value>
+  </data>
   <data name="ReportListItem" xml:space="preserve">
     <value>Izveštaj</value>
   </data>

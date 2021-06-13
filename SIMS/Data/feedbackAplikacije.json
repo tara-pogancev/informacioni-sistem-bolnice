@@ -28,15 +28,5 @@
     },
     "Grade": 5,
     "FeedbackID": "04521080504812:45:01"
-  },
-  "04521080504823:52:05": {
-    "SubmissionDate": "2021-06-13T23:52:05.0563425+02:00",
-    "Comment": "Odlicna aplikacije od strane lekara!",
-    "User": {
-      "Jmbg": "045210805048",
-      "Serialize": false
-    },
-    "Grade": 5,
-    "FeedbackID": "04521080504823:52:05"
   }
 }

@@ -63,15 +63,15 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="2" Grid.RowSpan="6" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
+                <Border Grid.Row="2" Grid.RowSpan="7" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderColor}"/>
 
-                <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
-                <TextBox x:Name="doctorTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
-                <TextBox x:Name="patientTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
-                <TextBox x:Name="roomTextBox" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Text="12.12.1977." TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
-                <TextBox x:Name="dateTextBox" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" IsReadOnly="True" />
-                <TextBox x:Name="appointmentTextBox" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="12.12.1977." Width="260" Height="30" FontFamily="Candara" FontSize="14" IsReadOnly="True"/>
-                <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Grid.Row="8" Margin="30,0,0,0" Text="12121977802342" TextWrapping="Wrap" Width="260" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
+                <TextBox x:Name="typeTextBox" HorizontalAlignment="Left" Grid.Row="2" Margin="30,0,0,0" Text="Operacija" TextWrapping="Wrap" Width="240" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
+                <TextBox x:Name="doctorTextBox" HorizontalAlignment="Left" Grid.Row="3" Margin="30,0,0,0" Text="Petar" TextWrapping="Wrap" Width="240" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
+                <TextBox x:Name="patientTextBox" HorizontalAlignment="Left" Grid.Row="4" Margin="30,0,0,0" Text="Petrovic" TextWrapping="Wrap" Width="240" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
+                <TextBox x:Name="roomTextBox" HorizontalAlignment="Left" Grid.Row="5" Margin="30,0,0,0" Text="1" TextWrapping="Wrap" Width="240" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
+                <TextBox x:Name="dateTextBox" HorizontalAlignment="Left" Grid.Row="6" Margin="30,0,0,0" Text="12.12.1977." Width="240" Height="30" FontFamily="Candara" FontSize="14" IsReadOnly="True" />
+                <TextBox x:Name="appointmentTextBox" HorizontalAlignment="Left" Grid.Row="7" Margin="30,0,0,0" Text="08:00" Width="240" Height="30" FontFamily="Candara" FontSize="14" IsReadOnly="True"/>
+                <TextBox x:Name="durationTextBox" HorizontalAlignment="Left" Grid.Row="8" Margin="30,0,0,0" Text="30" TextWrapping="Wrap" Width="240" Height="30" FontFamily="Candara" FontSize="14" TextAlignment="Left" IsReadOnly="True"/>
 
                 <StackPanel Grid.Row="9" Grid.RowSpan="2" Orientation="Horizontal">
                     <Button  Content="{ns:Loc OkCaps}" Click="Ok_Click" Width="100"
