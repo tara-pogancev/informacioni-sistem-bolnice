@@ -8,7 +8,7 @@ using SIMS.Model;
 using SIMS.Controller;
 using SIMS.ViewSecretary.Patients;
 using SIMS.DTO;
-using SIMS.Adapters;
+using SIMS.Sort;
 
 namespace SIMS.ViewSecretary.Appointments
 {

@@ -6,7 +6,7 @@ using SIMS.DTO;
 using SIMS.Controller;
 using System.Windows.Input;
 using System.Collections.Generic;
-using SIMS.Adapters;
+using SIMS.Sort;
 
 namespace SIMS.ViewSecretary.Appointments
 {
