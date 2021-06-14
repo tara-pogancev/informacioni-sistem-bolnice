@@ -1,7 +1,7 @@
 ﻿using SIMS.DTO;
 using System.Collections.Generic;
 
-namespace SIMS.Adapters
+namespace SIMS.Sort
 {
     public class SortAppointmentsController : ISortAppointments
     {

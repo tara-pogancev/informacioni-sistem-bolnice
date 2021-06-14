@@ -133,5 +133,20 @@
       "Serialize": false
     },
     "Date": "2021-06-13T00:00:00+02:00"
+  },
+  "210614011604": {
+    "MedicineName": "Fervex",
+    "Amount": "20mg",
+    "Diagnosis": "//",
+    "RecieptID": "210614011604",
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Date": "2021-06-14T00:00:00+02:00"
   }
 }

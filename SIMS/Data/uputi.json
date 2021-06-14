@@ -32,6 +32,14 @@
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
           }
         ],
         "Name": "Tara",
@@ -97,6 +105,14 @@
         "Grade": 0.0,
         "DoctorSpecialization": 2,
         "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
@@ -168,6 +184,14 @@
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
           }
         ],
         "Name": "Tara",
@@ -233,6 +257,14 @@
         "Grade": 0.0,
         "DoctorSpecialization": 2,
         "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
@@ -314,6 +346,14 @@
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
           }
         ],
         "Name": "Tara",
@@ -389,6 +429,14 @@
         "Grade": 0.0,
         "DoctorSpecialization": 2,
         "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
@@ -477,6 +525,14 @@
         "Grade": 0.0,
         "DoctorSpecialization": 2,
         "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
           {
             "StartTime": "2021-06-16T08:00:00",
             "EndTime": "2021-06-16T12:00:00"
@@ -597,5 +653,206 @@
     },
     "RefferalDate": "2021-06-13T00:00:00+02:00",
     "RefferalKey": "235235DD0621"
+  },
+  "131830DD0621": {
+    "Doctor": {
+      "VacationDays": 20,
+      "Grade": 5.0,
+      "DoctorSpecialization": 4,
+      "VacationPeriods": [],
+      "Name": "Zack",
+      "LastName": "Fair",
+      "Jmbg": "4848555021548",
+      "Username": "zack",
+      "Password": "l",
+      "Email": "zackfair@zdravo.com",
+      "Phone": "0698547521",
+      "Address": {
+        "City": {
+          "Name": "Midgar",
+          "PostalCode": 99888,
+          "Country": {
+            "Name": "Gaia"
+          }
+        },
+        "Street": "Shinra Inc",
+        "Number": "Floor 75"
+      },
+      "Serialize": true
+    },
+    "Patient": {
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": "123456",
+      "Guest": false,
+      "Allergens": [],
+      "DateOfBirth": "1977-12-12T00:00:00",
+      "HronicalDiseases": [],
+      "ChosenDoctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Name": "Petar",
+      "LastName": "Petrović",
+      "Jmbg": "12121977802342",
+      "Username": "pacijent2",
+      "Password": "p",
+      "Email": "petarpetrovic@gmail.com",
+      "Phone": "061 234567",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 20000,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Ribarska",
+        "Number": "8b"
+      },
+      "Serialize": true
+    },
+    "RefferalDate": "2021-06-14T00:00:00+02:00",
+    "RefferalKey": "131830DD0621"
+  },
+  "132723DD0621": {
+    "Doctor": {
+      "VacationDays": 13,
+      "Grade": 0.0,
+      "DoctorSpecialization": 0,
+      "VacationPeriods": [
+        {
+          "StartTime": "2021-06-13T00:00:00",
+          "EndTime": "2021-06-20T00:00:00"
+        }
+      ],
+      "Name": "Katarina",
+      "LastName": "Gavrić",
+      "Jmbg": "484855502123",
+      "Username": "katarina",
+      "Password": "l",
+      "Email": "zackfair@zdravo.com",
+      "Phone": "0698547521",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 23300,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Alekse Šantića",
+        "Number": "75"
+      },
+      "Serialize": true
+    },
+    "Patient": {
+      "PatientGender": 0,
+      "BloodType": 0,
+      "IsBanned": false,
+      "Lbo": "123456",
+      "Guest": false,
+      "Allergens": [],
+      "DateOfBirth": "1977-12-12T00:00:00",
+      "HronicalDiseases": [],
+      "ChosenDoctor": {
+        "VacationDays": 15,
+        "Grade": 0.0,
+        "DoctorSpecialization": 2,
+        "VacationPeriods": [
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          },
+          {
+            "StartTime": "2021-06-16T08:00:00",
+            "EndTime": "2021-06-16T12:00:00"
+          }
+        ],
+        "Name": "Tara",
+        "LastName": "Pogančev",
+        "Jmbg": "045210805048",
+        "Username": "l",
+        "Password": "l",
+        "Email": "tarapogancev@gmail.com",
+        "Phone": "629998425",
+        "Address": {
+          "City": {
+            "Name": "Novi Sad",
+            "PostalCode": 21400,
+            "Country": {
+              "Name": "Srbija"
+            }
+          },
+          "Street": "Bulevar Despota Stefana",
+          "Number": "7"
+        },
+        "Serialize": true
+      },
+      "Name": "Petar",
+      "LastName": "Petrović",
+      "Jmbg": "12121977802342",
+      "Username": "pacijent2",
+      "Password": "p",
+      "Email": "petarpetrovic@gmail.com",
+      "Phone": "061 234567",
+      "Address": {
+        "City": {
+          "Name": "Novi Sad",
+          "PostalCode": 20000,
+          "Country": {
+            "Name": "Srbija"
+          }
+        },
+        "Street": "Ribarska",
+        "Number": "8b"
+      },
+      "Serialize": true
+    },
+    "RefferalDate": "2021-06-14T00:00:00+02:00",
+    "RefferalKey": "132723DD0621"
   }
 }

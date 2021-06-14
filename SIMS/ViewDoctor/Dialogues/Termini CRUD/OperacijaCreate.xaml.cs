@@ -64,7 +64,7 @@ namespace SIMS.LekarGUI
         private void InitDoctor()
         {
             int index = 0;
-            foreach (Doctor doctor in doctorController.GetAllDoctors())
+            foreach (Doctor doctor in doctors)
             {
                 if (doctor.Jmbg.Equals(DoctorUI.GetInstance().GetUser().Jmbg))
                 {
