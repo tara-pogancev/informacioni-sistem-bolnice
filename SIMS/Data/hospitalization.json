@@ -17,22 +17,22 @@
     },
     "HospitalizationID": "14062021000709"
   },
-  "14062021001114": {
+  "14062021131548": {
     "Patient": {
-      "Jmbg": "1445857",
+      "Jmbg": "4865453131",
       "Serialize": false
     },
     "LeadDoctor": {
       "Jmbg": "045210805048",
       "Serialize": false
     },
-    "StartDate": "2021-06-16T00:00:00",
-    "EndDate": "2021-07-31T00:00:00",
+    "StartDate": "2021-06-17T00:00:00",
+    "EndDate": "2021-06-30T00:00:00",
     "Room": {
       "Number": "5",
       "InventoryAmounts": {},
       "Serialize": false
     },
-    "HospitalizationID": "14062021001114"
+    "HospitalizationID": "14062021131548"
   }
 }

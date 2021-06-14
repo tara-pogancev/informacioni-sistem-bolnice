@@ -59,9 +59,18 @@ namespace SIMS.LekarGUI.Dialogues.Termini_CRUD
             {
                 SpecializationDTO currentDoctorSpecialization = new SpecializationDTO(doctor.DoctorSpecialization);
 
-                if (!AvailableSpecialization.Contains(currentDoctorSpecialization));
+                if (!CheckIfSpecializationAdded(currentDoctorSpecialization))
                     AvailableSpecialization.Add(currentDoctorSpecialization);
             }
+        }
+
+        public bool CheckIfSpecializationAdded(SpecializationDTO specialization)
+        {
+            foreach (SpecializationDTO dto in AvailableSpecialization)
+                if (dto.Specialization == specialization.Specialization)
+                    return true;
+
+            return false;
         }
 
         private void SpecializationChanged(object sender, SelectionChangedEventArgs e)
