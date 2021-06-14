@@ -375,6 +375,9 @@
   <data name="QuitCaps" xml:space="preserve">
     <value>QUIT</value>
   </data>
+  <data name="RateApplication" xml:space="preserve">
+    <value>Rate the application:</value>
+  </data>
   <data name="ReportListItem" xml:space="preserve">
     <value>Report</value>
   </data>

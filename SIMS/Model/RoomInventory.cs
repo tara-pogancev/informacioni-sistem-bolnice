@@ -15,11 +15,12 @@ namespace SIMS.Model
         {
 
         }
-        public RoomInventory(string brojProstorije, string idInventara, int kolicina)
+
+        public RoomInventory(string roomNumber, string idInv, int quantity)
         {
-            this.RoomNumber = brojProstorije;
-            this.ID = idInventara;
-            this.Quantity = kolicina;
+            this.RoomNumber = roomNumber;
+            this.ID = idInv;
+            this.Quantity = quantity;
         }
     }
 }

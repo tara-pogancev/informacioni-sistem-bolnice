@@ -1,0 +1,13 @@
+SOLID
+
+Izabrao sam Dependency Inversion Principle za prikaz primene SOLID principa. DIP rešava problem povezanosti konkretnih modula
+tako što moduli više ne zavise jedan od drugog, već postoji apstraktni međumodul. Ovaj SOLID princip sam primenio kod servisa i kontrolera
+za sortiranje termina, gde postoji interfejs ISortAppointments koji ima metodu SortAppointments, i koga nasleđuju kontroleri i servisi
+koji služe za sortiranje termina. 
+
+PATTERN
+
+Dosta logičan izbor bio je Adapter Structural Pattern, jer DIP i adapter često idu zajedno zbog sličnosti problema koji rešavaju, pa
+sam tako i iskoristio adapter na mestu primene DIP-a. Adapter se koristi u slučajevima kada želimo da imamo mogućnost lake promene
+modula koji vrši određenu funkciju; u tom slučaju se u konstruktoru samo prosledi drugi modul koji vrši funkcionalnost na neki drugi
+način, i ne zahteva izmenu postojećeg koda na više od jednog mesta.

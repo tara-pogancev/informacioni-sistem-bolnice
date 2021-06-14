@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SIMS.LekarGUI.Dialogues.Izvestaji"
         mc:Ignorable="d"
         KeyDown="WindowKeyListener"
+        WindowStartupLocation="CenterScreen"
         Title="Izveštaj o operaciji" Height="600" Width="550"
         Name ="Window">
     <Window.Resources>

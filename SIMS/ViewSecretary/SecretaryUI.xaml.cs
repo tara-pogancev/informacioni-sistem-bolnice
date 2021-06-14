@@ -274,7 +274,7 @@ namespace SIMS.ViewSecretary
                     break;
                 case "ItemFeedback":
                     invokeProv.Invoke();
-                    MainFrame.Content = new ViewFeedback();
+                    MainFrame.Content = new ViewFeedback(_secretary);
                     Caption.Content = TranslationSource.Instance["Feedback"];
                     _caption = "Feedback";
                     ListViewMenu.SelectedItem = null;

@@ -2,7 +2,18 @@
   "l1": {
     "MedicineID": "l1",
     "MedicineName": "Katopil",
-    "Components": [],
+    "Components": [
+      {
+        "ID": "a3",
+        "Name": "Ambrozija",
+        "Serialize": false
+      },
+      {
+        "ID": "a5",
+        "Name": "Prašina",
+        "Serialize": false
+      }
+    ],
     "IDSubstitution": "l4",
     "ApprovalStatus": 2
   },
@@ -67,7 +78,23 @@
   "l6": {
     "MedicineID": "l6",
     "MedicineName": "Analgin",
-    "Components": [],
+    "Components": [
+      {
+        "ID": "a11",
+        "Name": "Natrijum-laurilsulfat",
+        "Serialize": false
+      },
+      {
+        "ID": "a14",
+        "Name": "Etinilestradiol",
+        "Serialize": false
+      },
+      {
+        "ID": "a12",
+        "Name": "Magnezijum-stearat",
+        "Serialize": false
+      }
+    ],
     "IDSubstitution": "l2",
     "ApprovalStatus": 0
   }

@@ -773,5 +773,49 @@
     ],
     "CheckStatus": false,
     "NotificationType": 1
+  },
+  "Recept210613235229550342": {
+    "Author": "Recept",
+    "Time": "2021-06-13T23:52:29.5503427+02:00",
+    "Content": "Prepisan recept za lek: Fervex. Pogledajte recept na svom profilu.",
+    "ID": "Recept210613235229550342",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210613235235135290": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-13T23:52:35.1352901+02:00",
+    "Content": "Izdat uput za pregled kod lekara Cloud Strife. Pogledajte ga na svom profilu.",
+    "ID": "Tara Pogančev210613235235135290",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210614000341537253": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-14T00:03:41.5372539+02:00",
+    "Content": "Otpisni list hospitalizacije: //",
+    "ID": "Tara Pogančev210614000341537253",
+    "Target": [
+      "12645323206"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
+  },
+  "Tara Pogančev210614001104385503": {
+    "Author": "Tara Pogančev",
+    "Time": "2021-06-14T00:11:04.3855032+02:00",
+    "Content": "Otpisni list hospitalizacije: Unesite belešku o boravku ovde...",
+    "ID": "Tara Pogančev210614001104385503",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 0
   }
 }

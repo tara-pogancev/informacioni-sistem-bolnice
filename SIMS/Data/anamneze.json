@@ -285,7 +285,34 @@
     "AnamnesisDate": "2021-06-09T00:00:00+02:00",
     "AnamnesisID": "210608122133807726",
     "AnamnesisAppointment": {
+      "StartTime": "0001-01-01T00:00:00",
+      "Duration": 0,
+      "Type": 0,
+      "Doctor": null,
+      "Patient": null,
+      "Room": null,
+      "InitialTime": "0001-01-01T00:00:00",
       "AppointmentID": "210608122133807726"
+    },
+    "Serialize": true
+  },
+  "210609083614511712": {
+    "MainIssues": ".",
+    "CurrentAnamnesis": ".",
+    "GeneralOccurrences": ".",
+    "RespiratorySystem": "/",
+    "CardioSystem": "/",
+    "DigestiveSystem": "/",
+    "UroGenitalSystem": "/",
+    "LocomotorSystem": "/",
+    "NervousSystem": "/",
+    "PastDiseases": "/",
+    "FamilyData": "/",
+    "SocioEpiData": "/",
+    "AnamnesisDate": "2021-06-13T00:00:00+02:00",
+    "AnamnesisID": "210609083614511712",
+    "AnamnesisAppointment": {
+      "AppointmentID": "210609083614511712"
     },
     "Serialize": true
   }

@@ -64,23 +64,23 @@
         "EndTime": "2021-06-16T12:00:00"
       }
     ],
-    "Name": "Tara",
-    "LastName": "Pogančev",
+    "Name": "Cloud",
+    "LastName": "Strife",
     "Jmbg": "22157484654211",
-    "Username": "l",
+    "Username": "cloud",
     "Password": "l",
-    "Email": "tarapogancev@gmail.com",
-    "Phone": "629998425",
+    "Email": "fluffy.clouds@gmail.com",
+    "Phone": "629998428",
     "Address": {
       "City": {
-        "Name": "Novi Sad",
+        "Name": "Nibelheim",
         "PostalCode": 21000,
         "Country": {
           "Name": "Srbija"
         }
       },
-      "Street": "Bulevar Despota Stefana",
-      "Number": "7"
+      "Street": "Central town suqare",
+      "Number": "8"
     },
     "Serialize": true
   },

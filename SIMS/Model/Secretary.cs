@@ -31,7 +31,15 @@ namespace SIMS.Model
             Language = "SR";
         }
 
-        public bool ShouldSerializeDaniGodisnjegOdmora()
+        public bool ShouldSerializeVacationDays()
+        {
+            return Serialize;
+        }
+        public bool ShouldSerializeTheme()
+        {
+            return Serialize;
+        }
+        public bool ShouldSerializeLanguage()
         {
             return Serialize;
         }
