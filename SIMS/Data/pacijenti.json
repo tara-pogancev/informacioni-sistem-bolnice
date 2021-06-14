@@ -1,7 +1,44 @@
 {
   "4865453131": {
+    "PatientGender": 0,
+    "BloodType": 0,
+    "IsBanned": false,
+    "Lbo": "123",
+    "Guest": false,
+    "Allergens": [
+      {
+        "ID": "a2",
+        "Name": "Laktoza",
+        "Serialize": false
+      }
+    ],
+    "DateOfBirth": "1999-03-05T00:00:00",
+    "HronicalDiseases": [
+      "Astma"
+    ],
+    "ChosenDoctor": {
+      "Jmbg": "4848512502123",
+      "Serialize": false
+    },
+    "Name": "Đorđe",
+    "LastName": "Krsmanović",
     "Jmbg": "4865453131",
-    "Serialize": false
+    "Username": "pacijent",
+    "Password": "p",
+    "Email": "djordje1499@gmal.com",
+    "Phone": "0645569530",
+    "Address": {
+      "City": {
+        "Name": "Novi Sad",
+        "PostalCode": 0,
+        "Country": {
+          "Name": "Srbija"
+        }
+      },
+      "Street": "Alekse Šantića",
+      "Number": "4"
+    },
+    "Serialize": true
   },
   "12645323206": {
     "PatientGender": 0,
@@ -17,6 +54,22 @@
       "Grade": 0.0,
       "DoctorSpecialization": 2,
       "VacationPeriods": [
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
         {
           "StartTime": "2021-06-16T08:00:00",
           "EndTime": "2021-06-16T12:00:00"
@@ -103,6 +156,22 @@
         {
           "StartTime": "2021-06-16T08:00:00",
           "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
         }
       ],
       "Name": "Tara",
@@ -159,6 +228,22 @@
       "Grade": 0.0,
       "DoctorSpecialization": 2,
       "VacationPeriods": [
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
+        {
+          "StartTime": "2021-06-16T08:00:00",
+          "EndTime": "2021-06-16T12:00:00"
+        },
         {
           "StartTime": "2021-06-16T08:00:00",
           "EndTime": "2021-06-16T12:00:00"

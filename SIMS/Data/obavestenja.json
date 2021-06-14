@@ -828,5 +828,16 @@
     ],
     "CheckStatus": true,
     "NotificationType": 3
+  },
+  "Zakazan termin210616093000000000": {
+    "Author": "Zakazan termin",
+    "Time": "2021-06-16T09:30:00",
+    "Content": "Imate zakazan termin",
+    "ID": "Zakazan termin210616093000000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": false,
+    "NotificationType": 1
   }
 }

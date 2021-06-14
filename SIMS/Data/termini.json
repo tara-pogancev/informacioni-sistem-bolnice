@@ -678,5 +678,25 @@
     },
     "InitialTime": "2021-06-17T09:30:00",
     "AppointmentID": "210613115048387247"
+  },
+  "210614052151122538": {
+    "StartTime": "2021-06-17T09:30:00",
+    "Duration": 30,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "4848512502123",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "4865453131",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "1",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-06-17T09:30:00",
+    "AppointmentID": "210614052151122538"
   }
 }
