@@ -19,7 +19,7 @@ namespace SIMS.Service.RecommendationAppointmentService
             recommendedAppointementsDrafts = new List<RecommendedAppointmentDraft>();
             
             this.patientID = patientID;
-            recommendedAppointementsDrafts = new AppointmentDraftPreparation(startDate, endDate).getRecommendedAppointmentDrafts();
+            recommendedAppointementsDrafts = new AppointmentDraftPreparation(startDate, endDate).GetRecommendedAppointmentDrafts();
         }
 
         private void RemoveBusyDoctors(Appointment appointment)

@@ -19,7 +19,7 @@ namespace SIMS.Service.RecommendationAppointmentService
             HoursOfRecommendAppointment = new List<TimeSpan>() { new TimeSpan(8, 0, 0), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0) };
         }
 
-        public List<RecommendedAppointmentDraft> getRecommendedAppointmentDrafts()
+        public List<RecommendedAppointmentDraft> GetRecommendedAppointmentDrafts()
         {
             List<RecommendedAppointmentDraft> possibleRecommendation = new List<RecommendedAppointmentDraft>();
             int performanceConstraint = 0;

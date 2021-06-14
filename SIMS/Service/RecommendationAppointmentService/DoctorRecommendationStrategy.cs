@@ -24,7 +24,7 @@ namespace SIMS.Service.RecommendationAppointmentService
             this.endDate =recommendedAppointmentDto.EndDate;
             this.doctorID =recommendedAppointmentDto.DoctorID;
             this.patientID = recommendedAppointmentDto.PatientID;
-            recommendedAppointementsDrafts = new AppointmentDraftPreparation(startDate, endDate).getRecommendedAppointmentDrafts();
+            recommendedAppointementsDrafts = new AppointmentDraftPreparation(startDate, endDate).GetRecommendedAppointmentDrafts();
 
         }
 

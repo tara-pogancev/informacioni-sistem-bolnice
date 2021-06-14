@@ -782,7 +782,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Tara Pogančev210613235235135290": {
@@ -793,7 +793,7 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
   },
   "Tara Pogančev210614000341537253": {
@@ -815,7 +815,18 @@
     "Target": [
       "4865453131"
     ],
-    "CheckStatus": false,
+    "CheckStatus": true,
     "NotificationType": 0
+  },
+  "Podsjetnik210614105500000000": {
+    "Author": "Podsjetnik",
+    "Time": "2021-06-14T10:55:00",
+    "Content": "Pogledajte vase beleske i podsjetnike",
+    "ID": "Podsjetnik210614105500000000",
+    "Target": [
+      "4865453131"
+    ],
+    "CheckStatus": true,
+    "NotificationType": 3
   }
 }
