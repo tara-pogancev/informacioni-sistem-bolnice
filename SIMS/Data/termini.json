@@ -698,5 +698,165 @@
     },
     "InitialTime": "2021-06-17T09:30:00",
     "AppointmentID": "210614052151122538"
+  },
+  "210802075501160718": {
+    "StartTime": "2021-08-19T09:30:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-08-19T09:30:00",
+    "AppointmentID": "210802075501160718"
+  },
+  "210824080410531679": {
+    "StartTime": "2021-08-28T10:00:00",
+    "Duration": 90,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "7",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-08-28T10:00:00",
+    "AppointmentID": "210824080410531679"
+  },
+  "210824080439339898": {
+    "StartTime": "2021-08-23T10:30:00",
+    "Duration": 90,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "1445857",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "12",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-08-23T10:30:00",
+    "AppointmentID": "210824080439339898"
+  },
+  "210912110550154251": {
+    "StartTime": "2021-09-09T10:30:00",
+    "Duration": 90,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "8",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-09-09T10:30:00",
+    "AppointmentID": "210912110550154251"
+  },
+  "210912110607966592": {
+    "StartTime": "2021-09-15T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "2",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-09-15T09:00:00",
+    "AppointmentID": "210912110607966592"
+  },
+  "210912110626323982": {
+    "StartTime": "2021-09-17T10:30:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "3",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-09-17T10:30:00",
+    "AppointmentID": "210912110626323982"
+  },
+  "210912110640552170": {
+    "StartTime": "2021-09-17T14:00:00",
+    "Duration": 90,
+    "Type": 1,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12645323206",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "12",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-09-17T14:00:00",
+    "AppointmentID": "210912110640552170"
+  },
+  "210912110656632504": {
+    "StartTime": "2021-09-16T09:00:00",
+    "Duration": 60,
+    "Type": 0,
+    "Doctor": {
+      "Jmbg": "045210805048",
+      "Serialize": false
+    },
+    "Patient": {
+      "Jmbg": "12121977802342",
+      "Serialize": false
+    },
+    "Room": {
+      "Number": "7",
+      "InventoryAmounts": {},
+      "Serialize": false
+    },
+    "InitialTime": "2021-09-16T09:00:00",
+    "AppointmentID": "210912110656632504"
   }
 }
